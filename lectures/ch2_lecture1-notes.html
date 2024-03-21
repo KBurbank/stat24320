@@ -17,7 +17,7 @@
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - More Systems of Linear Equations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -772,7 +772,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} \frac{x_{j}}{n_{j}}
 \end{aligned}
 \]</span></p>
 <p>Augmented matrix:</p>
-<div id="98aba745" class="cell" data-execution_count="1">
+<div id="c430a58b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; -1 &amp; -1 &amp; 0 &amp; 0\\-1 &amp; 1 &amp; -1 &amp; 0 &amp; 0\\-1 &amp; 0 &amp; 1 &amp; -1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; 1 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
@@ -934,7 +934,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 <section id="section-2" class="title-slide slide level2 center">
 <h2></h2>
 <p>Build the matrix representing the system of equations:</p>
-<div id="ec1417c0" class="cell" data-execution_count="2">
+<div id="bb40f8d4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>N<span class="op">=</span><span class="dv">6</span></span>
 <span id="cb1-2"><a></a>M <span class="op">=</span> sym.zeros(N)</span>
 <span id="cb1-3"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
@@ -959,7 +959,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 \]</span></p>
 <p>Decide on a function for f.&nbsp;Let’s say <span class="math inline">\(\frac{h^{2}}{K} f = x_i^2\)</span>.</p>
 <p>Say that x is running from 0 to 1. Then we can have</p>
-<div id="38d6cc02" class="cell" data-execution_count="3">
+<div id="c48cc8dc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a></a>x<span class="op">=</span>np.arange(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>N)</span>
 <span id="cb2-3"><a></a>f<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span></span>
@@ -970,7 +970,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 
 <section id="section-4" class="title-slide slide level2 center">
 <h2></h2>
-<div id="a87a738f" class="cell" data-execution_count="4">
+<div id="756543bc" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sol<span class="op">=</span>M.gauss_jordan_solve(f)</span>
 <span id="cb3-2"><a></a>sol[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
@@ -1323,6 +1323,24 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1359,7 +1377,11 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1401,7 +1423,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

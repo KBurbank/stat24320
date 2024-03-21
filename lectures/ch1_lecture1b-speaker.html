@@ -17,7 +17,7 @@
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.549">
+  <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Intro to linear systems</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -711,8 +711,8 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}5.7 \cdot 10^{4}\\8.9 \cdot 10^{3}\\4.0\end{matrix}\right]\)</span>.</p>
 <div class="fragment">
 <p>How do these compare to the exact solutions? These are</p>
-<div id="d57db1cd" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
+<div id="38487b65" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="117">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}56753.6889897841\\8626.56072644719\\4.02951191827469\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -725,8 +725,8 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 <p><span class="math inline">\(\rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; -0.135636363636364 &amp; -1063.27272727273 &amp; -5454.54545454545\end{matrix}\right] \rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; 0 &amp; 142.383838383838 &amp; 573.737373737372\end{matrix}\right]\)</span></p>
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}56753.6889897845\\8626.56072644727\\4.02951191827468\end{matrix}\right]\)</span>.</p>
 <p>Reminder, the exact solution was:</p>
-<div id="ff3bc6da" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="8">
+<div id="bbf65fbf" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="120">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}56753.6889897841\\8626.56072644719\\4.02951191827469\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -1108,7 +1108,7 @@ x*y
 <h2>Results for n=4 and n=10 points</h2>
 <div class="columns">
 <div class="column">
-<div id="ff988ed9" class="cell" data-execution_count="12">
+<div id="42635607" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1119,11 +1119,11 @@ x*y
 </div>
 </div><div class="column">
 <div class="fragment">
-<div id="3a962476" class="cell" data-execution_count="13">
+<div id="6c6b6536" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="ch1_lecture1b_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch1_lecture1b_files/figure-revealjs/cell-14-output-1.png" width="526" height="505"></a></p>
+<p><a href="ch1_lecture1b_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch1_lecture1b_files/figure-revealjs/cell-14-output-1.png" width="537" height="505"></a></p>
 </figure>
 </div>
 </div>
@@ -1135,7 +1135,7 @@ x*y
 
 <section id="max-error-for-different-values-of-n" class="title-slide slide level2 center">
 <h2>Max error for different values of n</h2>
-<div id="443eca9f" class="cell" data-execution_count="15">
+<div id="a5c8825f" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1148,7 +1148,7 @@ x*y
 
 <section id="the-problem-linear-dependency" class="title-slide slide level2 center">
 <h2>The problem: linear dependency</h2>
-<div id="2fe76768" class="cell" data-execution_count="16">
+<div id="06d98dcc" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1493,6 +1493,24 @@ x*y
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -1529,7 +1547,11 @@ x*y
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
@@ -1571,7 +1593,7 @@ x*y
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

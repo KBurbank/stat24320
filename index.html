@@ -105,9 +105,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-filename','listing-file-modified',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-filename-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-filename","listing-file-modified"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -278,36 +278,28 @@ No matching items
 <thead>
 <tr>
 <th>
-Title
+File Name
 </th>
 <th>
-Author
+Modified
 </th>
 </tr>
 </thead>
 <tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1710975476697" data-listing-reading-time-sort="1" data-listing-word-count-sort="154" data-listing-title-sort="PageRank Tutorial" data-listing-filename-sort="pagerank_tutorial.ipynb">
+<tr data-index="0" data-listing-file-modified-sort="1711041631117" data-listing-filename-sort="pagerank_tutorial.out.ipynb">
 <td>
-<a href="./notebooks/pagerank_tutorial.html" class="title listing-title">PageRank Tutorial</a>
+<a href="./docs/notebooks/pagerank_tutorial.out.ipynb" class="filename listing-filename">pagerank_tutorial.out.ipynb</a>
 </td>
 <td>
-<span class="listing-author">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1711041348346" data-listing-filename-sort="pagerank_tutorial.out.ipynb">
-<td>
-<a href="./docs/docs/notebooks/pagerank_tutorial.out.ipynb" class="title listing-title">&nbsp;</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
+<span class="listing-file-modified">3/21/24, 12:20:31 PM</span>
 </td>
 </tr>
-<tr data-index="2" data-listing-file-modified-sort="1711041590057" data-listing-filename-sort="pagerank_tutorial.out.ipynb">
+<tr data-index="1" data-listing-file-modified-sort="1710975476697" data-listing-filename-sort="pagerank_tutorial.ipynb">
 <td>
-<a href="./docs/notebooks/pagerank_tutorial.out.ipynb" class="title listing-title">&nbsp;</a>
+<a href="./notebooks/pagerank_tutorial.ipynb" class="filename listing-filename">pagerank_tutorial.ipynb</a>
 </td>
 <td>
-<span class="listing-author">&nbsp;</span>
+<span class="listing-file-modified">3/20/24, 5:57:56 PM</span>
 </td>
 </tr>
 </tbody>

@@ -1,24 +1,283 @@
 [
   {
-    "objectID": "notebooks/pagerank_tutorial.html",
-    "href": "notebooks/pagerank_tutorial.html",
-    "title": "PageRank Tutorial",
-    "section": "",
-    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)\n\n\n\n\n\nCreate a matrix representing the system of equations for the “third try” in the PageRank problem:\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nNow find the RREF form of this matrix. What does that tell you about the system?\nNext, use the gauss_jordan_solve. What’s surprising (or not) about these results?\nSubstitute a specific value to get a particular solution…"
+    "objectID": "lectures/ch2_lecture1.html#a-resource-for-review",
+    "href": "lectures/ch2_lecture1.html#a-resource-for-review",
+    "title": "More Systems of Linear Equations",
+    "section": "A resource for review",
+    "text": "A resource for review\nThe glossary from the end of Strand: glossary.pdf"
   },
   {
-    "objectID": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
-    "href": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
-    "title": "PageRank Tutorial",
-    "section": "",
-    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)"
+    "objectID": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
+    "href": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
+    "title": "More Systems of Linear Equations",
+    "section": "Systems with non-unique solutions",
+    "text": "Systems with non-unique solutions\nSolve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\begin{aligned}\nz & =2 \\\\\nx+y+z & =2 \\\\\n2 x+2 y+4 z & =8\n\\end{aligned}\n\\]\n\nMake an augmented matrix: Example 1.20. Solve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right]\n\\]\n\nNote that the first column corresponds to x, the second to y, and the third to z.\n\n\n\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\stackrel{E_{12}}{\\longrightarrow}\\left[\\begin{array}{llll}\n(1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\xrightarrow[E_{31}(-2)]{\\longrightarrow}\\left[\\begin{array}{rlll}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]\n\\]\n\nNow we are stuck! The first row we are going to use to solve for x. Neither the second or third row tell us anything about y…"
   },
   {
-    "objectID": "notebooks/pagerank_tutorial.html#now-you-try",
-    "href": "notebooks/pagerank_tutorial.html#now-you-try",
-    "title": "PageRank Tutorial",
+    "objectID": "lectures/ch2_lecture1.html#section",
+    "href": "lectures/ch2_lecture1.html#section",
+    "title": "More Systems of Linear Equations",
     "section": "",
-    "text": "Create a matrix representing the system of equations for the “third try” in the PageRank problem:\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nNow find the RREF form of this matrix. What does that tell you about the system?\nNext, use the gauss_jordan_solve. What’s surprising (or not) about these results?\nSubstitute a specific value to get a particular solution…"
+    "text": "We keep on going… \\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right] \\xrightarrow[E_{2}(1 / 2)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{32}(-1)}\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] \\xrightarrow[E_{12}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n(1) & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\end{aligned}\n\\]\nThere’s still no information on \\(y\\).\n\\[\n\\begin{aligned}\n& x=-y \\\\\n& z=2 \\\\\n& y \\text { is free. }\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#free-versus-bound-variables",
+    "href": "lectures/ch2_lecture1.html#free-versus-bound-variables",
+    "title": "More Systems of Linear Equations",
+    "section": "Free versus bound variables",
+    "text": "Free versus bound variables\nSuppose we have another augmented matrix, which after GJ elimination has become:\n\\[\n\\left[\\begin{array}{rrrrr}\nx & y & z & w & \\mathrm{rhs} \\\\\n1 & 2 & 0 & -1 & 2 \\\\\n0 & 0 & 1 & 3 & 0 \\\\\n0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n\nSolutions are: \\[\n\\begin{aligned}\nx+2 y-w & =2 \\\\\nz+3 w & =0 .\n\\end{aligned}\n\\]\nHow can we tell from looking at the matrix which variables are free vs bound?\nColumns which contain pivots correspond to bound variables. The others correspond to free variables.\n(Columns with pivots are called “basic” columns.)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#zero-solutions",
+    "href": "lectures/ch2_lecture1.html#zero-solutions",
+    "title": "More Systems of Linear Equations",
+    "section": "Zero solutions",
+    "text": "Zero solutions\nSolve this system… \\[\n\\begin{array}{r}\nx+y=1 \\\\\n2 x+y=2 \\\\\n3 x+2 y=5 .\n\\end{array}\n\\]\n\n\\[\n\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 1 & 2 \\\\\n3 & 2 & 5\n\\end{array}\\right] \\xrightarrow[E_{21}(-2)]{E_{31}(-3)}\\left[\\begin{array}{lrl}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & -1 & 2\n\\end{array}\\right] \\xrightarrow[E_{32}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & 0 & 2\n\\end{array}\\right]\n\\]\n\nWe didn’t even finish the G-J elimination, but there’s clearly a problem. We can’t have 0 = 2. Maybe not a surprise, since we have three equations with only two unknowns!\n\n\n\nSystem is inconsistent."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#consistency",
+    "href": "lectures/ch2_lecture1.html#consistency",
+    "title": "More Systems of Linear Equations",
+    "section": "Consistency",
+    "text": "Consistency\nFor an augmented matrix in RREF, if the only only nonzero entry in a row appears on the right-hand side,\n\\[\\text { Row } i \\longrightarrow\\left(\n\\begin{array}{cccccc|c}\n* & * & * & * & * & * & * \\\\\n0 & 0 & 0 & * & * & * & * \\\\\n0 & 0 & 0 & 0 & * & * & * \\\\\n0 & 0 & 0 & 0 & 0 & 0 & \\alpha \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet\n\\end{array}\n\\right) \\longleftarrow \\alpha \\neq 0\n\\]\nthe \\(i^{\\text {th }}\\) equation of the associated system is\n\\[\n0 x_{1}+0 x_{2}+\\cdots+0 x_{n}=\\alpha .\n\\]\nIf \\(\\alpha\\ne 0\\), this has no solution!\nThis is an inconsistent system.\n\nNote that there is not inconsistency if there is a row of all zeros."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
+    "href": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
+    "title": "More Systems of Linear Equations",
+    "section": "What Reduced Row Echelon Form tells us",
+    "text": "What Reduced Row Echelon Form tells us\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n\nWhat can we learn from the RREF of a matrix? What does it tell us? It can tell us which variables are free vs bound, and therefore how many variables are bound. (This is the rank of the matrix!)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
+    "href": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
+    "title": "More Systems of Linear Equations",
+    "section": "Which variables are free and bound",
+    "text": "Which variables are free and bound\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n“Basic columns” correspond to the columns in \\(A\\) which contain the pivotal positions.\nEach non-basic column can be formed as a sum of the basic columns to the left.\nBasic columns are the same in \\(E\\) and \\(A\\)!"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#rank",
+    "href": "lectures/ch2_lecture1.html#rank",
+    "title": "More Systems of Linear Equations",
+    "section": "Rank",
+    "text": "Rank\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nrank(\\(A\\)) = # of pivots = # of nonzero rows in \\(E\\) = # bound variables in the system"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#nullity",
+    "href": "lectures/ch2_lecture1.html#nullity",
+    "title": "More Systems of Linear Equations",
+    "section": "Nullity",
+    "text": "Nullity\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nnullity(\\(A\\)) = # of non-pivot columns = # free variables in the system"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#consistency-1",
+    "href": "lectures/ch2_lecture1.html#consistency-1",
+    "title": "More Systems of Linear Equations",
+    "section": "Consistency",
+    "text": "Consistency\nEquivalent ways of saying \\(A\\) is consistent:\n\nIn row reducing \\([\\mathbf{A} \\mid \\mathbf{b}]\\), a row of the following form never appears:\n\n. . . \\[\n\\left(\\begin{array}{llll|l}\n0 & 0 & \\cdots & 0 & \\alpha \\tag{2.3.2}\n\\end{array}\\right) \\text {, where } \\alpha \\neq 0 \\text {. }\n\\]\n\n\\(\\operatorname{rank}[\\mathbf{A} \\mid \\mathbf{b}]=\\operatorname{rank}(\\mathbf{A})\\), in which case either:\n\n\\(\\operatorname{rank}[\\mathbf{A}=n\\), and system has a unique solution or\n\\(\\operatorname{rank}[\\mathbf{A}&lt;n\\), and system has infinite solutions\n\n\\(\\mathbf{b}\\) is a nonbasic column in \\([\\mathbf{A} \\mid \\mathbf{b}]\\).\n\\(\\mathbf{b}\\) is a combination of the basic columns in \\(\\mathbf{A}\\).\n\n\n\nMeyers p. 51"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#homogeneous-systems",
+    "href": "lectures/ch2_lecture1.html#homogeneous-systems",
+    "title": "More Systems of Linear Equations",
+    "section": "Homogeneous Systems",
+    "text": "Homogeneous Systems\n\nThe general linear system with \\(m \\times n\\) coefficient matrix \\(A\\) and right-hand-side vector \\(\\mathbf{b}\\) is homogeneous if the entries of \\(\\mathbf{b}\\) are all zero.\nOtherwise, the system is inhomogeneous.\nHomogeneous systems are always consistent!\nCan solve by setting all variables to zero. This is the trivial solution\nIf rank of the matrix = n, there is only the trivial solution"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#pagerank",
+    "href": "lectures/ch2_lecture1.html#pagerank",
+    "title": "More Systems of Linear Equations",
+    "section": "Pagerank",
+    "text": "Pagerank\nGoal: rank pages in terms of “importance”. Suppose we have four pages:\n\n\n\n\nHow can we rank these pages? Which one is most important?\n\n\n\n\nFirst try: count number of backlinks. But that can be artifically inflated (just link to a page many times), and it doesn’t care about importance of the linking page.\nSecond try: For page \\(i\\) let \\(x_{i}\\) be its score and \\(L_{i}\\) be the set of all indices of pages linking to it. Then \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nBut it’s still easy to game this system, by setting up a page and making a ton of outgoing links to pages we want to promote.\nThird try: For page \\(j\\) let \\(n_{j}\\) be its total number of outgoing links on that page. Then score is\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
+    "href": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
+    "title": "More Systems of Linear Equations",
+    "section": "Working through PageRank: try 3",
+    "text": "Working through PageRank: try 3\n\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]\n\n\n\nWrite down the system of equations this gives us. Then make it in an augmented matrix.\n\n\n\n\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nAugmented matrix:\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & -1 & -1 & 0 & 0\\\\-1 & 1 & -1 & 0 & 0\\\\-1 & 0 & 1 & -1 & 0\\\\0 & 0 & -1 & 1 & 0\\end{matrix}\\right]\\)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#jupyterlab",
+    "href": "lectures/ch2_lecture1.html#jupyterlab",
+    "title": "More Systems of Linear Equations",
+    "section": "JupyterLab",
+    "text": "JupyterLab\nhttps://tinyurl.com/stat24320notebook1"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
+    "href": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
+    "title": "More Systems of Linear Equations",
+    "section": "Now what about the second try?",
+    "text": "Now what about the second try?\nRemember this was our ‘second try’: \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nThis was the system of equations. \\[\n\\begin{aligned}\n& x_{1}=x_{2}+x_{3} \\\\\n& x_{2}=x_{1}+x_{3} \\\\\n& x_{3}=x_{1}+x_{4} \\\\\n& x_{4}=x_{3} .\n\\end{aligned}\n\\]\nWhat happens if we try to solve this? Try it in Python.\n\nWhat happens is that we get only the trivial solution. This makes sense because it is a homogeneous system with full rank."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
+    "href": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
+    "title": "More Systems of Linear Equations",
+    "section": "Discretizing continuous functions",
+    "text": "Discretizing continuous functions\n\nRod with fixed temperatures \\(y_{left}\\) and \\(y_{right}\\) at each end, internal heat source given as \\(f(x), 0 \\leq x \\leq 1\\)\nWhat’s the temperature at each point along the length?"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-1",
+    "href": "lectures/ch2_lecture1.html#section-1",
+    "title": "More Systems of Linear Equations",
+    "section": "",
+    "text": "Discrete approximation to temperature function \\((n=5)\\)\n\n\n\n\n\nequally spaced points, called nodes, \\(x_{0}=0, x_{1}, x_{2}, \\ldots, x_{n+1}=1\\), distance \\(h\\) apart.\nheat on the \\(i\\) th segment \\(\\approx\\) temperature at its left node.\ntemperature is \\(y(x)\\), \\(y_{i}=y\\left(x_{i}\\right)\\).\n\n\n\n\nEquations to balance the flow of heat from each node to its neighbors:\n\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-2",
+    "href": "lectures/ch2_lecture1.html#section-2",
+    "title": "More Systems of Linear Equations",
+    "section": "",
+    "text": "Build the matrix representing the system of equations:\n\nN=6\nM = sym.zeros(N)\nfor i in range(N):\n  if (i&gt;0):\n      M[i-1,i]=-1\n  M[i,i]=2\n  if (i&lt;N-1):\n      M[i+1,i]=-1\nM\n\n\\(\\displaystyle \\left[\\begin{matrix}2 & -1 & 0 & 0 & 0 & 0\\\\-1 & 2 & -1 & 0 & 0 & 0\\\\0 & -1 & 2 & -1 & 0 & 0\\\\0 & 0 & -1 & 2 & -1 & 0\\\\0 & 0 & 0 & -1 & 2 & -1\\\\0 & 0 & 0 & 0 & -1 & 2\\end{matrix}\\right]\\)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-3",
+    "href": "lectures/ch2_lecture1.html#section-3",
+    "title": "More Systems of Linear Equations",
+    "section": "",
+    "text": "\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]\nDecide on a function for f. Let’s say \\(\\frac{h^{2}}{K} f = x_i^2\\).\nSay that x is running from 0 to 1. Then we can have\n\nimport numpy as np\nx=np.arange(0,1,1/N)\nf=x**2\nx=sym.Matrix(x)\nf=sym.Matrix(f)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-4",
+    "href": "lectures/ch2_lecture1.html#section-4",
+    "title": "More Systems of Linear Equations",
+    "section": "",
+    "text": "sol=M.gauss_jordan_solve(f)\nsol[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}0.416666666666667\\\\0.833333333333333\\\\1.22222222222222\\\\1.5\\\\1.52777777777778\\\\1.11111111111111\\end{matrix}\\right]\\)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#now-you",
+    "href": "lectures/ch2_lecture1.html#now-you",
+    "title": "More Systems of Linear Equations",
+    "section": "Now you",
+    "text": "Now you\n\nImplement this yourself in Python\nMake a plot of the output (you’ll want to use PyPlot)\nIncrease N and make more plots\nThis was assuming the temperature at the ends was 0. How can we change this?"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#turing-pattern-formation",
+    "href": "lectures/ch2_lecture1.html#turing-pattern-formation",
+    "title": "More Systems of Linear Equations",
+    "section": "Turing pattern formation",
+    "text": "Turing pattern formation\nhttps://colab.research.google.com/github/ijmbarr/turing-patterns/blob/master/turing-patterns.ipynb#scrollTo=GsEPBsz33E14\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stat 24320",
+    "section": "",
+    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#lecture-notes",
+    "href": "index.html#lecture-notes",
+    "title": "Stat 24320",
+    "section": "",
+    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#notebooks",
+    "href": "index.html#notebooks",
+    "title": "Stat 24320",
+    "section": "Notebooks",
+    "text": "Notebooks\n\n\n\n\n\nFile Name\n\n\nModified\n\n\n\n\n\n\npagerank_tutorial.out.ipynb\n\n\n3/21/24, 12:20:31 PM\n\n\n\n\npagerank_tutorial.ipynb\n\n\n3/20/24, 5:57:56 PM\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#homeworks",
+    "href": "index.html#homeworks",
+    "title": "Stat 24320",
+    "section": "Homeworks",
+    "text": "Homeworks\n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nHomework 1\n\n\n \n\n\n\n\nProjects 1 (Not Ready Yet)\n\n\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "HW/projects1.html",
+    "href": "HW/projects1.html",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "",
+    "text": "(Shores 62)\nProblem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced \\(1 / 6\\) meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient \\(D\\) of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval \\([0,1]\\) at times \\(t=210\\) and \\(t=300\\) and at the given spatial nodes.\nProcedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of \\(D\\), that is, the one that gives the best approximation to \\(t=180\\) from the \\(t=360\\)\nTable 1.1: Concentration data measurements of a gaseous material.\nvalues. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at \\(t=0\\). Finally, march forward in time to compute and plot the resulting approximate density function.\nOutput: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.\nComments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations."
+  },
+  {
+    "objectID": "HW/projects1.html#project-1",
+    "href": "HW/projects1.html#project-1",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "",
+    "text": "(Shores 62)\nProblem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced \\(1 / 6\\) meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient \\(D\\) of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval \\([0,1]\\) at times \\(t=210\\) and \\(t=300\\) and at the given spatial nodes.\nProcedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of \\(D\\), that is, the one that gives the best approximation to \\(t=180\\) from the \\(t=360\\)\nTable 1.1: Concentration data measurements of a gaseous material.\nvalues. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at \\(t=0\\). Finally, march forward in time to compute and plot the resulting approximate density function.\nOutput: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.\nComments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations."
+  },
+  {
+    "objectID": "HW/projects1.html#project-1-lu-factorization",
+    "href": "HW/projects1.html#project-1-lu-factorization",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 1: LU Factorization",
+    "text": "Project 1: LU Factorization\n(Shores p. 177) Write a program module that implements Theorem 2.14 using partial pivoting and implicit row exchanges. This means that space is allocated for the \\(n \\times n\\) matrix \\(A=[a[i, j]]\\) and an array of row indices, say indx \\([i]\\). Initially, indx should consist of the integers \\(1,2, \\ldots, n\\). Whenever two rows need to be exchanged, say the first and third, then the indices indx[1] and indx[3] are exchanged. References to array elements throughout the Gaussian elimination process should be indirect: Refer to the \\((1,4)\\) th entry of \\(A\\) as the element \\(a[\\operatorname{indx}[1], 4]\\). This method of reference has the same effect as physically exchanging rows, but without the work. It also has the appealing feature that we can design the algorithm as though no row exchanges have taken place provided we replace the direct reference \\(a[i, j]\\) by the indirect reference \\(a[\\operatorname{indx}[i], j]\\). The module should return the lower/upper matrix in the format of Example 2.70 as well as the permuted array indx \\([i]\\). Effectively, this index array tells the user what the permutation matrix \\(P\\) is.\nUse this module to implement an LU system solver module that uses the \\(\\mathrm{LU}\\) factorization to solve a general linear system. Also write a module that finds the inverse of an \\(n \\times n\\) matrix \\(A\\) by first using the LU factorization module, then making repeated use of the LU system solver to solve \\(A \\mathbf{x}^{(i)}=\\mathbf{e}_{i}\\), where \\(\\mathbf{e}_{i}\\) is the \\(i\\) th column of the identity. Then we will have\n\\[\nA^{-1}=\\left[\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(n)}\\right]\n\\]\nBe sure to document and test your code and report on the results."
+  },
+  {
+    "objectID": "HW/projects1.html#project-2-markov-chains",
+    "href": "HW/projects1.html#project-2-markov-chains",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 2: Markov Chains",
+    "text": "Project 2: Markov Chains\n(Shores p. 177)\nRefer to Example 2.19 and Section 2.3 for background. Three automobile insurance firms compete for a fixed market of customers. Annual premiums are sold to these customers. Label the companies A, B, and C. You work for Company A, and your team of market analysts has done a survey that draws the following conclusions: In each of the past three years, the number of A customers switching to B is \\(20 \\%\\), and to \\(\\mathrm{C}\\) is \\(30 \\%\\). The number of \\(\\mathrm{B}\\) customers switching to \\(\\mathrm{A}\\) is \\(20 \\%\\), and to \\(\\mathrm{C}\\) is \\(20 \\%\\). The number of \\(\\mathrm{C}\\) customers switching to \\(\\mathrm{A}\\) is \\(30 \\%\\), and to \\(\\mathrm{B}\\) is \\(10 \\%\\). Those who do not switch continue to use their current company’s insurance for the next year. Model this market as a Markov chain. Display the transition matrix for the model. Illustrate the workings of the model by showing what it would predict as the market shares three years from now if currently \\(\\mathrm{A}, \\mathrm{B}\\), and \\(\\mathrm{C}\\) owned equal shares of the market.\nThe next part of your problem is as follows: Your team has tested two advertising campaigns in some smaller test markets and are confident that the first campaign will convince \\(20 \\%\\) of the B customers who would otherwise stay with B in a given year to switch to A. The second advertising campaign would convince \\(20 \\%\\) of the \\(\\mathrm{C}\\) customers who would otherwise stay with C in a given year to switch to A. Both campaigns have about equal costs and would not change other customers’ habits. Make a recommendation, based on your experiments with various possible initial state vectors for the market. Will these campaigns actually improve your company’s market share? If so, which one do you recommend? Write up your recommendation in the form of a report, with supporting evidence. It’s a good idea to hedge on your bets a little by pointing out limitations to your model and claims, so devote a few sentences to those points.\nIt would be a plus to carry the analysis further (your manager might appreciate that). For instance, you could turn the additional market share from, say B customers, into a variable and plot the long-term gain for your company against this variable. A manager could use this data to decide whether it was worthwhile to attempt gaining more customers from B."
+  },
+  {
+    "objectID": "HW/projects1.html#project-3-sports-ranking",
+    "href": "HW/projects1.html#project-3-sports-ranking",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 3 Sports Ranking",
+    "text": "Project 3 Sports Ranking\n(Shores p. 180)\nRefer to Example 2.24 and Section 2.3 for background. As a sports analyst you are given the following data about a league of seven teams numbered 1-7, where the pair \\((j, k)\\) represents a game in which team \\(j\\) defeated team \\(k\\) :\n\\[\n\\begin{aligned}\nE= & \\{(1,2),(7,3),(2,4),(4,5),(3,2),(5,1),(6,1),(3,1),(7,2),(2,6), \\\\\n& (3,4),(7,4),(5,7),(6,4),(3,5),(5,6),(7,1),(5,2),(7,6),(1,4),(6,3)\\}\n\\end{aligned}\n\\]\nBased on these data you are to rank the teams. To this end, begin with the simplest method, ranking by win/loss record. Next, treat the data as defining a digraph. Begin this analysis by constructing the adjacency matrix of this digraph and drawing a picture of the digraph either by hand or using some software. Then rank the teams by using the following methods: First use the method of Example 2.26 to find a power ranking of each team. Then use the reverse PageRank idea of Example 2.47 to rank the the teams.\nNext, suppose you are given additional information, namely, the game margins (winning score minus losing score) for each game. Following is a list of these margins matching the order of matches in the definition of \\(E\\) :\n\\[\nM=\\{4,8,7,3,7,7,23,15,6,18,13,14,7,13,7,18,45,10,19,14,13\\}\n\\]\nIn order to utilize these data examine your picture of the digraph and label each edge with the margin that matches it in \\(M\\). You are now dealing with a weighted graph and one can construct a different sort of “adjacency matrix” by entering this margin in the \\((i, j)\\) th entry according as team \\(i\\) defeated team \\(j\\) by that margin. Use this approach to calculate “power ranking”."
+  },
+  {
+    "objectID": "HW/projects1.html#project-4",
+    "href": "HW/projects1.html#project-4",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 4",
+    "text": "Project 4\nProject Descriptions: These projects introduce more applications of digraphs as mathematical modeling tools. You are given that the digraph \\(G\\) has vertex set \\(V=\\{1,2,3,4,5,6\\}\\) and edge set\n\\[\nE=\\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\\}\n\\]\nAddress the following points regarding \\(G\\).\n\n\nDraw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.\n\n\n\nExhibit the incidence matrix \\(A\\) of this digraph and find a basis for \\(\\mathcal{N}(A)\\) using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element \\(\\mathbf{c}_{1}\\) might be replaced by directed \\(\\mathbf{c}_{1}+\\mathbf{c}_{2}\\) ).\n\n\nThink of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are \\(x_{1}, \\ldots, x_{6}\\). The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p. 422) that \\(A \\mathbf{x}=\\mathbf{b}\\) implies that for all \\(\\mathbf{y} \\in \\mathcal{N}\\left(A^{T}\\right), \\mathbf{y}^{T} \\mathbf{b}=0\\) to find conditions that a vector \\(\\mathbf{b}\\) must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices."
+  },
+  {
+    "objectID": "HW/projects1.html#project-5",
+    "href": "HW/projects1.html#project-5",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 5",
+    "text": "Project 5\n\nAssume that across each edge of a circuit a current flows. Thus, we can assign to each edge a “weight,” namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.\nThink of the digraph as representing a directed communications network. Here loops determine which nodes have bidirectional communication since any two nodes of a loop can only communicate with each other by way of a loop. By examining only a basis of directed loops how could you determine which nodes in the network can communicate with each other?"
+  },
+  {
+    "objectID": "HW/projects1.html#project-6",
+    "href": "HW/projects1.html#project-6",
+    "title": "Projects 1 (Not Ready Yet)",
+    "section": "Project 6",
+    "text": "Project 6\n\nThink of vertices of the digraph as representing airports and edges representing flight connections between airports for Gamma Airlines. Suppose further that for each connection there is a maximum number of daily flights that will be allowed by the destination airport from an origin airport and that, in the order that the edges in \\(E\\) are listed above, these limits are\n\n\\[\nM=\\{4,3,8,7,2,6,7,10,5,8\\} .\n\\]\nNow suppose that Gamma wants to maximize the flow of flights into airport 1 and out of airport 6 . Count inflows into an airport as positive and outflows as negative. Assume that the net in/outflow of Gamma flights at each airport 1 to 5 is zero, while the net inflow of such flights into airport 1 matches the net outflow from 6 .\n\nDescribe the problem of maximizing this inflow to airport 1 as a linear programming problem and express it in a standard form (block matrices are helpful.) Note that the appropriate variables are all outflows from one airport to another, i.e., along edges, together with the net inflow into airport 1.\nSolve the problem of part (a). Also solve the reverse problem: Maximize inflow into airport 6 and matching outflow from 1. Explain and justify your answers.\n\n\nWith the same limits on allowable flights into airports as in item 5, suppose that Gamma Airlines wants to determine an allocation of planes that will maximize their profits, given the following constraints: (1) Airports 1 and 6 have repair facilities for their planes, so no limit is placed on the inflow or outflow of their planes other than the airport limits. (2) Flights through airports 2-5 of Gamma planes are pass through, i.e., inflow and outflow must match. (3) Gamma has 32 planes available for this network of airports. (4) The profits per flight in thousands are, in the order that the edges in \\(E\\) are listed above,\n\n\\[\nP=\\{5,6,7,9,10,8,9,5,6,10\\}\n\\] (a) Set this problem up as a linear programming problem in standard form. Clearly identify the variables and explain how the constraints follow.\n\nSolve this problem explicitly and specify the operations taken to do so. Example 3.56 is instructive for this problem, so be aware of it. Use a technology tool that allows you to use elementary operations (ALAMA calculator has this capability)."
+  },
+  {
+    "objectID": "HW/HW1.html",
+    "href": "HW/HW1.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "1 \n(Meyer 1.2.10)\nBy solving a \\(3 \\times 3\\) system, find the coefficients in the equation of the parabola \\(y=\\alpha+\\beta x+\\gamma x^{2}\\) that passes through the points \\((1,1),(2,2)\\), and \\((3,0)\\). :::\n\n\n2 \n(Meyer 1.2.11) Suppose that 100 insects are distributed in an enclosure consisting of four chambers with passageways between them as shown below.\n\nAt the end of one minute, the insects have redistributed themselves. Assume that a minute is not enough time for an insect to visit more than one chamber and that at the end of a minute \\(40 \\%\\) of the insects in each chamber have not left the chamber they occupied at the beginning of the minute. The insects that leave a chamber disperse uniformly among the chambers that are directly accessible from the one they initially occupied-e.g., from \\(\\# 3\\), half move to \\(\\# 2\\) and half move to \\(\\# 4\\).\n\nIf at the end of one minute there are \\(12,25,26\\), and 37 insects in chambers \\(\\# 1, \\# 2, \\# 3\\), and \\(\\# 4\\), respectively, determine what the initial distribution had to be.\nIf the initial distribution is \\(20,20,20,40\\), what is the distribution at the end of one minute?\n\n\n\n3 \n(Meyer 1.2.13) Suppose that \\([\\mathbf{A} \\mid \\mathbf{b}]\\) is the augmented matrix associated with a linear system. You know that performing row operations on \\([\\mathbf{A} \\mid \\mathbf{b}]\\) does not change the solution of the system. However, no mention of column operations was ever made because column operations can alter the solution.\n\nDescribe the effect on the solution of a linear system when columns \\(\\mathbf{A}_{* j}\\) and \\(\\mathbf{A}_{* k}\\) are interchanged.\nDescribe the effect when column \\(\\mathbf{A}_{* j}\\) is replaced by \\(\\alpha \\mathbf{A}_{* j}\\) for \\(\\alpha \\neq 0\\).\nDescribe the effect when \\(\\mathbf{A}_{* j}\\) is replaced by \\(\\mathbf{A}_{* j}+\\alpha \\mathbf{A}_{* k}\\). Hint: Experiment with a \\(2 \\times 2\\) or \\(3 \\times 3\\) system.\n\n\n\n4 \n(Meyer 1.3.3) Use the Gauss-Jordan method to solve the following three systems at the same time.\n\\[\n\\begin{array}{rr|l|l}\n2 x_{1}-x_{2} & =1 & 0 & 0 \\\\\n-x_{1}+2 x_{2}-x_{3}&=0 & 1 & 0 \\\\\n-x_{2}+x_{3}&=0 & 0 & 1\n\\end{array}\n\\]\n\n\n5 \n(Meyer 1.5.1) Consider the following system:\n\\[\n\\begin{aligned}\n10^{-3} x-y & =1, \\\\\nx+y & =0 .\n\\end{aligned}\n\\]\n\nUse 3-digit arithmetic with no pivoting to solve this system.\nFind a system that is exactly satisfied by your solution from part (a), and note how close this system is to the original system.\nNow use partial pivoting and 3-digit arithmetic to solve the original system.\nFind a system that is exactly satisfied by your solution from part (c), and note how close this system is to the original system.\nUse exact arithmetic to obtain the solution to the original system, and compare the exact solution with the results of parts (a) and (c).\nRound the exact solution to three significant digits, and compare the result with those of parts (a) and (c).\n\n\n\n6 \n(Meyer 1.5.7) Consider the following well-scaled matrix:\n\\[\n\\mathbf{W}_{n}=\\left(\\begin{array}{rrrrrrr}\n1 & 0 & 0 & \\cdots & 0 & 0 & 1 \\\\\n-1 & 1 & 0 & \\cdots & 0 & 0 & 1 \\\\\n-1 & -1 & 1 & \\ddots & 0 & 0 & 1 \\\\\n\\vdots & \\vdots & \\ddots & \\ddots & \\ddots & \\vdots & \\vdots \\\\\n-1 & -1 & -1 & \\ddots & 1 & 0 & 1 \\\\\n-1 & -1 & -1 & \\cdots & -1 & 1 & 1 \\\\\n-1 & -1 & -1 & \\cdots & -1 & -1 & 1\n\\end{array}\\right)\n\\]\n\nReduce \\(\\mathbf{W}_{n}\\) to an upper-triangular form using Gaussian elimination with partial pivoting, and determine the element of maximal magnitude that emerges during the elimination procedure.\n\n\n\n7 \nAnswer True/False and explain your answers: 1. If a linear system is inconsistent, then the rank of the augmented matrix exceeds the number of unknowns. 2. Any homogeneous linear system is consistent. 3. A system of 3 linear equations in 4 unknowns has infinitely many solutions. 4. Every matrix can be reduced to only one matrix in reduced row form. 5. Any homogeneous linear system with more equations than unknowns has a nontrivial solution."
+  },
+  {
+    "objectID": "course_docs/syllabus.html",
+    "href": "course_docs/syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "(Subject to change)\n\n\n\n\n\n\n\n\nWeek\nTopics\nReading\n\n\n\n\n1\nLinear Systems of Equations\nCh. 1\n\n\n2\nMatrix math\n1.3-1.4, 2.1-2.3\n\n\n3\nMatrix math, continued\n2.3-2.5\n\n\n4\n** No class on Monday, April 8 ** Factorization\n2.8\n\n\n5\nVector spaces? Least Squares\n3, 4.2\n\n\n6\nComputer graphics, QR factorization\n4.2, 4.4\n\n\n7\nData compression, wavelets, discrete dynamical systems\n4.4, 5.3\n\n\n8\nPCA, SVD\n5.4, 5.6\n\n\n9\nFourier Transform\n6.6"
+  },
+  {
+    "objectID": "course_docs/syllabus.html#textbook",
+    "href": "course_docs/syllabus.html#textbook",
+    "title": "Syllabus",
+    "section": "Textbook:",
+    "text": "Textbook:\nOur textbook is Applied Linear Algebra and Matrix Analysis, 2nd Ed, by Thomas Shores. You can download this textbook for free from the Springer website."
+  },
+  {
+    "objectID": "course_docs/syllabus.html#course-components",
+    "href": "course_docs/syllabus.html#course-components",
+    "title": "Syllabus",
+    "section": "Course components:",
+    "text": "Course components:\n\nWeekly homework (problem sets)\nThese will be graded with a standard point scale.\n\n\nThree “project packs”.\nFor each pack, you’ll choose 3 of 4 mini projects to complete. Projects are slightly longer and more open-ended than homework problems. Projects will be graded on an ESMU scale. (This stands for Excellent, Meets Expectations, Revision necessary, and Ungradeable.)\nFor each of the first two project packs, you’ll have the chance to revise and resubmit up to two projects, so long as they were initially graded with an M or R. For the third project pack, you won’t be able to revise and resubmit projects (because this will be due at the end of the quarter).\n\n\nFinal exam\nThere will be a final exam during exam week, in two parts. The first part will be similar to the problems in the problem sets. The second part will be a critical analysis of some applications. You’ll have to suggest directions that you might take in an analysis and look for potential weaknesses in a provided analysis. However, if you’ve gotten at least two Es on your project packs, you won’t have to take the final exam.\nWe will not have a midterm exam."
+  },
+  {
+    "objectID": "course_docs/syllabus.html#course-grading",
+    "href": "course_docs/syllabus.html#course-grading",
+    "title": "Syllabus",
+    "section": "Course grading",
+    "text": "Course grading\nThe final grade will be determined by the following weights:\n\nProblem sets: 20%\nFirst part of final exam: 15%\nSecond part of final exam: 15% OR skipped.\nProject packs: 50% OR 65% if the second part of the final exam is skipped.\n\n\n\n\n\n\n\nGrading details\n\n\n\n\n\nProject pack grades are calculated as follows. There are 90 points possible in the project packs, 10 for each project that you complete.\nYou’ll get 10 points for an E or M grade, and 5 points for an R grade. You’ll get 0 points for a U grade. If you revise and resubmit, you’ll get the full points for the grade you receive on the resubmission. If you have at least two E’s from the first two project packs, you may choose to skip the second part of the final exam; in this case, the project packs will be worth 65% of the final grade.\nThe grading for the final project pack will be done differently. You’ll still get 10 points for an E or an M. However, if you get an R on one project and an E on another, the E can be used to bring the R up to an M. So if your grades are E, R, M, this would be changed to M, M, M, for full credit. If your grades are M, R, R, you’d get 20/30 points for this project pack. If your grades are E, R, R, this would be changed to M, M, R, and you’d get 25/30 points. If you get an E on one project and a U on another, the E can be used to bring the U up to an R.\n\n\n\n\n\n\n\n\n\nGrading examples\n\n\n\n\n\nLet’s look at two example students.\nStudent A has the following grades going into the final exam: Problem sets: 90% Project Pack 1: E, S, S (after revision) -&gt; 30/30 Project Pack 2: E, E, S (after revision) -&gt; 30/30\nThe student chooses to skip the second part of the final exam.\nHer grade on the first part of the final exam is 80%. Her grades for the third Project Pack are R, E, R. -&gt; 25/30.\nWhen combined, this student’s project pack grades are 85/90, or 94.4%.\nHer final course grade is 94.40.65+90.20+80*.15 = 91.36%.\nStudent B has the following grades going into the final exam: Problem sets: 80% Project Pack 1: E, S, R (after revision) -&gt; 25/30 Project Pack 2: S, R, R (after revision) -&gt; 20/30\nThis student does not have the option to skip the second part of the final exam.\nHer grade on the first part of the final exam is 87%. Her grade on the second part of the final exam is 90%. Her grade on the third project pack is E, R, R, which becomes S, S, R, for 25/30.\nWhen combined, this student’s project pack grades are 70/90, or 77.8%.\nHer final course grade is 77.80.50+80.20+87.15+90.15 = 81.45%."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#what-are-linear-systems",
@@ -271,285 +530,5 @@
     "title": "Intro to linear systems",
     "section": "The problem: linear dependency",
     "text": "The problem: linear dependency\n\n\n\n\n\n\n\n\n\n\nAs n gets higher, \\(x^n\\) gets closer to \\(x^{n+1}\\) (at least in the range \\((0,1)\\)). This means that a solution of \\(a_n x^n + a_{n+1} x^{n+1}\\) will be very similar to e.g. \\(a_{n+1} x^n + a_{n} x^{n+1}\\)"
-  },
-  {
-    "objectID": "course_docs/syllabus.html",
-    "href": "course_docs/syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "(Subject to change)\n\n\n\n\n\n\n\n\nWeek\nTopics\nReading\n\n\n\n\n1\nLinear Systems of Equations\nCh. 1\n\n\n2\nMatrix math\n1.3-1.4, 2.1-2.3\n\n\n3\nMatrix math, continued\n2.3-2.5\n\n\n4\n** No class on Monday, April 8 ** Factorization\n2.8\n\n\n5\nVector spaces? Least Squares\n3, 4.2\n\n\n6\nComputer graphics, QR factorization\n4.2, 4.4\n\n\n7\nData compression, wavelets, discrete dynamical systems\n4.4, 5.3\n\n\n8\nPCA, SVD\n5.4, 5.6\n\n\n9\nFourier Transform\n6.6"
-  },
-  {
-    "objectID": "course_docs/syllabus.html#textbook",
-    "href": "course_docs/syllabus.html#textbook",
-    "title": "Syllabus",
-    "section": "Textbook:",
-    "text": "Textbook:\nOur textbook is Applied Linear Algebra and Matrix Analysis, 2nd Ed, by Thomas Shores. You can download this textbook for free from the Springer website."
-  },
-  {
-    "objectID": "course_docs/syllabus.html#course-components",
-    "href": "course_docs/syllabus.html#course-components",
-    "title": "Syllabus",
-    "section": "Course components:",
-    "text": "Course components:\n\nWeekly homework (problem sets)\nThese will be graded with a standard point scale.\n\n\nThree “project packs”.\nFor each pack, you’ll choose 3 of 4 mini projects to complete. Projects are slightly longer and more open-ended than homework problems. Projects will be graded on an ESMU scale. (This stands for Excellent, Meets Expectations, Revision necessary, and Ungradeable.)\nFor each of the first two project packs, you’ll have the chance to revise and resubmit up to two projects, so long as they were initially graded with an M or R. For the third project pack, you won’t be able to revise and resubmit projects (because this will be due at the end of the quarter).\n\n\nFinal exam\nThere will be a final exam during exam week, in two parts. The first part will be similar to the problems in the problem sets. The second part will be a critical analysis of some applications. You’ll have to suggest directions that you might take in an analysis and look for potential weaknesses in a provided analysis. However, if you’ve gotten at least two Es on your project packs, you won’t have to take the final exam.\nWe will not have a midterm exam."
-  },
-  {
-    "objectID": "course_docs/syllabus.html#course-grading",
-    "href": "course_docs/syllabus.html#course-grading",
-    "title": "Syllabus",
-    "section": "Course grading",
-    "text": "Course grading\nThe final grade will be determined by the following weights:\n\nProblem sets: 20%\nFirst part of final exam: 15%\nSecond part of final exam: 15% OR skipped.\nProject packs: 50% OR 65% if the second part of the final exam is skipped.\n\n\n\n\n\n\n\nGrading details\n\n\n\n\n\nProject pack grades are calculated as follows. There are 90 points possible in the project packs, 10 for each project that you complete.\nYou’ll get 10 points for an E or M grade, and 5 points for an R grade. You’ll get 0 points for a U grade. If you revise and resubmit, you’ll get the full points for the grade you receive on the resubmission. If you have at least two E’s from the first two project packs, you may choose to skip the second part of the final exam; in this case, the project packs will be worth 65% of the final grade.\nThe grading for the final project pack will be done differently. You’ll still get 10 points for an E or an M. However, if you get an R on one project and an E on another, the E can be used to bring the R up to an M. So if your grades are E, R, M, this would be changed to M, M, M, for full credit. If your grades are M, R, R, you’d get 20/30 points for this project pack. If your grades are E, R, R, this would be changed to M, M, R, and you’d get 25/30 points. If you get an E on one project and a U on another, the E can be used to bring the U up to an R.\n\n\n\n\n\n\n\n\n\nGrading examples\n\n\n\n\n\nLet’s look at two example students.\nStudent A has the following grades going into the final exam: Problem sets: 90% Project Pack 1: E, S, S (after revision) -&gt; 30/30 Project Pack 2: E, E, S (after revision) -&gt; 30/30\nThe student chooses to skip the second part of the final exam.\nHer grade on the first part of the final exam is 80%. Her grades for the third Project Pack are R, E, R. -&gt; 25/30.\nWhen combined, this student’s project pack grades are 85/90, or 94.4%.\nHer final course grade is 94.40.65+90.20+80*.15 = 91.36%.\nStudent B has the following grades going into the final exam: Problem sets: 80% Project Pack 1: E, S, R (after revision) -&gt; 25/30 Project Pack 2: S, R, R (after revision) -&gt; 20/30\nThis student does not have the option to skip the second part of the final exam.\nHer grade on the first part of the final exam is 87%. Her grade on the second part of the final exam is 90%. Her grade on the third project pack is E, R, R, which becomes S, S, R, for 25/30.\nWhen combined, this student’s project pack grades are 70/90, or 77.8%.\nHer final course grade is 77.80.50+80.20+87.15+90.15 = 81.45%."
-  },
-  {
-    "objectID": "HW/HW1.html",
-    "href": "HW/HW1.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "1 \n(Meyer 1.2.10)\nBy solving a \\(3 \\times 3\\) system, find the coefficients in the equation of the parabola \\(y=\\alpha+\\beta x+\\gamma x^{2}\\) that passes through the points \\((1,1),(2,2)\\), and \\((3,0)\\). :::\n\n\n2 \n(Meyer 1.2.11) Suppose that 100 insects are distributed in an enclosure consisting of four chambers with passageways between them as shown below.\n\nAt the end of one minute, the insects have redistributed themselves. Assume that a minute is not enough time for an insect to visit more than one chamber and that at the end of a minute \\(40 \\%\\) of the insects in each chamber have not left the chamber they occupied at the beginning of the minute. The insects that leave a chamber disperse uniformly among the chambers that are directly accessible from the one they initially occupied-e.g., from \\(\\# 3\\), half move to \\(\\# 2\\) and half move to \\(\\# 4\\).\n\nIf at the end of one minute there are \\(12,25,26\\), and 37 insects in chambers \\(\\# 1, \\# 2, \\# 3\\), and \\(\\# 4\\), respectively, determine what the initial distribution had to be.\nIf the initial distribution is \\(20,20,20,40\\), what is the distribution at the end of one minute?\n\n\n\n3 \n(Meyer 1.2.13) Suppose that \\([\\mathbf{A} \\mid \\mathbf{b}]\\) is the augmented matrix associated with a linear system. You know that performing row operations on \\([\\mathbf{A} \\mid \\mathbf{b}]\\) does not change the solution of the system. However, no mention of column operations was ever made because column operations can alter the solution.\n\nDescribe the effect on the solution of a linear system when columns \\(\\mathbf{A}_{* j}\\) and \\(\\mathbf{A}_{* k}\\) are interchanged.\nDescribe the effect when column \\(\\mathbf{A}_{* j}\\) is replaced by \\(\\alpha \\mathbf{A}_{* j}\\) for \\(\\alpha \\neq 0\\).\nDescribe the effect when \\(\\mathbf{A}_{* j}\\) is replaced by \\(\\mathbf{A}_{* j}+\\alpha \\mathbf{A}_{* k}\\). Hint: Experiment with a \\(2 \\times 2\\) or \\(3 \\times 3\\) system.\n\n\n\n4 \n(Meyer 1.3.3) Use the Gauss-Jordan method to solve the following three systems at the same time.\n\\[\n\\begin{array}{rr|l|l}\n2 x_{1}-x_{2} & =1 & 0 & 0 \\\\\n-x_{1}+2 x_{2}-x_{3}&=0 & 1 & 0 \\\\\n-x_{2}+x_{3}&=0 & 0 & 1\n\\end{array}\n\\]\n\n\n5 \n(Meyer 1.5.1) Consider the following system:\n\\[\n\\begin{aligned}\n10^{-3} x-y & =1, \\\\\nx+y & =0 .\n\\end{aligned}\n\\]\n\nUse 3-digit arithmetic with no pivoting to solve this system.\nFind a system that is exactly satisfied by your solution from part (a), and note how close this system is to the original system.\nNow use partial pivoting and 3-digit arithmetic to solve the original system.\nFind a system that is exactly satisfied by your solution from part (c), and note how close this system is to the original system.\nUse exact arithmetic to obtain the solution to the original system, and compare the exact solution with the results of parts (a) and (c).\nRound the exact solution to three significant digits, and compare the result with those of parts (a) and (c).\n\n\n\n6 \n(Meyer 1.5.7) Consider the following well-scaled matrix:\n\\[\n\\mathbf{W}_{n}=\\left(\\begin{array}{rrrrrrr}\n1 & 0 & 0 & \\cdots & 0 & 0 & 1 \\\\\n-1 & 1 & 0 & \\cdots & 0 & 0 & 1 \\\\\n-1 & -1 & 1 & \\ddots & 0 & 0 & 1 \\\\\n\\vdots & \\vdots & \\ddots & \\ddots & \\ddots & \\vdots & \\vdots \\\\\n-1 & -1 & -1 & \\ddots & 1 & 0 & 1 \\\\\n-1 & -1 & -1 & \\cdots & -1 & 1 & 1 \\\\\n-1 & -1 & -1 & \\cdots & -1 & -1 & 1\n\\end{array}\\right)\n\\]\n\nReduce \\(\\mathbf{W}_{n}\\) to an upper-triangular form using Gaussian elimination with partial pivoting, and determine the element of maximal magnitude that emerges during the elimination procedure.\n\n\n\n7 \nAnswer True/False and explain your answers: 1. If a linear system is inconsistent, then the rank of the augmented matrix exceeds the number of unknowns. 2. Any homogeneous linear system is consistent. 3. A system of 3 linear equations in 4 unknowns has infinitely many solutions. 4. Every matrix can be reduced to only one matrix in reduced row form. 5. Any homogeneous linear system with more equations than unknowns has a nontrivial solution."
-  },
-  {
-    "objectID": "HW/projects1.html",
-    "href": "HW/projects1.html",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "",
-    "text": "(Shores 62)\nProblem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced \\(1 / 6\\) meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient \\(D\\) of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval \\([0,1]\\) at times \\(t=210\\) and \\(t=300\\) and at the given spatial nodes.\nProcedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of \\(D\\), that is, the one that gives the best approximation to \\(t=180\\) from the \\(t=360\\)\nTable 1.1: Concentration data measurements of a gaseous material.\nvalues. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at \\(t=0\\). Finally, march forward in time to compute and plot the resulting approximate density function.\nOutput: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.\nComments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations."
-  },
-  {
-    "objectID": "HW/projects1.html#project-1",
-    "href": "HW/projects1.html#project-1",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "",
-    "text": "(Shores 62)\nProblem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced \\(1 / 6\\) meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient \\(D\\) of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval \\([0,1]\\) at times \\(t=210\\) and \\(t=300\\) and at the given spatial nodes.\nProcedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of \\(D\\), that is, the one that gives the best approximation to \\(t=180\\) from the \\(t=360\\)\nTable 1.1: Concentration data measurements of a gaseous material.\nvalues. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at \\(t=0\\). Finally, march forward in time to compute and plot the resulting approximate density function.\nOutput: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.\nComments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations."
-  },
-  {
-    "objectID": "HW/projects1.html#project-1-lu-factorization",
-    "href": "HW/projects1.html#project-1-lu-factorization",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 1: LU Factorization",
-    "text": "Project 1: LU Factorization\n(Shores p. 177) Write a program module that implements Theorem 2.14 using partial pivoting and implicit row exchanges. This means that space is allocated for the \\(n \\times n\\) matrix \\(A=[a[i, j]]\\) and an array of row indices, say indx \\([i]\\). Initially, indx should consist of the integers \\(1,2, \\ldots, n\\). Whenever two rows need to be exchanged, say the first and third, then the indices indx[1] and indx[3] are exchanged. References to array elements throughout the Gaussian elimination process should be indirect: Refer to the \\((1,4)\\) th entry of \\(A\\) as the element \\(a[\\operatorname{indx}[1], 4]\\). This method of reference has the same effect as physically exchanging rows, but without the work. It also has the appealing feature that we can design the algorithm as though no row exchanges have taken place provided we replace the direct reference \\(a[i, j]\\) by the indirect reference \\(a[\\operatorname{indx}[i], j]\\). The module should return the lower/upper matrix in the format of Example 2.70 as well as the permuted array indx \\([i]\\). Effectively, this index array tells the user what the permutation matrix \\(P\\) is.\nUse this module to implement an LU system solver module that uses the \\(\\mathrm{LU}\\) factorization to solve a general linear system. Also write a module that finds the inverse of an \\(n \\times n\\) matrix \\(A\\) by first using the LU factorization module, then making repeated use of the LU system solver to solve \\(A \\mathbf{x}^{(i)}=\\mathbf{e}_{i}\\), where \\(\\mathbf{e}_{i}\\) is the \\(i\\) th column of the identity. Then we will have\n\\[\nA^{-1}=\\left[\\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots, \\mathbf{x}^{(n)}\\right]\n\\]\nBe sure to document and test your code and report on the results."
-  },
-  {
-    "objectID": "HW/projects1.html#project-2-markov-chains",
-    "href": "HW/projects1.html#project-2-markov-chains",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 2: Markov Chains",
-    "text": "Project 2: Markov Chains\n(Shores p. 177)\nRefer to Example 2.19 and Section 2.3 for background. Three automobile insurance firms compete for a fixed market of customers. Annual premiums are sold to these customers. Label the companies A, B, and C. You work for Company A, and your team of market analysts has done a survey that draws the following conclusions: In each of the past three years, the number of A customers switching to B is \\(20 \\%\\), and to \\(\\mathrm{C}\\) is \\(30 \\%\\). The number of \\(\\mathrm{B}\\) customers switching to \\(\\mathrm{A}\\) is \\(20 \\%\\), and to \\(\\mathrm{C}\\) is \\(20 \\%\\). The number of \\(\\mathrm{C}\\) customers switching to \\(\\mathrm{A}\\) is \\(30 \\%\\), and to \\(\\mathrm{B}\\) is \\(10 \\%\\). Those who do not switch continue to use their current company’s insurance for the next year. Model this market as a Markov chain. Display the transition matrix for the model. Illustrate the workings of the model by showing what it would predict as the market shares three years from now if currently \\(\\mathrm{A}, \\mathrm{B}\\), and \\(\\mathrm{C}\\) owned equal shares of the market.\nThe next part of your problem is as follows: Your team has tested two advertising campaigns in some smaller test markets and are confident that the first campaign will convince \\(20 \\%\\) of the B customers who would otherwise stay with B in a given year to switch to A. The second advertising campaign would convince \\(20 \\%\\) of the \\(\\mathrm{C}\\) customers who would otherwise stay with C in a given year to switch to A. Both campaigns have about equal costs and would not change other customers’ habits. Make a recommendation, based on your experiments with various possible initial state vectors for the market. Will these campaigns actually improve your company’s market share? If so, which one do you recommend? Write up your recommendation in the form of a report, with supporting evidence. It’s a good idea to hedge on your bets a little by pointing out limitations to your model and claims, so devote a few sentences to those points.\nIt would be a plus to carry the analysis further (your manager might appreciate that). For instance, you could turn the additional market share from, say B customers, into a variable and plot the long-term gain for your company against this variable. A manager could use this data to decide whether it was worthwhile to attempt gaining more customers from B."
-  },
-  {
-    "objectID": "HW/projects1.html#project-3-sports-ranking",
-    "href": "HW/projects1.html#project-3-sports-ranking",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 3 Sports Ranking",
-    "text": "Project 3 Sports Ranking\n(Shores p. 180)\nRefer to Example 2.24 and Section 2.3 for background. As a sports analyst you are given the following data about a league of seven teams numbered 1-7, where the pair \\((j, k)\\) represents a game in which team \\(j\\) defeated team \\(k\\) :\n\\[\n\\begin{aligned}\nE= & \\{(1,2),(7,3),(2,4),(4,5),(3,2),(5,1),(6,1),(3,1),(7,2),(2,6), \\\\\n& (3,4),(7,4),(5,7),(6,4),(3,5),(5,6),(7,1),(5,2),(7,6),(1,4),(6,3)\\}\n\\end{aligned}\n\\]\nBased on these data you are to rank the teams. To this end, begin with the simplest method, ranking by win/loss record. Next, treat the data as defining a digraph. Begin this analysis by constructing the adjacency matrix of this digraph and drawing a picture of the digraph either by hand or using some software. Then rank the teams by using the following methods: First use the method of Example 2.26 to find a power ranking of each team. Then use the reverse PageRank idea of Example 2.47 to rank the the teams.\nNext, suppose you are given additional information, namely, the game margins (winning score minus losing score) for each game. Following is a list of these margins matching the order of matches in the definition of \\(E\\) :\n\\[\nM=\\{4,8,7,3,7,7,23,15,6,18,13,14,7,13,7,18,45,10,19,14,13\\}\n\\]\nIn order to utilize these data examine your picture of the digraph and label each edge with the margin that matches it in \\(M\\). You are now dealing with a weighted graph and one can construct a different sort of “adjacency matrix” by entering this margin in the \\((i, j)\\) th entry according as team \\(i\\) defeated team \\(j\\) by that margin. Use this approach to calculate “power ranking”."
-  },
-  {
-    "objectID": "HW/projects1.html#project-4",
-    "href": "HW/projects1.html#project-4",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 4",
-    "text": "Project 4\nProject Descriptions: These projects introduce more applications of digraphs as mathematical modeling tools. You are given that the digraph \\(G\\) has vertex set \\(V=\\{1,2,3,4,5,6\\}\\) and edge set\n\\[\nE=\\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\\}\n\\]\nAddress the following points regarding \\(G\\).\n\n\nDraw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.\n\n\n\nExhibit the incidence matrix \\(A\\) of this digraph and find a basis for \\(\\mathcal{N}(A)\\) using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element \\(\\mathbf{c}_{1}\\) might be replaced by directed \\(\\mathbf{c}_{1}+\\mathbf{c}_{2}\\) ).\n\n\nThink of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are \\(x_{1}, \\ldots, x_{6}\\). The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p. 422) that \\(A \\mathbf{x}=\\mathbf{b}\\) implies that for all \\(\\mathbf{y} \\in \\mathcal{N}\\left(A^{T}\\right), \\mathbf{y}^{T} \\mathbf{b}=0\\) to find conditions that a vector \\(\\mathbf{b}\\) must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices."
-  },
-  {
-    "objectID": "HW/projects1.html#project-5",
-    "href": "HW/projects1.html#project-5",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 5",
-    "text": "Project 5\n\nAssume that across each edge of a circuit a current flows. Thus, we can assign to each edge a “weight,” namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.\nThink of the digraph as representing a directed communications network. Here loops determine which nodes have bidirectional communication since any two nodes of a loop can only communicate with each other by way of a loop. By examining only a basis of directed loops how could you determine which nodes in the network can communicate with each other?"
-  },
-  {
-    "objectID": "HW/projects1.html#project-6",
-    "href": "HW/projects1.html#project-6",
-    "title": "Projects 1 (Not Ready Yet)",
-    "section": "Project 6",
-    "text": "Project 6\n\nThink of vertices of the digraph as representing airports and edges representing flight connections between airports for Gamma Airlines. Suppose further that for each connection there is a maximum number of daily flights that will be allowed by the destination airport from an origin airport and that, in the order that the edges in \\(E\\) are listed above, these limits are\n\n\\[\nM=\\{4,3,8,7,2,6,7,10,5,8\\} .\n\\]\nNow suppose that Gamma wants to maximize the flow of flights into airport 1 and out of airport 6 . Count inflows into an airport as positive and outflows as negative. Assume that the net in/outflow of Gamma flights at each airport 1 to 5 is zero, while the net inflow of such flights into airport 1 matches the net outflow from 6 .\n\nDescribe the problem of maximizing this inflow to airport 1 as a linear programming problem and express it in a standard form (block matrices are helpful.) Note that the appropriate variables are all outflows from one airport to another, i.e., along edges, together with the net inflow into airport 1.\nSolve the problem of part (a). Also solve the reverse problem: Maximize inflow into airport 6 and matching outflow from 1. Explain and justify your answers.\n\n\nWith the same limits on allowable flights into airports as in item 5, suppose that Gamma Airlines wants to determine an allocation of planes that will maximize their profits, given the following constraints: (1) Airports 1 and 6 have repair facilities for their planes, so no limit is placed on the inflow or outflow of their planes other than the airport limits. (2) Flights through airports 2-5 of Gamma planes are pass through, i.e., inflow and outflow must match. (3) Gamma has 32 planes available for this network of airports. (4) The profits per flight in thousands are, in the order that the edges in \\(E\\) are listed above,\n\n\\[\nP=\\{5,6,7,9,10,8,9,5,6,10\\}\n\\] (a) Set this problem up as a linear programming problem in standard form. Clearly identify the variables and explain how the constraints follow.\n\nSolve this problem explicitly and specify the operations taken to do so. Example 3.56 is instructive for this problem, so be aware of it. Use a technology tool that allows you to use elementary operations (ALAMA calculator has this capability)."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Stat 24320",
-    "section": "",
-    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#lecture-notes",
-    "href": "index.html#lecture-notes",
-    "title": "Stat 24320",
-    "section": "",
-    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#notebooks",
-    "href": "index.html#notebooks",
-    "title": "Stat 24320",
-    "section": "Notebooks",
-    "text": "Notebooks\n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nPageRank Tutorial\n\n\n \n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#homeworks",
-    "href": "index.html#homeworks",
-    "title": "Stat 24320",
-    "section": "Homeworks",
-    "text": "Homeworks\n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nHomework 1\n\n\n \n\n\n\n\nProjects 1 (Not Ready Yet)\n\n\n \n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#a-resource-for-review",
-    "href": "lectures/ch2_lecture1.html#a-resource-for-review",
-    "title": "More Systems of Linear Equations",
-    "section": "A resource for review",
-    "text": "A resource for review\nThe glossary from the end of Strand: glossary.pdf"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
-    "href": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
-    "title": "More Systems of Linear Equations",
-    "section": "Systems with non-unique solutions",
-    "text": "Systems with non-unique solutions\nSolve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\begin{aligned}\nz & =2 \\\\\nx+y+z & =2 \\\\\n2 x+2 y+4 z & =8\n\\end{aligned}\n\\]\n\nMake an augmented matrix: Example 1.20. Solve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right]\n\\]\n\nNote that the first column corresponds to x, the second to y, and the third to z.\n\n\n\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\stackrel{E_{12}}{\\longrightarrow}\\left[\\begin{array}{llll}\n(1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\xrightarrow[E_{31}(-2)]{\\longrightarrow}\\left[\\begin{array}{rlll}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]\n\\]\n\nNow we are stuck! The first row we are going to use to solve for x. Neither the second or third row tell us anything about y…"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section",
-    "href": "lectures/ch2_lecture1.html#section",
-    "title": "More Systems of Linear Equations",
-    "section": "",
-    "text": "We keep on going… \\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right] \\xrightarrow[E_{2}(1 / 2)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{32}(-1)}\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] \\xrightarrow[E_{12}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n(1) & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\end{aligned}\n\\]\nThere’s still no information on \\(y\\).\n\\[\n\\begin{aligned}\n& x=-y \\\\\n& z=2 \\\\\n& y \\text { is free. }\n\\end{aligned}\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#free-versus-bound-variables",
-    "href": "lectures/ch2_lecture1.html#free-versus-bound-variables",
-    "title": "More Systems of Linear Equations",
-    "section": "Free versus bound variables",
-    "text": "Free versus bound variables\nSuppose we have another augmented matrix, which after GJ elimination has become:\n\\[\n\\left[\\begin{array}{rrrrr}\nx & y & z & w & \\mathrm{rhs} \\\\\n1 & 2 & 0 & -1 & 2 \\\\\n0 & 0 & 1 & 3 & 0 \\\\\n0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n\nSolutions are: \\[\n\\begin{aligned}\nx+2 y-w & =2 \\\\\nz+3 w & =0 .\n\\end{aligned}\n\\]\nHow can we tell from looking at the matrix which variables are free vs bound?\nColumns which contain pivots correspond to bound variables. The others correspond to free variables.\n(Columns with pivots are called “basic” columns.)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#zero-solutions",
-    "href": "lectures/ch2_lecture1.html#zero-solutions",
-    "title": "More Systems of Linear Equations",
-    "section": "Zero solutions",
-    "text": "Zero solutions\nSolve this system… \\[\n\\begin{array}{r}\nx+y=1 \\\\\n2 x+y=2 \\\\\n3 x+2 y=5 .\n\\end{array}\n\\]\n\n\\[\n\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 1 & 2 \\\\\n3 & 2 & 5\n\\end{array}\\right] \\xrightarrow[E_{21}(-2)]{E_{31}(-3)}\\left[\\begin{array}{lrl}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & -1 & 2\n\\end{array}\\right] \\xrightarrow[E_{32}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & 0 & 2\n\\end{array}\\right]\n\\]\n\nWe didn’t even finish the G-J elimination, but there’s clearly a problem. We can’t have 0 = 2. Maybe not a surprise, since we have three equations with only two unknowns!\n\n\n\nSystem is inconsistent."
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#consistency",
-    "href": "lectures/ch2_lecture1.html#consistency",
-    "title": "More Systems of Linear Equations",
-    "section": "Consistency",
-    "text": "Consistency\nFor an augmented matrix in RREF, if the only only nonzero entry in a row appears on the right-hand side,\n\\[\\text { Row } i \\longrightarrow\\left(\n\\begin{array}{cccccc|c}\n* & * & * & * & * & * & * \\\\\n0 & 0 & 0 & * & * & * & * \\\\\n0 & 0 & 0 & 0 & * & * & * \\\\\n0 & 0 & 0 & 0 & 0 & 0 & \\alpha \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet\n\\end{array}\n\\right) \\longleftarrow \\alpha \\neq 0\n\\]\nthe \\(i^{\\text {th }}\\) equation of the associated system is\n\\[\n0 x_{1}+0 x_{2}+\\cdots+0 x_{n}=\\alpha .\n\\]\nIf \\(\\alpha\\ne 0\\), this has no solution!\nThis is an inconsistent system.\n\nNote that there is not inconsistency if there is a row of all zeros."
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
-    "href": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
-    "title": "More Systems of Linear Equations",
-    "section": "What Reduced Row Echelon Form tells us",
-    "text": "What Reduced Row Echelon Form tells us\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n\nWhat can we learn from the RREF of a matrix? What does it tell us? It can tell us which variables are free vs bound, and therefore how many variables are bound. (This is the rank of the matrix!)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
-    "href": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
-    "title": "More Systems of Linear Equations",
-    "section": "Which variables are free and bound",
-    "text": "Which variables are free and bound\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n“Basic columns” correspond to the columns in \\(A\\) which contain the pivotal positions.\nEach non-basic column can be formed as a sum of the basic columns to the left.\nBasic columns are the same in \\(E\\) and \\(A\\)!"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#rank",
-    "href": "lectures/ch2_lecture1.html#rank",
-    "title": "More Systems of Linear Equations",
-    "section": "Rank",
-    "text": "Rank\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nrank(\\(A\\)) = # of pivots = # of nonzero rows in \\(E\\) = # bound variables in the system"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#nullity",
-    "href": "lectures/ch2_lecture1.html#nullity",
-    "title": "More Systems of Linear Equations",
-    "section": "Nullity",
-    "text": "Nullity\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nnullity(\\(A\\)) = # of non-pivot columns = # free variables in the system"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#consistency-1",
-    "href": "lectures/ch2_lecture1.html#consistency-1",
-    "title": "More Systems of Linear Equations",
-    "section": "Consistency",
-    "text": "Consistency\nEquivalent ways of saying \\(A\\) is consistent:\n\nIn row reducing \\([\\mathbf{A} \\mid \\mathbf{b}]\\), a row of the following form never appears:\n\n. . . \\[\n\\left(\\begin{array}{llll|l}\n0 & 0 & \\cdots & 0 & \\alpha \\tag{2.3.2}\n\\end{array}\\right) \\text {, where } \\alpha \\neq 0 \\text {. }\n\\]\n\n\\(\\operatorname{rank}[\\mathbf{A} \\mid \\mathbf{b}]=\\operatorname{rank}(\\mathbf{A})\\), in which case either:\n\n\\(\\operatorname{rank}[\\mathbf{A}=n\\), and system has a unique solution or\n\\(\\operatorname{rank}[\\mathbf{A}&lt;n\\), and system has infinite solutions\n\n\\(\\mathbf{b}\\) is a nonbasic column in \\([\\mathbf{A} \\mid \\mathbf{b}]\\).\n\\(\\mathbf{b}\\) is a combination of the basic columns in \\(\\mathbf{A}\\).\n\n\n\nMeyers p. 51"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#homogeneous-systems",
-    "href": "lectures/ch2_lecture1.html#homogeneous-systems",
-    "title": "More Systems of Linear Equations",
-    "section": "Homogeneous Systems",
-    "text": "Homogeneous Systems\n\nThe general linear system with \\(m \\times n\\) coefficient matrix \\(A\\) and right-hand-side vector \\(\\mathbf{b}\\) is homogeneous if the entries of \\(\\mathbf{b}\\) are all zero.\nOtherwise, the system is inhomogeneous.\nHomogeneous systems are always consistent!\nCan solve by setting all variables to zero. This is the trivial solution\nIf rank of the matrix = n, there is only the trivial solution"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#pagerank",
-    "href": "lectures/ch2_lecture1.html#pagerank",
-    "title": "More Systems of Linear Equations",
-    "section": "Pagerank",
-    "text": "Pagerank\nGoal: rank pages in terms of “importance”. Suppose we have four pages:\n\n\n\n\nHow can we rank these pages? Which one is most important?\n\n\n\n\nFirst try: count number of backlinks. But that can be artifically inflated (just link to a page many times), and it doesn’t care about importance of the linking page.\nSecond try: For page \\(i\\) let \\(x_{i}\\) be its score and \\(L_{i}\\) be the set of all indices of pages linking to it. Then \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nBut it’s still easy to game this system, by setting up a page and making a ton of outgoing links to pages we want to promote.\nThird try: For page \\(j\\) let \\(n_{j}\\) be its total number of outgoing links on that page. Then score is\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
-    "href": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
-    "title": "More Systems of Linear Equations",
-    "section": "Working through PageRank: try 3",
-    "text": "Working through PageRank: try 3\n\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]\n\n\n\nWrite down the system of equations this gives us. Then make it in an augmented matrix.\n\n\n\n\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nAugmented matrix:\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & -1 & -1 & 0 & 0\\\\-1 & 1 & -1 & 0 & 0\\\\-1 & 0 & 1 & -1 & 0\\\\0 & 0 & -1 & 1 & 0\\end{matrix}\\right]\\)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#jupyterlab",
-    "href": "lectures/ch2_lecture1.html#jupyterlab",
-    "title": "More Systems of Linear Equations",
-    "section": "JupyterLab",
-    "text": "JupyterLab\nhttps://tinyurl.com/stat24320notebook1"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
-    "href": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
-    "title": "More Systems of Linear Equations",
-    "section": "Now what about the second try?",
-    "text": "Now what about the second try?\nRemember this was our ‘second try’: \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nThis was the system of equations. \\[\n\\begin{aligned}\n& x_{1}=x_{2}+x_{3} \\\\\n& x_{2}=x_{1}+x_{3} \\\\\n& x_{3}=x_{1}+x_{4} \\\\\n& x_{4}=x_{3} .\n\\end{aligned}\n\\]\nWhat happens if we try to solve this? Try it in Python.\n\nWhat happens is that we get only the trivial solution. This makes sense because it is a homogeneous system with full rank."
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
-    "href": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
-    "title": "More Systems of Linear Equations",
-    "section": "Discretizing continuous functions",
-    "text": "Discretizing continuous functions\n\nRod with fixed temperatures \\(y_{left}\\) and \\(y_{right}\\) at each end, internal heat source given as \\(f(x), 0 \\leq x \\leq 1\\)\nWhat’s the temperature at each point along the length?"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section-1",
-    "href": "lectures/ch2_lecture1.html#section-1",
-    "title": "More Systems of Linear Equations",
-    "section": "",
-    "text": "Discrete approximation to temperature function \\((n=5)\\)\n\n\n\n\n\nequally spaced points, called nodes, \\(x_{0}=0, x_{1}, x_{2}, \\ldots, x_{n+1}=1\\), distance \\(h\\) apart.\nheat on the \\(i\\) th segment \\(\\approx\\) temperature at its left node.\ntemperature is \\(y(x)\\), \\(y_{i}=y\\left(x_{i}\\right)\\).\n\n\n\n\nEquations to balance the flow of heat from each node to its neighbors:\n\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section-2",
-    "href": "lectures/ch2_lecture1.html#section-2",
-    "title": "More Systems of Linear Equations",
-    "section": "",
-    "text": "Build the matrix representing the system of equations:\n\nN=6\nM = sym.zeros(N)\nfor i in range(N):\n  if (i&gt;0):\n      M[i-1,i]=-1\n  M[i,i]=2\n  if (i&lt;N-1):\n      M[i+1,i]=-1\nM\n\n\\(\\displaystyle \\left[\\begin{matrix}2 & -1 & 0 & 0 & 0 & 0\\\\-1 & 2 & -1 & 0 & 0 & 0\\\\0 & -1 & 2 & -1 & 0 & 0\\\\0 & 0 & -1 & 2 & -1 & 0\\\\0 & 0 & 0 & -1 & 2 & -1\\\\0 & 0 & 0 & 0 & -1 & 2\\end{matrix}\\right]\\)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section-3",
-    "href": "lectures/ch2_lecture1.html#section-3",
-    "title": "More Systems of Linear Equations",
-    "section": "",
-    "text": "\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]\nDecide on a function for f. Let’s say \\(\\frac{h^{2}}{K} f = x_i^2\\).\nSay that x is running from 0 to 1. Then we can have\n\nimport numpy as np\nx=np.arange(0,1,1/N)\nf=x**2\nx=sym.Matrix(x)\nf=sym.Matrix(f)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section-4",
-    "href": "lectures/ch2_lecture1.html#section-4",
-    "title": "More Systems of Linear Equations",
-    "section": "",
-    "text": "sol=M.gauss_jordan_solve(f)\nsol[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}0.416666666666667\\\\0.833333333333333\\\\1.22222222222222\\\\1.5\\\\1.52777777777778\\\\1.11111111111111\\end{matrix}\\right]\\)"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#now-you",
-    "href": "lectures/ch2_lecture1.html#now-you",
-    "title": "More Systems of Linear Equations",
-    "section": "Now you",
-    "text": "Now you\n\nImplement this yourself in Python\nMake a plot of the output (you’ll want to use PyPlot)\nIncrease N and make more plots\nThis was assuming the temperature at the ends was 0. How can we change this?"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#turing-pattern-formation",
-    "href": "lectures/ch2_lecture1.html#turing-pattern-formation",
-    "title": "More Systems of Linear Equations",
-    "section": "Turing pattern formation",
-    "text": "Turing pattern formation\nhttps://colab.research.google.com/github/ijmbarr/turing-patterns/blob/master/turing-patterns.ipynb#scrollTo=GsEPBsz33E14\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)"
   }
 ]

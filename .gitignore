@@ -1,0 +1,9 @@
+.quarto
+_extensions
+.Rproj.user
+.Rhistory
+*.code-workspace
+
+/.quarto/
+
+/.luarc.json

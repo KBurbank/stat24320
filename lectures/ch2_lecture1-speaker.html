@@ -772,7 +772,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} \frac{x_{j}}{n_{j}}
 \end{aligned}
 \]</span></p>
 <p>Augmented matrix:</p>
-<div id="1b02db6e" class="cell" data-execution_count="1">
+<div id="98aba745" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; -1 &amp; -1 &amp; 0 &amp; 0\\-1 &amp; 1 &amp; -1 &amp; 0 &amp; 0\\-1 &amp; 0 &amp; 1 &amp; -1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; 1 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
@@ -844,7 +844,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 <center>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Discrete approximation to temperature function (n=5)"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" alt="Discrete approximation to temperature function (n=5)"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Discrete approximation to temperature function (n=5)"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" alt="Discrete approximation to temperature function (n=5)"></a></p>
 <figcaption>Discrete approximation to temperature function <span class="math inline">\((n=5)\)</span></figcaption>
 </figure>
 </div>
@@ -934,7 +934,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 <section id="section-2" class="title-slide slide level2 center">
 <h2></h2>
 <p>Build the matrix representing the system of equations:</p>
-<div id="99aa7fb7" class="cell" data-execution_count="2">
+<div id="ec1417c0" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>N<span class="op">=</span><span class="dv">6</span></span>
 <span id="cb1-2"><a></a>M <span class="op">=</span> sym.zeros(N)</span>
 <span id="cb1-3"><a></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
@@ -959,7 +959,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 \]</span></p>
 <p>Decide on a function for f.&nbsp;Let’s say <span class="math inline">\(\frac{h^{2}}{K} f = x_i^2\)</span>.</p>
 <p>Say that x is running from 0 to 1. Then we can have</p>
-<div id="15693fc9" class="cell" data-execution_count="3">
+<div id="38d6cc02" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a></a>x<span class="op">=</span>np.arange(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span><span class="op">/</span>N)</span>
 <span id="cb2-3"><a></a>f<span class="op">=</span>x<span class="op">**</span><span class="dv">2</span></span>
@@ -970,7 +970,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 
 <section id="section-4" class="title-slide slide level2 center">
 <h2></h2>
-<div id="6def7a1f" class="cell" data-execution_count="4">
+<div id="a87a738f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sol<span class="op">=</span>M.gauss_jordan_solve(f)</span>
 <span id="cb3-2"><a></a>sol[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
@@ -1401,7 +1401,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

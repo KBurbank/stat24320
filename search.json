@@ -392,162 +392,162 @@
     "text": "Homeworks\n\n\n\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nHomework 1\n\n\n \n\n\n\n\nProjects 1 (Not Ready Yet)\n\n\n \n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#a-resource-for-review",
-    "href": "lectures/ch2_lecture1.html#a-resource-for-review",
+    "objectID": "lectures/ch1_lecture2.html#a-resource-for-review",
+    "href": "lectures/ch1_lecture2.html#a-resource-for-review",
     "title": "More Systems of Linear Equations",
     "section": "A resource for review",
     "text": "A resource for review\nThe glossary from the end of Strand: glossary.pdf"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
-    "href": "lectures/ch2_lecture1.html#systems-with-non-unique-solutions",
+    "objectID": "lectures/ch1_lecture2.html#systems-with-non-unique-solutions",
+    "href": "lectures/ch1_lecture2.html#systems-with-non-unique-solutions",
     "title": "More Systems of Linear Equations",
     "section": "Systems with non-unique solutions",
     "text": "Systems with non-unique solutions\nSolve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\begin{aligned}\nz & =2 \\\\\nx+y+z & =2 \\\\\n2 x+2 y+4 z & =8\n\\end{aligned}\n\\]\n\nMake an augmented matrix: Example 1.20. Solve for the variables \\(x, y\\), and \\(z\\) in the system\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right]\n\\]\n\nNote that the first column corresponds to x, the second to y, and the third to z.\n\n\n\n\\[\n\\left[\\begin{array}{llll}\n0 & 0 & 1 & 2 \\\\\n1 & 1 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\stackrel{E_{12}}{\\longrightarrow}\\left[\\begin{array}{llll}\n(1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n2 & 2 & 4 & 8\n\\end{array}\\right] \\xrightarrow[E_{31}(-2)]{\\longrightarrow}\\left[\\begin{array}{rlll}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]\n\\]\n\nNow we are stuck! The first row we are going to use to solve for x. Neither the second or third row tell us anything about y…"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section",
-    "href": "lectures/ch2_lecture1.html#section",
+    "objectID": "lectures/ch1_lecture2.html#section",
+    "href": "lectures/ch1_lecture2.html#section",
     "title": "More Systems of Linear Equations",
     "section": "",
     "text": "We keep on going… \\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 2 & 4 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right] \\xrightarrow[E_{2}(1 / 2)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n1 & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{32}(-1)}\\left[\\begin{array}{rrrr}\n(1) & 1 & 1 & 2 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] \\xrightarrow[E_{12}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrrr}\n(1) & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 2 \\\\\n0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\end{aligned}\n\\]\nThere’s still no information on \\(y\\).\n\\[\n\\begin{aligned}\n& x=-y \\\\\n& z=2 \\\\\n& y \\text { is free. }\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#free-versus-bound-variables",
-    "href": "lectures/ch2_lecture1.html#free-versus-bound-variables",
+    "objectID": "lectures/ch1_lecture2.html#free-versus-bound-variables",
+    "href": "lectures/ch1_lecture2.html#free-versus-bound-variables",
     "title": "More Systems of Linear Equations",
     "section": "Free versus bound variables",
     "text": "Free versus bound variables\nSuppose we have another augmented matrix, which after GJ elimination has become:\n\\[\n\\left[\\begin{array}{rrrrr}\nx & y & z & w & \\mathrm{rhs} \\\\\n1 & 2 & 0 & -1 & 2 \\\\\n0 & 0 & 1 & 3 & 0 \\\\\n0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n\nSolutions are: \\[\n\\begin{aligned}\nx+2 y-w & =2 \\\\\nz+3 w & =0 .\n\\end{aligned}\n\\]\nHow can we tell from looking at the matrix which variables are free vs bound?\nColumns which contain pivots correspond to bound variables. The others correspond to free variables.\n(Columns with pivots are called “basic” columns.)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#zero-solutions",
-    "href": "lectures/ch2_lecture1.html#zero-solutions",
+    "objectID": "lectures/ch1_lecture2.html#zero-solutions",
+    "href": "lectures/ch1_lecture2.html#zero-solutions",
     "title": "More Systems of Linear Equations",
     "section": "Zero solutions",
     "text": "Zero solutions\nSolve this system… \\[\n\\begin{array}{r}\nx+y=1 \\\\\n2 x+y=2 \\\\\n3 x+2 y=5 .\n\\end{array}\n\\]\n\n\\[\n\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 1 & 2 \\\\\n3 & 2 & 5\n\\end{array}\\right] \\xrightarrow[E_{21}(-2)]{E_{31}(-3)}\\left[\\begin{array}{lrl}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & -1 & 2\n\\end{array}\\right] \\xrightarrow[E_{32}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 1 & 1 \\\\\n0 & -1 & 0 \\\\\n0 & 0 & 2\n\\end{array}\\right]\n\\]\n\nWe didn’t even finish the G-J elimination, but there’s clearly a problem. We can’t have 0 = 2. Maybe not a surprise, since we have three equations with only two unknowns!\n\n\n\nSystem is inconsistent."
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#consistency",
-    "href": "lectures/ch2_lecture1.html#consistency",
+    "objectID": "lectures/ch1_lecture2.html#consistency",
+    "href": "lectures/ch1_lecture2.html#consistency",
     "title": "More Systems of Linear Equations",
     "section": "Consistency",
     "text": "Consistency\nFor an augmented matrix in RREF, if the only only nonzero entry in a row appears on the right-hand side,\n\\[\\text { Row } i \\longrightarrow\\left(\n\\begin{array}{cccccc|c}\n* & * & * & * & * & * & * \\\\\n0 & 0 & 0 & * & * & * & * \\\\\n0 & 0 & 0 & 0 & * & * & * \\\\\n0 & 0 & 0 & 0 & 0 & 0 & \\alpha \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet \\\\\n\\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet & \\bullet\n\\end{array}\n\\right) \\longleftarrow \\alpha \\neq 0\n\\]\nthe \\(i^{\\text {th }}\\) equation of the associated system is\n\\[\n0 x_{1}+0 x_{2}+\\cdots+0 x_{n}=\\alpha .\n\\]\nIf \\(\\alpha\\ne 0\\), this has no solution!\nThis is an inconsistent system.\n\nNote that there is not inconsistency if there is a row of all zeros."
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
-    "href": "lectures/ch2_lecture1.html#what-reduced-row-echelon-form-tells-us",
+    "objectID": "lectures/ch1_lecture2.html#what-reduced-row-echelon-form-tells-us",
+    "href": "lectures/ch1_lecture2.html#what-reduced-row-echelon-form-tells-us",
     "title": "More Systems of Linear Equations",
     "section": "What Reduced Row Echelon Form tells us",
     "text": "What Reduced Row Echelon Form tells us\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n\nWhat can we learn from the RREF of a matrix? What does it tell us? It can tell us which variables are free vs bound, and therefore how many variables are bound. (This is the rank of the matrix!)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
-    "href": "lectures/ch2_lecture1.html#which-variables-are-free-and-bound",
+    "objectID": "lectures/ch1_lecture2.html#which-variables-are-free-and-bound",
+    "href": "lectures/ch1_lecture2.html#which-variables-are-free-and-bound",
     "title": "More Systems of Linear Equations",
     "section": "Which variables are free and bound",
     "text": "Which variables are free and bound\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\n“Basic columns” correspond to the columns in \\(A\\) which contain the pivotal positions.\nEach non-basic column can be formed as a sum of the basic columns to the left.\nBasic columns are the same in \\(E\\) and \\(A\\)!"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#rank",
-    "href": "lectures/ch2_lecture1.html#rank",
+    "objectID": "lectures/ch1_lecture2.html#rank",
+    "href": "lectures/ch1_lecture2.html#rank",
     "title": "More Systems of Linear Equations",
     "section": "Rank",
     "text": "Rank\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nrank(\\(A\\)) = # of pivots = # of nonzero rows in \\(E\\) = # bound variables in the system"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#nullity",
-    "href": "lectures/ch2_lecture1.html#nullity",
+    "objectID": "lectures/ch1_lecture2.html#nullity",
+    "href": "lectures/ch1_lecture2.html#nullity",
     "title": "More Systems of Linear Equations",
     "section": "Nullity",
     "text": "Nullity\nSuppose a matrix \\(A_{m \\times n}\\) has a reduced row echelon form \\(E_{m \\times n}\\): \\[ E_A=\\left(\\begin{array}{cccccccc}1 & * & 0 & 0 & * & * & 0 & * \\\\ 0 & 0 & 1 & 0 & * & * & 0 & * \\\\ 0 & 0 & 0 & 1 & * & * & 0 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & * \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\end{array}\\right)\\]\nnullity(\\(A\\)) = # of non-pivot columns = # free variables in the system"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#consistency-1",
-    "href": "lectures/ch2_lecture1.html#consistency-1",
+    "objectID": "lectures/ch1_lecture2.html#consistency-1",
+    "href": "lectures/ch1_lecture2.html#consistency-1",
     "title": "More Systems of Linear Equations",
     "section": "Consistency",
     "text": "Consistency\nEquivalent ways of saying \\(A\\) is consistent:\n\nIn row reducing \\([\\mathbf{A} \\mid \\mathbf{b}]\\), a row of the following form never appears:\n\n. . . \\[\n\\left(\\begin{array}{llll|l}\n0 & 0 & \\cdots & 0 & \\alpha \\tag{2.3.2}\n\\end{array}\\right) \\text {, where } \\alpha \\neq 0 \\text {. }\n\\]\n\n\\(\\operatorname{rank}[\\mathbf{A} \\mid \\mathbf{b}]=\\operatorname{rank}(\\mathbf{A})\\), in which case either:\n\n\\(\\operatorname{rank}[\\mathbf{A}=n\\), and system has a unique solution or\n\\(\\operatorname{rank}[\\mathbf{A}&lt;n\\), and system has infinite solutions\n\n\\(\\mathbf{b}\\) is a nonbasic column in \\([\\mathbf{A} \\mid \\mathbf{b}]\\).\n\\(\\mathbf{b}\\) is a combination of the basic columns in \\(\\mathbf{A}\\).\n\n\n\nMeyers p. 51"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#homogeneous-systems",
-    "href": "lectures/ch2_lecture1.html#homogeneous-systems",
+    "objectID": "lectures/ch1_lecture2.html#homogeneous-systems",
+    "href": "lectures/ch1_lecture2.html#homogeneous-systems",
     "title": "More Systems of Linear Equations",
     "section": "Homogeneous Systems",
     "text": "Homogeneous Systems\n\nThe general linear system with \\(m \\times n\\) coefficient matrix \\(A\\) and right-hand-side vector \\(\\mathbf{b}\\) is homogeneous if the entries of \\(\\mathbf{b}\\) are all zero.\nOtherwise, the system is inhomogeneous.\nHomogeneous systems are always consistent!\nCan solve by setting all variables to zero. This is the trivial solution\nIf rank of the matrix = n, there is only the trivial solution"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#pagerank",
-    "href": "lectures/ch2_lecture1.html#pagerank",
+    "objectID": "lectures/ch1_lecture2.html#pagerank",
+    "href": "lectures/ch1_lecture2.html#pagerank",
     "title": "More Systems of Linear Equations",
     "section": "Pagerank",
     "text": "Pagerank\nGoal: rank pages in terms of “importance”. Suppose we have four pages:\n\n\n\n\nHow can we rank these pages? Which one is most important?\n\n\n\n\nFirst try: count number of backlinks. But that can be artifically inflated (just link to a page many times), and it doesn’t care about importance of the linking page.\nSecond try: For page \\(i\\) let \\(x_{i}\\) be its score and \\(L_{i}\\) be the set of all indices of pages linking to it. Then \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nBut it’s still easy to game this system, by setting up a page and making a ton of outgoing links to pages we want to promote.\nThird try: For page \\(j\\) let \\(n_{j}\\) be its total number of outgoing links on that page. Then score is\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
-    "href": "lectures/ch2_lecture1.html#working-through-pagerank-try-3",
+    "objectID": "lectures/ch1_lecture2.html#working-through-pagerank-try-3",
+    "href": "lectures/ch1_lecture2.html#working-through-pagerank-try-3",
     "title": "More Systems of Linear Equations",
     "section": "Working through PageRank: try 3",
     "text": "Working through PageRank: try 3\n\n\\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} \\frac{x_{j}}{n_{j}}\n\\end{equation*}\n\\]\n\n\n\nWrite down the system of equations this gives us. Then make it in an augmented matrix.\n\n\n\n\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nAugmented matrix:\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & -1 & -1 & 0 & 0\\\\-1 & 1 & -1 & 0 & 0\\\\-1 & 0 & 1 & -1 & 0\\\\0 & 0 & -1 & 1 & 0\\end{matrix}\\right]\\)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#jupyterlab",
-    "href": "lectures/ch2_lecture1.html#jupyterlab",
+    "objectID": "lectures/ch1_lecture2.html#jupyterlab",
+    "href": "lectures/ch1_lecture2.html#jupyterlab",
     "title": "More Systems of Linear Equations",
     "section": "JupyterLab",
     "text": "JupyterLab\nhttps://tinyurl.com/stat24320notebook1"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
-    "href": "lectures/ch2_lecture1.html#now-what-about-the-second-try",
+    "objectID": "lectures/ch1_lecture2.html#now-what-about-the-second-try",
+    "href": "lectures/ch1_lecture2.html#now-what-about-the-second-try",
     "title": "More Systems of Linear Equations",
     "section": "Now what about the second try?",
     "text": "Now what about the second try?\nRemember this was our ‘second try’: \\[\n\\begin{equation*}\nx_{i}=\\sum_{x_{j} \\in L_{i}} x_{j}\n\\end{equation*}\n\\]\nThis was the system of equations. \\[\n\\begin{aligned}\n& x_{1}=x_{2}+x_{3} \\\\\n& x_{2}=x_{1}+x_{3} \\\\\n& x_{3}=x_{1}+x_{4} \\\\\n& x_{4}=x_{3} .\n\\end{aligned}\n\\]\nWhat happens if we try to solve this? Try it in Python.\n\nWhat happens is that we get only the trivial solution. This makes sense because it is a homogeneous system with full rank."
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
-    "href": "lectures/ch2_lecture1.html#discretizing-continuous-functions",
+    "objectID": "lectures/ch1_lecture2.html#discretizing-continuous-functions",
+    "href": "lectures/ch1_lecture2.html#discretizing-continuous-functions",
     "title": "More Systems of Linear Equations",
     "section": "Discretizing continuous functions",
     "text": "Discretizing continuous functions\n\nRod with fixed temperatures \\(y_{left}\\) and \\(y_{right}\\) at each end, internal heat source given as \\(f(x), 0 \\leq x \\leq 1\\)\nWhat’s the temperature at each point along the length?"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-1",
-    "href": "lectures/ch2_lecture1.html#section-1",
+    "objectID": "lectures/ch1_lecture2.html#section-1",
+    "href": "lectures/ch1_lecture2.html#section-1",
     "title": "More Systems of Linear Equations",
     "section": "",
     "text": "Discrete approximation to temperature function \\((n=5)\\)\n\n\n\n\n\nequally spaced points, called nodes, \\(x_{0}=0, x_{1}, x_{2}, \\ldots, x_{n+1}=1\\), distance \\(h\\) apart.\nheat on the \\(i\\) th segment \\(\\approx\\) temperature at its left node.\ntemperature is \\(y(x)\\), \\(y_{i}=y\\left(x_{i}\\right)\\).\n\n\n\n\nEquations to balance the flow of heat from each node to its neighbors:\n\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-2",
-    "href": "lectures/ch2_lecture1.html#section-2",
+    "objectID": "lectures/ch1_lecture2.html#section-2",
+    "href": "lectures/ch1_lecture2.html#section-2",
     "title": "More Systems of Linear Equations",
     "section": "",
     "text": "Build the matrix representing the system of equations:\n\nN=6\nM = sym.zeros(N)\nfor i in range(N):\n  if (i&gt;0):\n      M[i-1,i]=-1\n  M[i,i]=2\n  if (i&lt;N-1):\n      M[i+1,i]=-1\nM\n\n\\(\\displaystyle \\left[\\begin{matrix}2 & -1 & 0 & 0 & 0 & 0\\\\-1 & 2 & -1 & 0 & 0 & 0\\\\0 & -1 & 2 & -1 & 0 & 0\\\\0 & 0 & -1 & 2 & -1 & 0\\\\0 & 0 & 0 & -1 & 2 & -1\\\\0 & 0 & 0 & 0 & -1 & 2\\end{matrix}\\right]\\)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-3",
-    "href": "lectures/ch2_lecture1.html#section-3",
+    "objectID": "lectures/ch1_lecture2.html#section-3",
+    "href": "lectures/ch1_lecture2.html#section-3",
     "title": "More Systems of Linear Equations",
     "section": "",
     "text": "\\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]\nDecide on a function for f. Let’s say \\(\\frac{h^{2}}{K} f = x_i^2\\).\nSay that x is running from 0 to 1. Then we can have\n\nimport numpy as np\nx=np.arange(0,1,1/N)\nf=x**2\nx=sym.Matrix(x)\nf=sym.Matrix(f)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-4",
-    "href": "lectures/ch2_lecture1.html#section-4",
+    "objectID": "lectures/ch1_lecture2.html#section-4",
+    "href": "lectures/ch1_lecture2.html#section-4",
     "title": "More Systems of Linear Equations",
     "section": "",
     "text": "sol=M.gauss_jordan_solve(f)\nsol[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}0.416666666666667\\\\0.833333333333333\\\\1.22222222222222\\\\1.5\\\\1.52777777777778\\\\1.11111111111111\\end{matrix}\\right]\\)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#now-you",
-    "href": "lectures/ch2_lecture1.html#now-you",
+    "objectID": "lectures/ch1_lecture2.html#now-you",
+    "href": "lectures/ch1_lecture2.html#now-you",
     "title": "More Systems of Linear Equations",
     "section": "Now you",
     "text": "Now you\n\nImplement this yourself in Python\nMake a plot of the output (you’ll want to use PyPlot)\nIncrease N and make more plots\nThis was assuming the temperature at the ends was 0. How can we change this?"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#turing-pattern-formation",
-    "href": "lectures/ch2_lecture1.html#turing-pattern-formation",
+    "objectID": "lectures/ch1_lecture2.html#turing-pattern-formation",
+    "href": "lectures/ch1_lecture2.html#turing-pattern-formation",
     "title": "More Systems of Linear Equations",
     "section": "Turing pattern formation",
     "text": "Turing pattern formation\nhttps://colab.research.google.com/github/ijmbarr/turing-patterns/blob/master/turing-patterns.ipynb#scrollTo=GsEPBsz33E14\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)"

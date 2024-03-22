@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="ijmbarr">
 
-<title>Stat 24320</title>
+<title>Stat 24320 - Turing Patterns</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +146,29 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Turing Patterns</h1>
+</div>
 
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ijmbarr </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <p>Adapted from <a href="https://github.com/ijmbarr/turing-patterns/blob/master/LICENSE">ijmbarr</a></p>
@@ -195,7 +218,7 @@ window.Quarto = {
 a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
 \]</span></p>
 <p>Let’s start by defining some functions to take care of the spatial derivatives. We will be using periodic boundary conditions throughout our exploration, which are easy to implement in numpy using its <a href="https://docs.scipy.org/doc/numpy-1.12.0/reference/generated/numpy.roll.html">roll</a> function.</p>
-<div id="cell-4" class="cell" data-executioninfo="{&quot;elapsed&quot;:3799,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136689066,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="6">
+<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:3799,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136689066,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> httpimport</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> httpimport.github_repo(<span class="st">'ijmbarr'</span>,<span class="st">'turing-patterns'</span>):</span>
@@ -213,7 +236,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tutils <span class="im">import</span> BaseStateSystem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:361,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136710488,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="7">
+<div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:361,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136710488,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> laplacian1D(a, dx):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> a</span>
@@ -232,7 +255,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </div>
 <p>To aid in generating visualisations, I’ve written a base class which updates and plots a system based on some notion of state. There’s nothing specific about the reaction diffusion equations encoded in it, so I’m not going to go into any detail about it. You can find the full code for it, along with this notebook on github <a href="https://github.com/ijmbarr/turing-patterns">here</a>. It uses <a href="http://matplotlib.org/api/animation_api.html">matplotlib’s animation</a> functionality to plot the output as a gif.</p>
 <p>All together we can simulate the effect of the diffusion equation:</p>
-<div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:10070,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136724113,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="734b3788-415b-4d31-fc9a-2e381cebc277" data-execution_count="8">
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:10070,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136724113,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="734b3788-415b-4d31-fc9a-2e381cebc277" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> OneDimensionalDiffusionEquation(BaseStateSystem):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, D):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.D <span class="op">=</span> D</span>
@@ -290,7 +313,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p><span class="math inline">\(R_{b}(a, b) = \beta (a - b)\)</span></p>
 <p>Where <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are constants.</p>
 <p>Let’s see how it behaves</p>
-<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:12554,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136742819,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="cf75c321-b543-4239-c5c0-95997cef6ffc" data-execution_count="9">
+<div id="cell-11" class="cell" data-executioninfo="{&quot;elapsed&quot;:12554,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136742819,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="cf75c321-b543-4239-c5c0-95997cef6ffc" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ReactionEquation(BaseStateSystem):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, Ra, Rb):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.Ra <span class="op">=</span> Ra</span>
@@ -358,7 +381,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <h2 class="anchored" data-anchor-id="full-model"><em>Full Model</em></h2>
 <p>We now have two parts to the reaction diffusion equation: a diffusion term that “spreads” out concentration and a reaction part the equalises the two concentrations. It feels like these two together should create a stable system, so it is surprising that we can end up with patterns.</p>
 <p>But enough with the preliminaries, let’s take a look at some of the patterns formed.</p>
-<div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:45228,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136795138,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="76d916b5-185b-43ae-aff2-3187e253e099" data-execution_count="10">
+<div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:45228,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711136795138,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-outputid="76d916b5-185b-43ae-aff2-3187e253e099" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_initialiser(shape):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="fl">0.05</span>, size<span class="op">=</span>shape),</span>
@@ -444,7 +467,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </div>
 <p>A pattern of stripes.</p>
 <p>We can see that same behavior in two dimensions:</p>
-<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:11355,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711137054140,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="11">
+<div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:11355,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1711137054140,&quot;user&quot;:{&quot;displayName&quot;:&quot;Kendra Burbank&quot;,&quot;userId&quot;:&quot;04974670608065921752&quot;},&quot;user_tz&quot;:300}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TwoDimensionalRDEquations(BaseStateSystem):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, Da, Db, Ra, Rb,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                 initialiser<span class="op">=</span>random_initialiser,</span>
@@ -597,7 +620,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p>With this information, the third equation shows us that the diffusion coefficients need to be different. Specifically, the diffusion coefficient of the inhibitor has to be larger then that of the activator.</p>
 <p>Together, this gives us a hand-waving explanation of what might be going on: Consider starting with a small increase in the activator at some point. This in turn creates an increase in the inhibitor at that point. Both of these chemical diffuse to nearby points, but the inhibitor diffuses faster, lowering the activator concentration of nearby points. This lowering of the activator concentration at nearby points, which in turn lowers the inhibitor concentration. The disturbance spreads out like a wave.</p>
 <p>It is a lot easier to get a feel for what’s going on once we visualise the this perturbation:</p>
-<div id="cell-19" class="cell">
+<div id="cell-20" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Da, Db, alpha, beta <span class="op">=</span> <span class="dv">1</span>, <span class="dv">100</span>, <span class="op">-</span><span class="fl">0.005</span>, <span class="dv">10</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Ra(a,b): <span class="cf">return</span> a <span class="op">-</span> a <span class="op">**</span> <span class="dv">3</span> <span class="op">-</span> b <span class="op">+</span> alpha</span>
@@ -638,7 +661,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p>It is interesting to ask how the parameters of the equations affect the pattern formation. To get a feel for what this dependence is, we can investigate the amplitude of the instability for different frequencies. Close to equilibrium, we expect the frequency with the largest real component to dominate the dynamics of the system.</p>
 <p>Calculating this value isn’t mathematically difficult: we have an equation of the amplitude <span class="math inline">\(\omega\)</span> in terms of the frequency <span class="math inline">\(k\)</span> above. Differentiating an equation of this size by hand can become tedious due to its size, and it is easy to introduce errors. And why carry out simple replacement steps when we have a computer to hand?</p>
 <p>In the following, I use the computer algebra system <a href="http://www.sympy.org/en/index.html">sympy</a> to find the largest real mode of the system</p>
-<div id="cell-22" class="cell" data-outputid="81184f71-e491-43dc-a12b-970ffd1b3726">
+<div id="cell-23" class="cell" data-outputid="81184f71-e491-43dc-a12b-970ffd1b3726">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sp.init_printing()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -668,7 +691,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p><span class="math display">\[- Da k_{2} - Db k_{2} + Raa + Rbb + \sqrt{- 4 Da Db k_{2}^{2} + 4 Da Rbb k_{2} + 4 Db Raa k_{2} - 4 Raa Rbb + 4 Rab Rba + \left(- Da k_{2} - Db k_{2} + Raa + Rbb\right)^{2}}\]</span></p>
 </div>
 </div>
-<div id="cell-23" class="cell" data-outputid="786b5800-5dc8-4641-bd9c-b5110d5ceb31">
+<div id="cell-24" class="cell" data-outputid="786b5800-5dc8-4641-bd9c-b5110d5ceb31">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find the maximum value of omega for k^{2}</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>omega_prime <span class="op">=</span> sp.diff(omega, k2)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sols <span class="op">=</span> sp.solvers.solve(omega_prime, k2)</span>
@@ -679,7 +702,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p><span class="math display">\[\frac{1}{Da Db \left(Da - Db\right)} \left(Da Db Raa - Da Db Rbb - Da \sqrt{- Da Db Rab Rba} - Db \sqrt{- Da Db Rab Rba}\right)\]</span></p>
 </div>
 </div>
-<div id="cell-24" class="cell" data-outputid="05cfdc87-1b7e-49d2-99f6-9644a36730a2">
+<div id="cell-25" class="cell" data-outputid="05cfdc87-1b7e-49d2-99f6-9644a36730a2">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_length_scale(al, be, da, db):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># rewritng in terms of Da, Db, alpha, beta</span></span>
@@ -732,7 +755,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </div>
 <p>Which looks about right when we compare it to our simulations above - the spatial variation is about 14 length units.</p>
 <p>Let’s use it to see how the length scale of the system changes as a function of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>:</p>
-<div id="cell-26" class="cell" data-outputid="51976567-7226-4591-f4e6-f01ccf4749f5">
+<div id="cell-27" class="cell" data-outputid="51976567-7226-4591-f4e6-f01ccf4749f5">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>betas <span class="op">=</span> [(<span class="dv">1</span> <span class="op">+</span> i) <span class="op">*</span> <span class="fl">0.125</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">40</span>)]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>alphas <span class="op">=</span> [i <span class="op">*</span> <span class="fl">0.05</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="op">-</span><span class="dv">20</span>,<span class="dv">20</span>)]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -766,7 +789,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </div>
 </div>
 <p>And take a look at the long length scale we should see when we use a low value of <span class="math inline">\(\beta\)</span>:</p>
-<div id="cell-28" class="cell">
+<div id="cell-29" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Da, Db, alpha, beta <span class="op">=</span> <span class="dv">1</span>, <span class="dv">100</span>, <span class="fl">0.01</span>, <span class="fl">0.25</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Ra(a,b): <span class="cf">return</span> a <span class="op">-</span> a <span class="op">**</span> <span class="dv">3</span> <span class="op">-</span> b <span class="op">+</span> alpha</span>
@@ -792,7 +815,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <section id="initial-conditions" class="level3">
 <h3 class="anchored" data-anchor-id="initial-conditions"><em>Initial Conditions</em></h3>
 <p>Adjusting the parameters gives us control over the length scale of the system. We can also gain some control over the system by adjusting the initial conditions of the system. For example, we can impose symmetries on the system by making the initial conditions symmetric:</p>
-<div id="cell-30" class="cell">
+<div id="cell-31" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.ndimage.interpolation <span class="im">import</span> rotate</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> average_rotate(a, degree):</span>
@@ -869,7 +892,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <section id="spatial-effects" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-effects"><em>Spatial Effects</em></h3>
 <p>Another interesting extension to these systems is to see what happens when we allow the parameters of the system to vary in space. In our implementation, this is just a matter of making the parameters a grid as well:</p>
-<div id="cell-32" class="cell">
+<div id="cell-33" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Da, Db, alpha, beta <span class="op">=</span> <span class="dv">1</span>, <span class="dv">100</span>, <span class="fl">0.01</span>, <span class="dv">10</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">200</span></span>
@@ -902,7 +925,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p>Turing patterns are only one part of pattern generation from non-linear PDEs. Given we have the tools to explore these systems, it is worth looking at another simple system in which pattern formation occurs: <a href="https://groups.csail.mit.edu/mac/projects/amorphous/GrayScott/">the Gray-Scott equations</a>. As described in the paper <a href="http://www.staff.science.uu.nl/~frank011/Classes/complexity/Literature/Pearson.pdf">Complex Patterns in a Simple System</a>, for an interesting set of initial conditions the Gray-Scott equations result in a range complex patterns being formed.</p>
 <p>While these equations <em>are</em> reaction-diffusion equations, the patterns that end up being formed are not from Turing instabilities. Instead they come from the initial conditions of the system: a small region in the centre of the region is perturbed. As this perturbation spreads out, strange patterns are formed.</p>
 <p>To visualise it, we just need to pass another initialisation function of our previous class, and put in new reaction equations. The parameters for the interesting systems are taken from <a href="http://www.aliensaint.com/uo/java/rd/">here</a>. I’m not currently aware of any theory that gives a full explanation of these patterns.</p>
-<div id="cell-35" class="cell">
+<div id="cell-36" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gs_initialiser(shape):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> np.ones(shape)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> np.zeros(shape)</span>

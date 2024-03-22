@@ -346,22 +346,22 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/linear-systems" id="/toc-linear-systems">Linear systems</a></li>
-<li class="fragment"><a href="#/solving-linear-systems" id="/toc-solving-linear-systems">Solving linear systems</a></li>
-<li class="fragment"><a href="#/comparing-the-g-j-algorithm-with-our-goals" id="/toc-comparing-the-g-j-algorithm-with-our-goals">Comparing the G-J algorithm with our goals</a></li>
-<li class="fragment"><a href="#/roundoff-errors" id="/toc-roundoff-errors">Roundoff errors</a></li>
-<li class="fragment"><a href="#/ill-conditioned-linear-systems" id="/toc-ill-conditioned-linear-systems">Ill-conditioned linear systems</a></li>
-<li class="fragment"><a href="#/example-polynomial-interpolation" id="/toc-example-polynomial-interpolation">Example: Polynomial interpolation</a></li>
+<li class="fragment"><a href="#/linear-systems" id="/toc-linear-systems"><em>Linear systems</em></a></li>
+<li class="fragment"><a href="#/solving-linear-systems" id="/toc-solving-linear-systems"><em>Solving linear systems</em></a></li>
+<li class="fragment"><a href="#/comparing-the-g-j-algorithm-with-our-goals" id="/toc-comparing-the-g-j-algorithm-with-our-goals"><em>Comparing the G-J algorithm with our goals</em></a></li>
+<li class="fragment"><a href="#/roundoff-errors" id="/toc-roundoff-errors"><em>Roundoff errors</em></a></li>
+<li class="fragment"><a href="#/ill-conditioned-linear-systems" id="/toc-ill-conditioned-linear-systems"><em>Ill-conditioned linear systems</em></a></li>
+<li class="fragment"><a href="#/example-polynomial-interpolation" id="/toc-example-polynomial-interpolation"><em>Example: Polynomial interpolation</em></a></li>
 </ul>
 </nav>
 </section>
 <section>
 <section id="linear-systems" class="title-slide slide level1 center">
-<h1>Linear systems</h1>
+<h1><em>Linear systems</em></h1>
 
 </section>
 <section id="what-are-linear-systems" class="title-slide slide level2 center">
-<h2>What are linear systems?</h2>
+<h2><em>What are linear systems?</em></h2>
 <ul>
 <li class="fragment">Set of one or more linear equations involving the same variables.</li>
 <li class="fragment">Each equation can be be put in form <span class="math inline">\(a_1 x_1 + a_2 x_2 + \dots + a_n x_n+ b = 0\)</span></li>
@@ -379,7 +379,7 @@ a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n = b_m,
 </section>
 
 <section id="example-railroad-cars" class="title-slide slide level2 center">
-<h2>Example: railroad cars</h2>
+<h2><em>Example: railroad cars</em></h2>
 <p>A chemical manufacturer wants to lease a fleet of 24 railroad tank cars with a combined carrying capacity of 520,000 gallons.</p>
 <ul>
 <li class="fragment">Tank cars with three different carrying capacities are available:
@@ -406,7 +406,7 @@ a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n = b_m,
 </section>
 
 <section id="example-traffic-flow." class="title-slide slide level2 center">
-<h2>Example: traffic flow.</h2>
+<h2><em>Example: traffic flow.</em></h2>
 <div class="columns">
 <div class="column">
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_28_3151daba57b91c8468a9g-37.jpg?height=403&amp;width=504&amp;top_left_y=2250&amp;top_left_x=469" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_02_28_3151daba57b91c8468a9g-37.jpg?height=403&amp;width=504&amp;top_left_y=2250&amp;top_left_x=469"></a></p>
@@ -443,7 +443,7 @@ a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n = b_m,
 </section>
 
 <section id="example-us-population" class="title-slide slide level2 center">
-<h2>Example: US population</h2>
+<h2><em>Example: US population</em></h2>
 <ul>
 <li class="fragment">The U.S. population was approximately 75 million in 1900, 150 million in 1950, and 275 million in 2000.</li>
 <li class="fragment">Find a quadratic equation whose graph passes through the points <span class="math inline">\((0,75)\)</span>, <span class="math inline">\((50,150)\)</span>, <span class="math inline">\((100,275)\)</span></li>
@@ -474,11 +474,11 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 <section>
 <section id="solving-linear-systems" class="title-slide slide level1 center">
-<h1>Solving linear systems</h1>
+<h1><em>Solving linear systems</em></h1>
 
 </section>
 <section id="goals-for-solving-algorithms" class="title-slide slide level2 center">
-<h2>Goals for solving algorithms</h2>
+<h2><em>Goals for solving algorithms</em></h2>
 <p>An algorithm should be:</p>
 <ul>
 <li class="fragment">feasible</li>
@@ -494,7 +494,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="example-very-simple-linear-system" class="title-slide slide level2 center">
-<h2>Example: very simple linear system</h2>
+<h2><em>Example: very simple linear system</em></h2>
 <p><span class="math display">\[
 \begin{gather*}
 2 x-y=1 \\
@@ -532,7 +532,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="elementary-matrix-operations" class="title-slide slide level2 center">
-<h2>Elementary Matrix Operations</h2>
+<h2><em>Elementary Matrix Operations</em></h2>
 <p>When we do these on augmented matrices, the solutions are unchanged…</p>
 <ol type="1">
 <li class="fragment"><span class="math inline">\(E_{i j}\)</span> : <strong>Swap</strong>: Switch the <span class="math inline">\(i\)</span>th and <span class="math inline">\(j\)</span> th rows of the matrix.</li>
@@ -542,7 +542,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="reduced-row-echelon-form" class="title-slide slide level2 center">
-<h2>Reduced Row Echelon Form</h2>
+<h2><em>Reduced Row Echelon Form</em></h2>
 <p>Every matrix can be reduced by a sequence of elementary row operations to one and only one reduced row echelon form:</p>
 <ul>
 <li class="fragment">Nonzero rows of <span class="math inline">\(R\)</span> precede the zero rows.</li>
@@ -553,11 +553,11 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="use-elementary-ops-to-get-reduced-row-echelon-form" class="title-slide slide level2 center">
-<h2>Use elementary ops to get reduced row echelon form</h2>
+<h2><em>Use elementary ops to get reduced row echelon form</em></h2>
 
 </section>
 <section id="gauss-jordan-elimination" class="slide level3 center">
-<h3>Gauss-Jordan elimination</h3>
+<h3><em>Gauss-Jordan elimination</em></h3>
 <ol type="1">
 <li class="fragment">Swap rows to get non-zero number in row 1, column</li>
 <li class="fragment">Get a <strong>1</strong> in the row 1, column 1.</li>
@@ -572,7 +572,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="g-j-elimination-for-our-toy-system" class="title-slide slide level2 center">
-<h2>G-J Elimination for our toy system</h2>
+<h2><em>G-J Elimination for our toy system</em></h2>
 <p><span class="math display">\[
 \left[\begin{array}{rrr}
 4 &amp; 4 &amp; 20 \\
@@ -615,7 +615,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="now-you-try-birds-in-a-tree" class="title-slide slide level2 center">
-<h2>Now you try: birds in a tree</h2>
+<h2><em>Now you try: birds in a tree</em></h2>
 <p>There are 2 trees in a garden (tree “A” and “B”) and in both trees are some birds.</p>
 <p>The birds of tree A say to the birds of tree B that if one of you comes to our tree, then our population will be double yours.</p>
 <p>Then the birds of tree B tell the birds of tree A that if one of you comes here, then our population will be equal to yours.</p>
@@ -640,7 +640,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </div></aside></section>
 
 <section id="example-mining" class="title-slide slide level2 center">
-<h2>Example: Mining</h2>
+<h2><em>Example: Mining</em></h2>
 
 <p>A mine produces <em>silica</em>, <em>iron</em>, and <em>gold</em></p>
 <p>Needs <strong>Money</strong> (in $$), <strong>operating time</strong> (in hours), and <strong>labor</strong> (in person-hours).</p>
@@ -654,7 +654,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </div></aside></section>
 
 <section id="section" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>Suppose that during 600 hours of operation, exactly $ 5000 and 3000 labor-hours are used.</p>
 <p>How much silica (<span class="math inline">\(x\)</span>), iron (<span class="math inline">\(y\)</span>), and gold (<span class="math inline">\(z\)</span>) were produced?</p>
 <div class="fragment">
@@ -695,19 +695,19 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="section-1" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>We can solve this using Gauss-Jordan elimination.</p>
 </section>
 
 <section id="getting-into-row-echelon-form-rounding-after-3-digits" class="title-slide slide level2 center">
-<h2>Getting into row echelon form, rounding after 3 digits</h2>
+<h2><em>Getting into row echelon form, rounding after 3 digits</em></h2>
 <p><span class="math display">\[\left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960 &amp; 5000\\0.0011 &amp; 0.01 &amp; 112 &amp; 600\\0.0093 &amp; 0.025 &amp; 560 &amp; 3000\end{matrix}\right] \overrightarrow{E_{12}(\frac{-1}{5})} \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 9.6 \cdot 10^{2} &amp; 5.0 \cdot 10^{3}\\0 &amp; -0.009 &amp; -80.0 &amp; -4.0 \cdot 10^{2}\\0.0093 &amp; 0.025 &amp; 5.6 \cdot 10^{2} &amp; 3.0 \cdot 10^{3}\end{matrix}\right]\]</span></p>
 <p><span class="math display">\[\overrightarrow{E_{13}(\frac{93}{55})} \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 9.6 \cdot 10^{2} &amp; 5.0 \cdot 10^{3}\\0 &amp; -0.009 &amp; -80.0 &amp; -4.0 \cdot 10^{2}\\0 &amp; -0.14 &amp; -1.1 \cdot 10^{3} &amp; -5.4 \cdot 10^{3}\end{matrix}\right]\]</span></p>
 <p><span class="math display">\[\overrightarrow{E_{23}(\frac{-14}{.9})} \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 9.6 \cdot 10^{2} &amp; 5.0 \cdot 10^{3}\\0 &amp; -0.009 &amp; -80.0 &amp; -4.0 \cdot 10^{2}\\0 &amp; 0 &amp; 1.4 \cdot 10^{2} &amp; 5.7 \cdot 10^{2}\end{matrix}\right]\]</span></p>
 </section>
 
 <section id="section-2" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}5.7 \cdot 10^{4}\\8.9 \cdot 10^{3}\\4.0\end{matrix}\right]\)</span>.</p>
 <div class="fragment">
 <p>How do these compare to the exact solutions? These are</p>
@@ -720,7 +720,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="doing-it-again-rounding-after-15-digits" class="title-slide slide level2 center">
-<h2>Doing it again, rounding after 15 digits</h2>
+<h2><em>Doing it again, rounding after 15 digits</em></h2>
 <p><span class="math inline">\(\left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960 &amp; 5000\\0.0011 &amp; 0.01 &amp; 112 &amp; 600\\0.0093 &amp; 0.025 &amp; 560 &amp; 3000\end{matrix}\right] \rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0.0093 &amp; 0.025 &amp; 560.0 &amp; 3000.0\end{matrix}\right]\)</span></p>
 <p><span class="math inline">\(\rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; -0.135636363636364 &amp; -1063.27272727273 &amp; -5454.54545454545\end{matrix}\right] \rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; 0 &amp; 142.383838383838 &amp; 573.737373737372\end{matrix}\right]\)</span></p>
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}56753.6889897845\\8626.56072644727\\4.02951191827468\end{matrix}\right]\)</span>.</p>
@@ -734,11 +734,11 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 <section>
 <section id="comparing-the-g-j-algorithm-with-our-goals" class="title-slide slide level1 center">
-<h1>Comparing the G-J algorithm with our goals</h1>
+<h1><em>Comparing the G-J algorithm with our goals</em></h1>
 
 </section>
 <section id="reminder-of-goals" class="title-slide slide level2 center">
-<h2>Reminder of goals</h2>
+<h2><em>Reminder of goals</em></h2>
 <p>An algorithm should be:</p>
 <div>
 <ul>
@@ -757,11 +757,11 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 <section>
 <section id="roundoff-errors" class="title-slide slide level1 center">
-<h1>Roundoff errors</h1>
+<h1><em>Roundoff errors</em></h1>
 
 </section>
 <section id="roundoff-errors-with-g-j-elimination" class="title-slide slide level2 center">
-<h2>Roundoff errors with G-J elimination</h2>
+<h2><em>Roundoff errors with G-J elimination</em></h2>
 <p>Try this on your calculator. What do you get?</p>
 <p><span class="math display">\[
 \left(\left(\frac{2}{3}+100\right)-100\right)-\frac{2}{3}\stackrel{?}{=}0
@@ -790,7 +790,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="section-3" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <ul>
 <li class="fragment"><p>Let <span class="math inline">\(\epsilon\)</span> be a number so small that our calculator yields <span class="math inline">\(1+\epsilon=1\)</span>.</p></li>
 <li class="fragment"><p>With this calculator, <span class="math inline">\(1+1 / \epsilon=(\epsilon+1) / \epsilon=1 / \epsilon\)</span></p></li>
@@ -805,7 +805,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="roundoff-errors-with-g-j-elimination-1" class="title-slide slide level2 scrollable center">
-<h2>Roundoff errors with G-J elimination</h2>
+<h2><em>Roundoff errors with G-J elimination</em></h2>
 <p>With our calculator,</p>
 <aside class="notes">
 <p>In the second step, we are replacing <span class="math inline">\(-1+\frac{1}{\epsilon}\)</span> with just <span class="math inline">\(\frac{1}{\epsilon}\)</span>. It’s a case where we are adding together numbers of very different scale.</p>
@@ -846,7 +846,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="sensitivity-to-small-changes" class="title-slide slide level2 center">
-<h2>Sensitivity to small changes</h2>
+<h2><em>Sensitivity to small changes</em></h2>
 <p>Problem arose because we took a computational step where we added two numbers of very different scale, essentially losing the smaller number.</p>
 <p>Led to a big changes in output!</p>
 <p>There is no general cure for these difficulties…</p>
@@ -854,7 +854,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="partial-pivoting" class="title-slide slide level2 center">
-<h2>Partial pivoting</h2>
+<h2><em>Partial pivoting</em></h2>
 <p>We can improve performance of G-J by introducing a new step into the algorithm:</p>
 <ol type="1">
 <li class="fragment"><p>Find the entry in the left column <span style="color:red;">with the largest absolute value</span>. This entry is called the pivot. Perform row interchange (if necessary), so that <em>the pivot</em> is in the first row.</p></li>
@@ -881,7 +881,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="using-partial-pivoting-in-our-example" class="title-slide slide level2 center">
-<h2>Using partial pivoting in our example</h2>
+<h2><em>Using partial pivoting in our example</em></h2>
 <aside class="notes">
 <p>work this one out by hand</p>
 <style type="text/css">
@@ -899,11 +899,11 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 <section>
 <section id="ill-conditioned-linear-systems" class="title-slide slide level1 center">
-<h1>Ill-conditioned linear systems</h1>
+<h1><em>Ill-conditioned linear systems</em></h1>
 
 </section>
 <section id="ill-conditioned-linear-systems-1" class="title-slide slide level2 center">
-<h2>Ill-conditioned linear systems</h2>
+<h2><em>Ill-conditioned linear systems</em></h2>
 <aside class="notes">
 <p>Sometimes it’s not the procedure that introduces the susceptibility to small changes, but the actual problem itself. Then, small differences in the inputs lead to big differences in the <em>exact solutions</em>.</p>
 <style type="text/css">
@@ -923,7 +923,7 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 </section>
 
 <section id="ill-conditioned-linear-systems-2" class="title-slide slide level2 center">
-<h2>Ill-conditioned linear systems</h2>
+<h2><em>Ill-conditioned linear systems</em></h2>
 
 <div class="columns">
 <div class="column" style="width:49%;">
@@ -971,7 +971,7 @@ x=1 \quad \text { and } \quad y=-1 .
 </div></aside></section>
 
 <section id="section-4" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>What if <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_2\)</span> are the results of an experiment, need to be read off a dial? Suppose:</p>
 <ul>
 <li class="fragment">dial can be read to tolerance of <span class="math inline">\(\pm .001\)</span>,</li>
@@ -997,7 +997,7 @@ x=1 \quad \text { and } \quad y=-1 .
 </section>
 
 <section id="section-5" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <div class="{r-fit-text}">
 <table class="table-striped table-hover">
 <caption>Possible readings</caption>
@@ -1034,14 +1034,14 @@ x=1 \quad \text { and } \quad y=-1 .
 </section>
 
 <section id="geometrical-interpretation" class="title-slide slide level2 center">
-<h2>Geometrical interpretation</h2>
+<h2><em>Geometrical interpretation</em></h2>
 <p>If two straight lines are almost parallel and if one of the lines is moved only slightly, then the point of intersection is drastically altered.</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_23_364f690b3cef9227e7c9g-038.jpg?height=457&amp;width=922&amp;top_left_y=280&amp;top_left_x=477" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_23_364f690b3cef9227e7c9g-038.jpg?height=457&amp;width=922&amp;top_left_y=280&amp;top_left_x=477"></a></p>
 <p>The point of intersection is the solution of the associated <span class="math inline">\(2 \times 2\)</span> linear system, so this is also drastically altered.</p>
 </section>
 
 <section id="section-6" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <ul>
 <li class="fragment">Often in real life, coefficients are empirically obtained</li>
 <li class="fragment">Will be off from “true” values by small amounts</li>
@@ -1053,11 +1053,11 @@ x=1 \quad \text { and } \quad y=-1 .
 </section>
 <section>
 <section id="example-polynomial-interpolation" class="title-slide slide level1 center">
-<h1>Example: Polynomial interpolation</h1>
+<h1><em>Example: Polynomial interpolation</em></h1>
 
 </section>
 <section id="polynomial-interpolation" class="title-slide slide level2 center">
-<h2>Polynomial interpolation</h2>
+<h2><em>Polynomial interpolation</em></h2>
 
 <p>Suppose we’d like to find a polynomial that can interpolate a given function.</p>
 <p>Take points 𝑥0,…𝑥𝑁 and values 𝑦0,…𝑦𝑁</p>
@@ -1080,7 +1080,7 @@ P(x) = \sum_{i=0}^N c_i x^i
 </div></aside></section>
 
 <section id="polynomial-interpolation-1" class="title-slide slide level2 center">
-<h2>Polynomial interpolation</h2>
+<h2><em>Polynomial interpolation</em></h2>
 <p>Or, stacking, <span class="math inline">\(c = \begin{bmatrix} c_0 &amp; \ldots &amp; c_N\end{bmatrix}\)</span>, <span class="math inline">\(y = \begin{bmatrix} y_0 &amp; \ldots &amp; y_N\end{bmatrix}\)</span> , and</p>
 <p><span class="math display">\[
 A = \begin{bmatrix} 1 &amp; x_0 &amp; x_0^2 &amp; \ldots &amp;x_0^N\\
@@ -1092,7 +1092,7 @@ A = \begin{bmatrix} 1 &amp; x_0 &amp; x_0^2 &amp; \ldots &amp;x_0^N\\
 </section>
 
 <section id="polynomial-interpolation-2" class="title-slide slide level2 center">
-<h2>Polynomial interpolation</h2>
+<h2><em>Polynomial interpolation</em></h2>
 <p><span class="math display">\[
 x*y
 \]</span></p>
@@ -1105,7 +1105,7 @@ x*y
 </section>
 
 <section id="results-for-n4-and-n10-points" class="title-slide slide level2 center">
-<h2>Results for n=4 and n=10 points</h2>
+<h2><em>Results for n=4 and n=10 points</em></h2>
 <div class="columns">
 <div class="column">
 <div id="de9b87f5" class="cell" data-execution_count="12">
@@ -1134,7 +1134,7 @@ x*y
 </section>
 
 <section id="max-error-for-different-values-of-n" class="title-slide slide level2 center">
-<h2>Max error for different values of n</h2>
+<h2><em>Max error for different values of n</em></h2>
 <div id="ea5ce818" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
@@ -1147,7 +1147,7 @@ x*y
 </section>
 
 <section id="the-problem-linear-dependency" class="title-slide slide level2 center">
-<h2>The problem: linear dependency</h2>
+<h2><em>The problem: linear dependency</em></h2>
 <div id="217cd5bc" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
@@ -1593,7 +1593,7 @@ x*y
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

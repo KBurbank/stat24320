@@ -411,25 +411,25 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/intuitions-about-rre-form" id="/toc-intuitions-about-rre-form">Intuitions about RRE form</a></li>
-<li class="fragment"><a href="#/example-tutorial-pagerank" id="/toc-example-tutorial-pagerank">Example + tutorial: Pagerank</a></li>
-<li class="fragment"><a href="#/diffusion" id="/toc-diffusion">Diffusion</a></li>
-<li class="fragment"><a href="#/reaction-diffusion-in-biology" id="/toc-reaction-diffusion-in-biology">Reaction-Diffusion in Biology</a></li>
+<li class="fragment"><a href="#/intuitions-about-rre-form" id="/toc-intuitions-about-rre-form"><em>Intuitions about RRE form</em></a></li>
+<li class="fragment"><a href="#/example-tutorial-pagerank" id="/toc-example-tutorial-pagerank"><em>Example + tutorial: Pagerank</em></a></li>
+<li class="fragment"><a href="#/diffusion" id="/toc-diffusion"><em>Diffusion</em></a></li>
+<li class="fragment"><a href="#/reaction-diffusion-in-biology" id="/toc-reaction-diffusion-in-biology"><em>Reaction-Diffusion in Biology</em></a></li>
 </ul>
 </nav>
 </section>
 <section id="a-resource-for-review" class="title-slide slide level2 center">
-<h2>A resource for review</h2>
+<h2><em>A resource for review</em></h2>
 <p>The glossary from the end of Strand: <a href="glossary.pdf">glossary.pdf</a></p>
 </section>
 
 <section>
 <section id="intuitions-about-rre-form" class="title-slide slide level1 center">
-<h1>Intuitions about RRE form</h1>
+<h1><em>Intuitions about RRE form</em></h1>
 
 </section>
 <section id="systems-with-non-unique-solutions" class="title-slide slide level2 center">
-<h2>Systems with non-unique solutions</h2>
+<h2><em>Systems with non-unique solutions</em></h2>
 <p>Solve for the variables <span class="math inline">\(x, y\)</span>, and <span class="math inline">\(z\)</span> in the system</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -494,7 +494,7 @@ x+y+z &amp; =2 \\
 </section>
 
 <section id="section" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>We keep on going… <span class="math display">\[
 \begin{aligned}
 &amp; {\left[\begin{array}{rrrr}
@@ -528,7 +528,7 @@ x+y+z &amp; =2 \\
 </section>
 
 <section id="free-versus-bound-variables" class="title-slide slide level2 center">
-<h2>Free versus bound variables</h2>
+<h2><em>Free versus bound variables</em></h2>
 <p>Suppose we have another augmented matrix, which after GJ elimination has become:</p>
 <p><span class="math display">\[
 \left[\begin{array}{rrrrr}
@@ -552,7 +552,7 @@ z+3 w &amp; =0 .
 </section>
 
 <section id="zero-solutions" class="title-slide slide level2 center">
-<h2>Zero solutions</h2>
+<h2><em>Zero solutions</em></h2>
 <p>Solve this system… <span class="math display">\[
 \begin{array}{r}
 x+y=1 \\
@@ -596,7 +596,7 @@ x+y=1 \\
 </section>
 
 <section id="consistency" class="title-slide slide level2 center">
-<h2>Consistency</h2>
+<h2><em>Consistency</em></h2>
 <p>For an augmented matrix in RREF, if the only only nonzero entry in a row appears on the right-hand side,</p>
 <p><span class="math display">\[\text { Row } i \longrightarrow\left(
 \begin{array}{cccccc|c}
@@ -631,7 +631,7 @@ x+y=1 \\
 </section>
 
 <section id="what-reduced-row-echelon-form-tells-us" class="title-slide slide level2 center">
-<h2>What Reduced Row Echelon Form tells us</h2>
+<h2><em>What Reduced Row Echelon Form tells us</em></h2>
 <p>Suppose a matrix <span class="math inline">\(A_{m \times n}\)</span> has a reduced row echelon form <span class="math inline">\(E_{m \times n}\)</span>: <span class="math display">\[ E_A=\left(\begin{array}{cccccccc}1 &amp; * &amp; 0 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right)\]</span></p>
 <aside class="notes">
 <p>What can we learn from the RREF of a matrix? What does it tell us? It can tell us which variables are free vs bound, and therefore how <em>many</em> variables are bound. (This is the rank of the matrix!)</p>
@@ -649,7 +649,7 @@ x+y=1 \\
 </section>
 
 <section id="which-variables-are-free-and-bound" class="title-slide slide level2 center">
-<h2>Which variables are free and bound</h2>
+<h2><em>Which variables are free and bound</em></h2>
 <p>Suppose a matrix <span class="math inline">\(A_{m \times n}\)</span> has a reduced row echelon form <span class="math inline">\(E_{m \times n}\)</span>: <span class="math display">\[ E_A=\left(\begin{array}{cccccccc}1 &amp; * &amp; 0 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right)\]</span></p>
 <p>“Basic columns” correspond to the columns in <span class="math inline">\(A\)</span> which contain the pivotal positions.</p>
 <p>Each non-basic column can be formed as a sum of the basic columns to the left.</p>
@@ -657,19 +657,19 @@ x+y=1 \\
 </section>
 
 <section id="rank" class="title-slide slide level2 center">
-<h2>Rank</h2>
+<h2><em>Rank</em></h2>
 <p>Suppose a matrix <span class="math inline">\(A_{m \times n}\)</span> has a reduced row echelon form <span class="math inline">\(E_{m \times n}\)</span>: <span class="math display">\[ E_A=\left(\begin{array}{cccccccc}1 &amp; * &amp; 0 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right)\]</span></p>
 <p><em>rank(<span class="math inline">\(A\)</span>)</em> = # of pivots = # of nonzero rows in <span class="math inline">\(E\)</span> = # <em>bound variables</em> in the system</p>
 </section>
 
 <section id="nullity" class="title-slide slide level2 center">
-<h2>Nullity</h2>
+<h2><em>Nullity</em></h2>
 <p>Suppose a matrix <span class="math inline">\(A_{m \times n}\)</span> has a reduced row echelon form <span class="math inline">\(E_{m \times n}\)</span>: <span class="math display">\[ E_A=\left(\begin{array}{cccccccc}1 &amp; * &amp; 0 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; * &amp; * &amp; 0 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right)\]</span></p>
 <p><em>nullity(<span class="math inline">\(A\)</span>)</em> = # of non-pivot columns = # <em>free variables</em> in the system</p>
 </section>
 
 <section id="consistency-1" class="title-slide slide level2 center">
-<h2>Consistency</h2>
+<h2><em>Consistency</em></h2>
 <p>Equivalent ways of saying <span class="math inline">\(A\)</span> is consistent:</p>
 <ul>
 <li class="fragment">In row reducing <span class="math inline">\([\mathbf{A} \mid \mathbf{b}]\)</span>, a row of the following form never appears:</li>
@@ -694,7 +694,7 @@ x+y=1 \\
 </div></aside></section>
 
 <section id="homogeneous-systems" class="title-slide slide level2 center">
-<h2>Homogeneous Systems</h2>
+<h2><em>Homogeneous Systems</em></h2>
 <ul>
 <li class="fragment"><p>The general linear system with <span class="math inline">\(m \times n\)</span> coefficient matrix <span class="math inline">\(A\)</span> and right-hand-side vector <span class="math inline">\(\mathbf{b}\)</span> is <strong>homogeneous</strong> if the entries of <span class="math inline">\(\mathbf{b}\)</span> are all zero.</p></li>
 <li class="fragment"><p>Otherwise, the system is <strong>inhomogeneous</strong>.</p></li>
@@ -706,11 +706,11 @@ x+y=1 \\
 </section>
 <section>
 <section id="example-tutorial-pagerank" class="title-slide slide level1 center">
-<h1>Example + tutorial: Pagerank</h1>
+<h1><em>Example + tutorial: Pagerank</em></h1>
 
 </section>
 <section id="pagerank" class="title-slide slide level2 center">
-<h2>Pagerank</h2>
+<h2><em>Pagerank</em></h2>
 <p>Goal: rank pages in terms of “importance”. Suppose we have four pages:</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-020.jpg?height=307&amp;width=436&amp;top_left_y=682&amp;top_left_x=541" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-020.jpg?height=307&amp;width=436&amp;top_left_y=682&amp;top_left_x=541"></a></p>
 <div class="callout callout-none no-icon callout-style-simple">
@@ -748,7 +748,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} \frac{x_{j}}{n_{j}}
 </section>
 
 <section id="working-through-pagerank-try-3" class="title-slide slide level2 center">
-<h2>Working through PageRank: try 3</h2>
+<h2><em>Working through PageRank: try 3</em></h2>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-020.jpg?height=307&amp;width=436&amp;top_left_y=682&amp;top_left_x=541" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-020.jpg?height=307&amp;width=436&amp;top_left_y=682&amp;top_left_x=541"></a></p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -791,12 +791,12 @@ x_{i}=\sum_{x_{j} \in L_{i}} \frac{x_{j}}{n_{j}}
 </section>
 
 <section id="jupyterlab" class="title-slide slide level2 center">
-<h2>JupyterLab</h2>
+<h2><em>JupyterLab</em></h2>
 <p>https://tinyurl.com/stat24320notebook1</p>
 </section>
 
 <section id="now-what-about-the-second-try" class="title-slide slide level2 center">
-<h2>Now what about the second try?</h2>
+<h2><em>Now what about the second try?</em></h2>
 <p>Remember this was our ‘second try’: <span class="math display">\[
 \begin{equation*}
 x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
@@ -828,11 +828,11 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 <section>
 <section id="diffusion" class="title-slide slide level1 center">
-<h1>Diffusion</h1>
+<h1><em>Diffusion</em></h1>
 
 </section>
 <section id="discretizing-continuous-functions" class="title-slide slide level2 center">
-<h2>Discretizing continuous functions</h2>
+<h2><em>Discretizing continuous functions</em></h2>
 <ul>
 <li class="fragment"><p>Rod with fixed temperatures <span class="math inline">\(y_{left}\)</span> and <span class="math inline">\(y_{right}\)</span> at each end, internal heat source given as <span class="math inline">\(f(x), 0 \leq x \leq 1\)</span></p></li>
 <li class="fragment"><p>What’s the temperature at each point along the length?</p></li>
@@ -840,7 +840,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 
 <section id="section-1" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <center>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -932,7 +932,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 
 <section id="section-2" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p>Build the matrix representing the system of equations:</p>
 <div id="aa11858f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>N<span class="op">=</span><span class="dv">6</span></span>
@@ -951,7 +951,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 
 <section id="section-3" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <p><span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right)
@@ -969,7 +969,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 
 <section id="section-4" class="title-slide slide level2 center">
-<h2></h2>
+<h2><em></em></h2>
 <div id="8ffcad14" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>sol<span class="op">=</span>M.gauss_jordan_solve(f)</span>
 <span id="cb3-2"><a></a>sol[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -980,7 +980,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 
 <section id="now-you" class="title-slide slide level2 center">
-<h2>Now you</h2>
+<h2><em>Now you</em></h2>
 <ol type="1">
 <li class="fragment">Implement this yourself in Python</li>
 <li class="fragment">Make a plot of the output (you’ll want to use PyPlot)</li>
@@ -991,11 +991,11 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
 </section>
 <section>
 <section id="reaction-diffusion-in-biology" class="title-slide slide level1 center">
-<h1>Reaction-Diffusion in Biology</h1>
+<h1><em>Reaction-Diffusion in Biology</em></h1>
 
 </section>
 <section id="turing-pattern-formation" class="title-slide slide level2 center">
-<h2>Turing pattern formation</h2>
+<h2><em>Turing pattern formation</em></h2>
 <p>https://colab.research.google.com/github/ijmbarr/turing-patterns/blob/master/turing-patterns.ipynb#scrollTo=GsEPBsz33E14</p>
 
 <div class="quarto-auto-generated-content">
@@ -1423,7 +1423,7 @@ x_{i}=\sum_{x_{j} \in L_{i}} x_{j}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -557,7 +557,7 @@
     "href": "lectures/ch2_lecture1.html#matrix-addition-and-subtraction",
     "title": "Ch2 Lecture 1",
     "section": "Matrix Addition and Subtraction",
-    "text": "Matrix Addition and Subtraction\nReview these on your own!"
+    "text": "Matrix Addition and Subtraction\nReview matrix addition and subtraction on your own!"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#matrix-multiplication",
@@ -571,28 +571,21 @@
     "href": "lectures/ch2_lecture1.html#definition-of-matrix-product",
     "title": "Ch2 Lecture 1",
     "section": "Definition of matrix product",
-    "text": "Definition of matrix product\n\\(A=\\left[a_{i j}\\right]\\) is an \\(m \\times p\\) matrix \\(B=\\left[b_{i j}\\right]\\) a \\(p \\times n\\) matrix. Product of the matrices \\(A\\) and \\(B\\) – \\(A B\\), is the \\(m \\times n\\) matrix whose \\((i, j)\\) th entry, for \\(1 \\leq i \\leq m\\) and \\(1 \\leq j \\leq n\\), is the entry of the product of the \\(i\\) th row of \\(A\\) and the \\(j\\) th column of \\(B\\);\n\nMore specifically, the \\((i, j)\\) th entry of \\(A B\\) is\n\\[\na_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\\cdots+a_{i p} b_{p j} .\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#matrix-multiplication-is-not-commutative",
-    "href": "lectures/ch2_lecture1.html#matrix-multiplication-is-not-commutative",
-    "title": "Ch2 Lecture 1",
-    "section": "Matrix Multiplication is not Commutative",
-    "text": "Matrix Multiplication is not Commutative\nReminder: Matrix Multiplication is not Commutative\n\n\\(A B \\neq B A\\) in general."
+    "text": "Definition of matrix product\n\\(A=\\left[a_{i j}\\right]\\): \\(m \\times p\\) matrix\n\\(B=\\left[b_{i j}\\right]\\): \\(p \\times n\\) matrix.\nProduct of \\(A\\) and \\(B\\) – \\(A B\\)\n\nis \\(m \\times n\\) matrix whose\n\\((i, j)\\) th entry is the entry of the product of the \\(i\\) th row of \\(A\\) and the \\(j\\) th column of \\(B\\);\n\n\nMore specifically, the \\((i, j)\\) th entry of \\(A B\\) is\n\\[\na_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\\cdots+a_{i p} b_{p j} .\n\\]\nReminder: Matrix Multiplication is not Commutative\n\n\\(A B \\neq B A\\) in general."
   },
   {
     "objectID": "lectures/ch2_lecture1.html#linear-systems-as-a-matrix-product",
     "href": "lectures/ch2_lecture1.html#linear-systems-as-a-matrix-product",
     "title": "Ch2 Lecture 1",
     "section": "Linear Systems as a Matrix Product",
-    "text": "Linear Systems as a Matrix Product\nExpress the following linear system as a matrix product:\n\\[\n\\begin{aligned}\nx_{1}+x_{2}+x_{3} & =4 \\\\\n2 x_{1}+2 x_{2}+5 x_{3} & =11 \\\\\n4 x_{1}+6 x_{2}+8 x_{3} & =24\n\\end{aligned}\n\\]\n\n\\[\n\\mathbf{x}=\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right], \\quad \\mathbf{b}=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right], \\quad \\text { and } A=\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 2 & 5 \\\\\n4 & 6 & 8\n\\end{array}\\right]\n\\]\n\nOf course, \\(A\\) is just the coefficient matrix of the system and \\(b\\) is the righthand-side vector, which we have seen several times before. But now these take on a new significance. Notice that if we take the first row of \\(A\\) and multiply it by \\(\\mathbf{x}\\) we get the left-hand side of the first equation of our system. Likewise for the second and third rows. Therefore, we may write in the language of matrices that\n\n\n\n\\[\nA \\mathbf{x}=\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 2 & 5 \\\\\n4 & 6 & 8\n\\end{array}\\right]\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right]=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right]=\\mathbf{b}\n\\]\n\nWe can multiply this out and get that \\(x_1\\) multiplies each of the elements in the first column… (show this)"
+    "text": "Linear Systems as a Matrix Product\nWe can express a linear system of equations as a matrix product:\n\\[\n\\begin{aligned}\nx_{1}+x_{2}+x_{3} & =4 \\\\\n2 x_{1}+2 x_{2}+5 x_{3} & =11 \\\\\n4 x_{1}+6 x_{2}+8 x_{3} & =24\n\\end{aligned}\n\\]\n\n\\[\n\\mathbf{x}=\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right], \\quad \\mathbf{b}=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right], \\quad \\text { and } A=\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 2 & 5 \\\\\n4 & 6 & 8\n\\end{array}\\right]\n\\]\n\nOf course, \\(A\\) is just the coefficient matrix of the system and \\(b\\) is the righthand-side vector, which we have seen several times before. But now these take on a new significance. Notice that if we take the first row of \\(A\\) and multiply it by \\(\\mathbf{x}\\) we get the left-hand side of the first equation of our system. Likewise for the second and third rows. Therefore, we may write in the language of matrices that\n\n\n\n\\[\nA \\mathbf{x}=\\left[\\begin{array}{lll}\n1 & 1 & 1 \\\\\n2 & 2 & 5 \\\\\n4 & 6 & 8\n\\end{array}\\right]\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right]=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right]=\\mathbf{b}\n\\]\n\nWe can multiply this out and get that \\(x_1\\) multiplies each of the elements in the first column… (show this)"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#matrix-multiplication-as-a-linear-combination-of-column-vectors",
     "href": "lectures/ch2_lecture1.html#matrix-multiplication-as-a-linear-combination-of-column-vectors",
     "title": "Ch2 Lecture 1",
     "section": "Matrix Multiplication as a Linear Combination of Column Vectors",
-    "text": "Matrix Multiplication as a Linear Combination of Column Vectors\nAnother way of writing this system:\n\\[\nx_{1}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n4\n\\end{array}\\right]+x_{2}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n6\n\\end{array}\\right]+x_{3}\\left[\\begin{array}{l}\n1 \\\\\n5 \\\\\n8\n\\end{array}\\right]=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right] .\n\\]\n\nName the columns of A as \\(\\mathbf{a_1}, \\mathbf{a_2}, \\mathbf{a_3}\\), then we can write the matrix as \\(A=\\left[\\mathbf{a}_{1}, \\mathbf{a}_{2}, \\mathbf{a}_{3}\\right]\\)\n\n\nLet \\(\\mathbf{x}=\\left(x_{1}, x_{2}, x_{3}\\right)\\). Then\n\\[\nA \\mathbf{x}=x_{1} \\mathbf{a}_{1}+x_{2} \\mathbf{a}_{2}+x_{3} \\mathbf{a}_{3} .\n\\]\n** This is a very important way of thinking about matrix multiplication **"
+    "text": "Matrix Multiplication as a Linear Combination of Column Vectors\nAnother way of writing this system:\n\\[\nx_{1}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n4\n\\end{array}\\right]+x_{2}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n6\n\\end{array}\\right]+x_{3}\\left[\\begin{array}{l}\n1 \\\\\n5 \\\\\n8\n\\end{array}\\right]=\\left[\\begin{array}{r}\n4 \\\\\n11 \\\\\n24\n\\end{array}\\right] .\n\\]\n\nName the columns of A as \\(\\mathbf{a_1}, \\mathbf{a_2}, \\mathbf{a_3}\\), then we can write the matrix as \\(A=\\left[\\mathbf{a}_{1}, \\mathbf{a}_{2}, \\mathbf{a}_{3}\\right]\\)\n\n\nLet \\(\\mathbf{x}=\\left(x_{1}, x_{2}, x_{3}\\right)\\). Then\n\\[\nA \\mathbf{x}=x_{1} \\mathbf{a}_{1}+x_{2} \\mathbf{a}_{2}+x_{3} \\mathbf{a}_{3} .\n\\]\n** This is a very important way of thinking about matrix multiplication **\n\nWhat happens if we are trying to get something which can’t be made up of any combination of the columns of \\(A\\)?\nWhat happens if two or more of the columns of \\(A\\) are the same?\nWhat if they are multiples of one another?\nWhat if one column is a linear combination of several others?"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#example-benzoic-acid",
@@ -620,6 +613,13 @@
     "href": "lectures/ch2_lecture1.html#scaling",
     "title": "Ch2 Lecture 1",
     "section": "Scaling",
-    "text": "Scaling"
+    "text": "Scaling\n\nThis is a test of an exercise. We can make it much much longer if we want, and even put some math inside:\n\\[\nE=mc^2\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-2",
+    "href": "lectures/ch2_lecture1.html#section-2",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "And something else.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   }
 ]

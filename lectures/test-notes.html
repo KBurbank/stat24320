@@ -16,7 +16,7 @@
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
-  <title>Stat 24320 - Ch2 Lecture 1</title>
+  <title>Stat 24320 - a test</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -490,7 +490,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":1,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":2,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}},{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([2.3,4.2,5])\nplt.show()","id":3,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"read-only":"false","message":"true","fig-height":5,"warning":"true","results":"markup","comment":"","dpi":72,"context":"interactive","classes":"","label":"","out-width":"700px","output":"true","fig-cap":"","fig-width":7,"autorun":"","out-height":""},"code":"import matplotlib.pyplot as plt\nplt.plot([1, 2, 3, 4])\nplt.show()"}];
 
 
   </script>
@@ -696,7 +696,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ch2 Lecture 1</h1>
+  <h1 class="title">a test</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -705,413 +705,18 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/review-of-matrix-arithmetic" id="/toc-review-of-matrix-arithmetic"><em>Review of Matrix Arithmetic</em></a></li>
-<li class="fragment"><a href="#/matrix-multiplication-as-a-function" id="/toc-matrix-multiplication-as-a-function"><em>Matrix Multiplication as a Function</em></a></li>
-<li class="fragment"><a href="#/transformations" id="/toc-transformations"><em>Transformations</em></a></li>
+<li class="fragment"><a href="#/a-test" id="/toc-a-test"><em>A test</em></a></li>
 </ul>
 </nav>
 </section>
 <section>
-<section id="review-of-matrix-arithmetic" class="title-slide slide level1 center">
-<h1><em>Review of Matrix Arithmetic</em></h1>
+<section id="a-test" class="title-slide slide level1 center">
+<h1><em>A test</em></h1>
 
 </section>
-<section id="matrix-addition-and-subtraction" class="title-slide slide level2 center">
-<h2><em>Matrix Addition and Subtraction</em></h2>
-<p>Review matrix addition and subtraction on your own!</p>
-</section>
-
-<section id="matrix-multiplication" class="title-slide slide level2 center">
-<h2><em>Matrix Multiplication</em></h2>
-<p>For motivation:</p>
-<p><span class="math display">\[
-2 x-3 y+4 z=5 \text {. }
-\]</span></p>
-<ul>
-<li class="fragment">Can write as a “product” of the coefficient matrix <span class="math inline">\([2,-3,4]\)</span> and and the column matrix of unknowns <span class="math inline">\(\left[\begin{array}{l}x \\ y \\ z\end{array}\right]\)</span>.</li>
-</ul>
-<div class="fragment">
-<p>Thus, product is:</p>
-<p><span class="math display">\[
-[2,-3,4]\left[\begin{array}{l}
-x \\
-y \\
-z
-\end{array}\right]=[2 x-3 y+4 z]
-\]</span></p>
-</div>
-</section>
-
-<section id="definition-of-matrix-product" class="title-slide slide level2 center">
-<h2><em>Definition of matrix product</em></h2>
-<p><span class="math inline">\(A=\left[a_{i j}\right]\)</span>: <span class="math inline">\(m \times p\)</span> matrix</p>
-<p><span class="math inline">\(B=\left[b_{i j}\right]\)</span>: <span class="math inline">\(p \times n\)</span> matrix.</p>
-<p>Product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> – <span class="math inline">\(A B\)</span></p>
-<ul>
-<li class="fragment">is <span class="math inline">\(m \times n\)</span> matrix whose</li>
-<li class="fragment"><span class="math inline">\((i, j)\)</span> th entry is the entry of the product of the <span class="math inline">\(i\)</span> th row of <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span> th column of <span class="math inline">\(B\)</span>;</li>
-</ul>
-<div class="fragment">
-<p>More specifically, the <span class="math inline">\((i, j)\)</span> th entry of <span class="math inline">\(A B\)</span> is</p>
-<p><span class="math display">\[
-a_{i 1} b_{1 j}+a_{i 2} b_{2 j}+\cdots+a_{i p} b_{p j} .
-\]</span></p>
-<p><strong>Reminder</strong>: Matrix Multiplication is not Commutative</p>
-<ul>
-<li class="fragment"><span class="math inline">\(A B \neq B A\)</span> in general.</li>
-</ul>
-</div>
-</section>
-
-<section id="linear-systems-as-a-matrix-product" class="title-slide slide level2 center">
-<h2><em>Linear Systems as a Matrix Product</em></h2>
-<p>We can express a linear system of equations as a matrix product:</p>
-<p><span class="math display">\[
-\begin{aligned}
-x_{1}+x_{2}+x_{3} &amp; =4 \\
-2 x_{1}+2 x_{2}+5 x_{3} &amp; =11 \\
-4 x_{1}+6 x_{2}+8 x_{3} &amp; =24
-\end{aligned}
-\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[
-\mathbf{x}=\left[\begin{array}{l}
-x_{1} \\
-x_{2} \\
-x_{3}
-\end{array}\right], \quad \mathbf{b}=\left[\begin{array}{r}
-4 \\
-11 \\
-24
-\end{array}\right], \quad \text { and } A=\left[\begin{array}{lll}
-1 &amp; 1 &amp; 1 \\
-2 &amp; 2 &amp; 5 \\
-4 &amp; 6 &amp; 8
-\end{array}\right]
-\]</span></p>
-<aside class="notes">
-<p>Of course, <span class="math inline">\(A\)</span> is just the coefficient matrix of the system and <span class="math inline">\(b\)</span> is the righthand-side vector, which we have seen several times before. But now these take on a new significance. Notice that if we take the first row of <span class="math inline">\(A\)</span> and multiply it by <span class="math inline">\(\mathbf{x}\)</span> we get the left-hand side of the first equation of our system. Likewise for the second and third rows. Therefore, we may write in the language of matrices that</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-A \mathbf{x}=\left[\begin{array}{lll}
-1 &amp; 1 &amp; 1 \\
-2 &amp; 2 &amp; 5 \\
-4 &amp; 6 &amp; 8
-\end{array}\right]\left[\begin{array}{l}
-x_{1} \\
-x_{2} \\
-x_{3}
-\end{array}\right]=\left[\begin{array}{r}
-4 \\
-11 \\
-24
-\end{array}\right]=\mathbf{b}
-\]</span></p>
-<aside class="notes">
-<p>We can multiply this out and get that <span class="math inline">\(x_1\)</span> multiplies each of the elements in the first column… (show this)</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-
-<section id="matrix-multiplication-as-a-linear-combination-of-column-vectors" class="title-slide slide level2 center">
-<h2><em>Matrix Multiplication as a Linear Combination of Column Vectors</em></h2>
-<p>Another way of writing this system:</p>
-<p><span class="math display">\[
-x_{1}\left[\begin{array}{l}
-1 \\
-2 \\
-4
-\end{array}\right]+x_{2}\left[\begin{array}{l}
-1 \\
-2 \\
-6
-\end{array}\right]+x_{3}\left[\begin{array}{l}
-1 \\
-5 \\
-8
-\end{array}\right]=\left[\begin{array}{r}
-4 \\
-11 \\
-24
-\end{array}\right] .
-\]</span></p>
-<div class="fragment">
-<p>Name the columns of A as <span class="math inline">\(\mathbf{a_1}, \mathbf{a_2}, \mathbf{a_3}\)</span>, then we can write the matrix as <span class="math inline">\(A=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}\right]\)</span></p>
-</div>
-<div class="fragment">
-<p>Let <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, x_{3}\right)\)</span>. Then</p>
-<p><span class="math display">\[
-A \mathbf{x}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} .
-\]</span></p>
-<p><strong>This is a very important way of thinking about matrix multiplication</strong></p>
-<aside class="notes">
-<p>What happens if we are trying to get something which can’t be made up of <em>any</em> combination of the columns of <span class="math inline">\(A\)</span>?</p>
-<p>What happens if two or more of the columns of <span class="math inline">\(A\)</span> are the same?</p>
-<p>What if they are multiples of one another?</p>
-<p>What if one column is a linear combination of several others?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</div>
-</section>
-
-<section id="try-it-yourself" class="title-slide slide level2 center">
-<h2><em>Try it yourself</em></h2>
-<p>Try to find the solution for the following system, by trying different values of <span class="math inline">\(x_i\)</span> to use in a sum of the columns of <span class="math inline">\(A\)</span>.</p>
-<p><span class="math display">\[ A \mathbf{x} = \left[\begin{array}{lll}   1 &amp; 1 &amp; 1 \\   2 &amp; 2 &amp; 5 \\   4 &amp; 6 &amp; 8 \end{array}\right]\left[\begin{array}{l} x_1 \\ x_2 \\ x_3 \end{array}\right]=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} =\left[\begin{array}{l} 6 \\ 21 \\ 38 \end{array}\right]
-\]</span></p>
-<aside class="notes">
-<p>The answer is 2,1,3</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="a-slide" class="title-slide slide level2 center">
+<h2><em>A slide</em></h2>
 <div id="qpyodide-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="fragment">
-<p>Now try changing the right-hand side to a different vector. Can you still find a solution? (You may need to use non-integer values for the <span class="math inline">\(x\)</span>’s.)</p>
-</div>
-</section>
-
-<section id="section" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>This is a slightly changed system.</p>
-<p><span class="math display">\[ A \mathbf{x} = \left[\begin{array}{lll}   1 &amp; 1 &amp; 2 \\   1 &amp; 2 &amp; 2 \\   4 &amp; 6 &amp; 8 \end{array}\right]\left[\begin{array}{l} x_1 \\ x_2 \\ x_3 \end{array}\right]=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} =\left[\begin{array}{l} 11 \\ 12 \\ 46 \end{array}\right]
-\]</span></p>
-<aside class="notes">
-<p>The answer is 2, 1, 4</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div id="qpyodide-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="fragment">
-<p>Are you able to find more than one solution? Can you find a right-hand-side that <em>doesn’t</em> have a solution?</p>
-</div>
-</section>
-
-<section id="example-benzoic-acid" class="title-slide slide level2 center">
-<h2><em>Example: Benzoic acid</em></h2>
-<p>Benzoic acid (chemical formula <span class="math inline">\(\mathrm{C}_{7} \mathrm{H}_{6} \mathrm{O}_{2}\)</span> ) oxidizes to carbon dioxide and water.</p>
-<p><span class="math display">\[
-\mathrm{C}_{7} \mathrm{H}_{6} \mathrm{O}_{2}+\mathrm{O}_{2} \rightarrow \mathrm{CO}_{2}+\mathrm{H}_{2} \mathrm{O} .
-\]</span></p>
-<p>Balance this equation. (Make the number of atoms of each element match on the two sides of the equation.)</p>
-<div class="fragment">
-<p>Define <span class="math inline">\((c, o, h)\)</span> as the number of atoms of carbon, oxygen, and hydrogen atoms in the equation.</p>
-</div>
-<div class="fragment">
-<p>Next let <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, <span class="math inline">\(x_3\)</span>, and <span class="math inline">\(x_4\)</span> be the number of molecules of benzoic acid, oxygen, carbon dioxide, and water, respectively.</p>
-</div>
-<div class="fragment">
-<p>Then we have the equation</p>
-<p><span class="math display">\[
-x_{1}\left[\begin{array}{l}
-7 \\
-2 \\
-6
-\end{array}\right]+x_{2}\left[\begin{array}{l}
-0 \\
-2 \\
-0
-\end{array}\right]=x_{3}\left[\begin{array}{l}
-1 \\
-2 \\
-0
-\end{array}\right]+x_{4}\left[\begin{array}{l}
-0 \\
-1 \\
-2
-\end{array}\right] .
-\]</span></p>
-</div>
-</section>
-
-<section id="section-1" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>Rearrange:</p>
-<p><span class="math display">\[
-x_{1}\left[\begin{array}{l}
-7 \\
-2 \\
-6
-\end{array}\right]+x_{2}\left[\begin{array}{l}
-0 \\
-2 \\
-0
-\end{array}\right]=x_{3}\left[\begin{array}{l}
-1 \\
-2 \\
-0
-\end{array}\right]+x_{4}\left[\begin{array}{l}
-0 \\
-1 \\
-2
-\end{array}\right] .
-\]</span></p>
-<p>becomes</p>
-<p><span class="math display">\[
-A \mathbf{x}=\left[\begin{array}{cccc}
-7 &amp; 0 &amp; -1 &amp; 0 \\
-2 &amp; 2 &amp; -2 &amp; -1 \\
-6 &amp; 0 &amp; 0 &amp; -2
-\end{array}\right]\left[\begin{array}{l}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
-\end{array}\right]=\left[\begin{array}{l}
-0 \\
-0 \\
-0
-\end{array}\right]
-\]</span></p>
-<aside class="notes">
-<p>This is just like a matrix like we were solving in class last time.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-
-<section id="section-2" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>We solve with row reduction:</p>
-<p><span class="math display">\[
-\begin{aligned}
-&amp; {\left[\begin{array}{cccc}
-7 &amp; 0 &amp; -1 &amp; 0 \\
-2 &amp; 2 &amp; -2 &amp; -1 \\
-6 &amp; 0 &amp; 0 &amp; -2
-\end{array}\right] \xrightarrow[E_{21}\left(-\frac{2}{7}\right)]{E_{31}\left(-\frac{6}{7}\right)}\left[\begin{array}{cccc}
-7 &amp; 0 &amp; -1 &amp; 0 \\
-0 &amp; 2 &amp; -\frac{12}{7} &amp; -1 \\
-0 &amp; 0 &amp; \frac{6}{7} &amp; -2
-\end{array}\right] \begin{array}{c}
-E_{1}\left(\frac{1}{7}\right) \\
-E_{2}\left(\frac{1}{2}\right) \\
-E_{3}\left(\frac{7}{6}\right)
-\end{array} \left[\begin{array}{cccc}
-1 &amp; 0 &amp; -\frac{1}{7} &amp; 0 \\
-0 &amp; 1 &amp; -\frac{6}{7} &amp; -\frac{1}{2} \\
-0 &amp; 0 &amp; 1 &amp; -\frac{7}{3}
-\end{array}\right]} \\
-&amp; \begin{array}{l}
-\overrightarrow{E_{23}\left(\frac{6}{7}\right)} \\
-E_{13}\left(\frac{1}{7}\right)
-\end{array}\left[\begin{array}{llll}
-1 &amp; 0 &amp; 0 &amp; -\frac{1}{3} \\
-0 &amp; 1 &amp; 0 &amp; -\frac{5}{2} \\
-0 &amp; 0 &amp; 1 &amp; -\frac{7}{3}
-\end{array}\right]
-\end{aligned}
-\]</span></p>
-<div class="fragment">
-<p><span class="math inline">\(x_{4}\)</span> is free, others are bound. Now pick smallest <span class="math inline">\(x_4\)</span> where others are all positive integers…</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-2 \mathrm{C}_{7} \mathrm{H}_{6} \mathrm{O}_{2}+15 \mathrm{O}_{2} \rightarrow 14 \mathrm{CO}_{2}+2 \mathrm{H}_{2} \mathrm{O}
-\]</span></p>
-</div>
-</section>
-</section>
-<section id="matrix-multiplication-as-a-function" class="title-slide slide level1 center">
-<h1><em>Matrix Multiplication as a Function</em></h1>
-<aside class="notes">
-<p>We’ve been thinking about matrices as defining systems of equations.</p>
-<p>Here is another way of thinking about what a matrix does.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<p>Every matrix <span class="math inline">\(A\)</span> is associated with a <strong>function</strong> <span class="math inline">\(T_A\)</span> that takes a vector as input and returns a vector as output.</p>
-<p><span class="math display">\[
-T_{A}(\mathbf{u})=A \mathbf{u}
-\]</span></p>
-<div class="fragment">
-<p>Other names for <span class="math inline">\(T_A\)</span> are “linear transformation” or “linear operator”.</p>
-</div>
-</section>
-
-<section>
-<section id="transformations" class="title-slide slide level1 center">
-<h1><em>Transformations</em></h1>
-
-</section>
-<section id="scaling" class="title-slide slide level2 center">
-<h2><em>Scaling</em></h2>
-<div class="exercise">
-<p>This is a test of an exercise. We can make it much much longer if we want, and even put some math inside:</p>
-<p><span class="math display">\[
-E=mc^2
-\]</span></p>
-</div>
-</section>
-
-<section id="section-3" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>And something else.</p>
-<div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
@@ -1266,7 +871,7 @@ E=mc^2
         pause: true,
 
         // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
+        showNotes: true,
 
         // Global override for autoplaying embedded media (null/true/false)
         autoPlayMedia: null,

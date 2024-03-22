@@ -490,7 +490,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"4+3","options":{"autorun":"","message":"true","out-height":"","warning":"true","label":"","comment":"","context":"interactive","classes":"","results":"markup","read-only":"false","out-width":"700px","dpi":72,"fig-height":5,"fig-width":7,"fig-cap":"","output":"true"},"id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":1,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":2,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}},{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([2.3,4.2,5])\nplt.show()","id":3,"options":{"comment":"","out-width":"700px","context":"interactive","fig-width":7,"label":"","warning":"true","message":"true","read-only":"false","results":"markup","fig-height":5,"fig-cap":"","output":"true","autorun":"","dpi":72,"classes":"","out-height":""}}];
 
 
   </script>
@@ -865,7 +865,7 @@ x_{1}\left[\begin{array}{l}
 <p><span class="math display">\[
 A \mathbf{x}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} .
 \]</span></p>
-<p>** This is a very important way of thinking about matrix multiplication **</p>
+<p><strong>This is a very important way of thinking about matrix multiplication</strong></p>
 <aside class="notes">
 <p>What happens if we are trying to get something which can’t be made up of <em>any</em> combination of the columns of <span class="math inline">\(A\)</span>?</p>
 <p>What happens if two or more of the columns of <span class="math inline">\(A\)</span> are the same?</p>
@@ -882,6 +882,56 @@ A \mathbf{x}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} .
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+</section>
+
+<section id="try-it-yourself" class="title-slide slide level2 center">
+<h2><em>Try it yourself</em></h2>
+<p>Try to find the solution for the following system, by trying different values of <span class="math inline">\(x_i\)</span> to use in a sum of the columns of <span class="math inline">\(A\)</span>.</p>
+<p><span class="math display">\[ A \mathbf{x} = \left[\begin{array}{lll}   1 &amp; 1 &amp; 1 \\   2 &amp; 2 &amp; 5 \\   4 &amp; 6 &amp; 8 \end{array}\right]\left[\begin{array}{l} x_1 \\ x_2 \\ x_3 \end{array}\right]=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} =\left[\begin{array}{l} 6 \\ 21 \\ 38 \end{array}\right]
+\]</span></p>
+<aside class="notes">
+<p>The answer is 2,1,3</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div id="qpyodide-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="fragment">
+<p>Now try changing the right-hand side to a different vector. Can you still find a solution? (You may need to use non-integer values for the <span class="math inline">\(x\)</span>’s.)</p>
+</div>
+</section>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>This is a slightly changed system.</p>
+<p><span class="math display">\[ A \mathbf{x} = \left[\begin{array}{lll}   1 &amp; 1 &amp; 2 \\   1 &amp; 2 &amp; 2 \\   4 &amp; 6 &amp; 8 \end{array}\right]\left[\begin{array}{l} x_1 \\ x_2 \\ x_3 \end{array}\right]=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3} =\left[\begin{array}{l} 11 \\ 12 \\ 46 \end{array}\right]
+\]</span></p>
+<aside class="notes">
+<p>The answer is 2, 1, 4</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div id="qpyodide-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="fragment">
+<p>Are you able to find more than one solution? Can you find a right-hand-side that <em>doesn’t</em> have a solution?</p>
 </div>
 </section>
 
@@ -922,7 +972,7 @@ x_{1}\left[\begin{array}{l}
 </div>
 </section>
 
-<section id="section" class="title-slide slide level2 center">
+<section id="section-1" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Rearrange:</p>
 <p><span class="math display">\[
@@ -976,7 +1026,7 @@ x_{4}
       }</style></aside>
 </section>
 
-<section id="section-1" class="title-slide slide level2 center">
+<section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>We solve with row reduction:</p>
 <p><span class="math display">\[
@@ -1058,10 +1108,10 @@ E=mc^2
 </div>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>And something else.</p>
-<div id="qpyodide-insertion-location-1"></div>
+<div id="qpyodide-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
@@ -1180,7 +1230,7 @@ E=mc^2
         disableLayout: false,
 
         // Vertical centering of slides
-        center: false,
+        center: true,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -1690,7 +1740,20 @@ E=mc^2
             var outputGraphAreaDiv = document.createElement('div');
             outputGraphAreaDiv.id = `qpyodide-output-graph-area-${this.id}`;
             outputGraphAreaDiv.className = 'qpyodide-output-graph-area';
+            
 
+            if (typeof(Reveal)=="function"){
+              const resizeObserver = new ResizeObserver((entries) => {
+                for (const entry of entries) {
+                  Reveal.layout()
+                  console.log("size changed")
+                }
+              }
+              )
+              
+              resizeObserver.observe(outputGraphAreaDiv);
+              resizeObserver.observe(outputCodeAreaDiv);
+            }
             // Append buttons to the toolbar
             toolbarDiv.appendChild(leftButtonsDiv);
             toolbarDiv.appendChild(rightButtonsDiv);

@@ -17,6 +17,8 @@ function header() {
     let footer = document.querySelector("div.reveal-footer");
     body.appendChild(footer)
 
+
+
     let chalkboard = document.querySelectorAll("div.chalkboard-button")
 
     chalkboard.forEach((button) => {
@@ -142,8 +144,9 @@ function header() {
 
     // Get the default header text element and innner HTML (i.e. literal text)
     var header_text = document.querySelector("div.header-text p");
-    const header_inner_html = header_text.innerHTML;
-
+    if (header_text != null){
+      const header_inner_html = header_text.innerHTML;
+    }
     var header_paras = document.querySelectorAll("div.reveal-header p");
     var dark = Reveal.getCurrentSlide().classList.contains('has-dark-background');
     add_class(dark, header_paras);

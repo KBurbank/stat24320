@@ -13,7 +13,10 @@
 <script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Testing Lightbox</title>
@@ -356,7 +359,13 @@
 </div>
 </div>
 </div>
-<p>Here is an image <img data-src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="image"></p>
+<p>Here is an image</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="image"><img data-src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="image"></a></p>
+<figcaption>image</figcaption>
+</figure>
+</div>
 <p>The end.</p>
 
 <div class="quarto-auto-generated-content">
@@ -385,6 +394,9 @@
 <div class="footer-section">
 <p> </p>
 </div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">image</span>
 </div>
 </section>
     </div>
@@ -780,6 +792,31 @@
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

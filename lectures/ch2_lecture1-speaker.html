@@ -490,7 +490,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","options":{"fig-cap":"","label":"","read-only":"false","classes":"","out-width":"700px","warning":"true","comment":"","output":"true","out-height":"","autorun":"","context":"interactive","fig-width":7,"message":"true","dpi":72,"results":"markup","fig-height":5},"id":1},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","options":{"fig-cap":"","label":"","read-only":"false","classes":"","out-width":"700px","warning":"true","comment":"","output":"true","out-height":"","autorun":"","context":"interactive","fig-width":7,"message":"true","dpi":72,"results":"markup","fig-height":5},"id":2},{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([2.3,4.2,5])\nplt.show()","options":{"fig-cap":"","label":"","read-only":"false","classes":"","out-width":"700px","warning":"true","comment":"","output":"true","out-height":"","autorun":"","context":"interactive","fig-width":7,"message":"true","dpi":72,"results":"markup","fig-height":5},"id":3}];
+  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","options":{"context":"interactive","comment":"","read-only":"false","fig-width":7,"output":"true","label":"","fig-height":5,"classes":"","autorun":"","dpi":72,"out-height":"","results":"markup","message":"true","warning":"true","out-width":"700px","fig-cap":""},"id":1},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","options":{"context":"interactive","comment":"","read-only":"false","fig-width":7,"output":"true","label":"","fig-height":5,"classes":"","autorun":"","dpi":72,"out-height":"","results":"markup","message":"true","warning":"true","out-width":"700px","fig-cap":""},"id":2},{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([2.3,4.2,5])\nplt.show()","options":{"context":"interactive","comment":"","read-only":"false","fig-width":7,"output":"true","label":"","fig-height":5,"classes":"","autorun":"","dpi":72,"out-height":"","results":"markup","message":"true","warning":"true","out-width":"700px","fig-cap":""},"id":3}];
 
 
   </script>
@@ -705,11 +705,30 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
+<li class="fragment"><a href="#/reaction-diffusion-equations" id="/toc-reaction-diffusion-equations"><em>Reaction-Diffusion Equations</em></a></li>
 <li class="fragment"><a href="#/review-of-matrix-arithmetic" id="/toc-review-of-matrix-arithmetic"><em>Review of Matrix Arithmetic</em></a></li>
 <li class="fragment"><a href="#/matrix-multiplication-as-a-function" id="/toc-matrix-multiplication-as-a-function"><em>Matrix Multiplication as a Function</em></a></li>
 <li class="fragment"><a href="#/transformations" id="/toc-transformations"><em>Transformations</em></a></li>
 </ul>
 </nav>
+</section>
+<section>
+<section id="reaction-diffusion-equations" class="title-slide slide level1 center">
+<h1><em>Reaction-Diffusion Equations</em></h1>
+
+</section>
+<section id="diffusion" class="title-slide slide level2 center">
+<h2><em>Diffusion</em></h2>
+
+</section>
+
+<section id="reaction-diffusion-equations-1" class="title-slide slide level2 quarto-embed-nb-cell center" data-notebook="/Users/kendra/LinearAlg/LinearAlgLectures/notebooks/turing_patterns.ipynb" data-notebook-title="Turing Patterns" data-notebook-cellid="cell-reaction-diffusion-equations">
+<h2><em>Reaction Diffusion Equations</em></h2>
+<p>Reaction-Diffusion equations are a class of partial differential equations whose dynamics are governed by two terms: a diffusion part and a reaction part. We will be looking at the two component case, which takes the form</p>
+<p><span class="math inline">\(\frac{\partial a(x,t)}{\partial t} = D_{a}\frac{\partial^{2} a(x,t)}{\partial x^{2}} + R_{a}(a(x,t),b(x,t))\)</span></p>
+<p><span class="math inline">\(\frac{\partial b(x,t)}{\partial t} = D_{b}\frac{\partial^{2} b(x,t)}{\partial x^{2}} + R_{b}(a(x,t),b(x,t))\)</span></p>
+<p>Where the <span class="math inline">\(a(x,t)\)</span> and <span class="math inline">\(b(x,t)\)</span> describe the concentration of chemicals <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> at position <span class="math inline">\(x\)</span> and time <span class="math inline">\(t\)</span>. The functions <span class="math inline">\(R_{a}\)</span> and <span class="math inline">\(R_{b}\)</span> determine how the concentrations change due to interspecies reactions and <span class="math inline">\(D_{a}\)</span> and <span class="math inline">\(D_{b}\)</span> are the diffusion coefficients.</p>
+</section>
 </section>
 <section>
 <section id="review-of-matrix-arithmetic" class="title-slide slide level1 center">

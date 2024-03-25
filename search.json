@@ -588,6 +588,20 @@
     "text": "The problem: linear dependency\n\n\n\n\n\n\n\n\n\n\nAs n gets higher, \\(x^n\\) gets closer to \\(x^{n+1}\\) (at least in the range \\((0,1)\\)). This means that a solution of \\(a_n x^n + a_{n+1} x^{n+1}\\) will be very similar to e.g. \\(a_{n+1} x^n + a_{n} x^{n+1}\\)"
   },
   {
+    "objectID": "lectures/ch2_lecture1.html#diffusion",
+    "href": "lectures/ch2_lecture1.html#diffusion",
+    "title": "Ch2 Lecture 1",
+    "section": "Diffusion",
+    "text": "Diffusion"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#reaction-diffusion-equations-1",
+    "href": "lectures/ch2_lecture1.html#reaction-diffusion-equations-1",
+    "title": "Ch2 Lecture 1",
+    "section": "Reaction Diffusion Equations",
+    "text": "Reaction Diffusion Equations\nReaction-Diffusion equations are a class of partial differential equations whose dynamics are governed by two terms: a diffusion part and a reaction part. We will be looking at the two component case, which takes the form\n\\(\\frac{\\partial a(x,t)}{\\partial t} = D_{a}\\frac{\\partial^{2} a(x,t)}{\\partial x^{2}} + R_{a}(a(x,t),b(x,t))\\)\n\\(\\frac{\\partial b(x,t)}{\\partial t} = D_{b}\\frac{\\partial^{2} b(x,t)}{\\partial x^{2}} + R_{b}(a(x,t),b(x,t))\\)\nWhere the \\(a(x,t)\\) and \\(b(x,t)\\) describe the concentration of chemicals \\(a\\) and \\(b\\) at position \\(x\\) and time \\(t\\). The functions \\(R_{a}\\) and \\(R_{b}\\) determine how the concentrations change due to interspecies reactions and \\(D_{a}\\) and \\(D_{b}\\) are the diffusion coefficients."
+  },
+  {
     "objectID": "lectures/ch2_lecture1.html#matrix-addition-and-subtraction",
     "href": "lectures/ch2_lecture1.html#matrix-addition-and-subtraction",
     "title": "Ch2 Lecture 1",

@@ -592,14 +592,84 @@
     "href": "lectures/ch2_lecture1.html#diffusion",
     "title": "Ch2 Lecture 1",
     "section": "Diffusion",
-    "text": "Diffusion"
+    "text": "Diffusion\n\nLast week, we talked about the diffusion equation. Here is the exact form:\n$ = D_{a} $\n\nWalk through why we have a first derivative for time, and a second derivative for space. It’s because if the concentration is increasing steadily in space at a given position, the same amount will enter (from the left) and leave (from the right). We only end up with a changing concentration if the rate of entry and exit are different.\n\n\nWe approximated this using the finite-difference method:\nTime derivative (which we had set to zero):\n\\[\n\\frac{\\partial a(x,t)}{\\partial t} \\approx \\frac{1}{dt}(a_{x,t+1} - a_{x,t})\n\\]\nSpacial part of the derivative (which is usually know as the Laplacian):\n\\[\n\\frac{\\partial^{2} a(x,t)}{\\partial x^{2}} \\approx \\frac{1}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})\n\\]\n\n\nThis gives us the finite-difference equation:\n\\[\na_{x,t+1} = a_{x,t} + dt\\left(  \\frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \\right)\n\\]\n\n\nAdapted from this blog post."
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#reaction-diffusion-equations-1",
-    "href": "lectures/ch2_lecture1.html#reaction-diffusion-equations-1",
+    "objectID": "lectures/ch2_lecture1.html#boundary-conditions",
+    "href": "lectures/ch2_lecture1.html#boundary-conditions",
     "title": "Ch2 Lecture 1",
-    "section": "Reaction Diffusion Equations",
-    "text": "Reaction Diffusion Equations\nReaction-Diffusion equations are a class of partial differential equations whose dynamics are governed by two terms: a diffusion part and a reaction part. We will be looking at the two component case, which takes the form\n\\(\\frac{\\partial a(x,t)}{\\partial t} = D_{a}\\frac{\\partial^{2} a(x,t)}{\\partial x^{2}} + R_{a}(a(x,t),b(x,t))\\)\n\\(\\frac{\\partial b(x,t)}{\\partial t} = D_{b}\\frac{\\partial^{2} b(x,t)}{\\partial x^{2}} + R_{b}(a(x,t),b(x,t))\\)\nWhere the \\(a(x,t)\\) and \\(b(x,t)\\) describe the concentration of chemicals \\(a\\) and \\(b\\) at position \\(x\\) and time \\(t\\). The functions \\(R_{a}\\) and \\(R_{b}\\) determine how the concentrations change due to interspecies reactions and \\(D_{a}\\) and \\(D_{b}\\) are the diffusion coefficients."
+    "section": "Boundary Conditions",
+    "text": "Boundary Conditions\n\nLast week, with our metal rod, we had boundary conditions where the temperatures at the ends of the rod were fixed at 0 degrees.\nWe needed to say something about the boundaries to solve the system of equations.\nAnother option is periodic boundary conditions.\nThese are like imagining the rod is a loop, so the temperature at the end of the rod is the same as the temperature at the beginning of the rod."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#periodic-boundary-conditions-np.roll",
+    "href": "lectures/ch2_lecture1.html#periodic-boundary-conditions-np.roll",
+    "title": "Ch2 Lecture 1",
+    "section": "Periodic Boundary Conditions: np.roll",
+    "text": "Periodic Boundary Conditions: np.roll\n\nWant an easy way to compute \\(a_{x+1}\\) for all \\(x\\)’s\nSuppose we have n points, and we want to compute \\(a_{x+1}\\) for all \\(x\\)=n.\nProblem: \\(a_{x+1}\\) would be off the end of the array!\nJust replace \\(a_{n+1}\\) with \\(a_{1}\\)\nCan do this easily with np.roll. Lets us compute \\(a_{x+1}\\) for all \\(x\\)’s.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#laplacian-with-periodic-boundary-conditions-in-python",
+    "href": "lectures/ch2_lecture1.html#laplacian-with-periodic-boundary-conditions-in-python",
+    "title": "Ch2 Lecture 1",
+    "section": "Laplacian with Periodic Boundary Conditions in Python",
+    "text": "Laplacian with Periodic Boundary Conditions in Python\n\nimport numpy as np\ndef laplacian1D(a, dx):\n    return (\n        - 2 * a\n        + np.roll(a,1,axis=0)\n        + np.roll(a,-1,axis=0)\n    ) / (dx ** 2)\n\ndef laplacian2D(a, dx):\n    return (\n        - 4 * a\n        + np.roll(a,1,axis=0)\n        + np.roll(a,-1,axis=0)\n        + np.roll(a,+1,axis=1)\n        + np.roll(a,-1,axis=1)\n    ) / (dx ** 2)\n\n\n\nThe autoreload extension is already loaded. To reload it, use:\n  %reload_ext autoreload"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#solving-and-animating",
+    "href": "lectures/ch2_lecture1.html#solving-and-animating",
+    "title": "Ch2 Lecture 1",
+    "section": "Solving and animating",
+    "text": "Solving and animating\n\nclass OneDimensionalDiffusionEquation(BaseStateSystem):\n    def __init__(self, D):\n        self.D = D\n        self.width = 1000\n        self.dx = 10 / self.width\n        self.dt = 0.9 * (self.dx ** 2) / (2 * D)\n        self.steps = int(0.1 / self.dt)\n\n    def initialise(self):\n        self.t = 0\n        self.X = np.linspace(-5,5,self.width)\n        self.a = np.exp(-self.X**2)\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += self.dt\n            self._update()\n\n    def _update(self):\n        La = laplacian1D(self.a, self.dx)\n        delta_a = self.dt * (self.D * La)\n        self.a += delta_a\n\n    def draw(self, ax):\n        ax.clear()\n        ax.plot(self.X,self.a, color=\"r\")\n        ax.set_ylim(0,1)\n        ax.set_xlim(-5,5)\n        ax.set_title(\"t = {:.2f}\".format(self.t))\n\none_d_diffusion = OneDimensionalDiffusionEquation(D=1)\n\none_d_diffusion.plot_time_evolution(\"diffusion.gif\")\n\n\n\n\ndiffusion.gif"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#reaction-terms",
+    "href": "lectures/ch2_lecture1.html#reaction-terms",
+    "title": "Ch2 Lecture 1",
+    "section": "Reaction Terms",
+    "text": "Reaction Terms\n\nWe will have a system with two chemical components, \\(a\\) and \\(b\\).\nSuppose \\(a\\) activates genes which produce pigmentation. \\(b\\) inhibits \\(a\\)\nWill start with some random small initial concentrations of \\(a\\) and \\(b\\).\nEach will diffuse according to the diffusion equation.\nThey will also react with each other, changing the concentration of each.\n\n\nFor the reaction equations, will use the FitzHugh–Nagumo equation\n\\(R_a(a, b) = a - a^{3} - b + \\alpha\\)\n\\(R_{b}(a, b) = \\beta (a - b)\\)\nWhere \\(\\alpha\\) and \\(\\beta\\) are constants."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#reaction-equation-evolution-at-one-point-in-space",
+    "href": "lectures/ch2_lecture1.html#reaction-equation-evolution-at-one-point-in-space",
+    "title": "Ch2 Lecture 1",
+    "section": "Reaction Equation evolution at one point in space",
+    "text": "Reaction Equation evolution at one point in space\n\nclass ReactionEquation(BaseStateSystem):\n    def __init__(self, Ra, Rb):\n        self.Ra = Ra\n        self.Rb = Rb\n        self.dt = 0.01\n        self.steps = int(0.1 / self.dt)\n\n    def initialise(self):\n        self.t = 0\n        self.a = 0.1\n        self.b = 0.7\n        self.Ya = []\n        self.Yb = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += self.dt\n            self._update()\n\n    def _update(self):\n        delta_a = self.dt * self.Ra(self.a,self.b)\n        delta_b = self.dt * self.Rb(self.a,self.b)\n\n        self.a += delta_a\n        self.b += delta_b\n\n    def draw(self, ax):\n        ax.clear()\n\n        self.X.append(self.t)\n        self.Ya.append(self.a)\n        self.Yb.append(self.b)\n\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"A\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"B\")\n        ax.legend()\n\n        ax.set_ylim(0,1)\n        ax.set_xlim(0,5)\n        ax.set_xlabel(\"t\")\n        ax.set_ylabel(\"Concentrations\")\n\nalpha, beta =  0.2, 5\n\ndef Ra(a,b): return a - a ** 3 - b + alpha\ndef Rb(a,b): return (a - b) * beta\n\none_d_reaction = ReactionEquation(Ra, Rb)\none_d_reaction.plot_time_evolution(\"reaction.gif\", n_steps=50)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section",
+    "href": "lectures/ch2_lecture1.html#section",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "reaction.gif"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#full-model",
+    "href": "lectures/ch2_lecture1.html#full-model",
+    "title": "Ch2 Lecture 1",
+    "section": "Full Model",
+    "text": "Full Model\nWe now have two parts: - a diffusion term that “spreads” out concentration - a reaction part the equalises the two concentrations. . . .\nWhat happens when we put the two together? Do we get something stable?"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-1",
+    "href": "lectures/ch2_lecture1.html#section-1",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "def random_initialiser(shape):\n    return(\n        np.random.normal(loc=0, scale=0.05, size=shape),\n        np.random.normal(loc=0, scale=0.05, size=shape)\n    )\n\nclass OneDimensionalRDEquations(BaseStateSystem):\n    def __init__(self, Da, Db, Ra, Rb,\n                 initialiser=random_initialiser,\n                 width=1000, dx=1,\n                 dt=0.1, steps=1):\n\n        self.Da = Da\n        self.Db = Db\n        self.Ra = Ra\n        self.Rb = Rb\n\n        self.initialiser = initialiser\n        self.width = width\n        self.dx = dx\n        self.dt = dt\n        self.steps = steps\n\n    def initialise(self):\n        self.t = 0\n        self.a, self.b = self.initialiser(self.width)\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += self.dt\n            self._update()\n\n    def _update(self):\n\n        # unpack so we don't have to keep writing \"self\"\n        a,b,Da,Db,Ra,Rb,dt,dx = (\n            self.a, self.b,\n            self.Da, self.Db,\n            self.Ra, self.Rb,\n            self.dt, self.dx\n        )\n\n        La = laplacian1D(a, dx)\n        Lb = laplacian1D(b, dx)\n\n        delta_a = dt * (Da * La + Ra(a,b))\n        delta_b = dt * (Db * Lb + Rb(a,b))\n\n        self.a += delta_a\n        self.b += delta_b\n\n    def draw(self, ax):\n        ax.clear()\n        ax.plot(self.a, color=\"r\", label=\"A\")\n        ax.plot(self.b, color=\"b\", label=\"B\")\n        ax.legend()\n        ax.set_ylim(-1,1)\n        ax.set_title(\"t = {:.2f}\".format(self.t))\n\nDa, Db, alpha, beta = 1, 100, -0.005, 10\n\ndef Ra(a,b): return a - a ** 3 - b + alpha\ndef Rb(a,b): return (a - b) * beta\n\nwidth = 100\ndx = 1\ndt = 0.001\n\nOneDimensionalRDEquations(\n    Da, Db, Ra, Rb,\n    width=width, dx=dx, dt=dt,\n    steps=100\n).plot_time_evolution(\"1dRD.gif\", n_steps=150)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-2",
+    "href": "lectures/ch2_lecture1.html#section-2",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "1dRD.gif"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#in-two-dimensions",
+    "href": "lectures/ch2_lecture1.html#in-two-dimensions",
+    "title": "Ch2 Lecture 1",
+    "section": "In two dimensions",
+    "text": "In two dimensions\n\n\n\n2dRD.png"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#matrix-addition-and-subtraction",
@@ -644,8 +714,8 @@
     "text": "Try it yourself\nTry to find the solution for the following system, by trying different values of \\(x_i\\) to use in a sum of the columns of \\(A\\).\n\\[ A \\mathbf{x} = \\left[\\begin{array}{lll}   1 & 1 & 1 \\\\   2 & 2 & 5 \\\\   4 & 6 & 8 \\end{array}\\right]\\left[\\begin{array}{l} x_1 \\\\ x_2 \\\\ x_3 \\end{array}\\right]=x_{1} \\mathbf{a}_{1}+x_{2} \\mathbf{a}_{2}+x_{3} \\mathbf{a}_{3} =\\left[\\begin{array}{l} 6 \\\\ 21 \\\\ 38 \\end{array}\\right]\n\\]\n\nThe answer is 2,1,3\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNow try changing the right-hand side to a different vector. Can you still find a solution? (You may need to use non-integer values for the \\(x\\)’s.)"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section",
-    "href": "lectures/ch2_lecture1.html#section",
+    "objectID": "lectures/ch2_lecture1.html#section-3",
+    "href": "lectures/ch2_lecture1.html#section-3",
     "title": "Ch2 Lecture 1",
     "section": "",
     "text": "This is a slightly changed system.\n\\[ A \\mathbf{x} = \\left[\\begin{array}{lll}   1 & 1 & 2 \\\\   1 & 2 & 2 \\\\   4 & 6 & 8 \\end{array}\\right]\\left[\\begin{array}{l} x_1 \\\\ x_2 \\\\ x_3 \\end{array}\\right]=x_{1} \\mathbf{a}_{1}+x_{2} \\mathbf{a}_{2}+x_{3} \\mathbf{a}_{3} =\\left[\\begin{array}{l} 11 \\\\ 12 \\\\ 46 \\end{array}\\right]\n\\]\n\nThe answer is 2, 1, 4\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nAre you able to find more than one solution? Can you find a right-hand-side that doesn’t have a solution?"
@@ -658,15 +728,15 @@
     "text": "Example: Benzoic acid\nBenzoic acid (chemical formula \\(\\mathrm{C}_{7} \\mathrm{H}_{6} \\mathrm{O}_{2}\\) ) oxidizes to carbon dioxide and water.\n\\[\n\\mathrm{C}_{7} \\mathrm{H}_{6} \\mathrm{O}_{2}+\\mathrm{O}_{2} \\rightarrow \\mathrm{CO}_{2}+\\mathrm{H}_{2} \\mathrm{O} .\n\\]\nBalance this equation. (Make the number of atoms of each element match on the two sides of the equation.)\n\nDefine \\((c, o, h)\\) as the number of atoms of carbon, oxygen, and hydrogen atoms in the equation.\n\n\nNext let \\(x_1\\), \\(x_2\\), \\(x_3\\), and \\(x_4\\) be the number of molecules of benzoic acid, oxygen, carbon dioxide, and water, respectively.\n\n\nThen we have the equation\n\\[\nx_{1}\\left[\\begin{array}{l}\n7 \\\\\n2 \\\\\n6\n\\end{array}\\right]+x_{2}\\left[\\begin{array}{l}\n0 \\\\\n2 \\\\\n0\n\\end{array}\\right]=x_{3}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n0\n\\end{array}\\right]+x_{4}\\left[\\begin{array}{l}\n0 \\\\\n1 \\\\\n2\n\\end{array}\\right] .\n\\]"
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-1",
-    "href": "lectures/ch2_lecture1.html#section-1",
+    "objectID": "lectures/ch2_lecture1.html#section-4",
+    "href": "lectures/ch2_lecture1.html#section-4",
     "title": "Ch2 Lecture 1",
     "section": "",
     "text": "Rearrange:\n\\[\nx_{1}\\left[\\begin{array}{l}\n7 \\\\\n2 \\\\\n6\n\\end{array}\\right]+x_{2}\\left[\\begin{array}{l}\n0 \\\\\n2 \\\\\n0\n\\end{array}\\right]=x_{3}\\left[\\begin{array}{l}\n1 \\\\\n2 \\\\\n0\n\\end{array}\\right]+x_{4}\\left[\\begin{array}{l}\n0 \\\\\n1 \\\\\n2\n\\end{array}\\right] .\n\\]\nbecomes\n\\[\nA \\mathbf{x}=\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n2 & 2 & -2 & -1 \\\\\n6 & 0 & 0 & -2\n\\end{array}\\right]\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3} \\\\\nx_{4}\n\\end{array}\\right]=\\left[\\begin{array}{l}\n0 \\\\\n0 \\\\\n0\n\\end{array}\\right]\n\\]\n\nThis is just like a matrix like we were solving in class last time."
   },
   {
-    "objectID": "lectures/ch2_lecture1.html#section-2",
-    "href": "lectures/ch2_lecture1.html#section-2",
+    "objectID": "lectures/ch2_lecture1.html#section-5",
+    "href": "lectures/ch2_lecture1.html#section-5",
     "title": "Ch2 Lecture 1",
     "section": "",
     "text": "We solve with row reduction:\n\\[\n\\begin{aligned}\n& {\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n2 & 2 & -2 & -1 \\\\\n6 & 0 & 0 & -2\n\\end{array}\\right] \\xrightarrow[E_{21}\\left(-\\frac{2}{7}\\right)]{E_{31}\\left(-\\frac{6}{7}\\right)}\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n0 & 2 & -\\frac{12}{7} & -1 \\\\\n0 & 0 & \\frac{6}{7} & -2\n\\end{array}\\right] \\begin{array}{c}\nE_{1}\\left(\\frac{1}{7}\\right) \\\\\nE_{2}\\left(\\frac{1}{2}\\right) \\\\\nE_{3}\\left(\\frac{7}{6}\\right)\n\\end{array} \\left[\\begin{array}{cccc}\n1 & 0 & -\\frac{1}{7} & 0 \\\\\n0 & 1 & -\\frac{6}{7} & -\\frac{1}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]} \\\\\n& \\begin{array}{l}\n\\overrightarrow{E_{23}\\left(\\frac{6}{7}\\right)} \\\\\nE_{13}\\left(\\frac{1}{7}\\right)\n\\end{array}\\left[\\begin{array}{llll}\n1 & 0 & 0 & -\\frac{1}{3} \\\\\n0 & 1 & 0 & -\\frac{5}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]\n\\end{aligned}\n\\]\n\n\\(x_{4}\\) is free, others are bound. Now pick smallest \\(x_4\\) where others are all positive integers…\n\n\n\\[\n2 \\mathrm{C}_{7} \\mathrm{H}_{6} \\mathrm{O}_{2}+15 \\mathrm{O}_{2} \\rightarrow 14 \\mathrm{CO}_{2}+2 \\mathrm{H}_{2} \\mathrm{O}\n\\]"
@@ -676,14 +746,7 @@
     "href": "lectures/ch2_lecture1.html#scaling",
     "title": "Ch2 Lecture 1",
     "section": "Scaling",
-    "text": "Scaling\n\nThis is a test of an exercise. We can make it much much longer if we want, and even put some math inside:\n\\[\nE=mc^2\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture1.html#section-3",
-    "href": "lectures/ch2_lecture1.html#section-3",
-    "title": "Ch2 Lecture 1",
-    "section": "",
-    "text": "And something else.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Scaling\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ndiffusion.gif\nreaction.gif\n1dRD.gif\n2dRD.png"
   },
   {
     "objectID": "notebooks/pagerank_tutorial.html",

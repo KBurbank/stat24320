@@ -558,7 +558,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"fig-height":5,"comment":"","warning":"true","label":"","output":"true","classes":"","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","autorun":"","read-only":"false","message":"true","out-height":"","fig-width":7},"code":"import numpy as np\na = np.arange(10)\na\nnp.roll(a, -1)"},{"id":2,"options":{"fig-height":5,"comment":"","warning":"true","label":"","output":"true","classes":"","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","autorun":"","read-only":"false","message":"true","out-height":"","fig-width":7},"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"},{"id":3,"options":{"fig-height":5,"comment":"","warning":"true","label":"","output":"true","classes":"","results":"markup","context":"interactive","dpi":72,"out-width":"700px","fig-cap":"","autorun":"","read-only":"false","message":"true","out-height":"","fig-width":7},"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"}];
+  globalThis.qpyodideCellDetails = [{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":1,"code":"import numpy as np\na = np.arange(10)\na\nnp.roll(a, -1)"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":2,"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":3,"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":4,"code":"import sympy as sym\nS= sym.Matrix([[3/2, 0], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nS*point_1"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":5,"code":"import sympy as sym\nH= sym.Matrix([[1, 1/2], [0, 1])\npoint_1 = sym.Matrix([1, 1])\nH*point_1"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":6,"code":"import sympy as sym\nC= sym.Matrix([[3/2, 3/4], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nC*point_1"},{"options":{"warning":"true","output":"true","dpi":72,"fig-cap":"","label":"","read-only":"false","out-width":"700px","comment":"","context":"interactive","results":"markup","fig-width":7,"autorun":"","classes":"","out-height":"","fig-height":5,"message":"true"},"id":7,"code":"import matplotlib.pyplot as plt; import matplotlib.patches as mpatches; import sympy as sym;\nfig=plt.figure(); plt.clf()\nrectangle = sym.Matrix([[0,0],[0,1],[1,1],[1,0]])\nA=sym.Matrix([[1,.2],[.2,.2]])\nfig, ax = plt.subplots()\nax.add_patch(mpatches.Polygon((A*rectangle.T).T))\nax.add_patch(mpatches.Polygon((rectangle),fc=(1,0,0,0.25)))\nautomin, automax = plt.xlim(); plt.xlim(automin-0.5, automax+0.5);automin, automax = plt.ylim(); plt.ylim(automin-0.5, automax+0.5)\nplt.show()"}];
 
 
   </script>
@@ -1499,6 +1499,193 @@ T_{A}(\mathbf{u})=A \mathbf{u}
 </section>
 <section id="scaling" class="title-slide slide level2 center">
 <h2><em>Scaling</em></h2>
+<p>Goal: Make a matrix that will take a vector of coordinates <span class="math inline">\(\mathbf{x}\)</span> and scale each coordinate <span class="math inline">\(x_i\)</span> by a factor of <span class="math inline">\(z_i\)</span>.</p>
+<p><span class="math display">\[ A x = \left[\begin{array}{ll} a1 &amp; a2 \\ a3 &amp; a4 \end{array}\right] \left[\begin{array}{l} x_1 \\ x_2 \end{array}\right] = \left[\begin{array}{l} z_1 \times x_1 \\ z_2\times  x_2 \end{array}\right] \]</span></p>
+<div class="fragment">
+<p><span class="math display">\[ A = \left[\begin{array}{ll} z_1 &amp; 0 \\ 0 &amp; z_2 \end{array}\right] \]</span></p>
+</div>
+</section>
+
+<section id="shearing" class="title-slide slide level2 center">
+<h2><em>Shearing</em></h2>
+<p>Shearing: adding a constant shear factor times one coordinate to another coordinate of the point.</p>
+<p>Goal: make a matrix which will transform each coordinate <span class="math inline">\(x_i\)</span> into <span class="math inline">\(x_i + \sum_{j \ne i} s_{j} \times x_j\)</span>.</p>
+<p><span class="math display">\[ A x = \left[\begin{array}{ll} a1 &amp; a2 \\ a3 &amp; a4 \end{array}\right] \left[\begin{array}{l} x_1 \\ x_2 \end{array}\right] = \left[\begin{array}{l} x_1 + s_2 x_2 \\ x_2 + s_1 x_1 \end{array}\right] \]</span></p>
+<div class="fragment">
+<p><span class="math display">\[ A = \left[\begin{array}{ll} 1 &amp; s_2 \\ s_1 &amp; 1 \end{array}\right] \]</span></p>
+</div>
+</section>
+
+<section id="example" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<ul>
+<li class="fragment"><p>Let the scaling operator <span class="math inline">\(S\)</span> on points in two dimensions have scale factors of <span class="math inline">\(\frac{3}{2}\)</span> in the <span class="math inline">\(x\)</span>-direction and <span class="math inline">\(\frac{1}{2}\)</span> in the <span class="math inline">\(y\)</span>-direction.</p></li>
+<li class="fragment"><p>Let the shearing operator <span class="math inline">\(H\)</span> on these points have a shear factor of <span class="math inline">\(\frac{1}{2}\)</span> by the <span class="math inline">\(y\)</span>-coordinate on the <span class="math inline">\(x\)</span>-coordinate.</p></li>
+<li class="fragment"><p>Express these operators as matrix operators and graph their action on four unit squares situated diagonally from the origin.</p></li>
+</ul>
+</section>
+
+<section id="solution" class="title-slide slide level2 center">
+<h2><em>Solution</em></h2>
+<ul>
+<li class="fragment">Scaling operator <span class="math inline">\(S\)</span>:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+S((x, y))=\left[\begin{array}{c}
+\frac{3}{2} x \\
+\frac{1}{2} y
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{3}{2} &amp; 0 \\
+0 &amp; \frac{1}{2}
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]=T_{A}((x, y))
+\]</span></p>
+</div>
+<div class="fragment">
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=366&amp;top_left_y=1248&amp;top_left_x=178" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=366&amp;top_left_y=1248&amp;top_left_x=178"></a></p>
+</div>
+</section>
+
+<section id="verify" class="title-slide slide level2 center">
+<h2><em>Verify:</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=366&amp;top_left_y=1248&amp;top_left_x=178" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=366&amp;top_left_y=1248&amp;top_left_x=178"></a></p>
+<div id="qpyodide-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+
+<section id="section-6" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<ul>
+<li class="fragment">Shearing operator <span class="math inline">\(H\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+H((x, y))=\left[\begin{array}{c}
+x+\frac{1}{2} y \\
+y
+\end{array}\right]=\left[\begin{array}{ll}
+1 &amp; \frac{1}{2} \\
+0 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]=T_{B}((x, y))
+\]</span></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918"></a></p>
+</section>
+
+<section id="verify-1" class="title-slide slide level2 center">
+<h2><em>Verify</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918"></a></p>
+<div id="qpyodide-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+
+<section id="concatenation-of-operators-s-and-h" class="title-slide slide level2 center">
+<h2><em>Concatenation of operators <span class="math inline">\(S\)</span> and <span class="math inline">\(H\)</span></em></h2>
+<ul>
+<li class="fragment"><p>The concatenation <span class="math inline">\(S \circ H\)</span> of the scaling operator <span class="math inline">\(S\)</span> and shearing operator <span class="math inline">\(H\)</span> is the action of scaling followed by shearing.</p></li>
+<li class="fragment"><p>Function composition corresponds to matrix multiplication</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+S \circ H((x, y)) &amp; =T_{A} \circ T_{B}((x, y))=T_{A B}((x, y)) \\
+&amp; =\left[\begin{array}{cc}
+\frac{3}{2} &amp; 0 \\
+0 &amp; \frac{1}{2}
+\end{array}\right]\left[\begin{array}{ll}
+1 &amp; \frac{1}{2} \\
+0 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]=\left[\begin{array}{cc}
+\frac{3}{2} &amp; \frac{3}{4} \\
+0 &amp; \frac{1}{2}
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]=T_{C}((x, y)),
+\end{aligned}
+\]</span></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918"></a></p>
+</div>
+</section>
+
+<section id="verify-2" class="title-slide slide level2 center">
+<h2><em>Verify</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-098.jpg?height=323&amp;width=418&amp;top_left_y=1246&amp;top_left_x=918"></a></p>
+<div id="qpyodide-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+
+<section id="rotation" class="title-slide slide level2 center">
+<h2><em>Rotation</em></h2>
+<p>Goal: rotate a point in two dimensions counterclockwise by an angle <span class="math inline">\(\phi\)</span>. Suppose the point is initally at an angle <span class="math inline">\(\theta\)</span> from the <span class="math inline">\(x\)</span>-axis.</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-099.jpg?height=376&amp;width=450&amp;top_left_y=1366&amp;top_left_x=534" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-099.jpg?height=376&amp;width=450&amp;top_left_y=1366&amp;top_left_x=534"></a></p>
+</section>
+
+<section id="section-7" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]
+=\left[\begin{array}{l}
+r \cos \theta \\
+r \sin \theta
+\end{array}\right]
+\]</span></p>
+<p>We can use trigonometry to find the values of x and y after rotation.</p>
+<p><span class="math display">\[
+\left[\begin{array}{l}
+x^{\prime} \\
+y^{\prime}
+\end{array}\right] =\left[\begin{array}{l}
+r \cos (\theta+\phi) \\
+r \sin (\theta+\phi)
+\end{array}\right]=\left[\begin{array}{l}
+r \cos \theta \cos \phi-r \sin \theta \sin \phi \\
+r \sin \theta \cos \phi+r \cos \theta \sin \phi
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Using the double-angle rule,</p>
+<p><span class="math display">\[
+=\left[\begin{array}{rr}
+\cos \theta &amp;-\sin \theta \\
+\sin \theta &amp; \cos \theta
+\end{array}\right]\left[\begin{array}{l}
+r \cos \phi \\
+r \sin \phi
+\end{array}\right]=\left[\begin{array}{rr}
+\cos \theta&amp;-\sin \theta \\
+\sin \theta &amp; \cos \theta
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p>So we define the rotation matrix <span class="math inline">\(R(\theta)\)</span> by</p>
+<p><span class="math display">\[
+R(\theta)=\left[\begin{array}{rr}
+\cos \theta &amp; -\sin \theta \\
+\sin \theta &amp; \cos \theta
+\end{array}\right]
+\]</span></p>
+</div>
+</section>
+
+<section id="now-you-try" class="title-slide slide level2 center">
+<h2><em>Now you try</em></h2>
+<div id="qpyodide-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -2477,7 +2664,7 @@ T_{A}(\mathbf{u})=A \mathbf{u}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

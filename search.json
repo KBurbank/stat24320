@@ -746,7 +746,7 @@
     "href": "lectures/ch2_lecture1.html#scaling",
     "title": "Ch2 Lecture 1",
     "section": "Scaling",
-    "text": "Scaling\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ndiffusion.gif\nreaction.gif\n1dRD.gif\n2dRD.png"
+    "text": "Scaling\nGoal: Make a matrix that will take a vector of coordinates \\(\\mathbf{x}\\) and scale each coordinate \\(x_i\\) by a factor of \\(z_i\\).\n\\[ A x = \\left[\\begin{array}{ll} a1 & a2 \\\\ a3 & a4 \\end{array}\\right] \\left[\\begin{array}{l} x_1 \\\\ x_2 \\end{array}\\right] = \\left[\\begin{array}{l} z_1 \\times x_1 \\\\ z_2\\times  x_2 \\end{array}\\right] \\]\n\n\\[ A = \\left[\\begin{array}{ll} z_1 & 0 \\\\ 0 & z_2 \\end{array}\\right] \\]"
   },
   {
     "objectID": "notebooks/pagerank_tutorial.html",
@@ -768,5 +768,82 @@
     "title": "PageRank Tutorial",
     "section": "Now you try!",
     "text": "Now you try!\nCreate a matrix representing the system of equations for the “third try” in the PageRank problem:\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nNow find the RREF form of this matrix. What does that tell you about the system?\nNext, use the gauss_jordan_solve. What’s surprising (or not) about these results?\nSubstitute a specific value to get a particular solution…"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#shearing",
+    "href": "lectures/ch2_lecture1.html#shearing",
+    "title": "Ch2 Lecture 1",
+    "section": "Shearing",
+    "text": "Shearing\nShearing: adding a constant shear factor times one coordinate to another coordinate of the point.\nGoal: make a matrix which will transform each coordinate \\(x_i\\) into \\(x_i + \\sum_{j \\ne i} s_{j} \\times x_j\\).\n\\[ A x = \\left[\\begin{array}{ll} a1 & a2 \\\\ a3 & a4 \\end{array}\\right] \\left[\\begin{array}{l} x_1 \\\\ x_2 \\end{array}\\right] = \\left[\\begin{array}{l} x_1 + s_2 x_2 \\\\ x_2 + s_1 x_1 \\end{array}\\right] \\]\n\n\\[ A = \\left[\\begin{array}{ll} 1 & s_2 \\\\ s_1 & 1 \\end{array}\\right] \\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#example",
+    "href": "lectures/ch2_lecture1.html#example",
+    "title": "Ch2 Lecture 1",
+    "section": "Example",
+    "text": "Example\n\nLet the scaling operator \\(S\\) on points in two dimensions have scale factors of \\(\\frac{3}{2}\\) in the \\(x\\)-direction and \\(\\frac{1}{2}\\) in the \\(y\\)-direction.\nLet the shearing operator \\(H\\) on these points have a shear factor of \\(\\frac{1}{2}\\) by the \\(y\\)-coordinate on the \\(x\\)-coordinate.\nExpress these operators as matrix operators and graph their action on four unit squares situated diagonally from the origin."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#solution",
+    "href": "lectures/ch2_lecture1.html#solution",
+    "title": "Ch2 Lecture 1",
+    "section": "Solution",
+    "text": "Solution\n\nScaling operator \\(S\\):\n\n\n\\[\nS((x, y))=\\left[\\begin{array}{c}\n\\frac{3}{2} x \\\\\n\\frac{1}{2} y\n\\end{array}\\right]=\\left[\\begin{array}{cc}\n\\frac{3}{2} & 0 \\\\\n0 & \\frac{1}{2}\n\\end{array}\\right]\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]=T_{A}((x, y))\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#verify",
+    "href": "lectures/ch2_lecture1.html#verify",
+    "title": "Ch2 Lecture 1",
+    "section": "Verify:",
+    "text": "Verify:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-6",
+    "href": "lectures/ch2_lecture1.html#section-6",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "Shearing operator \\(H\\):\n\n\\[\nH((x, y))=\\left[\\begin{array}{c}\nx+\\frac{1}{2} y \\\\\ny\n\\end{array}\\right]=\\left[\\begin{array}{ll}\n1 & \\frac{1}{2} \\\\\n0 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]=T_{B}((x, y))\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#verify-1",
+    "href": "lectures/ch2_lecture1.html#verify-1",
+    "title": "Ch2 Lecture 1",
+    "section": "Verify",
+    "text": "Verify\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#concatenation-of-operators-s-and-h",
+    "href": "lectures/ch2_lecture1.html#concatenation-of-operators-s-and-h",
+    "title": "Ch2 Lecture 1",
+    "section": "Concatenation of operators \\(S\\) and \\(H\\)",
+    "text": "Concatenation of operators \\(S\\) and \\(H\\)\n\nThe concatenation \\(S \\circ H\\) of the scaling operator \\(S\\) and shearing operator \\(H\\) is the action of scaling followed by shearing.\nFunction composition corresponds to matrix multiplication\n\n\n\\[\n\\begin{aligned}\nS \\circ H((x, y)) & =T_{A} \\circ T_{B}((x, y))=T_{A B}((x, y)) \\\\\n& =\\left[\\begin{array}{cc}\n\\frac{3}{2} & 0 \\\\\n0 & \\frac{1}{2}\n\\end{array}\\right]\\left[\\begin{array}{ll}\n1 & \\frac{1}{2} \\\\\n0 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]=\\left[\\begin{array}{cc}\n\\frac{3}{2} & \\frac{3}{4} \\\\\n0 & \\frac{1}{2}\n\\end{array}\\right]\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]=T_{C}((x, y)),\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#verify-2",
+    "href": "lectures/ch2_lecture1.html#verify-2",
+    "title": "Ch2 Lecture 1",
+    "section": "Verify",
+    "text": "Verify\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#rotation",
+    "href": "lectures/ch2_lecture1.html#rotation",
+    "title": "Ch2 Lecture 1",
+    "section": "Rotation",
+    "text": "Rotation\nGoal: rotate a point in two dimensions counterclockwise by an angle \\(\\phi\\). Suppose the point is initally at an angle \\(\\theta\\) from the \\(x\\)-axis."
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#section-7",
+    "href": "lectures/ch2_lecture1.html#section-7",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "\\[\n\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]\n=\\left[\\begin{array}{l}\nr \\cos \\theta \\\\\nr \\sin \\theta\n\\end{array}\\right]\n\\]\nWe can use trigonometry to find the values of x and y after rotation.\n\\[\n\\left[\\begin{array}{l}\nx^{\\prime} \\\\\ny^{\\prime}\n\\end{array}\\right] =\\left[\\begin{array}{l}\nr \\cos (\\theta+\\phi) \\\\\nr \\sin (\\theta+\\phi)\n\\end{array}\\right]=\\left[\\begin{array}{l}\nr \\cos \\theta \\cos \\phi-r \\sin \\theta \\sin \\phi \\\\\nr \\sin \\theta \\cos \\phi+r \\cos \\theta \\sin \\phi\n\\end{array}\\right]\n\\]\n\nUsing the double-angle rule,\n\\[\n=\\left[\\begin{array}{rr}\n\\cos \\theta &-\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right]\\left[\\begin{array}{l}\nr \\cos \\phi \\\\\nr \\sin \\phi\n\\end{array}\\right]=\\left[\\begin{array}{rr}\n\\cos \\theta&-\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right]\\left[\\begin{array}{l}\nx \\\\\ny\n\\end{array}\\right]\n\\]\n\n\nSo we define the rotation matrix \\(R(\\theta)\\) by\n\\[\nR(\\theta)=\\left[\\begin{array}{rr}\n\\cos \\theta & -\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture1.html#now-you-try",
+    "href": "lectures/ch2_lecture1.html#now-you-try",
+    "title": "Ch2 Lecture 1",
+    "section": "Now you try",
+    "text": "Now you try\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ndiffusion.gif\nreaction.gif\n1dRD.gif\n2dRD.png"
   }
 ]

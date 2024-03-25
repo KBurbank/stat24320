@@ -221,14 +221,14 @@
     "href": "index.html",
     "title": "Stat 24320",
     "section": "",
-    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\nCh2 Lecture 1\n\n\n3\n\n\n2.1-2.3\n\n\n \n\n\n\n\na test\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\nCh2 Lecture 1\n\n\n3\n\n\n2.1-2.3\n\n\n \n\n\n\n\nCh2 Lecture 1\n\n\n4\n\n\n2.3-2.4\n\n\n \n\n\n\n\na test\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#lecture-notes",
     "href": "index.html#lecture-notes",
     "title": "Stat 24320",
     "section": "",
-    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\nCh2 Lecture 1\n\n\n3\n\n\n2.1-2.3\n\n\n \n\n\n\n\na test\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\nLecture Day\n\n\nReadings\n\n\nColab\n\n\n\n\n\n\nIntro to linear systems\n\n\n1\n\n\nCh. 1.1-1.3\n\n\n  \n\n\n\n\nMore Systems of Linear Equations\n\n\n2\n\n\nCh. 1.4-1.5\n\n\n  \n\n\n\n\nCh2 Lecture 1\n\n\n3\n\n\n2.1-2.3\n\n\n \n\n\n\n\nCh2 Lecture 1\n\n\n4\n\n\n2.3-2.4\n\n\n \n\n\n\n\na test\n\n\n \n\n\n \n\n\n \n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#notebooks",
@@ -845,5 +845,54 @@
     "title": "Ch2 Lecture 1",
     "section": "Now you try",
     "text": "Now you try\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ndiffusion.gif\nreaction.gif\n1dRD.gif\n2dRD.png"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#definitions",
+    "href": "lectures/ch2_lecture2.html#definitions",
+    "title": "Ch2 Lecture 1",
+    "section": "Definitions",
+    "text": "Definitions\nDefinition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#stability",
+    "href": "lectures/ch2_lecture2.html#stability",
+    "title": "Ch2 Lecture 1",
+    "section": "Stability",
+    "text": "Stability\nAn important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n\n\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#example",
+    "href": "lectures/ch2_lecture2.html#example",
+    "title": "Ch2 Lecture 1",
+    "section": "Example",
+    "text": "Example\n\nTwo toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section",
+    "href": "lectures/ch2_lecture2.html#section",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "Let \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n\n\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-1",
+    "href": "lectures/ch2_lecture2.html#section-1",
+    "title": "Ch2 Lecture 1",
+    "section": "",
+    "text": "We can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n\n\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
+    "href": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
+    "title": "Ch2 Lecture 1",
+    "section": "Distribution vector and stochastic matrix",
+    "text": "Distribution vector and stochastic matrix\n\n\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#markov-chain-definition",
+    "href": "lectures/ch2_lecture2.html#markov-chain-definition",
+    "title": "Ch2 Lecture 1",
+    "section": "Markov Chain definition",
+    "text": "Markov Chain definition\nA Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector."
   }
 ]

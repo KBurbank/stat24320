@@ -511,7 +511,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1,"options":{"context":"interactive","message":"true","classes":"","out-height":"","results":"markup","fig-height":5,"label":"","warning":"true","fig-cap":"","output":"true","autorun":"","read-only":"false","comment":"","dpi":72,"out-width":"700px","fig-width":7}}];
+  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1,"options":{"comment":"","classes":"","out-height":"","fig-width":7,"results":"markup","context":"interactive","read-only":"false","output":"true","message":"true","warning":"true","dpi":72,"label":"","out-width":"700px","fig-cap":"","fig-height":5,"autorun":""}}];
 
 
   </script>
@@ -973,7 +973,7 @@ b_{2}
 <h2><em>Example: Structured Population Model</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insect_life_stages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
+<p><a href="insect_life_stages.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
 <figcaption>insect life stages</figcaption>
 </figure>
 </div>
@@ -983,7 +983,7 @@ b_{2}
 <li class="fragment">20% of adults die. Each adult produces 0.25 eggs.</li>
 <li class="fragment">Initially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?</li>
 </ul>
-<div style="width: 200px; height: 200px; border: 1px solid black;">
+<div style="width: 800px; height: 200px; border: 1px solid black;">
 
 </div>
 <aside class="notes">
@@ -1981,7 +1981,7 @@ A=\left[\begin{array}{ccc}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

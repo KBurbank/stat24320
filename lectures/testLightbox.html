@@ -450,10 +450,23 @@
 
   }
 
-  .reveal .qpyodide-insertion-class {
-    height: 100%;
-    width: 100%;
-  }
+  .qpyodide-insertion-class {
+      height: 90dvh;
+      width: 90dvw;
+      position: absolute;
+      z-index: 100;
+      /* top: 0px; */
+      margin: 30px;
+      border: black solid;
+      background-color: white;
+      /* scale: 1; */
+    }
+
+    .qpyodide-output-graph-area {
+      width: 80dvw;
+    }
+
+
 
   .reveal pre div code.qpyodide-output-code-stdout {
     color: #111;
@@ -484,6 +497,8 @@
   .slide {
     height:100%;
   }
+
+
   </style>
   <script type="module">
   // Document level settings ----
@@ -508,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"message":"true","read-only":"false","classes":"","comment":"","results":"markup","fig-cap":"","output":"true","fig-height":5,"out-width":"700px","fig-width":7,"label":"","warning":"true","dpi":72,"out-height":"","autorun":"","context":"interactive"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"options":{"warning":"true","context":"interactive","comment":"","fig-cap":"","message":"true","fig-height":5,"read-only":"false","autorun":"","results":"markup","dpi":72,"out-width":"700px","classes":"","output":"true","out-height":"","fig-width":7,"label":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
 
 
   </script>
@@ -1224,6 +1239,9 @@
             this.id = cellData.id;
             this.options = cellData.options;
             this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            
+            // FIX THIS WHEN YOU GET BACK
+            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")
             this.executionLock = false;
         }
 
@@ -1378,7 +1396,7 @@
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-            this.insertionLocation.appendChild(mainDiv);
+            this.outsideInsertionLocation.appendChild(mainDiv);
         }
 
         /**

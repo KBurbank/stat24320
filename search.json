@@ -130,7 +130,7 @@
     "href": "lectures/ch2_lecture2.html#example-structured-population-model",
     "title": "Ch2 Lecture 2",
     "section": "Example: Structured Population Model",
-    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]"
+    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]\nWhat do we think will happen over time? How can we tell?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-2",
@@ -151,21 +151,21 @@
     "href": "lectures/ch2_lecture2.html#graph",
     "title": "Ch2 Lecture 2",
     "section": "Graph",
-    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges."
+    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges.\n\nWhat are some things which can be represented with graphs?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#digraph",
     "href": "lectures/ch2_lecture2.html#digraph",
     "title": "Ch2 Lecture 2",
     "section": "Digraph",
-    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges."
+    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges.\n\nWhat are some things which can be represented with digraphs?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#walks",
     "href": "lectures/ch2_lecture2.html#walks",
     "title": "Ch2 Lecture 2",
     "section": "Walks",
-    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n\nA directed walk is a sequence of directed edges."
+    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n\nA directed walk is a sequence of directed edges.\n\nWhat is an example of what a walk tells us? Work through from one of the examples of graph or digraph that came up.\nOne example: how many people are in your extended network. “Six degrees of separation”…"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#winning-and-losing",
@@ -193,21 +193,28 @@
     "href": "lectures/ch2_lecture2.html#section-4",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "What is the adjacency matrix for this graph?\n\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
+    "text": "What is the adjacency matrix for this graph?\n\n\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
     "href": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
     "title": "Ch2 Lecture 2",
     "section": "Computing power from an adjacencty matrix",
-    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n\nAdd up the elements of the \\(i\\) th row of \\(A\\).\n\n\nWhat about walks of length 2? Start by seeing number of walks of length 2 from vertex i to vertex j.\n\nWhen is there an edge from \\(i\\) to \\(k\\) and then from \\(k\\) to \\(j\\)?\nIf the adjacency matrix has 1’s in both \\(a_{i,k}\\) and \\(a_{k,j}\\).\nCan represent this by the product…\nSo number of paths is the sum over k’s…\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
+    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n\nAnswer: Add up the elements of the \\(i\\) th row of \\(A\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-5",
+    "href": "lectures/ch2_lecture2.html#section-5",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nWhat about walks of length 2?\n\nStart by finding number of walks of length 2 from vertex i to vertex j.\n\n\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\n\n\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\).\n\nWhen is there an edge from \\(i\\) to \\(k\\) and then from \\(k\\) to \\(j\\)?\nIf the adjacency matrix has 1’s in both \\(a_{i,k}\\) and \\(a_{k,j}\\).\nCan represent this by the product…\nSo number of paths is the sum over k’s…\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
     "href": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
     "title": "Ch2 Lecture 2",
     "section": "Adjacency matrix and power",
-    "text": "Adjacency matrix and power\nIf \\(A\\) is the adjacency matrix of the graph \\(G\\), then the \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n\nIf \\(A\\) is the adjacency matrix of the digraph \\(G\\), then the power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
+    "text": "Adjacency matrix and power\nResult: The \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n\nTherefore: power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",

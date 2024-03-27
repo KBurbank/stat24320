@@ -921,6 +921,20 @@
     "href": "lectures/ch2_lecture2.html#example-structured-population-model",
     "title": "Ch2 Lecture 2",
     "section": "Example: Structured Population Model",
-    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ninsect life stages"
+    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-2",
+    "href": "lectures/ch2_lecture2.html#section-2",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "class InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-3",
+    "href": "lectures/ch2_lecture2.html#section-3",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "t1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\n\n\n\ndying insects\n\n\n\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\n\n\n\nliving insects\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ninsect life stages\ndying insects\nliving insects"
   }
 ]

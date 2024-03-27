@@ -576,7 +576,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1,"options":{"warning":"true","fig-cap":"","fig-width":7,"label":"","autorun":"","out-height":"","results":"markup","read-only":"false","out-width":"700px","classes":"","output":"true","comment":"","fig-height":5,"dpi":72,"context":"interactive","message":"true"}}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"dpi":72,"read-only":"false","out-height":"","message":"true","fig-width":7,"classes":"","autorun":"","results":"markup","out-width":"700px","context":"interactive","comment":"","fig-cap":"","fig-height":5,"output":"true","warning":"true","label":""},"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______"}];
 
 
   </script>
@@ -1039,7 +1039,7 @@ b_{2}
 <h2><em>Example: Structured Population Model</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insect_life_stages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
+<p><a href="insect_life_stages.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
 <figcaption>insect life stages</figcaption>
 </figure>
 </div>
@@ -1126,7 +1126,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
+<p><a href="insects.gif" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
 <figcaption>dying insects</figcaption>
 </figure>
 </div>
@@ -1138,7 +1138,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects2.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
+<p><a href="insects2.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
 <figcaption>living insects</figcaption>
 </figure>
 </div>
@@ -1300,6 +1300,60 @@ a_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\cdots+a_{i n} a_{n j} .
 
 <section id="vertex-power-in-our-teams-example" class="title-slide slide level2 center">
 <h2><em>Vertex power in our teams example</em></h2>
+<p><span class="math display">\[
+A+A^{2}=\left[\begin{array}{llllll}
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right]+\left[\begin{array}{llllll}
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right]
+\left[\begin{array}{llllll}
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p><span class="math display">\[=\left[\begin{array}{llllll}
+0 &amp; 2 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\
+1 &amp; 2 &amp; 0 &amp; 2 &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right] .
+\]</span></p>
+<div class="fragment">
+<p>The sum of each row gives the vertex power.</p>
+<div class="note">
+<p>How can you use multiplication to find the sum of each row?</p>
+<p>Can multiply by a column of ones…</p>
+</div>
+</div>
+</section>
+
+<section id="now-you-try" class="title-slide slide level2 center">
+<h2><em>Now you try</em></h2>
+<p>Working together,</p>
+<ol type="1">
+<li class="fragment">pick a topic (sports? elections?).</li>
+<li class="fragment">Look up data and make a graph or digraph.</li>
+<li class="fragment">Compute the adjaceny matrix.</li>
+<li class="fragment">Find the vertex powers.</li>
+</ol>
+<p>Do your results make sense in context?</p>
+<p>Does it make sense?</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -2278,7 +2332,7 @@ a_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\cdots+a_{i n} a_{n j} .
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

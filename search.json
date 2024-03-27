@@ -49,11 +49,172 @@
     "text": "Code\nThis post was created from a jupyter notebook. You can find it here."
   },
   {
-    "objectID": "lectures/test.html#a-slide",
-    "href": "lectures/test.html#a-slide",
-    "title": "a test",
-    "section": "A slide",
-    "text": "A slide\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "lectures/ch2_lecture2.html#definitions",
+    "href": "lectures/ch2_lecture2.html#definitions",
+    "title": "Ch2 Lecture 2",
+    "section": "Definitions",
+    "text": "Definitions\nDefinition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#stability",
+    "href": "lectures/ch2_lecture2.html#stability",
+    "title": "Ch2 Lecture 2",
+    "section": "Stability",
+    "text": "Stability\nAn important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n\n\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#example",
+    "href": "lectures/ch2_lecture2.html#example",
+    "title": "Ch2 Lecture 2",
+    "section": "Example",
+    "text": "Example\n\nTwo toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section",
+    "href": "lectures/ch2_lecture2.html#section",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "Let \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n\n\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-1",
+    "href": "lectures/ch2_lecture2.html#section-1",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "We can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n\n\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
+    "href": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
+    "title": "Ch2 Lecture 2",
+    "section": "Distribution vector and stochastic matrix",
+    "text": "Distribution vector and stochastic matrix\n\n\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#markov-chain-definition",
+    "href": "lectures/ch2_lecture2.html#markov-chain-definition",
+    "title": "Ch2 Lecture 2",
+    "section": "Markov Chain definition",
+    "text": "Markov Chain definition\nA Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector.\n\nThe toothpaste example is a Markov chain.\nThe columns of \\(A\\) are distribution vectors.\nThe columns of \\(A\\) sum to 1.\nThe events in the example are mutually exclusive.\n\n\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\n\nThink this through. - Suppose our current state is \\(\\mathbf{e}_{j}\\) - The system has selected \\(j\\) th event exclusively.\n- The next state is \\(\\mathbf{p}_{j}=P \\mathbf{e}_{j}\\), that is, the \\(j\\) th column of \\(P\\). - This implies that the entry \\(p_{i j}\\) is the probability that the \\(i\\) th event will occur, given that the \\(j\\) th event has just occurred. - Since events are mutually exclusive and some subsequent event must occur, the sum of these probabilities is 1 ."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
+    "href": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
+    "title": "Ch2 Lecture 2",
+    "section": "Stochastic Matrix Inequality",
+    "text": "Stochastic Matrix Inequality\n\nWe can define the 1-norm of a vector \\(\\mathbf{x}\\) as \\(\\|\\mathbf{x}\\|_{1}=\\sum_{i=1}^{n}\\left|x_{i}\\right|\\).\nIf all the elements of a vector are nonnegative, then \\(\\|\\mathbf{x}\\|_{1}\\) is the sum of the elements.\nFor any stochastic matrix \\(P\\) and compatible vector \\(\\mathbf{x},\\|P \\mathbf{x}\\|_{1} \\leq\\|\\mathbf{x}\\|_{1}\\), with equality if the coordinates of \\(\\mathbf{x}\\) are all nonnegative.\n→ if a state in a Markov chain is a distribution vector (nonnegative entries and sums to 1), then the sum of the coordinates of the next state will also sum to one\n→ all subsequent states in a Markov chain are themselves Markov Chain State distribution vectors."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#moving-intoi-the-future",
+    "href": "lectures/ch2_lecture2.html#moving-intoi-the-future",
+    "title": "Ch2 Lecture 2",
+    "section": "Moving intoi the future",
+    "text": "Moving intoi the future\nSuppose that initially Brand A has all the customers (i.e., Brand B is just entering the market). What are the market shares 2 quarters later? 20 quarters?\n\n\nInitial state vector is \\(\\mathbf{x}^{(0)}=(1,0)\\).\nNow do the arithmetic to find \\(\\mathbf{x}^{(2)}\\) : . . . \\[\n\\begin{aligned}\n{\\left[\\begin{array}{l}\na_{2} \\\\\nb_{2}\n\\end{array}\\right] } & =\\mathbf{x}^{(2)}=A^{2} \\mathbf{x}^{(0)}=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left(\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right]\\right) \\\\\n& =\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n0.7 \\\\\n0.3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n.61 \\\\\n.39\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\nBrand A will have \\(61 \\%\\) of the market and Brand B will have \\(39 \\%\\) of the market in the second quarter."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
+    "href": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
+    "title": "Ch2 Lecture 2",
+    "section": "Toothpaste after many quarters",
+    "text": "Toothpaste after many quarters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNow:\n\nfind the state after 2 quarters.\nfind the state after 20 quarters. Use matrix exponentiation: A**n\nGet specific numbers if toothpaste A has 100% of the market at the beginning. (Use sym.subs())\nNow what if toothpaste B has 100% at the beginning?\n\n\n\nOur calculation is reusable! Could go back after and then change the inital state.\nNotice that we also get the same result eventually, no matter where we started"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#example-structured-population-model",
+    "href": "lectures/ch2_lecture2.html#example-structured-population-model",
+    "title": "Ch2 Lecture 2",
+    "section": "Example: Structured Population Model",
+    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-2",
+    "href": "lectures/ch2_lecture2.html#section-2",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "class InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-3",
+    "href": "lectures/ch2_lecture2.html#section-3",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "t1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\n\n\n\ndying insects\n\n\n\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\n\n\n\nliving insects"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#graph",
+    "href": "lectures/ch2_lecture2.html#graph",
+    "title": "Ch2 Lecture 2",
+    "section": "Graph",
+    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#digraph",
+    "href": "lectures/ch2_lecture2.html#digraph",
+    "title": "Ch2 Lecture 2",
+    "section": "Digraph",
+    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#walks",
+    "href": "lectures/ch2_lecture2.html#walks",
+    "title": "Ch2 Lecture 2",
+    "section": "Walks",
+    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n\nA directed walk is a sequence of directed edges."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#winning-and-losing",
+    "href": "lectures/ch2_lecture2.html#winning-and-losing",
+    "title": "Ch2 Lecture 2",
+    "section": "Winning and losing",
+    "text": "Winning and losing\n\nSuppose this represents wins and losses by different teams. How can we rank the teams?\n\nIdea: a team which beats another team is good. Even better if the team they beat had beaten another team…\nIdea: count the number of walks of length 1 or 2 originating from each vertex.\nHave them do this…\nPower of 1 is 5, vertex 2 is 4, vertex 3 is 7, vertex 4 is 4, vertex 5 is 1, and the power of vertex 6 is 0."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#power",
+    "href": "lectures/ch2_lecture2.html#power",
+    "title": "Ch2 Lecture 2",
+    "section": "Power",
+    "text": "Power\nVertex power: the number of walks of length 1 or 2 originating from a vertex.\n\nMakes most sense for graphs which don’t have any self-loops and at most one edge between nodes. These are called dominance directed graphs\n\n\nHow can we compute the number of walks for a given graph?"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#adjacency-matrix",
+    "href": "lectures/ch2_lecture2.html#adjacency-matrix",
+    "title": "Ch2 Lecture 2",
+    "section": "Adjacency matrix",
+    "text": "Adjacency matrix\nAdjacency matrix: A square matrix whose \\((i, j)\\) th entry is the number of edges going from vertex \\(i\\) to vertex \\(j\\)\n\nEdges in non-directed graphs appear twice (at (i,j) and at (j,i))\nEdges in digraphs appear only once\n\n\nWhat is the adjacency matrix for this graph?\n\n\n\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\nWe can reconstruct the graph entirely from this matrix! It must have all the information encapsulated in it."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#section-4",
+    "href": "lectures/ch2_lecture2.html#section-4",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "What is the adjacency matrix for this graph?\n\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
+    "href": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
+    "title": "Ch2 Lecture 2",
+    "section": "Computing power from an adjacencty matrix",
+    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n\nAdd up the elements of the \\(i\\) th row of \\(A\\).\n\n\nWhat about walks of length 2? Start by seeing number of walks of length 2 from vertex i to vertex j.\n\nWhen is there an edge from \\(i\\) to \\(k\\) and then from \\(k\\) to \\(j\\)?\nIf the adjacency matrix has 1’s in both \\(a_{i,k}\\) and \\(a_{k,j}\\).\nCan represent this by the product…\nSo number of paths is the sum over k’s…\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
+    "href": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
+    "title": "Ch2 Lecture 2",
+    "section": "Adjacency matrix and power",
+    "text": "Adjacency matrix and power\nIf \\(A\\) is the adjacency matrix of the graph \\(G\\), then the \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n\nIf \\(A\\) is the adjacency matrix of the digraph \\(G\\), then the power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
+    "href": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
+    "title": "Ch2 Lecture 2",
+    "section": "Vertex power in our teams example",
+    "text": "Vertex power in our teams example\n\\[\nA+A^{2}=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]+\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\\[=\\left[\\begin{array}{llllll}\n0 & 2 & 1 & 1 & 1 & 0 \\\\\n1 & 0 & 1 & 1 & 0 & 1 \\\\\n1 & 2 & 0 & 2 & 1 & 1 \\\\\n0 & 1 & 1 & 0 & 1 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n\nThe sum of each row gives the vertex power.\n\nHow can you use multiplication to find the sum of each row?\nCan multiply by a column of ones…"
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html#now-you-try",
+    "href": "lectures/ch2_lecture2.html#now-you-try",
+    "title": "Ch2 Lecture 2",
+    "section": "Now you try",
+    "text": "Now you try\nWorking together,\n\npick a topic (sports? elections?).\nLook up data and make a graph or digraph.\nCompute the adjaceny matrix.\nFind the vertex powers.\n\nDo your results make sense in context?\nDoes it make sense?\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ninsect life stages\ndying insects\nliving insects"
   },
   {
     "objectID": "lectures/ch1_lecture2.html#a-resource-for-review",
@@ -739,7 +900,7 @@
     "href": "lectures/ch2_lecture1.html#section-5",
     "title": "Ch2 Lecture 1",
     "section": "",
-    "text": "We solve with row reduction:\n\\[\n\\begin{aligned}\n& {\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n2 & 2 & -2 & -1 \\\\\n6 & 0 & 0 & -2\n\\end{array}\\right] \\xrightarrow[E_{21}\\left(-\\frac{2}{7}\\right)]{E_{31}\\left(-\\frac{6}{7}\\right)}\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n0 & 2 & -\\frac{12}{7} & -1 \\\\\n0 & 0 & \\frac{6}{7} & -2\n\\end{array}\\right] \\begin{array}{c}\nE_{1}\\left(\\frac{1}{7}\\right) \\\\\nE_{2}\\left(\\frac{1}{2}\\right) \\\\\nE_{3}\\left(\\frac{7}{6}\\right)\n\\end{array} \\left[\\begin{array}{cccc}\n1 & 0 & -\\frac{1}{7} & 0 \\\\\n0 & 1 & -\\frac{6}{7} & -\\frac{1}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]} \\\\\n& \\begin{array}{l}\n\\overrightarrow{E_{23}\\left(\\frac{6}{7}\\right)} \\\\\nE_{13}\\left(\\frac{1}{7}\\right)\n\\end{array}\\left[\\begin{array}{llll}\n1 & 0 & 0 & -\\frac{1}{3} \\\\\n0 & 1 & 0 & -\\frac{5}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]\n\\end{aligned}\n\\]\n\n\\(x_{4}\\) is free, others are bound. Now pick smallest \\(x_4\\) where others are all positive integers…\n\n\n\\[\n2 \\mathrm{C}_{7} \\mathrm{H}_{6} \\mathrm{O}_{2}+15 \\mathrm{O}_{2} \\rightarrow 14 \\mathrm{CO}_{2}+2 \\mathrm{H}_{2} \\mathrm{O}\n\\]"
+    "text": "We solve with row reduction:\n\\[\n\\begin{aligned}\n& {\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n2 & 2 & -2 & -1 \\\\\n6 & 0 & 0 & -2\n\\end{array}\\right] \\xrightarrow[E_{21}\\left(-\\frac{2}{7}\\right)]{E_{31}\\left(-\\frac{6}{7}\\right)}\\left[\\begin{array}{cccc}\n7 & 0 & -1 & 0 \\\\\n0 & 2 & -\\frac{12}{7} & -1 \\\\\n0 & 0 & \\frac{6}{7} & -2\n\\end{array}\\right] \\begin{array}{c}\nE_{1}\\left(\\frac{1}{7}\\right) \\\\\nE_{2}\\left(\\frac{1}{2}\\right) \\\\\nE_{3}\\left(\\frac{7}{6}\\right)\n\\end{array} \\left[\\begin{array}{cccc}\n1 & 0 & -\\frac{1}{7} & 0 \\\\\n0 & 1 & -\\frac{6}{7} & -\\frac{1}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]} \\\\\n& \\begin{array}{l}\n\\overrightarrow{E_{23}\\left(\\frac{6}{7}\\right)} \\\\\nE_{13}\\left(\\frac{1}{7}\\right)\n\\end{array}\\left[\\begin{array}{llll}\n1 & 0 & 0 & -\\frac{1}{3} \\\\\n0 & 1 & 0 & -\\frac{5}{2} \\\\\n0 & 0 & 1 & -\\frac{7}{3}\n\\end{array}\\right]\n\\end{aligned}\n\\]\n\n\\(x_{4}\\) is free, others are bound. Now pick smallest \\(x_4\\) where others are all positive integers…\n\n\n\\[\n2 \\mathrm{C}_{7} \\mathrm{H}_{6} \\mathrm{O}_{2}+15 \\mathrm{O}_{2} \\rightarrow 14 \\mathrm{CO}_{2}+6 \\mathrm{H}_{2} \\mathrm{O}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#scaling",
@@ -747,27 +908,6 @@
     "title": "Ch2 Lecture 1",
     "section": "Scaling",
     "text": "Scaling\nGoal: Make a matrix that will take a vector of coordinates \\(\\mathbf{x}\\) and scale each coordinate \\(x_i\\) by a factor of \\(z_i\\).\n\\[ A x = \\left[\\begin{array}{ll} a1 & a2 \\\\ a3 & a4 \\end{array}\\right] \\left[\\begin{array}{l} x_1 \\\\ x_2 \\end{array}\\right] = \\left[\\begin{array}{l} z_1 \\times x_1 \\\\ z_2\\times  x_2 \\end{array}\\right] \\]\n\n\\[ A = \\left[\\begin{array}{ll} z_1 & 0 \\\\ 0 & z_2 \\end{array}\\right] \\]"
-  },
-  {
-    "objectID": "notebooks/pagerank_tutorial.html",
-    "href": "notebooks/pagerank_tutorial.html",
-    "title": "PageRank Tutorial",
-    "section": "",
-    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)"
-  },
-  {
-    "objectID": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
-    "href": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
-    "title": "PageRank Tutorial",
-    "section": "",
-    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)"
-  },
-  {
-    "objectID": "notebooks/pagerank_tutorial.html#now-you-try",
-    "href": "notebooks/pagerank_tutorial.html#now-you-try",
-    "title": "PageRank Tutorial",
-    "section": "Now you try!",
-    "text": "Now you try!\nCreate a matrix representing the system of equations for the “third try” in the PageRank problem:\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nNow find the RREF form of this matrix. What does that tell you about the system?\nNext, use the gauss_jordan_solve. What’s surprising (or not) about these results?\nSubstitute a specific value to get a particular solution…"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#shearing",
@@ -847,171 +987,31 @@
     "text": "Now you try\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ndiffusion.gif\nreaction.gif\n1dRD.gif\n2dRD.png"
   },
   {
-    "objectID": "lectures/ch2_lecture2.html#definitions",
-    "href": "lectures/ch2_lecture2.html#definitions",
-    "title": "Ch2 Lecture 2",
-    "section": "Definitions",
-    "text": "Definitions\nDefinition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system."
+    "objectID": "lectures/test.html#a-slide",
+    "href": "lectures/test.html#a-slide",
+    "title": "a test",
+    "section": "A slide",
+    "text": "A slide\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "lectures/ch2_lecture2.html#stability",
-    "href": "lectures/ch2_lecture2.html#stability",
-    "title": "Ch2 Lecture 2",
-    "section": "Stability",
-    "text": "Stability\nAn important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n\n\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#example",
-    "href": "lectures/ch2_lecture2.html#example",
-    "title": "Ch2 Lecture 2",
-    "section": "Example",
-    "text": "Example\n\nTwo toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#section",
-    "href": "lectures/ch2_lecture2.html#section",
-    "title": "Ch2 Lecture 2",
+    "objectID": "notebooks/pagerank_tutorial.html",
+    "href": "notebooks/pagerank_tutorial.html",
+    "title": "PageRank Tutorial",
     "section": "",
-    "text": "Let \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n\n\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]"
+    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)"
   },
   {
-    "objectID": "lectures/ch2_lecture2.html#section-1",
-    "href": "lectures/ch2_lecture2.html#section-1",
-    "title": "Ch2 Lecture 2",
+    "objectID": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
+    "href": "notebooks/pagerank_tutorial.html#set-up-the-environment.-import-the-sympy-library.",
+    "title": "PageRank Tutorial",
     "section": "",
-    "text": "We can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n\n\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]"
+    "text": "import sympy as sym\n\nWe make a matrix using the sym.Matrix function.\n\nT = sym.Matrix([[1,2,3],[2,1,3],[2,1,1]])\nT\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 2 & 3\\\\2 & 1 & 3\\\\2 & 1 & 1\\end{matrix}\\right]\\)\n\n\nWe can create symbolic variables, and put them into the matrix if we want…\n\nx1=sym.var('x1'); x2=sym.var('x2');x3=sym.var('x3');x4=sym.var('x4')\n\n\nx1\n\n\\(\\displaystyle x_{1}\\)\n\n\n\nT2 = sym.Matrix([[1,x2,3],[2,1,3],[2,x1,1]])\nT2\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 3\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIf we input fractions, they are by default converted to floating point numbers:\n\nT3 = sym.Matrix([[1,x2,1/3],[2,1,3],[2,x1,1]])\nT3\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & 0.333333333333333\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nIt’s nicer to input fractions and keep them as fractions:\n\nT4 = sym.Matrix([[1,x2,sym.Rational(1,3)],[2,1,3],[2,x1,1]])\nT4\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & x_{1} & 1\\end{matrix}\\right]\\)\n\n\nWe can substitute values in for variables:\n\nT4.subs(x1,5)\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & x_{2} & \\frac{1}{3}\\\\2 & 1 & 3\\\\2 & 5 & 1\\end{matrix}\\right]\\)\n\n\nWe can find reduced row echelon form:\n\nT4.rref()\n\n(Matrix([\n [1, 0, 0],\n [0, 1, 0],\n [0, 0, 1]]),\n (0, 1, 2))\n\n\nThis outputs the RREFand tells us which columns correspond to bound variables.\nLastly, we can do Gauss-Jordan elimination to solve a system of equations with a matrix and a right-hand-side:\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))\n\n(Matrix([\n [(17*x1 - 24*x2 - 3)/(7*x1 - 12*x2 - 1)],\n [                 -4/(7*x1 - 12*x2 - 1)],\n [(-9*x1 + 12*x2 + 3)/(7*x1 - 12*x2 - 1)]]),\n Matrix(0, 1, []))\n\n\nThat’s messy! It’s exporting several things, but the one we want is the first.\n\nT4.gauss_jordan_solve(sym.Matrix([2,1,3]))[0]\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{17 x_{1} - 24 x_{2} - 3}{7 x_{1} - 12 x_{2} - 1}\\\\- \\frac{4}{7 x_{1} - 12 x_{2} - 1}\\\\\\frac{- 9 x_{1} + 12 x_{2} + 3}{7 x_{1} - 12 x_{2} - 1}\\end{matrix}\\right]\\)"
   },
   {
-    "objectID": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
-    "href": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
-    "title": "Ch2 Lecture 2",
-    "section": "Distribution vector and stochastic matrix",
-    "text": "Distribution vector and stochastic matrix\n\n\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#markov-chain-definition",
-    "href": "lectures/ch2_lecture2.html#markov-chain-definition",
-    "title": "Ch2 Lecture 2",
-    "section": "Markov Chain definition",
-    "text": "Markov Chain definition\nA Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector.\n\nThe toothpaste example is a Markov chain.\nThe columns of \\(A\\) are distribution vectors.\nThe columns of \\(A\\) sum to 1.\nThe events in the example are mutually exclusive.\n\n\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\n\nThink this through. - Suppose our current state is \\(\\mathbf{e}_{j}\\) - The system has selected \\(j\\) th event exclusively.\n- The next state is \\(\\mathbf{p}_{j}=P \\mathbf{e}_{j}\\), that is, the \\(j\\) th column of \\(P\\). - This implies that the entry \\(p_{i j}\\) is the probability that the \\(i\\) th event will occur, given that the \\(j\\) th event has just occurred. - Since events are mutually exclusive and some subsequent event must occur, the sum of these probabilities is 1 ."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
-    "href": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
-    "title": "Ch2 Lecture 2",
-    "section": "Stochastic Matrix Inequality",
-    "text": "Stochastic Matrix Inequality\n\nWe can define the 1-norm of a vector \\(\\mathbf{x}\\) as \\(\\|\\mathbf{x}\\|_{1}=\\sum_{i=1}^{n}\\left|x_{i}\\right|\\).\nIf all the elements of a vector are nonnegative, then \\(\\|\\mathbf{x}\\|_{1}\\) is the sum of the elements.\nFor any stochastic matrix \\(P\\) and compatible vector \\(\\mathbf{x},\\|P \\mathbf{x}\\|_{1} \\leq\\|\\mathbf{x}\\|_{1}\\), with equality if the coordinates of \\(\\mathbf{x}\\) are all nonnegative.\n→ if a state in a Markov chain is a distribution vector (nonnegative entries and sums to 1), then the sum of the coordinates of the next state will also sum to one\n→ all subsequent states in a Markov chain are themselves Markov Chain State distribution vectors."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#moving-intoi-the-future",
-    "href": "lectures/ch2_lecture2.html#moving-intoi-the-future",
-    "title": "Ch2 Lecture 2",
-    "section": "Moving intoi the future",
-    "text": "Moving intoi the future\nSuppose that initially Brand A has all the customers (i.e., Brand B is just entering the market). What are the market shares 2 quarters later? 20 quarters?\n\n\nInitial state vector is \\(\\mathbf{x}^{(0)}=(1,0)\\).\nNow do the arithmetic to find \\(\\mathbf{x}^{(2)}\\) : . . . \\[\n\\begin{aligned}\n{\\left[\\begin{array}{l}\na_{2} \\\\\nb_{2}\n\\end{array}\\right] } & =\\mathbf{x}^{(2)}=A^{2} \\mathbf{x}^{(0)}=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left(\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right]\\right) \\\\\n& =\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n0.7 \\\\\n0.3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n.61 \\\\\n.39\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\nBrand A will have \\(61 \\%\\) of the market and Brand B will have \\(39 \\%\\) of the market in the second quarter."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
-    "href": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
-    "title": "Ch2 Lecture 2",
-    "section": "Toothpaste after many quarters",
-    "text": "Toothpaste after many quarters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNow:\n\nfind the state after 2 quarters.\nfind the state after 20 quarters. Use matrix exponentiation: A**n\nGet specific numbers if toothpaste A has 100% of the market at the beginning. (Use sym.subs())\nNow what if toothpaste B has 100% at the beginning?\n\n\n\nOur calculation is reusable! Could go back after and then change the inital state.\nNotice that we also get the same result eventually, no matter where we started"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#example-structured-population-model",
-    "href": "lectures/ch2_lecture2.html#example-structured-population-model",
-    "title": "Ch2 Lecture 2",
-    "section": "Example: Structured Population Model",
-    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#section-2",
-    "href": "lectures/ch2_lecture2.html#section-2",
-    "title": "Ch2 Lecture 2",
-    "section": "",
-    "text": "class InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#section-3",
-    "href": "lectures/ch2_lecture2.html#section-3",
-    "title": "Ch2 Lecture 2",
-    "section": "",
-    "text": "t1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\n\n\n\ndying insects\n\n\n\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\n\n\n\nliving insects"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#graph",
-    "href": "lectures/ch2_lecture2.html#graph",
-    "title": "Ch2 Lecture 2",
-    "section": "Graph",
-    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#digraph",
-    "href": "lectures/ch2_lecture2.html#digraph",
-    "title": "Ch2 Lecture 2",
-    "section": "Digraph",
-    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#walks",
-    "href": "lectures/ch2_lecture2.html#walks",
-    "title": "Ch2 Lecture 2",
-    "section": "Walks",
-    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n\nA directed walk is a sequence of directed edges."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#winning-and-losing",
-    "href": "lectures/ch2_lecture2.html#winning-and-losing",
-    "title": "Ch2 Lecture 2",
-    "section": "Winning and losing",
-    "text": "Winning and losing\n\nSuppose this represents wins and losses by different teams. How can we rank the teams?\n\nIdea: a team which beats another team is good. Even better if the team they beat had beaten another team…\nIdea: count the number of walks of length 1 or 2 originating from each vertex.\nHave them do this…\nPower of 1 is 5, vertex 2 is 4, vertex 3 is 7, vertex 4 is 4, vertex 5 is 1, and the power of vertex 6 is 0."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#power",
-    "href": "lectures/ch2_lecture2.html#power",
-    "title": "Ch2 Lecture 2",
-    "section": "Power",
-    "text": "Power\nVertex power: the number of walks of length 1 or 2 originating from a vertex.\n\nMakes most sense for graphs which don’t have any self-loops and at most one edge between nodes. These are called dominance directed graphs\n\n\nHow can we compute the number of walks for a given graph?"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#adjacency-matrix",
-    "href": "lectures/ch2_lecture2.html#adjacency-matrix",
-    "title": "Ch2 Lecture 2",
-    "section": "Adjacency matrix",
-    "text": "Adjacency matrix\nAdjacency matrix: A square matrix whose \\((i, j)\\) th entry is the number of edges going from vertex \\(i\\) to vertex \\(j\\)\n\nEdges in non-directed graphs appear twice (at (i,j) and at (j,i))\nEdges in digraphs appear only once\n\n\nWhat is the adjacency matrix for this graph?\n\n\n\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\nWe can reconstruct the graph entirely from this matrix! It must have all the information encapsulated in it."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#section-4",
-    "href": "lectures/ch2_lecture2.html#section-4",
-    "title": "Ch2 Lecture 2",
-    "section": "",
-    "text": "What is the adjacency matrix for this graph?\n\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
-    "href": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
-    "title": "Ch2 Lecture 2",
-    "section": "Computing power from an adjacencty matrix",
-    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n\nAdd up the elements of the \\(i\\) th row of \\(A\\).\n\n\nWhat about walks of length 2? Start by seeing number of walks of length 2 from vertex i to vertex j.\n\nWhen is there an edge from \\(i\\) to \\(k\\) and then from \\(k\\) to \\(j\\)?\nIf the adjacency matrix has 1’s in both \\(a_{i,k}\\) and \\(a_{k,j}\\).\nCan represent this by the product…\nSo number of paths is the sum over k’s…\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
-    "href": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
-    "title": "Ch2 Lecture 2",
-    "section": "Adjacency matrix and power",
-    "text": "Adjacency matrix and power\nIf \\(A\\) is the adjacency matrix of the graph \\(G\\), then the \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n\nIf \\(A\\) is the adjacency matrix of the digraph \\(G\\), then the power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#section-5",
-    "href": "lectures/ch2_lecture2.html#section-5",
-    "title": "Ch2 Lecture 2",
-    "section": "",
-    "text": "insect life stages\ndying insects\nliving insects"
-  },
-  {
-    "objectID": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
-    "href": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
-    "title": "Ch2 Lecture 2",
-    "section": "Vertex power in our teams example",
-    "text": "Vertex power in our teams example\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ninsect life stages\ndying insects\nliving insects"
+    "objectID": "notebooks/pagerank_tutorial.html#now-you-try",
+    "href": "notebooks/pagerank_tutorial.html#now-you-try",
+    "title": "PageRank Tutorial",
+    "section": "Now you try!",
+    "text": "Now you try!\nCreate a matrix representing the system of equations for the “third try” in the PageRank problem:\n\\[\n\\begin{aligned}\n& x_{1}=\\frac{x_{2}}{1}+\\frac{x_{3}}{3} \\\\\n& x_{2}=\\frac{x_{1}}{2}+\\frac{x_{3}}{3} \\\\\n& x_{3}=\\frac{x_{1}}{2}+\\frac{x_{4}}{1} \\\\\n& x_{4}=\\frac{x_{3}}{3} .\n\\end{aligned}\n\\]\nNow find the RREF form of this matrix. What does that tell you about the system?\nNext, use the gauss_jordan_solve. What’s surprising (or not) about these results?\nSubstitute a specific value to get a particular solution…"
   }
 ]

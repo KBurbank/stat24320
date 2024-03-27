@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"label":"","warning":"true","context":"interactive","results":"markup","comment":"","out-height":"","read-only":"false","message":"true","classes":"","output":"true","fig-width":7,"dpi":72,"out-width":"700px","fig-height":5,"fig-cap":"","autorun":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"options":{"autorun":"","dpi":72,"context":"interactive","out-width":"700px","results":"markup","classes":"","warning":"true","output":"true","comment":"","read-only":"false","fig-cap":"","out-height":"","fig-height":5,"label":"","fig-width":7,"message":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1241,7 +1241,7 @@
             this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
             
             // FIX THIS WHEN YOU GET BACK
-            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")
+            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")[0]
             this.executionLock = false;
         }
 
@@ -1396,8 +1396,8 @@
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-            this.insertionLocation.appendChild(mainDiv);
-            console.log(this.outsideInsertionLocation)
+            this.outsideInsertionLocation.appendChild(mainDiv);
+            //console.log(this.outsideInsertionLocation)
         }
 
         /**

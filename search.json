@@ -522,14 +522,14 @@
     "href": "lectures/ch1_lecture1b.html#example-railroad-cars",
     "title": "Intro to linear systems",
     "section": "Example: railroad cars",
-    "text": "Example: railroad cars\nA chemical manufacturer wants to lease a fleet of 24 railroad tank cars with a combined carrying capacity of 520,000 gallons.\n\nTank cars with three different carrying capacities are available:\n\n8,000 gallons\n16,000 gallons\n24,000 gallons.\n\nHow many of each type of tank car should be leased?"
+    "text": "Example: railroad cars\nA chemical manufacturer wants to lease a fleet of 24 railroad tank cars with a combined carrying capacity of 520,000 gallons.\n\nTank cars with three different carrying capacities are available:\n\n8,000 gallons\n16,000 gallons\n24,000 gallons.\n\nHow many of each type of tank car should be leased?\n\n\nCan write this as \\(x \\times 8+y \\times 16 + z \\times 24=520\\) and also \\(x+y+z=24\\). We won’t have a single solution… Two equations, three unknowns."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#example-traffic-flow.",
     "href": "lectures/ch1_lecture1b.html#example-traffic-flow.",
     "title": "Intro to linear systems",
     "section": "Example: traffic flow.",
-    "text": "Example: traffic flow.\n\n\n\n\nNumbers = # of vehicles/hr that enter and leave on that street.\n\\(x_{1}, x_{2}, x_{3}\\), and \\(x_{4}\\): flow of traffic between the four intersections.\n\n\n\nNumber of vehicles entering each intersection should always equal the number leaving. E.g.:\n\n1,500 vehicles enter the intersection of 5th Street and Washington Avenue each hour\n\\(x_{1}+x_{4}\\) vehicles leave this intersection\n\\(\\rightarrow\\) \\(x_{1}+x_{4}=1,500\\)\n\nFind the traffic flow at each of the other three intersections.\nWhat is the # of vehicles that travel from Washington Avenue to Lincoln Avenue on 5th Street?"
+    "text": "Example: traffic flow.\n\n\n\n\nNumbers = # of vehicles/hr that enter and leave on that street.\n\\(x_{1}, x_{2}, x_{3}\\), and \\(x_{4}\\): flow of traffic between the four intersections.\n\n\n\nNumber of vehicles entering each intersection should always equal the number leaving. E.g.:\n\n1,500 vehicles enter the intersection of 5th Street and Washington Avenue each hour\n\\(x_{1}+x_{4}\\) vehicles leave this intersection\n\\(\\rightarrow\\) \\(x_{1}+x_{4}=1,500\\)\n\nFind the traffic flow at each of the other three intersections.\nWhat is the # of vehicles that travel from Washington Avenue to Lincoln Avenue on 5th Street?\n\n\n\n\n\\(x_1+x_2=1200\\), and \\(x_2+x_3=1000\\), and \\(x_3+x_4=1300\\)."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#example-us-population",
@@ -550,7 +550,7 @@
     "href": "lectures/ch1_lecture1b.html#example-very-simple-linear-system",
     "title": "Intro to linear systems",
     "section": "Example: very simple linear system",
-    "text": "Example: very simple linear system\n\\[\n\\begin{gather*}\n2 x-y=1 \\\\\n4x+4y=20 . \\tag{1.5}\n\\end{gather*}\n\\]\n\nMake an augmented matrix to represent the problem:\n\\[\n\\begin{aligned}\n& x \\quad y=r . h . s . \\\\\n& {\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right]}\n\\end{aligned}\n\\]\n\n\nManipulate the augmented matrix to solve the problem…"
+    "text": "Example: very simple linear system\n\\[\n\\begin{gather*}\n2 x-y=1 \\\\\n4x+4y=20 . \\tag{1.5}\n\\end{gather*}\n\\]\n\nWe can solve this by hand: first we might add four times the first row to the second, so that we get (4+8)x + 0y = 24, so that we realize x = \\(2\\), and then we have 4-y=1 so y = 3.\n\n\nMake an augmented matrix to represent the problem:\n\\[\n\\begin{aligned}\n& x \\quad y=r . h . s . \\\\\n& {\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right]}\n\\end{aligned}\n\\]\n\n\nManipulate the augmented matrix to solve the problem…"
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#elementary-matrix-operations",
@@ -585,7 +585,7 @@
     "href": "lectures/ch1_lecture1b.html#now-you-try-birds-in-a-tree",
     "title": "Intro to linear systems",
     "section": "Now you try: birds in a tree",
-    "text": "Now you try: birds in a tree\nThere are 2 trees in a garden (tree “A” and “B”) and in both trees are some birds.\nThe birds of tree A say to the birds of tree B that if one of you comes to our tree, then our population will be double yours.\nThen the birds of tree B tell the birds of tree A that if one of you comes here, then our population will be equal to yours.\nHow many birds in each tree?\n(Solve by making an augmented matrix and doing G-J elimination.)\n\n\nhttps://www.mathsisfun.com/puzzles/birds-in-trees.html"
+    "text": "Now you try: birds in a tree\nThere are 2 trees in a garden (tree “A” and “B”) and in both trees are some birds.\nThe birds of tree A say to the birds of tree B that if one of you comes to our tree, then our population will be double yours.\nThen the birds of tree B tell the birds of tree A that if one of you comes here, then our population will be equal to yours.\nHow many birds in each tree?\n(Solve by making an augmented matrix and doing G-J elimination.)\n\nThe answer is 7 birds in tree A and 5 birds in tree B.\n\n\n\nhttps://www.mathsisfun.com/puzzles/birds-in-trees.html"
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#example-mining",
@@ -599,7 +599,7 @@
     "href": "lectures/ch1_lecture1b.html#section",
     "title": "Intro to linear systems",
     "section": "",
-    "text": "Suppose that during 600 hours of operation, exactly $ 5000 and 3000 labor-hours are used.\nHow much silica (\\(x\\)), iron (\\(y\\)), and gold (\\(z\\)) were produced?\n\nSet up the linear system whose solution will yield the values for \\(x, y\\), and \\(z\\).\n\n\n\\[\n\\begin{aligned}\n.0055 x + .095 y + 960 z &=  5000 \\quad \\text{(dollars)}\\\\\n.0011 x + .01 y + 112 z &= 600 \\quad \\text{(operating hours)}\\\\\n.0093 x + .025 y + 560 z &= 3000\\quad \\text{(labor hours)}\n\\end{aligned}\n\\]\n\n\nMake the augmented matrix:\n\\[\n\\left[\\begin{array}{@{}ccc|c@{}}\n.0055 & .095 & 960 & 5000 \\\\\n.0011 & .01  & 112 & 600 \\\\\n.0093 & .025 & 560 & 3000\n\\end{array}\\right]\n\\]"
+    "text": "Suppose that during 600 hours of operation, exactly $ 5000 and 3000 labor-hours are used.\nHow much silica (\\(x\\)), iron (\\(y\\)), and gold (\\(z\\)) were produced?\n\nSet up the linear system whose solution will yield the values for \\(x, y\\), and \\(z\\).\n\n\n\\[\n\\begin{aligned}\n.0055 x + .095 y + 960 z &=  5000 \\quad \\text{(dollars)}\\\\\n.0011 x + .01 y + 112 z &= 600 \\quad \\text{(operating hours)}\\\\\n.0093 x + .025 y + 560 z &= 3000\\quad \\text{(labor hours)}\n\\end{aligned}\n\\]\n\n\nMake the augmented matrix:\n\\[\n\\left[\\begin{array}{@{}ccc|c@{}}\n.0055 & .095 & 960 & 5000 \\\\\n.0011 & .01  & 112 & 600 \\\\\n.0093 & .025 & 560 & 3000\n\\end{array}\\right]\n\\]\n\nDraw the line on the augmented matrix."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#section-1",
@@ -641,7 +641,7 @@
     "href": "lectures/ch1_lecture1b.html#roundoff-errors-with-g-j-elimination",
     "title": "Intro to linear systems",
     "section": "Roundoff errors with G-J elimination",
-    "text": "Roundoff errors with G-J elimination\nTry this on your calculator. What do you get?\n\\[\n\\left(\\left(\\frac{2}{3}+100\\right)-100\\right)-\\frac{2}{3}\\stackrel{?}{=}0\n\\]\n\nNow try this…\n\\[\n\\left(\\left(\\frac{2}{3}+100\\right)-100\\right)-\\frac{2}{3}\\stackrel{?}{=}0\n\\]"
+    "text": "Roundoff errors with G-J elimination\nTry this on your calculator. What do you get?\n\\[\n\\left(\\left(\\frac{2}{3}+100\\right)-100\\right)-\\frac{2}{3}\\stackrel{?}{=}0\n\\]\n\nNow try this…\n\\[\n\\left(\\left(\\frac{2}{3}+100\\right)-100\\right)-\\frac{2}{3}\\stackrel{?}{=}0\n\\]\n\nOn my calculator, I get 3.33e-32. That’s a small number, but not zero!\nWhat is happening is that 2/3 = 0.666666…., and your calculator represents this as a very long string but eventually puts in a 7.\nThen when it adds the 100, it has to drop a few of those digits in its representation. They are then gone! When we subtract the 100, we don’t get them back again."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#section-3",
@@ -655,7 +655,7 @@
     "href": "lectures/ch1_lecture1b.html#roundoff-errors-with-g-j-elimination-1",
     "title": "Intro to linear systems",
     "section": "Roundoff errors with G-J elimination",
-    "text": "Roundoff errors with G-J elimination\nWith our calculator,\n\\[\n    \\left[\\begin{array}{rrr}\n    \\epsilon & 1 & 1 \\\\\n    1 & -1 & 0\n    \\end{array}\\right] \\overrightarrow{E_{21}\\left(-\\frac{1}{\\epsilon}\\right)}\\left[\\begin{array}{ccc}\n    \\epsilon & 1 & 1 \\\\\n    0 & \\frac{1}{\\epsilon} & -\\frac{1}{\\epsilon}\n    \\end{array}\\right] \\overrightarrow{E_{2}(\\epsilon)}\\left[\\begin{array}{ccc}\n    \\epsilon & 1 & 1 \\\\\n    0 & 1 & 1\n    \\end{array}\\right] \\\\ \\overrightarrow{E_{12}(-1)}\\left[\\begin{array}{ccc}\n    \\epsilon & 0 & 0 \\\\\n    0 & 1 & 1\n    \\end{array}\\right]  \\overrightarrow{E_{1}\\left(\\frac{1}{\\epsilon}\\right)}\\left[\\begin{array}{lll}\n    1 & 0 & 0 \\\\\n    0 & 1 & 1\n    \\end{array}\\right] .\n\\]\n\nCalculated solution: \\(x_{1}=0, x_{2}=1\\)\nCorrect answer should be\n\\[ x_{1}=x_{2}=\\frac{1}{1+\\epsilon}=0.999999099999990 \\ldots\\]"
+    "text": "Roundoff errors with G-J elimination\nWith our calculator,\n\nIn the second step, we are replacing \\(-1+\\frac{1}{\\epsilon}\\) with just \\(\\frac{1}{\\epsilon}\\). It’s a case where we are adding together numbers of very different scale.\n\n\\[\n    \\left[\\begin{array}{rrr}\n    \\epsilon & 1 & 1 \\\\\n    1 & -1 & 0\n    \\end{array}\\right] \\overrightarrow{E_{21}\\left(-\\frac{1}{\\epsilon}\\right)}\\left[\\begin{array}{ccc}\n    \\epsilon & 1 & 1 \\\\\n    0 & \\frac{1}{\\epsilon} & -\\frac{1}{\\epsilon}\n    \\end{array}\\right] \\overrightarrow{E_{2}(\\epsilon)}\\left[\\begin{array}{ccc}\n    \\epsilon & 1 & 1 \\\\\n    0 & 1 & 1\n    \\end{array}\\right] \\\\ \\overrightarrow{E_{12}(-1)}\\left[\\begin{array}{ccc}\n    \\epsilon & 0 & 0 \\\\\n    0 & 1 & 1\n    \\end{array}\\right]  \\overrightarrow{E_{1}\\left(\\frac{1}{\\epsilon}\\right)}\\left[\\begin{array}{lll}\n    1 & 0 & 0 \\\\\n    0 & 1 & 1\n    \\end{array}\\right] .\n\\]\n\nCalculated solution: \\(x_{1}=0, x_{2}=1\\)\nCorrect answer should be\n\\[ x_{1}=x_{2}=\\frac{1}{1+\\epsilon}=0.999999099999990 \\ldots\\]"
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#sensitivity-to-small-changes",
@@ -669,28 +669,28 @@
     "href": "lectures/ch1_lecture1b.html#partial-pivoting",
     "title": "Intro to linear systems",
     "section": "Partial pivoting",
-    "text": "Partial pivoting\nWe can improve performance of G-J by introducing a new step into the algorithm:\n\nFind the entry in the left column with the largest absolute value. This entry is called the pivot. Perform row interchange (if necessary), so that the pivot is in the first row.\nUse a row operation to get a 1 as the entry in the first row and first column.\nUse row operations to make all other entries as zeros in column one.\nInterchange rows if necessary to obtain a nonzero number with the largest absolute value in the second row, second column. Use a row operation to make this entry 1. Use row operations to make all other entries as zeros in column two.\nRepeat step 4 for row 3, column 3. Continue moving along the main diagonal until you reach the last row, or until the number is zero."
+    "text": "Partial pivoting\nWe can improve performance of G-J by introducing a new step into the algorithm:\n\nFind the entry in the left column with the largest absolute value. This entry is called the pivot. Perform row interchange (if necessary), so that the pivot is in the first row.\nUse a row operation to get a 1 as the entry in the first row and first column.\nUse row operations to make all other entries as zeros in column one.\nInterchange rows if necessary to obtain a nonzero number with the largest absolute value in the second row, second column. Use a row operation to make this entry 1. Use row operations to make all other entries as zeros in column two.\nRepeat step 4 for row 3, column 3. Continue moving along the main diagonal until you reach the last row, or until the number is zero.\n\n\nFull pivoting is where we also move the columns around to get the largest element to the front.\n” A square matrix 𝐴 has an 𝐿𝑈 factorization (without pivoting) if, and only if, no zero is encountered in the pivot position when computing an 𝐿𝑈 factorization of 𝐴. However, when does computations using floating point numbers a pivot that is nearly zero can lead to dramatic rounding errors. The simple workaround is to always permute the rows of the matrix such that the largest nonzero entry in a column is chosen as the pivot entry. This ensures that a nearly zero is never chosen. Complete pivoting goes even further by using row and column permutations to select the largest entry in the entire matrix as the pivot entry.” from here\nIt’s very rare to find yourself in a situation where you need complete pivoting, and sometimes it can be quite computationally expensive."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#using-partial-pivoting-in-our-example",
     "href": "lectures/ch1_lecture1b.html#using-partial-pivoting-in-our-example",
     "title": "Intro to linear systems",
     "section": "Using partial pivoting in our example",
-    "text": "Using partial pivoting in our example"
+    "text": "Using partial pivoting in our example\n\nwork this one out by hand"
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#ill-conditioned-linear-systems-1",
     "href": "lectures/ch1_lecture1b.html#ill-conditioned-linear-systems-1",
     "title": "Intro to linear systems",
     "section": "Ill-conditioned linear systems",
-    "text": "Ill-conditioned linear systems\n\nA system of linear equations is said to be ill-conditioned when some small perturbation in the system (in the \\(b\\)s) can produce relatively large changes in the exact solution (in the \\(x\\)’s). Otherwise, the system is said to be well-conditioned."
+    "text": "Ill-conditioned linear systems\n\nSometimes it’s not the procedure that introduces the susceptibility to small changes, but the actual problem itself. Then, small differences in the inputs lead to big differences in the exact solutions.\n\n\nA system of linear equations is said to be ill-conditioned when some small perturbation in the system (in the \\(b\\)s) can produce relatively large changes in the exact solution (in the \\(x\\)’s). Otherwise, the system is said to be well-conditioned."
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#ill-conditioned-linear-systems-2",
     "href": "lectures/ch1_lecture1b.html#ill-conditioned-linear-systems-2",
     "title": "Intro to linear systems",
     "section": "Ill-conditioned linear systems",
-    "text": "Ill-conditioned linear systems\n\n\n\nConsider \\[\n\\begin{aligned}\n& .835 x+.667 y=.168, \\\\\n& .333 x+.266 y=.067,\n\\end{aligned}\n\\]\nExact solution:\n\\[\nx=1 \\quad \\text { and } \\quad y=-1 .\n\\]\n\n\nBut if we change just one digit…\n\\[\n\\begin{aligned}\n& .835 x+.667 y=.168, \\\\\n& .333 x+.266 y=.06\\color{red}{6},\n\\end{aligned}\n\\]\nNow exact solution:\n\\[\n\\hat{x}=-666 \\quad \\text { and } \\quad \\hat{y}=834\n\\]\n\n\n\n\nMeyer Ch 1.6"
+    "text": "Ill-conditioned linear systems\n\n\n\nConsider \\[\n\\begin{aligned}\n& .835 x+.667 y=.168, \\\\\n& .333 x+.266 y=.067,\n\\end{aligned}\n\\]\nExact solution:\n\\[\nx=1 \\quad \\text { and } \\quad y=-1 .\n\\]\n\n\nBut if we change just one digit…\n\\[\n\\begin{aligned}\n& .835 x+.667 y=.168, \\\\\n& .333 x+.266 y=.06\\color{red}{6},\n\\end{aligned}\n\\]\nNow exact solution:\n\\[\n\\hat{x}=-666 \\quad \\text { and } \\quad \\hat{y}=834\n\\]\n\n\n\n\nWhat’s going on here? One thing to notice is that the lines corresponding to solutions for each equation have very similar slopes: r .667/.835 vs r .266/.33.\n\n\nMeyer Ch 1.6"
   },
   {
     "objectID": "lectures/ch1_lecture1b.html#section-4",
@@ -760,7 +760,7 @@
     "href": "lectures/ch1_lecture1b.html#the-problem-linear-dependency",
     "title": "Intro to linear systems",
     "section": "The problem: linear dependency",
-    "text": "The problem: linear dependency"
+    "text": "The problem: linear dependency\n\n\n\n\n\n\n\n\n\n\nAs n gets higher, \\(x^n\\) gets closer to \\(x^{n+1}\\) (at least in the range \\((0,1)\\)). This means that a solution of \\(a_n x^n + a_{n+1} x^{n+1}\\) will be very similar to e.g. \\(a_{n+1} x^n + a_{n} x^{n+1}\\)"
   },
   {
     "objectID": "lectures/ch2_lecture1.html#diffusion",

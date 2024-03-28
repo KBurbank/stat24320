@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"context":"interactive","message":"true","fig-height":5,"fig-cap":"","comment":"","results":"markup","label":"","read-only":"false","output":"true","autorun":"","classes":"","dpi":72,"out-height":"","out-width":"700px","fig-width":7,"warning":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"results":"markup","context":"interactive","classes":"","fig-height":5,"fig-cap":"","label":"","output":"true","warning":"true","fig-width":7,"out-width":"700px","dpi":72,"comment":"","read-only":"false","message":"true","out-height":"","autorun":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1579,8 +1579,11 @@
 
             thiz.zoomButton.onclick = function () {
                 // Retrieve current code data
-                if(thiz.mainDiv.parentNode
+                if(isSameNode(thiz.mainDiv.parentNode,thiz.outsideInsertionLocation){
+                    thiz.InsertionLocation.appendChild(thiz.mainDiv)
+                    else {
                 thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
+                    }
                 console.log("should have done the insertion")
            //     document.getElementById("")
            //     const data = thiz.editor.getValue();

@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"results":"markup","read-only":"false","fig-width":7,"out-width":"700px","context":"interactive","warning":"true","comment":"","autorun":"","classes":"","fig-height":5,"output":"true","out-height":"","fig-cap":"","message":"true","dpi":72,"label":""}}];
+  globalThis.qpyodideCellDetails = [{"options":{"output":"true","read-only":"false","classes":"","label":"","out-width":"700px","fig-height":5,"context":"interactive","fig-width":7,"dpi":72,"comment":"","autorun":"","out-height":"","warning":"true","results":"markup","fig-cap":"","message":"true"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
 
 
   </script>
@@ -1416,8 +1416,7 @@
 
             // Insert the dynamically generated object at the document location.
 
-            this.outsideInsertionLocation.appendChild(outsideDiv);
-            outsideDiv.appendChild(mainDiv);
+           this.insertionLocation.appendChild(mainDiv);
             //console.log(this.outsideInsertionLocation)
         }
 

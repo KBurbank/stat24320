@@ -591,7 +591,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import numpy as np\na = np.arange(10)\na\nnp.roll(a, -1)"},{"id":2,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"},{"id":3,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3"},{"id":4,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import sympy as sym\nS= sym.Matrix([[3/2, 0], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nS*point_1"},{"id":5,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import sympy as sym\nH= sym.Matrix([[1, 1/2], [0, 1])\npoint_1 = sym.Matrix([1, 1])\nH*point_1"},{"id":6,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import sympy as sym\nC= sym.Matrix([[3/2, 3/4], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nC*point_1"},{"id":7,"options":{"out-height":"","fig-height":5,"message":"true","results":"markup","read-only":"false","comment":"","autorun":"","context":"interactive","fig-width":7,"classes":"","out-width":"700px","dpi":72,"fig-cap":"","warning":"true","output":"true","label":""},"code":"import matplotlib.pyplot as plt; import matplotlib.patches as mpatches; import sympy as sym;\nfig=plt.figure(); plt.clf()\nrectangle = sym.Matrix([[0,0],[0,1],[1,1],[1,0]])\nA=sym.Matrix([[1,.2],[.2,.2]])\nfig, ax = plt.subplots()\nax.add_patch(mpatches.Polygon((A*rectangle.T).T))\nax.add_patch(mpatches.Polygon((rectangle),fc=(1,0,0,0.25)))\nautomin, automax = plt.xlim(); plt.xlim(automin-0.5, automax+0.5);automin, automax = plt.ylim(); plt.ylim(automin-0.5, automax+0.5)\nplt.show()"}];
+  globalThis.qpyodideCellDetails = [{"code":"import numpy as np\na = np.arange(10)\na\nnp.roll(a, -1)","id":1,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 1], [2, 2, 5], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":2,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import sympy as sym\nA = sym.Matrix([[1, 1, 2], [1, 2, 2], [4, 6, 8]])\na1 = A[:,0]\na2 = A[:,1]\na3 = A[:,2]\n# Fill in your guesses for values of x1, x2, and x3\n__*a1 + __*a2+__*a3","id":3,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import sympy as sym\nS= sym.Matrix([[3/2, 0], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nS*point_1","id":4,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import sympy as sym\nH= sym.Matrix([[1, 1/2], [0, 1])\npoint_1 = sym.Matrix([1, 1])\nH*point_1","id":5,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import sympy as sym\nC= sym.Matrix([[3/2, 3/4], [0, 1/2])\npoint_1 = sym.Matrix([1, 1])\nC*point_1","id":6,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}},{"code":"import matplotlib.pyplot as plt; import matplotlib.patches as mpatches; import sympy as sym;\nfig=plt.figure(); plt.clf()\nrectangle = sym.Matrix([[0,0],[0,1],[1,1],[1,0]])\nA=sym.Matrix([[1,.2],[.2,.2]])\nfig, ax = plt.subplots()\nax.add_patch(mpatches.Polygon((A*rectangle.T).T))\nax.add_patch(mpatches.Polygon((rectangle),fc=(1,0,0,0.25)))\nautomin, automax = plt.xlim(); plt.xlim(automin-0.5, automax+0.5);automin, automax = plt.ylim(); plt.ylim(automin-0.5, automax+0.5)\nplt.show()","id":7,"options":{"context":"interactive","fig-cap":"","message":"true","output":"true","read-only":"false","classes":"","warning":"true","fig-height":5,"fig-width":7,"dpi":72,"out-width":"700px","comment":"","out-height":"","results":"markup","autorun":"","label":""}}];
 
 
   </script>
@@ -949,7 +949,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="diffusion.gif" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="diffusion.gif"><img data-src="diffusion.gif" alt="diffusion.gif"></a></p>
+<p><a href="diffusion.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="diffusion.gif"><img data-src="diffusion.gif" alt="diffusion.gif"></a></p>
 <figcaption>diffusion.gif</figcaption>
 </figure>
 </div>
@@ -1032,7 +1032,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <h2><em></em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="reaction.gif" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="reaction.gif"><img data-src="reaction.gif" alt="reaction.gif"></a></p>
+<p><a href="reaction.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="reaction.gif"><img data-src="reaction.gif" alt="reaction.gif"></a></p>
 <figcaption>reaction.gif</figcaption>
 </figure>
 </div>
@@ -1127,7 +1127,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <h2><em></em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="1dRD.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="1dRD.gif"><img data-src="1dRD.gif" alt="1dRD.gif"></a></p>
+<p><a href="1dRD.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="1dRD.gif"><img data-src="1dRD.gif" alt="1dRD.gif"></a></p>
 <figcaption>1dRD.gif</figcaption>
 </figure>
 </div>
@@ -1137,7 +1137,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <h2><em>In two dimensions</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="2dRD.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="2dRD.png"><img data-src="2dRD.png" alt="2dRD.png"></a></p>
+<p><a href="2dRD.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="2dRD.png"><img data-src="2dRD.png" alt="2dRD.png"></a></p>
 <figcaption>2dRD.png</figcaption>
 </figure>
 </div>
@@ -2708,7 +2708,7 @@ R(\theta)=\left[\begin{array}{rr}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

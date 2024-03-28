@@ -1,5 +1,7 @@
 format: 
-  revealjs: default
+  revealjs:
+    keep-ipynb: true
+
 
 
 

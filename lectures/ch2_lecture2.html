@@ -591,7 +591,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","options":{"results":"markup","read-only":"false","autorun":"","out-width":"700px","warning":"true","classes":"","output":"true","message":"true","dpi":72,"fig-cap":"","fig-height":5,"comment":"","label":"","out-height":"","fig-width":7,"context":"interactive"}}];
+  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1,"options":{"context":"interactive","fig-height":5,"comment":"","classes":"","out-width":"700px","fig-cap":"","output":"true","results":"markup","warning":"true","autorun":"","out-height":"","read-only":"false","dpi":72,"fig-width":7,"message":"true","label":""}}];
 
 
   </script>
@@ -1072,7 +1072,7 @@ b_{2}
 <h2><em>Example: Structured Population Model</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insect_life_stages.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
+<p><a href="insect_life_stages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
 <figcaption>insect life stages</figcaption>
 </figure>
 </div>
@@ -1160,7 +1160,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects.gif" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
+<p><a href="insects.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
 <figcaption>dying insects</figcaption>
 </figure>
 </div>
@@ -1172,7 +1172,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects2.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
+<p><a href="insects2.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
 <figcaption>living insects</figcaption>
 </figure>
 </div>
@@ -2461,7 +2461,7 @@ A+A^{2}=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

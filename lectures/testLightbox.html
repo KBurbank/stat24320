@@ -525,7 +525,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"output":"true","fig-height":5,"autorun":"","warning":"true","message":"true","comment":"","results":"markup","classes":"","dpi":72,"context":"interactive","fig-width":7,"label":"","read-only":"false","out-width":"700px","fig-cap":"","out-height":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"results":"markup","out-height":"","out-width":"700px","dpi":72,"output":"true","warning":"true","fig-height":5,"comment":"","classes":"","label":"","fig-width":7,"autorun":"","context":"interactive","fig-cap":"","read-only":"false","message":"true"},"id":1}];
 
 
   </script>
@@ -1596,11 +1596,11 @@
                     console.log(thiz.InsertionLocation)
                     thiz.InsertionLocation.appendChild(thiz.mainDiv)
                     console.log("inserted into main doc")
-                    thiz.outsideInsertionLocation.setAttribute("display","none");
+                    thiz.outsideInsertionLocation.style.display = "none";
                   }  else {
                         console.log("inserted into outside location")
                     thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
-                    thiz.outsideInsertionLocation.setAttribute("display","block");
+                    thiz.outsideInsertionLocation.style.display = "block";
               //  thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
 
                     }

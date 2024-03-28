@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"fig-width":7,"results":"markup","context":"interactive","out-width":"700px","fig-height":5,"output":"true","warning":"true","classes":"","dpi":72,"label":"","out-height":"","autorun":"","comment":"","fig-cap":"","read-only":"false","message":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"results":"markup","read-only":"false","fig-width":7,"out-width":"700px","context":"interactive","warning":"true","comment":"","autorun":"","classes":"","fig-height":5,"output":"true","out-height":"","fig-cap":"","message":"true","dpi":72,"label":""}}];
 
 
   </script>
@@ -1579,11 +1579,12 @@
 
             thiz.zoomButton.onclick = function () {
                 // Retrieve current code data
-                document.getElementById("")
-                const data = thiz.editor.getValue();
+                this.outsideInsertionLocation.appendChild(this.mainDiv())
+           //     document.getElementById("")
+           //     const data = thiz.editor.getValue();
                 
                 // Write code data onto the clipboard.
-                navigator.clipboard.writeText(data || "");
+           //     navigator.clipboard.writeText(data || "");
             };
             
             // Add a click event listener to the copy button

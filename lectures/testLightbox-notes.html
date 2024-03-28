@@ -461,7 +461,7 @@
       background-color: white;
       /* scale: 1; */
       pointer-events: auto;
-      visibility: hidden;
+      display:none;
     }
 
     .qpyodide-output-graph-area {
@@ -525,7 +525,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"classes":"","read-only":"false","fig-height":5,"dpi":72,"message":"true","out-width":"700px","autorun":"","comment":"","context":"interactive","warning":"true","fig-width":7,"output":"true","results":"markup","fig-cap":"","label":"","out-height":""}}];
+  globalThis.qpyodideCellDetails = [{"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"read-only":"false","output":"true","results":"markup","label":"","warning":"true","dpi":72,"out-height":"","message":"true","comment":"","out-width":"700px","autorun":"","context":"interactive","fig-width":7,"fig-height":5,"fig-cap":"","classes":""}}];
 
 
   </script>
@@ -1596,10 +1596,11 @@
                     console.log(thiz.InsertionLocation)
                     thiz.InsertionLocation.appendChild(thiz.mainDiv)
                     console.log("inserted into main doc")
+                    thiz.outsideInsertionLocation.setAttribute("display","none");
                   }  else {
                         console.log("inserted into outside location")
                     thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
-                    thiz.outsideInsertionLocation.setAttribute(display:"visible")
+                    thiz.outsideInsertionLocation.setAttribute("display","visible");
               //  thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
 
                     }

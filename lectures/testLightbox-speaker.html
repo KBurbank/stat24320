@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"autorun":"","dpi":72,"context":"interactive","out-width":"700px","results":"markup","classes":"","warning":"true","output":"true","comment":"","read-only":"false","fig-cap":"","out-height":"","fig-height":5,"label":"","fig-width":7,"message":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"options":{"dpi":72,"fig-height":5,"context":"interactive","warning":"true","results":"markup","out-width":"700px","read-only":"false","comment":"","fig-width":7,"classes":"","autorun":"","fig-cap":"","message":"true","label":"","out-height":"","output":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1294,6 +1294,10 @@
                 mainDiv.className += " " + this.options.classes
             }
 
+            // Create outside insertion location div
+            var outsideDiv = document.createElement('div');
+            outsideDiv.className = `qpyodide-outside-insertion-area`;
+
             // Add a unique cell identifier that users can customize
             if (this.options.label) {
                 mainDiv.setAttribute('data-id', this.options.label);
@@ -1396,7 +1400,9 @@
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-            this.outsideInsertionLocation.appendChild(mainDiv);
+
+            this.outsideInsertionLocation.appendChild(outsideDiv);
+            outsideDiv.appendChild(mainDiv);
             //console.log(this.outsideInsertionLocation)
         }
 

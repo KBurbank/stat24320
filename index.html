@@ -105,9 +105,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-colab-link',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-colab-link',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-title","listing-author"],
+      searchColumns: ["listing-project","listing-revealjs-plugins","listing-format","listing-filters","listing-theme","listing-execute","listing-website","listing-custom","listing-language","listing-title","listing-publish","listing-path","listing-outputHref","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-colab-link"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -301,37 +301,15 @@ No matching items
 </section>
 <section id="notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="notebooks"><em>Notebooks</em></h2>
-<div id="listing-notebooks" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-<th>
-Colab
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1711631474713" data-listing-reading-time-sort="1" data-listing-word-count-sort="162" data-listing-title-sort="PageRank Tutorial" data-listing-filename-sort="pagerank_tutorial.ipynb">
-<td>
-<a href="./notebooks/pagerank_tutorial.html" class="title listing-title">PageRank Tutorial</a>
-</td>
-<td>
-<span class="listing-colab-link">&nbsp;</span>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1711631498272" data-listing-reading-time-sort="13" data-listing-word-count-sort="2495" data-listing-title-sort="Turing Patterns" data-listing-filename-sort="turing_patterns.ipynb">
-<td>
-<a href="./notebooks/turing_patterns.html" class="title listing-title">Turing Patterns</a>
-</td>
-<td>
-<span class="listing-colab-link"><a target="_blank" href="https://colab.research.google.com/github/KBurbank/stat24320/blob/main/notebooks/turing_patterns.out.ipynb"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"> </a></span>
-</td>
-</tr>
-</tbody>
-</table>
+<div id="listing-notebooks" class="quarto-listing quarto-listing-container-custom">
+<ul>
+<li>
+<a href="./notebooks/pagerank_tutorial.html">PageRank Tutorial</a>
+</li>
+<li>
+<a href="./notebooks/turing_patterns.html">Turing Patterns</a>
+</li>
+</ul>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

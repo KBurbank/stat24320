@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"autorun":"","dpi":72,"output":"true","fig-width":7,"results":"markup","out-height":"","message":"true","classes":"","context":"interactive","label":"","read-only":"false","comment":"","out-width":"700px","fig-height":5,"warning":"true","fig-cap":""},"id":1}];
+  globalThis.qpyodideCellDetails = [{"options":{"fig-width":7,"results":"markup","context":"interactive","out-width":"700px","fig-height":5,"output":"true","warning":"true","classes":"","dpi":72,"label":"","out-height":"","autorun":"","comment":"","fig-cap":"","read-only":"false","message":"true"},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1579,6 +1579,7 @@
 
             thiz.zoomButton.onclick = function () {
                 // Retrieve current code data
+                document.getElementById("")
                 const data = thiz.editor.getValue();
                 
                 // Write code data onto the clipboard.

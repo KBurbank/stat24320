@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"output":"true","read-only":"false","classes":"","label":"","out-width":"700px","fig-height":5,"context":"interactive","fig-width":7,"dpi":72,"comment":"","autorun":"","out-height":"","warning":"true","results":"markup","fig-cap":"","message":"true"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"results":"markup","warning":"true","autorun":"","label":"","message":"true","context":"interactive","read-only":"false","out-height":"","fig-width":7,"out-width":"700px","comment":"","output":"true","classes":"","fig-cap":"","dpi":72,"fig-height":5}}];
 
 
   </script>
@@ -1578,7 +1578,7 @@
 
             thiz.zoomButton.onclick = function () {
                 // Retrieve current code data
-                this.outsideInsertionLocation.appendChild(this.mainDiv())
+                this.outsideInsertionLocation.appendChild(this.mainDiv)
            //     document.getElementById("")
            //     const data = thiz.editor.getValue();
                 

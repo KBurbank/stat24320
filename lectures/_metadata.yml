@@ -1,6 +1,6 @@
 format: 
   ipynb:
-    output-ext: .out2.ipynb
+    output-ext: out2.ipynb
   revealjs:
     keep-ipynb: false
  

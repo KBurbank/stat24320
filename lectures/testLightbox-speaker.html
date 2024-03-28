@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"fig-width":7,"message":"true","context":"interactive","warning":"true","read-only":"false","classes":"","results":"markup","label":"","out-width":"700px","dpi":72,"output":"true","autorun":"","out-height":"","fig-height":5,"fig-cap":"","comment":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"context":"interactive","fig-width":7,"autorun":"","read-only":"false","results":"markup","dpi":72,"out-height":"","classes":"","fig-height":5,"label":"","out-width":"700px","warning":"true","comment":"","message":"true","fig-cap":"","output":"true"}}];
 
 
   </script>
@@ -1348,7 +1348,7 @@
             zoomButton.type = 'button';
             zoomButton.id = `qpyodide-button-zoom-${this.id}`;
             zoomButton.title = 'Zoom code editor';
-            zoomButton.innerHTML = '<i class="fa-regular fa-icon-zoom-in"></i>';
+            zoomButton.innerHTML = '<i class="fa-regular fa-zoom-in"></i>';
 
             // Create Copy button
             var copyButton = document.createElement('button');

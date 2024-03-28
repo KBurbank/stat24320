@@ -524,7 +524,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"label":"","read-only":"false","out-height":"","autorun":"","classes":"","output":"true","message":"true","results":"markup","context":"interactive","dpi":72,"warning":"true","out-width":"700px","fig-cap":"","comment":"","fig-height":5,"fig-width":7},"id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"read-only":"false","message":"true","warning":"true","dpi":72,"autorun":"","comment":"","results":"markup","classes":"","context":"interactive","output":"true","out-height":"","out-width":"700px","fig-cap":"","fig-width":7,"label":"","fig-height":5}}];
 
 
   </script>
@@ -1244,6 +1244,7 @@
             // FIX THIS WHEN YOU GET BACK
             // check if a div already exists
             if(document.getElementById(`qpyodide-outside-insertion-location`)==null){
+                var outsideInsertionDiv = document.createElement('div');
                 
             }
 

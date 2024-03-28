@@ -379,7 +379,6 @@
 
   .qpyodide-editor {
     border: 1px solid #EEEEEE;
-    text-align: left;
   }
 
   .qpyodide-editor-toolbar {
@@ -429,8 +428,8 @@
   .reveal div.qpyodide-interactive-area {
     display: block;
     box-shadow: none;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0;
     padding: 0;
   } 
@@ -438,39 +437,16 @@
   /* Provide space to entries */
   .reveal div.qpyodide-output-code-area pre div {
     margin: 1px 2px 1px 10px;
-    text-align: left;
-    padding-left: 10px;
-
   }
 
   /* Collapse the inside code tags to avoid extra space between line outputs */
   .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
     padding: 0;
     display: contents;
-
   }
-
-  .qpyodide-outside-insertion-area {
-      height: 90dvh;
-      width: 90dvw;
-      position: absolute;
-      z-index: 100;
-      /* top: 0px; */
-      margin: 30px;
-      border: black solid;
-      background-color: white;
-      /* scale: 1; */
-    }
-
-    .qpyodide-output-graph-area {
-      width: 80dvw;
-    }
-
-
 
   .reveal pre div code.qpyodide-output-code-stdout {
     color: #111;
-
   }
 
   .reveal pre div code.qpyodide-output-code-stderr {
@@ -480,25 +456,16 @@
 
   /* Create a border around console and output (does not effect graphs) */
   .reveal div.qpyodide-console-area {
-    border: 1px solid #251cc7;
+    border: 1px solid #EEEEEE;
     box-shadow: 2px 2px 10px #EEEEEE;
-    background: white;
   }
 
   /* Cap output height and allow text to scroll */
   /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
   .reveal div.qpyodide-output-code-area pre {
     max-height: 400px;
-    min-height: 100px;
     overflow: scroll;
-    font-size:1.2rem;
   }
-
-  .slide {
-    height:100%;
-  }
-
-
   </style>
   <script type="module">
   // Document level settings ----
@@ -523,7 +490,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"label":"","fig-cap":"","output":"true","context":"interactive","dpi":72,"warning":"true","out-width":"700px","read-only":"false","results":"markup","fig-width":7,"comment":"","fig-height":5,"autorun":"","classes":"","message":"true","out-height":""}}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","output":"true","label":"","out-width":"700px","autorun":"","classes":"","comment":"","warning":"true","dpi":72,"out-height":"","read-only":"false","fig-width":7,"results":"markup","fig-cap":"","fig-height":5,"context":"interactive"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -738,7 +705,7 @@
 <section class="slide level3 center">
 
 <p>OK now.</p>
-<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
+<div id="qpyodide-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
@@ -1239,9 +1206,6 @@
             this.id = cellData.id;
             this.options = cellData.options;
             this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
-            
-            // FIX THIS WHEN YOU GET BACK
-            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")[0]
             this.executionLock = false;
         }
 
@@ -1293,10 +1257,6 @@
             if (this.options.classes) {
                 mainDiv.className += " " + this.options.classes
             }
-
-            // Create outside insertion location div
-            var outsideDiv = document.createElement('div');
-            outsideDiv.className = `qpyodide-outside-insertion-area`;
 
             // Add a unique cell identifier that users can customize
             if (this.options.label) {
@@ -1365,7 +1325,6 @@
             outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
 
             // Create pre element inside output code area
-            // This preserves whitespace  and is displayed in a fixed-width font
             var preElement = document.createElement('pre');
             preElement.style.visibility = 'hidden';
             outputCodeAreaDiv.appendChild(preElement);
@@ -1400,10 +1359,7 @@
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-
-            this.outsideInsertionLocation.appendChild(outsideDiv);
-            outsideDiv.appendChild(mainDiv);
-            //console.log(this.outsideInsertionLocation)
+            this.insertionLocation.appendChild(mainDiv);
         }
 
         /**

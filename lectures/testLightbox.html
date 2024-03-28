@@ -524,7 +524,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"context":"interactive","read-only":"false","output":"true","dpi":72,"fig-cap":"","message":"true","label":"","autorun":"","out-height":"","warning":"true","results":"markup","fig-height":5,"comment":"","classes":"","out-width":"700px","fig-width":7},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"options":{"read-only":"false","context":"interactive","output":"true","warning":"true","comment":"","fig-width":7,"out-width":"700px","label":"","classes":"","results":"markup","dpi":72,"fig-cap":"","autorun":"","out-height":"","message":"true","fig-height":5},"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1245,12 +1245,13 @@
             // check if a div already exists
             if(document.getElementById(`qpyodide-outside-insertion-location`)==null){
                 var outsideInsertionDiv = document.createElement('div');
-                outsideInsertionDiv.id='qpyodide-outside-insertion-location'
-                outsideInsertionDiv.className='qpyodide-outside-insertion-location'
-                
+                outsideInsertionDiv.id='qpyodide-outside-insertion-location';
+                outsideInsertionDiv.className='qpyodide-outside-insertion-location';
+                document.getElementsByClassName("reveal-viewport")[0].appendChild(outsideInsertionDiv);
+                this.outsideInsertionLocation = outsideInsertionDiv
             }
 
-            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")[0]
+            
             this.executionLock = false;
         }
 

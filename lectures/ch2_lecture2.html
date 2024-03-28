@@ -447,6 +447,7 @@
 
   .qpyodide-editor {
     border: 1px solid #EEEEEE;
+    text-align: left;
   }
 
   .qpyodide-editor-toolbar {
@@ -496,8 +497,8 @@
   .reveal div.qpyodide-interactive-area {
     display: block;
     box-shadow: none;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
   } 
@@ -505,16 +506,39 @@
   /* Provide space to entries */
   .reveal div.qpyodide-output-code-area pre div {
     margin: 1px 2px 1px 10px;
+    text-align: left;
+    padding-left: 10px;
+
   }
 
   /* Collapse the inside code tags to avoid extra space between line outputs */
   .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
     padding: 0;
     display: contents;
+
   }
+
+  .qpyodide-outside-insertion-area {
+      height: 90dvh;
+      width: 90dvw;
+      position: absolute;
+      z-index: 100;
+      /* top: 0px; */
+      margin: 30px;
+      border: black solid;
+      background-color: white;
+      /* scale: 1; */
+    }
+
+    .qpyodide-output-graph-area {
+      width: 80dvw;
+    }
+
+
 
   .reveal pre div code.qpyodide-output-code-stdout {
     color: #111;
+
   }
 
   .reveal pre div code.qpyodide-output-code-stderr {
@@ -524,16 +548,25 @@
 
   /* Create a border around console and output (does not effect graphs) */
   .reveal div.qpyodide-console-area {
-    border: 1px solid #EEEEEE;
+    border: 1px solid #251cc7;
     box-shadow: 2px 2px 10px #EEEEEE;
+    background: white;
   }
 
   /* Cap output height and allow text to scroll */
   /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
   .reveal div.qpyodide-output-code-area pre {
     max-height: 400px;
+    min-height: 100px;
     overflow: scroll;
+    font-size:1.2rem;
   }
+
+  .slide {
+    height:100%;
+  }
+
+
   </style>
   <script type="module">
   // Document level settings ----
@@ -558,7 +591,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"fig-cap":"","classes":"","message":"true","label":"","fig-width":7,"read-only":"false","out-height":"","results":"markup","out-width":"700px","output":"true","comment":"","autorun":"","fig-height":5,"warning":"true","dpi":72,"context":"interactive"},"id":1,"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______"}];
+  globalThis.qpyodideCellDetails = [{"options":{"comment":"","autorun":"","label":"","classes":"","message":"true","results":"markup","fig-cap":"","warning":"true","output":"true","read-only":"false","fig-height":5,"dpi":72,"fig-width":7,"out-width":"700px","context":"interactive","out-height":""},"id":1,"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______"}];
 
 
   </script>
@@ -1008,7 +1041,7 @@ b_{2}
 
 <section id="toothpaste-after-many-quarters" class="title-slide slide level2 center">
 <h2><em>Toothpaste after many quarters</em></h2>
-<div id="qpyodide-insertion-location-1"></div>
+<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Now:</p>
 <ul>
@@ -1039,7 +1072,7 @@ b_{2}
 <h2><em>Example: Structured Population Model</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insect_life_stages.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
+<p><a href="insect_life_stages.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="insect life stages"><img data-src="insect_life_stages.png" height="200" alt="insect life stages"></a></p>
 <figcaption>insect life stages</figcaption>
 </figure>
 </div>
@@ -1127,7 +1160,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
+<p><a href="insects.gif" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="dying insects"><img data-src="insects.gif" height="150" alt="dying insects"></a></p>
 <figcaption>dying insects</figcaption>
 </figure>
 </div>
@@ -1139,7 +1172,7 @@ A=\left[\begin{array}{ccc}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="insects2.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
+<p><a href="insects2.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="living insects"><img data-src="insects2.gif" height="150" alt="living insects"></a></p>
 <figcaption>living insects</figcaption>
 </figure>
 </div>
@@ -1945,6 +1978,9 @@ A+A^{2}=\left[\begin{array}{llllll}
             this.id = cellData.id;
             this.options = cellData.options;
             this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            
+            // FIX THIS WHEN YOU GET BACK
+            this.outsideInsertionLocation = document.getElementsByClassName("reveal-viewport")[0]
             this.executionLock = false;
         }
 
@@ -1996,6 +2032,10 @@ A+A^{2}=\left[\begin{array}{llllll}
             if (this.options.classes) {
                 mainDiv.className += " " + this.options.classes
             }
+
+            // Create outside insertion location div
+            var outsideDiv = document.createElement('div');
+            outsideDiv.className = `qpyodide-outside-insertion-area`;
 
             // Add a unique cell identifier that users can customize
             if (this.options.label) {
@@ -2064,6 +2104,7 @@ A+A^{2}=\left[\begin{array}{llllll}
             outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
 
             // Create pre element inside output code area
+            // This preserves whitespace  and is displayed in a fixed-width font
             var preElement = document.createElement('pre');
             preElement.style.visibility = 'hidden';
             outputCodeAreaDiv.appendChild(preElement);
@@ -2098,7 +2139,10 @@ A+A^{2}=\left[\begin{array}{llllll}
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-            this.insertionLocation.appendChild(mainDiv);
+
+            this.outsideInsertionLocation.appendChild(outsideDiv);
+            outsideDiv.appendChild(mainDiv);
+            //console.log(this.outsideInsertionLocation)
         }
 
         /**
@@ -2417,7 +2461,7 @@ A+A^{2}=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -70,7 +70,35 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-lecture-notes .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-lecture_day','listing-readings','listing-colab-link',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-lecture-notes'] = new List('listing-lecture-notes', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-notebooks .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
@@ -83,7 +111,35 @@ ul.task-list li input[type="checkbox"] {
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-notebooks'] = new List('listing-notebooks', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-homeworks .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-textbook-chapters','listing-due-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-homeworks'] = new List('listing-homeworks', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -161,24 +217,105 @@ window.Quarto = {
 
 <section id="lecture-notes" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-notes"><em>Lecture Notes</em></h2>
-<div id="lecture-notes">
+<div id="listing-lecture-notes" class="quarto-listing quarto-listing-container-table">
 
 </div>
 </section>
 <section id="notebooks" class="level2">
 <h2 class="anchored" data-anchor-id="notebooks"><em>Notebooks</em></h2>
-<div id="notebooks">
+<div id="listing-notebooks" class="quarto-listing quarto-listing-container-custom">
 
 </div>
 </section>
 <section id="homeworks" class="level2">
 <h2 class="anchored" data-anchor-id="homeworks"><em>Homeworks</em></h2>
-<div id="homeworks">
+<div id="listing-homeworks" class="quarto-listing quarto-listing-container-table">
 
 </div>
 
 <p>:::{#quarto-listing-pipeline .hidden} <span class="hidden" data-render-id="quarto-enable-math-inline"><span class="math inline">\(e = mC^2\)</span></span></p>
-<p>:::{.hidden render-id=“pipeline-listing-listing”}</p>
+<div class="hidden" data-render-id="pipeline-listing-lecture-notes">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+Lecture Day
+</th>
+<th>
+Readings
+</th>
+<th>
+Colab
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1711630760531" data-listing-reading-time-sort="16" data-listing-word-count-sort="3077" data-listing-title-sort="Intro to linear systems" data-listing-filename-sort="ch1_lecture1b.qmd">
+<td>
+<a href="./lectures/ch1_lecture1b.html" class="title listing-title">Intro to linear systems</a>
+</td>
+<td>
+<span class="listing-lecture_day">1</span>
+</td>
+<td>
+<span class="listing-readings">Ch. 1.1-1.3</span>
+</td>
+<td>
+<span class="listing-colab-link"><a target="_blank" href="https://colab.research.google.com/github/KBurbank/stat24320/blob/main/lectures/ch1_lecture1b.ipynb"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"> </a></span>
+</td>
+</tr>
+<tr data-index="1" data-listing-file-modified-sort="1711630758447" data-listing-reading-time-sort="10" data-listing-word-count-sort="1922" data-listing-title-sort="More Systems of Linear Equations" data-listing-filename-sort="ch1_lecture2.qmd">
+<td>
+<a href="./lectures/ch1_lecture2.html" class="title listing-title">More Systems of Linear Equations</a>
+</td>
+<td>
+<span class="listing-lecture_day">2</span>
+</td>
+<td>
+<span class="listing-readings">Ch. 1.4-1.5</span>
+</td>
+<td>
+<span class="listing-colab-link"><a target="_blank" href="https://colab.research.google.com/github/KBurbank/stat24320/blob/main/lectures/ch1_lecture2.ipynb"> <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"> </a></span>
+</td>
+</tr>
+<tr data-index="2" data-listing-file-modified-sort="1711630755978" data-listing-reading-time-sort="21" data-listing-word-count-sort="4137" data-listing-title-sort="Ch2 Lecture 1" data-listing-filename-sort="ch2_lecture1.qmd">
+<td>
+<a href="./lectures/ch2_lecture1.html" class="title listing-title">Ch2 Lecture 1</a>
+</td>
+<td>
+<span class="listing-lecture_day">3</span>
+</td>
+<td>
+<span class="listing-readings">2.1-2.3</span>
+</td>
+<td>
+<span class="listing-colab-link">&nbsp;</span>
+</td>
+</tr>
+<tr data-index="3" data-listing-file-modified-sort="1711630752427" data-listing-reading-time-sort="15" data-listing-word-count-sort="2818" data-listing-title-sort="Ch2 Lecture 2" data-listing-filename-sort="ch2_lecture2.qmd">
+<td>
+<a href="./lectures/ch2_lecture2.html" class="title listing-title">Ch2 Lecture 2</a>
+</td>
+<td>
+<span class="listing-lecture_day">4</span>
+</td>
+<td>
+<span class="listing-readings">2.3-2.4</span>
+</td>
+<td>
+<span class="listing-colab-link">&nbsp;</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
+<p>:::{.hidden render-id=“pipeline-listing-notebooks”}</p>
 <pre><code>&lt;tr&gt;
         &lt;td&gt;
   &lt;a href="/notebooks/pagerank_tutorial.ipynb"&gt;PageRank Tutorial&lt;/a&gt;&lt;/td&gt;
@@ -191,7 +328,8 @@ window.Quarto = {
   &lt;td&gt;&lt;p&gt;"Test colab link"&lt;/p&gt;&lt;/td&gt;
 &lt;/tr&gt;</code></pre><div class="listing-no-matching d-none">
 No matching items
-</div><p>:::</p><p>:::</p><table>
+</div><p>:::</p><div class="hidden" data-render-id="pipeline-listing-homeworks">
+</div><table>
 <tbody><tr>
 <th>
 Title
@@ -203,7 +341,39 @@ Colab link
 
 
 
-
+</tbody></table><table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Title
+</th>
+<th>
+Textbook Chapters
+</th>
+<th>
+Due Date
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-file-modified-sort="1711633085980" data-listing-reading-time-sort="4" data-listing-word-count-sort="643" data-listing-title-sort="Homework 1" data-listing-filename-sort="HW1.qmd">
+<td>
+<a href="./HW/HW1.html" class="title listing-title">Homework 1</a>
+</td>
+<td>
+<span class="listing-textbook-chapters">1</span>
+</td>
+<td>
+<span class="listing-due-date">2024-03-27</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</section></main></div>
+<p>:::</p>
 
 
 
@@ -622,4 +792,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</tbody></table></section><div class="quarto-listing quarto-listing-container-custom" id="listing-listing"></div></main></div></body></html>
+</body></html>

@@ -415,6 +415,8 @@
     display: flex;
   }
 
+
+
   .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
     justify-content: center;
     display: flex;
@@ -447,6 +449,7 @@
 
   .qpyodide-editor {
     border: 1px solid #EEEEEE;
+    text-align: left;
   }
 
   .qpyodide-editor-toolbar {
@@ -496,8 +499,8 @@
   .reveal div.qpyodide-interactive-area {
     display: block;
     box-shadow: none;
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
   } 
@@ -505,16 +508,57 @@
   /* Provide space to entries */
   .reveal div.qpyodide-output-code-area pre div {
     margin: 1px 2px 1px 10px;
+    text-align: left;
+    padding-left: 10px;
+
   }
 
   /* Collapse the inside code tags to avoid extra space between line outputs */
   .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
     padding: 0;
     display: contents;
+
   }
+
+  .qpyodide-outside-insertion-location {
+      height: 90dvh;
+      width: 90dvw;
+      position: fixed;
+      z-index: 100;
+      /* top: 0px; */
+      margin: 30px;
+      border: black solid;
+      background-color: white;
+      /* scale: 1; */
+      pointer-events: auto;
+      display:none;
+      overflow-y: scroll;
+      scale: 1;
+      font-size: 1rem;
+    }
+
+    .qpyodide-outside-insertion-location .qpyodide-interactive-area {
+    /*  font-size: 12px!important;
+      line-height: 14px!important; */
+      scale: 1;
+    }
+
+  .qpyodide-outside-insertion-location .view-lines,
+   .qpyodide-outside-insertion-location .margin-view-overlays, .qpyodide-outside-insertion-location .qpyodide-output-code-area  {
+    font-size: inherit!important;
+    line-height: inherit!important;
+  }
+
+
+    .qpyodide-output-graph-area {
+      width: 80dvw;
+    }
+
+
 
   .reveal pre div code.qpyodide-output-code-stdout {
     color: #111;
+
   }
 
   .reveal pre div code.qpyodide-output-code-stderr {
@@ -524,16 +568,25 @@
 
   /* Create a border around console and output (does not effect graphs) */
   .reveal div.qpyodide-console-area {
-    border: 1px solid #EEEEEE;
+    border: 1px solid #251cc7;
     box-shadow: 2px 2px 10px #EEEEEE;
+    background: white;
   }
 
   /* Cap output height and allow text to scroll */
   /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
   .reveal div.qpyodide-output-code-area pre {
     max-height: 400px;
+    min-height: 100px;
     overflow: scroll;
+    font-size:1rem;
   }
+
+  .slide {
+    height:100%;
+  }
+
+
   </style>
   <script type="module">
   // Document level settings ----
@@ -558,7 +611,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"context":"interactive","label":"","warning":"true","out-height":"","fig-height":5,"fig-width":7,"output":"true","comment":"","fig-cap":"","read-only":"false","autorun":"","classes":"","dpi":72,"out-width":"700px","message":"true","results":"markup"},"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1}];
+  globalThis.qpyodideCellDetails = [{"options":{"read-only":"false","results":"markup","classes":"","fig-width":7,"warning":"true","fig-height":5,"message":"true","comment":"","autorun":"","context":"interactive","label":"","dpi":72,"fig-cap":"","out-height":"","out-width":"700px","output":"true"},"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","id":1}];
 
 
   </script>
@@ -1008,7 +1061,7 @@ b_{2}
 
 <section id="toothpaste-after-many-quarters" class="title-slide slide level2 center">
 <h2><em>Toothpaste after many quarters</em></h2>
-<div id="qpyodide-insertion-location-1"></div>
+<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Now:</p>
 <ul>
@@ -1945,6 +1998,18 @@ A+A^{2}=\left[\begin{array}{llllll}
             this.id = cellData.id;
             this.options = cellData.options;
             this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            
+            // FIX THIS WHEN YOU GET BACK
+            // check if a div already exists
+            if(document.getElementById(`qpyodide-outside-insertion-location`)==null){
+                var outsideInsertionDiv = document.createElement('div');
+                outsideInsertionDiv.id='qpyodide-outside-insertion-location';
+                outsideInsertionDiv.className='qpyodide-outside-insertion-location';
+                document.getElementsByClassName("reveal-viewport")[0].appendChild(outsideInsertionDiv);
+                this.outsideInsertionLocation = outsideInsertionDiv
+            }
+
+            
             this.executionLock = false;
         }
 
@@ -1997,6 +2062,10 @@ A+A^{2}=\left[\begin{array}{llllll}
                 mainDiv.className += " " + this.options.classes
             }
 
+            // Create outside insertion location div
+            var outsideDiv = document.createElement('div');
+            outsideDiv.className = `qpyodide-outside-insertion-area`;
+
             // Add a unique cell identifier that users can customize
             if (this.options.label) {
                 mainDiv.setAttribute('data-id', this.options.label);
@@ -2027,6 +2096,10 @@ A+A^{2}=\left[\begin{array}{llllll}
             // Append buttons to the leftButtonsDiv
             leftButtonsDiv.appendChild(runCodeButton);
 
+
+
+
+
             // Create Reset button
             var resetButton = document.createElement('button');
             resetButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-reset';
@@ -2034,6 +2107,16 @@ A+A^{2}=\left[\begin{array}{llllll}
             resetButton.id = `qpyodide-button-reset-${this.id}`;
             resetButton.title = 'Start over';
             resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+            // Create Popout button
+
+          // Create Zoom button
+            var zoomButton = document.createElement('button');
+            zoomButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-zoom';
+            zoomButton.type = 'button';
+            zoomButton.id = `qpyodide-button-zoom-${this.id}`;
+            zoomButton.title = 'Zoom code editor';
+            zoomButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
 
             // Create Copy button
             var copyButton = document.createElement('button');
@@ -2046,6 +2129,7 @@ A+A^{2}=\left[\begin{array}{llllll}
             // Append buttons to the rightButtonsDiv
             rightButtonsDiv.appendChild(resetButton);
             rightButtonsDiv.appendChild(copyButton);
+            rightButtonsDiv.appendChild(zoomButton);
 
             // Create console area div
             var consoleAreaDiv = document.createElement('div');
@@ -2064,6 +2148,7 @@ A+A^{2}=\left[\begin{array}{llllll}
             outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
 
             // Create pre element inside output code area
+            // This preserves whitespace  and is displayed in a fixed-width font
             var preElement = document.createElement('pre');
             preElement.style.visibility = 'hidden';
             outputCodeAreaDiv.appendChild(preElement);
@@ -2098,7 +2183,9 @@ A+A^{2}=\left[\begin{array}{llllll}
             mainDiv.appendChild(outputGraphAreaDiv);
 
             // Insert the dynamically generated object at the document location.
-            this.insertionLocation.appendChild(mainDiv);
+
+           this.insertionLocation.appendChild(mainDiv);
+            //console.log(this.outsideInsertionLocation)
         }
 
         /**
@@ -2110,10 +2197,13 @@ A+A^{2}=\left[\begin{array}{llllll}
             this.runButton = document.getElementById(`qpyodide-button-run-${this.id}`);
             this.resetButton = document.getElementById(`qpyodide-button-reset-${this.id}`);
             this.copyButton = document.getElementById(`qpyodide-button-copy-${this.id}`);
+            this.zoomButton = document.getElementById(`qpyodide-button-zoom-${this.id}`);
             this.editorDiv = document.getElementById(`qpyodide-editor-${this.id}`);
             this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
             this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
-            
+            this.outsideInsertionLocation=document.getElementsByClassName("qpyodide-outside-insertion-location")[0];
+            this.InsertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            this.mainDiv=document.getElementById(`qpyodide-interactive-area-${this.id}`);
             // Store reference to the object
             var thiz = this;
 
@@ -2254,6 +2344,31 @@ A+A^{2}=\left[\begin{array}{llllll}
                 
                 // Write code data onto the clipboard.
                 navigator.clipboard.writeText(data || "");
+            };
+
+            thiz.zoomButton.onclick = function () {
+                // Retrieve current code data
+                console.log(thiz.mainDiv.parentNode)
+                if(thiz.mainDiv.parentNode===thiz.outsideInsertionLocation){
+                    console.log(thiz.InsertionLocation)
+                    thiz.InsertionLocation.appendChild(thiz.mainDiv)
+                    console.log("inserted into main doc")
+                    thiz.outsideInsertionLocation.style.display = "none";
+                    thiz.editor.EditorOptions.fontSize='17.5px';
+                  }  else {
+                        console.log("inserted into outside location")
+                    thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
+                    thiz.outsideInsertionLocation.style.display = "block";
+                    thiz.editor.EditorOptions.fontSize='12px';
+              //  thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
+
+                    }
+
+           //     document.getElementById("")
+           //     const data = thiz.editor.getValue();
+                
+                // Write code data onto the clipboard.
+           //     navigator.clipboard.writeText(data || "");
             };
             
             // Add a click event listener to the copy button
@@ -2417,7 +2532,7 @@ A+A^{2}=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

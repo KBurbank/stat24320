@@ -410,7 +410,7 @@
     "href": "index.html#notebooks",
     "title": "Stat 24320",
     "section": "Notebooks",
-    "text": "Notebooks\n\n\n\n\n\n    \n        Title\n        Colab link\n    \n    \n        \n            \n      PageRank Tutorial\n      \n    \n\n    \n        \n            \n      Turing Patterns\n      \n    \n\n    \n\n\nNo matching items"
+    "text": "Notebooks\n\n\n(item)=&gt;{\n        const attr = {};\n        attr[\"index\"] = (index++).toString();\n        if (item.categories) {\n            attr[\"categories\"] = item.categories.join(\",\");\n        }\n        item.sortableValues = item.sortableValues || {};\n        for (const field of Object.keys(item.sortableValues)){\n            if (useSortTarget(listing, field)) {\n                attr[sortAttrValue(field)] = escape1(item.sortableValues[field]);\n            }\n        }\n        const attrs = Object.keys(attr).map((key)=&gt;{\n            const value = attr[key];\n            return `data-${key}='${value}'`;\n        });\n        return attrs.join(\" \");\n    }\n\n\n    \n        Title\n        Colab link\n    \n    \n        \n            \n      PageRank Tutorial\n      \n    \n\n    \n        \n            \n      Turing Patterns\n      \n    \n\n    \n\n\nNo matching items"
   },
   {
     "objectID": "index.html#homeworks",

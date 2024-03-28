@@ -528,7 +528,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"read-only":"false","fig-width":7,"results":"markup","message":"true","out-width":"700px","classes":"","warning":"true","context":"interactive","comment":"","autorun":"","output":"true","dpi":72,"label":"","fig-height":5,"fig-cap":"","out-height":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"read-only":"false","context":"interactive","output":"true","message":"true","comment":"","fig-width":7,"results":"markup","out-width":"700px","out-height":"","warning":"true","label":"","autorun":"","classes":"","fig-cap":"","dpi":72,"fig-height":5}}];
 
 
   </script>
@@ -1600,12 +1600,12 @@
                     thiz.InsertionLocation.appendChild(thiz.mainDiv)
                     console.log("inserted into main doc")
                     thiz.outsideInsertionLocation.style.display = "none";
-                    thiz.editorDiv.style.fontSize='17.5pt';
+                    thiz.editorDiv.style.fontSize='17.5px';
                   }  else {
                         console.log("inserted into outside location")
                     thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
                     thiz.outsideInsertionLocation.style.display = "block";
-                    thiz.editorDiv.style.fontSize='12pt';
+                    thiz.editorDiv.style.fontSize='12px';
               //  thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
 
                     }

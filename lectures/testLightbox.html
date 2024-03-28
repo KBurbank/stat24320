@@ -524,7 +524,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","context":"interactive","label":"","results":"markup","autorun":"","comment":"","output":"true","classes":"","out-width":"700px","fig-cap":"","fig-width":7,"dpi":72,"warning":"true","out-height":"","read-only":"false","fig-height":5},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"fig-width":7,"comment":"","results":"markup","output":"true","read-only":"false","warning":"true","message":"true","label":"","fig-cap":"","classes":"","context":"interactive","out-height":"","out-width":"700px","dpi":72,"fig-height":5,"autorun":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>
@@ -1592,6 +1592,7 @@
                 // Retrieve current code data
                 console.log(thiz.mainDiv.parentNode)
                 if(thiz.mainDiv.parentNode===thiz.outsideInsertionLocation){
+                    console.log(thiz.InsertionLocation)
                     thiz.InsertionLocation.appendChild(thiz.mainDiv)
                     console.log("inserted into main doc")
                   }  else {

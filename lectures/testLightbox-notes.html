@@ -524,7 +524,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"fig-width":7,"comment":"","results":"markup","output":"true","read-only":"false","warning":"true","message":"true","label":"","fig-cap":"","classes":"","context":"interactive","out-height":"","out-width":"700px","dpi":72,"fig-height":5,"autorun":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"read-only":"false","results":"markup","fig-cap":"","fig-height":5,"autorun":"","message":"true","label":"","comment":"","output":"true","context":"interactive","classes":"","dpi":72,"out-width":"700px","fig-width":7,"warning":"true","out-height":""}}];
 
 
   </script>
@@ -1444,7 +1444,7 @@
             this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
             this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
             this.outsideInsertionLocation=document.getElementsByClassName("qpyodide-outside-insertion-location")[0];
-            this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            this.InsertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
             this.mainDiv=document.getElementById(`qpyodide-interactive-area-${this.id}`);
             // Store reference to the object
             var thiz = this;

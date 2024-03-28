@@ -523,7 +523,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"options":{"context":"interactive","read-only":"false","out-height":"","fig-cap":"","warning":"true","results":"markup","comment":"","fig-width":7,"classes":"","output":"true","message":"true","dpi":72,"label":"","fig-height":5,"autorun":"","out-width":"700px"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","options":{"autorun":"","dpi":72,"output":"true","fig-width":7,"results":"markup","out-height":"","message":"true","classes":"","context":"interactive","label":"","read-only":"false","comment":"","out-width":"700px","fig-height":5,"warning":"true","fig-cap":""},"id":1}];
 
 
   </script>
@@ -1430,6 +1430,7 @@
             this.runButton = document.getElementById(`qpyodide-button-run-${this.id}`);
             this.resetButton = document.getElementById(`qpyodide-button-reset-${this.id}`);
             this.copyButton = document.getElementById(`qpyodide-button-copy-${this.id}`);
+            this.zoomButton = document.getElementById(`qpyodide-button-zoom-${this.id}`);
             this.editorDiv = document.getElementById(`qpyodide-editor-${this.id}`);
             this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
             this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
@@ -1569,6 +1570,14 @@
             
             // Add a click event listener to the reset button
             thiz.copyButton.onclick = function () {
+                // Retrieve current code data
+                const data = thiz.editor.getValue();
+                
+                // Write code data onto the clipboard.
+                navigator.clipboard.writeText(data || "");
+            };
+
+            thiz.zoomButton.onclick = function () {
                 // Retrieve current code data
                 const data = thiz.editor.getValue();
                 

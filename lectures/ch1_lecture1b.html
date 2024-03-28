@@ -390,9 +390,19 @@ a_{m1} x_1 + a_{m2} x_2 + \dots + a_{mn} x_n = b_m,
 </ul></li>
 <li class="fragment">How many of each type of tank car should be leased?</li>
 </ul>
-<div class="mynotes">
+<aside class="notes .content-hidden unless-format='ipynb'">
 <p>Can write this as <span class="math inline">\(x \times 8+y \times 16 + z \times 24=520\)</span> and also <span class="math inline">\(x+y+z=24\)</span>. We won’t have a single solution… Two equations, three unknowns.</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="example-traffic-flow." class="title-slide slide level2 center">
@@ -701,8 +711,8 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}5.7 \cdot 10^{4}\\8.9 \cdot 10^{3}\\4.0\end{matrix}\right]\)</span>.</p>
 <div class="fragment">
 <p>How do these compare to the exact solutions? These are</p>
-<div id="1bc832da" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="197">
+<div id="de72e762" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="213">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}56753.6889897841\\8626.56072644719\\4.02951191827469\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -715,8 +725,8 @@ x_1 a_{13} + x_2 a_{23} = a_{13} x_1  + a_{23} x_2  = y_3
 <p><span class="math inline">\(\rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; -0.135636363636364 &amp; -1063.27272727273 &amp; -5454.54545454545\end{matrix}\right] \rightarrow \left[\begin{matrix}0.0055 &amp; 0.095 &amp; 960.0 &amp; 5000.0\\0 &amp; -0.009 &amp; -80.0 &amp; -400.0\\0 &amp; 0 &amp; 142.383838383838 &amp; 573.737373737372\end{matrix}\right]\)</span></p>
 <p>This has solutions <span class="math inline">\(\left[\begin{matrix}56753.6889897845\\8626.56072644727\\4.02951191827468\end{matrix}\right]\)</span>.</p>
 <p>Reminder, the exact solution was:</p>
-<div id="2b53d483" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="200">
+<div id="472995e3" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="216">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}56753.6889897841\\8626.56072644719\\4.02951191827469\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -1098,7 +1108,7 @@ x*y
 <h2><em>Results for n=4 and n=10 points</em></h2>
 <div class="columns">
 <div class="column">
-<div id="5e659637" class="cell" data-execution_count="12">
+<div id="b3e2b261" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1109,7 +1119,7 @@ x*y
 </div>
 </div><div class="column">
 <div class="fragment">
-<div id="a80d4923" class="cell" data-execution_count="13">
+<div id="3933e386" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1125,7 +1135,7 @@ x*y
 
 <section id="max-error-for-different-values-of-n" class="title-slide slide level2 center">
 <h2><em>Max error for different values of n</em></h2>
-<div id="7fa1c69e" class="cell" data-execution_count="15">
+<div id="a2aa64c7" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1138,7 +1148,7 @@ x*y
 
 <section id="the-problem-linear-dependency" class="title-slide slide level2 center">
 <h2><em>The problem: linear dependency</em></h2>
-<div id="3663897c" class="cell" data-execution_count="16">
+<div id="00aa33d2" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1583,7 +1593,7 @@ x*y
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

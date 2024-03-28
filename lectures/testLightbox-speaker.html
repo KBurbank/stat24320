@@ -469,11 +469,14 @@
       font-size: 1rem;
     }
 
-                  thiz.editorDiv.fontSize='12pt';
+    .qpyodide-outside-insertion-location .qpyodide-interactive-area {
+      font-size: 12px!important;
+      line-height: 14px!important; 
+    }
 
   .qpyodide-outside-insertion-location .view-lines {
-    font-size: 12px!important;
-    line-height: 14px!important;
+    font-size: inherit!important;
+    line-height: inherit!important;
   }
 
 
@@ -538,7 +541,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"label":"","message":"true","context":"interactive","results":"markup","dpi":72,"fig-cap":"","read-only":"false","warning":"true","autorun":"","out-width":"700px","comment":"","fig-height":5,"out-height":"","fig-width":7,"output":"true","classes":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)","id":1,"options":{"autorun":"","comment":"","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"warning":"true","message":"true","read-only":"false","label":"","fig-cap":"","classes":"","output":"true","dpi":72,"fig-width":7,"out-height":""}}];
 
 
   </script>

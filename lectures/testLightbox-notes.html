@@ -463,6 +463,7 @@
       pointer-events: auto;
       display:none;
       overflow-y: scroll;
+      scale: 1;
     }
 
     .qpyodide-output-graph-area {
@@ -526,7 +527,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"read-only":"false","fig-cap":"","classes":"","output":"true","comment":"","label":"","context":"interactive","autorun":"","message":"true","out-width":"700px","results":"markup","out-height":"","fig-height":5,"dpi":72,"fig-width":7,"warning":"true"},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","out-width":"700px","output":"true","warning":"true","context":"interactive","label":"","dpi":72,"results":"markup","autorun":"","classes":"","comment":"","fig-cap":"","read-only":"false","fig-height":5,"fig-width":7,"out-height":""},"code":"import matplotlib.pyplot as plt\nfig=plt.figure()\nplt.plot([1,2,3,4])\nplt.show()\nprint(3+4)\nplt.close(fig)"}];
 
 
   </script>

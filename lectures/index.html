@@ -1,0 +1,49 @@
+
+<div class='tab'>
+    <button class='tablinks' onclick="openTab(event, 'Speaker')">Speaker</button>
+    <button class='tablinks' onclick="openTab(event, 'Notes')">Notes</button>
+    <button class='tablinks' onclick="openTab(event, 'Others')">Others</button>
+</div>
+
+<div id='Speaker' class='tabcontent'>
+    <ul><li><a href='ch2_lecture1-speaker.html'>ch2_lecture1-speaker.html</a></li>
+<li><a href='testLightbox-speaker.html'>testLightbox-speaker.html</a></li>
+<li><a href='ch1_lecture2-speaker.html'>ch1_lecture2-speaker.html</a></li>
+<li><a href='ch2_lecture2-speaker.html'>ch2_lecture2-speaker.html</a></li>
+<li><a href='ch1_lecture1b-speaker.html'>ch1_lecture1b-speaker.html</a></li>
+<li><a href='test-speaker.html'>test-speaker.html</a></li></ul>
+</div>
+
+<div id='Notes' class='tabcontent'>
+    <ul><li><a href='test-notes.html'>test-notes.html</a></li>
+<li><a href='testLightbox-notes.html'>testLightbox-notes.html</a></li>
+<li><a href='ch1_lecture1b-notes.html'>ch1_lecture1b-notes.html</a></li>
+<li><a href='ch2_lecture2-notes.html'>ch2_lecture2-notes.html</a></li>
+<li><a href='ch1_lecture2-notes.html'>ch1_lecture2-notes.html</a></li>
+<li><a href='ch2_lecture1-notes.html'>ch2_lecture1-notes.html</a></li></ul>
+</div>
+
+<div id='Others' class='tabcontent'>
+    <ul><li><a href='ch2_lecture1.html'>ch2_lecture1.html</a></li>
+<li><a href='ch1_lecture1b.html'>ch1_lecture1b.html</a></li>
+<li><a href='test.html'>test.html</a></li>
+<li><a href='testLightbox.html'>testLightbox.html</a></li>
+<li><a href='ch2_lecture2.html'>ch2_lecture2.html</a></li>
+<li><a href='ch1_lecture2.html'>ch1_lecture2.html</a></li></ul>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+    let i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName('tabcontent');
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = 'none';
+    }
+
+    // Add this code to display the content of the selected tab
+    document.getElementById(tabName).style.display = 'block';
+}
+window.onload = function() {
+    openTab(null, 'Others');
+    }
+</script>

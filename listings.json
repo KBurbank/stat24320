@@ -2,10 +2,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/lectures/ch2_lecture1.out.ipynb.out.ipynb",
-      "/lectures/ch2_lecture2.out.ipynb.out.ipynb",
-      "/lectures/ch1_lecture1b.out.ipynb.out.ipynb",
-      "/lectures/ch1_lecture2.html",
       "/notebooks/pagerank_tutorial.html",
       "/notebooks/turing_patterns.html",
       "/HW/HW1.html"

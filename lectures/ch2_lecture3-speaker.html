@@ -13,7 +13,10 @@
 <script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Ch2 Lecture 3</title>
@@ -363,17 +366,6 @@
 <section id="digital-filters" class="title-slide slide level2 center">
 <h2><em>Digital Filters</em></h2>
 <!-- 
-### Digital Signal Processing
-
-As an introduction to the field of digital signal processing (DSP), let us reconsider the nonhomogeneous constant coefficient difference equation in a somewhat different format:
-
-$$
-\begin{equation*}
-y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldots, \tag{2.12}
-\end{equation*}
-$$
-
-where $a_{0}$ and $a_{m}$ are nonzero. Rather than treating the $x_{k}$ 's as unknowns, view them as inputs and the resulting values $y_{k}$ as outputs. More specifically, we think of the sequence $x_{0}, x_{1}, \ldots$ as a sampling of a continuous variable such as sound in a time domain or an image in a spatial domain. In this setting we think of equation (2.12) as a linear digital filter
 
 ### Digital Filter
 
@@ -398,6 +390,87 @@ Solution. Rather than list the resulting numbers let's calculate and graph them.
 Fig. 2.11: Graph of data from Example 2.72: Exact (-), noisy (-) and filtered $(-)$
 
 The filter of Example 2.71 is both causal (filtered data at a specific time only depends on samples from earlier times) and lowpass (filters out high frequency data but preserves low frequency data). -->
+<p>Another use for difference equations:</p>
+<p><span class="math display">\[
+\begin{equation*}
+y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldots,
+\end{equation*}
+\]</span></p>
+<aside class="notes">
+<p>Before, in the case of temperature in the metal rod, we were trying to find values of <span class="math inline">\(x\)</span> that would satisfy the equation. Here, different context: imagine the <span class="math inline">\(x\)</span>’s are known inputs, perhaps discrete samples of a continuous variable, and <span class="math inline">\(y\)</span> are outputs that we want to calculate, such as a <em>filter</em>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<p><span class="math inline">\(x\)</span> is a continuous variable – perhaps sound in time domain, or parts of an image in space.</p>
+<p><span class="math inline">\(y\)</span> is some filtered version of <span class="math inline">\(x\)</span>.</p>
+</div>
+</section>
+
+<section id="example-cleaning-up-a-noisy-signal" class="title-slide slide level2 center">
+<h2><em>Example: Cleaning up a noisy signal</em></h2>
+<p>True signal: <span class="math inline">\(f(t)=\cos (\pi t),-1 \leq t \leq 1\)</span></p>
+<p>Signal plus noise: <span class="math inline">\(g(t)=\cos (\pi t)+\)</span> <span class="math inline">\(\frac{1}{5} \sin (24 \pi t)+\frac{1}{4} \cos (30 \pi t)\)</span></p>
+<div id="bfc08667" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch2_lecture3_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="ch2_lecture3_files/figure-revealjs/cell-2-output-1.png" width="805" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Suppose the exact signal we want is the line in black, and we’d like to measure it. But all we have is the noisy set of measurements in red.</p>
+<p>Notice the low-frequency part of the measurement is the signal, and the high-frequency part is the noise.<br>
+</p>
+<p>How can we use this fact to build a good filter?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="filtered-data" class="title-slide slide level2 center">
+<h2><em>Filtered data</em></h2>
+<p>Idea: we can sample nearby points and take a weighted average of them.</p>
+<p><span class="math display">\[
+y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=2,3, \ldots, 64
+\]</span></p>
+<div id="e85119fc" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch2_lecture3_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="ch2_lecture3_files/figure-revealjs/cell-3-output-1.png" width="805" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can zoom in on a few points to see the effect of the filter.</p>
+<div id="7e99be88" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch2_lecture3_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="ch2_lecture3_files/figure-revealjs/cell-4-output-1.png" width="818" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="special-matrices-and-transposes" class="title-slide slide level1 center">
@@ -835,6 +908,31 @@ The filter of Example 2.71 is both causal (filtered data at a specific time only
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

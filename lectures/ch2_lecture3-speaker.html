@@ -419,7 +419,7 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <h2><em>Example: Cleaning up a noisy signal</em></h2>
 <p>True signal: <span class="math inline">\(f(t)=\cos (\pi t),-1 \leq t \leq 1\)</span></p>
 <p>Signal plus noise: <span class="math inline">\(g(t)=\cos (\pi t)+\)</span> <span class="math inline">\(\frac{1}{5} \sin (24 \pi t)+\frac{1}{4} \cos (30 \pi t)\)</span></p>
-<div id="e8cfb385" class="cell" data-execution_count="2">
+<div id="d58f2318" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -452,7 +452,7 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <p><span class="math display">\[
 y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
 \]</span></p>
-<div id="cell-filtered-data" class="cell" data-execution_count="3">
+<div id="cell-filtered-data" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -461,12 +461,15 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
 </div>
 </div>
 </div>
+<div class="fragment">
+<p>This captured the low-frequency part of the signal, and filtered out the high-frequency noise. That’s just what we wanted! This is called a <em>low-pass filter</em>.</p>
+</div>
 </section>
 
 <section id="section" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>We can zoom in on a few points to see the effect of the filter.</p>
-<div id="03103aec" class="cell" data-execution_count="4">
+<div id="17aff7cd" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -475,11 +478,39 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
 </div>
 </div>
 </div>
+<aside class="notes">
+<p>What if we <em>subtract</em> the values at <span class="math inline">\(x_{k+1}\)</span> and <span class="math inline">\(x_{k-1}\)</span> instead of adding them?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
-<section id="section-1" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>filtered-data-output-1.png</p>
+<section id="a-different-filter" class="title-slide slide level2 center">
+<h2><em>A different filter</em></h2>
+<p>What if we <em>subtract</em> the values at <span class="math inline">\(x_{k+1}\)</span> and <span class="math inline">\(x_{k-1}\)</span> instead of adding them?</p>
+<p><span class="math display">\[
+y_{k}=\textcolor{red}{\textbf{ - }}\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}\textcolor{red}{\textbf{ - }}\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
+\]</span></p>
+<div id="cell-high-pass-filter" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch2_lecture3_files/figure-revealjs/high-pass-filter-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch2_lecture3_files/figure-revealjs/high-pass-filter-output-1.png" id="high-pass-filter" width="805" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>This is a <em>high-pass filter</em>. It captures the high-frequency noise, but filters out the low-frequency signal.</p>
+</div>
 </section>
 </section>
 <section id="special-matrices-and-transposes" class="title-slide slide level1 center">
@@ -917,7 +948,7 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

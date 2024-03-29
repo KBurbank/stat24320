@@ -1068,14 +1068,14 @@
     "href": "lectures/ch2_lecture3.html#filtered-data",
     "title": "Ch2 Lecture 3",
     "section": "Filtered data",
-    "text": "Filtered data\nIdea: we can sample nearby points and take a weighted average of them.\n\\[\ny_{k}=\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}+\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]"
+    "text": "Filtered data\nIdea: we can sample nearby points and take a weighted average of them.\n\\[\ny_{k}=\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}+\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]\n\n\n\n\n\n\n\n\n\n\nThis captured the low-frequency part of the signal, and filtered out the high-frequency noise. That’s just what we wanted! This is called a low-pass filter."
   },
   {
     "objectID": "lectures/ch2_lecture3.html#section",
     "href": "lectures/ch2_lecture3.html#section",
     "title": "Ch2 Lecture 3",
     "section": "",
-    "text": "We can zoom in on a few points to see the effect of the filter."
+    "text": "We can zoom in on a few points to see the effect of the filter.\n\n\n\n\n\n\n\n\n\n\nWhat if we subtract the values at \\(x_{k+1}\\) and \\(x_{k-1}\\) instead of adding them?"
   },
   {
     "objectID": "lectures/ch2_lecture3.html#section-1",
@@ -1083,5 +1083,12 @@
     "title": "Ch2 Lecture 3",
     "section": "",
     "text": "filtered-data-output-1.png"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#a-different-filter",
+    "href": "lectures/ch2_lecture3.html#a-different-filter",
+    "title": "Ch2 Lecture 3",
+    "section": "A different filter",
+    "text": "A different filter\nWhat if we subtract the values at \\(x_{k+1}\\) and \\(x_{k-1}\\) instead of adding them?\n\\[\ny_{k}=\\textcolor{red}{\\textbf{ - }}\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}\\textcolor{red}{\\textbf{ - }}\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]\n\n\n\n\n\n\n\n\n\n\nThis is a high-pass filter. It captures the high-frequency noise, but filters out the low-frequency signal."
   }
 ]

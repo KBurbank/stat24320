@@ -419,7 +419,7 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <h2><em>Example: Cleaning up a noisy signal</em></h2>
 <p>True signal: <span class="math inline">\(f(t)=\cos (\pi t),-1 \leq t \leq 1\)</span></p>
 <p>Signal plus noise: <span class="math inline">\(g(t)=\cos (\pi t)+\)</span> <span class="math inline">\(\frac{1}{5} \sin (24 \pi t)+\frac{1}{4} \cos (30 \pi t)\)</span></p>
-<div id="e8cfb385" class="cell" data-execution_count="1">
+<div id="e8cfb385" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -452,7 +452,7 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <p><span class="math display">\[
 y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
 \]</span></p>
-<div id="cell-filtered-data" class="cell" data-execution_count="2">
+<div id="cell-filtered-data" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -466,7 +466,7 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
 <section id="section" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>We can zoom in on a few points to see the effect of the filter.</p>
-<div id="03103aec" class="cell" data-execution_count="3">
+<div id="03103aec" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -479,7 +479,17 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
 
 <section id="section-1" class="title-slide slide level2 center">
 <h2><em></em></h2>
-{{&lt; ch2_lecture3.qmd#filtered-data  &gt;}}
+<div class="quarto-embed-nb-cell" data-notebook="/Users/kendra/LinearAlg/LinearAlgLectures/lectures/plots_for_lecture_3.qmd" data-notebook-title="Plots for Lecture 3" data-notebook-cellid="cell-filtered-data">
+<div id="cell-filtered-data" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch2_lecture3_files/figure-revealjs/plots_for_lecture_3-filtered-data-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch2_lecture3_files/figure-revealjs/plots_for_lecture_3-filtered-data-output-1.png" id="filtered-data"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="special-matrices-and-transposes" class="title-slide slide level1 center">
@@ -917,7 +927,7 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -1089,6 +1089,6 @@
     "href": "lectures/ch2_lecture3.html#a-different-filter",
     "title": "Ch2 Lecture 3",
     "section": "A different filter",
-    "text": "A different filter\nWhat if we subtract the values at \\(x_{k+1}\\) and \\(x_{k-1}\\) instead of adding them?\n\\[\ny_{k}=-\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}-\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]\n\n\n\n\n\n\n\n\n\n\nThis is a high-pass filter. It captures the high-frequency noise, but filters out the low-frequency signal."
+    "text": "A different filter\nWhat if we subtract the values at \\(x_{k+1}\\) and \\(x_{k-1}\\) instead of adding them?\n\\[\ny_{k}=-\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}-\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nThis is a high-pass filter. It captures the high-frequency noise, but filters out the low-frequency signal."
   }
 ]

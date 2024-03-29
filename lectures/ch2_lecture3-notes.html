@@ -347,6 +347,7 @@
 <h2 id="toc-title">Outline for today</h2>
 <ul>
 <li class="fragment"><a href="#/difference-equations" id="/toc-difference-equations"><em>Difference Equations</em></a></li>
+<li class="fragment"><a href="#/example-digital-filters" id="/toc-example-digital-filters"><em>Example: Digital Filters</em></a></li>
 <li class="fragment"><a href="#/special-matrices-and-transposes" id="/toc-special-matrices-and-transposes"><em>Special Matrices and Transposes</em></a></li>
 <li class="fragment"><a href="#/inverse-matrices" id="/toc-inverse-matrices"><em>Inverse Matrices</em></a></li>
 <li class="fragment"><a href="#/lu-factorization" id="/toc-lu-factorization"><em>LU Factorization</em></a></li>
@@ -362,7 +363,12 @@
 <h2><em>Difference Equations</em></h2>
 
 </section>
+</section>
+<section>
+<section id="example-digital-filters" class="title-slide slide level1 center">
+<h1><em>Example: Digital Filters</em></h1>
 
+</section>
 <section id="digital-filters" class="title-slide slide level2 center">
 <h2><em>Digital Filters</em></h2>
 <!-- 
@@ -499,12 +505,14 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
 <p><span class="math display">\[
 y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
 \]</span></p>
+<div class="fragment">
 <div id="cell-high-pass-filter" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
 <p><a href="ch2_lecture3_files/figure-revealjs/high-pass-filter-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch2_lecture3_files/figure-revealjs/high-pass-filter-output-1.png" id="high-pass-filter" width="805" height="411"></a></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -948,7 +956,7 @@ y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stat 24320 - Ch2 Lecture 3</title>
+<title>Stat 24320 - Homework 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -77,14 +107,31 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ch2_lecture3.html"><i class="bi bi-file-slides"></i>RevealJS</a></li><li><a href="ch2_lecture3.out.ipynb" download="ch2_lecture3.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">4</span> <em></em></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">5</span> <em></em></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6</span> <em></em></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7</span> <em></em></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8</span> <em></em></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">9</span> <em></em></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">10</span> <em></em></a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">11</span> <em></em></a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">12</span> <em></em></a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="HW2.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ch2 Lecture 3</h1>
+<h1 class="title">Homework 1</h1>
 </div>
 
 
@@ -101,60 +148,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="difference-equations" class="level1">
-<h1><em>Difference Equations</em></h1>
-<section id="difference-equations-1" class="level2">
-<h2 class="anchored" data-anchor-id="difference-equations-1"><em>Difference Equations</em></h2>
+<section id="section" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.1.13</p>
+</div></div><p>Given that a linear system in the unknowns <span class="math inline">\(x_{1}, x_{2}, x_{3}, x_{4}\)</span> has general solution <span class="math inline">\(\left(x_{2}+3 x_{4}+4, x_{2}, 2-x_{4}, x_{4}\right)\)</span> for free variables <span class="math inline">\(x_{2}, x_{4}\)</span>, find a minimal reduced row echelon for this system.</p>
 </section>
-<section id="digital-filters" class="level2">
-<h2 class="anchored" data-anchor-id="digital-filters"><em>Digital Filters</em></h2>
-<!-- 
-### Digital Signal Processing
+<section id="section-1" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
 
-As an introduction to the field of digital signal processing (DSP), let us reconsider the nonhomogeneous constant coefficient difference equation in a somewhat different format:
-
-$$
-\begin{equation*}
-y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldots, 
-\end{equation*}
-$$
-
-where $a_{0}$ and $a_{m}$ are nonzero. Rather than treating the $x_{k}$ 's as unknowns, view them as inputs and the resulting values $y_{k}$ as outputs. More specifically, we think of the sequence $x_{0}, x_{1}, \ldots$ as a sampling of a continuous variable such as sound in a time domain or an image in a spatial domain. In this setting we think of equation (2.12) as a linear digital filter
-
-### Digital Filter
-
- of length $m$ and the resulting sequence of $y_{k}$ 's as the filtered data.![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-182.jpg?height=637&width=965&top_left_y=1059&top_left_x=281)
-
-Fig. 2.10: Graph of data from Example 2.71: Exact (-), noisy (-) and filtered (-)
-
-As a simple example, consider a continuous function $y=f(t)$ over the domain $-1 \leq t \leq 1$. Here the variable $t$ could represent time or space. When you see a visual representation of this function (a graph of it) what you are really seeing is a discrete sampling of values of this continuous points at some resolution - a dot-to-dot so to speak.
-
-Example 2.71. Consider the function $f(t)=\cos (\pi t),-1 \leq t \leq 1$ which defines the exact signal that we want to sample. Suppose that what we actually sample is this signal plus noise, namely the function $g(t)=\cos (\pi t)+$ $\frac{1}{5} \sin (24 \pi t)+\frac{1}{4} \cos (30 \pi t)$. Note that the signal $f(t)$ is the low frequency portion of $g(t)$ and the noise is the high frequency portion of $g(t)$. Suppose further that sampling is at the equally spaced points $t_{k}=-1+\frac{2}{64} k, k=0,1, \ldots, 64$, yielding data points $x_{k}=g\left(t_{k}\right)$. We apply the following length two filter to the data:
-
-$$
-y_{k}=\frac{1}{4} x_{k}+\frac{1}{2} x_{k-1}+\frac{1}{4} x_{k-2}, \quad k=2,3, \ldots, 64
-$$
-
-How effective is this filter in removing noise?
-
-Solution. Rather than list the resulting numbers let's calculate and graph them. We shall interpret the number $y_{k}$ as the filtered value of the noisy $x_{k}=g\left(t_{k}\right), k=2,3, \ldots 64$ and therefore the approximation to $f\left(t_{k}\right)$ that results from this filtering. A graph of the exact data, noisy data and filtered data is given in Figure 2.10. Although it is somewhat crude (reliance on earlier values causes a slight forward shift in the filtered values), it appears to do a decent job of filtering out the noise in the sampled signal $g(t)$.
-
-![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-183.jpg?height=621&width=951&top_left_y=1004&top_left_x=283)
-
-Fig. 2.11: Graph of data from Example 2.72: Exact (-), noisy (-) and filtered $(-)$
-
-The filter of Example 2.71 is both causal (filtered data at a specific time only depends on samples from earlier times) and lowpass (filters out high frequency data but preserves low frequency data). -->
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.2.23</p>
+</div></div><p>Use the technique of Example 2.10 in your textbook to balance the following chemical equation:</p>
+<p><span class="math display">\[
+\mathrm{C}_{8} \mathrm{H}_{18}+\mathrm{O}_{2} \rightarrow \mathrm{CO}_{2}+\mathrm{H}_{2} \mathrm{O} .
+\]</span></p>
 </section>
+<section id="section-2" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.3</p>
+</div></div><p>Express the following functions, if linear, as matrix operators. (If not linear, explain why.)</p>
+<ol type="a">
+<li><p><span class="math inline">\(T\left(\left(x_{1}, x_{2}\right)\right)=\left(x_{1}+x_{2}, 2 x_{1}, 4 x_{2}-x_{1}\right)\)</span> (b) <span class="math inline">\(T\left(\left(x_{1}, x_{2}\right)\right)=\left(x_{1}+x_{2}, 2 x_{1} x_{2}\right)\)</span></p></li>
+<li><p><span class="math inline">\(T\left(\left(x_{1}, x_{2}, x_{3}\right)\right)=\left(2 x_{3},-x_{1}\right)\)</span></p></li>
+<li><p><span class="math inline">\(T\left(\left(x_{1}, x_{2}, x_{3}\right)\right)=\left(x_{2}-x_{1}, x_{3}, x_{2}+x_{3}\right)\)</span></p></li>
+</ol>
 </section>
-<section id="special-matrices-and-transposes" class="level1">
-<h1><em>Special Matrices and Transposes</em></h1>
+<section id="section-3" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.9</p>
+</div></div><p>A <em>fixed-point</em> of a linear operator <span class="math inline">\(T_{A}\)</span> is a vector <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(T_{A}(\mathbf{x})=\mathbf{x}\)</span>. Find all fixed points, if any, of the linear operators in the previous exercise.</p>
 </section>
-<section id="inverse-matrices" class="level1">
-<h1><em>Inverse Matrices</em></h1>
+<section id="section-4" class="level1 page-columns page-full" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.5</p>
+</div></div><p>A linear operator on <span class="math inline">\(\mathbb{R}^{2}\)</span> is defined by first applying a scaling operator with scale factors of 2 in the <span class="math inline">\(x\)</span>-direction and 4 in the <span class="math inline">\(y\)</span>-direction, followed by a counterclockwise rotation about the origin of <span class="math inline">\(\pi / 6\)</span> radians. Express this operator and the operator that results from reversing the order of the scaling and rotation as matrix operators.</p>
 </section>
-<section id="lu-factorization" class="level1">
-<h1><em>LU Factorization</em></h1>
-<!-- This section should mostly be implementation. -->
+<section id="section-5" class="level1 page-columns page-full" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.7</p>
+</div></div><p>Find a scaling operator <span class="math inline">\(S\)</span> and shearing operator <span class="math inline">\(H\)</span> such that the concatenation <span class="math inline">\(S \circ H\)</span> maps the points <span class="math inline">\((1,0)\)</span> to <span class="math inline">\((2,0)\)</span> and <span class="math inline">\((0,1)\)</span> to <span class="math inline">\((4,3)\)</span>.</p>
+</section>
+<section id="section-6" class="level1 page-columns page-full" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.11</p>
+</div></div><p>Given transition matrices for discrete dynamical systems</p>
+<ol type="a">
+<li><span class="math inline">\(\left[\begin{array}{rrr}.1 &amp; .3 &amp; 0 \\ 0 &amp; .4 &amp; 1 \\ .9 &amp; .3 &amp; 0\end{array}\right] \quad\)</span> (b) <span class="math inline">\(\left[\begin{array}{lll}0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0\end{array}\right] \quad\)</span> (c) <span class="math inline">\(\left[\begin{array}{rrr}.5 &amp; .3 &amp; 0 \\ 0 &amp; .4 &amp; 0 \\ .5 &amp; .3 &amp; 1\end{array}\right] \quad\)</span> (d) <span class="math inline">\(\left[\begin{array}{rrr}0 &amp; 0 &amp; 0.9 \\ 0.5 &amp; 0 &amp; 0 \\ 0 &amp; 0.5 &amp; 0.1\end{array}\right]\)</span> and initial state vector <span class="math inline">\(\mathbf{x}^{(0)}=\frac{1}{2}(1,1,0)\)</span>, calculate the first and second state vector for each system and determine whether it is a Markov chain.</li>
+</ol>
+</section>
+<section id="section-7" class="level1 page-columns page-full" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.12</p>
+</div></div><p>For each of the dynamical systems of the previous exercise, determine by calculation whether the system tends to a limiting steady-state vector. If so, what is it?</p>
+</section>
+<section id="section-8" class="level1 page-columns page-full" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.13</p>
+</div></div><p>A population is modeled with two states, immature and mature, and the resulting structured population model transition matrix is <span class="math inline">\(\left[\begin{array}{cc}\frac{1}{2} &amp; 1 \\ \frac{1}{2} &amp; 0\end{array}\right]\)</span>.</p>
+<ol type="a">
+<li>Explain what this matrix says about the two states.</li>
+<li>Starting with a population of <span class="math inline">\((30,100)\)</span>, does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?</li>
+</ol>
+</section>
+<section id="section-9" class="level1 page-columns page-full" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.15</p>
+</div></div><p>A digraph <span class="math inline">\(G\)</span> has vertex set <span class="math inline">\(V=\{1,2,3,4,5\}\)</span> and edge set <span class="math inline">\(E=\)</span> <span class="math inline">\(\{(2,1),(1,5),(2,5),(5,4),(4,2),(4,3),(3,2)\}\)</span>. Sketch a picture of the graph <span class="math inline">\(G\)</span> and find its adjacency matrix. Use this to find the power of each vertex of the graph and determine whether this graph is dominance-directed.</p>
+</section>
+<section id="section-10" class="level1 page-columns page-full" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Exercise 2.3.19</p>
+</div></div><p>Consider the linear difference <span class="math inline">\(y_{k+2}-y_{k+1}-y_{k}=0\)</span>.</p>
+<ol type="a">
+<li><p>Express this difference in matrix form.</p></li>
+<li><p>Find the first ten terms of the solution to this difference given the initial conditions <span class="math inline">\(y_{0}=0, y_{1}=1\)</span>. (This is the well-known Fibonacci sequence.)</p></li>
+</ol>
+</section>
+<section id="section-11" class="level1 page-columns page-full" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> <em></em></h1>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>Problem 2.3.23</p>
+</div></div><p>Suppose that in Example 2.27 you invest <span class="math inline">\(\$ 1,000\)</span> initially (the zeroth year) and no further amounts. Make a table of the value of your investment for years 0 to 12. Also include a column that calculates the annual interest rate that your investment is earning each year, based on the current and previous year’s values. What conclusions do you draw? You will need a technology tool for this exercise.</p>
 
 
 </section>

@@ -52,183 +52,183 @@
     "objectID": "lectures/ch2_lecture2.html#definitions",
     "href": "lectures/ch2_lecture2.html#definitions",
     "title": "Ch2 Lecture 2",
-    "section": "Definitions",
-    "text": "Definitions\nDefinition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system."
+    "section": "",
+    "text": "Definition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n. . .\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#stability",
     "href": "lectures/ch2_lecture2.html#stability",
     "title": "Ch2 Lecture 2",
-    "section": "Stability",
-    "text": "Stability\nAn important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n\n\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state."
+    "section": "",
+    "text": "An important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n. . .\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n. . .\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#example",
     "href": "lectures/ch2_lecture2.html#example",
     "title": "Ch2 Lecture 2",
-    "section": "Example",
-    "text": "Example\n\nTwo toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model."
+    "section": "",
+    "text": "Two toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section",
     "href": "lectures/ch2_lecture2.html#section",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "Let \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n\n\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]"
+    "text": "Let \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n. . .\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n. . .\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-1",
     "href": "lectures/ch2_lecture2.html#section-1",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "We can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n\n\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]"
+    "text": "We can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n. . .\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n. . .\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
     "href": "lectures/ch2_lecture2.html#distribution-vector-and-stochastic-matrix",
     "title": "Ch2 Lecture 2",
-    "section": "Distribution vector and stochastic matrix",
-    "text": "Distribution vector and stochastic matrix\n\n\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix."
+    "section": "",
+    "text": "\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#markov-chain-definition",
     "href": "lectures/ch2_lecture2.html#markov-chain-definition",
     "title": "Ch2 Lecture 2",
-    "section": "Markov Chain definition",
-    "text": "Markov Chain definition\nA Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector.\n\nThink this through. - Suppose our current state is \\(\\mathbf{e}_{j}\\) - The system has selected \\(j\\) th event exclusively.\n- The next state is \\(\\mathbf{p}_{j}=P \\mathbf{e}_{j}\\), that is, the \\(j\\) th column of \\(P\\). - This implies that the entry \\(p_{i j}\\) is the probability that the \\(i\\) th event will occur, given that the \\(j\\) th event has just occurred. - Since events are mutually exclusive and some subsequent event must occur, the sum of these probabilities is 1 ."
+    "section": "",
+    "text": "A Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#checking-that-our-toothpase-example-is-a-markov-chain",
     "href": "lectures/ch2_lecture2.html#checking-that-our-toothpase-example-is-a-markov-chain",
     "title": "Ch2 Lecture 2",
-    "section": "Checking that our toothpase example is a Markov chain",
-    "text": "Checking that our toothpase example is a Markov chain\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\n\n\nThe toothpaste example is a Markov chain:\n\nThe columns of \\(A\\) are distribution vectors.\nThe columns of \\(A\\) sum to 1.\nThe events in the example are mutually exclusive."
+    "section": "",
+    "text": "\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
     "href": "lectures/ch2_lecture2.html#stochastic-matrix-inequality",
     "title": "Ch2 Lecture 2",
-    "section": "Stochastic Matrix Inequality",
-    "text": "Stochastic Matrix Inequality\n\nWe can define the 1-norm of a vector \\(\\mathbf{x}\\) as \\(\\|\\mathbf{x}\\|_{1}=\\sum_{i=1}^{n}\\left|x_{i}\\right|\\).\n\nIf all the elements of a vector are nonnegative, then \\(\\|\\mathbf{x}\\|_{1}\\) is the sum of the elements.\n\nCan show: For any stochastic matrix \\(P\\) and compatible vector \\(\\mathbf{x},\\|P \\mathbf{x}\\|_{1} \\leq\\|\\mathbf{x}\\|_{1}\\), with equality if the coordinates of \\(\\mathbf{x}\\) are all nonnegative.\n→ if a state in a Markov chain is a distribution vector (nonnegative entries and sums to 1), then the sum of the coordinates of the next state will also sum to one\n→ all subsequent states in a Markov chain are themselves Markov Chain State distribution vectors."
+    "section": "",
+    "text": "We can define the 1-norm of a vector \\(\\mathbf{x}\\) as \\(\\|\\mathbf{x}\\|_{1}=\\sum_{i=1}^{n}\\left|x_{i}\\right|\\).\n\nIf all the elements of a vector are nonnegative, then \\(\\|\\mathbf{x}\\|_{1}\\) is the sum of the elements.\n\nCan show: For any stochastic matrix \\(P\\) and compatible vector \\(\\mathbf{x},\\|P \\mathbf{x}\\|_{1} \\leq\\|\\mathbf{x}\\|_{1}\\), with equality if the coordinates of \\(\\mathbf{x}\\) are all nonnegative.\n→ if a state in a Markov chain is a distribution vector (nonnegative entries and sums to 1), then the sum of the coordinates of the next state will also sum to one\n→ all subsequent states in a Markov chain are themselves Markov Chain State distribution vectors."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#moving-into-the-future",
     "href": "lectures/ch2_lecture2.html#moving-into-the-future",
     "title": "Ch2 Lecture 2",
-    "section": "Moving into the future",
-    "text": "Moving into the future\nSuppose that initially Brand A has all the customers (i.e., Brand B is just entering the market). What are the market shares 2 quarters later? 20 quarters?\n\n\nInitial state vector is \\(\\mathbf{x}^{(0)}=(1,0)\\).\nNow do the arithmetic to find \\(\\mathbf{x}^{(2)}\\) : . . . \\[\n\\begin{aligned}\n{\\left[\\begin{array}{l}\na_{2} \\\\\nb_{2}\n\\end{array}\\right] } & =\\mathbf{x}^{(2)}=A^{2} \\mathbf{x}^{(0)}=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left(\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right]\\right) \\\\\n& =\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n0.7 \\\\\n0.3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n.61 \\\\\n.39\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\nBrand A will have \\(61 \\%\\) of the market and Brand B will have \\(39 \\%\\) of the market in the second quarter."
+    "section": "",
+    "text": "Suppose that initially Brand A has all the customers (i.e., Brand B is just entering the market). What are the market shares 2 quarters later? 20 quarters?\n. . .\n\nInitial state vector is \\(\\mathbf{x}^{(0)}=(1,0)\\).\nNow do the arithmetic to find \\(\\mathbf{x}^{(2)}\\) : . . . \\[\n\\begin{aligned}\n{\\left[\\begin{array}{l}\na_{2} \\\\\nb_{2}\n\\end{array}\\right] } & =\\mathbf{x}^{(2)}=A^{2} \\mathbf{x}^{(0)}=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left(\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right]\\right) \\\\\n& =\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n0.7 \\\\\n0.3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n.61 \\\\\n.39\n\\end{array}\\right] .\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
     "href": "lectures/ch2_lecture2.html#toothpaste-after-many-quarters",
     "title": "Ch2 Lecture 2",
-    "section": "Toothpaste after many quarters",
-    "text": "Toothpaste after many quarters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNow:\n\nfind the state after 2 quarters.\nfind the state after 20 quarters. Use matrix exponentiation: A**n\nGet specific numbers if toothpaste A has 100% of the market at the beginning. (Use sym.subs())\nNow what if toothpaste B has 100% at the beginning?\n\n\n\nOur calculation is reusable! Could go back after and then change the inital state.\nNotice that we also get the same result eventually, no matter where we started"
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.\nNow:\n\nfind the state after 2 quarters.\nfind the state after 20 quarters. Use matrix exponentiation: A**n\nGet specific numbers if toothpaste A has 100% of the market at the beginning. (Use sym.subs())\nNow what if toothpaste B has 100% at the beginning?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#example-structured-population-model",
     "href": "lectures/ch2_lecture2.html#example-structured-population-model",
     "title": "Ch2 Lecture 2",
-    "section": "Example: Structured Population Model",
-    "text": "Example: Structured Population Model\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n\n\n\n\n\nSet up \\(\\mathbf{x}^{(k)}=\\left(a_{k}, b_{k}, c_{k}\\right)\\) \\(\\mathbf{x}^{(0)}=(10,8,6)\\) at week 0 Note that after first week, we have 20% of the initial eggs (20% died, 60% became larvae…) Transition matrix is: \\[\nA=\\left[\\begin{array}{ccc}\n0.2 & 0 & 0.25 \\\\\n0.6 & 0.3 & 0 \\\\\n0 & 0.6 & 0.8\n\\end{array}\\right]\n\\]\nWhat do we think will happen over time? How can we tell?"
+    "section": "",
+    "text": "insect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n. . ."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-2",
     "href": "lectures/ch2_lecture2.html#section-2",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "class InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))"
+    "text": "\"\"\"\nSome utility functions for blog post on Turing Patterns.\n\"\"\"\n\nimport matplotlib.pyplot as plt\nfrom matplotlib import animation\nimport numpy as np\n\nclass BaseStateSystem:\n    \"\"\"\n    Base object for \"State System\".\n\n    We are going to repeatedly visualise systems which are Markovian:\n    the have a \"state\", the state evolves in discrete steps, and the next\n    state only depends on the previous state.\n\n    To make things simple, I'm going to use this class as an interface.\n    \"\"\"\n    def __init__(self):\n        raise NotImplementedError()\n\n    def initialise(self):\n        raise NotImplementedError()\n\n    def initialise_figure(self):\n        fig, ax = plt.subplots()\n        return fig, ax\n\n    def update(self):\n        raise NotImplementedError()\n\n    def draw(self, ax):\n        raise NotImplementedError()\n\n    def plot_time_evolution(self, filename, n_steps=30):\n        \"\"\"\n        Creates a gif from the time evolution of a basic state syste.\n        \"\"\"\n        self.initialise()\n        fig, ax = self.initialise_figure()\n\n        def step(t):\n            self.update()\n            self.draw(ax)\n\n        anim = animation.FuncAnimation(fig, step, frames=np.arange(n_steps), interval=20)\n        anim.save(filename=filename, dpi=60, fps=10, writer='imagemagick')\n        plt.close()\n        \n    def plot_evolution_outcome(self, filename, n_steps):\n        \"\"\"\n        Evolves and save the outcome of evolving the system for n_steps\n        \"\"\"\n        self.initialise()\n        fig, ax = self.initialise_figure()\n        \n        for _ in range(n_steps):\n            self.update()\n\n        self.draw(ax)\n        fig.savefig(filename)\n        plt.close()\n\n\nclass InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-3",
     "href": "lectures/ch2_lecture2.html#section-3",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "t1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\n\n\n\ndying insects\n\n\n\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\n\n\n\nliving insects"
+    "text": "t1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\nMovieWriter imagemagick unavailable; using Pillow instead.\n\n\n\n\n\ndying insects\n\n\n. . .\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\nMovieWriter imagemagick unavailable; using Pillow instead.\n\n\n\n\n\nliving insects"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#graph",
     "href": "lectures/ch2_lecture2.html#graph",
     "title": "Ch2 Lecture 2",
     "section": "Graph",
-    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges.\n\nWhat are some things which can be represented with graphs?"
+    "text": "Graph\n\nA graph is a set \\(V\\) of vertices (or nodes), together with a set or list \\(E\\) of unordered pairs with coordinates in \\(V\\), called edges."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#digraph",
     "href": "lectures/ch2_lecture2.html#digraph",
     "title": "Ch2 Lecture 2",
     "section": "Digraph",
-    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges.\n\nWhat are some things which can be represented with digraphs?"
+    "text": "Digraph\n\nA directed graph (or “digraph”) has directed edges."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#walks",
     "href": "lectures/ch2_lecture2.html#walks",
     "title": "Ch2 Lecture 2",
     "section": "Walks",
-    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n\nA directed walk is a sequence of directed edges.\n\nWhat is an example of what a walk tells us? Work through from one of the examples of graph or digraph that came up.\nOne example: how many people are in your extended network. “Six degrees of separation”…"
+    "text": "Walks\n\nA walk is a sequence of edges \\(\\left\\{v_{0}, v_{1}\\right\\},\\left\\{v_{1}, v_{2}\\right\\}, \\ldots,\\left\\{v_{m-1}, v_{m}\\right\\}\\) that goes from vertex \\(v_{0}\\) to vertex \\(v_{m}\\).\nThe length of the walk is \\(m\\).\n. . .\nA directed walk is a sequence of directed edges."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#winning-and-losing",
     "href": "lectures/ch2_lecture2.html#winning-and-losing",
     "title": "Ch2 Lecture 2",
     "section": "Winning and losing",
-    "text": "Winning and losing\n\nSuppose this represents wins and losses by different teams. How can we rank the teams?\n\nIdea: a team which beats another team is good. Even better if the team they beat had beaten another team…\nIdea: count the number of walks of length 1 or 2 originating from each vertex.\nHave them do this…\nPower of 1 is 5, vertex 2 is 4, vertex 3 is 7, vertex 4 is 4, vertex 5 is 1, and the power of vertex 6 is 0."
+    "text": "Winning and losing\n\nSuppose this represents wins and losses by different teams. How can we rank the teams?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#power",
     "href": "lectures/ch2_lecture2.html#power",
     "title": "Ch2 Lecture 2",
     "section": "Power",
-    "text": "Power\nVertex power: the number of walks of length 1 or 2 originating from a vertex.\n\nMakes most sense for graphs which don’t have any self-loops and at most one edge between nodes. These are called dominance directed graphs\n\n\nHow can we compute the number of walks for a given graph?"
+    "text": "Power\nVertex power: the number of walks of length 1 or 2 originating from a vertex.\n. . .\nMakes most sense for graphs which don’t have any self-loops and at most one edge between nodes. These are called dominance directed graphs\n. . .\nHow can we compute the number of walks for a given graph?"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#adjacency-matrix",
     "href": "lectures/ch2_lecture2.html#adjacency-matrix",
     "title": "Ch2 Lecture 2",
     "section": "Adjacency matrix",
-    "text": "Adjacency matrix\nAdjacency matrix: A square matrix whose \\((i, j)\\) th entry is the number of edges going from vertex \\(i\\) to vertex \\(j\\)\n\nEdges in non-directed graphs appear twice (at (i,j) and at (j,i))\nEdges in digraphs appear only once\n\n\nWhat is the adjacency matrix for this graph?\n\n\n\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\nWe can reconstruct the graph entirely from this matrix! It must have all the information encapsulated in it."
+    "text": "Adjacency matrix\nAdjacency matrix: A square matrix whose \\((i, j)\\) th entry is the number of edges going from vertex \\(i\\) to vertex \\(j\\)\n\nEdges in non-directed graphs appear twice (at (i,j) and at (j,i))\nEdges in digraphs appear only once\n\n. . .\nWhat is the adjacency matrix for this graph?\n\n. . .\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-4",
     "href": "lectures/ch2_lecture2.html#section-4",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "What is the adjacency matrix for this graph?\n\n\n\\[\nB=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 1 \\\\\n1 & 0 & 1 & 0 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n1 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 1 & 0 & 0 & 1 \\\\\n1 & 1 & 0 & 1 & 1 & 0\n\\end{array}\\right]\n\\]"
+    "text": "What is the adjacency matrix for this graph?\n\n. . .\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
     "href": "lectures/ch2_lecture2.html#computing-power-from-an-adjacencty-matrix",
     "title": "Ch2 Lecture 2",
     "section": "Computing power from an adjacencty matrix",
-    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n\nAnswer: Add up the elements of the \\(i\\) th row of \\(A\\)."
+    "text": "Computing power from an adjacencty matrix\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nHow can we count the walks of length 1 emanating from vertex \\(i\\)?\n. . .\nAnswer: Add up the elements of the \\(i\\) th row of \\(A\\)."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#section-5",
     "href": "lectures/ch2_lecture2.html#section-5",
     "title": "Ch2 Lecture 2",
     "section": "",
-    "text": "\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nWhat about walks of length 2?\n\nStart by finding number of walks of length 2 from vertex i to vertex j.\n\n\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\n\n\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\).\n\nWhen is there an edge from \\(i\\) to \\(k\\) and then from \\(k\\) to \\(j\\)?\nIf the adjacency matrix has 1’s in both \\(a_{i,k}\\) and \\(a_{k,j}\\).\nCan represent this by the product…\nSo number of paths is the sum over k’s…\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
+    "text": "\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\nWhat about walks of length 2?\n. . .\nStart by finding number of walks of length 2 from vertex i to vertex j.\n. . .\n\\[\na_{i 1} a_{1 j}+a_{i 2} a_{2 j}+\\cdots+a_{i n} a_{n j} .\n\\]\n. . .\nThis is just the \\((i, j)\\) th entry of the matrix \\(A^{2}\\)."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
     "href": "lectures/ch2_lecture2.html#adjacency-matrix-and-power",
     "title": "Ch2 Lecture 2",
     "section": "Adjacency matrix and power",
-    "text": "Adjacency matrix and power\nResult: The \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n\nTherefore: power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
+    "text": "Adjacency matrix and power\nResult: The \\((i, j)\\) th entry of \\(A^{r}\\) gives the number of (directed) walks of length \\(r\\) starting at vertex \\(i\\) and ending at vertex \\(j\\).\n. . .\nTherefore: power of the \\(i\\) th vertex is the sum of all entries in the \\(i\\) th row of the matrix \\(A+A^{2}\\)."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
     "href": "lectures/ch2_lecture2.html#vertex-power-in-our-teams-example",
     "title": "Ch2 Lecture 2",
     "section": "Vertex power in our teams example",
-    "text": "Vertex power in our teams example\n\\[\nA+A^{2}=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]+\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\\[=\\left[\\begin{array}{llllll}\n0 & 2 & 1 & 1 & 1 & 0 \\\\\n1 & 0 & 1 & 1 & 0 & 1 \\\\\n1 & 2 & 0 & 2 & 1 & 1 \\\\\n0 & 1 & 1 & 0 & 1 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n\nThe sum of each row gives the vertex power.\n\nHow can you use multiplication to find the sum of each row?\nCan multiply by a column of ones…"
+    "text": "Vertex power in our teams example\n\\[\nA+A^{2}=\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]+\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\left[\\begin{array}{llllll}\n0 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 0 & 0 & 1 & 0 & 1 \\\\\n0 & 1 & 0 & 0 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right]\n\\]\n\\[=\\left[\\begin{array}{llllll}\n0 & 2 & 1 & 1 & 1 & 0 \\\\\n1 & 0 & 1 & 1 & 0 & 1 \\\\\n1 & 2 & 0 & 2 & 1 & 1 \\\\\n0 & 1 & 1 & 0 & 1 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 0\n\\end{array}\\right] .\n\\]\n. . .\nThe sum of each row gives the vertex power."
   },
   {
     "objectID": "lectures/ch2_lecture2.html#now-you-try",
     "href": "lectures/ch2_lecture2.html#now-you-try",
     "title": "Ch2 Lecture 2",
     "section": "Now you try",
-    "text": "Now you try\nWorking together,\n\npick a topic (sports? elections?).\nLook up data and make a graph or digraph.\nCompute the adjacency matrix.\nFind the vertex powers.\n\nDo your results make sense in context?\nDoes it make sense?\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\ninsect life stages\ndying insects\nliving insects"
+    "text": "Now you try\nWorking together,\n\npick a topic (sports? elections?).\nLook up data and make a graph or digraph.\nCompute the adjacency matrix.\nFind the vertex powers.\n\nDo your results make sense in context?\nDoes it make sense?\n\n\n\ninsect life stages\ndying insects\nliving insects"
   },
   {
     "objectID": "lectures/ch1_lecture2.html#a-resource-for-review",
@@ -417,7 +417,7 @@
     "href": "index.html#homeworks",
     "title": "Stat 24320",
     "section": "Homeworks",
-    "text": "Homeworks\n\n\n\n\n\nTitle\n\n\nTextbook Chapters\n\n\nDue Date\n\n\n\n\n\n\nHomework 1\n\n\n1\n\n\n2024-03-27\n\n\n\n\n\nNo matching items"
+    "text": "Homeworks\n\n\n\n\n\nTitle\n\n\nTextbook Chapters\n\n\nDue Date\n\n\n\n\n\n\nHomework 1\n\n\n1\n\n\nWednesday, Week 2\n\n\n\n\nHomework 1\n\n\n2\n\n\nWednesday, Week 3\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "HW/projects1.html",
@@ -1041,5 +1041,19 @@
     "title": "Ch2 Lecture 3",
     "section": "Digital Filters",
     "text": "Digital Filters"
+  },
+  {
+    "objectID": "HW/HW2.html",
+    "href": "HW/HW2.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "1 \n\n\nExercise 2.1.13\nGiven that a linear system in the unknowns \\(x_{1}, x_{2}, x_{3}, x_{4}\\) has general solution \\(\\left(x_{2}+3 x_{4}+4, x_{2}, 2-x_{4}, x_{4}\\right)\\) for free variables \\(x_{2}, x_{4}\\), find a minimal reduced row echelon for this system.\n\n\n2 \n\n\nExercise 2.2.23\nUse the technique of Example 2.10 in your textbook to balance the following chemical equation:\n\\[\n\\mathrm{C}_{8} \\mathrm{H}_{18}+\\mathrm{O}_{2} \\rightarrow \\mathrm{CO}_{2}+\\mathrm{H}_{2} \\mathrm{O} .\n\\]\n\n\n3 \n\n\nExercise 2.3.3\nExpress the following functions, if linear, as matrix operators. (If not linear, explain why.)\n\n\\(T\\left(\\left(x_{1}, x_{2}\\right)\\right)=\\left(x_{1}+x_{2}, 2 x_{1}, 4 x_{2}-x_{1}\\right)\\) (b) \\(T\\left(\\left(x_{1}, x_{2}\\right)\\right)=\\left(x_{1}+x_{2}, 2 x_{1} x_{2}\\right)\\)\n\\(T\\left(\\left(x_{1}, x_{2}, x_{3}\\right)\\right)=\\left(2 x_{3},-x_{1}\\right)\\)\n\\(T\\left(\\left(x_{1}, x_{2}, x_{3}\\right)\\right)=\\left(x_{2}-x_{1}, x_{3}, x_{2}+x_{3}\\right)\\)\n\n\n\n4 \n\n\nExercise 2.3.9\nA fixed-point of a linear operator \\(T_{A}\\) is a vector \\(\\mathbf{x}\\) such that \\(T_{A}(\\mathbf{x})=\\mathbf{x}\\). Find all fixed points, if any, of the linear operators in the previous exercise.\n\n\n5 \n\n\nExercise 2.3.5\nA linear operator on \\(\\mathbb{R}^{2}\\) is defined by first applying a scaling operator with scale factors of 2 in the \\(x\\)-direction and 4 in the \\(y\\)-direction, followed by a counterclockwise rotation about the origin of \\(\\pi / 6\\) radians. Express this operator and the operator that results from reversing the order of the scaling and rotation as matrix operators.\n\n\n6 \n\n\nExercise 2.3.7\nFind a scaling operator \\(S\\) and shearing operator \\(H\\) such that the concatenation \\(S \\circ H\\) maps the points \\((1,0)\\) to \\((2,0)\\) and \\((0,1)\\) to \\((4,3)\\).\n\n\n7 \n\n\nExercise 2.3.11\nGiven transition matrices for discrete dynamical systems\n\n\\(\\left[\\begin{array}{rrr}.1 & .3 & 0 \\\\ 0 & .4 & 1 \\\\ .9 & .3 & 0\\end{array}\\right] \\quad\\) (b) \\(\\left[\\begin{array}{lll}0 & 0 & 1 \\\\ 0 & 1 & 0 \\\\ 1 & 0 & 0\\end{array}\\right] \\quad\\) (c) \\(\\left[\\begin{array}{rrr}.5 & .3 & 0 \\\\ 0 & .4 & 0 \\\\ .5 & .3 & 1\\end{array}\\right] \\quad\\) (d) \\(\\left[\\begin{array}{rrr}0 & 0 & 0.9 \\\\ 0.5 & 0 & 0 \\\\ 0 & 0.5 & 0.1\\end{array}\\right]\\) and initial state vector \\(\\mathbf{x}^{(0)}=\\frac{1}{2}(1,1,0)\\), calculate the first and second state vector for each system and determine whether it is a Markov chain.\n\n\n\n8 \n\n\nExercise 2.3.12\nFor each of the dynamical systems of the previous exercise, determine by calculation whether the system tends to a limiting steady-state vector. If so, what is it?\n\n\n9 \n\n\nExercise 2.3.13\nA population is modeled with two states, immature and mature, and the resulting structured population model transition matrix is \\(\\left[\\begin{array}{cc}\\frac{1}{2} & 1 \\\\ \\frac{1}{2} & 0\\end{array}\\right]\\).\n\nExplain what this matrix says about the two states.\nStarting with a population of \\((30,100)\\), does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?\n\n\n\n10 \n\n\nExercise 2.3.15\nA digraph \\(G\\) has vertex set \\(V=\\{1,2,3,4,5\\}\\) and edge set \\(E=\\) \\(\\{(2,1),(1,5),(2,5),(5,4),(4,2),(4,3),(3,2)\\}\\). Sketch a picture of the graph \\(G\\) and find its adjacency matrix. Use this to find the power of each vertex of the graph and determine whether this graph is dominance-directed.\n\n\n11 \n\n\nExercise 2.3.19\nConsider the linear difference \\(y_{k+2}-y_{k+1}-y_{k}=0\\).\n\nExpress this difference in matrix form.\nFind the first ten terms of the solution to this difference given the initial conditions \\(y_{0}=0, y_{1}=1\\). (This is the well-known Fibonacci sequence.)\n\n\n\n12 \n\n\nProblem 2.3.23\nSuppose that in Example 2.27 you invest \\(\\$ 1,000\\) initially (the zeroth year) and no further amounts. Make a table of the value of your investment for years 0 to 12. Also include a column that calculates the annual interest rate that your investment is earning each year, based on the current and previous year’s values. What conclusions do you draw? You will need a technology tool for this exercise."
+  },
+  {
+    "objectID": "lectures/ch2_lecture2.html",
+    "href": "lectures/ch2_lecture2.html",
+    "title": "Ch2 Lecture 2",
+    "section": "",
+    "text": "Definition: A discrete linear dynamical system is a sequence of vectors \\(\\mathbf{x}^{(k)}, k=0,1, \\ldots\\), called states, which is defined by an initial vector \\(\\mathbf{x}^{(0)}\\) and by the rule\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}+\\mathbf{b}_{k}, \\quad k=0,1, \\ldots\n\\]\n. . .\n\n\\(A\\) is a fixed square matrix, called the transition matrix of the system\nvectors \\(\\mathbf{b}_{k}, k=0,1, \\ldots\\) are called the input vectors of the system.\nIf we don’t specify input vectors, assume that \\(\\mathbf{b}_{k}=\\mathbf{0}\\) for all \\(k\\). Then call the system a homogeneous dynamical system.\n\n\n\n\nAn important question: is the system stable?\nDoes \\(\\mathbf{x}^{(k)}\\) tend towards a constant state \\(\\mathrm{x}\\)?\n. . .\nIf system is homogeneous, then if a stable state is the initial state, it will equal all subsequent states.\nDefinition: A vector \\(\\mathbf{x}\\) satisfying \\(\\mathbf{x}=A \\mathbf{x}\\), for a square matrix \\(A\\), is called a stationary vector for \\(A\\).\n. . .\nIf \\(A\\) is the transition matrix for a homogeneous discrete dynamical system, we also call such a vector a stationary state.\n\n\n\n\nTwo toothpaste companies compete for customers in a fixed market\nEach customer uses either Brand A or Brand B.\nBuying habits. In each quarter:\n\n\\(30 \\%\\) of A users will switch to B, while the rest stay with A.\n\\(40 \\%\\) of B users will switch to A , while the the rest stay with B.\n\nThis is an example of a Markov chain model.\n\n\n\n\nLet \\(a_1\\) be the fraction of customers using Brand A at the end of the first quarter, and \\(b_1\\) be the fraction using Brand B.\nThen we have the following system of equations: \\[\n\\begin{aligned}\na_{1} & =0.7 a_{0}+0.4 b_{0} \\\\\nb_{1} & =0.3 a_{0}+0.6 b_{0}\n\\end{aligned}\n\\]\n. . .\nMore generally,\n\\[\n\\begin{aligned}\na_{k+1} & =0.7 a_{k}+0.4 b_{k} \\\\\nb_{k+1} & =0.3 a_{k}+0.6 b_{k} .\n\\end{aligned}\n\\]\n. . .\nIn matrix form,\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\nwith\n\\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]\n\n\n\nWe can continue into future quarters by multiplying by \\(A\\) again: \\[\n\\mathbf{x}^{(2)}=A \\mathbf{x}^{(1)}=A \\cdot\\left(A \\mathbf{x}^{(0)}\\right)=A^{2} \\mathbf{x}^{(0)}\n\\]\n. . .\nIn general,\n\\[\n\\mathbf{x}^{(k)}=A \\mathbf{x}^{(k-1)}=A^{2} \\mathbf{x}^{(k-2)}=\\cdots=A^{k} \\mathbf{x}^{(0)} .\n\\]\n. . .\nThis is true of any homogeneous linear dynamical system!\nFor any positive integer \\(k\\) and discrete dynamical system with transition matrix \\(A\\) and initial state \\(\\mathbf{x}^{(0)}\\), the \\(k\\)-th state is given by\n\\[\n\\mathbf{x}^{(k)}=A^{k} \\mathbf{x}^{(0)}\n\\]\n\n\n\n\n\\(\\mathbf{x}^{(k)}\\) of the toothpaste example are column vectors with nonnegative coordinates that sum to 1.\nSuch vectors are called distribution vectors.\nAlso, each of the columns the matrix \\(A\\) is a distribution vector.\nA square matrix \\(A\\) whose columns are distribution vectors is called a stochastic matrix.\n\n\n\n\nA Markov chain is a discrete dynamical system whose initial state \\(\\mathbf{x}^{(0)}\\) is a distribution vector and whose transition matrix \\(A\\) is stochastic, i.e., each column of \\(A\\) is a distribution vector.\n\n\n\n\\[\n\\mathbf{x}^{(k)}=\\left[\\begin{array}{c}\na_{k} \\\\\nb_{k}\n\\end{array}\\right] \\text { and } A=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\n\\]\n\n\n\n\nWe can define the 1-norm of a vector \\(\\mathbf{x}\\) as \\(\\|\\mathbf{x}\\|_{1}=\\sum_{i=1}^{n}\\left|x_{i}\\right|\\).\n\nIf all the elements of a vector are nonnegative, then \\(\\|\\mathbf{x}\\|_{1}\\) is the sum of the elements.\n\nCan show: For any stochastic matrix \\(P\\) and compatible vector \\(\\mathbf{x},\\|P \\mathbf{x}\\|_{1} \\leq\\|\\mathbf{x}\\|_{1}\\), with equality if the coordinates of \\(\\mathbf{x}\\) are all nonnegative.\n→ if a state in a Markov chain is a distribution vector (nonnegative entries and sums to 1), then the sum of the coordinates of the next state will also sum to one\n→ all subsequent states in a Markov chain are themselves Markov Chain State distribution vectors.\n\n\n\n\nSuppose that initially Brand A has all the customers (i.e., Brand B is just entering the market). What are the market shares 2 quarters later? 20 quarters?\n. . .\n\nInitial state vector is \\(\\mathbf{x}^{(0)}=(1,0)\\).\nNow do the arithmetic to find \\(\\mathbf{x}^{(2)}\\) : . . . \\[\n\\begin{aligned}\n{\\left[\\begin{array}{l}\na_{2} \\\\\nb_{2}\n\\end{array}\\right] } & =\\mathbf{x}^{(2)}=A^{2} \\mathbf{x}^{(0)}=\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left(\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 \\\\\n0\n\\end{array}\\right]\\right) \\\\\n& =\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]\\left[\\begin{array}{l}\n0.7 \\\\\n0.3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n.61 \\\\\n.39\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNow:\n\nfind the state after 2 quarters.\nfind the state after 20 quarters. Use matrix exponentiation: A**n\nGet specific numbers if toothpaste A has 100% of the market at the beginning. (Use sym.subs())\nNow what if toothpaste B has 100% at the beginning?\n\n\n\n\n\n\n\ninsect life stages\n\n\n\nEvery week, 20% of the eggs die, and 60% move to the larva stage.\nAlso, 10% of larvae die, 60% become adults\n20% of adults die. Each adult produces 0.25 eggs.\nInitially we have 10k adults, 8k larvae, 6k eggs. How does the population evolve over time?\n\n. . .\n\n\n\n\n\n\n\n\"\"\"\nSome utility functions for blog post on Turing Patterns.\n\"\"\"\n\nimport matplotlib.pyplot as plt\nfrom matplotlib import animation\nimport numpy as np\n\nclass BaseStateSystem:\n    \"\"\"\n    Base object for \"State System\".\n\n    We are going to repeatedly visualise systems which are Markovian:\n    the have a \"state\", the state evolves in discrete steps, and the next\n    state only depends on the previous state.\n\n    To make things simple, I'm going to use this class as an interface.\n    \"\"\"\n    def __init__(self):\n        raise NotImplementedError()\n\n    def initialise(self):\n        raise NotImplementedError()\n\n    def initialise_figure(self):\n        fig, ax = plt.subplots()\n        return fig, ax\n\n    def update(self):\n        raise NotImplementedError()\n\n    def draw(self, ax):\n        raise NotImplementedError()\n\n    def plot_time_evolution(self, filename, n_steps=30):\n        \"\"\"\n        Creates a gif from the time evolution of a basic state syste.\n        \"\"\"\n        self.initialise()\n        fig, ax = self.initialise_figure()\n\n        def step(t):\n            self.update()\n            self.draw(ax)\n\n        anim = animation.FuncAnimation(fig, step, frames=np.arange(n_steps), interval=20)\n        anim.save(filename=filename, dpi=60, fps=10, writer='imagemagick')\n        plt.close()\n        \n    def plot_evolution_outcome(self, filename, n_steps):\n        \"\"\"\n        Evolves and save the outcome of evolving the system for n_steps\n        \"\"\"\n        self.initialise()\n        fig, ax = self.initialise_figure()\n        \n        for _ in range(n_steps):\n            self.update()\n\n        self.draw(ax)\n        fig.savefig(filename)\n        plt.close()\n\n\nclass InsectEvolution(BaseStateSystem):\n    def __init__(self,transition_matrix=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]]),max_y=10):\n        self.steps = 10;\n        self.t=0\n        self.transition_matrix = transition_matrix\n        self.max_y=max_y\n\n    def initialise(self):\n        self.x = np.array([6,8,10])\n        self.Ya = []\n        self.Yb = []\n        self.Yc = []\n        self.X = []\n\n    def update(self):\n        for _ in range(self.steps):\n            self.t += 1\n            self._update()\n\n    def _update(self):\n        self.x = self.transition_matrix.dot(self.x)\n\n    def draw(self, ax):\n        ax.clear()\n        self.X.append(self.t)\n        self.Ya.append(self.x[0])\n        self.Yb.append(self.x[1])\n        self.Yc.append([self.x[2]])\n        ax.plot(self.X,self.Ya, color=\"r\", label=\"Eggs\")\n        ax.plot(self.X,self.Yb, color=\"b\", label=\"Larvae\")\n        ax.plot(self.X,self.Yc, color=\"g\", label=\"Adults\")\n        ax.legend()\n\n        ax.set_ylim(0,self.max_y)\n        ax.set_xlim(0,200)\n        ax.set_title(\"t = {:.2f}\".format(self.t))\n\n\n\n\n\nt1=np.array([[.2,0,.25],[.6,.3,0],[0,.6,.8]])\ndying_insects = InsectEvolution(t1)\ndying_insects.plot_time_evolution(\"insects.gif\")\n\nMovieWriter imagemagick unavailable; using Pillow instead.\n\n\n\n\n\ndying insects\n\n\n. . .\n\nt2=np.array([[.4,0,.45],[.5,.1,0],[0,.6,.8]])\nliving_insects = InsectEvolution(t2,200)\nliving_insects.plot_time_evolution(\"insects2.gif\")\n\nMovieWriter imagemagick unavailable; using Pillow instead.\n\n\n\n\n\nliving insects"
   }
 ]

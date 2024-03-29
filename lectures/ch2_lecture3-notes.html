@@ -419,7 +419,7 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <h2><em>Example: Cleaning up a noisy signal</em></h2>
 <p>True signal: <span class="math inline">\(f(t)=\cos (\pi t),-1 \leq t \leq 1\)</span></p>
 <p>Signal plus noise: <span class="math inline">\(g(t)=\cos (\pi t)+\)</span> <span class="math inline">\(\frac{1}{5} \sin (24 \pi t)+\frac{1}{4} \cos (30 \pi t)\)</span></p>
-<div id="9e8a8206" class="cell" data-execution_count="1">
+<div id="9e8a8206" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -450,9 +450,9 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <h2><em>Filtered data</em></h2>
 <p>Idea: we can sample nearby points and take a weighted average of them.</p>
 <p><span class="math display">\[
-y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=2,3, \ldots, 64
+y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
 \]</span></p>
-<div id="78e47309" class="cell" data-execution_count="2">
+<div id="78e47309" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -461,8 +461,12 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=2,3, \l
 </div>
 </div>
 </div>
+</section>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>We can zoom in on a few points to see the effect of the filter.</p>
-<div id="e2d2e6ba" class="cell" data-execution_count="3">
+<div id="e2d2e6ba" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -908,7 +912,7 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=2,3, \l
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -1068,6 +1068,13 @@
     "href": "lectures/ch2_lecture3.html#filtered-data",
     "title": "Ch2 Lecture 3",
     "section": "Filtered data",
-    "text": "Filtered data\nIdea: we can sample nearby points and take a weighted average of them.\n\\[\ny_{k}=\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}+\\frac{1}{4} x_{k-1}, \\quad k=2,3, \\ldots, 64\n\\]\n\n\n\n\n\n\n\n\n\nWe can zoom in on a few points to see the effect of the filter."
+    "text": "Filtered data\nIdea: we can sample nearby points and take a weighted average of them.\n\\[\ny_{k}=\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}+\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#section",
+    "href": "lectures/ch2_lecture3.html#section",
+    "title": "Ch2 Lecture 3",
+    "section": "",
+    "text": "We can zoom in on a few points to see the effect of the filter."
   }
 ]

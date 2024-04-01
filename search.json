@@ -1096,6 +1096,13 @@
     "href": "lectures/ch2_lecture3.html#definition-of-inverse-matrix",
     "title": "Ch2 Lecture 3",
     "section": "Definition of inverse matrix",
-    "text": "Definition of inverse matrix\n\n\n\nLet \\(A\\) be a square matrix. Then a (two-sided) inverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) such that \\(A B=I=B A\\). If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible."
+    "text": "Definition of inverse matrix\nLet \\(A\\) be a square matrix.\nInverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) - such that \\(A B=I=B A\\). - If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible.\n\nAlso called “singular” (non-invertible), or “nonsingular” (invertible)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#conditions-for-invertibility",
+    "href": "lectures/ch2_lecture3.html#conditions-for-invertibility",
+    "title": "Ch2 Lecture 3",
+    "section": "Conditions for invertibility",
+    "text": "Conditions for invertibility\nConditions for Invertibility The following are equivalent conditions on the square \\(n \\times n\\) matrix \\(A\\) :\n\nThe matrix \\(A\\) is invertible.\nThere is a square matrix \\(B\\) such that \\(B A=I\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for every right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for some right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=0\\) has only the trivial solution.\n\\(\\operatorname{rank} A=n\\).\nThe reduced row echelon form of \\(A\\) is \\(I_{n}\\).\nThe matrix \\(A\\) is a product of elementary matrices.\nThere is a square matrix \\(B\\) such that \\(A B=I\\)."
   }
 ]

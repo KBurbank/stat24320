@@ -527,13 +527,27 @@ y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \
 </section>
 <section id="definition-of-inverse-matrix" class="title-slide slide level2 center">
 <h2><em>Definition of inverse matrix</em></h2>
-<div class="callout callout-none no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Let <span class="math inline">\(A\)</span> be a square matrix. Then a (two-sided) inverse for <span class="math inline">\(A\)</span> is a square matrix <span class="math inline">\(B\)</span> of the same size as <span class="math inline">\(A\)</span> such that <span class="math inline">\(A B=I=B A\)</span>. If such a <span class="math inline">\(B\)</span> exists, then the matrix <span class="math inline">\(A\)</span> is said to be invertible.</p>
-</div>
-</div>
-</div>
+<p>Let <span class="math inline">\(A\)</span> be a square matrix.</p>
+<p><em>Inverse</em> for <span class="math inline">\(A\)</span> is a square matrix <span class="math inline">\(B\)</span> of the same size as <span class="math inline">\(A\)</span> - such that <span class="math inline">\(A B=I=B A\)</span>. - If such a <span class="math inline">\(B\)</span> exists, then the matrix <span class="math inline">\(A\)</span> is said to be <strong>invertible</strong>.</p>
+<ul>
+<li class="fragment">Also called <strong>“singular”</strong> (non-invertible), or <strong>“nonsingular”</strong> (invertible)</li>
+</ul>
+</section>
+
+<section id="conditions-for-invertibility" class="title-slide slide level2 center">
+<h2><em>Conditions for invertibility</em></h2>
+<p>Conditions for Invertibility The following are equivalent conditions on the square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> :</p>
+<ol type="1">
+<li class="fragment"><p>The matrix <span class="math inline">\(A\)</span> is invertible.</p></li>
+<li class="fragment"><p>There is a square matrix <span class="math inline">\(B\)</span> such that <span class="math inline">\(B A=I\)</span>.</p></li>
+<li class="fragment"><p>The linear system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has a unique solution for every right-hand-side vector <span class="math inline">\(\mathbf{b}\)</span>.</p></li>
+<li class="fragment"><p>The linear system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has a unique solution for some right-hand-side vector <span class="math inline">\(\mathbf{b}\)</span>.</p></li>
+<li class="fragment"><p>The linear system <span class="math inline">\(A \mathbf{x}=0\)</span> has only the trivial solution.</p></li>
+<li class="fragment"><p><span class="math inline">\(\operatorname{rank} A=n\)</span>.</p></li>
+<li class="fragment"><p>The reduced row echelon form of <span class="math inline">\(A\)</span> is <span class="math inline">\(I_{n}\)</span>.</p></li>
+<li class="fragment"><p>The matrix <span class="math inline">\(A\)</span> is a product of elementary matrices.</p></li>
+<li class="fragment"><p>There is a square matrix <span class="math inline">\(B\)</span> such that <span class="math inline">\(A B=I\)</span>.</p></li>
+</ol>
 </section>
 </section>
 <section>
@@ -966,7 +980,7 @@ y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

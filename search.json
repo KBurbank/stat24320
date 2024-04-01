@@ -1096,6 +1096,6 @@
     "href": "lectures/ch2_lecture3.html#definition-of-inverse-matrix",
     "title": "Ch2 Lecture 3",
     "section": "Definition of inverse matrix",
-    "text": "Definition of inverse matrix\n\n\n\n\n\n\n\nInvertible Matrix\n\n\nLet \\(A\\) be a square matrix. Then a (two-sided) inverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) such that \\(A B=I=B A\\). If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible."
+    "text": "Definition of inverse matrix\n\n\n\n\nInvertible Matrix\n\n\nLet \\(A\\) be a square matrix. Then a (two-sided) inverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) such that \\(A B=I=B A\\). If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible."
   }
 ]

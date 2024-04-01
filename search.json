@@ -1152,7 +1152,7 @@
     "href": "lectures/ch2_lecture3.html#x2-matrices",
     "title": "Ch2 Lecture 3",
     "section": "2x2 matrices",
-    "text": "2x2 matrices\nSuppose we have the 2x2 matrix\n\\[\nA=\\left[\\begin{array}{ll}\na & b \\\\\nc & d\n\\end{array}\\right]\n\\]\n\nDo row reduction on the superaugmented matrix:\n\\[\n\\left[\\begin{array}{ll|ll}\na & b & 1 & 0 \\\\\nc & d & 0 & 1\n\\end{array}\\right]\n\\]\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\\[\nA^{-1}=\\frac{1}{D}\\left[\\begin{array}{rr}\nd & -b \\\\\n-c & a\n\\end{array}\\right]\n\\]"
+    "text": "2x2 matrices\nSuppose we have the 2x2 matrix\n\\[\nA=\\left[\\begin{array}{ll}\na & b \\\\\nc & d\n\\end{array}\\right]\n\\]\n\nDo row reduction on the superaugmented matrix:\n\\[\n\\left[\\begin{array}{ll|ll}\na & b & 1 & 0 \\\\\nc & d & 0 & 1\n\\end{array}\\right]\n\\]\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "lectures/ch2_lecture3.html#back-to-pagerank",
@@ -1195,5 +1195,12 @@
     "title": "Ch2 Lecture 3",
     "section": "PageRank Matrix",
     "text": "PageRank Matrix\nLet:\n\n\\(P\\) be a stochastic matrix,\n\\(\\mathbf{v}\\) a distribution vector of compatible size\n\\(\\alpha\\) a teleportation parameter with \\(0&lt;\\alpha&lt;1\\).\nThen \\(\\alpha P+(1-\\alpha) \\mathbf{v e}^{T}\\) and\n. . . our goal is to find stationary vectors \\[\n\\begin{equation*}\n\\left(\\alpha P+(1-\\alpha) \\mathbf{v e}^{T}\\right) \\mathbf{x}=\\mathbf{x} \\tag{2.4}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#section-4",
+    "href": "lectures/ch2_lecture3.html#section-4",
+    "title": "Ch2 Lecture 3",
+    "section": "",
+    "text": "\\[\nA^{-1}=\\frac{1}{D}\\left[\\begin{array}{rr}\nd & -b \\\\\n-c & a\n\\end{array}\\right]\n\\]"
   }
 ]

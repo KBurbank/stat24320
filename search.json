@@ -1096,13 +1096,20 @@
     "href": "lectures/ch2_lecture3.html#definition-of-inverse-matrix",
     "title": "Ch2 Lecture 3",
     "section": "Definition of inverse matrix",
-    "text": "Definition of inverse matrix\nLet \\(A\\) be a square matrix.\nInverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) - such that \\(A B=I=B A\\). - If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible.\n\nAlso called “singular” (non-invertible), or “nonsingular” (invertible)"
+    "text": "Definition of inverse matrix\nLet \\(A\\) be a square matrix.\nInverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\)\n\nsuch that \\(A B=I=B A\\).\n\nIf such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible.\nAlso called “singular” (non-invertible), or “nonsingular” (invertible)"
   },
   {
     "objectID": "lectures/ch2_lecture3.html#conditions-for-invertibility",
     "href": "lectures/ch2_lecture3.html#conditions-for-invertibility",
     "title": "Ch2 Lecture 3",
     "section": "Conditions for invertibility",
-    "text": "Conditions for invertibility\nConditions for Invertibility The following are equivalent conditions on the square \\(n \\times n\\) matrix \\(A\\) :\n\nThe matrix \\(A\\) is invertible.\nThere is a square matrix \\(B\\) such that \\(B A=I\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for every right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for some right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=0\\) has only the trivial solution.\n\\(\\operatorname{rank} A=n\\).\nThe reduced row echelon form of \\(A\\) is \\(I_{n}\\).\nThe matrix \\(A\\) is a product of elementary matrices.\nThere is a square matrix \\(B\\) such that \\(A B=I\\)."
+    "text": "Conditions for invertibility\nConditions for Invertibility The following are equivalent conditions on the square \\(n \\times n\\) matrix \\(A\\) :\n\nThe matrix \\(A\\) is invertible.\nThere is a square matrix \\(B\\) such that \\(B A=I\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for every right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has a unique solution for some right-hand-side vector \\(\\mathbf{b}\\).\nThe linear system \\(A \\mathbf{x}=0\\) has only the trivial solution.\n\\(\\operatorname{rank} A=n\\).\nThe reduced row echelon form of \\(A\\) is \\(I_{n}\\).\nThe matrix \\(A\\) is a product of elementary matrices.\nThere is a square matrix \\(B\\) such that \\(A B=I\\).\n\n\nWe can prove this by starting with 1, which implies 2, etc, and then 9 implies 1…"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#computing-the-inverse-via-row-reduction",
+    "href": "lectures/ch2_lecture3.html#computing-the-inverse-via-row-reduction",
+    "title": "Ch2 Lecture 3",
+    "section": "Computing the inverse via row reduction",
+    "text": "Computing the inverse via row reduction\n\nEach of the operations in row reduction can be represented by a matrix \\(E\\).\n\n\nRecall an example from the first week: \\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\overrightarrow{E_{12}}\\left[\\begin{array}{rrr}\n4 & 4 & 20 \\\\\n2 & -1 & 1\n\\end{array}\\right] \\overrightarrow{E_{1}(1 / 4)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n2 & -1 & 1\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{21}(-2)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n0 & -3 & -9\n\\end{array}\\right] \\overrightarrow{E_{2}(-1 / 3)}\\left[\\begin{array}{lll}\n1 & 1 & 5 \\\\\n0 & 1 & 3\n\\end{array}\\right] \\overrightarrow{E_{12}(-1)}\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\n\\[\n\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right]=E_{12}(-1) E_{2}(-1 / 3) E_{21}(-2) E_{1}(1 / 4) E_{12}\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\text {. }\n\\]\n\nWe are rewriting the row operations as a product of matrices. Notice too that the reduced row echelon form is the identity matrix.\n\nTo compute the inverse of a matrix \\(A\\), we can augment \\(A\\) with the identity matrix \\(I\\) and row reduce:\n."
   }
 ]

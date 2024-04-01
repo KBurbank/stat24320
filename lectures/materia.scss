@@ -152,7 +152,7 @@ $web-font-path: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;50
     border: none;
     opacity: 0;
     transition: background .5s, opacity 1s;
-    @include gradient-radial($color 10%, transparent 10.01%);
+   // @include gradient-radial($color 10%, transparent 10.01%);
   }
 
   &:active::before {

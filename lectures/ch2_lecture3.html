@@ -8,12 +8,6 @@
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
@@ -540,28 +534,6 @@ y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \
 
 </div>
 </div>
-<div class="reveal-header">
-<div class="header-logo">
-<img data-src="">
-</div>
-<div class="sc-title">
-<p> </p>
-</div>
-<div class="header-text">
-
-</div>
-<div class="sb-title">
-<p> </p>
-</div>
-<div id="reveal-subheader" class="sub-title">
-<p> </p>
-</div>
-</div>
-<div class="reveal-footer">
-<div class="footer-section">
-<p> </p>
-</div>
-</div>
 </section>
     </div>
   </div>
@@ -956,7 +928,7 @@ y_{k}=-\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}-\frac{1}{4} x_{k-1}, \quad k=1,2, \
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

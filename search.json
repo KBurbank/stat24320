@@ -1082,7 +1082,7 @@
     "href": "lectures/ch2_lecture3.html#section-1",
     "title": "Ch2 Lecture 3",
     "section": "",
-    "text": "So what is the most important thing here?\n\n\n\nWhat’s the point?\n\nHere is a toplabel thing."
+    "text": "Recall an example from the first week:\nSolve the simple system\n\\[\n\\begin{gather*}\n2 x-y=1 \\\\\n4 x+4 y=20 . \\tag{1.5}\n\\end{gather*}\n\\]\n\n\\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\overrightarrow{E_{12}}\\left[\\begin{array}{rrr}\n4 & 4 & 20 \\\\\n2 & -1 & 1\n\\end{array}\\right] \\overrightarrow{E_{1}(1 / 4)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n2 & -1 & 1\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{21}(-2)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n0 & -3 & -9\n\\end{array}\\right] \\overrightarrow{E_{2}(-1 / 3)}\\left[\\begin{array}{lll}\n1 & 1 & 5 \\\\\n0 & 1 & 3\n\\end{array}\\right] \\overrightarrow{E_{12}(-1)}\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right] .\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture3.html#a-different-filter",
@@ -1111,5 +1111,47 @@
     "title": "Ch2 Lecture 3",
     "section": "Computing the inverse via row reduction",
     "text": "Computing the inverse via row reduction\n\nEach of the operations in row reduction can be represented by a matrix \\(E\\).\n\n\nRecall an example from the first week: \\[\n\\begin{aligned}\n& {\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\overrightarrow{E_{12}}\\left[\\begin{array}{rrr}\n4 & 4 & 20 \\\\\n2 & -1 & 1\n\\end{array}\\right] \\overrightarrow{E_{1}(1 / 4)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n2 & -1 & 1\n\\end{array}\\right]} \\\\\n& \\overrightarrow{E_{21}(-2)}\\left[\\begin{array}{rrr}\n1 & 1 & 5 \\\\\n0 & -3 & -9\n\\end{array}\\right] \\overrightarrow{E_{2}(-1 / 3)}\\left[\\begin{array}{lll}\n1 & 1 & 5 \\\\\n0 & 1 & 3\n\\end{array}\\right] \\overrightarrow{E_{12}(-1)}\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right] .\n\\end{aligned}\n\\]\n\n\n\\[\n\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right]=E_{12}(-1) E_{2}(-1 / 3) E_{21}(-2) E_{1}(1 / 4) E_{12}\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\text {. }\n\\]\n\nWe are rewriting the row operations as a product of matrices. Notice too that the reduced row echelon form is the identity matrix.\n\nTo compute the inverse of a matrix \\(A\\), we can augment \\(A\\) with the identity matrix \\(I\\) and row reduce:\n."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#elementary-matrices",
+    "href": "lectures/ch2_lecture3.html#elementary-matrices",
+    "title": "Ch2 Lecture 3",
+    "section": "Elementary matrices",
+    "text": "Elementary matrices\n\nEach of the operations in row reduction can be represented by a matrix \\(E\\).\n\n\nRemember: - \\(E_{i j}\\) : The elementary operation of switching the ith and jth rows of the matrix. - \\(E_{i}(c)\\) : The elementary operation of multiplying the ith row by the nonzero constant \\(c\\). - \\(E_{i j}(d)\\) : The elementary operation of adding \\(d\\) times the jth row to the ith row.\n\n\nFind an elementary matrix of size \\(n\\) is by performing the corresponding elementary row operation on the identity matrix \\(I_{n}\\).\n\n\nExample: Find the elementary matrix for \\(E_{13}(-4)\\)\n\n\nAdd -4 times the 3rd row of \\(I_{3}\\) to its first row…\n\n\n\\[\nE_{13}(-4)=\\left[\\begin{array}{rrr}\n1 & 0 & -4 \\\\\n0 & 1 & 0 \\\\\n0 & 0 & 1\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#section-2",
+    "href": "lectures/ch2_lecture3.html#section-2",
+    "title": "Ch2 Lecture 3",
+    "section": "",
+    "text": "Rewrite this using matrix multiplication: \\[\n\\left[\\begin{array}{lll}\n1 & 0 & 2 \\\\\n0 & 1 & 3\n\\end{array}\\right]=E_{12}(-1) E_{2}(-1 / 3) E_{21}(-2) E_{1}(1 / 4) E_{12}\\left[\\begin{array}{rrr}\n2 & -1 & 1 \\\\\n4 & 4 & 20\n\\end{array}\\right] \\text {. }\n\\]\n\nWe are rewriting the row operations as a product of matrices. Notice too that the reduced row echelon form is the identity matrix."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#section-3",
+    "href": "lectures/ch2_lecture3.html#section-3",
+    "title": "Ch2 Lecture 3",
+    "section": "",
+    "text": "Remove the last columns in each matrix above. (They were the “augmented” part of the original problem.) All the operations still work:\n\\[\n\\left[\\begin{array}{ll}\n1 & 0 \\\\\n0 & 1\n\\end{array}\\right]=E_{12}(-1) E_{2}(-1 / 3) E_{21}(-2) E_{1}(1 / 4) E_{12}\\left[\\begin{array}{rr}\n2 & -1 \\\\\n4 & 4\n\\end{array}\\right] \\text {. }\n\\]\n\nAha! We now have a formula for the inverse of the original matrix:\n\\[\nA^{-1}=E_{12}(-1) E_{2}(-1 / 3) E_{21}(-2) E_{1}(1 / 4) E_{12}\n\\]\n\nHow can we generalize this? How can we keep track of what we are doing?"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#superaugmented-matrix",
+    "href": "lectures/ch2_lecture3.html#superaugmented-matrix",
+    "title": "Ch2 Lecture 3",
+    "section": "Superaugmented matrix",
+    "text": "Superaugmented matrix\n\nForm the superaugmented matrix \\([A \\mid I]\\).\nIf we perform the elementary operation \\(E\\) on the superaugmented matrix, we get the matrix \\(E\\) in the augmented part:\n\n\\[\nE[A \\mid I]=[E A \\mid E I]=[E A \\mid E]\n\\]\n\nThis can help us keep track of our operations as we do row reduction\nThe augmented part is just the product of the elementary matrices that we have used so far.\nNow continue applying elementary row operations until the part of the matrix originally occupied by \\(A\\) is reduced to the reduced row echelon form of \\(A\\). . . . \\[\n[A \\mid I] \\overrightarrow{E_{1}, E_{2}, \\ldots, E_{k}}[I \\mid B]\n\\]\n\\(B=E_{k} E_{k-1} \\cdots E_{1}\\) is the product of the various elementary matrices we used."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#inverse-algorithm",
+    "href": "lectures/ch2_lecture3.html#inverse-algorithm",
+    "title": "Ch2 Lecture 3",
+    "section": "Inverse Algorithm",
+    "text": "Inverse Algorithm\nGiven an \\(n \\times n\\) matrix \\(A\\), to compute \\(A^{-1}\\) :\n\nForm the superaugmented matrix \\(\\widetilde{A}=\\left[A \\mid I_{n}\\right]\\).\nReduce the first \\(n\\) columns of \\(\\tilde{A}\\) to reduced row echelon form by performing elementary operations on the matrix \\(\\widetilde{A}\\) resulting in the matrix \\([R \\mid B]\\).\nIf \\(R=I_{n}\\) then set \\(A^{-1}=B\\); otherwise, \\(A\\) is singular and \\(A^{-1}\\) does not exist."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#x2-matrices",
+    "href": "lectures/ch2_lecture3.html#x2-matrices",
+    "title": "Ch2 Lecture 3",
+    "section": "2x2 matrices",
+    "text": "2x2 matrices\nSuppose we have the 2x2 matrix\n\\[\nA=\\left[\\begin{array}{ll}\na & b \\\\\nc & d\n\\end{array}\\right]\n\\]\n\nDo row reduction on the superaugmented matrix:\n\\[\n\\left[\\begin{array}{ll|ll}\na & b & 1 & 0 \\\\\nc & d & 0 & 1\n\\end{array}\\right]\n\\]"
   }
 ]

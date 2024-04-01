@@ -1090,5 +1090,12 @@
     "title": "Ch2 Lecture 3",
     "section": "A different filter",
     "text": "A different filter\nWhat if we subtract the values at \\(x_{k+1}\\) and \\(x_{k-1}\\) instead of adding them?\n\\[\ny_{k}=-\\frac{1}{4} x_{k+1}+\\frac{1}{2} x_{k}-\\frac{1}{4} x_{k-1}, \\quad k=1,2, \\ldots, 63\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nThis is a high-pass filter. It captures the high-frequency noise, but filters out the low-frequency signal."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#definition-of-inverse-matrix",
+    "href": "lectures/ch2_lecture3.html#definition-of-inverse-matrix",
+    "title": "Ch2 Lecture 3",
+    "section": "Definition of inverse matrix",
+    "text": "Definition of inverse matrix\n\n\n\n\n\n\nInvertible Matrix\n\n\nLet \\(A\\) be a square matrix. Then a (two-sided) inverse for \\(A\\) is a square matrix \\(B\\) of the same size as \\(A\\) such that \\(A B=I=B A\\). If such a \\(B\\) exists, then the matrix \\(A\\) is said to be invertible."
   }
 ]

@@ -1173,7 +1173,7 @@
     "href": "lectures/ch2_lecture3.html#connection-between-adjacency-matrix-and-transition-matrix",
     "title": "Ch2 Lecture 3",
     "section": "Connection between adjacency matrix and transition matrix",
-    "text": "Connection between adjacency matrix and transition matrix\n\n\\(A\\): adjacency matrix of a graph or digraph\n\\(D\\): be a diagonal matrix whose \\(i\\) th entry is either:\n\nthe inverse of the sum of all entries in the \\(i\\) th row of \\(\\mathrm{A}\\), or\nzero if if this sum is zero.\n\nThen \\(Q=A^{T} D\\) is the transition matrix for the page ranking of this graph.\n\nCheck:\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Connection between adjacency matrix and transition matrix\n\n\\(A\\): adjacency matrix of a graph or digraph\n\\(D\\): be a diagonal matrix whose \\(i\\) th entry is either:\n\nthe inverse of the sum of all entries in the \\(i\\) th row of \\(\\mathrm{A}\\), or\nzero if if this sum is zero.\n\nThen \\(Q=A^{T} D\\) is the transition matrix for the page ranking of this graph.\n\n. . . Check:\n\\[\nA=\\left[\\begin{array}{llllll}\n0 & 1 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & 0 & 0 & 0 \\\\\n1 & 1 & 0 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "lectures/ch2_lecture3.html#pagerank-as-a-markov-chain",

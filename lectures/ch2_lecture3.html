@@ -546,7 +546,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced ","options":{"context":"interactive","label":"","results":"markup","fig-width":7,"warning":"true","message":"true","output":"true","read-only":"false","comment":"","classes":"","out-height":"","autorun":"","fig-cap":"","dpi":72,"out-width":"700px","fig-height":5},"id":1},{"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","label":"","results":"markup","fig-width":7,"warning":"true","message":"true","output":"true","read-only":"false","comment":"","classes":"","out-height":"","autorun":"","fig-cap":"","dpi":72,"out-width":"700px","fig-height":5},"id":2},{"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","label":"","results":"markup","fig-width":7,"warning":"true","message":"true","output":"true","read-only":"false","comment":"","classes":"","out-height":"","autorun":"","fig-cap":"","dpi":72,"out-width":"700px","fig-height":5},"id":3},{"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","label":"","results":"markup","fig-width":7,"warning":"true","message":"true","output":"true","read-only":"false","comment":"","classes":"","out-height":"","autorun":"","fig-cap":"","dpi":72,"out-width":"700px","fig-height":5},"id":4}];
+  globalThis.qpyodideCellDetails = [{"code":"import numpy as np\nimport matplotlib.pyplot as plt\n\nx = np.linspace(start=-1,stop=1,num=64)\ndef f(x):\n    return np.cos(np.pi*x)\ndef g(x):\n    return np.cos(np.pi*x) + 1/5*np.sin(24*np.pi*x) + 1/4*np.cos(30*np.pi*x)\ny = np.zeros_like(x)\nfor k in range(1, 63):\n    y[k] = 1/4*g(x[k+1]) + 1/2*g(x[k]) + 1/4*g(x[k-1])\nplt.plot(x, f(x), label='Exact')\nplt.plot(x, g(x), label='Noisy', alpha=0.5)\nplt.scatter(x, g(x), color='orange', s=50, alpha=0.5)  # Add dots for 'Noisy'\nplt.plot(x[1:-1], y[1:-1], label='Filtered')\nplt.scatter(x[1:-1], y[1:-1], color='green', s=50)  # Add dots for 'Filtered'\nplt.legend()\nplt.show()","id":1,"options":{"results":"markup","classes":"","message":"true","out-width":"700px","fig-cap":"","dpi":72,"output":"true","context":"interactive","warning":"true","comment":"","read-only":"false","label":"","fig-width":7,"out-height":"","autorun":"","fig-height":5}},{"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced ","id":2,"options":{"results":"markup","classes":"","message":"true","out-width":"700px","fig-cap":"","dpi":72,"output":"true","context":"interactive","warning":"true","comment":"","read-only":"false","label":"","fig-width":7,"out-height":"","autorun":"","fig-height":5}},{"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","id":3,"options":{"results":"markup","classes":"","message":"true","out-width":"700px","fig-cap":"","dpi":72,"output":"true","context":"interactive","warning":"true","comment":"","read-only":"false","label":"","fig-width":7,"out-height":"","autorun":"","fig-height":5}},{"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","id":4,"options":{"results":"markup","classes":"","message":"true","out-width":"700px","fig-cap":"","dpi":72,"output":"true","context":"interactive","warning":"true","comment":"","read-only":"false","label":"","fig-width":7,"out-height":"","autorun":"","fig-height":5}},{"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","id":5,"options":{"results":"markup","classes":"","message":"true","out-width":"700px","fig-cap":"","dpi":72,"output":"true","context":"interactive","warning":"true","comment":"","read-only":"false","label":"","fig-width":7,"out-height":"","autorun":"","fig-height":5}}];
 
 
   </script>
@@ -764,6 +764,7 @@
 <li class="fragment"><a href="#/difference-equations" id="/toc-difference-equations"><em>Difference Equations</em></a></li>
 <li class="fragment"><a href="#/example-digital-filters" id="/toc-example-digital-filters"><em>Example: Digital Filters</em></a></li>
 <li class="fragment"><a href="#/inverse-matrices" id="/toc-inverse-matrices"><em>Inverse Matrices</em></a></li>
+<li class="fragment"><a href="#/pagerank-revisited" id="/toc-pagerank-revisited"><em>PageRank revisited</em></a></li>
 </ul>
 </nav>
 </section>
@@ -871,12 +872,14 @@ y_{k}=a_{0} x_{k}+a_{1} x_{k-1}+\cdots+a_{m} x_{k-m}, \quad k=m, m+1, m+2, \ldot
 <p><span class="math display">\[
 y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \ldots, 63
 \]</span></p>
+<div class="fragment">
 <div id="cell-filtered-data" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
 <p><a href="ch2_lecture3_files/figure-revealjs/filtered-data-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="ch2_lecture3_files/figure-revealjs/filtered-data-output-1.png" id="filtered-data" width="805" height="411"></a></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -910,6 +913,13 @@ y_{k}=\frac{1}{4} x_{k+1}+\frac{1}{2} x_{k}+\frac{1}{4} x_{k-1}, \quad k=1,2, \l
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+
+<section id="now-you-try" class="title-slide slide level2 center">
+<h2><em>Now you try</em></h2>
+<p>See if you can make a figure which will just find the noisyness…</p>
+<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 
 <section id="a-different-filter" class="title-slide slide level2 center">
@@ -1153,7 +1163,7 @@ c &amp; d &amp; 0 &amp; 1
 \]</span></p>
 </div>
 <div class="fragment">
-<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
+<div id="qpyodide-insertion-location-2" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
@@ -1167,7 +1177,12 @@ d &amp; -b \\
 \end{array}\right]
 \]</span></p>
 </section>
+</section>
+<section>
+<section id="pagerank-revisited" class="title-slide slide level1 center">
+<h1><em>PageRank revisited</em></h1>
 
+</section>
 <section id="back-to-pagerank" class="title-slide slide level2 center">
 <h2><em>Back to PageRank</em></h2>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-140.jpg?height=196&amp;width=938&amp;top_left_y=198&amp;top_left_x=286" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-140.jpg?height=196&amp;width=938&amp;top_left_y=198&amp;top_left_x=286"></a></p>
@@ -1237,7 +1252,7 @@ A=\left[\begin{array}{llllll}
 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
 \end{array}\right]
 \]</span></p>
-<div id="qpyodide-insertion-location-2" class="qpyodide-insertion-class"></div>
+<div id="qpyodide-insertion-location-3" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 
@@ -1299,7 +1314,7 @@ P=\left[\begin{array}{llllll}
 </div>
 <div class="fragment">
 <p>Find the new transition matrix <span class="math inline">\(Q\)</span>…</p>
-<div id="qpyodide-insertion-location-3" class="qpyodide-insertion-class"></div>
+<div id="qpyodide-insertion-location-4" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
@@ -1364,7 +1379,7 @@ P=\left[\begin{array}{llllll}
 <section id="now-solve-pagerank-for-our-example" class="title-slide slide level2 center">
 <h2><em>Now solve pagerank for our example</em></h2>
 <p>Use <code>M.solve(b)</code>…</p>
-<div id="qpyodide-insertion-location-4" class="qpyodide-insertion-class"></div>
+<div id="qpyodide-insertion-location-5" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
@@ -2400,7 +2415,7 @@ P=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

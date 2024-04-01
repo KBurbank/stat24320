@@ -546,7 +546,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced ","options":{"context":"interactive","dpi":72,"output":"true","out-width":"700px","message":"true","warning":"true","classes":"","autorun":"","out-height":"","comment":"","fig-height":5,"fig-cap":"","label":"","results":"markup","read-only":"false","fig-width":7}},{"id":2,"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","dpi":72,"output":"true","out-width":"700px","message":"true","warning":"true","classes":"","autorun":"","out-height":"","comment":"","fig-height":5,"fig-cap":"","label":"","results":"markup","read-only":"false","fig-width":7}},{"id":3,"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","dpi":72,"output":"true","out-width":"700px","message":"true","warning":"true","classes":"","autorun":"","out-height":"","comment":"","fig-height":5,"fig-cap":"","label":"","results":"markup","read-only":"false","fig-width":7}},{"id":4,"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","options":{"context":"interactive","dpi":72,"output":"true","out-width":"700px","message":"true","warning":"true","classes":"","autorun":"","out-height":"","comment":"","fig-height":5,"fig-cap":"","label":"","results":"markup","read-only":"false","fig-width":7}}];
+  globalThis.qpyodideCellDetails = [{"options":{"context":"interactive","output":"true","warning":"true","out-width":"700px","autorun":"","fig-cap":"","message":"true","label":"","classes":"","read-only":"false","dpi":72,"out-height":"","fig-height":5,"comment":"","results":"markup","fig-width":7},"id":1,"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced "},{"options":{"context":"interactive","output":"true","warning":"true","out-width":"700px","autorun":"","fig-cap":"","message":"true","label":"","classes":"","read-only":"false","dpi":72,"out-height":"","fig-height":5,"comment":"","results":"markup","fig-width":7},"id":2,"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ"},{"options":{"context":"interactive","output":"true","warning":"true","out-width":"700px","autorun":"","fig-cap":"","message":"true","label":"","classes":"","read-only":"false","dpi":72,"out-height":"","fig-height":5,"comment":"","results":"markup","fig-width":7},"id":3,"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ"},{"options":{"context":"interactive","output":"true","warning":"true","out-width":"700px","autorun":"","fig-cap":"","message":"true","label":"","classes":"","read-only":"false","dpi":72,"out-height":"","fig-height":5,"comment":"","results":"markup","fig-width":7},"id":4,"code":"A = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ"}];
 
 
   </script>
@@ -1277,9 +1277,11 @@ P\stackrel{?}{=}\left[\begin{array}{llllll}
           display:block!important;
       }</style></aside>
 </div>
-<div class="fragment">
+</section>
+
+<section id="correction-vector" class="title-slide slide level2 center">
+<h2><em>Correction vector</em></h2>
 <p>We can introduce a <em>correction vector</em>, equivalent to adding links from the dangling node to every other node, or to all connecting nodes (via some path).</p>
-</div>
 <div class="fragment">
 <p><span class="math display">\[
 P=\left[\begin{array}{llllll}
@@ -2398,7 +2400,7 @@ P=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -1,3 +1,11 @@
+$navbar-fg: white;
+$navbar-hl: white;
+
+
+@import "_quarto-variables.scss";
+@import "_bootstrap-variables.scss";
+@import "_variables.scss";
+
 /*-- scss:defaults --*/
 
 $theme: "materia" !default;

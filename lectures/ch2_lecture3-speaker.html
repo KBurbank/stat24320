@@ -546,7 +546,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced ","id":1,"options":{"output":"true","comment":"","dpi":72,"classes":"","fig-height":5,"warning":"true","fig-cap":"","label":"","context":"interactive","autorun":"","results":"markup","out-width":"700px","fig-width":7,"read-only":"false","message":"true","out-height":""}},{"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ","id":2,"options":{"output":"true","comment":"","dpi":72,"classes":"","fig-height":5,"warning":"true","fig-cap":"","label":"","context":"interactive","autorun":"","results":"markup","out-width":"700px","fig-width":7,"read-only":"false","message":"true","out-height":""}}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","context":"interactive","comment":"","label":"","output":"true","read-only":"false","out-height":"","autorun":"","warning":"true","fig-cap":"","fig-width":7,"classes":"","dpi":72,"out-width":"700px","results":"markup","fig-height":5},"code":"import sympy as sym\na, b, c, d = sym.symbols('a b c d')\nA = sym.Matrix([[a, b], [c, d]])\naugmented = A.row_join(sym.eye(2))\nreduced = augmented.rref()\nreduced "},{"id":2,"options":{"message":"true","context":"interactive","comment":"","label":"","output":"true","read-only":"false","out-height":"","autorun":"","warning":"true","fig-cap":"","fig-width":7,"classes":"","dpi":72,"out-width":"700px","results":"markup","fig-height":5},"code":"import sympy as sym\nA = sym.Matrix([[0, 1, 1, 0, 0, 0], [0, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 1], [0, 0, 0, 0, 1, 0]])\nD = sym.diag(sym.Rational(1,3), sym.Rational(1,2), sym.Rational(1,3), 0, 1, 1)\nQ = A.T*D\nQ"}];
 
 
   </script>
@@ -764,7 +764,6 @@
 <li class="fragment"><a href="#/difference-equations" id="/toc-difference-equations"><em>Difference Equations</em></a></li>
 <li class="fragment"><a href="#/example-digital-filters" id="/toc-example-digital-filters"><em>Example: Digital Filters</em></a></li>
 <li class="fragment"><a href="#/inverse-matrices" id="/toc-inverse-matrices"><em>Inverse Matrices</em></a></li>
-<li class="fragment"><a href="#/lu-factorization" id="/toc-lu-factorization"><em>LU Factorization</em></a></li>
 </ul>
 </nav>
 </section>
@@ -1242,8 +1241,14 @@ A=\left[\begin{array}{llllll}
 
 <section id="pagerank-as-a-markov-chain" class="title-slide slide level2 center">
 <h2><em>PageRank as a Markov chain</em></h2>
-<p>Think of web surfing as a <strong>random process</strong><br>
-- each page is a state - probabilities of moving from one state to another given by a stochastic transition matrix P. - equal probability of moving to any of the outgoing links of a page</p>
+<p>Think of web surfing as a <strong>random process</strong></p>
+<ul>
+<li class="fragment">each page is a state</li>
+<li class="fragment"></li>
+<li class="fragment">probabilities of moving from one state to another given by a stochastic transition matrix P.</li>
+<li class="fragment"></li>
+<li class="fragment">equal probability of moving to any of the outgoing links of a page</li>
+</ul>
 <div class="fragment">
 <p><span class="math display">\[
 P\stackrel{?}{=}\left[\begin{array}{llllll}
@@ -1289,14 +1294,54 @@ P=\left[\begin{array}{llllll}
 <p>This is now a stochastic matrix <strong>“surfing matrix”</strong></p>
 </div>
 </section>
+
+<section id="teleportation" class="title-slide slide level2 center">
+<h2><em>Teleportation</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-140.jpg?height=196&amp;width=938&amp;top_left_y=198&amp;top_left_x=286" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-140.jpg?height=196&amp;width=938&amp;top_left_y=198&amp;top_left_x=286"></a></p>
+<p>There may not be a single stationary vector for the surfing matrix <span class="math inline">\(P\)</span>.</p>
+<aside class="notes">
+<p>Can you think of two different vectors that can never move towards each other? That is, can you think of ways of getting “stuck”?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<p>Solution: Jump around. Every so often, instead of following a link, jump to a <em>random page</em>.</p>
+</div>
+<div class="fragment">
+<p>How can we modify the surfing matrix to include this?</p>
+<p>Introduce a <strong>teleportation matrix</strong> <span class="math inline">\(E\)</span>, which is a transition matrix that allows the surfer to jump to any page with equal probability.</p>
+<p><strong>Pause</strong>: What must <span class="math inline">\(E\)</span> be?</p>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">Let <span class="math inline">\(\mathbf{v}\)</span> be the teleportation vector with entries 1/n -Let <span class="math inline">\(\mathbf{e}=\)</span> <span class="math inline">\((1,1, \ldots, 1)\)</span> be the vector of all ones.</li>
+<li class="fragment">Then <span class="math inline">\(\mathbf{v e}^{T}\)</span> is a stochastic matrix whose columns are all equal to <span class="math inline">\(\mathbf{v}\)</span>. This is <span class="math inline">\(E\)</span>.</li>
+</ul>
+</div>
 </section>
-<section>
-<section id="lu-factorization" class="title-slide slide level1 center">
-<h1><em>LU Factorization</em></h1>
-<!-- This section should mostly be implementation. -->
-</section>
-<section id="section-4" class="title-slide slide level2 center">
-<h2><em></em></h2>
+
+<section id="pagerank-matrix" class="title-slide slide level2 center">
+<h2><em>PageRank Matrix</em></h2>
+<p>Let:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(P\)</span> be a stochastic matrix,</li>
+<li class="fragment"><span class="math inline">\(\mathbf{v}\)</span> a distribution vector of compatible size</li>
+<li class="fragment"><span class="math inline">\(\alpha\)</span> a teleportation parameter with <span class="math inline">\(0&lt;\alpha&lt;1\)</span>.</li>
+<li class="fragment">Then <span class="math inline">\(\alpha P+(1-\alpha) \mathbf{v e}^{T}\)</span> and</li>
+<li class="fragment">. . . our goal is to find stationary vectors <span class="math display">\[
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x}=\mathbf{x} \tag{2.4}
+\end{equation*}
+\]</span></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -2331,7 +2376,7 @@ P=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

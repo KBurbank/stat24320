@@ -1180,6 +1180,20 @@
     "href": "lectures/ch2_lecture3.html#pagerank-as-a-markov-chain",
     "title": "Ch2 Lecture 3",
     "section": "PageRank as a Markov chain",
-    "text": "PageRank as a Markov chain\nThink of web surfing as a random process\n- each page is a state - probabilities of moving from one state to another given by a stochastic transition matrix P. - equal probability of moving to any of the outgoing links of a page\n\n\\[\nP\\stackrel{?}{=}\\left[\\begin{array}{llllll}\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n\\frac{1}{2} & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n\\frac{1}{2} & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\nPause: Is \\(P\\) a stochastic matrix?\n\nIs P a stochastic matrix? What’s the problem? (One of the columns doesn’t sum to 1.)\n\n\n\nWe can introduce a correction vector, equivalent to adding links from the dangling node to every other node, or to all connecting nodes (via some path).\n\n\n\\[\nP=\\left[\\begin{array}{llllll}\n0 & 0 & \\frac{1}{3} & \\frac{1}{3} & 0 & 0 \\\\\n\\frac{1}{2} & 0 & \\frac{1}{3} & \\frac{1}{3} & 0 & 0 \\\\\n\\frac{1}{2} & 1 & 0 & \\frac{1}{3} & 0 & 0 \\\\\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\n\n\nThis is now a stochastic matrix “surfing matrix”"
+    "text": "PageRank as a Markov chain\nThink of web surfing as a random process\n\neach page is a state\n\nprobabilities of moving from one state to another given by a stochastic transition matrix P.\n\nequal probability of moving to any of the outgoing links of a page\n\n\n\\[\nP\\stackrel{?}{=}\\left[\\begin{array}{llllll}\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n\\frac{1}{2} & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n\\frac{1}{2} & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\nPause: Is \\(P\\) a stochastic matrix?\n\nIs P a stochastic matrix? What’s the problem? (One of the columns doesn’t sum to 1.)\n\n\n\nWe can introduce a correction vector, equivalent to adding links from the dangling node to every other node, or to all connecting nodes (via some path).\n\n\n\\[\nP=\\left[\\begin{array}{llllll}\n0 & 0 & \\frac{1}{3} & \\frac{1}{3} & 0 & 0 \\\\\n\\frac{1}{2} & 0 & \\frac{1}{3} & \\frac{1}{3} & 0 & 0 \\\\\n\\frac{1}{2} & 1 & 0 & \\frac{1}{3} & 0 & 0 \\\\\n0 & 0 & \\frac{1}{3} & 0 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 0 & 1 \\\\\n0 & 0 & 0 & 0 & 1 & 0\n\\end{array}\\right]\n\\]\n\n\nThis is now a stochastic matrix “surfing matrix”"
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#teleportation",
+    "href": "lectures/ch2_lecture3.html#teleportation",
+    "title": "Ch2 Lecture 3",
+    "section": "Teleportation",
+    "text": "Teleportation\n\nThere may not be a single stationary vector for the surfing matrix \\(P\\).\n\nCan you think of two different vectors that can never move towards each other? That is, can you think of ways of getting “stuck”?\n\n\nSolution: Jump around. Every so often, instead of following a link, jump to a random page.\n\n\nHow can we modify the surfing matrix to include this?\nIntroduce a teleportation matrix \\(E\\), which is a transition matrix that allows the surfer to jump to any page with equal probability.\nPause: What must \\(E\\) be?\n\n\n\nLet \\(\\mathbf{v}\\) be the teleportation vector with entries 1/n -Let \\(\\mathbf{e}=\\) \\((1,1, \\ldots, 1)\\) be the vector of all ones.\nThen \\(\\mathbf{v e}^{T}\\) is a stochastic matrix whose columns are all equal to \\(\\mathbf{v}\\). This is \\(E\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture3.html#pagerank-matrix",
+    "href": "lectures/ch2_lecture3.html#pagerank-matrix",
+    "title": "Ch2 Lecture 3",
+    "section": "PageRank Matrix",
+    "text": "PageRank Matrix\nLet:\n\n\\(P\\) be a stochastic matrix,\n\\(\\mathbf{v}\\) a distribution vector of compatible size\n\\(\\alpha\\) a teleportation parameter with \\(0&lt;\\alpha&lt;1\\).\nThen \\(\\alpha P+(1-\\alpha) \\mathbf{v e}^{T}\\) and\n. . . our goal is to find stationary vectors \\[\n\\begin{equation*}\n\\left(\\alpha P+(1-\\alpha) \\mathbf{v e}^{T}\\right) \\mathbf{x}=\\mathbf{x} \\tag{2.4}\n\\end{equation*}\n\\]"
   }
 ]

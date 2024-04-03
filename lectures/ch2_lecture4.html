@@ -486,6 +486,7 @@ A=\left[\begin{array}{rrr}
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:45%;">
+<div class="fragment">
 <p>Forward solve: <span class="math display">\[
 \left[\begin{array}{rrr}
 1 &amp; 0 &amp; 0 \\
@@ -501,10 +502,10 @@ y_{3}
 1
 \end{array}\right]
 \]</span></p>
-<p>. . .</p>
 <p><span class="math inline">\(y_{1}=1\)</span>, then <span class="math inline">\(y_{2}=0+1 y_{1}=1\)</span>, then <span class="math inline">\(y_{3}=1-1 y_{1}-2 y_{2}=-2\)</span>.</p>
+</div>
 </div><div class="column" style="width:45%;">
-<p>. . .</p>
+<div class="fragment">
 <p>Back solve:</p>
 <p><span class="math display">\[
 \left[\begin{array}{rrr}
@@ -521,8 +522,8 @@ x_{3}
 -2
 \end{array}\right]
 \]</span></p>
-<p>. . .</p>
 <p><span class="math inline">\(x_{3}=-2 /(-1)=2\)</span>, then <span class="math inline">\(x_{2}=1+x_{3}=3\)</span>, then <span class="math inline">\(x_{1}=\left(1-1 x_{2}\right) / 2=-1\)</span>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1308,7 +1309,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

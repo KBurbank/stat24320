@@ -150,7 +150,8 @@ window.Quarto = {
 <p>Perhaps you want to experiment with different functions for the heat source term.</p>
 <p>. . .</p>
 <p>What do we do? Each time, we create the augmented matrix <span class="math inline">\(\widetilde{A}=[A \mid b]\)</span>, then get it into reduced row echelon form.</p>
-<p>If we change <span class="math inline">\(b\)</span>, we have to redo all the work of Gaussian or Gauss-Jordan elimination each time!</p>
+<p>. . .</p>
+<p>Each time change <span class="math inline">\(b\)</span>, we have to redo all the work of Gaussian or Gauss-Jordan elimination !</p>
 <p>. . .</p>
 <p>Especially frustrating because the main part of our work is the same: putting the part of <span class="math inline">\(\widetilde{A}\)</span> corresponding to the coefficient matrix <span class="math inline">\(A\)</span> into reduced row echelon form.</p>
 </section>
@@ -187,7 +188,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="solving-a-lower-triangular-system"><em>Solving a lower triangular system</em></h2>
 <p>If <span class="math inline">\(A\)</span> is lower triangular, we can solve for the first variable, then the second variable, etc.</p>
 <p>Let’s say we have the following system:</p>
-<p>$A y = b $ where A is the lower-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<p><span class="math inline">\(A y = b\)</span> where A is the lower-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
 <p>. . .</p>
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; | &amp; 1 \\ -1 &amp; 1 &amp; 0 &amp; | &amp; 0 \\ 1 &amp; 2 &amp; 1 &amp; | &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>. . .</p>
@@ -197,6 +198,7 @@ window.Quarto = {
 <li>Substitute this value into the second equation, <span class="math inline">\(-y_1 + y_2 = 0\)</span>, so <span class="math inline">\(y_2 = 1\)</span>.</li>
 <li>Finally, we substitute <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into the third equation, <span class="math inline">\(y_1 + 2y_2 + y_3 = 1\)</span>, so <span class="math inline">\(y_3 = -2\)</span>.</li>
 </ol>
+<p>. . .</p>
 <p>This was just as easy as solving the upper triangular system!</p>
 </section>
 <section id="solving-a-x-b-with-lu-factorization" class="level2">
@@ -232,6 +234,7 @@ A=\left[\begin{array}{rrr}
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
 <p>. . .</p>
 <p>Set <span class="math inline">\(\mathbf{x}=\left[x_{1}, x_{2}, x_{3}\right]^{T}\)</span> and <span class="math inline">\(\mathbf{y}=\left[y_{1}, y_{2}, y_{3}\right]^{T}\)</span>.</p>
+<p>:::: {.columns} ::: {.column width=“45%”}</p>
 <p>Forward solve: <span class="math display">\[
 \left[\begin{array}{rrr}
 1 &amp; 0 &amp; 0 \\
@@ -247,8 +250,10 @@ y_{3}
 1
 \end{array}\right]
 \]</span></p>
-<p><span class="math inline">\(y_{1}=1\)</span>, then <span class="math inline">\(y_{2}=0+1 y_{1}=1\)</span>, then <span class="math inline">\(y_{3}=1-1 y_{1}-2 y_{2}=-2\)</span>.</p>
 <p>. . .</p>
+<p><span class="math inline">\(y_{1}=1\)</span>, then <span class="math inline">\(y_{2}=0+1 y_{1}=1\)</span>, then <span class="math inline">\(y_{3}=1-1 y_{1}-2 y_{2}=-2\)</span>.</p>
+<p>::: . . .</p>
+<div class="column" style="width:45%;">
 <p>Back solve:</p>
 <p><span class="math display">\[
 \left[\begin{array}{rrr}
@@ -265,7 +270,9 @@ x_{3}
 -2
 \end{array}\right]
 \]</span></p>
+<p>. . .</p>
 <p><span class="math inline">\(x_{3}=-2 /(-1)=2\)</span>, then <span class="math inline">\(x_{2}=1+x_{3}=3\)</span>, then <span class="math inline">\(x_{1}=\left(1-1 x_{2}\right) / 2=-1\)</span>.</p>
+</div>
 </section>
 <section id="when-we-can-do-lu-factorization" class="level2">
 <h2 class="anchored" data-anchor-id="when-we-can-do-lu-factorization"><em>When we can do LU factorization</em></h2>
@@ -288,14 +295,10 @@ x_{3}
 <p>. . .</p>
 <p>Let’s put those elementary row operations into matrix form. There were three of them:</p>
 <ol type="1">
-<li><span class="math inline">\(E_{21}(1)\)</span></li>
-<li><span class="math inline">\(E_{31}(-1)\)</span></li>
-<li><span class="math inline">\(E_{32}(-2)\)</span></li>
+<li><span class="math inline">\(E_{21}(1)\)</span> : <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(E_{31}(-1)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(E_{32}(-2)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span></li>
 </ol>
-<p>. . .</p>
-<p>As a matrix, <span class="math inline">\(E_{21}(1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
-<p>Then, <span class="math inline">\(E_{31}(-1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
-<p>Finally, <span class="math inline">\(E_{32}(-2)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>. . .</p>
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
@@ -311,9 +314,9 @@ x_{3}
 </section>
 <section id="steps-to-lu-factorization" class="level2">
 <h2 class="anchored" data-anchor-id="steps-to-lu-factorization"><em>Steps to LU factorization</em></h2>
-<p>Let <span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> be the matrix obtained from <span class="math inline">\(A\)</span> after using the <span class="math inline">\(k\)</span> th pivot to clear out entries below it</p>
+<p>Let <span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> be the matrix obtained from <span class="math inline">\(A\)</span> after using the <span class="math inline">\(k\)</span> th pivot to clear out entries below it.</p>
 <p>. . .</p>
-<p>( <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
+<p>(The original matrix is <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
 <p>. . .</p>
 <p>All the row operations we will use include ratios <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
 <p>. . .</p>
@@ -322,6 +325,7 @@ x_{3}
 <p>. . .</p>
 <p>We can give these ratios a name: <strong>multipliers</strong>.</p>
 <p><span class="math inline">\(m_{i j}=-a_{i j}^{(k)} / a_{j j}^{(k)}\)</span>, where <span class="math inline">\(i&gt;j\)</span></p>
+<p>. . .</p>
 <div class="theorem">
 <p>If Gaussian elimination is used without row exchanges on the nonsingular matrix <span class="math inline">\(A\)</span>, resulting in the upper triangular matrix <span class="math inline">\(U\)</span>, and if <span class="math inline">\(L\)</span> is the unit lower triangular matrix whose entries below the diagonal are the negatives of the multipliers <span class="math inline">\(m_{i j}\)</span>, then <span class="math inline">\(A=L U\)</span>.</p>
 </div>
@@ -393,7 +397,6 @@ L=\left[\begin{array}{rrr}
 </section>
 <section id="restricted-boltzmann-machine" class="level1 page-columns page-full">
 <h1><em>Restricted Boltzmann Machine</em></h1>
-<p>::: notes</p>
 <section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="level2">
 <h2 class="anchored" data-anchor-id="intro-to-the-idea-of-a-restricted-boltzmann-machine"><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
 </section>
@@ -901,7 +904,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

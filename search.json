@@ -1474,7 +1474,7 @@
     "href": "lectures/ch2_lecture4plain.html#section-1",
     "title": "Ch2 Lecture 4",
     "section": "",
-    "text": "Could we just keep track by using the superaugmented matrix, like we did last lecture?\n\nM = sym.Matrix([[2,1,0],[-2,0,-1],[2,3,-3]])\n# augment M with a 3x3 identity matrix\nM = M.row_join(sym.eye(3))\nmylatex(M)\nprint(\"$\\\\xrightarrow[E_{31}(-1)]{E_{21}(1)}$\")\nM = M.elementary_row_op(\"n-&gt;n+km\", k=-1,row1=2,row2=0)\nM = M.elementary_row_op(\"n-&gt;n+km\", k=1,row1=1,row2=0)\nmylatex(M)\nprint('$\\\\xrightarrow[E_{32}(-2)]{\\longrightarrow}$')\nM = M.elementary_row_op(\"n-&gt;n+km\", k=-2,row1=2,row2=1)\nmylatex(M)\n\n$\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\-2 & 0 & -1 & 0 & 1 & 0\\\\2 & 3 & -3 & 0 & 0 & 1\\end{smallmatrix}\\right]$\n$\\xrightarrow[E_{31}(-1)]{E_{21}(1)}$\n$\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\0 & 1 & -1 & 1 & 1 & 0\\\\0 & 2 & -3 & -1 & 0 & 1\\end{smallmatrix}\\right]$\n$\\xrightarrow[E_{32}(-2)]{\\longrightarrow}$\n$\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\0 & 1 & -1 & 1 & 1 & 0\\\\0 & 0 & -1 & -3 & -2 & 1\\end{smallmatrix}\\right]$\n\n\n\\(\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\0 & 1 & -1 & 1 & 1 & 0\\\\0 & 0 & -1 & -3 & -2 & 1\\end{smallmatrix}\\right]\\)\n\n\\(\\begin{bmatrix} 1 & 0 & 0 \\\\ -1 & 1 & 0 \\\\ 1 & 2 & 1 \\end{bmatrix}\\)\n\n\\(\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\-2 & 0 & -1 & 0 & 1 & 0\\\\2 & 3 & -3 & 0 & 0 & 1\\end{smallmatrix}\\right]\\) \\(\\xrightarrow[E_{31}(-1)]{E_{21}(1)}\\) \\(\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\0 & 1 & -1 & 1 & 1 & 0\\\\0 & 2 & -3 & -1 & 0 & 1\\end{smallmatrix}\\right]\\) \\(\\xrightarrow[E_{32}(-2)]{\\longrightarrow}\\) \\(\\left[\\begin{smallmatrix}2 & 1 & 0 & 1 & 0 & 0\\\\0 & 1 & -1 & 1 & 1 & 0\\\\0 & 0 & -1 & -3 & -2 & 1\\end{smallmatrix}\\right]\\)\nOur superaugmented matrix becomes an upper triangular matrix on the left and a lower triangular matrix on the right.\nUnfortunately, the lower triangular matrix on the right is \\(\\tilde{L}^{-1}\\), not \\(\\tilde{L}\\).\nFor efficiency, we can just “store” the multipliers in the lower triangular part of the matrix on the left, since that will be zero anyways.\n\\[\n\\left[\\begin{array}{rrr}\n(2) & 1 & 0 \\\\\n-2 & 0 & -1 \\\\\n2 & 3 & -3\n\\end{array}\\right] \\xrightarrow[E_{31}(-1)]{E_{21}(1)}\\left[\\begin{array}{rrr}\n2 & 1 & 0 \\\\\n-1 & (1) & -1 \\\\\n1 & 2 & -3\n\\end{array}\\right] \\xrightarrow[E_{32}(-2)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n2 & 1 & 0 \\\\\n-1 & 1 & -1 \\\\\n1 & 2 & -1\n\\end{array}\\right] .\n\\]\n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)"
+    "text": "The probability of a visible vector \\(\\mathbf{v}\\) is given by marginalizing over the hidden variables:\n\\[\n\\begin{equation*}\nP_{\\mathrm{rbm}}(\\mathbf{v})=\\sum_{\\mathbf{h}} P_{\\mathrm{rbm}}(\\mathbf{v}, \\mathbf{h})=\\frac{1}{Z} \\sum_{h} e^{-E(\\mathbf{v}, \\mathbf{h})}\n\\end{equation*}\n\\]\nConveniently, this gives each visible unit an independent probability of activation:\n\\[\nP_{\\mathrm{rbm}}\\left(v_{i}=1 | \\mathbf{h}\\right)=\\sigma\\left(a_{i}+\\sum_{j} W_{i j} h_{j}\\right), \\quad i=1, \\ldots, n_{\\mathrm{v}}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture4plain.html#superaugmented-matrix",
@@ -1537,21 +1537,21 @@
     "href": "lectures/ch2_lecture4.html#intro-to-the-idea-of-a-restricted-boltzmann-machine",
     "title": "Ch2 Lecture 4",
     "section": "Intro to the idea of a Restricted Boltzmann Machine",
-    "text": "Intro to the idea of a Restricted Boltzmann Machine\nYou’d like to learn about what sort of objects exist in the world. You have a bunch of data, but you don’t know what the objects are. You’d like to learn about the objects and the features that describe them.\nOne way to do this is to start trying to assign labels to the objects you are seeing. You can start with random labels, and then try to improve them.\nYour goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.\n\n\n\nRBM schematic\n\n\nYour dreams should look like the real world.\nOK, but how do you measure how well your dreams match the real world?\nYou could calculate the probability of imagining each possible image… but that’s intractable.\nInstead, you can do a Markov Chain Monte Carlo method called Gibbs sampling. The basic idea of MCMC is that you can sample from a distribution by starting at some point and then moving around in a way that the distribution of your samples will eventually match the distribution you’re interested in.\nFor Gibbs sampling, you start with a random sample, and then you update each variable in turn, given the other variables. This may be much easier to compute than needing to know the full transition matrix for every possible pair of states. (We are in high dimensions here, because every node in our network is a variable.)\nIn the case of the RBM, you update each hidden node given the visible nodes, and then you update each visible node given the hidden nodes. You keep doing this for a while, and then you have a sample from the distribution you’re interested in.\nNow you compare this sample to your data, and you adjust the weights in your network to make the sample look more like the data.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)\nRBM schematic"
+    "text": "Intro to the idea of a Restricted Boltzmann Machine\nYou’d like to learn about what sort of objects exist in the world. You have a bunch of data, but you don’t know what the objects are. You’d like to learn about the objects and the features that describe them.\nOne way to do this is to start trying to assign labels to the objects you are seeing. You can start with random labels, and then try to improve them.\nYour goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.\n\n\n\nRBM schematic\n\n\nYour dreams should look like the real world.\nOK, but how do you measure how well your dreams match the real world?\nYou could calculate the probability of imagining each possible image… but that’s intractable.\nInstead, you can do a Markov Chain Monte Carlo method called Gibbs sampling. The basic idea of MCMC is that you can sample from a distribution by starting at some point and then moving around in a way that the distribution of your samples will eventually match the distribution you’re interested in.\nFor Gibbs sampling, you start with a random sample, and then you update each variable in turn, given the other variables. This may be much easier to compute than needing to know the full transition matrix for every possible pair of states. (We are in high dimensions here, because every node in our network is a variable.)\nIn the case of the RBM, you update each hidden node given the visible nodes, and then you update each visible node given the hidden nodes. You keep doing this for a while, and then you have a sample from the distribution you’re interested in.\nNow you compare this sample to your data, and you adjust the weights in your network to make the sample look more like the data."
   },
   {
     "objectID": "lectures/ch2_lecture4plain.html#idea-of-mcmc",
     "href": "lectures/ch2_lecture4plain.html#idea-of-mcmc",
     "title": "Ch2 Lecture 4",
     "section": "Idea of MCMC",
-    "text": "Idea of MCMC\nSuppose there’s something we want to calculate – say the average web revenue for users every day. We can know how much each page generates per user, but we also need to know how many users visit each page.\nIt’s easy if we have the whole transition matrix and can calculate the stationary vector. But what if we don’t have that? Say we only have something like the outgoing links from each page separately. They aren’t normalized.\nDo the example of the webpages, but have a specific webpage be chosen each time, with probability given by the pagerank. Then do a sequence of steps, and plot the empirical distribution of the webpages visited. Compare this with the one we calculate directly."
+    "text": "Idea of MCMC"
   },
   {
     "objectID": "lectures/ch2_lecture4.html#idea-of-mcmc",
     "href": "lectures/ch2_lecture4.html#idea-of-mcmc",
     "title": "Ch2 Lecture 4",
     "section": "Idea of MCMC",
-    "text": "Idea of MCMC\nSuppose there’s something we want to calculate – say the average web revenue for users every day. We can know how much each page generates per user, but we also need to know how many users visit each page.\nIt’s easy if we have the whole transition matrix and can calculate the stationary vector. But what if we don’t have that? Say we only have something like the outgoing links from each page separately. They aren’t normalized.\nDo the example of the webpages, but have a specific webpage be chosen each time, with probability given by the pagerank. Then do a sequence of steps, and plot the empirical distribution of the webpages visited. Compare this with the one we calculate directly."
+    "text": "Idea of MCMC\n\nSuppose there’s something we want to calculate – say the average web revenue for pages every day.\nStart out simple: suppose we have a revenue amount for each page, per user. How do we calculate the average revenue per page?\nWe can figure out how many users visit each page, and then multiply that by the revenue per user for that page.\nWe can do this by calculating the stationary distribution of the Markov chain that describes the transitions between pages.\nOr, we can do it by sampling.\nWork through the notebook to see how this works in practice.\nOK, now make it more complicated.\nWe have a formula for a given webpage that tells us how much revenue it generates given the user’s age, their gender, their location, etc.\nHow can we find the average revenue per page now?\nWe need to know the distribution of users and their characteristics. We can’t just use the stationary distribution of the Markov chain anymore.\nWe could try to calculate the distribution of users, but that’s hard.\nInstead, we can use a Markov Chain Monte Carlo method to sample from the distribution of users. We can then use these samples to estimate the average revenue per page.\nTo do Gibbs sampling, we will sample from the distribution of each variable given the other variables. This is easier than sampling from the joint distribution of all the variables.\nSo for instance, we might suppose that a user is male, 25 years old, and on the webpage for the Chicago Cubs. We can specify a distribution of locations for the user’s location given this information. Sample from that distribution.\nThen, we can say ok, we’ve got a user who is 25 years old, on the webpage for the Cubs, and in Chicago. What’s the probability that the user is male?\nGo through all the variables in turn, sampling from the distribution of each given the others, including for the webpages."
   },
   {
     "objectID": "notebooks/mcmc_pagerank.html",
@@ -1601,5 +1601,96 @@
     "title": "MCMC Pagerank",
     "section": "Adding teleportation",
     "text": "Adding teleportation\n\n\n\n# Normalize the teleportation matrix\nteleportation = np.ones(np.shape(transition_matrix))\nrow_sums = teleportation.sum(axis=1)\nteleportation = teleportation / row_sums[:, np.newaxis]\n\nalpha = .15\n\ntransition_matrix_combined = (1-alpha)*transition_matrix + alpha*teleportation"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#math-of-the-rbm",
+    "href": "lectures/ch2_lecture4.html#math-of-the-rbm",
+    "title": "Ch2 Lecture 4",
+    "section": "Math of the RBM",
+    "text": "Math of the RBM\n\n\n\nStates are determined by an energy function \\(E(\\mathbf{v}, \\mathbf{h})\\). \\[\nE(\\mathbf{v}, \\mathbf{h})=-\\sum_{i} a_{i} v_{i}-\\sum_{j} b_{j} h_{j}-\\sum_{i j} v_{i} W_{i j} h_{j}\n\\]\n\n\nThen the probability distribution is given by the Boltzmann distribution:\n$ P_{}(, )= e^{-E(, )}$ where $ Z=_{, } e^{-E(, )} $\n\n\nFrom https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#section-1",
+    "href": "lectures/ch2_lecture4.html#section-1",
+    "title": "Ch2 Lecture 4",
+    "section": "",
+    "text": "The probability of a visible vector \\(\\mathbf{v}\\) is given by marginalizing over the hidden variables:\n\\[\n\\begin{equation*}\nP_{\\mathrm{rbm}}(\\mathbf{v})=\\sum_{\\mathbf{h}} P_{\\mathrm{rbm}}(\\mathbf{v}, \\mathbf{h})=\\frac{1}{Z} \\sum_{h} e^{-E(\\mathbf{v}, \\mathbf{h})}\n\\end{equation*}\n\\]\nConveniently, this gives each visible unit an independent probability of activation:\n\\[\nP_{\\mathrm{rbm}}\\left(v_{i}=1 | \\mathbf{h}\\right)=\\sigma\\left(a_{i}+\\sum_{j} W_{i j} h_{j}\\right), \\quad i=1, \\ldots, n_{\\mathrm{v}}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#section-2",
+    "href": "lectures/ch2_lecture4.html#section-2",
+    "title": "Ch2 Lecture 4",
+    "section": "",
+    "text": "The same is true for hidden units, given the visible units:\n\\[\n\\begin{equation*}\nP_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right)=\\sigma\\left(b_{j}+\\sum_{i} v_{i} W_{i j}\\right) \\quad j=1, \\ldots, n_{\\mathrm{h}}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#training",
+    "href": "lectures/ch2_lecture4.html#training",
+    "title": "Ch2 Lecture 4",
+    "section": "Training",
+    "text": "Training\nConsider a set of binary input data \\(\\mathbf{x}_{k}, k=1, \\ldots, M\\), drawn from a probability distribution \\(P_{\\text {data }}(\\mathbf{x})\\).\nGoal: tune the parameters \\(\\{\\mathbf{a}, \\mathbf{b}, W\\}\\) such that after training \\(P_{\\mathrm{rbm}}(\\mathbf{x}) \\approx P_{\\mathrm{data}}(\\mathbf{x})\\).\n\nTo do this, we need to be able to estimate \\(P_{\\mathrm{rbm}}\\)!\nUnfortunately, this is often intractable, because it requires calculating the partition function \\(Z\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#details-of-the-training",
+    "href": "lectures/ch2_lecture4.html#details-of-the-training",
+    "title": "Ch2 Lecture 4",
+    "section": "Details of the training",
+    "text": "Details of the training\nWe want to maximize the log-likelihood of the data under the model: \\[\nL(\\mathbf{a}, \\mathbf{b}, W)=-\\sum_{k=1}^{M} \\log P_{\\mathrm{rbm}}\\left(\\mathbf{x}_{k}\\right)\n\\]\n\nTake derivatives of this with respect to the parameters, and use gradient descent:\n\\[\n\\begin{equation*}\n\\frac{\\partial L(\\mathbf{a}, \\mathbf{b}, W)}{\\partial W_{i j}}=-\\sum_{k=1}^{M} \\frac{\\partial \\log P_{\\mathrm{rbm}}\\left(\\mathbf{x}_{k}\\right)}{\\partial W_{i j}}\n\\end{equation*}\n\\]\n\n\nThe derivative has two terms: \\[\n\\begin{equation*}\n\\frac{\\partial \\log P_{\\mathrm{rbm}}(\\mathbf{x})}{\\partial W_{i j}}=x_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 |\\mathbf{x}\\right)-\\sum_{\\mathbf{v}} v_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right) P_{\\mathrm{rbm}}(\\mathbf{v})\n\\end{equation*}\n\\]\n\n\nUse this to update the weights:\n\\[\nW_{i j} \\rightarrow W_{i j}-\\eta \\frac{\\partial L(a, b, W)}{\\partial W_{i j}}\n\\]\nProblem: the second term in the derivative is intractable! It has \\(2^{n_{\\mathrm{v}}}\\) terms:\n\\[\n\\sum_{\\mathbf{v}} v_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right) P_{\\mathrm{rbm}}(\\mathbf{v})\n\\]\nInstead, we will use Gibbs sampling to estimate \\(P_{\\mathrm{rbm}}(\\mathbf{v})\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#gibbs-sampling-to-the-rescue",
+    "href": "lectures/ch2_lecture4.html#gibbs-sampling-to-the-rescue",
+    "title": "Ch2 Lecture 4",
+    "section": "Gibbs sampling to the rescue",
+    "text": "Gibbs sampling to the rescue\n\nInput: Any visible vector \\(\\mathbf{v}(0)\\)\nOutput: Visible vector \\(\\mathbf{v}(r)\\)\nfor: \\(n=1 \\backslash\\) dots \\(r\\)\n\\(\\operatorname{sample} \\mathbf{h}(n)\\) from \\(P_{\\mathrm{rbm}}(\\mathbf{h} \\mathbf{v}=\\mathbf{v}(n-1))\\)\nsample \\(\\mathbf{v}(n)\\) from \\(P_{\\mathrm{rbm}}(\\mathbf{v} \\mathbf{h}=\\mathbf{h}(n))\\) end"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4.html#using-an-rbm",
+    "href": "lectures/ch2_lecture4.html#using-an-rbm",
+    "title": "Ch2 Lecture 4",
+    "section": "Using an RBM",
+    "text": "Using an RBM\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)\nRBM schematic"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#math-of-the-rbm",
+    "href": "lectures/ch2_lecture4plain.html#math-of-the-rbm",
+    "title": "Ch2 Lecture 4",
+    "section": "Math of the RBM",
+    "text": "Math of the RBM\n\n\nFrom https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html\n\n. . .\nStates are determined by an energy function \\(E(\\mathbf{v}, \\mathbf{h})\\). \\[\nE(\\mathbf{v}, \\mathbf{h})=-\\sum_{i} a_{i} v_{i}-\\sum_{j} b_{j} h_{j}-\\sum_{i j} v_{i} W_{i j} h_{j}\n\\]\n. . .\nThen the probability distribution is given by the Boltzmann distribution:\n$ P_{}(, )= e^{-E(, )}$ where $ Z=_{, } e^{-E(, )} $"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#section-2",
+    "href": "lectures/ch2_lecture4plain.html#section-2",
+    "title": "Ch2 Lecture 4",
+    "section": "",
+    "text": "The same is true for hidden units, given the visible units:\n\\[\n\\begin{equation*}\nP_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right)=\\sigma\\left(b_{j}+\\sum_{i} v_{i} W_{i j}\\right) \\quad j=1, \\ldots, n_{\\mathrm{h}}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#training",
+    "href": "lectures/ch2_lecture4plain.html#training",
+    "title": "Ch2 Lecture 4",
+    "section": "Training",
+    "text": "Training\nConsider a set of binary input data \\(\\mathbf{x}_{k}, k=1, \\ldots, M\\), drawn from a probability distribution \\(P_{\\text {data }}(\\mathbf{x})\\).\nGoal: tune the parameters \\(\\{\\mathbf{a}, \\mathbf{b}, W\\}\\) such that after training \\(P_{\\mathrm{rbm}}(\\mathbf{x}) \\approx P_{\\mathrm{data}}(\\mathbf{x})\\).\n. . .\nTo do this, we need to be able to estimate \\(P_{\\mathrm{rbm}}\\)!\nUnfortunately, this is often intractable, because it requires calculating the partition function \\(Z\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#details-of-the-training",
+    "href": "lectures/ch2_lecture4plain.html#details-of-the-training",
+    "title": "Ch2 Lecture 4",
+    "section": "Details of the training",
+    "text": "Details of the training\nWe want to maximize the log-likelihood of the data under the model: \\[\nL(\\mathbf{a}, \\mathbf{b}, W)=-\\sum_{k=1}^{M} \\log P_{\\mathrm{rbm}}\\left(\\mathbf{x}_{k}\\right)\n\\]\n. . .\nTake derivatives of this with respect to the parameters, and use gradient descent:\n\\[\n\\begin{equation*}\n\\frac{\\partial L(\\mathbf{a}, \\mathbf{b}, W)}{\\partial W_{i j}}=-\\sum_{k=1}^{M} \\frac{\\partial \\log P_{\\mathrm{rbm}}\\left(\\mathbf{x}_{k}\\right)}{\\partial W_{i j}}\n\\end{equation*}\n\\]\n. . .\nThe derivative has two terms: \\[\n\\begin{equation*}\n\\frac{\\partial \\log P_{\\mathrm{rbm}}(\\mathbf{x})}{\\partial W_{i j}}=x_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 |\\mathbf{x}\\right)-\\sum_{\\mathbf{v}} v_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right) P_{\\mathrm{rbm}}(\\mathbf{v})\n\\end{equation*}\n\\]\n. . .\nUse this to update the weights:\n\\[\nW_{i j} \\rightarrow W_{i j}-\\eta \\frac{\\partial L(a, b, W)}{\\partial W_{i j}}\n\\]\nProblem: the second term in the derivative is intractable! It has \\(2^{n_{\\mathrm{v}}}\\) terms:\n\\[\n\\sum_{\\mathbf{v}} v_{i} P_{\\mathrm{rbm}}\\left(h_{j}=1 | \\mathbf{v}\\right) P_{\\mathrm{rbm}}(\\mathbf{v})\n\\]\nInstead, we will use Gibbs sampling to estimate \\(P_{\\mathrm{rbm}}(\\mathbf{v})\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#gibbs-sampling-to-the-rescue",
+    "href": "lectures/ch2_lecture4plain.html#gibbs-sampling-to-the-rescue",
+    "title": "Ch2 Lecture 4",
+    "section": "Gibbs sampling to the rescue",
+    "text": "Gibbs sampling to the rescue\n\nInput: Any visible vector \\(\\mathbf{v}(0)\\)\nOutput: Visible vector \\(\\mathbf{v}(r)\\)\nfor: \\(n=1 \\backslash\\) dots \\(r\\)\n\\(\\operatorname{sample} \\mathbf{h}(n)\\) from \\(P_{\\mathrm{rbm}}(\\mathbf{h} \\mathbf{v}=\\mathbf{v}(n-1))\\)\nsample \\(\\mathbf{v}(n)\\) from \\(P_{\\mathrm{rbm}}(\\mathbf{v} \\mathbf{h}=\\mathbf{h}(n))\\) end"
+  },
+  {
+    "objectID": "lectures/ch2_lecture4plain.html#using-an-rbm",
+    "href": "lectures/ch2_lecture4plain.html#using-an-rbm",
+    "title": "Ch2 Lecture 4",
+    "section": "Using an RBM",
+    "text": "Using an RBM\n\n\n\n\nDiscrete approximation to temperature function \\((n=5)\\)"
   }
 ]

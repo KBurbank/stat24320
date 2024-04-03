@@ -347,7 +347,8 @@
 <h2 id="toc-title">Outline for today</h2>
 <ul>
 <li class="fragment"><a href="#/lu-factorization" id="/toc-lu-factorization"><em>LU Factorization</em></a></li>
-<li class="fragment"><a href="#/gibbs-sampling" id="/toc-gibbs-sampling"><em>Gibbs sampling</em></a></li>
+<li class="fragment"><a href="#/mcmc" id="/toc-mcmc"><em>MCMC</em></a></li>
+<li class="fragment"><a href="#/restricted-boltzmann-machine" id="/toc-restricted-boltzmann-machine"><em>Restricted Boltzmann Machine</em></a></li>
 </ul>
 </nav>
 </section>
@@ -669,18 +670,48 @@ L=\left[\begin{array}{rrr}
 </section>
 </section>
 <section>
-<section id="gibbs-sampling" class="title-slide slide level1 center">
-<h1><em>Gibbs sampling</em></h1>
-<p>Use this: https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
+<section id="mcmc" class="title-slide slide level1 center">
+<h1><em>MCMC</em></h1>
+
 </section>
 <section id="idea-of-mcmc" class="title-slide slide level2 center">
 <h2><em>Idea of MCMC</em></h2>
-<p>Suppose there’s something we want to calculate – say the average web revenue for users every day. We can know how much each page generates per user, but we also need to know how many users visit each page.</p>
-<p>It’s easy if we have the whole transition matrix and can calculate the stationary vector. But what if we don’t have that? Say we only have something like the outgoing links from each page separately. They aren’t normalized.</p>
-<p>Do the example of the webpages, but have a specific webpage be chosen each time, with probability given by the pagerank. Then do a sequence of steps, and plot the empirical distribution of the webpages visited. Compare this with the one we calculate directly.</p>
+<aside class="notes">
+<p>Suppose there’s something we want to calculate – say the average web revenue for pages every day.</p>
+<p>Start out simple: suppose we have a revenue amount for each page, per user. How do we calculate the average revenue per page?</p>
+<p>We can figure out how many users visit each page, and then multiply that by the revenue per user for that page.</p>
+<p>We can do this by calculating the stationary distribution of the Markov chain that describes the transitions between pages.</p>
+<p>Or, we can do it by <em>sampling</em>.</p>
+<p>Work through the notebook to see how this works in practice.</p>
+<p>OK, now make it more complicated.</p>
+<p>We have a formula for a given webpage that tells us how much revenue it generates given the user’s age, their gender, their location, etc.</p>
+<p>How can we find the average revenue per page now?</p>
+<p>We need to know the distribution of users and their characteristics. We can’t just use the stationary distribution of the Markov chain anymore.</p>
+<p>We could try to calculate the distribution of users, but that’s hard.</p>
+<p>Instead, we can use a Markov Chain Monte Carlo method to sample from the distribution of users. We can then use these samples to estimate the average revenue per page.</p>
+<p>To do Gibbs sampling, we will sample from the distribution of each variable given the other variables. This is easier than sampling from the joint distribution of all the variables.</p>
+<p>So for instance, we might suppose that a user is male, 25 years old, and on the webpage for the Chicago Cubs. We can specify a distribution of locations for the user’s location given this information. Sample from that distribution.</p>
+<p>Then, we can say ok, we’ve got a user who is 25 years old, on the webpage for the Cubs, and in Chicago. What’s the probability that the user is male?</p>
+<p>Go through all the variables in turn, sampling from the distribution of each given the others, including for the webpages.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
+</section>
+<section>
+<section id="restricted-boltzmann-machine" class="title-slide slide level1 center">
+<h1><em>Restricted Boltzmann Machine</em></h1>
 
-<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="title-slide slide level2 center">
+</section>
+<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="title-slide slide level2 notes center">
 <h2><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
 <p>You’d like to learn about what sort of objects exist in the world. You have a bunch of data, but you don’t know what the objects are. You’d like to learn about the objects and the features that describe them.</p>
 <p>One way to do this is to start trying to assign labels to the objects you are seeing. You can start with random labels, and then try to improve them.</p>
@@ -698,6 +729,106 @@ L=\left[\begin{array}{rrr}
 <p>For Gibbs sampling, you start with a random sample, and then you update each variable in turn, <strong>given the other variables</strong>. This may be much easier to compute than needing to know the full transition matrix for every possible pair of states. (We are in high dimensions here, because every node in our network is a variable.)</p>
 <p>In the case of the RBM, you update each hidden node given the visible nodes, and then you update each visible node given the hidden nodes. You keep doing this for a while, and then you have a sample from the distribution you’re interested in.</p>
 <p>Now you compare this sample to your data, and you adjust the weights in your network to make the sample look more like the data.</p>
+</section>
+
+<section id="math-of-the-rbm" class="title-slide slide level2 center">
+<h2><em>Math of the RBM</em></h2>
+
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434"></a></p>
+<div class="fragment">
+<p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
+E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Then the probability distribution is given by the Boltzmann distribution:</p>
+<p>$ P_{}(, )= e^{-E(, )}$ where $ Z=_{, } e^{-E(, )} $</p>
+</div>
+<aside><div>
+<p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
+</div></aside></section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
+<p><span class="math display">\[
+\begin{equation*}
+P_{\mathrm{rbm}}(\mathbf{v})=\sum_{\mathbf{h}} P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} \sum_{h} e^{-E(\mathbf{v}, \mathbf{h})}
+\end{equation*}
+\]</span></p>
+<p>Conveniently, this gives each visible unit an <strong>independent</strong> probability of activation:</p>
+<p><span class="math display">\[
+P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{i j} h_{j}\right), \quad i=1, \ldots, n_{\mathrm{v}}
+\]</span></p>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The same is true for hidden units, given the visible units:</p>
+<p><span class="math display">\[
+\begin{equation*}
+P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right)=\sigma\left(b_{j}+\sum_{i} v_{i} W_{i j}\right) \quad j=1, \ldots, n_{\mathrm{h}}
+\end{equation*}
+\]</span></p>
+</section>
+
+<section id="training" class="title-slide slide level2 center">
+<h2><em>Training</em></h2>
+<p>Consider a set of binary input data <span class="math inline">\(\mathbf{x}_{k}, k=1, \ldots, M\)</span>, drawn from a probability distribution <span class="math inline">\(P_{\text {data }}(\mathbf{x})\)</span>.</p>
+<p>Goal: tune the parameters <span class="math inline">\(\{\mathbf{a}, \mathbf{b}, W\}\)</span> such that after training <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{x}) \approx P_{\mathrm{data}}(\mathbf{x})\)</span>.</p>
+<div class="fragment">
+<p>To do this, we need to be able to estimate <span class="math inline">\(P_{\mathrm{rbm}}\)</span>!</p>
+<p>Unfortunately, this is often intractable, because it requires calculating the partition function <span class="math inline">\(Z\)</span>.</p>
+</div>
+</section>
+
+<section id="details-of-the-training" class="title-slide slide level2 center">
+<h2><em>Details of the training</em></h2>
+<p>We want to maximize the log-likelihood of the data under the model: <span class="math display">\[
+L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)
+\]</span></p>
+<div class="fragment">
+<p>Take derivatives of this with respect to the parameters, and use gradient descent:</p>
+<p><span class="math display">\[
+\begin{equation*}
+\frac{\partial L(\mathbf{a}, \mathbf{b}, W)}{\partial W_{i j}}=-\sum_{k=1}^{M} \frac{\partial \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)}{\partial W_{i j}}
+\end{equation*}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The derivative has two terms: <span class="math display">\[
+\begin{equation*}
+\frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
+\end{equation*}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Use this to update the weights:</p>
+<p><span class="math display">\[
+W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
+\]</span></p>
+<p>Problem: the second term in the derivative is intractable! It has <span class="math inline">\(2^{n_{\mathrm{v}}}\)</span> terms:</p>
+<p><span class="math display">\[
+\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
+\]</span></p>
+<p>Instead, we will use <strong>Gibbs sampling</strong> to estimate <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v})\)</span>.</p>
+</div>
+</section>
+
+<section id="gibbs-sampling-to-the-rescue" class="title-slide slide level2 center">
+<h2><em>Gibbs sampling to the rescue</em></h2>
+<div class="pseudo-code">
+<p>Input: Any visible vector <span class="math inline">\(\mathbf{v}(0)\)</span></p>
+<p>Output: Visible vector <span class="math inline">\(\mathbf{v}(r)\)</span></p>
+<p>for: <span class="math inline">\(n=1 \backslash\)</span> dots <span class="math inline">\(r\)</span></p>
+<p><span class="math inline">\(\operatorname{sample} \mathbf{h}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{h} \mathbf{v}=\mathbf{v}(n-1))\)</span></p>
+<p>sample <span class="math inline">\(\mathbf{v}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v} \mathbf{h}=\mathbf{h}(n))\)</span> end</p>
+</div>
+</section>
+
+<section id="using-an-rbm" class="title-slide slide level2 center">
+<h2><em>Using an RBM</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146"></a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1125,7 +1256,7 @@ L=\left[\begin{array}{rrr}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

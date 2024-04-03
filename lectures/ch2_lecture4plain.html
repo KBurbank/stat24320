@@ -139,7 +139,6 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="section"><em></em></h2>
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
 <p>. . .</p>
-<p>E.g. Heat flow problem, where the right-hand side is determined by the heat source term <span class="math inline">\(f(x)\)</span>.</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -234,7 +233,7 @@ A=\left[\begin{array}{rrr}
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
 <p>. . .</p>
 <p>Set <span class="math inline">\(\mathbf{x}=\left[x_{1}, x_{2}, x_{3}\right]^{T}\)</span> and <span class="math inline">\(\mathbf{y}=\left[y_{1}, y_{2}, y_{3}\right]^{T}\)</span>.</p>
-<p>:::: {.columns} ::: {.column width=“45%”}</p>
+<p>::::{.columns} :::{.column width=“45%”}</p>
 <p>Forward solve: <span class="math display">\[
 \left[\begin{array}{rrr}
 1 &amp; 0 &amp; 0 \\
@@ -904,7 +903,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

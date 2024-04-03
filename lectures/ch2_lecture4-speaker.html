@@ -361,7 +361,19 @@
 <h2><em></em></h2>
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
 <div class="fragment">
+<aside class="notes">
 <p>E.g. Heat flow problem, where the right-hand side is determined by the heat source term <span class="math inline">\(f(x)\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -473,7 +485,7 @@ A=\left[\begin{array}{rrr}
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
 <div class="fragment">
 <p>Set <span class="math inline">\(\mathbf{x}=\left[x_{1}, x_{2}, x_{3}\right]^{T}\)</span> and <span class="math inline">\(\mathbf{y}=\left[y_{1}, y_{2}, y_{3}\right]^{T}\)</span>.</p>
-<p>:::: {.columns} ::: {.column width=“45%”}</p>
+<p>::::{.columns} :::{.column width=“45%”}</p>
 <p>Forward solve: <span class="math display">\[
 \left[\begin{array}{rrr}
 1 &amp; 0 &amp; 0 \\
@@ -1296,7 +1308,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

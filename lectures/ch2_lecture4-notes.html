@@ -483,6 +483,19 @@ A=\left[\begin{array}{rrr}
 \end{array}\right] .
 \]</span></p>
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<aside class="notes">
+<p>Say that y = Ux.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:45%;">
@@ -583,6 +596,8 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <h2><em>Example</em></h2>
 <p>Here we do Gaussian elimination on the matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ -2 &amp; 0 &amp; -1 \\ 2 &amp; 3 &amp; -3 \end{bmatrix}\)</span>:</p>
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\-2 &amp; 0 &amp; -1\\2 &amp; 3 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 2 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 0 &amp; -1\end{smallmatrix}\right]\)</span></p>
+<div class="columns">
+<div class="column" style="width:45%;">
 <div class="fragment">
 <p>Let’s put those elementary row operations into matrix form. There were three of them:</p>
 <ol type="1">
@@ -591,20 +606,25 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <li class="fragment"><span class="math inline">\(E_{32}(-2)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span></li>
 </ol>
 </div>
+</div><div class="column" style="width:45%;">
 <div class="fragment">
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
 <li class="fragment"><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
 </ol>
 </div>
-<div class="fragment">
+</div>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
 \]</span></p>
 <p>This is a lower triangular matrix, and it is the inverse of the matrix we used to do Gaussian elimination.</p>
 <p>We can also see that the entries below the diagonal are the negatives of the multipliers we used in the elimination steps.</p>
-</div>
 </section>
 
 <section id="steps-to-lu-factorization" class="title-slide slide level2 center">
@@ -759,7 +779,7 @@ L=\left[\begin{array}{rrr}
 <p>Your goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="rbm_eyes_images.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
+<p><a href="rbm_eyes_images.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
 <figcaption>RBM schematic</figcaption>
 </figure>
 </div>
@@ -800,7 +820,7 @@ E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} 
 <p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
 </div></aside></section>
 
-<section id="section-1" class="title-slide slide level2 center">
+<section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
 <p><span class="math display">\[
@@ -814,7 +834,7 @@ P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{
 \]</span></p>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The same is true for hidden units, given the visible units:</p>
 <p><span class="math display">\[
@@ -849,7 +869,7 @@ L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{
 </div>
 </section>
 
-<section id="section-3" class="title-slide slide level2 center">
+<section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The derivative has two terms: <span class="math display">\[
 \begin{equation*}
@@ -1309,7 +1329,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

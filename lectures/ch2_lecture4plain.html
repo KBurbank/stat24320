@@ -293,19 +293,28 @@ x_{3}
 <h2 class="anchored" data-anchor-id="example-1"><em>Example</em></h2>
 <p>Here we do Gaussian elimination on the matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ -2 &amp; 0 &amp; -1 \\ 2 &amp; 3 &amp; -3 \end{bmatrix}\)</span>:</p>
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\-2 &amp; 0 &amp; -1\\2 &amp; 3 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 2 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 0 &amp; -1\end{smallmatrix}\right]\)</span></p>
-<p>. . .</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="fragment">
 <p>Let’s put those elementary row operations into matrix form. There were three of them:</p>
 <ol type="1">
 <li><span class="math inline">\(E_{21}(1)\)</span> : <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
 <li><span class="math inline">\(E_{31}(-1)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
 <li><span class="math inline">\(E_{32}(-2)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span></li>
 </ol>
-<p>. . .</p>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="fragment">
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
 <li><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
 </ol>
-<p>. . .</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
@@ -415,8 +424,8 @@ E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} 
 <p>Then the probability distribution is given by the Boltzmann distribution:</p>
 <p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
 <p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -428,8 +437,8 @@ P_{\mathrm{rbm}}(\mathbf{v})=\sum_{\mathbf{h}} P_{\mathrm{rbm}}(\mathbf{v}, \mat
 P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{i j} h_{j}\right), \quad i=1, \ldots, n_{\mathrm{v}}
 \]</span></p>
 </section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
 <p>The same is true for hidden units, given the visible units:</p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -458,8 +467,8 @@ L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{
 \end{equation*}
 \]</span></p>
 </section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
 <p>The derivative has two terms: <span class="math display">\[
 \begin{equation*}
 \frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
@@ -905,7 +914,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

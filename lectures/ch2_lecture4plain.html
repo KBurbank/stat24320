@@ -133,13 +133,114 @@ window.Quarto = {
 </header>
 
 
-<section id="lu-factorization" class="level1">
-<h1><em>LU Factorization</em></h1>
+<section id="mcmc" class="level1">
+<h1><em>MCMC</em></h1>
+<section id="idea-of-mcmc" class="level2">
+<h2 class="anchored" data-anchor-id="idea-of-mcmc"><em>Idea of MCMC</em></h2>
+</section>
+</section>
+<section id="restricted-boltzmann-machine" class="level1 page-columns page-full">
+<h1><em>Restricted Boltzmann Machine</em></h1>
+<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-the-idea-of-a-restricted-boltzmann-machine"><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
+</section>
+<section id="math-of-the-rbm" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="math-of-the-rbm"><em>Math of the RBM</em></h2>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
+</div></div><p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="img-fluid"></a></p>
+<p>. . .</p>
+<p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
+E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
+\]</span></p>
+<p>. . .</p>
+<p>Then the probability distribution is given by the Boltzmann distribution:</p>
+<p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
+</section>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section"><em></em></h2>
+<p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
+<p><span class="math display">\[
+\begin{equation*}
+P_{\mathrm{rbm}}(\mathbf{v})=\sum_{\mathbf{h}} P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} \sum_{h} e^{-E(\mathbf{v}, \mathbf{h})}
+\end{equation*}
+\]</span></p>
+<p>Conveniently, this gives each visible unit an <strong>independent</strong> probability of activation:</p>
+<p><span class="math display">\[
+P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{i j} h_{j}\right), \quad i=1, \ldots, n_{\mathrm{v}}
+\]</span></p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<p>The same is true for hidden units, given the visible units:</p>
+<p><span class="math display">\[
+\begin{equation*}
+P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right)=\sigma\left(b_{j}+\sum_{i} v_{i} W_{i j}\right) \quad j=1, \ldots, n_{\mathrm{h}}
+\end{equation*}
+\]</span></p>
+</section>
+<section id="training" class="level2">
+<h2 class="anchored" data-anchor-id="training"><em>Training</em></h2>
+<p>Consider a set of binary input data <span class="math inline">\(\mathbf{x}_{k}, k=1, \ldots, M\)</span>, drawn from a probability distribution <span class="math inline">\(P_{\text {data }}(\mathbf{x})\)</span>.</p>
+<p>Goal: tune the parameters <span class="math inline">\(\{\mathbf{a}, \mathbf{b}, W\}\)</span> such that after training <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{x}) \approx P_{\mathrm{data}}(\mathbf{x})\)</span>.</p>
+<p>. . .</p>
+<p>To do this, we need to be able to estimate <span class="math inline">\(P_{\mathrm{rbm}}\)</span>!</p>
+<p>Unfortunately, this is often intractable, because it requires calculating the partition function <span class="math inline">\(Z\)</span>.</p>
+</section>
+<section id="details-of-the-training" class="level2">
+<h2 class="anchored" data-anchor-id="details-of-the-training"><em>Details of the training</em></h2>
+<p>We want to maximize the log-likelihood of the data under the model: <span class="math display">\[
+L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)
+\]</span></p>
+<p>. . .</p>
+<p>Take derivatives of this with respect to the parameters, and use gradient descent:</p>
+<p><span class="math display">\[
+\begin{equation*}
+\frac{\partial L(\mathbf{a}, \mathbf{b}, W)}{\partial W_{i j}}=-\sum_{k=1}^{M} \frac{\partial \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)}{\partial W_{i j}}
+\end{equation*}
+\]</span></p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
+<p>The derivative has two terms: <span class="math display">\[
+\begin{equation*}
+\frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
+\end{equation*}
+\]</span></p>
+<p>. . .</p>
+<p>Use this to update the weights:</p>
+<p><span class="math display">\[
+W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
+\]</span></p>
+<p>Problem: the second term in the derivative is intractable! It has <span class="math inline">\(2^{n_{\mathrm{v}}}\)</span> terms:</p>
+<p><span class="math display">\[
+\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
+\]</span></p>
+<p>Instead, we will use <strong>Gibbs sampling</strong> to estimate <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v})\)</span>.</p>
+</section>
+<section id="gibbs-sampling-to-the-rescue" class="level2">
+<h2 class="anchored" data-anchor-id="gibbs-sampling-to-the-rescue"><em>Gibbs sampling to the rescue</em></h2>
+<div class="pseudo-code">
+<p>Input: Any visible vector <span class="math inline">\(\mathbf{v}(0)\)</span></p>
+<p>Output: Visible vector <span class="math inline">\(\mathbf{v}(r)\)</span></p>
+<p>for: <span class="math inline">\(n=1 \backslash\)</span> dots <span class="math inline">\(r\)</span></p>
+<p><span class="math inline">\(\operatorname{sample} \mathbf{h}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{h} \mathbf{v}=\mathbf{v}(n-1))\)</span></p>
+<p>sample <span class="math inline">\(\mathbf{v}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v} \mathbf{h}=\mathbf{h}(n))\)</span> end</p>
+</div>
+</section>
+<section id="using-an-rbm" class="level2">
+<h2 class="anchored" data-anchor-id="using-an-rbm"><em>Using an RBM</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="img-fluid"></a></p>
+</section>
+</section>
+<section id="lu-factorization" class="level1">
+<h1><em>LU Factorization</em></h1>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
 <p>. . .</p>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
 <p><span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right), i=1,2, \ldots, n
@@ -313,8 +414,8 @@ x_{3}
 </div>
 </div>
 </section>
-<section id="section-1" class="level2">
-<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
@@ -376,8 +477,9 @@ L=\left[\begin{array}{rrr}
 <h2 class="anchored" data-anchor-id="superaugmented-matrix"><em>Superaugmented matrix</em></h2>
 <p>Could we just keep track by using the superaugmented matrix, like we did last lecture? What would that look like?</p>
 <p><strong>pause</strong></p>
-<p>. . .</p>
+<div class="fragment">
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\-2 &amp; 0 &amp; -1 &amp; 0 &amp; 1 &amp; 0\\2 &amp; 3 &amp; -3 &amp; 0 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 2 &amp; -3 &amp; -1 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; -3 &amp; -2 &amp; 1\end{smallmatrix}\right]\)</span></p>
+</div>
 <p>. . .</p>
 <p>Our superaugmented matrix does become an upper triangular matrix on the left and a lower triangular matrix on the right.</p>
 <p>Unfortunately, the lower triangular matrix on the right is <span class="math inline">\(\tilde{L}^{-1}\)</span>, not <span class="math inline">\(\tilde{L}\)</span>.</p>
@@ -397,107 +499,6 @@ L=\left[\begin{array}{rrr}
 <p>If <span class="math inline">\(A\)</span> is a nonsingular matrix, then there exists a permutation matrix <span class="math inline">\(P\)</span>, upper triangular matrix <span class="math inline">\(U\)</span>, and unit lower triangular matrix <span class="math inline">\(L\)</span> such that <span class="math inline">\(P A=L U\)</span>.</p>
 </div>
 <p>So, if you’ve got a nonsingular matrix <span class="math inline">\(A\)</span>, you can always find a permutation matrix <span class="math inline">\(P\)</span>, an upper triangular matrix <span class="math inline">\(U\)</span>, and a unit lower triangular matrix <span class="math inline">\(L\)</span> that satisfy <span class="math inline">\(P A=L U\)</span>. Pretty neat, huh?</p>
-</section>
-</section>
-<section id="mcmc" class="level1">
-<h1><em>MCMC</em></h1>
-<section id="idea-of-mcmc" class="level2">
-<h2 class="anchored" data-anchor-id="idea-of-mcmc"><em>Idea of MCMC</em></h2>
-</section>
-</section>
-<section id="restricted-boltzmann-machine" class="level1 page-columns page-full">
-<h1><em>Restricted Boltzmann Machine</em></h1>
-<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="level2">
-<h2 class="anchored" data-anchor-id="intro-to-the-idea-of-a-restricted-boltzmann-machine"><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
-</section>
-<section id="math-of-the-rbm" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="math-of-the-rbm"><em>Math of the RBM</em></h2>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
-</div></div><p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="img-fluid"></a></p>
-<p>. . .</p>
-<p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
-E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
-\]</span></p>
-<p>. . .</p>
-<p>Then the probability distribution is given by the Boltzmann distribution:</p>
-<p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
-</section>
-<section id="section-2" class="level2">
-<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
-<p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
-<p><span class="math display">\[
-\begin{equation*}
-P_{\mathrm{rbm}}(\mathbf{v})=\sum_{\mathbf{h}} P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} \sum_{h} e^{-E(\mathbf{v}, \mathbf{h})}
-\end{equation*}
-\]</span></p>
-<p>Conveniently, this gives each visible unit an <strong>independent</strong> probability of activation:</p>
-<p><span class="math display">\[
-P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{i j} h_{j}\right), \quad i=1, \ldots, n_{\mathrm{v}}
-\]</span></p>
-</section>
-<section id="section-3" class="level2">
-<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
-<p>The same is true for hidden units, given the visible units:</p>
-<p><span class="math display">\[
-\begin{equation*}
-P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right)=\sigma\left(b_{j}+\sum_{i} v_{i} W_{i j}\right) \quad j=1, \ldots, n_{\mathrm{h}}
-\end{equation*}
-\]</span></p>
-</section>
-<section id="training" class="level2">
-<h2 class="anchored" data-anchor-id="training"><em>Training</em></h2>
-<p>Consider a set of binary input data <span class="math inline">\(\mathbf{x}_{k}, k=1, \ldots, M\)</span>, drawn from a probability distribution <span class="math inline">\(P_{\text {data }}(\mathbf{x})\)</span>.</p>
-<p>Goal: tune the parameters <span class="math inline">\(\{\mathbf{a}, \mathbf{b}, W\}\)</span> such that after training <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{x}) \approx P_{\mathrm{data}}(\mathbf{x})\)</span>.</p>
-<p>. . .</p>
-<p>To do this, we need to be able to estimate <span class="math inline">\(P_{\mathrm{rbm}}\)</span>!</p>
-<p>Unfortunately, this is often intractable, because it requires calculating the partition function <span class="math inline">\(Z\)</span>.</p>
-</section>
-<section id="details-of-the-training" class="level2">
-<h2 class="anchored" data-anchor-id="details-of-the-training"><em>Details of the training</em></h2>
-<p>We want to maximize the log-likelihood of the data under the model: <span class="math display">\[
-L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)
-\]</span></p>
-<p>. . .</p>
-<p>Take derivatives of this with respect to the parameters, and use gradient descent:</p>
-<p><span class="math display">\[
-\begin{equation*}
-\frac{\partial L(\mathbf{a}, \mathbf{b}, W)}{\partial W_{i j}}=-\sum_{k=1}^{M} \frac{\partial \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)}{\partial W_{i j}}
-\end{equation*}
-\]</span></p>
-</section>
-<section id="section-4" class="level2">
-<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
-<p>The derivative has two terms: <span class="math display">\[
-\begin{equation*}
-\frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
-\end{equation*}
-\]</span></p>
-<p>. . .</p>
-<p>Use this to update the weights:</p>
-<p><span class="math display">\[
-W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
-\]</span></p>
-<p>Problem: the second term in the derivative is intractable! It has <span class="math inline">\(2^{n_{\mathrm{v}}}\)</span> terms:</p>
-<p><span class="math display">\[
-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
-\]</span></p>
-<p>Instead, we will use <strong>Gibbs sampling</strong> to estimate <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v})\)</span>.</p>
-</section>
-<section id="gibbs-sampling-to-the-rescue" class="level2">
-<h2 class="anchored" data-anchor-id="gibbs-sampling-to-the-rescue"><em>Gibbs sampling to the rescue</em></h2>
-<div class="pseudo-code">
-<p>Input: Any visible vector <span class="math inline">\(\mathbf{v}(0)\)</span></p>
-<p>Output: Visible vector <span class="math inline">\(\mathbf{v}(r)\)</span></p>
-<p>for: <span class="math inline">\(n=1 \backslash\)</span> dots <span class="math inline">\(r\)</span></p>
-<p><span class="math inline">\(\operatorname{sample} \mathbf{h}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{h} \mathbf{v}=\mathbf{v}(n-1))\)</span></p>
-<p>sample <span class="math inline">\(\mathbf{v}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v} \mathbf{h}=\mathbf{h}(n))\)</span> end</p>
-</div>
-</section>
-<section id="using-an-rbm" class="level2">
-<h2 class="anchored" data-anchor-id="using-an-rbm"><em>Using an RBM</em></h2>
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="img-fluid"></a></p>
 
 
 </section>
@@ -914,7 +915,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

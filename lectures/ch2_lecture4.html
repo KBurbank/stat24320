@@ -484,7 +484,6 @@ A=\left[\begin{array}{rrr}
 \]</span></p>
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
 <div class="fragment">
-<p>Set <span class="math inline">\(\mathbf{x}=\left[x_{1}, x_{2}, x_{3}\right]^{T}\)</span> and <span class="math inline">\(\mathbf{y}=\left[y_{1}, y_{2}, y_{3}\right]^{T}\)</span>.</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p>Forward solve: <span class="math display">\[
@@ -504,7 +503,8 @@ y_{3}
 \]</span></p>
 <p>. . .</p>
 <p><span class="math inline">\(y_{1}=1\)</span>, then <span class="math inline">\(y_{2}=0+1 y_{1}=1\)</span>, then <span class="math inline">\(y_{3}=1-1 y_{1}-2 y_{2}=-2\)</span>.</p>
-</div><p>. . .</p><div class="column" style="width:45%;">
+</div><div class="column" style="width:45%;">
+<p>. . .</p>
 <p>Back solve:</p>
 <p><span class="math display">\[
 \left[\begin{array}{rrr}
@@ -758,7 +758,7 @@ L=\left[\begin{array}{rrr}
 <p>Your goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="rbm_eyes_images.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
+<p><a href="rbm_eyes_images.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
 <figcaption>RBM schematic</figcaption>
 </figure>
 </div>
@@ -1308,7 +1308,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

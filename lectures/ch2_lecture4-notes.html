@@ -362,12 +362,7 @@
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
 <div class="fragment">
 <p>E.g. Heat flow problem, where the right-hand side is determined by the heat source term <span class="math inline">\(f(x)\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Discrete approximation to temperature function (n=5)"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" alt="Discrete approximation to temperature function (n=5)"></a></p>
-<figcaption>Discrete approximation to temperature function <span class="math inline">\((n=5)\)</span></figcaption>
-</figure>
-</div>
+<p><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" width="300"></p>
 <p><span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right), i=1,2, \ldots, n
@@ -406,26 +401,29 @@
 <section id="solving-an-upper-triangular-system" class="title-slide slide level2 center">
 <h2><em>Solving an upper triangular system</em></h2>
 <p>Let’s say we have the following system:</p>
-$ A x = b $ where A is the upper-triangular matrix $ A =
-<span class="math display">\[\begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}\]</span>
-<p>$, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 1 \\ -2 \end{bmatrix}\)</span>.</p>
+<p><span class="math inline">\(A x = b\)</span> where A is the upper-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 1 \\ -2 \end{bmatrix}\)</span>.</p>
+<div class="fragment">
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 2 &amp; 1 &amp; 0 &amp; | &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; | &amp; 1 \\ 0 &amp; 0 &amp; -1 &amp; | &amp; -2 \end{bmatrix}\)</span>.</p>
+</div>
+<div class="fragment">
 <p>Back substitution:</p>
 <ol type="1">
 <li class="fragment">Last equation: <span class="math inline">\(-x_3 = -2\)</span>, so <span class="math inline">\(x_3 = 2\)</span>.</li>
 <li class="fragment">Substitute this value into the second equation, <span class="math inline">\(x_2 - x_3 = 1\)</span>, so <span class="math inline">\(x_2 = 3\)</span>.</li>
 <li class="fragment">Finally, we substitute <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> into the first equation, <span class="math inline">\(2x_1 + x_2 = 1\)</span>, so <span class="math inline">\(x_1 = -1\)</span>.</li>
 </ol>
+</div>
 </section>
 
 <section id="solving-a-lower-triangular-system" class="title-slide slide level2 center">
 <h2><em>Solving a lower triangular system</em></h2>
 <p>If <span class="math inline">\(A\)</span> is lower triangular, we can solve for the first variable, then the second variable, etc.</p>
 <p>Let’s say we have the following system:</p>
-$A y = b $ where A is the lower-triangular matrix $ A =
-<span class="math display">\[\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\]</span>
-<p>$, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<p>$A y = b $ where A is the lower-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<div class="fragment">
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; | &amp; 1 \\ -1 &amp; 1 &amp; 0 &amp; | &amp; 0 \\ 1 &amp; 2 &amp; 1 &amp; | &amp; 1 \end{bmatrix}\)</span>.</p>
+</div>
+<div class="fragment">
 <p>Forward substitution:</p>
 <ol type="1">
 <li class="fragment">First equation: <span class="math inline">\(y_1 = 1\)</span>.</li>
@@ -433,6 +431,7 @@ $A y = b $ where A is the lower-triangular matrix $ A =
 <li class="fragment">Finally, we substitute <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into the third equation, <span class="math inline">\(y_1 + 2y_2 + y_3 = 1\)</span>, so <span class="math inline">\(y_3 = -2\)</span>.</li>
 </ol>
 <p>This was just as easy as solving the upper triangular system!</p>
+</div>
 </section>
 
 <section id="solving-a-x-b-with-lu-factorization" class="title-slide slide level2 center">
@@ -569,13 +568,19 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <li class="fragment"><span class="math inline">\(E_{31}(-1)\)</span></li>
 <li class="fragment"><span class="math inline">\(E_{32}(-2)\)</span></li>
 </ol>
+</div>
+<div class="fragment">
 <p>As a matrix, <span class="math inline">\(E_{21}(1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>Then, <span class="math inline">\(E_{31}(-1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>Finally, <span class="math inline">\(E_{32}(-2)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span>.</p>
+</div>
+<div class="fragment">
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
-<li class="fragment"><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>. . . .</li>
+<li class="fragment"><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
 </ol>
+</div>
+<div class="fragment">
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
@@ -588,14 +593,15 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <section id="steps-to-lu-factorization" class="title-slide slide level2 center">
 <h2><em>Steps to LU factorization</em></h2>
 <p>Let <span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> be the matrix obtained from <span class="math inline">\(A\)</span> after using the <span class="math inline">\(k\)</span> th pivot to clear out entries below it</p>
-<p>. . . ( <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
 <div class="fragment">
-<p>The only adding-rows elementary row operations we’ll need in Gaussian elimination include the <strong>ratios of the entries</strong> we’re trying to eliminate: <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
+<p>( <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
 </div>
 <div class="fragment">
-<p>The row-adding elementary operations are thus of the form</p>
+<p>All the row operations we will use include ratios <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
+</div>
+<div class="fragment">
+<p>The row-adding elementary operations are of the form</p>
 <p><span class="math inline">\(E_{i j}\left(-a_{i j}^{(k)} / a_{j j}^{(k)}\right)\)</span></p>
-<p>(<span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> is the matrix we get after all the previous elementary operations).</p>
 </div>
 <div class="fragment">
 <p>We can give these ratios a name: <strong>multipliers</strong>.</p>
@@ -625,6 +631,19 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 \end{array}\right] .
 \]</span></p>
 <div class="fragment">
+<aside class="notes">
+<p>circle the multipliers as we go along</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p>Now we read off the results from the final matrix:</p>
 <p><span class="math display">\[
 L=\left[\begin{array}{rrr}
@@ -644,7 +663,9 @@ L=\left[\begin{array}{rrr}
 <h2><em>Superaugmented matrix</em></h2>
 <p>Could we just keep track by using the superaugmented matrix, like we did last lecture? What would that look like?</p>
 <p><strong>pause</strong></p>
+<div class="fragment">
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\-2 &amp; 0 &amp; -1 &amp; 0 &amp; 1 &amp; 0\\2 &amp; 3 &amp; -3 &amp; 0 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 2 &amp; -3 &amp; -1 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; -3 &amp; -2 &amp; 1\end{smallmatrix}\right]\)</span></p>
+</div>
 <div class="fragment">
 <p>Our superaugmented matrix does become an upper triangular matrix on the left and a lower triangular matrix on the right.</p>
 <p>Unfortunately, the lower triangular matrix on the right is <span class="math inline">\(\tilde{L}^{-1}\)</span>, not <span class="math inline">\(\tilde{L}\)</span>.</p>
@@ -709,16 +730,17 @@ L=\left[\begin{array}{rrr}
 <section>
 <section id="restricted-boltzmann-machine" class="title-slide slide level1 center">
 <h1><em>Restricted Boltzmann Machine</em></h1>
-
+<p>::: notes</p>
 </section>
-<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="title-slide slide level2 notes center">
+<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="title-slide slide level2 center">
 <h2><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
+<aside class="notes">
 <p>You’d like to learn about what sort of objects exist in the world. You have a bunch of data, but you don’t know what the objects are. You’d like to learn about the objects and the features that describe them.</p>
 <p>One way to do this is to start trying to assign labels to the objects you are seeing. You can start with random labels, and then try to improve them.</p>
 <p>Your goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="rbm_eyes_images.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
+<p><a href="rbm_eyes_images.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
 <figcaption>RBM schematic</figcaption>
 </figure>
 </div>
@@ -729,12 +751,23 @@ L=\left[\begin{array}{rrr}
 <p>For Gibbs sampling, you start with a random sample, and then you update each variable in turn, <strong>given the other variables</strong>. This may be much easier to compute than needing to know the full transition matrix for every possible pair of states. (We are in high dimensions here, because every node in our network is a variable.)</p>
 <p>In the case of the RBM, you update each hidden node given the visible nodes, and then you update each visible node given the hidden nodes. You keep doing this for a while, and then you have a sample from the distribution you’re interested in.</p>
 <p>Now you compare this sample to your data, and you adjust the weights in your network to make the sample look more like the data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="math-of-the-rbm" class="title-slide slide level2 center">
 <h2><em>Math of the RBM</em></h2>
 
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434"></a></p>
 <div class="fragment">
 <p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
 E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
@@ -742,7 +775,7 @@ E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} 
 </div>
 <div class="fragment">
 <p>Then the probability distribution is given by the Boltzmann distribution:</p>
-<p>$ P_{}(, )= e^{-E(, )}$ where $ Z=_{, } e^{-E(, )} $</p>
+<p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
 </div>
 <aside><div>
 <p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
@@ -795,13 +828,15 @@ L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{
 \end{equation*}
 \]</span></p>
 </div>
-<div class="fragment">
+</section>
+
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>The derivative has two terms: <span class="math display">\[
 \begin{equation*}
 \frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
 \end{equation*}
 \]</span></p>
-</div>
 <div class="fragment">
 <p>Use this to update the weights:</p>
 <p><span class="math display">\[
@@ -828,7 +863,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
 
 <section id="using-an-rbm" class="title-slide slide level2 center">
 <h2><em>Using an RBM</em></h2>
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146"></a></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -858,8 +893,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
 </div>
 </div>
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Discrete approximation to temperature function <span class="math inline">\((n=5)\)</span></span>
-<span class="glightbox-desc lightbox-desc-2">RBM schematic</span>
+<span class="glightbox-desc lightbox-desc-1">RBM schematic</span>
 </div>
 </section>
 </section>
@@ -1256,7 +1290,7 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

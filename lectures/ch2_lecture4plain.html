@@ -140,12 +140,7 @@ window.Quarto = {
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
 <p>. . .</p>
 <p>E.g. Heat flow problem, where the right-hand side is determined by the heat source term <span class="math inline">\(f(x)\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Discrete approximation to temperature function (n=5)"><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="img-fluid figure-img" alt="Discrete approximation to temperature function (n=5)"></a></p>
-<figcaption>Discrete approximation to temperature function <span class="math inline">\((n=5)\)</span></figcaption>
-</figure>
-</div>
+<p><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" width="300"></p>
 <p><span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right), i=1,2, \ldots, n
@@ -177,10 +172,10 @@ window.Quarto = {
 <section id="solving-an-upper-triangular-system" class="level2">
 <h2 class="anchored" data-anchor-id="solving-an-upper-triangular-system"><em>Solving an upper triangular system</em></h2>
 <p>Let’s say we have the following system:</p>
-$ A x = b $ where A is the upper-triangular matrix $ A =
-<span class="math display">\[\begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}\]</span>
-<p>$, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 1 \\ -2 \end{bmatrix}\)</span>.</p>
+<p><span class="math inline">\(A x = b\)</span> where A is the upper-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 1 \\ -2 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 2 &amp; 1 &amp; 0 &amp; | &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; | &amp; 1 \\ 0 &amp; 0 &amp; -1 &amp; | &amp; -2 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
 <p>Back substitution:</p>
 <ol type="1">
 <li>Last equation: <span class="math inline">\(-x_3 = -2\)</span>, so <span class="math inline">\(x_3 = 2\)</span>.</li>
@@ -192,10 +187,10 @@ $ A x = b $ where A is the upper-triangular matrix $ A =
 <h2 class="anchored" data-anchor-id="solving-a-lower-triangular-system"><em>Solving a lower triangular system</em></h2>
 <p>If <span class="math inline">\(A\)</span> is lower triangular, we can solve for the first variable, then the second variable, etc.</p>
 <p>Let’s say we have the following system:</p>
-$A y = b $ where A is the lower-triangular matrix $ A =
-<span class="math display">\[\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\]</span>
-<p>$, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<p>$A y = b $ where A is the lower-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; | &amp; 1 \\ -1 &amp; 1 &amp; 0 &amp; | &amp; 0 \\ 1 &amp; 2 &amp; 1 &amp; | &amp; 1 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
 <p>Forward substitution:</p>
 <ol type="1">
 <li>First equation: <span class="math inline">\(y_1 = 1\)</span>.</li>
@@ -297,13 +292,16 @@ x_{3}
 <li><span class="math inline">\(E_{31}(-1)\)</span></li>
 <li><span class="math inline">\(E_{32}(-2)\)</span></li>
 </ol>
+<p>. . .</p>
 <p>As a matrix, <span class="math inline">\(E_{21}(1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>Then, <span class="math inline">\(E_{31}(-1)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
 <p>Finally, <span class="math inline">\(E_{32}(-2)\)</span> is <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
-<li><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>. . . .</li>
+<li><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
 </ol>
+<p>. . .</p>
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
@@ -314,13 +312,13 @@ x_{3}
 <section id="steps-to-lu-factorization" class="level2">
 <h2 class="anchored" data-anchor-id="steps-to-lu-factorization"><em>Steps to LU factorization</em></h2>
 <p>Let <span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> be the matrix obtained from <span class="math inline">\(A\)</span> after using the <span class="math inline">\(k\)</span> th pivot to clear out entries below it</p>
-<p>. . . ( <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
 <p>. . .</p>
-<p>The only adding-rows elementary row operations we’ll need in Gaussian elimination include the <strong>ratios of the entries</strong> we’re trying to eliminate: <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
+<p>( <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
 <p>. . .</p>
-<p>The row-adding elementary operations are thus of the form</p>
+<p>All the row operations we will use include ratios <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
+<p>. . .</p>
+<p>The row-adding elementary operations are of the form</p>
 <p><span class="math inline">\(E_{i j}\left(-a_{i j}^{(k)} / a_{j j}^{(k)}\right)\)</span></p>
-<p>(<span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> is the matrix we get after all the previous elementary operations).</p>
 <p>. . .</p>
 <p>We can give these ratios a name: <strong>multipliers</strong>.</p>
 <p><span class="math inline">\(m_{i j}=-a_{i j}^{(k)} / a_{j j}^{(k)}\)</span>, where <span class="math inline">\(i&gt;j\)</span></p>
@@ -364,6 +362,7 @@ L=\left[\begin{array}{rrr}
 <h2 class="anchored" data-anchor-id="superaugmented-matrix"><em>Superaugmented matrix</em></h2>
 <p>Could we just keep track by using the superaugmented matrix, like we did last lecture? What would that look like?</p>
 <p><strong>pause</strong></p>
+<p>. . .</p>
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\-2 &amp; 0 &amp; -1 &amp; 0 &amp; 1 &amp; 0\\2 &amp; 3 &amp; -3 &amp; 0 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 2 &amp; -3 &amp; -1 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; -3 &amp; -2 &amp; 1\end{smallmatrix}\right]\)</span></p>
 <p>. . .</p>
 <p>Our superaugmented matrix does become an upper triangular matrix on the left and a lower triangular matrix on the right.</p>
@@ -394,19 +393,23 @@ L=\left[\begin{array}{rrr}
 </section>
 <section id="restricted-boltzmann-machine" class="level1 page-columns page-full">
 <h1><em>Restricted Boltzmann Machine</em></h1>
+<p>::: notes</p>
+<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-the-idea-of-a-restricted-boltzmann-machine"><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
+</section>
 <section id="math-of-the-rbm" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="math-of-the-rbm"><em>Math of the RBM</em></h2>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
-</div></div><p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="img-fluid"></a></p>
+</div></div><p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="img-fluid"></a></p>
 <p>. . .</p>
 <p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
 E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
 \]</span></p>
 <p>. . .</p>
 <p>Then the probability distribution is given by the Boltzmann distribution:</p>
-<p>$ P_{}(, )= e^{-E(, )}$ where $ Z=_{, } e^{-E(, )} $</p>
+<p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
 </section>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
@@ -450,7 +453,9 @@ L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{
 \frac{\partial L(\mathbf{a}, \mathbf{b}, W)}{\partial W_{i j}}=-\sum_{k=1}^{M} \frac{\partial \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)}{\partial W_{i j}}
 \end{equation*}
 \]</span></p>
-<p>. . .</p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
 <p>The derivative has two terms: <span class="math display">\[
 \begin{equation*}
 \frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
@@ -479,12 +484,9 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
 </section>
 <section id="using-an-rbm" class="level2">
 <h2 class="anchored" data-anchor-id="using-an-rbm"><em>Using an RBM</em></h2>
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="img-fluid"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="img-fluid"></a></p>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Discrete approximation to temperature function <span class="math inline">\((n=5)\)</span></span>
-</div>
 </section>
 </section>
 
@@ -899,7 +901,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -113,16 +113,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chapter-1-projects" id="toc-chapter-1-projects" class="nav-link active" data-scroll-target="#chapter-1-projects"><span class="header-section-number">1</span> <em>Chapter 1 projects</em></a>
+  <li><a href="#chapter-1-projects" id="toc-chapter-1-projects" class="nav-link active" data-scroll-target="#chapter-1-projects"><em>Chapter 1 projects</em></a>
   <ul class="collapse">
-  <li><a href="#gas-in-a-tube" id="toc-gas-in-a-tube" class="nav-link" data-scroll-target="#gas-in-a-tube"><span class="header-section-number">1.1</span> <em>Gas in a Tube</em></a></li>
+  <li><a href="#gas-in-a-tube" id="toc-gas-in-a-tube" class="nav-link" data-scroll-target="#gas-in-a-tube"><em>Gas in a Tube</em></a></li>
   </ul></li>
-  <li><a href="#chapter-2-projects" id="toc-chapter-2-projects" class="nav-link" data-scroll-target="#chapter-2-projects"><span class="header-section-number">2</span> <em>Chapter 2 Projects</em></a>
+  <li><a href="#chapter-2-projects" id="toc-chapter-2-projects" class="nav-link" data-scroll-target="#chapter-2-projects"><em>Chapter 2 Projects</em></a>
   <ul class="collapse">
-  <li><a href="#lu-factorization" id="toc-lu-factorization" class="nav-link" data-scroll-target="#lu-factorization"><span class="header-section-number">2.1</span> <em>LU Factorization</em></a></li>
-  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><span class="header-section-number">2.2</span> <em>Markov Chains</em></a></li>
-  <li><a href="#sports-ranking" id="toc-sports-ranking" class="nav-link" data-scroll-target="#sports-ranking"><span class="header-section-number">2.3</span> <em>Sports Ranking</em></a></li>
-  <li><a href="#isorank" id="toc-isorank" class="nav-link" data-scroll-target="#isorank"><span class="header-section-number">2.4</span> <em>IsoRank</em></a></li>
+  <li><a href="#lu-factorization" id="toc-lu-factorization" class="nav-link" data-scroll-target="#lu-factorization"><em>LU Factorization</em></a></li>
+  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><em>Markov Chains</em></a></li>
+  <li><a href="#sports-ranking" id="toc-sports-ranking" class="nav-link" data-scroll-target="#sports-ranking"><em>Sports Ranking</em></a></li>
+  <li><a href="#isorank" id="toc-isorank" class="nav-link" data-scroll-target="#isorank"><em>IsoRank</em></a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="projects_1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -149,22 +149,16 @@ window.Quarto = {
 </header>
 
 
-<section id="chapter-1-projects" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <em>Chapter 1 projects</em></h1>
-<section id="gas-in-a-tube" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="gas-in-a-tube"><span class="header-section-number">1.1</span> <em>Gas in a Tube</em></h2>
+<h1 id="chapter-1-projects"><em>Chapter 1 projects</em></h1>
+<h2 id="gas-in-a-tube" class="anchored"><em>Gas in a Tube</em></h2>
 <p>(Shores 62)</p>
 <p>Problem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced <span class="math inline">\(1 / 6\)</span> meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient <span class="math inline">\(D\)</span> of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval <span class="math inline">\([0,1]\)</span> at times <span class="math inline">\(t=210\)</span> and <span class="math inline">\(t=300\)</span> and at the given spatial nodes.</p>
 <p>Table: Concentration data measurements of a gaseous material.</p>
 <p>Procedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of <span class="math inline">\(D\)</span>, that is, the one that gives the best approximation to <span class="math inline">\(t=180\)</span> from the <span class="math inline">\(t=360\)</span> values. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at <span class="math inline">\(t=0\)</span>. Finally, march forward in time to compute and plot the resulting approximate density function.</p>
 <p>Output: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.</p>
 <p>Comments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations.</p>
-</section>
-</section>
-<section id="chapter-2-projects" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> <em>Chapter 2 Projects</em></h1>
-<section id="lu-factorization" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="lu-factorization"><span class="header-section-number">2.1</span> <em>LU Factorization</em></h2>
+<h1 id="chapter-2-projects"><em>Chapter 2 Projects</em></h1>
+<h2 id="lu-factorization" class="anchored"><em>LU Factorization</em></h2>
 <p><em>We didn’t yet get to the discussion of this in class. If you’re interested in doing this project, you can look at the second part of the Chapter 2 Lecture 4 slides.</em></p>
 <p>(Shores p.&nbsp;177) Write a program module that implements Theorem 2.14 using partial pivoting and implicit row exchanges. This means that space is allocated for the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A=[a[i, j]]\)</span> and an array of row indices, say indx <span class="math inline">\([i]\)</span>. Initially, indx should consist of the integers <span class="math inline">\(1,2, \ldots, n\)</span>. Whenever two rows need to be exchanged, say the first and third, then the indices indx[1] and indx[3] are exchanged. References to array elements throughout the Gaussian elimination process should be indirect: Refer to the <span class="math inline">\((1,4)\)</span> th entry of <span class="math inline">\(A\)</span> as the element <span class="math inline">\(a[\operatorname{indx}[1], 4]\)</span>. This method of reference has the same effect as physically exchanging rows, but without the work. It also has the appealing feature that we can design the algorithm as though no row exchanges have taken place provided we replace the direct reference <span class="math inline">\(a[i, j]\)</span> by the indirect reference <span class="math inline">\(a[\operatorname{indx}[i], j]\)</span>. The module should return the lower/upper matrix in the format of Example 2.70 as well as the permuted array indx <span class="math inline">\([i]\)</span>. Effectively, this index array tells the user what the permutation matrix <span class="math inline">\(P\)</span> is.</p>
 <p>Use this module to implement an LU system solver module that uses the <span class="math inline">\(\mathrm{LU}\)</span> factorization to solve a general linear system. Also write a module that finds the inverse of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> by first using the LU factorization module, then making repeated use of the LU system solver to solve <span class="math inline">\(A \mathbf{x}^{(i)}=\mathbf{e}_{i}\)</span>, where <span class="math inline">\(\mathbf{e}_{i}\)</span> is the <span class="math inline">\(i\)</span> th column of the identity. Then we will have</p>
@@ -172,16 +166,12 @@ window.Quarto = {
 A^{-1}=\left[\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right]
 \]</span></p>
 <p>Be sure to document and test your code and report on the results.</p>
-</section>
-<section id="markov-chains" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="markov-chains"><span class="header-section-number">2.2</span> <em>Markov Chains</em></h2>
+<h2 id="markov-chains" class="anchored"><em>Markov Chains</em></h2>
 <p>(Shores p.&nbsp;177)</p>
 <p>Refer to Example 2.19 and Section 2.3 for background. Three automobile insurance firms compete for a fixed market of customers. Annual premiums are sold to these customers. Label the companies A, B, and C. You work for Company A, and your team of market analysts has done a survey that draws the following conclusions: In each of the past three years, the number of A customers switching to B is <span class="math inline">\(20 \%\)</span>, and to <span class="math inline">\(\mathrm{C}\)</span> is <span class="math inline">\(30 \%\)</span>. The number of <span class="math inline">\(\mathrm{B}\)</span> customers switching to <span class="math inline">\(\mathrm{A}\)</span> is <span class="math inline">\(20 \%\)</span>, and to <span class="math inline">\(\mathrm{C}\)</span> is <span class="math inline">\(20 \%\)</span>. The number of <span class="math inline">\(\mathrm{C}\)</span> customers switching to <span class="math inline">\(\mathrm{A}\)</span> is <span class="math inline">\(30 \%\)</span>, and to <span class="math inline">\(\mathrm{B}\)</span> is <span class="math inline">\(10 \%\)</span>. Those who do not switch continue to use their current company’s insurance for the next year. Model this market as a Markov chain. Display the transition matrix for the model. Illustrate the workings of the model by showing what it would predict as the market shares three years from now if currently <span class="math inline">\(\mathrm{A}, \mathrm{B}\)</span>, and <span class="math inline">\(\mathrm{C}\)</span> owned equal shares of the market.</p>
 <p>The next part of your problem is as follows: Your team has tested two advertising campaigns in some smaller test markets and are confident that the first campaign will convince <span class="math inline">\(20 \%\)</span> of the B customers who would otherwise stay with B in a given year to switch to A. The second advertising campaign would convince <span class="math inline">\(20 \%\)</span> of the <span class="math inline">\(\mathrm{C}\)</span> customers who would otherwise stay with C in a given year to switch to A. Both campaigns have about equal costs and would not change other customers’ habits. Make a recommendation, based on your experiments with various possible initial state vectors for the market. Will these campaigns actually improve your company’s market share? If so, which one do you recommend? Write up your recommendation in the form of a report, with supporting evidence. It’s a good idea to hedge on your bets a little by pointing out limitations to your model and claims, so devote a few sentences to those points.</p>
 <p>It would be a plus to carry the analysis further (your manager might appreciate that). For instance, you could turn the additional market share from, say B customers, into a variable and plot the long-term gain for your company against this variable. A manager could use this data to decide whether it was worthwhile to attempt gaining more customers from B.</p>
-</section>
-<section id="sports-ranking" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="sports-ranking"><span class="header-section-number">2.3</span> <em>Sports Ranking</em></h2>
+<h2 id="sports-ranking" class="anchored"><em>Sports Ranking</em></h2>
 <p>(Shores p.&nbsp;180)</p>
 <p>Refer to Example 2.24 and Section 2.3 for background. As a sports analyst you are given the following data about a league of seven teams numbered 1-7, where the pair <span class="math inline">\((j, k)\)</span> represents a game in which team <span class="math inline">\(j\)</span> defeated team <span class="math inline">\(k\)</span> :</p>
 <p><span class="math display">\[
@@ -196,9 +186,7 @@ E= &amp; \{(1,2),(7,3),(2,4),(4,5),(3,2),(5,1),(6,1),(3,1),(7,2),(2,6), \\
 M=\{4,8,7,3,7,7,23,15,6,18,13,14,7,13,7,18,45,10,19,14,13\}
 \]</span></p>
 <p>In order to utilize these data examine your picture of the digraph and label each edge with the margin that matches it in <span class="math inline">\(M\)</span>. You are now dealing with a weighted graph and one can construct a different sort of “adjacency matrix” by entering this margin in the <span class="math inline">\((i, j)\)</span> th entry according as team <span class="math inline">\(i\)</span> defeated team <span class="math inline">\(j\)</span> by that margin. Use this approach to calculate “power ranking”.</p>
-</section>
-<section id="isorank" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="isorank"><span class="header-section-number">2.4</span> <em>IsoRank</em></h2>
+<h2 id="isorank" class="anchored"><em>IsoRank</em></h2>
 <p>Read the discussion of <em>IsoRank</em> on pages 172-176.</p>
 <p>The notion of embedding one graph into another is a useful idea for some scientific studies. In this report you will test the basic idea of network embedding by using the variant IsoRank of the PageRank technique on three relatively simple examples. This project requires a technology tool for these calculations and the resulting output should be interpreted as in the discussion of the IsoRank technique following Example 2.73 of Section 2.8.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -218,8 +206,6 @@ M=\{4,8,7,3,7,7,23,15,6,18,13,14,7,13,7,18,45,10,19,14,13\}
 <p>The last embedding test is to use IsoRank with teleportation vector <span class="math inline">\(\mathbf{v}=\)</span> <span class="math inline">\(\mathrm{e} / 15\)</span> and teleportation parameter <span class="math inline">\(\alpha=0.85\)</span>, along with correction vector <span class="math inline">\(\mathbf{u}=\mathbf{e} / 5\)</span> for <span class="math inline">\(G_{2}\)</span>, to find the best matchings of the digraph <span class="math inline">\(G_{1}\)</span> with the digraph <span class="math inline">\(G_{2}\)</span> in Figure 2.14. List all possible mappings and discuss your calculations.</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -6,3 +6,7 @@ h2 > .header-section-number::before {
 h1 > .header-section-number::before {
     content: unset;
 }
+
+h1 > .header-section-number {
+    content: unset;
+}

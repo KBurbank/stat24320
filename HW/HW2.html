@@ -183,11 +183,6 @@ window.Quarto = {
 </header>
 
 
-<div id="2367871d" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> print_latex</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print(x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    print_latex(x, itex<span class="op">=</span><span class="va">False</span>, mode<span class="op">=</span><span class="st">'equation'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="section" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
 <p>Given that a linear system in the unknowns <span class="math inline">\(x_{1}, x_{2}, x_{3}, x_{4}\)</span> has general solution <span class="math inline">\(\left(x_{2}+3 x_{4}+4, x_{2}, 2-x_{4}, x_{4}\right)\)</span> for free variables <span class="math inline">\(x_{2}, x_{4}\)</span>, find a minimal reduced row echelon for this system.</p>
@@ -198,6 +193,11 @@ window.Quarto = {
 <p>We could also have written</p>
 <p><span class="math inline">\(R=\begin{bmatrix}1 &amp; -1 &amp; 0 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>, which has the same solutions.</p>
 <p>Just for kicks, checking in Sympy:</p>
+<div id="2367871d" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> print_latex</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print(x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    print_latex(x, itex<span class="op">=</span><span class="va">False</span>, mode<span class="op">=</span><span class="st">'equation'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div id="0777f780" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
@@ -631,6 +631,7 @@ Matrix([[8.67946690016671e-19], [6.74533016788995e-19], [6.20149316197677e-19]])
 <li>Explain what this matrix says about the two states.</li>
 <li>Starting with a population of <span class="math inline">\((30,100)\)</span>, does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?</li>
 </ol>
+<div class="solutions content-show" data-when-profile="solutions">
 <div id="7d9ed1e9" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
@@ -652,7 +653,6 @@ Matrix([[86.6666666666667], [43.3333333333333]])
 Matrix([[86.6666666666667], [43.3333333333333]])</code></pre>
 </div>
 </div>
-<div class="solutions content-show" data-when-profile="solutions">
 <p>Exercise 2.3.13</p>
 <p>Solution. (a) The first column says that <span class="math inline">\(50 \%\)</span> of the immature become mature and <span class="math inline">\(50 \%\)</span> of the immature remain immature in one time period. The second column says that none of the mature survive, but each mature individual produces one immature in one time period. (b) The total populations after <span class="math inline">\(0,3,6,9,18\)</span> time periods is a constant 130 , and populations tend to approximately <span class="math inline">\((86.667,43.333)\)</span>.</p>
 </div>

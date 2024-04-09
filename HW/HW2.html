@@ -195,12 +195,12 @@ window.Quarto = {
 <p>We could also have written</p>
 <p><span class="math inline">\(R=\begin{bmatrix}1 &amp; -1 &amp; 0 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>, which has the same solutions.</p>
 <p>Just for kicks, checking in Sympy:</p>
-<div id="3f21a95d" class="cell" data-execution_count="1">
+<div id="723a66aa" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>])</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>R.gauss_jordan_solve(rhs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>(Matrix([
  [tau0 + 3*tau1 + 4],
  [             tau0],
@@ -211,15 +211,11 @@ window.Quarto = {
  [tau1]]))</code></pre>
 </div>
 </div>
-<div id="ef4f5eb9" class="cell" data-results="asis" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, latex</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>latex(R.gauss_jordan_solve(rhs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'\\left( \\left[\\begin{matrix}\\tau_{0} + 3 \\tau_{1} + 4\\\\\\tau_{0}\\\\2 - \\tau_{1}\\\\\\tau_{1}\\end{matrix}\\right], \\  \\left[\\begin{matrix}\\tau_{0}\\\\\\tau_{1}\\end{matrix}\\right]\\right)'</code></pre>
-</div>
-</div>
 </div>
 </section>
 <section id="section-1" class="level1 page-columns page-full" data-number="2">

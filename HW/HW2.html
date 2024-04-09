@@ -183,7 +183,7 @@ window.Quarto = {
 </header>
 
 
-<div id="7906aa52" class="cell" data-execution_count="1">
+<div id="c9a09cc9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> print_latex</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print(x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    print_latex(x, itex<span class="op">=</span><span class="va">False</span>, mode<span class="op">=</span><span class="st">'equation'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -198,7 +198,7 @@ window.Quarto = {
 <p>We could also have written</p>
 <p><span class="math inline">\(R=\begin{bmatrix}1 &amp; -1 &amp; 0 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>, which has the same solutions.</p>
 <p>Just for kicks, checking in Sympy:</p>
-<div id="67272b1f" class="cell" data-execution_count="2">
+<div id="0f6323da" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>])</span>
@@ -256,18 +256,13 @@ x_{1}\left[\begin{array}{r}
 \end{array}\right]
 \]</span></p>
 </div>
-<div id="aa018eff" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">8</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>], [<span class="dv">2</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>]])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>soln<span class="op">=</span>R.gauss_jordan_solve(rhs)[<span class="dv">0</span>]</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>my_print(soln.subs(<span class="st">'tau0'</span>,<span class="dv">18</span>))</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>my_print(R.rref()[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>\begin{equation}\left[\begin{matrix}2\\23\\16\\18\end{matrix}\right]\end{equation}
-\begin{equation}\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; - \frac{1}{9}\\0 &amp; 1 &amp; 0 &amp; - \frac{23}{18}\\0 &amp; 0 &amp; 1 &amp; - \frac{8}{9}\end{matrix}\right]\end{equation}</code></pre>
-</div>
-</div>
+<p><span class="math display">\[\begin{equation}\left[\begin{matrix}2\\23\\16\\18\end{matrix}\right]\end{equation}\]</span> <span class="math display">\[\begin{equation}\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; - \frac{1}{9}\\0 &amp; 1 &amp; 0 &amp; - \frac{23}{18}\\0 &amp; 0 &amp; 1 &amp; - \frac{8}{9}\end{matrix}\right]\end{equation}\]</span></p>
 </section>
 <section id="section-2" class="level1 page-columns page-full" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>

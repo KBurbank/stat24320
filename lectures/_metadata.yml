@@ -1,5 +1,5 @@
 format: 
-  revealjs:
+  course-presentation-revealjs:
     keep-ipynb: false
   ipynb:
     output-ext: out.ipynb

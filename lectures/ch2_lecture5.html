@@ -1078,6 +1078,23 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
 \]</span></li>
 </ul>
 </div>
+</div>
+</section>
+
+<section id="summary-of-laws-of-determinants" class="title-slide slide level2 center">
+<h2><em>Summary of Laws of Determinants</em></h2>
+<p>Let <span class="math inline">\(A, B\)</span> be <span class="math inline">\(n \times n\)</span> matrices.</p>
+<ul>
+<li class="fragment"><p>D1: If <span class="math inline">\(A\)</span> is upper triangular, <span class="math inline">\(\operatorname{det} A\)</span> is the product of all the diagonal elements of <span class="math inline">\(A\)</span>.</p></li>
+<li class="fragment"><p>D2: <span class="math inline">\(\operatorname{det}\left(E_{i}(c) A\right)=c \cdot \operatorname{det} A\)</span>.</p></li>
+<li class="fragment"><p>D3: <span class="math inline">\(\operatorname{det}\left(E_{i j} A\right)=-\operatorname{det} A\)</span>.</p></li>
+<li class="fragment"><p>D4: <span class="math inline">\(\operatorname{det}\left(E_{i j}(s) A\right)=\operatorname{det} A\)</span>.</p></li>
+<li class="fragment"><p>D5: The matrix <span class="math inline">\(A\)</span> is invertible if and only if <span class="math inline">\(\operatorname{det} A \neq 0\)</span>.</p></li>
+<li class="fragment"><p>D6: <span class="math inline">\(\operatorname{det} A B=\operatorname{det} A \operatorname{det} B\)</span>.</p></li>
+<li class="fragment"><p>D7: <span class="math inline">\(\operatorname{det} A^{T}=\operatorname{det} A\)</span>.</p></li>
+<li class="fragment"><p>D8: <span class="math inline">\(A \operatorname{adj} A=(\operatorname{adj} A) A=(\operatorname{det} A) I\)</span>.</p></li>
+<li class="fragment"><p>D9: If <span class="math inline">\(\operatorname{det} A \neq 0\)</span>, then <span class="math inline">\(A^{-1}=\frac{1}{\operatorname{det} A} \operatorname{adj} A\)</span>.</p></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1104,7 +1121,6 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
-</div>
 </div>
 </div>
 </section>
@@ -1502,7 +1518,7 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

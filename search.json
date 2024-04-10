@@ -1384,5 +1384,12 @@
     "title": "Ch2 Lecture 5",
     "section": "Interpretation of Cramer’s Rule",
     "text": "Interpretation of Cramer’s Rule\n\\[\nx_{i}=\\frac{1}{\\operatorname{det} A} \\sum_{j=1}^{n} A_{j i} b_{j}\n\\]\n\nThe summation term is exactly what we would obtain if we started with the determinant of the matrix \\(B_{i}\\) obtained from \\(A\\) by replacing the \\(i\\) th column of \\(A\\) by \\(\\mathbf{b}\\) and then expanding the determinant down the \\(i\\) th column. Therefore, we have arrived at the following rule:\n\n** pause **\n\n\n\nLet \\(A\\) be an invertible \\(n \\times n\\) matrix and \\(\\mathbf{b}\\) an \\(n \\times 1\\) column vector.\nDenote by \\(B_{i}\\) the matrix obtained from \\(A\\) by replacing the \\(i\\) th column of \\(A\\) by \\(\\mathbf{b}\\).\nThen the linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has unique solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\), where\n\\[\nx_{i}=\\frac{\\operatorname{det} B_{i}}{\\operatorname{det} A}, \\quad i=1,2, \\ldots, n\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#summary-of-laws-of-determinants",
+    "href": "lectures/ch2_lecture5.html#summary-of-laws-of-determinants",
+    "title": "Ch2 Lecture 5",
+    "section": "Summary of Laws of Determinants",
+    "text": "Summary of Laws of Determinants\nLet \\(A, B\\) be \\(n \\times n\\) matrices.\n\nD1: If \\(A\\) is upper triangular, \\(\\operatorname{det} A\\) is the product of all the diagonal elements of \\(A\\).\nD2: \\(\\operatorname{det}\\left(E_{i}(c) A\\right)=c \\cdot \\operatorname{det} A\\).\nD3: \\(\\operatorname{det}\\left(E_{i j} A\\right)=-\\operatorname{det} A\\).\nD4: \\(\\operatorname{det}\\left(E_{i j}(s) A\\right)=\\operatorname{det} A\\).\nD5: The matrix \\(A\\) is invertible if and only if \\(\\operatorname{det} A \\neq 0\\).\nD6: \\(\\operatorname{det} A B=\\operatorname{det} A \\operatorname{det} B\\).\nD7: \\(\\operatorname{det} A^{T}=\\operatorname{det} A\\).\nD8: \\(A \\operatorname{adj} A=(\\operatorname{adj} A) A=(\\operatorname{det} A) I\\).\nD9: If \\(\\operatorname{det} A \\neq 0\\), then \\(A^{-1}=\\frac{1}{\\operatorname{det} A} \\operatorname{adj} A\\)."
   }
 ]

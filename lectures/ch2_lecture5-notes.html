@@ -983,7 +983,8 @@ R=E_{1} E_{2} \cdots E_{k} A .
 \begin{equation*}
 \sum_{k=1}^{n} A_{k i} a_{k j}=\delta_{i j} \operatorname{det} A
 \end{equation*}
-\]</span> ::: notes</p>
+\]</span></p>
+<aside class="notes">
 <p>We recognize the left-hand side as the dot product of the <span class="math inline">\(i\)</span> th row of the adjoint of <span class="math inline">\(A\)</span> with the <span class="math inline">\(j\)</span> th column of <span class="math inline">\(A\)</span>.</p>
 <p>So then we have <span class="math inline">\(\left(A^{*} A\right)_{i j}=\delta_{i j} \operatorname{det} A\)</span>.</p>
 <p>In matrix form, this is <span class="math inline">\(A^{*} A=\operatorname{det} A I_{n}\)</span>.</p>
@@ -992,7 +993,17 @@ R=E_{1} E_{2} \cdots E_{k} A .
 <p><span class="math display">\[
 A^{-1}=\frac{1}{\operatorname{det} A} A^{*}
 \]</span></p>
-<p>:::</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="checking-with-our-example" class="title-slide slide level2 center">
@@ -1514,7 +1525,7 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

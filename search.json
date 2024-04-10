@@ -1362,7 +1362,7 @@
     "href": "lectures/ch2_lecture5.html#back-to-the-inverse-formula",
     "title": "Ch2 Lecture 5",
     "section": "Back to the Inverse Formula",
-    "text": "Back to the Inverse Formula\n\\[\n\\begin{equation*}\n\\sum_{k=1}^{n} A_{k i} a_{k j}=\\delta_{i j} \\operatorname{det} A\n\\end{equation*}\n\\] ::: notes\nWe recognize the left-hand side as the dot product of the \\(i\\) th row of the adjoint of \\(A\\) with the \\(j\\) th column of \\(A\\).\nSo then we have \\(\\left(A^{*} A\\right)_{i j}=\\delta_{i j} \\operatorname{det} A\\).\nIn matrix form, this is \\(A^{*} A=\\operatorname{det} A I_{n}\\).\nWe can divide both sides by \\(\\operatorname{det} A\\) (if the matrix is invertible, \\(\\operatorname{det} A \\neq 0\\)) to get \\(\\frac{A^{*} A}{\\operatorname{det} A}=I_{n}\\).\nThis gives us a formula for the inverse of \\(A\\):\n\\[\nA^{-1}=\\frac{1}{\\operatorname{det} A} A^{*}\n\\]\n:::"
+    "text": "Back to the Inverse Formula\n\\[\n\\begin{equation*}\n\\sum_{k=1}^{n} A_{k i} a_{k j}=\\delta_{i j} \\operatorname{det} A\n\\end{equation*}\n\\]\n\nWe recognize the left-hand side as the dot product of the \\(i\\) th row of the adjoint of \\(A\\) with the \\(j\\) th column of \\(A\\).\nSo then we have \\(\\left(A^{*} A\\right)_{i j}=\\delta_{i j} \\operatorname{det} A\\).\nIn matrix form, this is \\(A^{*} A=\\operatorname{det} A I_{n}\\).\nWe can divide both sides by \\(\\operatorname{det} A\\) (if the matrix is invertible, \\(\\operatorname{det} A \\neq 0\\)) to get \\(\\frac{A^{*} A}{\\operatorname{det} A}=I_{n}\\).\nThis gives us a formula for the inverse of \\(A\\):\n\\[\nA^{-1}=\\frac{1}{\\operatorname{det} A} A^{*}\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture5.html#checking-with-our-example",

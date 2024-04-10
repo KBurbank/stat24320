@@ -6,3 +6,13 @@
     content: "Theorem:";
     font-weight: 600;
 }
+
+
+.definition {
+    background-color: rgb(212, 170, 238);
+}
+
+.definition::before {
+    content: "Definition:";
+    font-weight: 600;
+}

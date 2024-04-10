@@ -882,6 +882,21 @@ R=E_{1} E_{2} \cdots E_{k} A .
 
 <section id="section-1" class="title-slide slide level2 center">
 <h2><em></em></h2>
+<p>D6: Given matrices <span class="math inline">\(A, B\)</span> of the same size,</p>
+<p><span class="math display">\[
+\operatorname{det} A B=\operatorname{det} A \operatorname{det} B \text {. }
+\]</span></p>
+<div class="fragment">
+<p>(but beware, <span class="math inline">\(\operatorname{det} A+\operatorname{det} B \neq \operatorname{det}(A+B)\)</span>)</p>
+<p>D7: For all square matrices <span class="math inline">\(A\)</span>, <span class="math inline">\(\operatorname{det} A^{T}=\operatorname{det} A\)</span></p>
+</div>
+</section>
+
+<section id="easier-way-to-calculate-determinant" class="title-slide slide level2 center">
+<h2><em>Easier way to calculate determinant</em></h2>
+<p>Just use the <code>det</code> function in Python! (That was copilot’s autocomplete…)</p>
+<div class="fragment">
+<p>Use elementary row opearations to get the matrix into upper triangular form, then multiply the diagonal entries.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -908,6 +923,7 @@ R=E_{1} E_{2} \cdots E_{k} A .
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
+</div>
 </div>
 </div>
 </section>
@@ -1305,7 +1321,7 @@ R=E_{1} E_{2} \cdots E_{k} A .
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

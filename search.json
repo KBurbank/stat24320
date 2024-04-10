@@ -1314,5 +1314,19 @@
     "title": "Ch2 Lecture 5",
     "section": "Determinant of Row Echelon Form",
     "text": "Determinant of Row Echelon Form\nLet R be the reduced row echelon form of A, obtained through multiplication by elementary matrices:\n\\[\nR=E_{1} E_{2} \\cdots E_{k} A .\n\\]\n\nDeterminant of both sides:\n\\[\n\\operatorname{det} R=\\operatorname{det}\\left(E_{1} E_{2} \\cdots E_{k} A\\right)= \\pm(\\text { nonzero constant }) \\cdot \\operatorname{det} A \\text {. }\n\\]\n\n\nTherefore, \\(\\operatorname{det} A=0\\) precisely when \\(\\operatorname{det} R=0\\).\n\n\n\n\\(R\\) is upper triangular, so \\(\\operatorname{det} R\\) is the product of the diagonal entries of \\(R\\).\nIf \\(\\operatorname{rank} A&lt;n\\), then there will be zeros in some of the diagonal entries, so \\(\\operatorname{det} R=0\\).\nIf \\(\\operatorname{rank} A=n\\), the diagonal entries are all 1, so \\(\\operatorname{det} R=1\\).\n\nA square matrix with rank \\(n\\) is invertible\n\n\n\n\nTherefore,\nD5: The matrix \\(A\\) is invertible if and only if \\(\\operatorname{det} A \\neq 0\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#section-1",
+    "href": "lectures/ch2_lecture5.html#section-1",
+    "title": "Ch2 Lecture 5",
+    "section": "",
+    "text": "D6: Given matrices \\(A, B\\) of the same size,\n\\[\n\\operatorname{det} A B=\\operatorname{det} A \\operatorname{det} B \\text {. }\n\\]\n\n(but beware, \\(\\operatorname{det} A+\\operatorname{det} B \\neq \\operatorname{det}(A+B)\\))\nD7: For all square matrices \\(A\\), \\(\\operatorname{det} A^{T}=\\operatorname{det} A\\)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#easier-way-to-calculate-determinant",
+    "href": "lectures/ch2_lecture5.html#easier-way-to-calculate-determinant",
+    "title": "Ch2 Lecture 5",
+    "section": "Easier way to calculate determinant",
+    "text": "Easier way to calculate determinant\nJust use the det function in Python! (That was copilot’s autocomplete…)\n\nUse elementary row opearations to get the matrix into upper triangular form, then multiply the diagonal entries."
   }
 ]

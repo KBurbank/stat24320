@@ -16,3 +16,13 @@
     content: "Definition:";
     font-weight: 600;
 }
+
+
+.example {
+    background-color: rgb(238, 238, 170);
+}
+
+.example::before {
+    content: "Ex:";
+    font-weight: 600;
+}

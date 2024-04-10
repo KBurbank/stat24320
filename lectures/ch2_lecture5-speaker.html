@@ -399,6 +399,7 @@ $$
 0 &amp; 0 &amp; 0 &amp; 1
 \end{array}\right] .
 \]</span></p>
+<p><strong>pause</strong></p>
 <aside class="notes">
 <p>It’s a pain, right?</p>
 <p>Draw out the blocks on the left and right matrices.</p>
@@ -518,13 +519,11 @@ In this case, transpose and conjugate transpose are not the same.
 Even when dealing with vectors alone, the transpose notation is handy. For example, there is a bit of terminology that comes from tensor analysis (a branch of higher linear algebra used in many fields including differential geometry, engineering mechanics, and relativity) that can be expressed very concisely with transposes:
 -->
 <div class="definition">
-<p>Let <span class="math inline">\(A=\left[a_{i j}\right]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix with (possibly) complex entries.</p>
 <ul>
-<li class="fragment">The <strong>transpose</strong> of <span class="math inline">\(A\)</span> is the <span class="math inline">\(n \times m\)</span> matrix <span class="math inline">\(A^{T}\)</span> obtained by interchanging the rows and columns of <span class="math inline">\(A\)</span></li>
-</ul>
-<p>-The <strong>conjugate</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(\bar{A}=\left[\overline{a_{i j}}\right]\)</span></p>
-<ul>
-<li class="fragment">Finally, the <strong>conjugate (Hermitian) transpose</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(A^{*}=\bar{A}^{T}\)</span>.</li>
+<li class="fragment"><p>Let <span class="math inline">\(A=\left[a_{i j}\right]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix with (possibly) complex entries.</p></li>
+<li class="fragment"><p>The <strong>transpose</strong> of <span class="math inline">\(A\)</span> is the <span class="math inline">\(n \times m\)</span> matrix <span class="math inline">\(A^{T}\)</span> obtained by interchanging the rows and columns of <span class="math inline">\(A\)</span></p></li>
+<li class="fragment"><p>The <strong>conjugate</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(\bar{A}=\left[\overline{a_{i j}}\right]\)</span></p></li>
+<li class="fragment"><p>Finally, the <strong>conjugate (Hermitian) transpose</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(A^{*}=\bar{A}^{T}\)</span>.</p></li>
 </ul>
 </div>
 </section>
@@ -597,10 +596,11 @@ Even when dealing with vectors alone, the transpose notation is handy. For examp
 <li class="fragment"><strong>Hermitian</strong> if <span class="math inline">\(A^{*}=A\)</span></li>
 </ul>
 </div>
+<div class="fragment">
 <div class="example">
 <p>Is this matrix symmetric? Hermetian?</p>
 <p><span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1+\mathrm{i} \\ 1-\mathrm{i} &amp; 2\end{array}\right]\)</span></p>
-<p>. . .</p>
+<div class="fragment">
 <p>It’s Hermetian, but not symmetric.</p>
 <p><span class="math display">\[
 \left[\begin{array}{rr}
@@ -614,6 +614,8 @@ Even when dealing with vectors alone, the transpose notation is handy. For examp
 1-\mathrm{i} &amp; 2
 \end{array}\right]
 \]</span></p>
+</div>
+</div>
 </div>
 </section>
 
@@ -913,7 +915,7 @@ R=E_{1} E_{2} \cdots E_{k} A .
 
 <section id="an-inverse-formula" class="title-slide slide level2 center">
 <h2><em>An Inverse Formula</em></h2>
-<p>::: notes</p>
+<aside class="notes">
 <p>Let <span class="math inline">\(A=\left[a_{i j}\right]\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. We have already seen that we can expand the determinant of <span class="math inline">\(A\)</span> down any column of <span class="math inline">\(A\)</span> (see the discussion following Example 2.59). These expansions lead to cofactor formulas for each column number <span class="math inline">\(j\)</span> :</p>
 <p><span class="math display">\[
 \operatorname{det} A=\sum_{k=1}^{n} a_{k j} A_{k j}=\sum_{k=1}^{n} A_{k j} a_{k j}
@@ -929,6 +931,17 @@ R=E_{1} E_{2} \cdots E_{k} A .
 \sum_{k=1}^{n} A_{k i} a_{k j}=\delta_{i j} \operatorname{det} A \tag{2.9}
 \end{equation*}
 \]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="adjoint-minor-cofactor-matrices" class="title-slide slide level2 center">
@@ -948,24 +961,18 @@ R=E_{1} E_{2} \cdots E_{k} A .
 <h2><em>Example</em></h2>
 <p><span class="math inline">\(A=\left[\begin{array}{rrr}1 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; -1 \\ 0 &amp; 2 &amp; 1\end{array}\right]\)</span></p>
 <div class="fragment">
-<p>Determinant: 2.</p>
-</div>
-<div class="fragment">
 <p>Matrix of minors:</p>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-161.jpg?height=274&amp;width=765&amp;top_left_y=1008&amp;top_left_x=374" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-161.jpg?height=274&amp;width=765&amp;top_left_y=1008&amp;top_left_x=374"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-161.jpg?height=274&amp;width=765&amp;top_left_y=1008&amp;top_left_x=374" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-161.jpg?height=274&amp;width=765&amp;top_left_y=1008&amp;top_left_x=374" height="150"></a></p>
 </div>
 <div class="fragment">
-<p>Cofactor matrix:</p>
-<p>Overlay with the checkerboard <span class="math inline">\(\left[\begin{array}{l}+-+ \\ -+- \\ +-+\end{array}\right]\)</span>.</p>
-</div>
-<div class="fragment">
-<p>Adjoint: transpose, to get</p>
+<p>Cofactor matrix and adjoint:</p>
+<p>Overlay with the checkerboard <span class="math inline">\(\left[\begin{array}{l}+-+ \\ -+- \\ +-+\end{array}\right]\)</span>. Take the transpose, to get</p>
 <p><span class="math display">\[
 \operatorname{adj} A=\left[\begin{array}{rrr}
 2 &amp; -2 &amp; -2 \\
 0 &amp; 1 &amp; 1 \\
 0 &amp; -2 &amp; 0
-\end{array}\right] \text {. }
+\end{array}\right]
 \]</span></p>
 </div>
 </section>
@@ -976,8 +983,7 @@ R=E_{1} E_{2} \cdots E_{k} A .
 \begin{equation*}
 \sum_{k=1}^{n} A_{k i} a_{k j}=\delta_{i j} \operatorname{det} A
 \end{equation*}
-\]</span></p>
-<aside class="notes">
+\]</span> ::: notes</p>
 <p>We recognize the left-hand side as the dot product of the <span class="math inline">\(i\)</span> th row of the adjoint of <span class="math inline">\(A\)</span> with the <span class="math inline">\(j\)</span> th column of <span class="math inline">\(A\)</span>.</p>
 <p>So then we have <span class="math inline">\(\left(A^{*} A\right)_{i j}=\delta_{i j} \operatorname{det} A\)</span>.</p>
 <p>In matrix form, this is <span class="math inline">\(A^{*} A=\operatorname{det} A I_{n}\)</span>.</p>
@@ -986,17 +992,7 @@ R=E_{1} E_{2} \cdots E_{k} A .
 <p><span class="math display">\[
 A^{-1}=\frac{1}{\operatorname{det} A} A^{*}
 \]</span></p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>:::</p>
 </section>
 
 <section id="checking-with-our-example" class="title-slide slide level2 center">
@@ -1518,7 +1514,7 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

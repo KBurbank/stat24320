@@ -20,6 +20,7 @@
 
 .example {
     background-color: rgb(238, 238, 170);
+    padding: 1em;
 }
 
 .example::before {

@@ -1278,7 +1278,7 @@
     "href": "lectures/ch2_lecture5.html#outer-product",
     "title": "Ch2 Lecture 5",
     "section": "Outer product",
-    "text": "Outer product\n\n\nThe outer product of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) is the \\(n \\times n\\) matrix \\(\\mathbf{u v}^{T}\\).\n\n\n\nFind the outer product of\n\\[\n\\mathbf{u}=\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n1\n\\end{array}\\right] \\text { and } \\mathbf{v}=\\left[\\begin{array}{l}\n3 \\\\\n4 \\\\\n1\n\\end{array}\\right]\n\\]\n\n\\[\n\\mathbf{u v}^{T}=\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n1\n\\end{array}\\right][3,4,1]=\\left[\\begin{array}{rrr}\n2 \\cdot 3 & 2 \\cdot 4 & 2 \\cdot 1 \\\\\n-1 \\cdot 3 & -1 \\cdot 4 & -1 \\cdot 1 \\\\\n1 \\cdot 3 & 1 \\cdot 4 & 1 \\cdot 1\n\\end{array}\\right]=\\left[\\begin{array}{rrr}\n6 & 8 & 2 \\\\\n-3 & -4 & -1 \\\\\n3 & 4 & 1\n\\end{array}\\right]\n\\]"
+    "text": "Outer product\n\n\nThe outer product of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) is the \\(n \\times n\\) matrix \\(\\mathbf{u v}^{T}\\).\n\n\n\n\nFind the outer product of\n\\[\n\\mathbf{u}=\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n1\n\\end{array}\\right] \\text { and } \\mathbf{v}=\\left[\\begin{array}{l}\n3 \\\\\n4 \\\\\n1\n\\end{array}\\right]\n\\]\n\n\\[\n\\mathbf{u v}^{T}=\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n1\n\\end{array}\\right][3,4,1]=\\left[\\begin{array}{rrr}\n2 \\cdot 3 & 2 \\cdot 4 & 2 \\cdot 1 \\\\\n-1 \\cdot 3 & -1 \\cdot 4 & -1 \\cdot 1 \\\\\n1 \\cdot 3 & 1 \\cdot 4 & 1 \\cdot 1\n\\end{array}\\right]=\\left[\\begin{array}{rrr}\n6 & 8 & 2 \\\\\n-3 & -4 & -1 \\\\\n3 & 4 & 1\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch2_lecture5.html#section",
@@ -1327,6 +1327,62 @@
     "href": "lectures/ch2_lecture5.html#easier-way-to-calculate-determinant",
     "title": "Ch2 Lecture 5",
     "section": "Easier way to calculate determinant",
-    "text": "Easier way to calculate determinant\nJust use the det function in Python! (That was copilot’s autocomplete…)\n\nUse elementary row opearations to get the matrix into upper triangular form, then multiply the diagonal entries."
+    "text": "Easier way to calculate determinant\nJust use the det function in Python! (That was copilot’s autocomplete…)\n\nUse elementary row operations to get the matrix into upper triangular form, then multiply the diagonal entries."
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#two-more-determinant-laws",
+    "href": "lectures/ch2_lecture5.html#two-more-determinant-laws",
+    "title": "Ch2 Lecture 5",
+    "section": "Two more Determinant Laws",
+    "text": "Two more Determinant Laws\nD6: Given matrices \\(A, B\\) of the same size,\n\\[\n\\operatorname{det} A B=\\operatorname{det} A \\operatorname{det} B \\text {. }\n\\]\n\n(but beware, \\(\\operatorname{det} A+\\operatorname{det} B \\neq \\operatorname{det}(A+B)\\))\nD7: For all square matrices \\(A\\), \\(\\operatorname{det} A^{T}=\\operatorname{det} A\\)"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#an-inverse-formula",
+    "href": "lectures/ch2_lecture5.html#an-inverse-formula",
+    "title": "Ch2 Lecture 5",
+    "section": "An Inverse Formula",
+    "text": "An Inverse Formula\n::: notes\nLet \\(A=\\left[a_{i j}\\right]\\) be an \\(n \\times n\\) matrix. We have already seen that we can expand the determinant of \\(A\\) down any column of \\(A\\) (see the discussion following Example 2.59). These expansions lead to cofactor formulas for each column number \\(j\\) :\n\\[\n\\operatorname{det} A=\\sum_{k=1}^{n} a_{k j} A_{k j}=\\sum_{k=1}^{n} A_{k j} a_{k j}\n\\]\nThis formula resembles a matrix multiplication formula. Consider the slightly altered sum\n\\[\n\\sum_{k=1}^{n} A_{k i} a_{k j}=A_{1 i} a_{1 j}+A_{2 i} a_{2 j}+\\cdots+A_{n i} a_{n j}\n\\]\nThis is exactly what we would get if we replaced the \\(i\\) th column of the matrix \\(A\\) by its \\(j\\) th column and then computed the determinant of the resulting matrix by expansion down the \\(i\\) th column.\nBut such a matrix has two equal columns and therefore has a zero determinant. So this sum must be 0 if \\(i \\neq j\\). We can combine these two sums by means of the Kronecker delta.\n\\[\n\\begin{equation*}\n\\sum_{k=1}^{n} A_{k i} a_{k j}=\\delta_{i j} \\operatorname{det} A \\tag{2.9}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#adjoint-minor-cofactor-matrices",
+    "href": "lectures/ch2_lecture5.html#adjoint-minor-cofactor-matrices",
+    "title": "Ch2 Lecture 5",
+    "section": "Adjoint, Minor, Cofactor Matrices",
+    "text": "Adjoint, Minor, Cofactor Matrices\n\n\n\\(M_{i j}(A)\\), the \\((i,j)\\) th minor of \\(A\\), is the determinant of the \\((n-1) \\times (n-1)\\) matrix obtained by deleting the \\(i\\)th row and \\(j\\)th column of \\(A\\).\n\\(A_{i j}=(-1)^{i+j} M_{i j}(A)\\) is the \\((i,j)\\)t h cofactor of \\(A\\).\nMatrix of minors \\(M(A)\\) is the matrix whose \\((i,j)\\) th entry is the minor \\(M_{i j}(A)\\).\nCofactor matrix \\(A_{\\text {cof }}\\) is the matrix whose \\((i,j)\\) th entry is the cofactor \\(A_{i j}\\).\nAdjoint of \\(A\\) is the transpose of the cofactor matrix, \\(A^{*}=A_{\\text {cof }}^{T}\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#example",
+    "href": "lectures/ch2_lecture5.html#example",
+    "title": "Ch2 Lecture 5",
+    "section": "Example",
+    "text": "Example\n\\(A=\\left[\\begin{array}{rrr}1 & 2 & 0 \\\\ 0 & 0 & -1 \\\\ 0 & 2 & 1\\end{array}\\right]\\)\n\nDeterminant: 2.\n\n\nMatrix of minors:\n\n\n\nCofactor matrix:\nOverlay with the checkerboard \\(\\left[\\begin{array}{l}+-+ \\\\ -+- \\\\ +-+\\end{array}\\right]\\).\n\n\nAdjoint: transpose, to get\n\\[\n\\operatorname{adj} A=\\left[\\begin{array}{rrr}\n2 & -2 & -2 \\\\\n0 & 1 & 1 \\\\\n0 & -2 & 0\n\\end{array}\\right] \\text {. }\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#back-to-the-inverse-formula",
+    "href": "lectures/ch2_lecture5.html#back-to-the-inverse-formula",
+    "title": "Ch2 Lecture 5",
+    "section": "Back to the Inverse Formula",
+    "text": "Back to the Inverse Formula\n\\[\n\\begin{equation*}\n\\sum_{k=1}^{n} A_{k i} a_{k j}=\\delta_{i j} \\operatorname{det} A\n\\end{equation*}\n\\]\n\nWe recognize the left-hand side as the dot product of the \\(i\\) th row of the adjoint of \\(A\\) with the \\(j\\) th column of \\(A\\).\nSo then we have \\(\\left(A^{*} A\\right)_{i j}=\\delta_{i j} \\operatorname{det} A\\).\nIn matrix form, this is \\(A^{*} A=\\operatorname{det} A I_{n}\\).\nWe can divide both sides by \\(\\operatorname{det} A\\) (if the matrix is invertible, \\(\\operatorname{det} A \\neq 0\\)) to get \\(\\frac{A^{*} A}{\\operatorname{det} A}=I_{n}\\).\nThis gives us a formula for the inverse of \\(A\\):\n\\[\nA^{-1}=\\frac{1}{\\operatorname{det} A} A^{*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#checking-with-our-example",
+    "href": "lectures/ch2_lecture5.html#checking-with-our-example",
+    "title": "Ch2 Lecture 5",
+    "section": "Checking, with our example",
+    "text": "Checking, with our example\nRemeber, we had \\(A=\\left[\\begin{array}{rrr}1 & 2 & 0 \\\\ 0 & 0 & -1 \\\\ 0 & 2 & 1\\end{array}\\right]\\)\n\nWe had computed the adjoint as \\(A^{*}=\\left[\\begin{array}{rrr}2 & -2 & -2 \\\\ 0 & 1 & 1 \\\\ 0 & -2 & 0\\end{array}\\right]\\)\n\n\nCheck:\n\\[\nA \\operatorname{adj} A=\\left[\\begin{array}{rrr}\n1 & 2 & 0 \\\\\n0 & 0 & -1 \\\\\n0 & 2 & 1\n\\end{array}\\right]\\left[\\begin{array}{rrr}\n2 & -2 & -2 \\\\\n0 & 1 & 1 \\\\\n0 & -2 & 0\n\\end{array}\\right]=\\left[\\begin{array}{lll}\n2 & 0 & 0 \\\\\n0 & 2 & 0 \\\\\n0 & 0 & 2\n\\end{array}\\right]=(\\operatorname{det} A) I_{3} .\n\\]\n\n\nSo, \\(A^{-1}=\\frac{1}{\\operatorname{det} A} A^{*}\\)."
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#cramers-rule",
+    "href": "lectures/ch2_lecture5.html#cramers-rule",
+    "title": "Ch2 Lecture 5",
+    "section": "Cramer’s Rule",
+    "text": "Cramer’s Rule\nExplicit formula for solving linear systems with a nonsingular coefficient matrix.\n\nSolve \\(A \\mathbf{x}=\\mathbf{b}\\)\n\n\nMultiply both sides by \\(A^{-1}\\): \\(\\mathbf{x}=A^{-1} \\mathbf{b}\\)\n\n\nUse the formula for \\(A^{-1}\\): \\(\\mathbf{x}=\\frac{1}{\\operatorname{det} A} A^{*} \\mathbf{b}\\)\n\n\nThe \\(i\\) th component of \\(\\mathbf{x}\\) is\n\\[\nx_{i}=\\frac{1}{\\operatorname{det} A} \\sum_{j=1}^{n} A_{j i} b_{j}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch2_lecture5.html#interpretation-of-cramers-rule",
+    "href": "lectures/ch2_lecture5.html#interpretation-of-cramers-rule",
+    "title": "Ch2 Lecture 5",
+    "section": "Interpretation of Cramer’s Rule",
+    "text": "Interpretation of Cramer’s Rule\n\\[\nx_{i}=\\frac{1}{\\operatorname{det} A} \\sum_{j=1}^{n} A_{j i} b_{j}\n\\]\n\nThe summation term is exactly what we would obtain if we started with the determinant of the matrix \\(B_{i}\\) obtained from \\(A\\) by replacing the \\(i\\) th column of \\(A\\) by \\(\\mathbf{b}\\) and then expanding the determinant down the \\(i\\) th column. Therefore, we have arrived at the following rule:\n\n** pause **\n\n\n\nLet \\(A\\) be an invertible \\(n \\times n\\) matrix and \\(\\mathbf{b}\\) an \\(n \\times 1\\) column vector.\nDenote by \\(B_{i}\\) the matrix obtained from \\(A\\) by replacing the \\(i\\) th column of \\(A\\) by \\(\\mathbf{b}\\).\nThen the linear system \\(A \\mathbf{x}=\\mathbf{b}\\) has unique solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\), where\n\\[\nx_{i}=\\frac{\\operatorname{det} B_{i}}{\\operatorname{det} A}, \\quad i=1,2, \\ldots, n\n\\]"
   }
 ]

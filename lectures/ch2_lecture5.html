@@ -618,47 +618,6 @@ Even when dealing with vectors alone, the transpose notation is handy. For examp
 </div>
 </div>
 </section>
-
-<section id="quadratic-forms" class="title-slide slide level2 center">
-<h2><em>Quadratic Forms</em></h2>
-<p>A <strong>quadratic form</strong> is a homogeneous polynomial of degree 2 in <span class="math inline">\(n\)</span> variables. For example,</p>
-<div class="fragment">
-<p><span class="math display">\[
-Q(x, y, z)=x^{2}+2 y^{2}+z^{2}+2 x y+y z+3 x z .
-\]</span></p>
-</div>
-<div class="fragment">
-<p>We can express this in matrix form!</p>
-<p><span class="math display">\[
-\begin{aligned}
-x(x+2 y+3 z)+y(2 y+z)+z^{2} &amp; =\left[\begin{array}{lll}
-x &amp; y &amp; z
-\end{array}\right]\left[\begin{array}{c}
-x+2 y+3 z \\
-2 y+z \\
-z
-\end{array}\right]
-\end{aligned}
-\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{aligned}
-=\left[\begin{array}{lll}
-x &amp; y &amp; z
-\end{array}\right]\left[\begin{array}{lll}
-1 &amp; 2 &amp; 3 \\
-0 &amp; 2 &amp; 1 \\
-0 &amp; 0 &amp; 1
-\end{array}\right]\left[\begin{array}{c}
-x \\
-y \\
-z
-\end{array}\right]=\mathbf{x}^{T} A \mathbf{x},
-\end{aligned}
-\]</span></p>
-</div>
-</section>
 </section>
 <section>
 <section id="inner-and-outer-products" class="title-slide slide level1 center">
@@ -1102,6 +1061,46 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
 <li class="fragment"><p>D8: <span class="math inline">\(A \operatorname{adj} A=(\operatorname{adj} A) A=(\operatorname{det} A) I\)</span>.</p></li>
 <li class="fragment"><p>D9: If <span class="math inline">\(\operatorname{det} A \neq 0\)</span>, then <span class="math inline">\(A^{-1}=\frac{1}{\operatorname{det} A} \operatorname{adj} A\)</span>.</p></li>
 </ul>
+</section>
+
+<section id="quadratic-forms" class="title-slide slide level2 center">
+<h2><em>Quadratic Forms</em></h2>
+<p>A <strong>quadratic form</strong> is a homogeneous polynomial of degree 2 in <span class="math inline">\(n\)</span> variables. For example,</p>
+<div class="fragment">
+<p><span class="math display">\[
+Q(x, y, z)=x^{2}+2 y^{2}+z^{2}+2 x y+y z+3 x z .
+\]</span></p>
+</div>
+<div class="fragment">
+<p>We can express this in matrix form!</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(x+2 y+3 z)+y(2 y+z)+z^{2} &amp; =\left[\begin{array}{lll}
+x &amp; y &amp; z
+\end{array}\right]\left[\begin{array}{c}
+x+2 y+3 z \\
+2 y+z \\
+z
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+=\left[\begin{array}{lll}
+x &amp; y &amp; z
+\end{array}\right]\left[\begin{array}{lll}
+1 &amp; 2 &amp; 3 \\
+0 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]\left[\begin{array}{c}
+x \\
+y \\
+z
+\end{array}\right]=\mathbf{x}^{T} A \mathbf{x},
+\end{aligned}
+\]</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1128,6 +1127,7 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
+</div>
 </div>
 </div>
 </section>
@@ -1525,7 +1525,7 @@ x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

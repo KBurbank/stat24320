@@ -354,6 +354,13 @@
     "href": "lectures/ch3lecture1b.html#null-space-algorithm",
     "title": "Ch3 Lecture 1",
     "section": "Null Space algorithm",
-    "text": "Null Space algorithm\nGiven an \\(m \\times n\\) matrix \\(A\\).\n\nCompute the reduced row echelon form \\(R\\) of \\(A\\).\nUse \\(R\\) to find the general solution to the homogeneous system \\(A \\mathbf{x}=0\\).\nWrite the general solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\) to the homogeneous system in the form\n\n\\[\n\\mathbf{x}=x_{i_{1}} \\mathbf{w}_{1}+x_{i_{2}} \\mathbf{w}_{2}+\\cdots+x_{i_{n-r}} \\mathbf{w}_{n-r}\n\\]\nwhere \\(x_{i_{1}}, x_{i_{2}}, \\ldots, x_{i_{n-r}}\\) are the free variables.\n\nList the vectors \\(\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\ldots, \\mathbf{w}_{n-r}\\). These form a basis of \\(\\mathcal{N}(A)\\)."
+    "text": "Null Space algorithm\nGiven an \\(m \\times n\\) matrix \\(A\\).\n\nCompute the reduced row echelon form \\(R\\) of \\(A\\).\nUse \\(R\\) to find the general solution to the homogeneous system \\(A \\mathbf{x}=0\\).\n\n\n\nWrite the general solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\) to the homogeneous system in the form\n\n\\[\n\\mathbf{x}=x_{i_{1}} \\mathbf{w}_{1}+x_{i_{2}} \\mathbf{w}_{2}+\\cdots+x_{i_{n-r}} \\mathbf{w}_{n-r}\n\\]\nwhere \\(x_{i_{1}}, x_{i_{2}}, \\ldots, x_{i_{n-r}}\\) are the free variables.\n\n\n\nList the vectors \\(\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\ldots, \\mathbf{w}_{n-r}\\). These form a basis of \\(\\mathcal{N}(A)\\)."
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#showing-that-the-standard-basis-is-a-basis-for-the-reals-or-complex-numbers",
+    "href": "lectures/ch3lecture1b.html#showing-that-the-standard-basis-is-a-basis-for-the-reals-or-complex-numbers",
+    "title": "Ch3 Lecture 1",
+    "section": "Showing that the Standard Basis is a Basis for the reals or complex numbers",
+    "text": "Showing that the Standard Basis is a Basis for the reals or complex numbers\n\nLet \\(\\mathbf{v}=\\left(c_{1}, c_{2}, \\ldots, c_{n}\\right)\\) be a vector from \\(V\\)\n\\(c_{1}, c_{2}, \\ldots, c_{n}\\) are scalars (real or complex)\n\n\n\\[\n\\begin{aligned}\n\\mathbf{v} & =\\left[\\begin{array}{c}\nc_{1} \\\\\nc_{2} \\\\\n\\vdots \\\\\nc_{n}\n\\end{array}\\right]=c_{1}\\left[\\begin{array}{c}\n1 \\\\\n0 \\\\\n\\vdots \\\\\n0\n\\end{array}\\right]+c_{2}\\left[\\begin{array}{c}\n0 \\\\\n1 \\\\\n\\vdots \\\\\n0\n\\end{array}\\right]+\\cdots+c_{n}\\left[\\begin{array}{c}\n0 \\\\\n\\vdots \\\\\n0 \\\\\n1\n\\end{array}\\right] \\\\\n& =c_{1} \\mathbf{e}_{1}+c_{2} \\mathbf{e}_{2}+\\cdots+c_{n} \\mathbf{e}_{n} .\n\\end{aligned}\n\\]\n\nTwo points here: 1. you can make any vector in V out of a linear combination of the e’s, so the e’s span V. 2. the e’s are linearly independent because if you have a linear combination of them that equals 0, then each coefficient must be 0. 3. Therefore, the e’s are a basis of V."
   }
 ]

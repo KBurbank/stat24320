@@ -347,9 +347,140 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
+<li class="fragment"><a href="#/a-bit-about-gas-in-a-tube" id="/toc-a-bit-about-gas-in-a-tube"><em>A bit about gas in a tube</em></a></li>
 <li class="fragment"><a href="#/independence-and-bases" id="/toc-independence-and-bases"><em>Independence and Bases</em></a></li>
 </ul>
 </nav>
+</section>
+<section>
+<section id="a-bit-about-gas-in-a-tube" class="title-slide slide level1 center">
+<h1><em>A bit about gas in a tube</em></h1>
+<p>Table: Concentration data measurements of a gaseous material.</p>
+<div class="fragment">
+<p>Goal: find D.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{equation*}
+y_{i, t+1}=y_{i, t}+\frac{k D}{h^{2}}\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\right)+k f_{i, t}
+\end{equation*}
+\]</span></p>
+</div>
+<div class="fragment">
+<aside class="notes">
+<p>write out the system of equations for each spatial point. The f’s are zero except for t=0, so we will ignore them.</p>
+<p><span class="math inline">\(y_{0,t+1} = 0\)</span></p>
+<p><span class="math inline">\(y_{1,t+1}=y_{1,t}+\frac{k D}{h^{2}}\left(0-2 y_{1,t}+y_{2,t}\right)\)</span> <span class="math inline">\(y_{2,t+1}=y_{2,t}+\frac{k D}{h^{2}}\left(y_{1,t}-2 y_{2,t}+y_{3,t}\right)\)</span> <span class="math inline">\(y_{3,t+1}=y_{3,t}+\frac{k D}{h^{2}}\left(y_{2,t}-2 y_{3,t}+y_{4,t}\right)\)</span> etc, until we get to <span class="math inline">\(y_{6,t+1}=0\)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{equation*}
+y_{i, t+1}=y_{i, t}+d\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\right)
+\end{equation*}
+\]</span></p>
+<p><span class="math inline">\(y_{0,t+1} = 0\)</span> <span class="math inline">\(y_{1,t+1}=y_{1,t}+d\left(0-2 y_{1,t}+y_{2,t}\right)\)</span> <span class="math inline">\(y_{3,t+1}=y_{3,t}+d\left(y_{2,t}-2 y_{3,t}+y_{4,t}\right)\)</span> … <span class="math inline">\(y_{6,t+1}=0\)</span></p>
+<div class="fragment">
+<p>We want to solve these for <span class="math inline">\(y_{i,t}\)</span> given <span class="math inline">\(y_{i,t+1}\)</span>.</p>
+<p><span class="math display">\[
+\begin{equation*}
+y_{i, t+1}-d\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\right)=y_{i, t}
+\end{equation*}
+\]</span></p>
+<p><span class="math display">\[
+\approx y_{i, t+1}-d\left(y_{i-1, t+1}-2 y_{i, t+1}+y_{i+1, t+1}\right) ?
+\]</span></p>
+</div>
+</section>
+
+<section id="in-matrix-form" class="title-slide slide level2 center">
+<h2><em>In matrix form</em></h2>
+<p>In matrix form, this becomes <span class="math inline">\(y_{t+1}=y_{t}+ My_{t}\)</span>, where <span class="math inline">\(M\)</span> is a tridiagonal matrix with <span class="math inline">\(-2\)</span> on the diagonal and <span class="math inline">\(1\)</span> on the off-diagonals:</p>
+<p><span class="math display">\[
+M=\left[\begin{array}{ccccccc}
+-2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -2
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+y_{t}=y_{t+1}- d My_{t} \overset{?}\approx y_{t+1}- My_{t+1}
+\]</span></p>
+<p>Turns out it works… but why?</p>
+</div>
+</section>
+
+<section id="using-matrix-inversion" class="title-slide slide level2 center">
+<h2><em>Using matrix inversion</em></h2>
+<ul>
+<li class="fragment"><span class="math inline">\(y_{t+1}=y_{t}+ My_{t}\)</span></li>
+<li class="fragment">is the same as <span class="math inline">\(y_{t+1}=Iy_{t}+ My_{t}\)</span></li>
+<li class="fragment">in other words, <span class="math inline">\(y_{t+1}=(I+M)y_{t}\)</span></li>
+</ul>
+<div class="fragment">
+<p>How do we solve this for <span class="math inline">\(y_{t}\)</span>, given <span class="math inline">\(y_{t+1}\)</span>?</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+y_{t+1}=(I+M)y_{t} \Rightarrow y_{t}=(I+M)^{-1}y_{t+1}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Two different approaches – one correct, the other one gave approximately the right answer. Why?</p>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+y_{t+1}=(I+dM)y_{t} \Rightarrow y_{t}=(I+dM)^{-1}y_{t+1}
+\]</span></p>
+<p><span class="math display">\[
+y_{t}=y_{t+1}- dMy_{t} \overset{?}\approx y_{t+1}- d My_{t+1}
+\]</span></p>
+<div class="fragment">
+<p>Connection: we will use math to show that the two are approximately equal.</p>
+</div>
+<div class="fragment">
+<p>Remember Taylor series?</p>
+<p>For small <span class="math inline">\(x\)</span>, we can approximate <span class="math inline">\(\frac{1}{1+x}\)</span> as <span class="math inline">\(1-x+x^2-x^3+\ldots\)</span></p>
+</div>
+<div class="fragment">
+<p>If we have a matrix <span class="math inline">\(A\)</span> such that <span class="math inline">\(X = I + A\)</span> is invertible, then <span class="math inline">\(X^{-1} = I - A + A^2 - A^3 + \ldots\)</span></p>
+</div>
+<div class="fragment">
+<p>So to first order in d,</p>
+<p><span class="math display">\[
+y_{t}=(I+dM)^{-1}y_{t+1} \approx \left(I-dM\right) y_{t+1}=y_{t+1}-d M y_{t+1}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Now <span class="math inline">\(y_{t+1}=y_{t} + dM y_{t}\)</span>. Plugging this in,</p>
+<p><span class="math inline">\(y_{t}=(I+dM)^{-1}y_{t+1} \approx y_{t+1}-d M \left(y_{t}+d M y_{t}\right)\approx y_{t+1}-d M y_{t}\)</span></p>
+</div>
+</section>
+
+<section id="the-point" class="title-slide slide level2 center">
+<h2><em>The point</em></h2>
+<p>The problem was much easier to solve once we put it in matrix form.</p>
+</section>
 </section>
 <section>
 <section id="independence-and-bases" class="title-slide slide level1 center">
@@ -407,7 +538,7 @@ c_{3}
 </div>
 </section>
 
-<section id="section" class="title-slide slide level2 center">
+<section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Is this set of vectors linearly independent?</p>
 <p><span class="math display">\[
@@ -665,7 +796,7 @@ x_{2}+2 x_{3}+x_{4} &amp; =0
 </div>
 </section>
 
-<section id="section-1" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p><span class="math display">\[
 \left[\begin{array}{c}
@@ -752,7 +883,7 @@ x_{4}
 </div>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
+<section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p><span class="math display">\[
 I-A=\left[\begin{array}{ll}
@@ -1372,7 +1503,7 @@ A=\left[\begin{array}{rrrr}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

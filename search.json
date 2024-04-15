@@ -179,7 +179,7 @@
     "href": "lectures/ch3lecture1b.html#section",
     "title": "Ch3 Lecture 1",
     "section": "",
-    "text": "Is this set of vectors linearly independent?\n\\[\n\\left[\\begin{array}{l}1 \\\\ 1 \\\\ 0\\end{array}\\right],\\left[\\begin{array}{l}0 \\\\ 1 \\\\ 1\\end{array}\\right],\\left[\\begin{array}{r}1 \\\\ -1 \\\\ -2\\end{array}\\right]\n\\]\nPut in matrix form and find the reduced row echelon form: . . .\n\\[\n\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n1 & 1 & -1 \\\\\n0 & 1 & -2\n\\end{array}\\right] \\xrightarrow[E_{21}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n0 & 1 & -2 \\\\\n0 & 1 & -2\n\\end{array}\\right] \\xrightarrow[E_{32}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n0 & 1 & -2 \\\\\n0 & 0 & 0\n\\end{array}\\right],\n\\]\n\nSolutions to the homogeneous system are \\(\\mathbf{c}=\\left(c_{1}=-c_{3},c_{2}= 2 c_{3}, c_{3}= c_{3}\\right)=\\)\nWhole vector is \\(c_{3}(-1,2,1)\\). Take \\(c_{3}=1\\) and we have that \\[\n-1 \\mathbf{v}_{1}+2 \\mathbf{v}_{2}+1 \\mathbf{v}_{3}=0\n\\]\n\n\n\\[\n-1 \\mathbf{v}_{1}+2 \\mathbf{v}_{2}+1 \\mathbf{v}_{3}=0\n\\]\nSo the vectors are linearly dependent."
+    "text": "\\[\n\\begin{equation*}\ny_{i, t+1}=y_{i, t}+d\\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\\right)\n\\end{equation*}\n\\]\n\\(y_{0,t+1} = 0\\) \\(y_{1,t+1}=y_{1,t}+d\\left(0-2 y_{1,t}+y_{2,t}\\right)\\) \\(y_{3,t+1}=y_{3,t}+d\\left(y_{2,t}-2 y_{3,t}+y_{4,t}\\right)\\) … \\(y_{6,t+1}=0\\)\n\nWe want to solve these for \\(y_{i,t}\\) given \\(y_{i,t+1}\\).\n\\[\n\\begin{equation*}\ny_{i, t+1}-d\\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\\right)=y_{i, t}\n\\end{equation*}\n\\]\n\\[\n\\approx y_{i, t+1}-d\\left(y_{i-1, t+1}-2 y_{i, t+1}+y_{i+1, t+1}\\right) ?\n\\]"
   },
   {
     "objectID": "lectures/ch3lecture1b.html#example-2",
@@ -256,7 +256,7 @@
     "href": "lectures/ch3lecture1b.html#section-1",
     "title": "Ch3 Lecture 1",
     "section": "",
-    "text": "\\[\n\\left[\\begin{array}{c}\nx_{1} \\\\\nx_{2} \\\\\nx_{3} \\\\\nx_{4}\n\\end{array}\\right]=\\left[\\begin{array}{c}\nx_{3}+2 x_{4} \\\\\n-2 x_{3}-x_{4} \\\\\nx_{3} \\\\\nx_{4}\n\\end{array}\\right]=x_{3}\\left[\\begin{array}{r}\n1 \\\\\n-2 \\\\\n1 \\\\\n0\n\\end{array}\\right]+x_{4}\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n0 \\\\\n1\n\\end{array}\\right] .\n\\]\n\nThe general solution to the homogeneous system is an arbitrary linear combination of these two vectors\n\n\n\\[\n\\mathcal{N}(A)=\\operatorname{span}\\left\\{\\left[\\begin{array}{r}\n1 \\\\\n-2 \\\\\n1 \\\\\n0\n\\end{array}\\right],\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n0 \\\\\n1\n\\end{array}\\right]\\right\\} \\subseteq \\mathbb{R}^{4}\n\\]\n\n\nThese are independent, so they form a basis for \\(\\mathcal{N}(A)\\)"
+    "text": "\\[\ny_{t+1}=(I+dM)y_{t} \\Rightarrow y_{t}=(I+dM)^{-1}y_{t+1}\n\\]\n\\[\ny_{t}=y_{t+1}- dMy_{t} \\overset{?}\\approx y_{t+1}- d My_{t+1}\n\\]\n\nConnection: we will use math to show that the two are approximately equal.\n\n\nRemember Taylor series?\nFor small \\(x\\), we can approximate \\(\\frac{1}{1+x}\\) as \\(1-x+x^2-x^3+\\ldots\\)\n\n\nIf we have a matrix \\(A\\) such that \\(X = I + A\\) is invertible, then \\(X^{-1} = I - A + A^2 - A^3 + \\ldots\\)\n\n\nSo to first order in d,\n\\[\ny_{t}=(I+dM)^{-1}y_{t+1} \\approx \\left(I-dM\\right) y_{t+1}=y_{t+1}-d M y_{t+1}\n\\]\n\n\nNow \\(y_{t+1}=y_{t} + dM y_{t}\\). Plugging this in,\n\\(y_{t}=(I+dM)^{-1}y_{t+1} \\approx y_{t+1}-d M \\left(y_{t}+d M y_{t}\\right)\\approx y_{t+1}-d M y_{t}\\)"
   },
   {
     "objectID": "lectures/ch3lecture1b.html#using-the-null-space",
@@ -270,7 +270,7 @@
     "href": "lectures/ch3lecture1b.html#section-2",
     "title": "Ch3 Lecture 1",
     "section": "",
-    "text": "\\[\nI-A=\\left[\\begin{array}{ll}\n1 & 0 \\\\\n0 & 1\n\\end{array}\\right]-\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]=\\left[\\begin{array}{rr}\n0.3 & -0.4 \\\\\n-0.3 & 0.4\n\\end{array}\\right] \\text {. }\n\\]\n\n\\[\n\\left[\\begin{array}{rr}\n0.3 & -0.4 \\\\\n-0.3 & 0.4\n\\end{array}\\right] \\xrightarrow{E_{21}(1)}\\left[\\begin{array}{rr}\n1 & -4 / 3 \\\\\n0 & 0\n\\end{array}\\right]\n\\]\n\nnull space of \\(I-A\\) is spanned by the single vector \\((4 / 3,1)\\). In particular, any multiple of this vector qualifies as a possible limiting vector.\nIf we want a limiting vector whose entries are nonnegative and sum to 1 (which is required for states in a Markov chain), then the only choice is the vector resulting from dividing \\((4 / 3,1)\\) by the sum of its coordinates to obtain\n\nSolution set is \\(x_{1}=4 x_{2} / 3\\)\n\n\n\\[\n(3 / 7)(4 / 3,1)=(4 / 7,3 / 7) \\approx(0.57143,0.42857)\n\\]"
+    "text": "Is this set of vectors linearly independent?\n\\[\n\\left[\\begin{array}{l}1 \\\\ 1 \\\\ 0\\end{array}\\right],\\left[\\begin{array}{l}0 \\\\ 1 \\\\ 1\\end{array}\\right],\\left[\\begin{array}{r}1 \\\\ -1 \\\\ -2\\end{array}\\right]\n\\]\nPut in matrix form and find the reduced row echelon form: . . .\n\\[\n\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n1 & 1 & -1 \\\\\n0 & 1 & -2\n\\end{array}\\right] \\xrightarrow[E_{21}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n0 & 1 & -2 \\\\\n0 & 1 & -2\n\\end{array}\\right] \\xrightarrow[E_{32}(-1)]{\\longrightarrow}\\left[\\begin{array}{rrr}\n1 & 0 & 1 \\\\\n0 & 1 & -2 \\\\\n0 & 0 & 0\n\\end{array}\\right],\n\\]\n\nSolutions to the homogeneous system are \\(\\mathbf{c}=\\left(c_{1}=-c_{3},c_{2}= 2 c_{3}, c_{3}= c_{3}\\right)=\\)\nWhole vector is \\(c_{3}(-1,2,1)\\). Take \\(c_{3}=1\\) and we have that \\[\n-1 \\mathbf{v}_{1}+2 \\mathbf{v}_{2}+1 \\mathbf{v}_{3}=0\n\\]\n\n\n\\[\n-1 \\mathbf{v}_{1}+2 \\mathbf{v}_{2}+1 \\mathbf{v}_{3}=0\n\\]\nSo the vectors are linearly dependent."
   },
   {
     "objectID": "lectures/ch3lecture1b.html#using-the-null-space-to-find-a-basis",
@@ -299,5 +299,40 @@
     "title": "Ch3 Lecture 1",
     "section": "Summary",
     "text": "Summary"
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#in-matrix-form",
+    "href": "lectures/ch3lecture1b.html#in-matrix-form",
+    "title": "Ch3 Lecture 1",
+    "section": "In matrix form",
+    "text": "In matrix form\nIn matrix form, this becomes \\(y_{t+1}=y_{t}+ My_{t}\\), where \\(M\\) is a tridiagonal matrix with \\(-2\\) on the diagonal and \\(1\\) on the off-diagonals:\n\\[\nM=\\left[\\begin{array}{ccccccc}\n-2 & 1 & 0 & 0 & 0 & 0 & 0 \\\\\n1 & -2 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 1 & -2 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & -2 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 1 & -2 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & -2 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 & -2\n\\end{array}\\right]\n\\]\n\n\\[\ny_{t}=y_{t+1}- d My_{t} \\overset{?}\\approx y_{t+1}- My_{t+1}\n\\]\nTurns out it works… but why?"
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#using-matrix-inversion",
+    "href": "lectures/ch3lecture1b.html#using-matrix-inversion",
+    "title": "Ch3 Lecture 1",
+    "section": "Using matrix inversion",
+    "text": "Using matrix inversion\n\n\\(y_{t+1}=y_{t}+ My_{t}\\)\nis the same as \\(y_{t+1}=Iy_{t}+ My_{t}\\)\nin other words, \\(y_{t+1}=(I+M)y_{t}\\)\n\n\nHow do we solve this for \\(y_{t}\\), given \\(y_{t+1}\\)?\n\n\n\\[\ny_{t+1}=(I+M)y_{t} \\Rightarrow y_{t}=(I+M)^{-1}y_{t+1}\n\\]\n\n\nTwo different approaches – one correct, the other one gave approximately the right answer. Why?"
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#the-point",
+    "href": "lectures/ch3lecture1b.html#the-point",
+    "title": "Ch3 Lecture 1",
+    "section": "The point",
+    "text": "The point\nThe problem was much easier to solve once we put it in matrix form."
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#section-3",
+    "href": "lectures/ch3lecture1b.html#section-3",
+    "title": "Ch3 Lecture 1",
+    "section": "",
+    "text": "\\[\n\\left[\\begin{array}{c}\nx_{1} \\\\\nx_{2} \\\\\nx_{3} \\\\\nx_{4}\n\\end{array}\\right]=\\left[\\begin{array}{c}\nx_{3}+2 x_{4} \\\\\n-2 x_{3}-x_{4} \\\\\nx_{3} \\\\\nx_{4}\n\\end{array}\\right]=x_{3}\\left[\\begin{array}{r}\n1 \\\\\n-2 \\\\\n1 \\\\\n0\n\\end{array}\\right]+x_{4}\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n0 \\\\\n1\n\\end{array}\\right] .\n\\]\n\nThe general solution to the homogeneous system is an arbitrary linear combination of these two vectors\n\n\n\\[\n\\mathcal{N}(A)=\\operatorname{span}\\left\\{\\left[\\begin{array}{r}\n1 \\\\\n-2 \\\\\n1 \\\\\n0\n\\end{array}\\right],\\left[\\begin{array}{r}\n2 \\\\\n-1 \\\\\n0 \\\\\n1\n\\end{array}\\right]\\right\\} \\subseteq \\mathbb{R}^{4}\n\\]\n\n\nThese are independent, so they form a basis for \\(\\mathcal{N}(A)\\)"
+  },
+  {
+    "objectID": "lectures/ch3lecture1b.html#section-4",
+    "href": "lectures/ch3lecture1b.html#section-4",
+    "title": "Ch3 Lecture 1",
+    "section": "",
+    "text": "\\[\nI-A=\\left[\\begin{array}{ll}\n1 & 0 \\\\\n0 & 1\n\\end{array}\\right]-\\left[\\begin{array}{ll}\n0.7 & 0.4 \\\\\n0.3 & 0.6\n\\end{array}\\right]=\\left[\\begin{array}{rr}\n0.3 & -0.4 \\\\\n-0.3 & 0.4\n\\end{array}\\right] \\text {. }\n\\]\n\n\\[\n\\left[\\begin{array}{rr}\n0.3 & -0.4 \\\\\n-0.3 & 0.4\n\\end{array}\\right] \\xrightarrow{E_{21}(1)}\\left[\\begin{array}{rr}\n1 & -4 / 3 \\\\\n0 & 0\n\\end{array}\\right]\n\\]\n\nnull space of \\(I-A\\) is spanned by the single vector \\((4 / 3,1)\\). In particular, any multiple of this vector qualifies as a possible limiting vector.\nIf we want a limiting vector whose entries are nonnegative and sum to 1 (which is required for states in a Markov chain), then the only choice is the vector resulting from dividing \\((4 / 3,1)\\) by the sum of its coordinates to obtain\n\nSolution set is \\(x_{1}=4 x_{2} / 3\\)\n\n\n\\[\n(3 / 7)(4 / 3,1)=(4 / 7,3 / 7) \\approx(0.57143,0.42857)\n\\]"
   }
 ]

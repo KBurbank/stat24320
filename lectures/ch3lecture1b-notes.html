@@ -415,7 +415,11 @@ y_{i, t+1}=y_{i, t}+\frac{k D}{h^{2}}\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\righ
 <aside class="notes">
 <p>write out the system of equations for each spatial point. The f’s are zero except for t=0, so we will ignore them.</p>
 <p><span class="math inline">\(y_{0,t+1} = 0\)</span></p>
-<p><span class="math inline">\(y_{1,t+1}=y_{1,t}+\frac{k D}{h^{2}}\left(0-2 y_{1,t}+y_{2,t}\right)\)</span> <span class="math inline">\(y_{2,t+1}=y_{2,t}+\frac{k D}{h^{2}}\left(y_{1,t}-2 y_{2,t}+y_{3,t}\right)\)</span> <span class="math inline">\(y_{3,t+1}=y_{3,t}+\frac{k D}{h^{2}}\left(y_{2,t}-2 y_{3,t}+y_{4,t}\right)\)</span> etc, until we get to <span class="math inline">\(y_{6,t+1}=0\)</span></p>
+<p><span class="math inline">\(y_{1,t+1}=y_{1,t}+\frac{k D}{h^{2}}\left(0-2 y_{1,t}+y_{2,t}\right)\)</span></p>
+<p><span class="math inline">\(y_{2,t+1}=y_{2,t}+\frac{k D}{h^{2}}\left(y_{1,t}-2 y_{2,t}+y_{3,t}\right)\)</span></p>
+<p><span class="math inline">\(y_{3,t+1}=y_{3,t}+\frac{k D}{h^{2}}\left(y_{2,t}-2 y_{3,t}+y_{4,t}\right)\)</span></p>
+<p>…</p>
+<p><span class="math inline">\(y_{6,t+1}=0\)</span></p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -452,7 +456,7 @@ y_{i, t+1}-d\left(y_{i-1, t}-2 y_{i, t}+y_{i+1, t}\right)=y_{i, t}
 
 <section id="in-matrix-form" class="title-slide slide level2 center">
 <h2><em>In matrix form</em></h2>
-<p>In matrix form, this becomes <span class="math inline">\(y_{t+1}=y_{t}+ My_{t}\)</span>, where <span class="math inline">\(M\)</span> is a tridiagonal matrix with <span class="math inline">\(-2\)</span> on the diagonal and <span class="math inline">\(1\)</span> on the off-diagonals:</p>
+<p>In matrix form, this becomes <span class="math inline">\(y_{t+1}=y_{t}+ My_{t}\)</span>:</p>
 <p><span class="math display">\[
 M=\left[\begin{array}{ccccccc}
 -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
@@ -1071,59 +1075,68 @@ A=\left[\begin{array}{rrrr}
 <p><span class="math display">\[
 \mathbf{u}=\left(2-c_{3}\right) \mathbf{v}_{1}+\frac{1}{2}\left(c_{3}-1\right) \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}
 \]</span></p>
-<p><strong>Slide 9: Consistency and Column Space</strong></p>
+</div>
+</section>
+
+<section id="form-of-general-solution-to-a-linear-system" class="title-slide slide level2 center">
+<h2><em>Form of general solution to a linear system</em></h2>
+<div class="theorem">
 <ul>
-<li class="fragment"><strong>Theorem 3.15: Consistency and Column Space</strong>
-<ul>
-<li class="fragment">Discuss the relationship between consistency and column space.</li>
-</ul></li>
+<li class="fragment"><p>Suppose the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has a particular solution <span class="math inline">\(\mathbf{x}_{*}\)</span>.</p></li>
+<li class="fragment"><p>Then the general solution <span class="math inline">\(\mathbf{x}\)</span> to this system can be described by the equation</p></li>
 </ul>
-<p><strong>Slide 10: Example and Geometric Interpretation</strong></p>
-<ul>
-<li class="fragment"><strong>Example 3.38: Geometric Interpretation</strong>
-<ul>
-<li class="fragment">Provide a geometric interpretation of solution sets.</li>
-</ul></li>
-</ul>
-<p><strong>Slide 11: General Solution and Parametric Representation</strong></p>
-<ul>
-<li class="fragment"><strong>Theorem 3.16: Form of General Solution</strong>
-<ul>
-<li class="fragment">Present the general solution form.</li>
-</ul></li>
-<li class="fragment"><strong>Example 3.39: Parametric Representation</strong>
-<ul>
-<li class="fragment">Illustrate finding the general solution with a parametric representation.</li>
-</ul></li>
-</ul>
-<p><strong>Slide 12: Reduced Row Form and Basis</strong></p>
-<ul>
-<li class="fragment"><strong>Theorem 3.18: Basis from Reduced Row Form</strong>
-<ul>
-<li class="fragment">Discuss obtaining a basis from reduced row form.</li>
-</ul></li>
-<li class="fragment"><strong>Corollary 3.7: Basis from Pivot Columns</strong>
-<ul>
-<li class="fragment">Present a corollary for obtaining a basis from pivot columns.</li>
-</ul></li>
-</ul>
-<p><strong>Slide 13: Column Space Algorithm</strong></p>
-<ul>
-<li class="fragment"><strong>Algorithm: Column Space</strong>
-<ul>
-<li class="fragment">Present steps for finding a basis using the column space algorithm.</li>
-</ul></li>
-<li class="fragment"><strong>Example 3.41: Application of Column Space Algorithm</strong>
-<ul>
-<li class="fragment">Apply the algorithm to find a basis of a vector space.</li>
-</ul></li>
-</ul>
-<p><strong>Slide 14: Conclusion</strong></p>
-<ul>
-<li class="fragment">Summarize key concepts covered.</li>
-<li class="fragment">Emphasize the importance and applications of linear algebra.</li>
-</ul>
-<p>This structure should help organize your content logically and make it easier for your audience to follow along.</p>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{x}=\mathbf{x}_{*}+\mathbf{z}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{z}\)</span> runs over all elements of <span class="math inline">\(\mathcal{N}(A)\)</span>.</p>
+</div>
+</div>
+<div class="fragment">
+<p>Solution set is the set of all <strong>translates</strong> of elements in the null space of <span class="math inline">\(A\)</span> by some fixed vector.</p>
+</div>
+<div class="fragment">
+<p>When n is 2 or 3 this says that the solution set is either a single point, a line or a plane—not necessarily through the origin!</p>
+</div>
+</section>
+
+<section id="example-1" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Describe the solution sets to the system <span class="math display">\[
+\begin{array}{r}
+x+2 y=3 \\
+x+y+t=3 .
+\end{array}
+\]</span></p>
+<div class="fragment">
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_15_5db5e98426db2eb06e94g-13.jpg?height=109&amp;width=791&amp;top_left_y=2037&amp;top_left_x=368" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_04_15_5db5e98426db2eb06e94g-13.jpg?height=109&amp;width=791&amp;top_left_y=2037&amp;top_left_x=368"></a></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; x=3-2 t \\
+&amp; y=t \\
+&amp; z=t .
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+
+<section id="null-space-algorithm" class="title-slide slide level2 center">
+<h2><em>Null Space algorithm</em></h2>
+<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>.</p>
+<ol type="1">
+<li class="fragment"><p>Compute the reduced row echelon form <span class="math inline">\(R\)</span> of <span class="math inline">\(A\)</span>.</p></li>
+<li class="fragment"><p>Use <span class="math inline">\(R\)</span> to find the general solution to the homogeneous system <span class="math inline">\(A \mathbf{x}=0\)</span>.</p></li>
+<li class="fragment"><p>Write the general solution <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\)</span> to the homogeneous system in the form</p></li>
+</ol>
+<p><span class="math display">\[
+\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+\]</span></p>
+<p>where <span class="math inline">\(x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}\)</span> are the free variables.</p>
+<ol start="4" type="1">
+<li class="fragment">List the vectors <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}\)</span>. These form a basis of <span class="math inline">\(\mathcal{N}(A)\)</span>.</li>
+</ol>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1150,7 +1163,6 @@ A=\left[\begin{array}{rrrr}
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
-</div>
 </div>
 </div>
 </section>
@@ -1548,7 +1560,7 @@ A=\left[\begin{array}{rrrr}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

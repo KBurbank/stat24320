@@ -375,14 +375,14 @@
     "href": "lectures/ch3lecture1.html#in-matrix-form",
     "title": "Ch3 Lecture 1",
     "section": "In matrix form",
-    "text": "In matrix form\nIn matrix form, this becomes \\(y_{t+1}=y_{t}+ My_{t}\\):\n\\[\nM=\\left[\\begin{array}{ccccccc}\n-2 & 1 & 0 & 0 & 0 & 0 & 0 \\\\\n1 & -2 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 1 & -2 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & -2 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 1 & -2 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & -2 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 & -2\n\\end{array}\\right]\n\\]\n\n\\[\ny_{t}=y_{t+1}- d My_{t} \\overset{?}\\approx y_{t+1}- My_{t+1}\n\\]\nTurns out it works… but why?"
+    "text": "In matrix form\nIn matrix form, this becomes \\(y_{t+1}=y_{t}+ d My_{t}\\):\n\\[\nM=\\left[\\begin{array}{ccccccc}\n-2 & 1 & 0 & 0 & 0 & 0 & 0 \\\\\n1 & -2 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 1 & -2 & 1 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & -2 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 1 & -2 & 1 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & -2 & 1 \\\\\n0 & 0 & 0 & 0 & 0 & 1 & -2\n\\end{array}\\right]\n\\]\n\n\\[\ny_{t}=y_{t+1}- d My_{t} \\overset{?}\\approx y_{t+1}- d My_{t+1}\n\\]\nTurns out it works… but why?"
   },
   {
     "objectID": "lectures/ch3lecture1.html#using-matrix-inversion",
     "href": "lectures/ch3lecture1.html#using-matrix-inversion",
     "title": "Ch3 Lecture 1",
     "section": "Using matrix inversion",
-    "text": "Using matrix inversion\n\n\\(y_{t+1}=y_{t}+ My_{t}\\)\nis the same as \\(y_{t+1}=Iy_{t}+ My_{t}\\)\nin other words, \\(y_{t+1}=(I+M)y_{t}\\)\n\n\nHow do we solve this for \\(y_{t}\\), given \\(y_{t+1}\\)?\n\n\n\\[\ny_{t+1}=(I+M)y_{t} \\Rightarrow y_{t}=(I+M)^{-1}y_{t+1}\n\\]\n\n\nTwo different approaches – one correct, the other one gave approximately the right answer. Why?"
+    "text": "Using matrix inversion\n\n\\(y_{t+1}=y_{t}+ dMy_{t}\\)\nis the same as \\(y_{t+1}=Iy_{t}+ dMy_{t}\\)\nin other words, \\(y_{t+1}=(I+dM)y_{t}\\)\n\n\nHow do we solve this for \\(y_{t}\\), given \\(y_{t+1}\\)?\n\n\n\\[\ny_{t+1}=(I+dM)y_{t} \\Rightarrow y_{t}=(I+dM)^{-1}y_{t+1}\n\\]\n\n\nTwo different approaches – one correct, the other one gave approximately the right answer. Why?"
   },
   {
     "objectID": "lectures/ch3lecture1.html#section-1",

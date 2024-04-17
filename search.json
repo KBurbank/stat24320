@@ -2041,7 +2041,7 @@
     "href": "lectures/ch4lecture1.html#imperfect-data",
     "title": "Ch4 Lecture 1",
     "section": "Imperfect data",
-    "text": "Imperfect data\n\nNow have them realize what happens if the data is not on a straight line. What does the relationship between \\(x\\) and \\(y\\) look like now?\n\\(y\\) is still close to a multiple of \\(x\\), but not exactly. They aren’t exactly parallel."
+    "text": "Imperfect data\n\nNow have them realize what happens if the data is not on a straight line. What does the relationship between \\(x\\) and \\(y\\) look like now?\n\\(y\\) is still close to a multiple of \\(x\\), but not exactly. They aren’t exactly parallel.\nThe difference between them is the vector of residuals. The squared norm of the residuals vector is the sum of the individual residuals."
   },
   {
     "objectID": "lectures/ch4lecture1.html#guessing-at-a-fit",

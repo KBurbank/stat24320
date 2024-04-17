@@ -704,6 +704,7 @@ d/a &amp; 0 &amp; -d/c
 <aside class="notes">
 <p>Now have them realize what happens if the data is not on a straight line. What does the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> look like now?</p>
 <p><span class="math inline">\(y\)</span> is still close to a multiple of <span class="math inline">\(x\)</span>, but not exactly. They aren’t exactly parallel.</p>
+<p>The difference between them is the vector of <em>residuals</em>. The squared norm of the residuals vector is the sum of the individual residuals.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1425,7 +1426,7 @@ A^{T} \mathbf{b}=\left[\begin{array}{lll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

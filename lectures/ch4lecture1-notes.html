@@ -839,8 +839,17 @@ x = \frac{2 \cdot 0.7 + 5 \cdot 2.4 + 7 \cdot 3.2}{2^2 + 5^2 + 7^2} \approx 0.45
 
 <section id="normal-equations-for-multiple-predictors" class="title-slide slide level2 center">
 <h2><em>Normal equations for multiple predictors</em></h2>
-<p>More generally, when we have multiple predictors, <span class="math inline">\(\mathbf{A}\)</span> is a matrix, with each column corresponding to a predictor variable. <span class="math inline">\(\mathbf{x}\)</span> is a column vector of the coefficients we are trying to find.</p>
-<p>What do the normal equations tell us? We can break them apart into the components corresponding to each column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p>When we have multiple predictors, <span class="math inline">\(\mathbf{A}\)</span> is a matrix</p>
+<div class="fragment">
+<p>Each column corresponds to a predictor variable.</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\mathbf{x}\)</span> is a column vector of the coefficients we are trying to find, one per predictor.</p>
+</div>
+<div class="fragment">
+<p>What do the normal equations tell us? We can break them apart into one equation corresponding to each column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+<div class="fragment">
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{A}^{T} \mathbf{A} \mathbf{x} &amp;=\mathbf{A}^{T} \mathbf{b} \\
@@ -849,6 +858,7 @@ x = \frac{2 \cdot 0.7 + 5 \cdot 2.4 + 7 \cdot 3.2}{2^2 + 5^2 + 7^2} \approx 0.45
 \mathbf{a_i}\cdot \left(\mathbf{b}-\mathbf{Ax}\right)&amp;=0\text{ for every i}
 \end{aligned}
 \]</span></p>
+</div>
 <div class="fragment">
 <p>We need to find <span class="math inline">\(\mathbf{x}\)</span> such that the residuals are orthogonal to every column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
 </div>
@@ -1415,7 +1425,7 @@ A^{T} \mathbf{b}=\left[\begin{array}{lll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

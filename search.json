@@ -1916,5 +1916,201 @@
     "title": "Ch2 Lecture 4",
     "section": "PLU factorization",
     "text": "PLU factorization\nWhat if we need row exchanges?\n\nWe could start off by doing all the row-exchanging elementary operations that we need, and store the product of these row-exchanging matrices as a matrix \\(P\\).\nThis product is called a permutation matrix\nApplying the correct permuatation matrix \\(P\\) to \\(A\\), we get a matrix for which Gaussian elimination will succeed without further row exchanges.\n\n\nNow we have a theorem that applies to all nonsingular matrices:\n\nIf \\(A\\) is a nonsingular matrix, then there exists a permutation matrix \\(P\\), upper triangular matrix \\(U\\), and unit lower triangular matrix \\(L\\) such that \\(P A=L U\\).\n\n\n\nSo, if you’ve got a nonsingular matrix \\(A\\), you can always find a permutation matrix \\(P\\), an upper triangular matrix \\(U\\), and a unit lower triangular matrix \\(L\\) that satisfy \\(P A=L U\\). Pretty neat, huh?\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nRBM schematic"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#planes",
+    "href": "lectures/ch4lecture1.html#planes",
+    "title": "Ch4 Lecture 1",
+    "section": "Planes",
+    "text": "Planes\nMore copilot insanity. I wrote the first sentence, and then it autocompleted as follows:\nHave students put a dot in the center of the card and say this is the origin. Have them draw a line and say this is the x-axis. Have them draw a line perpendicular to the x-axis and say this is the y-axis. Have them draw a line perpendicular to the x and y axes and say this is the z-axis. Have them draw a line perpendicular to the x and y axes and say this is the w-axis. Have them draw a line perpendicular to the x, y, and w axes and say this is the v-axis. Have them draw a line perpendicular to the x, y, w, and v axes and say this is the u-axis. Have them draw a line perpendicular to the x, y, w, v, and u axes and say this is the t-axis. Have them draw a line perpendicular to the x, y, w, v, u, and t axes and say this is the s-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, and s axes and say this is the r-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, and r axes and say this is the q-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, and q axes and say this is the p-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, and p axes and say this is the o-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, and o axes and say this is the n-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, and n axes and say this is the m-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, and m axes and say this is the l-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, m, and l axes and say this is the k-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s…"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section",
+    "href": "lectures/ch4lecture1.html#section",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Give out toothpicks and cards and markers. Have students put a dot in the center of the card and say this is the origin. Imagine the card is an infinite plane. Now have them hold one end of their marker at the “origin”; the other end of the marker represents vector coordinates. Can they come up with a simple way of describing which points are on the plane?\nHave them poke a toothpick through the card at the origin. (This toothpick represents the normal vector to the plane.) Now can they see a simple way of describing which points are on the plane?\nWrite that the vector describing the toothpick is called \\(\\vec a\\), and we’ll assume it is of unit length. The plane is the set of all vectors \\(\\vec x\\) such that \\(\\vec a\\cdot \\vec x = 0\\). This is the equation of the plane."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#finding-the-normal-vector-when-we-know-two-vectors-in-the-plane",
+    "href": "lectures/ch4lecture1.html#finding-the-normal-vector-when-we-know-two-vectors-in-the-plane",
+    "title": "Ch4 Lecture 1",
+    "section": "Finding the normal vector when we know two vectors in the plane",
+    "text": "Finding the normal vector when we know two vectors in the plane\n\nNotice that the normal vector is perpendicular to the plane. It’s also going to be orthogonal to vector in the plane, and to any two vectors that lie in the plane.\n\nFor \\(\\mathbb{R}^3\\), we can find the normal vector by taking the cross product of two vectors in the plane.\nLet \\(\\mathbf{i}, \\mathbf{j}\\), and \\(\\mathbf{k}\\) represent the standard basis \\(\\mathbf{e}_{1}, \\mathbf{e}_{2}, \\mathbf{e}_{3}\\).\n\n\\[\n\\mathbf{u} \\times \\mathbf{v}=\\left(u_{2} v_{3}-u_{3} v_{2}\\right) \\mathbf{i}+\\left(u_{3} v_{1}-u_{1} v_{3}\\right) \\mathbf{j}+\\left(u_{1} v_{2}-u_{2} v_{1}\\right) \\mathbf{k}=\\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\nu_{1} & u_{2} & u_{3} \\\\\nv_{1} & v_{2} & v_{3}\n\\end{array}\\right|\n\\]\n\n\nThe cross product is orthogonal to both \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\): \\(\\mathbf{u} \\cdot \\mathbf{u} \\times \\mathbf{v}=0\\) and \\(\\mathbf{v} \\cdot \\mathbf{u} \\times \\mathbf{v}=0\\)\n\n\nWe can use the cross product to find the normal vector to the plane, simply by taking the cross product of two vectors in the plane."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#finding-the-normal-vector-from-the-equation-of-the-plane",
+    "href": "lectures/ch4lecture1.html#finding-the-normal-vector-from-the-equation-of-the-plane",
+    "title": "Ch4 Lecture 1",
+    "section": "Finding the normal vector from the equation of the plane",
+    "text": "Finding the normal vector from the equation of the plane\nIf the plane is specified \\(ax + by + cz = d\\), then a normal vector is \\(\\vec a = ( a, b, c )\\).\n\nHow can we tell? Let’s find three points on the plane. Set the first point where \\(x = 0\\) and \\(y = 0\\), so \\(z = d/c\\): \\((0, 0, d/c)\\). Set second point is where \\(x=0\\) and \\(z = 0\\), so \\(y=d/b\\): \\((0,d/b,0)\\). The third point is \\((d/a,0,0)\\).\nNow find two displacement vectors in the plane: \\(\\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\\) and \\(\\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-1",
+    "href": "lectures/ch4lecture1.html#section-1",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Now take the cross product of these two vectors to find the normal vector:\n\\[\n\\begin{aligned}\n\\vec u \\times \\vec v \\\\\n&= \\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n0 & d/b & -d/c \\\\\nd/a & 0 & -d/c\n\\end{array}\\right| \\\\\n&= - \\mathbf{i} \\left( \\frac{d}{b} \\frac{d}{c} \\right) + \\mathbf{j} \\left( \\frac{d}{a} \\frac{d}{c} \\right) - \\mathbf{k} \\left( \\frac{d}{a} \\frac{d}{b} \\right) \\\\\n&= -d^2 \\left[ \\left( \\frac{1}{bc} \\right) \\mathbf{i} - \\left( \\frac{1}{ac} \\right) \\mathbf{j} + \\left( \\frac{1}{ab} \\right) \\mathbf{k} \\right]\\\\\n&= -\\frac{d^2}{abc} \\left[\\left( a \\right) \\mathbf{i} - \\left( b \\right) \\mathbf{j} + \\left( c \\right) \\mathbf{k} \\right]\\\\\n\\end{aligned}\n\\]\nThis is paralell to \\(\\vec a = (a, b, c)\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#distances-from-the-plane",
+    "href": "lectures/ch4lecture1.html#distances-from-the-plane",
+    "title": "Ch4 Lecture 1",
+    "section": "Distances from the plane",
+    "text": "Distances from the plane\n\nHave them hold the marker still with its end at the origin, but with the point not on the plane. Can they describe the distance to the plane?\nNotice that it’s the same as the scalar projection of the vector onto the normal vector: projection of \\(\\vec x\\) onto \\(\\vec a\\). That is, the distance is \\(|\\vec a\\cdot \\vec x|\\). (If the normal vector is not of unit length, the distance would have been \\(|\\vec a\\cdot \\vec x|/||\\vec a||\\).)"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-2",
+    "href": "lectures/ch4lecture1.html#section-2",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Now have them figure out the displacement vector that points from \\(\\vec x\\) to the closest point on the plane.\nIt is in the same direction as \\(\\vec a\\), and its length is \\(|\\vec a\\cdot \\vec x|/ ||\\vec a||\\). This is the projection of \\(\\vec x\\) onto the normal vector."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#back-onto-the-plane",
+    "href": "lectures/ch4lecture1.html#back-onto-the-plane",
+    "title": "Ch4 Lecture 1",
+    "section": "Back onto the plane",
+    "text": "Back onto the plane\n\nNow have them find the location of the point on the plane that is closest to \\(\\vec x\\).\nIt is \\(\\vec x - \\vec a |\\vec x \\cdot\\vec a|/||\\vec a||^2\\).\nThis is the projection of \\(\\vec x\\) onto the plane. We find it by subtracting the projection of \\(\\vec x\\) onto the normal vector from \\(\\vec x\\).\nProjection onto the plane is the same as the displacement vector from the point to the plane is the same as the closest point on the plane to the point."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#a-plane-not-at-the-origin",
+    "href": "lectures/ch4lecture1.html#a-plane-not-at-the-origin",
+    "title": "Ch4 Lecture 1",
+    "section": "A plane not at the origin",
+    "text": "A plane not at the origin\n\nHave them designate the origin as some other point, not on the card.\nCan they come up with a simple way of describing what the displacement was?\nThey can describe the displacement of the plane with a scalar multiple of the normal vector.\nCall this q \\(\\vec a\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-3",
+    "href": "lectures/ch4lecture1.html#section-3",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Now how can they describe which points are on the plane?\nThe simplest way (for my brain at least) is to imagine taking a point on the plane and subtracting the displacement vector from it. Is the new point where the plane would be if the plane were at the origin?\nSo, take \\(\\vec x\\) and subtract \\(\\vec a q\\) from it. Would this point fall in a plane at the origin? That is, is \\(\\vec a\\cdot (\\vec x - \\vec a q) = 0\\)?\nWe can simplify this: \\(\\vec a\\cdot \\vec x - \\vec a\\cdot \\vec a q = 0\\). So \\(\\vec a\\cdot \\vec x = \\vec a\\cdot \\vec a q\\). So \\(\\vec a\\cdot \\vec x = q\\).\nThis is the equation of the plane."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#hyperplane",
+    "href": "lectures/ch4lecture1.html#hyperplane",
+    "title": "Ch4 Lecture 1",
+    "section": "Hyperplane",
+    "text": "Hyperplane\n\nA hyperplane in \\(\\mathbb{R}^{n}\\) is the set of all \\(\\mathbf{x} \\in \\mathbb{R}^{n}\\) such that \\(\\mathbf{a} \\cdot \\mathbf{x}=b\\), where the nonzero vector \\(\\mathbf{a} \\in \\mathbb{R}^{n}\\) and scalar \\(b\\) are given.\n\n\n\nLet \\(H\\) be the hyperplane in \\(\\mathbb{R}^{n}\\) defined by the equation \\(\\mathbf{a} \\cdot \\mathbf{x}=b\\) and let \\(\\mathbf{x}_{*} \\in H\\). Then\n\n\\(\\mathbf{a}^{\\perp}=\\left\\{\\mathbf{y} \\in \\mathbb{R}^{n} \\mid \\mathbf{a} \\cdot \\mathbf{y}=0\\right\\}\\) is a subspace of \\(\\mathbb{R}^{n}\\) of dimension \\(n-1\\).\n\\(H=\\mathbf{x}_{*}+\\mathbf{a}^{\\perp}=\\left\\{\\mathbf{x}_{*}+\\mathbf{y} \\mid \\mathbf{y} \\in \\mathbf{a}^{\\perp}\\right\\}\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#example",
+    "href": "lectures/ch4lecture1.html#example",
+    "title": "Ch4 Lecture 1",
+    "section": "Example",
+    "text": "Example\nFind an equation that defines the plane containing the three (noncollinear) points \\(P, Q\\), and \\(R\\) with coordinates \\((1,0,2),(2,1,0)\\), and \\((3,1,1)\\), respectively.\n\n\\[\n\\begin{aligned}\n& \\overrightarrow{P Q}=(2,1,0)-(1,0,2)=(1,1,-2) \\\\\n& \\overrightarrow{P R}=(3,1,1)-(1,0,2)=(2,1,-1)\n\\end{aligned}\n\\]\n\n\n\\[\n\\mathbf{u} \\times \\mathbf{v}=\\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n1 & 1 & -2 \\\\\n2 & 1 & -1\n\\end{array}\\right|=\\mathbf{i}-3 \\mathbf{j}-\\mathbf{k}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#projections-to-the-displaced-plane",
+    "href": "lectures/ch4lecture1.html#projections-to-the-displaced-plane",
+    "title": "Ch4 Lecture 1",
+    "section": "Projections to the displaced plane",
+    "text": "Projections to the displaced plane\n\nNow have them find the displacement vector that points from \\(\\vec x\\) to the closest point on the plane.\nThis will be the same as if we again subtract to get a plane that goes through the origin. So the displaced position is $x - q a $, and its distance from the plane that goes through the origin is this dot a: $a(x - q a)=ax - q $.\nMultiplying by \\(\\vec a\\) we get $a (ax - q) $.\nThen, to find the closest point on the plane, we subtract this from \\(\\vec x\\): $x - a (ax - q) $."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#summary",
+    "href": "lectures/ch4lecture1.html#summary",
+    "title": "Ch4 Lecture 1",
+    "section": "Summary",
+    "text": "Summary\nPlane through the origin: \\(\\vec a\\cdot \\vec x = 0\\)\nPlane displaced from the origin: \\(\\vec a\\cdot \\vec x = q\\)\nComponent of \\(\\vec x\\) along the vector \\(\\vec a\\) (scalar projection): \\(\\vec a\\cdot \\vec x / || \\vec a ||\\)\nProjection of \\(\\vec x\\) onto \\(\\vec a\\): \\(\\vec a / ||a|| \\quad \\vec a\\cdot \\vec x/||\\vec a||\\)\nProjection of \\(\\vec x\\) onto the plane for which \\(\\vec a\\) is the normal vector, displaced by \\(q \\vec a\\) from the origin: \\(\\vec x\\) - projection onto the normal vector = $x - a (ax - q) $"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#projection-formula-for-vectors",
+    "href": "lectures/ch4lecture1.html#projection-formula-for-vectors",
+    "title": "Ch4 Lecture 1",
+    "section": "Projection Formula for Vectors",
+    "text": "Projection Formula for Vectors\nLet \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) be vectors, \\(\\mathbf{v} \\neq \\mathbf{0}\\). Let\n\n\\[\n\\mathbf{p}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v} \\text { and } \\quad \\mathbf{q}=\\mathbf{u}-\\mathbf{p}\n\\]\nThen \\(\\mathbf{p}\\) is parallel to \\(\\mathbf{v}, \\mathbf{q}\\) is orthogonal to \\(\\mathbf{v}\\), and \\(\\mathbf{u}=\\mathbf{p}+\\mathbf{q}\\).\n\\[\n\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v}\n\\]\n\\[\n\\operatorname{orth}_{\\mathbf{v}} \\mathbf{u}=\\mathbf{u}-\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#taking-a-step-back-from-linear-algebra-fitting-a-line-to-data",
+    "href": "lectures/ch4lecture1.html#taking-a-step-back-from-linear-algebra-fitting-a-line-to-data",
+    "title": "Ch4 Lecture 1",
+    "section": "Taking a step back from linear algebra: fitting a line to data",
+    "text": "Taking a step back from linear algebra: fitting a line to data\n\nDraw a scatter plot of some data. Draw a line that seems to fit the data well. Make a separate plot of the residuals vs x.\nMention least squares.\nNow draw a line that doesn’t fit the data well. Make a separate plot of the residuals. Notice that now there is a relationship between the residuals and x – their correlation is not zero.\nIdea of least squares can then to be to find the line such that the residuals are uncorrelated with x – so that the slope of the residuals vs x is zero.\nThat is, we want the residuals to be orthogonal to the line."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#straight-lines-of-x-and-y-now-in-rn",
+    "href": "lectures/ch4lecture1.html#straight-lines-of-x-and-y-now-in-rn",
+    "title": "Ch4 Lecture 1",
+    "section": "Straight lines of x and y, now in Rn",
+    "text": "Straight lines of x and y, now in Rn\n\nHave the students draw a scatter plot of some data in x and y, which are on a straight line. Ask them what this looks like if we plot the data in \\(\\mathbb{R}^n\\). What does \\(x\\) look like now? What is its relation to \\(y\\)?\nHint: have them write the relationship between \\(x_1\\) and \\(y_1\\).\nWe can think of the the data \\(x\\) as a single point in \\(\\mathbb{R}^n\\), and the same for \\(y\\). So if there is a linear relationship between \\(x\\) and \\(y\\), then \\(\\mathbf{y}\\) a multiple of \\(\\mathbf{x}\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#imperfect-data",
+    "href": "lectures/ch4lecture1.html#imperfect-data",
+    "title": "Ch4 Lecture 1",
+    "section": "Imperfect data",
+    "text": "Imperfect data\n::: notes Now have them realize what happens if the data is not on a straight line. What does the relationship between \\(x\\) and \\(y\\) look like now?\n\\(y\\) is still close to a multiple of \\(x\\), but not exactly. They aren’t exactly parallel."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#guessing-at-a-fit",
+    "href": "lectures/ch4lecture1.html#guessing-at-a-fit",
+    "title": "Ch4 Lecture 1",
+    "section": "Guessing at a fit",
+    "text": "Guessing at a fit\n\nSuppose we think that \\(y\\) is approximately a multiple of \\(x\\), so that \\(\\mathbf y \\approx m \\mathbf x\\). How should we measure how good this guess is?\nIdea: calculate the residuals, which are the differences between the actual \\(y\\) and the guess \\(m x\\). Their norm should be small.\nDraw the residuals."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#best-guess",
+    "href": "lectures/ch4lecture1.html#best-guess",
+    "title": "Ch4 Lecture 1",
+    "section": "Best guess",
+    "text": "Best guess\n\nFor different values of \\(m\\), the residuals will be different. We want to find the value of \\(m\\) that makes the residuals as small as possible. Geometrically, when will this be?\nWhen the residuals are orthogonal to \\(x\\).\nThere is a line that contains all possible values for multiples of \\(x\\). The residuals will always be a sum of a component along this line and a component orthogonal to it. Notice that the component orthogonal to the line will always be the same – it’s the displacement from \\(y\\) to the closest point on the line. But the parallel component will change depending on what value we choose for \\(m\\).\nTo make the residuals as small as possible, we want the parallel component to be zero. That is, we want the residuals to be orthogonal to \\(x\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#least-squares",
+    "href": "lectures/ch4lecture1.html#least-squares",
+    "title": "Ch4 Lecture 1",
+    "section": "Least squares",
+    "text": "Least squares\n\\(m \\mathbf{x}-\\mathbf{y}\\) should be orthogonal to \\(\\mathbf{x}\\).\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot\\left(m \\mathbf{x}-\\mathbf{y}\\right) &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x}-\\mathbf{x} \\cdot \\mathbf{y} &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x} &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\end{aligned}\n\\]\n\nChange to matrix notation:\n\n\\(\\mathbf{x} \\rightarrow \\mathbf{A}\\)\n\\(\\mathbf{y} \\rightarrow \\mathbf{b}\\)\n\\(m \\rightarrow \\mathbf{x}\\)\n\n\n\nLinear equation becomes \\(\\mathbf{A} \\mathbf{x}= \\mathbf{b}\\). But it’s not consistent if the data aren’t on the straight line.\n\n\nBest fit equation becomes\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThese are the normal equations. We solve them to find \\(\\mathbf{x}\\) which corresponds to the best fit."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#normal-equations-for-a-single-predictor",
+    "href": "lectures/ch4lecture1.html#normal-equations-for-a-single-predictor",
+    "title": "Ch4 Lecture 1",
+    "section": "Normal equations for a single predictor",
+    "text": "Normal equations for a single predictor\nWhen we have a single predictor variable and a single response variable, the \\(\\mathbf{x}\\) we are trying to find is just a scalar. \\(\\mathbf{A}\\) is a column vector of the predictor variable, call it now \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) is a column vector of the response variable.\nThe normal equations become\n\\[\n\\begin{aligned}\n\\mathbf{a}^{T} \\mathbf{a} \\mathbf{x} &=\\mathbf{a}^{T} \\mathbf{b} \\\\\n\\mathbf{a} \\cdot \\mathbf{a} \\mathbf{x} &=\\mathbf{a} \\cdot \\mathbf{b} \\\\\nx = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}}\n\\end{aligned}\n\\]\nThis is the formula for the slope of the best fit line."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#example-1",
+    "href": "lectures/ch4lecture1.html#example-1",
+    "title": "Ch4 Lecture 1",
+    "section": "Example",
+    "text": "Example\nYou have a scale that measures in unknown units.\nYou have items that you know weigh approximately 2, 5, and 7 pounds (approximately.)\n\nYou measure the scale’s output for these items and get \\(0.7,2.4\\), and 3.2. What is the conversion factor from the scale’s units to pounds?\n\n\nYou can set up the system of equations:\n\\(\\mathbf{a}= \\begin{bmatrix} 2 \\\\ 5 \\\\ 7 \\end{bmatrix}\\) and \\(\\mathbf{b}= \\begin{bmatrix} 0.7 \\\\ 2.4 \\\\ 3.2 \\end{bmatrix}\\)\nCan you find \\(\\mathbf{x}\\) such that \\(\\mathbf{a} \\cdot \\mathbf{x} = \\mathbf{b}\\)?\n\n\nNo, it’s inconsistent. But you can find the best fit.\n\n\n\\[\n\\begin{aligned}\n\\mathbf{a}^{T} \\mathbf{a} \\mathbf{x} &=\\mathbf{a}^{T} \\mathbf{b} \\\\\n\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix} \\begin{bmatrix} 2 \\\\ 5 \\\\ 7 \\end{bmatrix} x &= \\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix} \\begin{bmatrix} 0.7 \\\\ 2.4 \\\\ 3.2 \\end{bmatrix}\nx = \\frac{2 \\cdot 0.7 + 5 \\cdot 2.4 + 7 \\cdot 3.2}{2^2 + 5^2 + 7^2} \\approx 0.459\n\\end{aligned}\n\\]\nSo to go from pounds to the scale’s units, multiply by 0.459.\n\n\n(This is the opposite of what the book did – they found the conversion factor from the scale’s units to pounds.)"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#normal-equations-for-multiple-predictors",
+    "href": "lectures/ch4lecture1.html#normal-equations-for-multiple-predictors",
+    "title": "Ch4 Lecture 1",
+    "section": "Normal equations for multiple predictors",
+    "text": "Normal equations for multiple predictors\nMore generally, when we have multiple predictors, \\(\\mathbf{A}\\) is a matrix, with each column corresponding to a predictor variable. \\(\\mathbf{x}\\) is a column vector of the coefficients we are trying to find.\nWhat do the normal equations tell us? We can break them apart into the components corresponding to each column of \\(\\mathbf{A}\\).\n\\[\n\\begin{aligned}\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b} \\\\\n\\text{becomes} \\\\\n\\mathbf{a_i}\\cdot \\mathbf{A} \\mathbf{x} &=\\mathbf{a_i} \\cdot \\mathbf{b}\\text{ for every i} \\\\\n\\mathbf{a_i}\\cdot \\left(\\mathbf{b}-\\mathbf{Ax}\\right)&=0\\text{ for every i}\n\\end{aligned}\n\\]\n\nWe need to find \\(\\mathbf{x}\\) such that the residuals are orthogonal to every column of \\(\\mathbf{A}\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#example-2",
+    "href": "lectures/ch4lecture1.html#example-2",
+    "title": "Ch4 Lecture 1",
+    "section": "Example",
+    "text": "Example\nWe have two predictors \\(a_1\\) and \\(a_2\\) and a response variable \\(b\\). We have the following data:\n\n\n\n\\(x_1\\)\n\\(x_2\\)\n\\(y\\)\n\n\n\n\n2\n1\n0\n\n\n1\n1\n0\n\n\n2\n1\n2\n\n\n\n\nWe are hoping to find a linear relationship of the form \\(\\beta_1 x_1 + \\beta_2 x_2 = y\\) for some values of \\(\\beta_1\\) and \\(\\beta_2\\).\n\n\nThis would bring us the following system of equations:\n\\[\n\\begin{aligned}\n2 \\beta_{1}+\\beta_{2} & =0 \\\\\n\\beta_{1}+\\beta_{2} & =0 \\\\\n2 \\beta_{1}+\\beta_{2} & =2 .\n\\end{aligned}\n\\]\n\n\nObviously inconsistent! (\\(2 \\beta_{1}+\\beta_{2}\\) cannot equal both 0 and 2.)\n\n\nFind the least squares solution using the normal equations:"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-5",
+    "href": "lectures/ch4lecture1.html#section-5",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Change variable names, so the \\(\\beta\\)s are now \\(\\mathbf{x}\\), the \\(x\\)s are now the columns \\(\\mathbf{A}\\), and the \\(y\\)s are now \\(\\mathbf{b}\\).\n\\[\nA=\\left[\\begin{array}{ll}\n2 & 1 \\\\\n1 & 1 \\\\\n2 & 1\n\\end{array}\\right], \\text { and } \\mathbf{b}=\\left[\\begin{array}{l}\n0 \\\\\n0 \\\\\n2\n\\end{array}\\right]\n\\]\n\nResiduals are \\(\\mathbf{b}-\\mathbf{A} \\mathbf{x}\\).\nNormal equations are \\(\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x}=\\mathbf{A}^{T} \\mathbf{b}\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-6",
+    "href": "lectures/ch4lecture1.html#section-6",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "\\[\nA^{T} A=\\left[\\begin{array}{lll}\n2 & 1 & 2 \\\\\n1 & 1 & 1\n\\end{array}\\right]\\left[\\begin{array}{ll}\n2 & 1 \\\\\n1 & 1 \\\\\n2 & 1\n\\end{array}\\right]=\\left[\\begin{array}{ll}\n9 & 5 \\\\\n5 & 3\n\\end{array}\\right]\n\\]\nwith inverse \\[\n\\left(A^{T} A\\right)^{-1}=\\left[\\begin{array}{ll}\n9 & 5 \\\\\n5 & 3\n\\end{array}\\right]^{-1}=\\frac{1}{2}\\left[\\begin{array}{rr}\n3 & -5 \\\\\n-5 & 9\n\\end{array}\\right]\n\\]\n\n\\[\nA^{T} \\mathbf{b}=\\left[\\begin{array}{lll}\n2 & 1 & 2 \\\\\n1 & 1 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\n0 \\\\\n0 \\\\\n2\n\\end{array}\\right]=\\left[\\begin{array}{l}\n4 \\\\\n2\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#least-squares-solution",
+    "href": "lectures/ch4lecture1.html#least-squares-solution",
+    "title": "Ch4 Lecture 1",
+    "section": "Least Squares Solution",
+    "text": "Least Squares Solution\n\\[\n\\mathbf{x}=\\left(A^{T} A\\right)^{-1} A^{T} \\mathbf{b}=\\frac{1}{2}\\left[\\begin{array}{rr}\n3 & -5 \\\\\n-5 & 9\n\\end{array}\\right]\\left[\\begin{array}{l}\n4 \\\\\n2\n\\end{array}\\right]=\\left[\\begin{array}{r}\n1 \\\\\n-1\n\\end{array}\\right]\n\\]\n\nBack in our original variables, this means the best fit estimate for \\(\\beta_1\\) is 1 and the best \\(\\beta_2\\) is -1."
   }
 ]

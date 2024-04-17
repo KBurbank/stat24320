@@ -13,10 +13,13 @@
 <script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
-  <title>Stat 24320</title>
+  <title>Stat 24320 - Ch4 Lecture 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -36,6 +39,7 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="theorem.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -333,109 +337,37 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Ch4 Lecture 1</h1>
 
-<section id="definition-3.7." class="slide level3 center">
-<h3><em>Definition 3.7.</em></h3>
-<p>Linearly Dependent or Independent Vectors The vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> are said to be linearly dependent if there exist scalars <span class="math inline">\(c_{1}, c_{2}, \ldots, c_{n}\)</span>, not all zero, such that</p>
-<p><span class="math display">\[
-\begin{equation*}
-c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}=\mathbf{0} \tag{3.1}
-\end{equation*}
-\]</span></p>
-<p>Otherwise, the vectors are called linearly independent.</p>
+<div class="quarto-title-authors">
+</div>
+
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Outline for today</h2>
+<ul>
+<li class="fragment"><a href="#/geometrical-intuitions" id="/toc-geometrical-intuitions"><em>Geometrical Intuitions</em></a></li>
+</ul>
+</nav>
 </section>
-<section id="section" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.19. Which of the following lists of vectors have redundant vectors, i.e., are linearly dependent?</p>
-<ol type="a">
-<li class="fragment"><p><span class="math inline">\(\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{r}1 \\ -1 \\ -2\end{array}\right]\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\left[\begin{array}{l}0 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right]\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}2 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right]\)</span></p></li>
-</ol>
-<p>Solution. Let’s try to see the big picture. Consider the vectors in each list to be designated as <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\)</span>. Define matrix <span class="math inline">\(A=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\)</span> and vector <span class="math inline">\(\mathbf{c}=\left(c_{1}, c_{2}, c_{3}\right)\)</span>. Then the general linear combination can be written as</p>
-<p><span class="math display">\[
-c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{l}
-c_{1} \\
-c_{2} \\
-c_{3}
-\end{array}\right]=A \mathbf{c}
-\]</span></p>
-<p>This is the key idea of “linear combination as matrix-vector multiplication” that we saw in Theorem 2.1. Now we see that a nontrivial linear combination with value zero amounts to a nontrivial solution to the homogeneous equation <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>. We know how to find these! In case (a) we have that</p>
-<p><span class="math display">\[
-\left[\begin{array}{rrr}
-1 &amp; 0 &amp; 1 \\
-1 &amp; 1 &amp; -1 \\
-0 &amp; 1 &amp; -2
-\end{array}\right] \xrightarrow[E_{21}(-1)]{\longrightarrow}\left[\begin{array}{rrr}
-1 &amp; 0 &amp; 1 \\
-0 &amp; 1 &amp; -2 \\
-0 &amp; 1 &amp; -2
-\end{array}\right] \xrightarrow[E_{32}(-1)]{\longrightarrow}\left[\begin{array}{rrr}
-1 &amp; 0 &amp; 1 \\
-0 &amp; 1 &amp; -2 \\
-0 &amp; 0 &amp; 0
-\end{array}\right],
-\]</span></p>
-<p>so that the solutions to the homogeneous system are <span class="math inline">\(\mathbf{c}=\left(-c_{3}, 2 c_{3}, c_{3}\right)=\)</span> <span class="math inline">\(c_{3}(-1,2,1)\)</span>. Take <span class="math inline">\(c_{3}=1\)</span> and we have that</p>
-<p><span class="math display">\[
--1 \mathbf{v}_{1}+2 \mathbf{v}_{2}+1 \mathbf{v}_{3}=0
-\]</span></p>
-<p>which shows that <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\)</span> is a linearly dependent list of vectors.</p>
-<p>We’ll solve (b) by a different method, which can be applied to any set of <span class="math inline">\(n\)</span> vectors in <span class="math inline">\(\mathbb{R}^{n}\)</span> or <span class="math inline">\(\mathbb{C}^{n}\)</span>. Notice that</p>
-<p><span class="math display">\[
-\operatorname{det}\left[\begin{array}{lll}
-0 &amp; 1 &amp; 0 \\
-1 &amp; 1 &amp; 1 \\
-0 &amp; 0 &amp; 1
-\end{array}\right]=-1 \operatorname{det}\left[\begin{array}{ll}
-1 &amp; 0 \\
-0 &amp; 1
-\end{array}\right]=-1
-\]</span></p>
-<p>It follows that <span class="math inline">\(A\)</span> is nonsingular, so the only solution to the system <span class="math inline">\(A \mathbf{c}=0\)</span> is <span class="math inline">\(\mathbf{c}=0\)</span>. Since every linear combination of the columns of <span class="math inline">\(A\)</span> takes the form <span class="math inline">\(A \mathbf{c}\)</span>, the vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\)</span> must be linearly independent.</p>
-<p>Finally, we see by inspection in (c) that since <span class="math inline">\(\mathbf{v}_{3}\)</span> is a repeat of <span class="math inline">\(\mathbf{v}_{1}\)</span>, we have that</p>
-<p><span class="math display">\[
-\mathbf{v}_{1}+0 \mathbf{v}_{2}-\mathbf{v}_{3}=\mathbf{0}
-\]</span></p>
-<p>Thus, this list of vectors is linearly dependent. Notice, by the way, that not every coefficient <span class="math inline">\(c_{i}\)</span> has to be nonzero.</p>
+<section>
+<section id="geometrical-intuitions" class="title-slide slide level1 center">
+<h1><em>Geometrical Intuitions</em></h1>
+
 </section>
-<section id="section-1" class="slide level3 center">
-<h3><em></em></h3>
-<p>Definition 3.8. Basis of Vector Space A basis for the vector space <span class="math inline">\(V\)</span> is a spanning set of vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> that is a linearly independent set.</p>
+<section id="planes" class="title-slide slide level2 center">
+<h2><em>Planes</em></h2>
+<p>More copilot insanity. I wrote the first sentence, and then it autocompleted as follows:</p>
+<p>Have students put a dot in the center of the card and say this is the origin. Have them draw a line and say this is the x-axis. Have them draw a line perpendicular to the x-axis and say this is the y-axis. Have them draw a line perpendicular to the x and y axes and say this is the z-axis. Have them draw a line perpendicular to the x and y axes and say this is the w-axis. Have them draw a line perpendicular to the x, y, and w axes and say this is the v-axis. Have them draw a line perpendicular to the x, y, w, and v axes and say this is the u-axis. Have them draw a line perpendicular to the x, y, w, v, and u axes and say this is the t-axis. Have them draw a line perpendicular to the x, y, w, v, u, and t axes and say this is the s-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, and s axes and say this is the r-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, and r axes and say this is the q-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, and q axes and say this is the p-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, and p axes and say this is the o-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, and o axes and say this is the n-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, and n axes and say this is the m-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, and m axes and say this is the l-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, m, and l axes and say this is the k-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s…</p>
 </section>
-<section id="section-2" class="slide level3 center">
-<h3><em></em></h3>
-<p>An extremely important generic type of basis is provided by the columns of the identity matrix. For future reference, we establish this notation. The standard basis of <span class="math inline">\(\mathbb{R}^{n}\)</span> or <span class="math inline">\(\mathbb{C}^{n}\)</span> is the set <span class="math inline">\(\left\{\mathbf{e}_{1}, \mathbf{e}_{2}, \ldots, \mathbf{e}_{n}\right\}\)</span>, where <span class="math inline">\(\mathbf{e}_{j}\)</span> is the <span class="math inline">\(j\)</span> th column of the identity matrix <span class="math inline">\(I_{n}\)</span>.</p>
-<p>Example 3.23. Let <span class="math inline">\(V\)</span> be the standard vector space <span class="math inline">\(\mathbb{R}^{n}\)</span> or <span class="math inline">\(\mathbb{C}^{n}\)</span>. Verify that the standard basis really is a basis of this vector space.</p>
-<p>Solution. Let <span class="math inline">\(\mathbf{v}=\left(c_{1}, c_{2}, \ldots, c_{n}\right)\)</span> be a vector from <span class="math inline">\(V\)</span> so that <span class="math inline">\(c_{1}, c_{2}, \ldots, c_{n}\)</span> are scalars of the appropriate type. Now we have</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbf{v} &amp; =\left[\begin{array}{c}
-c_{1} \\
-c_{2} \\
-\vdots \\
-c_{n}
-\end{array}\right]=c_{1}\left[\begin{array}{c}
-1 \\
-0 \\
-\vdots \\
-0
-\end{array}\right]+c_{2}\left[\begin{array}{c}
-0 \\
-1 \\
-\vdots \\
-0
-\end{array}\right]+\cdots+c_{n}\left[\begin{array}{c}
-0 \\
-\vdots \\
-0 \\
-1
-\end{array}\right] \\
-&amp; =c_{1} \mathbf{e}_{1}+c_{2} \mathbf{e}_{2}+\cdots+c_{n} \mathbf{e}_{n} .
-\end{aligned}
-\]</span></p>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <aside class="notes">
-<p>Two points here: 1. you can make any vector in V out of a linear combination of the e’s, so the e’s span V. 2. the e’s are linearly independent because if you have a linear combination of them that equals 0, then each coefficient must be 0. 3. Therefore, the e’s are a basis of V.</p>
+<p>Give out toothpicks and cards and markers. Have students put a dot in the center of the card and say this is the origin. Imagine the card is an infinite plane. Now have them hold one end of their marker at the “origin”; the other end of the marker represents vector coordinates. Can they come up with a simple way of describing which points are on the plane?</p>
+<p>Have them poke a toothpick through the card at the origin. (This toothpick represents the normal vector to the plane.) Now can they see a simple way of describing which points are on the plane?</p>
+<p>Write that the vector describing the toothpick is called <span class="math inline">\(\vec a\)</span>, and we’ll assume it is of unit length. The plane is the set of all vectors <span class="math inline">\(\vec x\)</span> such that <span class="math inline">\(\vec a\cdot \vec x = 0\)</span>. This is the equation of the plane.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -448,275 +380,561 @@ c_{n}
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level3 center">
-<h3><em></em></h3>
-<p>Theorem 3.7. An <span class="math inline">\(n \times n\)</span> real matrix <span class="math inline">\(A\)</span> is invertible if and only if its columns are linearly independent, in which case they form a basis of <span class="math inline">\(\mathbb{R}^{n}\)</span>.</p>
-</section>
-<section id="section-4" class="slide level3 center">
-<h3><em></em></h3>
-<p>Definition 3.10. Column Space The column space of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{C}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span> spanned by the columns of <span class="math inline">\(A\)</span>.</p>
-<p>Definition 3.11. Row Space The row space of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{R}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span> spanned by the transposes of the rows of <span class="math inline">\(A\)</span>.</p>
-</section>
-<section id="section-5" class="slide level3 center">
-<h3><em></em></h3>
-<p>Definition 3.12. Null Space The null space of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subset <span class="math inline">\(\mathcal{N}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span> defined to be</p>
-<p><span class="math display">\[
-\mathcal{N}(A)=\left\{\mathbf{x} \in \mathbb{R}^{n} \mid A \mathbf{x}=\mathbf{0}\right\}
-\]</span></p>
-<p>Observe that <span class="math inline">\(\mathcal{N}(A)\)</span> is the solution set to the homogeneous linear system <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span>. This means that null spaces are really very familiar. We were computing these solution sets way back in Chapter 1. We didn’t call them subspaces at the time. Here is an application of this concept. Let <span class="math inline">\(A\)</span> be a square matrix. We know that <span class="math inline">\(A\)</span> is invertible exactly when the system <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span> has only the trivial solution (see Theorem 2.6). Now we can add one more equivalent condition to the long list of equivalences for invertibility: <span class="math inline">\(A\)</span> is invertible exactly if <span class="math inline">\(\mathcal{N}(A)=\{\mathbf{0}\}\)</span>. We next justify the subspace property implied by the term “null space.”</p>
-</section>
-<section id="section-6" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.30. of equation (3.2).</p>
-<p>Solution. Proceed as in Section 1.4. We find the reduced row echelon form of <span class="math inline">\(A\)</span>, identify the free variables, and solve for the bound variables using the implied zero right-hand side and solution vector <span class="math inline">\(x=\left[x_{1}, x_{2}, x_{3}, x_{4}\right]^{T}\)</span> :</p>
 
-<img data-src="https://cdn.mathpix.com/cropped/2024_04_15_5db5e98426db2eb06e94g-08.jpg?height=107&amp;width=566&amp;top_left_y=737&amp;top_left_x=485" class="r-stretch"><p>Pivots are in the first and second columns, so it follows that <span class="math inline">\(x_{3}\)</span> and <span class="math inline">\(x_{4}\)</span> are free, <span class="math inline">\(x_{1}\)</span> and <span class="math inline">\(x_{2}\)</span> are bound, and</p>
+<section id="finding-the-normal-vector-when-we-know-two-vectors-in-the-plane" class="title-slide slide level2 center">
+<h2><em>Finding the normal vector when we know two vectors in the plane</em></h2>
+<aside class="notes">
+<p>Notice that the normal vector is perpendicular to the plane. It’s also going to be orthogonal to vector in the plane, and to any two vectors that lie in the plane.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>For <span class="math inline">\(\mathbb{R}^3\)</span>, we can find the normal vector by taking the cross product of two vectors in the plane.</p>
+<p>Let <span class="math inline">\(\mathbf{i}, \mathbf{j}\)</span>, and <span class="math inline">\(\mathbf{k}\)</span> represent the standard basis <span class="math inline">\(\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}\)</span>.</p>
+<div class="definition">
+<p><span class="math display">\[
+\mathbf{u} \times \mathbf{v}=\left(u_{2} v_{3}-u_{3} v_{2}\right) \mathbf{i}+\left(u_{3} v_{1}-u_{1} v_{3}\right) \mathbf{j}+\left(u_{1} v_{2}-u_{2} v_{1}\right) \mathbf{k}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+u_{1} &amp; u_{2} &amp; u_{3} \\
+v_{1} &amp; v_{2} &amp; v_{3}
+\end{array}\right|
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The cross product is orthogonal to both <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>: <span class="math inline">\(\mathbf{u} \cdot \mathbf{u} \times \mathbf{v}=0\)</span> and <span class="math inline">\(\mathbf{v} \cdot \mathbf{u} \times \mathbf{v}=0\)</span></p>
+</div>
+<div class="fragment">
+<p>We can use the cross product to find the normal vector to the plane, simply by taking the cross product of two vectors in the plane.</p>
+</div>
+</section>
+
+<section id="finding-the-normal-vector-from-the-equation-of-the-plane" class="title-slide slide level2 center">
+<h2><em>Finding the normal vector from the equation of the plane</em></h2>
+<p>If the plane is specified <span class="math inline">\(ax + by + cz = d\)</span>, then a normal vector is <span class="math inline">\(\vec a = ( a, b, c )\)</span>.</p>
+<div class="fragment">
+<p>How can we tell? Let’s find three points on the plane. Set the first point where <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(y = 0\)</span>, so <span class="math inline">\(z = d/c\)</span>: <span class="math inline">\((0, 0, d/c)\)</span>. Set second point is where <span class="math inline">\(x=0\)</span> and <span class="math inline">\(z = 0\)</span>, so <span class="math inline">\(y=d/b\)</span>: <span class="math inline">\((0,d/b,0)\)</span>. The third point is <span class="math inline">\((d/a,0,0)\)</span>.</p>
+<p>Now find two displacement vectors in the plane: <span class="math inline">\(\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\)</span> and <span class="math inline">\(\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\)</span>.</p>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Now take the cross product of these two vectors to find the normal vector:</p>
 <p><span class="math display">\[
 \begin{aligned}
-&amp; x_{1}=x_{3}+2 x_{4} \\
-&amp; x_{2}=-2 x_{3}-x_{4} .
+\vec u \times \vec v \\
+&amp;= \left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+0 &amp; d/b &amp; -d/c \\
+d/a &amp; 0 &amp; -d/c
+\end{array}\right| \\
+&amp;= - \mathbf{i} \left( \frac{d}{b} \frac{d}{c} \right) + \mathbf{j} \left( \frac{d}{a} \frac{d}{c} \right) - \mathbf{k} \left( \frac{d}{a} \frac{d}{b} \right) \\
+&amp;= -d^2 \left[ \left( \frac{1}{bc} \right) \mathbf{i} - \left( \frac{1}{ac} \right) \mathbf{j} + \left( \frac{1}{ab} \right) \mathbf{k} \right]\\
+&amp;= -\frac{d^2}{abc} \left[\left( a \right) \mathbf{i} - \left( b \right) \mathbf{j} + \left( c \right) \mathbf{k} \right]\\
 \end{aligned}
 \]</span></p>
-<p>Let’s write out the form of a general solution in terms of the free variables as a combination of <span class="math inline">\(x_{3}\)</span> times some vector plus <span class="math inline">\(x_{4}\)</span> times another vector:</p>
-<p><span class="math display">\[
-\left[\begin{array}{c}
-x_{1} \\
-x_{2} \\
-x_{3} \\
-x_{4}
-\end{array}\right]=\left[\begin{array}{c}
-x_{3}+2 x_{4} \\
--2 x_{3}-x_{4} \\
-x_{3} \\
-x_{4}
-\end{array}\right]=x_{3}\left[\begin{array}{r}
-1 \\
--2 \\
-1 \\
-0
-\end{array}\right]+x_{4}\left[\begin{array}{r}
-2 \\
--1 \\
-0 \\
-1
-\end{array}\right] .
-\]</span></p>
-<p>We have seen this clever trick before in Example 2.6. Remember that free variables can take on arbitrary values, so we see that the general solution to the homogeneous system has the form of an arbitrary linear combination of the two vectors on the right. In other words,</p>
-<p><span class="math display">\[
-\mathcal{N}(A)=\operatorname{span}\left\{\left[\begin{array}{r}
-1 \\
--2 \\
-1 \\
-0
-\end{array}\right],\left[\begin{array}{r}
-2 \\
--1 \\
-0 \\
-1
-\end{array}\right]\right\} \subseteq \mathbb{R}^{4}
-\]</span></p>
-<p>Neither of these vectors is a multiple of the other, so this is as economical an expression for <span class="math inline">\(\mathcal{N}(A)\)</span> as we can hope for. In other words, we have exhibited a minimal spanning set, that is, a basis of <span class="math inline">\(\mathcal{N}(A)\)</span>.</p>
+<p>This is paralell to <span class="math inline">\(\vec a = (a, b, c)\)</span>.</p>
 </section>
-<section id="section-7" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.31. Suppose that a Markov chain has an stable transition matrix <span class="math inline">\(A=\left[\begin{array}{ll}0.7 &amp; 0.4 \\ 0.3 &amp; 0.6\end{array}\right]\)</span>. Determine the steady-state vector for the Markov chain</p>
-<p><span class="math display">\[
-\mathbf{x}^{(k+1)}=A \mathbf{x}^{(k)}
-\]</span></p>
-<p>Solution. We reason as follows: Since the limit of the state vectors <span class="math inline">\(\mathbf{x}^{(k)}\)</span> is <span class="math inline">\(\mathbf{x}\)</span>, and the state vectors are related by the formula</p>
-<p><span class="math display">\[
-\mathbf{x}^{(k+1)}=A \mathbf{x}^{(k)},
-\]</span></p>
-<p>we can take the limits of both sides of this matrix equation and obtain that <span class="math inline">\(\mathbf{x}=A \mathbf{x}\)</span>. Therefore,</p>
-<p><span class="math display">\[
-\mathbf{0}=\mathbf{x}-A \mathbf{x}=I \mathbf{x}-A \mathbf{x}=(I-A) \mathbf{x}
-\]</span></p>
-<p>It follows that <span class="math inline">\(\mathbf{x} \in \mathcal{N}(I-A)\)</span>. Now</p>
-<p><span class="math display">\[
-I-A=\left[\begin{array}{ll}
-1 &amp; 0 \\
-0 &amp; 1
-\end{array}\right]-\left[\begin{array}{ll}
-0.7 &amp; 0.4 \\
-0.3 &amp; 0.6
-\end{array}\right]=\left[\begin{array}{rr}
-0.3 &amp; -0.4 \\
--0.3 &amp; 0.4
-\end{array}\right] \text {. }
-\]</span></p>
-<p>Calculate the null space by Gauss-Jordan elimination:</p>
-<p><span class="math display">\[
-\left[\begin{array}{rr}
-0.3 &amp; -0.4 \\
--0.3 &amp; 0.4
-\end{array}\right] \xrightarrow{E_{21}(1)}\left[\begin{array}{rr}
-1 &amp; -4 / 3 \\
-0 &amp; 0
-\end{array}\right]
-\]</span></p>
-<p>Therefore, the null space of <span class="math inline">\(I-A\)</span> is spanned by the single vector <span class="math inline">\((4 / 3,1)\)</span>. In particular, any multiple of this vector qualifies as a possible limiting vector. If we want a limiting vector whose entries are nonnegative and sum to 1 (which is required for states in a Markov chain), then the only choice is the vector resulting from dividing <span class="math inline">\((4 / 3,1)\)</span> by the sum of its coordinates to obtain</p>
-<p><span class="math display">\[
-(3 / 7)(4 / 3,1)=(4 / 7,3 / 7) \approx(0.57143,0.42857)
-\]</span></p>
-<p>Interestingly enough, this is the vector that was calculated on page 91.</p>
-</section>
-<section id="section-8" class="slide level3 center">
-<h3><em></em></h3>
-<p>Here is a way of thinking about <span class="math inline">\(\mathcal{C}(A)\)</span>. The key is the “linear combination as matrix-vector multiplication” idea that was first introduced in Example 2.9 and formalized in Theorem 2.1. Recall that it asserts that if matrix <span class="math inline">\(A\)</span> has columns <span class="math inline">\(\mathbf{a}_{1}, \ldots, \mathbf{a}_{n}\)</span>, i.e., <span class="math inline">\(A=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \ldots, \mathbf{a}_{n}\right]\)</span>, and if <span class="math inline">\(\mathbf{x}=\left[x_{1}, x_{2}, \ldots, x_{n}\right]^{T}\)</span>, then</p>
-<p><span class="math display">\[
-\begin{equation*}
-A \mathbf{x}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+\cdots+x_{n} \mathbf{a}_{n} \tag{3.3}
-\end{equation*}
-\]</span></p>
-<p>This equation shows that the column space of the matrix <span class="math inline">\(A\)</span> can be thought of as the set of all possible matrix products <span class="math inline">\(A \mathbf{x}\)</span>, i.e.,</p>
-<p><span class="math display">\[
-\mathcal{C}(A)=\left\{A \mathbf{x} \mid \mathbf{x} \in \mathbb{R}^{n}\right\} .
-\]</span></p>
-<p>An insight that follows from these observations: The linear combination of columns of <span class="math inline">\(A\)</span> with coefficients from the vector <span class="math inline">\(\mathbf{x}\)</span> is zero exactly when <span class="math inline">\(\mathbf{x} \in\)</span> <span class="math inline">\(\mathcal{N}(A)\)</span>. Thus, we can use null space calculations to identify redundant vectors in a set of column vectors, as in the next example.</p>
-</section>
-<section id="section-9" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.32. Find all possible linear combinations with value zero of the columns of matrix <span class="math inline">\(A\)</span> of equation (3.2) and use this information to find a basis of <span class="math inline">\(\mathcal{C}(A)\)</span>.</p>
-<p>Solution. As in Example 3.30 we find the reduced row echelon form of <span class="math inline">\(A\)</span>, identify the free variables, and solve for the bound variables using the implied zero right-hand side. The result is a solution vector <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, x_{3}, x_{4}\right)=\)</span> <span class="math inline">\(\left(x_{3}+2 x_{4},-2 x_{3}-x_{4}, x_{3}, x_{4}\right)\)</span>. Write <span class="math inline">\(A=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}, \mathbf{a}_{4}\right]\)</span>, and we see that the linear combinations of <span class="math inline">\(A\)</span> are just</p>
-<p><span class="math inline">\(\mathbf{0}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3}+x_{4} \mathbf{a}_{4}=\left(x_{3}+2 x_{4}\right) \mathbf{a}_{1}-\left(2 x_{3}+x_{4}\right) \mathbf{a}_{2}+x_{3} \mathbf{a}_{3}+x_{4} \mathbf{a}_{4}\)</span>.</p>
-<p>Here we think of <span class="math inline">\(x_{3}\)</span> and <span class="math inline">\(x_{4}\)</span> as free variables. Take <span class="math inline">\(x_{3}=1\)</span> and <span class="math inline">\(x_{4}=0\)</span>, and we obtain <span class="math inline">\(\mathbf{0}=\mathbf{a}_{1}-2 \mathbf{a}_{2}+\mathbf{a}_{3}\)</span>, so that <span class="math inline">\(\mathbf{a}_{3}\)</span> is a linear combination of <span class="math inline">\(\mathbf{a}_{1}\)</span> and <span class="math inline">\(\mathbf{a}_{2}\)</span>. Similarly, take <span class="math inline">\(x_{3}=0\)</span> and <span class="math inline">\(x_{4}=1\)</span>, and we obtain <span class="math inline">\(\mathbf{0}=2 \mathbf{a}_{1}-\)</span> <span class="math inline">\(\mathbf{a}_{2}+\mathbf{a}_{4}\)</span>, so that <span class="math inline">\(\mathbf{a}_{4}\)</span> is a linear combination of <span class="math inline">\(\mathbf{a}_{1}\)</span> and <span class="math inline">\(\mathbf{a}_{2}\)</span>. Hence, <span class="math inline">\(\mathcal{C}(A)=\)</span> <span class="math inline">\(\operatorname{span}\left\{\mathbf{a}_{1}, \mathbf{a}_{2}\right\}=\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0\end{array}\right],\left[\begin{array}{l}1 \\ 1\end{array}\right]\right\}\)</span>, the same conclusion we reached by trial and error in Example 3.27.</p>
-</section>
-<section id="section-10" class="slide level3 center">
-<h3><em></em></h3>
-<p>Definition 3.13. Kernel of Operator The kernel of the linear operator <span class="math inline">\(T\)</span> : <span class="math inline">\(V \rightarrow W\)</span> is the subspace of <span class="math inline">\(V\)</span> defined by</p>
-<p><span class="math display">\[
-\operatorname{ker}(T)=\{\mathbf{x} \in V \mid T(\mathbf{x})=\mathbf{0}\}
-\]</span></p>
-<p>In other words, for matrix operators kernels are the same thing as null spaces.</p>
-<p>Theorem 3.9. The linear operator <span class="math inline">\(T: V \rightarrow W\)</span> is one-to-one if and only if <span class="math inline">\(\operatorname{ker}(T)=\{\mathbf{0}\}\)</span>.</p>
-</section>
-<section>
-<section id="linear-systems-revisted" class="title-slide slide level2 center">
-<h2><em>Linear systems revisted</em></h2>
 
+<section id="distances-from-the-plane" class="title-slide slide level2 center">
+<h2><em>Distances from the plane</em></h2>
+<aside class="notes">
+<p>Have them hold the marker still with its end at the origin, but with the point not on the plane. Can they describe the distance to the plane?</p>
+<p>Notice that it’s the same as the scalar projection of the vector onto the normal vector: projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>. That is, the distance is <span class="math inline">\(|\vec a\cdot \vec x|\)</span>. (If the normal vector is not of unit length, the distance would have been <span class="math inline">\(|\vec a\cdot \vec x|/||\vec a||\)</span>.)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="section-11" class="slide level3 center">
-<h3><em></em></h3>
-<p>Theorem 3.15. Consistency in Terms of Column Space The linear system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> of <span class="math inline">\(m\)</span> equations in <span class="math inline">\(n\)</span> unknowns is consistent if and only if <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span>.</p>
-<p>Proof. The key to this fact is Theorem 2.1, which says that the vector <span class="math inline">\(A \mathbf{x}\)</span> is a linear combination of the columns of <span class="math inline">\(A\)</span> with the entries of <span class="math inline">\(\mathbf{x}\)</span> as scalar coefficients. Therefore, to say that <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has a solution is simply to say that some linear combination of columns of <span class="math inline">\(A\)</span> adds up to <span class="math inline">\(\mathbf{b}\)</span>, i.e., <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span>.</p>
-</section>
-<section id="section-12" class="slide level3 center">
-<h3><em></em></h3>
-<p>The next example shows how to to determine whether a vector belongs to a subspace specified by a spanning Inclusion in a Span set of standard vectors.</p>
-<p>Example 3.38. One of the following vectors belongs to the space <span class="math inline">\(V\)</span> spanned by <span class="math inline">\(\mathbf{v}_{1}=(1,1,3,3), \mathbf{v}_{2}=(0,2,2,4)\)</span>, and <span class="math inline">\(\mathbf{v}_{3}=(1,0,2,1)\)</span>. The vectors in question are <span class="math inline">\(\mathbf{u}=(2,1,5,4)\)</span> and <span class="math inline">\(\mathbf{w}=(1,0,0,0)\)</span>. Which and why?</p>
-<p>Solution. Theorem 3.15 tells us that if <span class="math inline">\(A=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\)</span>, then we need only determine whether the systems <span class="math inline">\(A \mathbf{x}=\mathbf{u}\)</span> and <span class="math inline">\(A \mathbf{x}=\mathbf{w}\)</span> are consistent. In the interests of efficiency, we may as well do both at once by forming the augmented matrix for both right-hand sides at once as</p>
-<p><span class="math display">\[
-[A|\mathbf{u}| \mathbf{w}]=\left[\begin{array}{lllll}
-1 &amp; 0 &amp; 1 &amp; 2 &amp; 1 \\
-1 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\
-3 &amp; 2 &amp; 2 &amp; 5 &amp; 0 \\
-3 &amp; 4 &amp; 1 &amp; 4 &amp; 0
-\end{array}\right] \text { with reduced row echelon form }\left[\begin{array}{rrrrr}
-1 &amp; 0 &amp; 1 &amp; 2 &amp; 0 \\
-0 &amp; 1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
-\end{array}\right]
-\]</span></p>
-<p>Observe that there is a pivot in the fifth column but not in the fourth column. This tells us that the system with augmented matrix <span class="math inline">\([A \mid \mathbf{u}]\)</span> is consistent, but the system with augmented matrix <span class="math inline">\([A \mid \mathbf{w}]\)</span> is not consistent. Therefore, <span class="math inline">\(\mathbf{u} \in \operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right\}\)</span>, but <span class="math inline">\(\mathbf{w} \notin \operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right\}\)</span>. As a matter of fact, the reduced row echelon form of <span class="math inline">\([A \mid \mathbf{u}]\)</span> tells us what linear combinations will work, namely</p>
-<p><span class="math display">\[
-\mathbf{u}=\left(2-c_{3}\right) \mathbf{v}_{1}+\frac{1}{2}\left(c_{3}-1\right) \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}
-\]</span></p>
-<p>where <span class="math inline">\(c_{3}\)</span> is an arbitrary scalar. The reason for nonuniqueness of the coordinates of <span class="math inline">\(\mathbf{u}\)</span> is that the vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\)</span> are not linearly independent.</p>
-</section>
-<section id="section-13" class="slide level3 center">
-<h3><em></em></h3>
-<p>The next item of business is a description of the solution space itself, given that it is not empty. We already have a pretty good conceptual model for the solution of a homogeneous system <span class="math inline">\(A \mathbf{x}=0\)</span>. Remember that this is just the null space, <span class="math inline">\(\mathcal{N}(A)\)</span>, of the matrix <span class="math inline">\(A\)</span>. In fact, the definition of <span class="math inline">\(\mathcal{N}(A)\)</span> is the set of vectors <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span>. The important point here is that we proved that <span class="math inline">\(\mathcal{N}(A)\)</span> really is a subspace of the appropriate <span class="math inline">\(n\)</span>-dimensional standard space <span class="math inline">\(\mathbb{R}^{n}\)</span> or <span class="math inline">\(\mathbb{C}^{n}\)</span>. As such we can really picture it when <span class="math inline">\(n\)</span> is 2 or <span class="math inline">\(3: \mathcal{N}(A)\)</span> is either the origin, a line through the origin, a plane through the origin, or in the case <span class="math inline">\(A=0\)</span>, all of <span class="math inline">\(\mathbb{R}^{3}\)</span>. What can we say about an inhomogeneous system? Here is a handy way of understanding these solution sets.</p>
-<p>Theorem 3.16. Form of General Solution Suppose the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> is consistent with a particular solution <span class="math inline">\(\mathbf{x}_{*}\)</span>. Then the general solution <span class="math inline">\(\mathbf{x}\)</span> to this system can be described by the equation</p>
-<p><span class="math display">\[
-\mathbf{x}=\mathbf{x}_{*}+\mathbf{z}
-\]</span></p>
-<p>where <span class="math inline">\(\mathbf{z}\)</span> runs over all elements of <span class="math inline">\(\mathcal{N}(A)\)</span>.</p>
-</section>
-<section id="section-14" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.39. Describe geometrically the solution sets to the system</p>
-<p><span class="math display">\[
-\begin{array}{r}
-x+2 y=3 \\
-x+y+z=3 .
-\end{array}
-\]</span></p>
-<p>Solution. First solve the system, which has augmented matrix</p>
 
-<img data-src="https://cdn.mathpix.com/cropped/2024_04_15_5db5e98426db2eb06e94g-13.jpg?height=109&amp;width=791&amp;top_left_y=2037&amp;top_left_x=368" class="r-stretch"><p>The general solution to the system is given in terms of the free variable <span class="math inline">\(z\)</span>, which we will relabel as <span class="math inline">\(z=t\)</span> to obtain</p>
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<aside class="notes">
+<p>Now have them figure out the displacement vector that points from <span class="math inline">\(\vec x\)</span> to the closest point on the plane.</p>
+<p>It is in the same direction as <span class="math inline">\(\vec a\)</span>, and its length is <span class="math inline">\(|\vec a\cdot \vec x|/ ||\vec a||\)</span>. This is the projection of <span class="math inline">\(\vec x\)</span> onto the normal vector.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="back-onto-the-plane" class="title-slide slide level2 center">
+<h2><em>Back onto the plane</em></h2>
+<aside class="notes">
+<p>Now have them find the location of the point on the plane that is closest to <span class="math inline">\(\vec x\)</span>.</p>
+<p>It is <span class="math inline">\(\vec x - \vec a |\vec x \cdot\vec a|/||\vec a||^2\)</span>.</p>
+<p>This is the projection of <span class="math inline">\(\vec x\)</span> onto the plane. We find it by subtracting the projection of <span class="math inline">\(\vec x\)</span> onto the normal vector from <span class="math inline">\(\vec x\)</span>.</p>
+<p>Projection onto the plane is the same as the displacement vector from the point to the plane is the same as the closest point on the plane to the point.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="a-plane-not-at-the-origin" class="title-slide slide level2 center">
+<h2><em>A plane not at the origin</em></h2>
+<aside class="notes">
+<p>Have them designate the origin as some other point, not on the card.</p>
+<p>Can they come up with a simple way of describing what the displacement was?</p>
+<p>They can describe the displacement of the plane with a scalar multiple of the normal vector.</p>
+<p>Call this q <span class="math inline">\(\vec a\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<aside class="notes">
+<p>Now how can they describe which points are on the plane?</p>
+<p>The simplest way (for my brain at least) is to imagine taking a point on the plane and subtracting the displacement vector from it. Is the new point where the plane would be if the plane were at the origin?</p>
+<p>So, take <span class="math inline">\(\vec x\)</span> and subtract <span class="math inline">\(\vec a q\)</span> from it. Would this point fall in a plane at the origin? That is, is <span class="math inline">\(\vec a\cdot (\vec x - \vec a q) = 0\)</span>?</p>
+<p>We can simplify this: <span class="math inline">\(\vec a\cdot \vec x - \vec a\cdot \vec a q = 0\)</span>. So <span class="math inline">\(\vec a\cdot \vec x = \vec a\cdot \vec a q\)</span>. So <span class="math inline">\(\vec a\cdot \vec x = q\)</span>.</p>
+<p>This is the equation of the plane.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="hyperplane" class="title-slide slide level2 center">
+<h2><em>Hyperplane</em></h2>
+<div class="definition">
+<p>A hyperplane in <span class="math inline">\(\mathbb{R}^{n}\)</span> is the set of all <span class="math inline">\(\mathbf{x} \in \mathbb{R}^{n}\)</span> such that <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span>, where the nonzero vector <span class="math inline">\(\mathbf{a} \in \mathbb{R}^{n}\)</span> and scalar <span class="math inline">\(b\)</span> are given.</p>
+</div>
+<div class="fragment">
+<div class="theorem">
+<p>Let <span class="math inline">\(H\)</span> be the hyperplane in <span class="math inline">\(\mathbb{R}^{n}\)</span> defined by the equation <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span> and let <span class="math inline">\(\mathbf{x}_{*} \in H\)</span>. Then</p>
+<ol type="1">
+<li class="fragment"><p><span class="math inline">\(\mathbf{a}^{\perp}=\left\{\mathbf{y} \in \mathbb{R}^{n} \mid \mathbf{a} \cdot \mathbf{y}=0\right\}\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^{n}\)</span> of dimension <span class="math inline">\(n-1\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(H=\mathbf{x}_{*}+\mathbf{a}^{\perp}=\left\{\mathbf{x}_{*}+\mathbf{y} \mid \mathbf{y} \in \mathbf{a}^{\perp}\right\}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="example" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Find an equation that defines the plane containing the three (noncollinear) points <span class="math inline">\(P, Q\)</span>, and <span class="math inline">\(R\)</span> with coordinates <span class="math inline">\((1,0,2),(2,1,0)\)</span>, and <span class="math inline">\((3,1,1)\)</span>, respectively.</p>
+<div class="fragment">
 <p><span class="math display">\[
 \begin{aligned}
-&amp; x=3-2 t \\
-&amp; y=t \\
-&amp; z=t .
+&amp; \overrightarrow{P Q}=(2,1,0)-(1,0,2)=(1,1,-2) \\
+&amp; \overrightarrow{P R}=(3,1,1)-(1,0,2)=(2,1,-1)
 \end{aligned}
 \]</span></p>
-<p>We may recognize this from calculus as a parametric representation of a line in three-dimensional space <span class="math inline">\(\mathbb{R}^{3}\)</span>. This this line does not pass through the origin since <span class="math inline">\(z=0\)</span> forces <span class="math inline">\(x=3\)</span>. So the solution set is not a subspace of <span class="math inline">\(\mathbb{R}^{3}\)</span>.</p>
-</section>
-<section id="section-15" class="slide level3 center">
-<h3><em></em></h3>
-<p>Theorem 3.18. If the matrix <span class="math inline">\(R\)</span> is in a reduced row form, then the transposes of the nonzero rows of <span class="math inline">\(R\)</span> form a basis of <span class="math inline">\(\mathcal{R}(R)\)</span>.</p>
-<p>Corollary 3.7. If <span class="math inline">\(A\)</span> is a matrix with columns <span class="math inline">\(\mathbf{a}_{1}, \mathbf{a}_{2}, \ldots, \mathbf{a}_{n}\)</span> and <span class="math inline">\(j_{1}, j_{2}, \ldots, j_{r}\)</span> the indices of the pivot columns of the reduced row echelon form of <span class="math inline">\(A\)</span>, then the columns <span class="math inline">\(\mathbf{a}_{j_{1}}, \mathbf{a}_{j_{2}}, \ldots, \mathbf{a}_{j_{r}}\)</span> form a basis of <span class="math inline">\(\mathcal{C}(A)\)</span>.</p>
-</section>
-<section id="section-16" class="slide level3 center">
-<h3><em></em></h3>
-<p>Given <span class="math inline">\(V=\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right\} \subseteq \mathbb{R}^{m}\)</span> or <span class="math inline">\(\mathbb{C}^{m}\)</span> :</p>
-<ol type="1">
-<li class="fragment"><p>Form the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> whose columns are <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span>.</p></li>
-<li class="fragment"><p>Find a reduced row form <span class="math inline">\(R\)</span> of <span class="math inline">\(A\)</span>.</p></li>
-<li class="fragment"><p>List the columns of <span class="math inline">\(A\)</span> that correspond to pivot columns of <span class="math inline">\(R\)</span>. These form a basis of <span class="math inline">\(V\)</span>.</p></li>
-</ol>
-</section>
-<section id="section-17" class="slide level3 center">
-<h3><em></em></h3>
-<p>Example 3.41. Let the vector space <span class="math inline">\(V\)</span> be spanned by vectors <span class="math inline">\(\mathbf{v}_{1}=(1,1,3,3)\)</span>, <span class="math inline">\(\mathbf{v}_{2}=(0,2,2,4), \mathbf{v}_{3}=(1,0,2,1)\)</span>, and <span class="math inline">\(\mathbf{v}_{4}=(2,1,5,4)\)</span>. Find a basis of <span class="math inline">\(V\)</span> by the column space algorithm.</p>
-<p>Solution. Form the matrix <span class="math inline">\(A\)</span> whose columns are these vectors and reduce the matrix to its reduced row echelon form:</p>
+</div>
+<div class="fragment">
 <p><span class="math display">\[
-\left[\begin{array}{llll}
-1 &amp; 0 &amp; 1 &amp; 2 \\
-1 &amp; 2 &amp; 0 &amp; 1 \\
-3 &amp; 2 &amp; 2 &amp; 5 \\
-3 &amp; 4 &amp; 1 &amp; 4
-\end{array}\right] \xrightarrow[E_{21}(-1)]{E_{31}(-3)}\left[\begin{array}{rrrr}
-1 &amp; 0 &amp; 1 &amp; 2 \\
-0 &amp; 2 &amp; -1 &amp; -1 \\
-0 &amp; 2 &amp; -1 &amp; -1 \\
-0 &amp; 4 &amp; -2 &amp; -2
-\end{array}\right] \xrightarrow[E_{31}(-3)]{E_{32}(-1)}\left[\begin{array}{rrrr}
-1 &amp; 0 &amp; 1 &amp; 2 \\
-0 &amp; 1 &amp; -1 / 2 &amp; -1 / 2 \\
-E_{42}(-2) \\
-E_{2}(1 / 2) &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0
-\end{array}\right] .
+\mathbf{u} \times \mathbf{v}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+1 &amp; 1 &amp; -2 \\
+2 &amp; 1 &amp; -1
+\end{array}\right|=\mathbf{i}-3 \mathbf{j}-\mathbf{k}
 \]</span></p>
-<p>We can see from this calculation that the first and second columns will be pivot columns, while the third and fourth will not be. According to the column space algorithm, <span class="math inline">\(\mathcal{C}(A)\)</span> is a two-dimensional space with the first two columns <span class="math inline">\(\mathbf{v}_{1}=(1,1,3,3)\)</span> and <span class="math inline">\(\mathbf{v}_{2}=(0,2,2,4)\)</span> of <span class="math inline">\(A\)</span> for a basis.</p>
+</div>
 </section>
-<section id="section-18" class="slide level3 center">
-<h3><em></em></h3>
-<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>.</p>
-<ol type="1">
-<li class="fragment"><p>Compute the reduced row echelon form <span class="math inline">\(R\)</span> of <span class="math inline">\(A\)</span>.</p></li>
-<li class="fragment"><p>Use <span class="math inline">\(R\)</span> to find the general solution to the homogeneous system <span class="math inline">\(A \mathbf{x}=0\)</span>.</p></li>
-<li class="fragment"><p>Write the general solution <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\)</span> to the homogeneous system in the form</p></li>
-</ol>
+
+<section id="projections-to-the-displaced-plane" class="title-slide slide level2 center">
+<h2><em>Projections to the displaced plane</em></h2>
+<aside class="notes">
+<p>Now have them find the displacement vector that points from <span class="math inline">\(\vec x\)</span> to the closest point on the plane.</p>
+<p>This will be the same as if we again subtract to get a plane that goes through the origin. So the displaced position is $x - q a $, and its distance from the plane that goes through the origin is this dot a: $a(x - q a)=ax - q $.</p>
+<p>Multiplying by <span class="math inline">\(\vec a\)</span> we get $a (ax - q) $.</p>
+<p>Then, to find the closest point on the plane, we subtract this from <span class="math inline">\(\vec x\)</span>: $x - a (ax - q) $.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="summary" class="title-slide slide level2 center">
+<h2><em>Summary</em></h2>
+<p>Plane through the origin: <span class="math inline">\(\vec a\cdot \vec x = 0\)</span></p>
+<p>Plane displaced from the origin: <span class="math inline">\(\vec a\cdot \vec x = q\)</span></p>
+<p>Component of <span class="math inline">\(\vec x\)</span> along the vector <span class="math inline">\(\vec a\)</span> (scalar projection): <span class="math inline">\(\vec a\cdot \vec x / || \vec a ||\)</span></p>
+<p>Projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>: <span class="math inline">\(\vec a / ||a|| \quad \vec a\cdot \vec x/||\vec a||\)</span></p>
+<p>Projection of <span class="math inline">\(\vec x\)</span> onto the plane for which <span class="math inline">\(\vec a\)</span> is the normal vector, displaced by <span class="math inline">\(q \vec a\)</span> from the origin: <span class="math inline">\(\vec x\)</span> - projection onto the normal vector = $x - a (ax - q) $</p>
+</section>
+
+<section id="projection-formula-for-vectors" class="title-slide slide level2 center">
+<h2><em>Projection Formula for Vectors</em></h2>
+<p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors, <span class="math inline">\(\mathbf{v} \neq \mathbf{0}\)</span>. Let</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-303.jpg?height=361&amp;width=585&amp;top_left_y=192&amp;top_left_x=466" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-303.jpg?height=361&amp;width=585&amp;top_left_y=192&amp;top_left_x=466"></a></p>
 <p><span class="math display">\[
-\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+\mathbf{p}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v} \text { and } \quad \mathbf{q}=\mathbf{u}-\mathbf{p}
 \]</span></p>
-<p>where <span class="math inline">\(x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}\)</span> are the free variables.</p>
-<ol start="4" type="1">
-<li class="fragment">List the vectors <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}\)</span>. These form a basis of <span class="math inline">\(\mathcal{N}(A)\)</span>.</li>
-</ol>
+<p>Then <span class="math inline">\(\mathbf{p}\)</span> is <strong>parallel</strong> to <span class="math inline">\(\mathbf{v}, \mathbf{q}\)</span> is <strong>orthogonal</strong> to <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{u}=\mathbf{p}+\mathbf{q}\)</span>.</p>
+<p><span class="math display">\[
+\operatorname{proj}_{\mathbf{v}} \mathbf{u}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}
+\]</span></p>
+<p><span class="math display">\[
+\operatorname{orth}_{\mathbf{v}} \mathbf{u}=\mathbf{u}-\operatorname{proj}_{\mathbf{v}} \mathbf{u}
+\]</span></p>
 </section>
-<section id="section-19" class="slide level3 center">
-<h3><em></em></h3>
-<p>Theorem 3.21. Rank Theorem Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m \times n\)</span> matrix such that <span class="math inline">\(\operatorname{rank} A=r\)</span>. Then</p>
-<ol type="1">
-<li class="fragment"><p><span class="math inline">\(\operatorname{dim} \mathcal{C}(A)=r\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\operatorname{dim} \mathcal{R}(A)=r\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\operatorname{dim} \mathcal{N}(A)=n-r\)</span></p></li>
-</ol>
+
+<section id="taking-a-step-back-from-linear-algebra-fitting-a-line-to-data" class="title-slide slide level2 center">
+<h2><em>Taking a step back from linear algebra: fitting a line to data</em></h2>
+<aside class="notes">
+<p>Draw a scatter plot of some data. Draw a line that seems to fit the data well. Make a separate plot of the residuals vs x.</p>
+<p>Mention least squares.</p>
+<p>Now draw a line that doesn’t fit the data well. Make a separate plot of the residuals. Notice that now there is a relationship between the residuals and x – their correlation is not zero.</p>
+<p>Idea of least squares can then to be to find the line such that the residuals are uncorrelated with x – so that the slope of the residuals vs x is zero.</p>
+<p>That is, we want the residuals to be orthogonal to the line.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="straight-lines-of-x-and-y-now-in-rn" class="title-slide slide level2 center">
+<h2><em>Straight lines of x and y, now in Rn</em></h2>
+<aside class="notes">
+<p>Have the students draw a scatter plot of some data in x and y, which are on a straight line. Ask them what this looks like if we plot the data in <span class="math inline">\(\mathbb{R}^n\)</span>. What does <span class="math inline">\(x\)</span> look like now? What is its relation to <span class="math inline">\(y\)</span>?</p>
+<p>Hint: have them write the relationship between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(y_1\)</span>.</p>
+<p>We can think of the the data <span class="math inline">\(x\)</span> as a single point in <span class="math inline">\(\mathbb{R}^n\)</span>, and the same for <span class="math inline">\(y\)</span>. So if there is a linear relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, then <span class="math inline">\(\mathbf{y}\)</span> a multiple of <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="imperfect-data" class="title-slide slide level2 center">
+<h2><em>Imperfect data</em></h2>
+<p>::: notes Now have them realize what happens if the data is not on a straight line. What does the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> look like now?</p>
+<p><span class="math inline">\(y\)</span> is still close to a multiple of <span class="math inline">\(x\)</span>, but not exactly. They aren’t exactly parallel.</p>
+</section>
+
+<section id="guessing-at-a-fit" class="title-slide slide level2 center">
+<h2><em>Guessing at a fit</em></h2>
+<aside class="notes">
+<p>Suppose we think that <span class="math inline">\(y\)</span> is approximately a multiple of <span class="math inline">\(x\)</span>, so that <span class="math inline">\(\mathbf y \approx m \mathbf x\)</span>. How should we measure how good this guess is?</p>
+<p>Idea: calculate the residuals, which are the differences between the actual <span class="math inline">\(y\)</span> and the guess <span class="math inline">\(m x\)</span>. Their norm should be small.</p>
+<p>Draw the residuals.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="best-guess" class="title-slide slide level2 center">
+<h2><em>Best guess</em></h2>
+<aside class="notes">
+<p>For different values of <span class="math inline">\(m\)</span>, the residuals will be different. We want to find the value of <span class="math inline">\(m\)</span> that makes the residuals as small as possible. Geometrically, when will this be?</p>
+<p>When the residuals are orthogonal to <span class="math inline">\(x\)</span>.</p>
+<p>There is a line that contains all possible values for multiples of <span class="math inline">\(x\)</span>. The residuals will always be a sum of a component along this line and a component orthogonal to it. Notice that the component orthogonal to the line will always be the same – it’s the displacement from <span class="math inline">\(y\)</span> to the closest point on the line. But the parallel component will change depending on what value we choose for <span class="math inline">\(m\)</span>.</p>
+<p>To make the residuals as small as possible, we want the parallel component to be zero. That is, we want the residuals to be orthogonal to <span class="math inline">\(x\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="least-squares" class="title-slide slide level2 center">
+<h2><em>Least squares</em></h2>
+<p><span class="math inline">\(m \mathbf{x}-\mathbf{y}\)</span> should be orthogonal to <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x} \cdot\left(m \mathbf{x}-\mathbf{y}\right) &amp;=0 \\
+m \mathbf{x} \cdot \mathbf{x}-\mathbf{x} \cdot \mathbf{y} &amp;=0 \\
+m \mathbf{x} \cdot \mathbf{x} &amp;=\mathbf{x} \cdot \mathbf{y} \\
+\mathbf{x} \cdot \mathbf{x}\quad m  &amp;=\mathbf{x} \cdot \mathbf{y} \\
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>Change to matrix notation:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbf{x} \rightarrow \mathbf{A}\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathbf{y} \rightarrow \mathbf{b}\)</span></li>
+<li class="fragment"><span class="math inline">\(m \rightarrow \mathbf{x}\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Linear equation becomes <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{b}\)</span>. But it’s not consistent if the data aren’t on the straight line.</p>
+</div>
+<div class="fragment">
+<p>Best fit equation becomes</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{x} \cdot \mathbf{x}\quad m  &amp;=\mathbf{x} \cdot \mathbf{y} \\
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &amp;=\mathbf{A}^{T} \mathbf{b}
+\end{aligned}
+\]</span></p>
+<p>These are the <strong>normal equations</strong>. We solve them to find <span class="math inline">\(\mathbf{x}\)</span> which corresponds to the best fit.</p>
+</div>
+</section>
+
+<section id="normal-equations-for-a-single-predictor" class="title-slide slide level2 center">
+<h2><em>Normal equations for a single predictor</em></h2>
+<p>When we have a single predictor variable and a single response variable, the <span class="math inline">\(\mathbf{x}\)</span> we are trying to find is just a scalar. <span class="math inline">\(\mathbf{A}\)</span> is a column vector of the predictor variable, call it now <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}\)</span> is a column vector of the response variable.</p>
+<p>The normal equations become</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{a}^{T} \mathbf{a} \mathbf{x} &amp;=\mathbf{a}^{T} \mathbf{b} \\
+\mathbf{a} \cdot \mathbf{a} \mathbf{x} &amp;=\mathbf{a} \cdot \mathbf{b} \\
+x = \frac{\mathbf{a} \cdot \mathbf{b}}{\mathbf{a} \cdot \mathbf{a}}
+\end{aligned}
+\]</span></p>
+<p>This is the formula for the slope of the best fit line.</p>
+</section>
+
+<section id="example-1" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>You have a scale that measures in unknown units.</p>
+<p>You have items that you know weigh approximately 2, 5, and 7 pounds (approximately.)</p>
+<div class="fragment">
+<p>You measure the scale’s output for these items and get <span class="math inline">\(0.7,2.4\)</span>, and 3.2. What is the conversion factor from the scale’s units to pounds?</p>
+</div>
+<div class="fragment">
+<p>You can set up the system of equations:</p>
+<p><span class="math inline">\(\mathbf{a}= \begin{bmatrix} 2 \\ 5 \\ 7 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{b}= \begin{bmatrix} 0.7 \\ 2.4 \\ 3.2 \end{bmatrix}\)</span></p>
+<p>Can you find <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(\mathbf{a} \cdot \mathbf{x} = \mathbf{b}\)</span>?</p>
+</div>
+<div class="fragment">
+<p>No, it’s inconsistent. But you can find the best fit.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{a}^{T} \mathbf{a} \mathbf{x} &amp;=\mathbf{a}^{T} \mathbf{b} \\
+\begin{bmatrix} 2 &amp; 5 &amp; 7 \end{bmatrix} \begin{bmatrix} 2 \\ 5 \\ 7 \end{bmatrix} x &amp;= \begin{bmatrix} 2 &amp; 5 &amp; 7 \end{bmatrix} \begin{bmatrix} 0.7 \\ 2.4 \\ 3.2 \end{bmatrix}
+x = \frac{2 \cdot 0.7 + 5 \cdot 2.4 + 7 \cdot 3.2}{2^2 + 5^2 + 7^2} \approx 0.459
+\end{aligned}
+\]</span></p>
+<p>So to go from pounds to the scale’s units, multiply by 0.459.</p>
+</div>
+<div class="fragment">
+<p>(This is the opposite of what the book did – they found the conversion factor from the scale’s units to pounds.)</p>
+</div>
+</section>
+
+<section id="normal-equations-for-multiple-predictors" class="title-slide slide level2 center">
+<h2><em>Normal equations for multiple predictors</em></h2>
+<p>More generally, when we have multiple predictors, <span class="math inline">\(\mathbf{A}\)</span> is a matrix, with each column corresponding to a predictor variable. <span class="math inline">\(\mathbf{x}\)</span> is a column vector of the coefficients we are trying to find.</p>
+<p>What do the normal equations tell us? We can break them apart into the components corresponding to each column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &amp;=\mathbf{A}^{T} \mathbf{b} \\
+\text{becomes} \\
+\mathbf{a_i}\cdot \mathbf{A} \mathbf{x} &amp;=\mathbf{a_i} \cdot \mathbf{b}\text{ for every i} \\
+\mathbf{a_i}\cdot \left(\mathbf{b}-\mathbf{Ax}\right)&amp;=0\text{ for every i}
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>We need to find <span class="math inline">\(\mathbf{x}\)</span> such that the residuals are orthogonal to every column of <span class="math inline">\(\mathbf{A}\)</span>.</p>
+</div>
+</section>
+
+<section id="section-4" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-307.jpg?height=537&amp;width=804&amp;top_left_y=1141&amp;top_left_x=357" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-307.jpg?height=537&amp;width=804&amp;top_left_y=1141&amp;top_left_x=357"></a></p>
+</section>
+
+<section id="example-2" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>We have two predictors <span class="math inline">\(a_1\)</span> and <span class="math inline">\(a_2\)</span> and a response variable <span class="math inline">\(b\)</span>. We have the following data:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x_1\)</span></th>
+<th><span class="math inline">\(x_2\)</span></th>
+<th><span class="math inline">\(y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>We are hoping to find a linear relationship of the form <span class="math inline">\(\beta_1 x_1 + \beta_2 x_2 = y\)</span> for some values of <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span>.</p>
+</div>
+<div class="fragment">
+<p>This would bring us the following system of equations:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2 \beta_{1}+\beta_{2} &amp; =0 \\
+\beta_{1}+\beta_{2} &amp; =0 \\
+2 \beta_{1}+\beta_{2} &amp; =2 .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Obviously inconsistent! (<span class="math inline">\(2 \beta_{1}+\beta_{2}\)</span> cannot equal both 0 and 2.)</p>
+</div>
+<div class="fragment">
+<p>Find the least squares solution using the normal equations:</p>
+</div>
+</section>
+
+<section id="section-5" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Change variable names, so the <span class="math inline">\(\beta\)</span>s are now <span class="math inline">\(\mathbf{x}\)</span>, the <span class="math inline">\(x\)</span>s are now the columns <span class="math inline">\(\mathbf{A}\)</span>, and the <span class="math inline">\(y\)</span>s are now <span class="math inline">\(\mathbf{b}\)</span>.</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{ll}
+2 &amp; 1 \\
+1 &amp; 1 \\
+2 &amp; 1
+\end{array}\right], \text { and } \mathbf{b}=\left[\begin{array}{l}
+0 \\
+0 \\
+2
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Residuals are <span class="math inline">\(\mathbf{b}-\mathbf{A} \mathbf{x}\)</span>.</p>
+<p>Normal equations are <span class="math inline">\(\mathbf{A}^{T} \mathbf{A} \mathbf{x}=\mathbf{A}^{T} \mathbf{b}\)</span>.</p>
+</div>
+</section>
+
+<section id="section-6" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+A^{T} A=\left[\begin{array}{lll}
+2 &amp; 1 &amp; 2 \\
+1 &amp; 1 &amp; 1
+\end{array}\right]\left[\begin{array}{ll}
+2 &amp; 1 \\
+1 &amp; 1 \\
+2 &amp; 1
+\end{array}\right]=\left[\begin{array}{ll}
+9 &amp; 5 \\
+5 &amp; 3
+\end{array}\right]
+\]</span></p>
+<p>with inverse <span class="math display">\[
+\left(A^{T} A\right)^{-1}=\left[\begin{array}{ll}
+9 &amp; 5 \\
+5 &amp; 3
+\end{array}\right]^{-1}=\frac{1}{2}\left[\begin{array}{rr}
+3 &amp; -5 \\
+-5 &amp; 9
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+A^{T} \mathbf{b}=\left[\begin{array}{lll}
+2 &amp; 1 &amp; 2 \\
+1 &amp; 1 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+0 \\
+0 \\
+2
+\end{array}\right]=\left[\begin{array}{l}
+4 \\
+2
+\end{array}\right]
+\]</span></p>
+</div>
+</section>
+
+<section id="least-squares-solution" class="title-slide slide level2 center">
+<h2><em>Least Squares Solution</em></h2>
+<p><span class="math display">\[
+\mathbf{x}=\left(A^{T} A\right)^{-1} A^{T} \mathbf{b}=\frac{1}{2}\left[\begin{array}{rr}
+3 &amp; -5 \\
+-5 &amp; 9
+\end{array}\right]\left[\begin{array}{l}
+4 \\
+2
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+-1
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Back in our original variables, this means the best fit estimate for <span class="math inline">\(\beta_1\)</span> is 1 and the best <span class="math inline">\(\beta_2\)</span> is -1.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -745,7 +963,9 @@ E_{2}(1 / 2) &amp; 0 &amp; 0 &amp; 0 \\
 <p> </p>
 </div>
 </div>
-</section></section>
+</div>
+</section>
+</section>
     </div>
   </div>
 
@@ -1139,6 +1359,31 @@ E_{2}(1 / 2) &amp; 0 &amp; 0 &amp; 0 \\
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

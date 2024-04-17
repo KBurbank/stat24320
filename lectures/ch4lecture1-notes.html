@@ -434,7 +434,20 @@ v_{1} &amp; v_{2} &amp; v_{3}
 <h2><em>Finding the normal vector from the equation of the plane</em></h2>
 <p>If the plane is specified <span class="math inline">\(ax + by + cz = d\)</span>, then a normal vector is <span class="math inline">\(\vec a = ( a, b, c )\)</span>.</p>
 <div class="fragment">
-<p>Check: 1. Find three points on the plane. 1. Set the first point where <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(y = 0\)</span>, so <span class="math inline">\(z = d/c\)</span>: <span class="math inline">\((0, 0, d/c)\)</span>. 2. Set second point is where <span class="math inline">\(x=0\)</span> and <span class="math inline">\(z = 0\)</span>, so <span class="math inline">\(y=d/b\)</span>: <span class="math inline">\((0,d/b,0)\)</span>. 3. The third point is <span class="math inline">\((d/a,0,0)\)</span>. 2. Now find two displacement vectors in the plane: 1. <span class="math inline">\(\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\)</span> and 2. <span class="math inline">\(\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\)</span>.</p>
+<p>Check:</p>
+<ol type="1">
+<li class="fragment">Find three points on the plane.
+<ol type="1">
+<li class="fragment">Set the first point where <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(y = 0\)</span>, so <span class="math inline">\(z = d/c\)</span>: <span class="math inline">\((0, 0, d/c)\)</span>.</li>
+<li class="fragment">Set second point is where <span class="math inline">\(x=0\)</span> and <span class="math inline">\(z = 0\)</span>, so <span class="math inline">\(y=d/b\)</span>: <span class="math inline">\((0,d/b,0)\)</span>.</li>
+<li class="fragment">The third point is <span class="math inline">\((d/a,0,0)\)</span>.</li>
+</ol></li>
+<li class="fragment">Now find two displacement vectors in the plane:
+<ol type="1">
+<li class="fragment"><span class="math inline">\(\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\)</span> and</li>
+<li class="fragment"><span class="math inline">\(\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\)</span>.</li>
+</ol></li>
+</ol>
 </div>
 </section>
 
@@ -596,7 +609,9 @@ d/a &amp; 0 &amp; -d/c
 <div class="fragment">
 <p>The equation of the plane is <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span></p>
 <p>What is <span class="math inline">\(b\)</span>? We can plug in any of the points and solve for it. Let’s use <span class="math inline">\(P\)</span>:</p>
-<p>. . . <span class="math inline">\(b=\mathbf{a} \cdot \mathbf{P}=(1,-3,-1) \cdot(1,0,2)=1+0-2=-1\)</span>.</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(b=\mathbf{a} \cdot \mathbf{P}=(1,-3,-1) \cdot(1,0,2)=1+0-2=-1\)</span>.</p>
 </div>
 </section>
 
@@ -623,13 +638,9 @@ d/a &amp; 0 &amp; -d/c
 <section id="summary" class="title-slide slide level2 center">
 <h2><em>Summary</em></h2>
 <ul>
-<li class="fragment"><ul>
-<li class="fragment">Plane through the origin: <span class="math inline">\(\vec a\cdot \vec x = 0\)</span></li>
-</ul></li>
-</ul>
-<p>Plane displaced from the origin: <span class="math inline">\(\vec a\cdot \vec x = q\)</span></p>
-<p>Component of <span class="math inline">\(\vec x\)</span> along the vector <span class="math inline">\(\vec a\)</span> (scalar projection): <span class="math inline">\(\vec a\cdot \vec x / || \vec a ||\)</span></p>
-<ul>
+<li class="fragment"><p>Plane through the origin: <span class="math inline">\(\vec a\cdot \vec x = 0\)</span></p></li>
+<li class="fragment"><p>Plane displaced from the origin: <span class="math inline">\(\vec a\cdot \vec x = q\)</span></p></li>
+<li class="fragment"><p>Component of <span class="math inline">\(\vec x\)</span> along the vector <span class="math inline">\(\vec a\)</span> (scalar projection): <span class="math inline">\(\vec a\cdot \vec x / || \vec a ||\)</span></p></li>
 <li class="fragment"><p>Projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>: <span class="math inline">\(\vec a / ||a|| \quad \vec a\cdot \vec x/||\vec a||\)</span></p></li>
 <li class="fragment"><p>Projection of <span class="math inline">\(\vec x\)</span> onto the plane for which <span class="math inline">\(\vec a\)</span> is the normal vector, displaced by <span class="math inline">\(q \vec a\)</span> from the origin: <span class="math inline">\(\vec x\)</span> - projection onto the normal vector = $x - a (ax - q) $</p></li>
 </ul>
@@ -642,8 +653,10 @@ d/a &amp; 0 &amp; -d/c
 \mathbf{p}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v} \text { and } \quad \mathbf{q}=\mathbf{u}-\mathbf{p}
 \]</span></p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-303.jpg?height=361&amp;width=585&amp;top_left_y=192&amp;top_left_x=466" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-303.jpg?height=361&amp;width=585&amp;top_left_y=192&amp;top_left_x=466"></a></p>
+<div class="fragment">
 <p>Then <span class="math inline">\(\mathbf{p}\)</span> is <strong>parallel</strong> to <span class="math inline">\(\mathbf{v}, \mathbf{q}\)</span> is <strong>orthogonal</strong> to <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{u}=\mathbf{p}+\mathbf{q}\)</span>.</p>
 <p>. . . We say <span class="math inline">\(\operatorname{proj}_{\mathbf{v}} \mathbf{u}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}\)</span> and <span class="math inline">\(\operatorname{orth}_{\mathbf{v}} \mathbf{u}=\mathbf{u}-\operatorname{proj}_{\mathbf{v}} \mathbf{u}\)</span></p>
+</div>
 </section>
 
 <section id="taking-a-step-back-from-linear-algebra-fitting-a-line-to-data" class="title-slide slide level2 center">
@@ -756,11 +769,7 @@ m \mathbf{x} \cdot \mathbf{x} &amp;=\mathbf{x} \cdot \mathbf{y} \\
 \]</span></p>
 <div class="fragment">
 <p>Change to matrix notation:</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\mathbf{x} \rightarrow \mathbf{A}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{y} \rightarrow \mathbf{b}\)</span></li>
-<li class="fragment"><span class="math inline">\(m \rightarrow \mathbf{x}\)</span></li>
-</ul>
+<p><span class="fragment"><span class="math inline">\(\mathbf{x} \rightarrow \mathbf{A}\)</span></span>, <span class="fragment"><span class="math inline">\(\mathbf{y} \rightarrow \mathbf{b}\)</span></span>, <span class="fragment"><span class="math inline">\(m \rightarrow \mathbf{x}\)</span></span></p>
 </div>
 <div class="fragment">
 <p>Linear equation becomes <span class="math inline">\(\mathbf{A} \mathbf{x}= \mathbf{b}\)</span>. But it’s not consistent if the data aren’t on the straight line. Best fit equation becomes</p>
@@ -1406,7 +1415,7 @@ A^{T} \mathbf{b}=\left[\begin{array}{lll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

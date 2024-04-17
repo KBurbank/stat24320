@@ -2119,5 +2119,40 @@
     "title": "Ch4 Lecture 1",
     "section": "",
     "text": "Using 3d plotting tools, visualize what just happened in the previous example."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#least-squares-1",
+    "href": "lectures/ch4lecture1.html#least-squares-1",
+    "title": "Ch4 Lecture 1",
+    "section": "Least squares",
+    "text": "Least squares\n\\(m \\mathbf{x}-\\mathbf{y}\\) should be orthogonal to \\(\\mathbf{x}\\).\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot\\left(m \\mathbf{x}-\\mathbf{y}\\right) &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x}-\\mathbf{x} \\cdot \\mathbf{y} &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x} &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\end{aligned}\n\\]\n\nChange to matrix notation:\n\\(\\mathbf{x} \\rightarrow \\mathbf{A}\\text{,}\\qquad\\) \\(\\mathbf{y} \\rightarrow \\mathbf{b}\\text{,}\\qquad\\) \\(m \\rightarrow \\mathbf{x}\\)\n\n\nLinear equation becomes \\(\\mathbf{A} \\mathbf{x}= \\mathbf{b}\\). But it’s not consistent if the data aren’t on the straight line. Best fit equation becomes\n\n\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThese are the normal equations. We solve them to find \\(\\mathbf{x}\\) which corresponds to the best fit."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#orthogonal-coordinates-theorem",
+    "href": "lectures/ch4lecture1.html#orthogonal-coordinates-theorem",
+    "title": "Ch4 Lecture 1",
+    "section": "Orthogonal Coordinates Theorem",
+    "text": "Orthogonal Coordinates Theorem\n\nIf \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\) are nonzero and orthogonal, and\n\\(\\mathbf{v} \\in \\operatorname{span}\\left\\{\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right\\}\\),\n\\(\\mathbf{v}\\) can be expressed uniquely (up to order) as a linear combination of \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\), namely\n\\[\n\\mathbf{v}=\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{v}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}+\\frac{\\mathbf{v}_{2} \\cdot \\mathbf{v}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\mathbf{v}_{2}+\\cdots+\\frac{\\mathbf{v}_{n} \\cdot \\mathbf{v}}{\\mathbf{v}_{n} \\cdot \\mathbf{v}_{n}} \\mathbf{v}_{n}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#proof",
+    "href": "lectures/ch4lecture1.html#proof",
+    "title": "Ch4 Lecture 1",
+    "section": "Proof",
+    "text": "Proof\nSince \\(\\mathbf{v} \\in \\operatorname{span}\\left\\{\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right\\}\\),\nwe can write \\(\\mathbf{v}\\) as a linear combination of the \\(\\mathbf{v}_{i}\\) ’s:\n\\[\n\\mathbf{v}=c_{1} \\mathbf{v}_{1}+c_{2} \\mathbf{v}_{2}+\\cdots+c_{n} \\mathbf{v}_{n}\n\\]\n\nNow take the inner product of both sides with \\(\\mathbf{v}_{k}\\):\n\n\nSince \\(\\mathbf{v}_{k} \\cdot \\mathbf{v}_{j}=0\\) if \\(j \\neq k\\),\n\\[\n\\begin{aligned}\n\\mathbf{v}_{k} \\cdot \\mathbf{v} & =\\mathbf{v}_{k} \\cdot\\left(c_{1} \\mathbf{v}_{1}+c_{2} \\mathbf{v}_{2}+\\ldots \\cdots+c_{n} \\mathbf{v}_{n}\\right) \\\\\n& =c_{1} \\mathbf{v}_{k} \\cdot \\mathbf{v}_{1}+c_{2} \\mathbf{v}_{k} \\cdot \\mathbf{v}_{2}+\\cdots+c_{n} \\mathbf{v}_{k} \\cdot \\mathbf{v}_{n}=c_{k} \\mathbf{v}_{k} \\cdot \\mathbf{v}_{k}\n\\end{aligned}\n\\]\n\n\nSince \\(\\mathbf{v}_{k} \\neq 0\\), \\(\\left\\|\\mathbf{v}_{k}\\right\\|^{2}=\\mathbf{v}_{k} \\cdot \\mathbf{v}_{k} \\neq 0\\) so we can divide::\n\\[\nc_{k}=\\frac{\\mathbf{v}_{k} \\cdot \\mathbf{v}}{\\mathbf{v}_{k} \\cdot \\mathbf{v}_{k}}\n\\]\n\n\nAny linear combination of an orthogonal set of nonzero vectors is the sum of its projections in the direction of each vector in the set."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#orthogonal-matrix",
+    "href": "lectures/ch4lecture1.html#orthogonal-matrix",
+    "title": "Ch4 Lecture 1",
+    "section": "Orthogonal matrix",
+    "text": "Orthogonal matrix\nSuppose \\(\\mathbf{u}_{1}, \\mathbf{u}_{2}, \\ldots, \\mathbf{u}_{n}\\) is an orthonormal basis of \\(\\mathbb{R}^{n}\\)\n\nMake these the column vectors of \\(\\mathbf{A}\\): \\(A=\\left[\\mathbf{u}_{1}, \\mathbf{u}_{2}, \\ldots, \\mathbf{u}_{n}\\right]\\)\n\n\nBecause the \\(\\mathbf{u}_{i}\\) are orthonormal, \\(\\mathbf{u}_{i}^{T} \\mathbf{u}_{j}=\\delta_{i j}\\)\n\n\nUse this to calculate \\(A^{T} A\\).\n\nits \\((i, j)\\) th entry is \\(\\mathbf{u}_{n}^{T} \\mathbf{u}_{n}\\)\n= \\(\\delta_{i j}\\)\nSo we have = \\(A^{T} A=\\left[\\delta_{i j}\\right]=I\\)\nTherefore, \\(A^{T} = A^{-1}\\)"
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#orthogonal-matrix-1",
+    "href": "lectures/ch4lecture1.html#orthogonal-matrix-1",
+    "title": "Ch4 Lecture 1",
+    "section": "Orthogonal matrix",
+    "text": "Orthogonal matrix\n\nA square real matrix \\(Q\\) is called orthogonal if \\(Q^{T}=Q^{-1}\\).\nA square matrix \\(U\\) is called unitary if \\(U^{*}=U^{-1}\\)."
   }
 ]

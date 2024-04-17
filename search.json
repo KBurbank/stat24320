@@ -2154,5 +2154,12 @@
     "title": "Ch4 Lecture 1",
     "section": "Orthogonal matrix",
     "text": "Orthogonal matrix\n\nA square real matrix \\(Q\\) is called orthogonal if \\(Q^{T}=Q^{-1}\\).\nA square matrix \\(U\\) is called unitary if \\(U^{*}=U^{-1}\\)."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#example-3",
+    "href": "lectures/ch4lecture1.html#example-3",
+    "title": "Ch4 Lecture 1",
+    "section": "Example",
+    "text": "Example\nShow that the matrix \\(R(\\theta)=\\left[\\begin{array}{rr}\\cos \\theta & -\\sin \\theta \\\\ \\sin \\theta & \\cos \\theta\\end{array}\\right]\\) is orthogonal.\n\n\\[\n\\begin{aligned}\nR(\\theta)^{T} R(\\theta) & =\\left(\\left[\\begin{array}{cc}\n\\cos \\theta & -\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right]\\right)^{T}\\left[\\begin{array}{cc}\n\\cos \\theta & -\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right] \\\\\n& =\\left[\\begin{array}{cc}\n\\cos \\theta \\sin \\theta \\\\\n-\\sin \\theta \\cos \\theta\n\\end{array}\\right]\\left[\\begin{array}{cc}\n\\cos \\theta-\\sin \\theta \\\\\n\\sin \\theta & \\cos \\theta\n\\end{array}\\right] \\\\\n& =\\left[\\begin{array}{cc}\n\\cos ^{2} \\theta+\\sin ^{2} \\theta & \\cos \\theta \\sin \\theta-\\sin \\theta \\cos \\theta \\\\\n-\\cos \\theta \\sin \\theta+\\sin \\theta \\cos \\theta & \\sin ^{2} \\theta+\\cos ^{2} \\theta\n\\end{array}\\right]=\\left[\\begin{array}{ll}\n1 & 0 \\\\\n0 & 1\n\\end{array}\\right],\n\\end{aligned}\n\\]\n\n\nThis rotation matrix preserves vector lengths and angles between vectors (illustrate).\nThus, \\(R(\\theta)\\mathbf{x}\\cdot R(\\theta)\\mathbf{y}=\\mathbf{x} \\cdot \\mathbf{y}\\)\n\n\nThis is true in general for orthogonal matrices:\n\\[\nQ \\mathbf{x} \\cdot Q \\mathbf{y}=(Q \\mathbf{x})^{T} Q \\mathbf{y}=\\mathbf{x}^{T} Q^{T} Q \\mathbf{y}=\\mathbf{x}^{T} \\mathbf{y}=\\mathbf{x} \\cdot \\mathbf{y}\n\\]\nalso,\n\\[\n\\|Q \\mathbf{x}\\|^{2}=Q \\mathbf{x} \\cdot Q \\mathbf{x}=(Q \\mathbf{x})^{T} Q \\mathbf{x}=\\mathbf{x}^{T} Q^{T} Q \\mathbf{x}=\\mathbf{x}^{T} \\mathbf{x}=\\|\\mathbf{x}\\|^{2}\n\\]"
   }
 ]

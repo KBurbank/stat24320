@@ -1922,7 +1922,7 @@
     "href": "lectures/ch4lecture1.html#planes",
     "title": "Ch4 Lecture 1",
     "section": "Planes",
-    "text": "Planes\nMore copilot insanity. I wrote the first sentence, and then it autocompleted as follows:\nHave students put a dot in the center of the card and say this is the origin. Have them draw a line and say this is the x-axis. Have them draw a line perpendicular to the x-axis and say this is the y-axis. Have them draw a line perpendicular to the x and y axes and say this is the z-axis. Have them draw a line perpendicular to the x and y axes and say this is the w-axis. Have them draw a line perpendicular to the x, y, and w axes and say this is the v-axis. Have them draw a line perpendicular to the x, y, w, and v axes and say this is the u-axis. Have them draw a line perpendicular to the x, y, w, v, and u axes and say this is the t-axis. Have them draw a line perpendicular to the x, y, w, v, u, and t axes and say this is the s-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, and s axes and say this is the r-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, and r axes and say this is the q-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, and q axes and say this is the p-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, and p axes and say this is the o-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, and o axes and say this is the n-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, and n axes and say this is the m-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, and m axes and say this is the l-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, m, and l axes and say this is the k-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s…"
+    "text": "Planes\nMore copilot insanity. I wrote the first sentence, and then it autocompleted as follows:\nHave students put a dot in the center of the card and say this is the origin. . . . Have them draw a line and say this is the x-axis. . . . Have them draw a line perpendicular to the x-axis and say this is the y-axis.\n\nHave them draw a line perpendicular to the x and y axes and say this is the z-axis.\n\n\nHave them draw a line perpendicular to the x and y axes and say this is the w-axis.\n\n\nHave them draw a line perpendicular to the x, y, and w axes and say this is the v-axis.\n\n\nHave them draw a line perpendicular to the x, y, w, and v axes and say this is the u-axis.\n\n\nHave them draw a line perpendicular to the x, y, w, v, and u axes and say this is the t-axis. Have them draw a line perpendicular to the x, y, w, v, u, and t axes and say this is the s-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, and s axes and say this is the r-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, and r axes and say this is the q-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, and q axes and say this is the p-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, and p axes and say this is the o-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, and o axes and say this is the n-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, and n axes and say this is the m-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, and m axes and say this is the l-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, m, and l axes and say this is the k-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s…"
   },
   {
     "objectID": "lectures/ch4lecture1.html#section",
@@ -1943,14 +1943,14 @@
     "href": "lectures/ch4lecture1.html#finding-the-normal-vector-from-the-equation-of-the-plane",
     "title": "Ch4 Lecture 1",
     "section": "Finding the normal vector from the equation of the plane",
-    "text": "Finding the normal vector from the equation of the plane\nIf the plane is specified \\(ax + by + cz = d\\), then a normal vector is \\(\\vec a = ( a, b, c )\\).\n\nHow can we tell? Let’s find three points on the plane. Set the first point where \\(x = 0\\) and \\(y = 0\\), so \\(z = d/c\\): \\((0, 0, d/c)\\). Set second point is where \\(x=0\\) and \\(z = 0\\), so \\(y=d/b\\): \\((0,d/b,0)\\). The third point is \\((d/a,0,0)\\).\nNow find two displacement vectors in the plane: \\(\\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\\) and \\(\\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\\)."
+    "text": "Finding the normal vector from the equation of the plane\nIf the plane is specified \\(ax + by + cz = d\\), then a normal vector is \\(\\vec a = ( a, b, c )\\).\n\nCheck: 1. Find three points on the plane. 1. Set the first point where \\(x = 0\\) and \\(y = 0\\), so \\(z = d/c\\): \\((0, 0, d/c)\\). 2. Set second point is where \\(x=0\\) and \\(z = 0\\), so \\(y=d/b\\): \\((0,d/b,0)\\). 3. The third point is \\((d/a,0,0)\\). 2. Now find two displacement vectors in the plane: 1. \\(\\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)\\) and 2. \\(\\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)\\)."
   },
   {
     "objectID": "lectures/ch4lecture1.html#section-1",
     "href": "lectures/ch4lecture1.html#section-1",
     "title": "Ch4 Lecture 1",
     "section": "",
-    "text": "Now take the cross product of these two vectors to find the normal vector:\n\\[\n\\begin{aligned}\n\\vec u \\times \\vec v \\\\\n&= \\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n0 & d/b & -d/c \\\\\nd/a & 0 & -d/c\n\\end{array}\\right| \\\\\n&= - \\mathbf{i} \\left( \\frac{d}{b} \\frac{d}{c} \\right) + \\mathbf{j} \\left( \\frac{d}{a} \\frac{d}{c} \\right) - \\mathbf{k} \\left( \\frac{d}{a} \\frac{d}{b} \\right) \\\\\n&= -d^2 \\left[ \\left( \\frac{1}{bc} \\right) \\mathbf{i} - \\left( \\frac{1}{ac} \\right) \\mathbf{j} + \\left( \\frac{1}{ab} \\right) \\mathbf{k} \\right]\\\\\n&= -\\frac{d^2}{abc} \\left[\\left( a \\right) \\mathbf{i} - \\left( b \\right) \\mathbf{j} + \\left( c \\right) \\mathbf{k} \\right]\\\\\n\\end{aligned}\n\\]\nThis is paralell to \\(\\vec a = (a, b, c)\\)."
+    "text": "Now take the cross product of these two vectors to find the normal vector:\n\\[\n\\begin{aligned}\n\\vec u \\times \\vec v \\\\\n&= \\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n0 & d/b & -d/c \\\\\nd/a & 0 & -d/c\n\\end{array}\\right| \\\\\n&= - \\mathbf{i} \\left( \\frac{d}{b} \\frac{d}{c} \\right) + \\mathbf{j} \\left( \\frac{d}{a} \\frac{d}{c} \\right) - \\mathbf{k} \\left( \\frac{d}{a} \\frac{d}{b} \\right) \\\\\n&= -d^2 \\left[ \\left( \\frac{1}{bc} \\right) \\mathbf{i} - \\left( \\frac{1}{ac} \\right) \\mathbf{j} + \\left( \\frac{1}{ab} \\right) \\mathbf{k} \\right]\\\\\n&= -\\frac{d^2}{abc} \\left[\\left( a \\right) \\mathbf{i} - \\left( b \\right) \\mathbf{j} + \\left( c \\right) \\mathbf{k} \\right]\\\\\n\\end{aligned}\n\\]\nThis is parallel to \\(\\vec{a} = (a, b, c)\\)."
   },
   {
     "objectID": "lectures/ch4lecture1.html#distances-from-the-plane",
@@ -1999,7 +1999,7 @@
     "href": "lectures/ch4lecture1.html#example",
     "title": "Ch4 Lecture 1",
     "section": "Example",
-    "text": "Example\nFind an equation that defines the plane containing the three (noncollinear) points \\(P, Q\\), and \\(R\\) with coordinates \\((1,0,2),(2,1,0)\\), and \\((3,1,1)\\), respectively.\n\n\\[\n\\begin{aligned}\n& \\overrightarrow{P Q}=(2,1,0)-(1,0,2)=(1,1,-2) \\\\\n& \\overrightarrow{P R}=(3,1,1)-(1,0,2)=(2,1,-1)\n\\end{aligned}\n\\]\n\n\n\\[\n\\mathbf{u} \\times \\mathbf{v}=\\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n1 & 1 & -2 \\\\\n2 & 1 & -1\n\\end{array}\\right|=\\mathbf{i}-3 \\mathbf{j}-\\mathbf{k}\n\\]"
+    "text": "Example\nFind an equation that defines the plane containing the three (noncollinear) points \\(P, Q\\), and \\(R\\) with coordinates \\((1,0,2),(2,1,0)\\), and \\((3,1,1)\\), respectively.\n\n\\[\n\\begin{aligned}\n& \\overrightarrow{P Q}=(2,1,0)-(1,0,2)=(1,1,-2) \\\\\n& \\overrightarrow{P R}=(3,1,1)-(1,0,2)=(2,1,-1)\n\\end{aligned}\n\\]\n\n\n\\[\n\\mathbf{u} \\times \\mathbf{v}=\\left|\\begin{array}{ccc}\n\\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\\n1 & 1 & -2 \\\\\n2 & 1 & -1\n\\end{array}\\right|=\\mathbf{i}-3 \\mathbf{j}-\\mathbf{k}\n\\]\n\n\nThe normal vector is \\(\\mathbf{a}=(1,-3,-1)\\).\n\n\nThe equation of the plane is \\(\\mathbf{a} \\cdot \\mathbf{x}=b\\)\nWhat is \\(b\\)? We can plug in any of the points and solve for it. Let’s use \\(P\\):\n. . . \\(b=\\mathbf{a} \\cdot \\mathbf{P}=(1,-3,-1) \\cdot(1,0,2)=1+0-2=-1\\)."
   },
   {
     "objectID": "lectures/ch4lecture1.html#projections-to-the-displaced-plane",
@@ -2013,14 +2013,14 @@
     "href": "lectures/ch4lecture1.html#summary",
     "title": "Ch4 Lecture 1",
     "section": "Summary",
-    "text": "Summary\nPlane through the origin: \\(\\vec a\\cdot \\vec x = 0\\)\nPlane displaced from the origin: \\(\\vec a\\cdot \\vec x = q\\)\nComponent of \\(\\vec x\\) along the vector \\(\\vec a\\) (scalar projection): \\(\\vec a\\cdot \\vec x / || \\vec a ||\\)\nProjection of \\(\\vec x\\) onto \\(\\vec a\\): \\(\\vec a / ||a|| \\quad \\vec a\\cdot \\vec x/||\\vec a||\\)\nProjection of \\(\\vec x\\) onto the plane for which \\(\\vec a\\) is the normal vector, displaced by \\(q \\vec a\\) from the origin: \\(\\vec x\\) - projection onto the normal vector = $x - a (ax - q) $"
+    "text": "Summary\n\n\nPlane through the origin: \\(\\vec a\\cdot \\vec x = 0\\)\n\n\nPlane displaced from the origin: \\(\\vec a\\cdot \\vec x = q\\)\nComponent of \\(\\vec x\\) along the vector \\(\\vec a\\) (scalar projection): \\(\\vec a\\cdot \\vec x / || \\vec a ||\\)\n\nProjection of \\(\\vec x\\) onto \\(\\vec a\\): \\(\\vec a / ||a|| \\quad \\vec a\\cdot \\vec x/||\\vec a||\\)\nProjection of \\(\\vec x\\) onto the plane for which \\(\\vec a\\) is the normal vector, displaced by \\(q \\vec a\\) from the origin: \\(\\vec x\\) - projection onto the normal vector = $x - a (ax - q) $"
   },
   {
     "objectID": "lectures/ch4lecture1.html#projection-formula-for-vectors",
     "href": "lectures/ch4lecture1.html#projection-formula-for-vectors",
     "title": "Ch4 Lecture 1",
     "section": "Projection Formula for Vectors",
-    "text": "Projection Formula for Vectors\nLet \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) be vectors, \\(\\mathbf{v} \\neq \\mathbf{0}\\). Let\n\n\\[\n\\mathbf{p}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v} \\text { and } \\quad \\mathbf{q}=\\mathbf{u}-\\mathbf{p}\n\\]\nThen \\(\\mathbf{p}\\) is parallel to \\(\\mathbf{v}, \\mathbf{q}\\) is orthogonal to \\(\\mathbf{v}\\), and \\(\\mathbf{u}=\\mathbf{p}+\\mathbf{q}\\).\n\\[\n\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v}\n\\]\n\\[\n\\operatorname{orth}_{\\mathbf{v}} \\mathbf{u}=\\mathbf{u}-\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}\n\\]"
+    "text": "Projection Formula for Vectors\nLet \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) be vectors, \\(\\mathbf{v} \\neq \\mathbf{0}\\).\n\\[\n\\mathbf{p}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v} \\text { and } \\quad \\mathbf{q}=\\mathbf{u}-\\mathbf{p}\n\\]\n\nThen \\(\\mathbf{p}\\) is parallel to \\(\\mathbf{v}, \\mathbf{q}\\) is orthogonal to \\(\\mathbf{v}\\), and \\(\\mathbf{u}=\\mathbf{p}+\\mathbf{q}\\).\n. . . We say \\(\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}=\\frac{\\mathbf{v} \\cdot \\mathbf{u}}{\\mathbf{v} \\cdot \\mathbf{v}} \\mathbf{v}\\) and \\(\\operatorname{orth}_{\\mathbf{v}} \\mathbf{u}=\\mathbf{u}-\\operatorname{proj}_{\\mathbf{v}} \\mathbf{u}\\)"
   },
   {
     "objectID": "lectures/ch4lecture1.html#taking-a-step-back-from-linear-algebra-fitting-a-line-to-data",
@@ -2041,7 +2041,7 @@
     "href": "lectures/ch4lecture1.html#imperfect-data",
     "title": "Ch4 Lecture 1",
     "section": "Imperfect data",
-    "text": "Imperfect data\n::: notes Now have them realize what happens if the data is not on a straight line. What does the relationship between \\(x\\) and \\(y\\) look like now?\n\\(y\\) is still close to a multiple of \\(x\\), but not exactly. They aren’t exactly parallel."
+    "text": "Imperfect data\n\nNow have them realize what happens if the data is not on a straight line. What does the relationship between \\(x\\) and \\(y\\) look like now?\n\\(y\\) is still close to a multiple of \\(x\\), but not exactly. They aren’t exactly parallel."
   },
   {
     "objectID": "lectures/ch4lecture1.html#guessing-at-a-fit",
@@ -2062,14 +2062,14 @@
     "href": "lectures/ch4lecture1.html#least-squares",
     "title": "Ch4 Lecture 1",
     "section": "Least squares",
-    "text": "Least squares\n\\(m \\mathbf{x}-\\mathbf{y}\\) should be orthogonal to \\(\\mathbf{x}\\).\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot\\left(m \\mathbf{x}-\\mathbf{y}\\right) &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x}-\\mathbf{x} \\cdot \\mathbf{y} &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x} &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\end{aligned}\n\\]\n\nChange to matrix notation:\n\n\\(\\mathbf{x} \\rightarrow \\mathbf{A}\\)\n\\(\\mathbf{y} \\rightarrow \\mathbf{b}\\)\n\\(m \\rightarrow \\mathbf{x}\\)\n\n\n\nLinear equation becomes \\(\\mathbf{A} \\mathbf{x}= \\mathbf{b}\\). But it’s not consistent if the data aren’t on the straight line.\n\n\nBest fit equation becomes\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThese are the normal equations. We solve them to find \\(\\mathbf{x}\\) which corresponds to the best fit."
+    "text": "Least squares\n\\(m \\mathbf{x}-\\mathbf{y}\\) should be orthogonal to \\(\\mathbf{x}\\).\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot\\left(m \\mathbf{x}-\\mathbf{y}\\right) &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x}-\\mathbf{x} \\cdot \\mathbf{y} &=0 \\\\\nm \\mathbf{x} \\cdot \\mathbf{x} &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\end{aligned}\n\\]\n\nChange to matrix notation:\n\n\\(\\mathbf{x} \\rightarrow \\mathbf{A}\\)\n\\(\\mathbf{y} \\rightarrow \\mathbf{b}\\)\n\\(m \\rightarrow \\mathbf{x}\\)\n\n\n\nLinear equation becomes \\(\\mathbf{A} \\mathbf{x}= \\mathbf{b}\\). But it’s not consistent if the data aren’t on the straight line. Best fit equation becomes\n\n\n\\[\n\\begin{aligned}\n\\mathbf{x} \\cdot \\mathbf{x}\\quad m  &=\\mathbf{x} \\cdot \\mathbf{y} \\\\\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThese are the normal equations. We solve them to find \\(\\mathbf{x}\\) which corresponds to the best fit."
   },
   {
     "objectID": "lectures/ch4lecture1.html#normal-equations-for-a-single-predictor",
     "href": "lectures/ch4lecture1.html#normal-equations-for-a-single-predictor",
     "title": "Ch4 Lecture 1",
     "section": "Normal equations for a single predictor",
-    "text": "Normal equations for a single predictor\nWhen we have a single predictor variable and a single response variable, the \\(\\mathbf{x}\\) we are trying to find is just a scalar. \\(\\mathbf{A}\\) is a column vector of the predictor variable, call it now \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\) is a column vector of the response variable.\nThe normal equations become\n\\[\n\\begin{aligned}\n\\mathbf{a}^{T} \\mathbf{a} \\mathbf{x} &=\\mathbf{a}^{T} \\mathbf{b} \\\\\n\\mathbf{a} \\cdot \\mathbf{a} \\mathbf{x} &=\\mathbf{a} \\cdot \\mathbf{b} \\\\\nx = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}}\n\\end{aligned}\n\\]\nThis is the formula for the slope of the best fit line."
+    "text": "Normal equations for a single predictor\nWhen we have a single predictor variable and a single response variable, the \\(\\mathbf{x}\\) we are trying to find is just a scalar.\n\n\\(\\mathbf{A}\\) is a column vector of the predictor variable, call it now \\(\\mathbf{a}\\)\n\n\n\\(\\mathbf{b}\\) is a column vector of the response variable.\n\n\nThe normal equations become\n\\[\n\\begin{aligned}\n\\mathbf{a}^{T} \\mathbf{a} \\mathbf{x} &=\\mathbf{a}^{T} \\mathbf{b} \\\\\n\\mathbf{a} \\cdot \\mathbf{a} \\mathbf{x} &=\\mathbf{a} \\cdot \\mathbf{b} \\\\\nx = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\mathbf{a} \\cdot \\mathbf{a}}\n\\end{aligned}\n\\]\nThis is the formula for the slope of the best fit line."
   },
   {
     "objectID": "lectures/ch4lecture1.html#example-1",
@@ -2112,5 +2112,12 @@
     "title": "Ch4 Lecture 1",
     "section": "Least Squares Solution",
     "text": "Least Squares Solution\n\\[\n\\mathbf{x}=\\left(A^{T} A\\right)^{-1} A^{T} \\mathbf{b}=\\frac{1}{2}\\left[\\begin{array}{rr}\n3 & -5 \\\\\n-5 & 9\n\\end{array}\\right]\\left[\\begin{array}{l}\n4 \\\\\n2\n\\end{array}\\right]=\\left[\\begin{array}{r}\n1 \\\\\n-1\n\\end{array}\\right]\n\\]\n\nBack in our original variables, this means the best fit estimate for \\(\\beta_1\\) is 1 and the best \\(\\beta_2\\) is -1."
+  },
+  {
+    "objectID": "lectures/ch4lecture1.html#section-7",
+    "href": "lectures/ch4lecture1.html#section-7",
+    "title": "Ch4 Lecture 1",
+    "section": "",
+    "text": "Using 3d plotting tools, visualize what just happened in the previous example."
   }
 ]

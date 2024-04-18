@@ -1773,7 +1773,7 @@ const initChalkboard = function (Reveal) {
 		canvas.addEventListener('mouseup', function (evt) {
 			evt.preventDefault();
 			//		drawingCanvas[ mode ].canvas.style.cursor = pens[ mode ][ color[ mode ] ].cursor;
-			setPenOrEraserCursor(index, mode, color);
+			setPenOrEraserCursor(mode, color);
 		//	$('canvas').awesomeCursor('pencil', { flip: 'vertical', color: pens[mode][color[mode]].color });
 
 			if (drawing || erasing) {

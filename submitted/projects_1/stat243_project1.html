@@ -283,7 +283,7 @@ $$
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>There is an issue with the random vectors here – the first element of the vector ends up being twice as large as the other two, on average.</p>
-</div></div><div id="b6bc80ad" class="cell" data-execution_count="4">
+<div id="b6bc80ad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x.append(generate_input_vector())</span>
@@ -300,14 +300,13 @@ $$
        [0.248854000000000]], dtype=object)</code></pre>
 </div>
 </div>
-<p>I would reccomended going with the second campaign. I ran the following test to come to this conclusion:</p>
+</div></div><p>I would reccomended going with the second campaign. I ran the following test to come to this conclusion:</p>
 <p>First, I randomly generated 2000 inital vectors. I also set up a function that runs, for 10 iterations (i.e.&nbsp;10 year forcast), the markov chains representing the cases of 1) no ad campaigns 2) the first ad campaign and 3) the third ad campaign. I ran each randomly generated inital vector each markov chain and then counted for which case ended with the highest market share.</p>
 <p>For all 2,000 inital vectors, the second ad campaign ended with the highest market share. Therefore, I strongly reccomended moving forward with the second ad campaign when considering long-term interests.</p>
 <p>Some limitations of this study may be that it only looks at the long term since it uses a a ten year model. Therefore, if the company is looking for short term gains (next quarter, the next year, etc), then these results may not be helpful and a new study should be conducted. In addition, this model assumes that there is no counter-ad campaign from another company that may change the transition matrix. In other words, this study does not anticipate other changing factors in the market that may change the transition matrix and thus the results.</p>
-</section>
-<section id="comments" class="level2">
-<h2 class="anchored" data-anchor-id="comments"><em>Comments</em></h2>
-<p>I liked that you chose to use the random vectors for evaluating the different campaigns.</p>
+<div class="comments">
+<p>I liked that you chose to use many random vectors for evaluating the different campaigns (although see the note about the random vectors above).</p>
+</div>
 </section>
 <section id="sports-ranking" class="level2">
 <h2 class="anchored" data-anchor-id="sports-ranking"><em>Sports Ranking:</em></h2>

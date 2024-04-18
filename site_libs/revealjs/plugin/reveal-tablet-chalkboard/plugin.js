@@ -1577,7 +1577,7 @@ const initChalkboard = function (Reveal) {
 				mouseX = touch.pageX - revealDiv.offsetLeft;
 				mouseY = touch.pageY - revealDiv.offsetTop;
 				saveInitial(mouseX, mouseY);
-				if (color[mode] == rgba(255, 255, 255, 1)) {
+				if (color[mode] == 'rgba(255, 255, 255, 1)') {
 					startErasing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
 				} else {
 				startDrawing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
@@ -1700,7 +1700,7 @@ const initChalkboard = function (Reveal) {
 				mouseX = evt.pageX - revealDiv.offsetLeft;
 				mouseY = evt.pageY - revealDiv.offsetTop;
 
-				if (evt.button == 2 || evt.button == 1 || evt.shiftKey) {
+				if (evt.button == 2 || evt.button == 1 || evt.shiftKey|| (color[mode] == 'rgba(255, 255, 255, 1)')) {
 					startErasing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
 					// broadcast
 					var message = new CustomEvent(messageType);

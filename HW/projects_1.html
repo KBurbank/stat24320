@@ -164,7 +164,53 @@ window.Quarto = {
 <h2 id="gas-in-a-tube" class="anchored"><em>Gas in a Tube</em></h2>
 <p>(Shores 62)</p>
 <p>Problem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced <span class="math inline">\(1 / 6\)</span> meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient <span class="math inline">\(D\)</span> of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval <span class="math inline">\([0,1]\)</span> at times <span class="math inline">\(t=210\)</span> and <span class="math inline">\(t=300\)</span> and at the given spatial nodes.</p>
-<p>Table: Concentration data measurements of a gaseous material.</p>
+<table class="table">
+<caption>Concentration data measurements of a gaseous material.</caption>
+<colgroup>
+<col style="width: 28%">
+<col style="width: 7%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sec <span class="math inline">\(\backslash\)</span> Meter</th>
+<th>0</th>
+<th><span class="math inline">\(1 / 6\)</span></th>
+<th><span class="math inline">\(1 / 3\)</span></th>
+<th><span class="math inline">\(1 / 2\)</span></th>
+<th><span class="math inline">\(2 / 3\)</span></th>
+<th><span class="math inline">\(5 / 6\)</span></th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(t=240\)</span></td>
+<td>0.0</td>
+<td>0.032</td>
+<td>1.23</td>
+<td>3.69</td>
+<td>1.23</td>
+<td>0.032</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t=270\)</span></td>
+<td>0.0</td>
+<td>0.051</td>
+<td>1.21</td>
+<td>3.48</td>
+<td>1.21</td>
+<td>0.051</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
 <p>Procedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of <span class="math inline">\(D\)</span>, that is, the one that gives the best approximation to <span class="math inline">\(t=180\)</span> from the <span class="math inline">\(t=360\)</span> values. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at <span class="math inline">\(t=0\)</span>. Finally, march forward in time to compute and plot the resulting approximate density function.</p>
 <p>Output: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.</p>
 <p>Comments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations.</p>

@@ -178,11 +178,7 @@ window.Quarto = {
     &amp;c_n = .3a_{n-1} + .2b_{n-1} + .6c_{n-1}
 \end{align*}
 \]</span></p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>We know from <em>the first fundamental theorem of calculus</em> that for <span class="math inline">\(x\)</span> in <span class="math inline">\([a, b]\)</span>:</p>
-<p><span class="math display">\[\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).\]</span></p>
-</div></div><p>This forms the transition matrix:</p>
+<p>This forms the transition matrix:</p>
 $$
 <span class="math display">\[\begin{pmatrix}
 
@@ -193,7 +189,7 @@ $$
 \end{pmatrix}\]</span>
 <p>$$</p>
 <p>Lets see what the market shares will be for the next three years:</p>
-<div id="927d9683" class="cell" data-execution_count="1">
+<div id="927d9683" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.2</span> , <span class="fl">.3</span> ],</span>
@@ -240,7 +236,7 @@ $$
 
 \end{pmatrix}\]</span>
 <p>$$</p>
-<div id="f3bf83e8" class="cell" data-execution_count="2">
+<div id="f3bf83e8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>C1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span> , <span class="fl">.3</span> ],</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">.2</span> , <span class="fl">.48</span> , <span class="fl">.1</span>],</span>
@@ -283,13 +279,17 @@ $$
 <pre><code>('P: 0', 'C1: 0', 'C2: 2000')</code></pre>
 </div>
 </div>
-<div id="b6bc80ad" class="cell" data-execution_count="3">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>We know from <em>the first fundamental theorem of calculus</em> that for <span class="math inline">\(x\)</span> in <span class="math inline">\([a, b]\)</span>:</p>
+<p><span class="math display">\[\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).\]</span></p>
+</div></div><div id="b6bc80ad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    x.append(generate_input_vector())</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pylab <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f1c51812" class="cell" data-execution_count="4">
+<div id="f1c51812" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.array(x)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y.shape</span>
@@ -391,7 +391,7 @@ $$
 </tbody>
 </table>
 <p>These methods yield essentially the same rankings with only minor (at most one place) differences</p>
-<div id="269755b7" class="cell" data-execution_count="5">
+<div id="269755b7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -498,7 +498,7 @@ Team 7's power: 16</code></pre>
 </tbody>
 </table>
 <p>This ranking is very similar to the previous two, the most signifcant difference is the place of 4, who has risen to 3-rd from worst, whereas 4 was the worst team in the previous two rankings.</p>
-<div id="6bf7f993" class="cell" data-execution_count="6">
+<div id="6bf7f993" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create Diag. Matrix D</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>diag_vals <span class="op">=</span> []</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
@@ -531,7 +531,7 @@ Team 7's power: 16</code></pre>
 </div>
 </div>
 <p>Now we will do the weighted power ranking:</p>
-<div id="c4f40d84" class="cell" data-execution_count="7">
+<div id="c4f40d84" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -627,7 +627,7 @@ Team 7's power: 2089</code></pre>
 <section id="plu-factorization" class="level2">
 <h2 class="anchored" data-anchor-id="plu-factorization"><em>PLU Factorization</em></h2>
 <p>We will first create the PLU_factorization algo (assuming non-zero diag entries):</p>
-<div id="ce723f43" class="cell" data-execution_count="8">
+<div id="ce723f43" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> copy</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PLU_factorization(A):</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -678,7 +678,7 @@ Team 7's power: 2089</code></pre>
 <span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (np.array(perm_matrix), zero_matrix, np.array(U))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To show that these work, we will show the LU factorization problems from HW3:</p>
-<div id="a28b6eeb" class="cell" data-execution_count="9">
+<div id="a28b6eeb" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Problem 11:</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>test1 <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>], [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>]])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>P, L, U <span class="op">=</span> PLU_factorization(test1)</span>
@@ -708,7 +708,7 @@ A =  [[ 2 -1  1]
  [ 4  2  2]]</code></pre>
 </div>
 </div>
-<div id="cc92ed03" class="cell" data-execution_count="10">
+<div id="cc92ed03" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#problem 12</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>test2 <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>P, L, U <span class="op">=</span> PLU_factorization(test2)</span>
@@ -740,7 +740,7 @@ A =  [[ 2  1  0]
 </code></pre>
 </div>
 </div>
-<div id="3e94cdc0" class="cell" data-execution_count="11">
+<div id="3e94cdc0" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#problem 13</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>test3 <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>], [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>P, L, U <span class="op">=</span> PLU_factorization(test3)</span>
@@ -773,7 +773,7 @@ PA =  [[ 2  1  3]
 </div>
 </div>
 <p>Now we will code the PLU solver algo:</p>
-<div id="acd02b18" class="cell" data-execution_count="12">
+<div id="acd02b18" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PLU_solver(A, b):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Given a square matrix A (non-zero diag entries) and a solution b, solve for the unknowns using</span></span>
@@ -807,7 +807,7 @@ PA =  [[ 2  1  3]
 <span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we will test this solver:</p>
-<div id="9512802a" class="cell" data-execution_count="13">
+<div id="9512802a" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PLU solver test1</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]])</span>
@@ -828,7 +828,7 @@ Ax =  [[1.]
  [1.]]</code></pre>
 </div>
 </div>
-<div id="be399f0f" class="cell" data-execution_count="14">
+<div id="be399f0f" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PLU solver test2</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>], [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">4</span>], [<span class="dv">3</span>], [<span class="dv">5</span>]])</span>
@@ -850,7 +850,7 @@ Ax =  [[4.]
 </div>
 </div>
 <p>Now we will create the inverse solver algo that uses the PLU solver:</p>
-<div id="74505974" class="cell" data-execution_count="15">
+<div id="74505974" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#inverse Solver:</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_inverse(A):</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(A)</span>
@@ -863,7 +863,7 @@ Ax =  [[4.]
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.hstack(output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we will show two tests that see that this works:</p>
-<div id="5a5723c6" class="cell" data-execution_count="16">
+<div id="5a5723c6" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test1</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>invA <span class="op">=</span> find_inverse(A)</span>

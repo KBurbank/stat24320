@@ -4843,7 +4843,7 @@ color: red;
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="stat243_project1.out.ipynb" download="stat243_project1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="stat243_project1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="stat243_project1.out.ipynb" download="stat243_project1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
@@ -4871,11 +4871,11 @@ color: red;
 </div>
 <section id="markov-chains" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="markov-chains"><em>Markov Chains:</em></h2>
-<p>Consider our system (<span class="math inline">\(n = 1, 2, \ldots\)</span>): <span class="math display">\[\begin{align*}
+<p>Consider our system (<span class="math inline">\(n = 1, 2, \ldots\)</span>): <span class="math display">\[\begin{aligned}
     &amp;a_n = .5a_{n-1} + .2b_{n-1} + .3c_{n-1} \\
     &amp;b_n = .2a_{n-1} + .6b_{n-1} + .1c_{n-1} \\
     &amp;c_n = .3a_{n-1} + .2b_{n-1} + .6c_{n-1}
-\end{align*}
+\end{aligned}
 \]</span></p>
 
 <div class="no-row-height column-margin column-container"><div class>
@@ -4975,8 +4975,7 @@ Matrix([[0.339000000000000], [0.275333333333333], [0.385666666666667]])</code></
 <pre><code>(&#39;P: 0&#39;, &#39;C1: 0&#39;, &#39;C2: 2000&#39;)</code></pre>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class>
+<div class="comments">
 <p>For efficiency, it would be much faster to calculate the matrices to the 10th power once and then use this for each of your 2000 random vectors! If you do this, you’ll also be able to look at the 10 year matrices and reach a conclusion about which campaign is best for the long term, even without having to do the simulation.</p>
 <p>There is an issue with the random vectors here – the first element of the vector ends up being twice as large as the other two, on average.</p>
 <div id="b6bc80ad" class="cell" data-execution_count="4">
@@ -4996,7 +4995,8 @@ Matrix([[0.339000000000000], [0.275333333333333], [0.385666666666667]])</code></
        [0.248854000000000]], dtype=object)</code></pre>
 </div>
 </div>
-</div></div><p>I would reccomended going with the second campaign. I ran the following test to come to this conclusion:</p>
+</div>
+<p>I would reccomended going with the second campaign. I ran the following test to come to this conclusion:</p>
 <p>First, I randomly generated 2000 inital vectors. I also set up a function that runs, for 10 iterations (i.e. 10 year forcast), the markov chains representing the cases of 1) no ad campaigns 2) the first ad campaign and 3) the third ad campaign. I ran each randomly generated inital vector each markov chain and then counted for which case ended with the highest market share.</p>
 <p>For all 2,000 inital vectors, the second ad campaign ended with the highest market share. Therefore, I strongly reccomended moving forward with the second ad campaign when considering long-term interests.</p>
 <p>Some limitations of this study may be that it only looks at the long term since it uses a a ten year model. Therefore, if the company is looking for short term gains (next quarter, the next year, etc), then these results may not be helpful and a new study should be conducted. In addition, this model assumes that there is no counter-ad campaign from another company that may change the transition matrix. In other words, this study does not anticipate other changing factors in the market that may change the transition matrix and thus the results.</p>

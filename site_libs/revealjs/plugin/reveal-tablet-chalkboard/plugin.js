@@ -2131,7 +2131,12 @@ const initChalkboard = function (Reveal) {
 
 	return this;
 };
-function setPenOrEraserCursor(mode=0, color) {
+function setPenOrEraserCursor(mode, color) {
+	if( mode == nil)
+	{
+		mode = 0;
+	}
+	
 	if (color[mode] == 7) {
 		$('canvas').awesomeCursor('eraser', { color: 'rgba(0,0,0,0.5)' });
 	} else {

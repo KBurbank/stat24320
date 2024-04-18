@@ -1699,7 +1699,7 @@ const initChalkboard = function (Reveal) {
 
 				mouseX = evt.pageX - revealDiv.offsetLeft;
 				mouseY = evt.pageY - revealDiv.offsetTop;
-
+				console.log(color[mode]);
 				if (evt.button == 2 || evt.button == 1 || evt.shiftKey|| (color[mode] == 'rgba(255, 255, 255, 1)')) {
 					startErasing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
 					// broadcast

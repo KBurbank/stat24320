@@ -149,7 +149,6 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Markov Chain</h1>
 </div>
 
 
@@ -172,6 +171,9 @@ window.Quarto = {
 </header>
 
 
+<div class="comments">
+<p>Very nice work overall! There’s a bit more I’d like to see on the second project – and I’ve got a few small questions about the first one, if you’ve got time.</p>
+</div>
 <div id="a2db5ed6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -179,6 +181,8 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="markov-chain" class="level1 page-columns page-full">
+<h1><em>Markov Chain</em></h1>
 <p>The transition matrix under this context will be <span class="math inline">\(\begin{bmatrix}
 0.5 &amp; 0.2 &amp; 0.3\\
 0.2 &amp; 0.6 &amp; 0.1\\
@@ -436,6 +440,7 @@ Also: there seems to be a problem with the histograms I see after 50 and 100 yea
 <p>This is nicely done and very clear overall. I think you could push a little more on the <em>why</em>; why does Campaign 2 work better, how can you tell just from looking at the transition matrix?</p>
 <p>Grade: E</p>
 </div>
+</section>
 <section id="sports-ranking" class="level1 page-columns page-full">
 <h1><em>Sports Ranking</em></h1>
 <p>We will first rank the teams based on their win-loss ratio. This will be the simplest way to rank them. In fact, we can create a digraph with the given edges before doing so. This allows us to create an adjacency matrix. The sum of the <span class="math inline">\(i^{th}\)</span> row of the matrix gives us the number of wins for team <span class="math inline">\(i\)</span>, while the sum of the <span class="math inline">\(i^{th}\)</span> column of the matrix gives us the number of losses for team <span class="math inline">\(i\)</span>. Therefore, to account for both wins and losses of each team, we can create a ranking score for each team determined by their number of wins subtracted by their number of losses. Using the adjacency matrix of the graph we created makes our life a lot easier, so I am introducing the graph before the simple ranking.</p>

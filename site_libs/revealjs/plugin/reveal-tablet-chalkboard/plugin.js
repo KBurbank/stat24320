@@ -1576,9 +1576,13 @@ const initChalkboard = function (Reveal) {
 				var touch = evt.touches[0];
 				mouseX = touch.pageX - revealDiv.offsetLeft;
 				mouseY = touch.pageY - revealDiv.offsetTop;
-				saveInitial(mouseX, mouseY)
+				saveInitial(mouseX, mouseY);
+				if (color[mode] == rgba(255, 255, 255, 1)) {
+					startErasing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
+				} else {
 				startDrawing((mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
 				touchTimeout = setTimeout(startErasing, 1000, (mouseX - xOffset) / scale, (mouseY - yOffset) / scale);
+				}
 			}
 		}, passiveSupported ? {
 			passive: false

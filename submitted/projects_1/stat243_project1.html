@@ -179,7 +179,10 @@ window.Quarto = {
     &amp;c_n = .3a_{n-1} + .2b_{n-1} + .6c_{n-1}
 \end{align*}
 \]</span></p>
-<p>This forms the transition matrix:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>What do these variables represent? (I know from reading the project prompt, but it would be good to include this information in the text as well.)</p>
+</div></div><p>This forms the transition matrix:</p>
 $$
 <span class="math display">\[\begin{pmatrix}
 
@@ -282,6 +285,7 @@ $$
 </div>
 
 <div class="no-row-height column-margin column-container"><div class="">
+<p>For efficiency, it would be much faster to calculate the matrices to the 10th power once and then use this for each of your 2000 random vectors! If you do this, you’ll also be able to look at the 10 year matrices and reach a conclusion about which campaign is best for the long term, even without having to do the simulation.</p>
 <p>There is an issue with the random vectors here – the first element of the vector ends up being twice as large as the other two, on average.</p>
 <div id="b6bc80ad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[]</span>
@@ -306,9 +310,11 @@ $$
 <p>Some limitations of this study may be that it only looks at the long term since it uses a a ten year model. Therefore, if the company is looking for short term gains (next quarter, the next year, etc), then these results may not be helpful and a new study should be conducted. In addition, this model assumes that there is no counter-ad campaign from another company that may change the transition matrix. In other words, this study does not anticipate other changing factors in the market that may change the transition matrix and thus the results.</p>
 <div class="comments">
 <p>I liked that you chose to use many random vectors for evaluating the different campaigns (although see the note about the random vectors above).</p>
+<p>I would like to see a bit more thinking about why you got the results that you did. Is there something about the transition matrices that tells you why the second campaign is the best?</p>
+<p>Grade: S (satisfactory)</p>
 </div>
 </section>
-<section id="sports-ranking" class="level2">
+<section id="sports-ranking" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="sports-ranking"><em>Sports Ranking:</em></h2>
 <p>We will first incode the sports data into a graph structure and adjacency matrix.</p>
 <p>Our first naïve measure of rankings is through the win/loss ratio (calculated below as # wins - # losses):</p>
@@ -350,7 +356,10 @@ $$
 </tr>
 </tbody>
 </table>
-<p>Then we have our matrix power ranking:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Is this actually a ratio? A bit misleading to use that term!</p>
+</div></div><p>Then we have our matrix power ranking:</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -390,7 +399,10 @@ $$
 </tbody>
 </table>
 <p>These methods yield essentially the same rankings with only minor (at most one place) differences</p>
-<div id="269755b7" class="cell" data-execution_count="6">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Can you comment on what about the math gives the difference? Why do teams 5 and 7 look the same for the second method, but different for the first?</p>
+</div></div><div id="269755b7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -529,7 +541,10 @@ Team 7's power: 16</code></pre>
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0601644551488991\\0.0802002135998523\\0.166343756251851\\0.127607872531524\\0.249833649654006\\0.130864601791489\\0.184985451022379\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<p>Now we will do the weighted power ranking:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>What is the math behind what’s happening in this code here? What is reverse page rank, and what exactly is happening in the find_stable function? How can I, the reader, know that it’s working as it should?</p>
+</div></div><p>Now we will do the weighted power ranking:</p>
 <div id="c4f40d84" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -622,6 +637,11 @@ Team 7's power: 2089</code></pre>
 </tr>
 </tbody>
 </table>
+<div class="comments">
+<p>I would like to see more explanation about what is happening mathematically in these different cases; what are each of the rankings measuring, what formulas apply, and why your code matches what these formulas say. Then, I’d like a discussion of why the different rankings give different results, and which one you think is the most accurate.</p>
+<p>Also: there are a lot of places where you are doing things manually (like entering the identity matrix by hand) or using loops to do matrix computations. You’d be better off using numpy or sympy functions to do these things, as they are much faster and less error-prone (and easier to write, too!)</p>
+<p>Grade: R</p>
+</div>
 </section>
 <section id="plu-factorization" class="level2">
 <h2 class="anchored" data-anchor-id="plu-factorization"><em>PLU Factorization</em></h2>
@@ -884,6 +904,12 @@ Ax =  [[4.]
  [0. 1. 0.]
  [0. 0. 1.]]</code></pre>
 </div>
+</div>
+<div class="comments">
+<p>It looks like you have a lot of the pieces in place here. But I’d like to see a better job testing the outputs. When you run the problems from HW3, how am I supposed to know if these outputs are what they should be? You could either write something like “this should be upper triangular, and it is, and this should be …”, and/or you could do some kind of test (I bet either numpy or sympy has a function to test whether a matrix is upper triangular.)</p>
+<p>In general, I’m trying to read your code to figure out what you were doing, but I’d prefer to have you tell me what you’re doing and why you’re doing it in prose as well as in the code.</p>
+<p>For the testing, I’m curious about how this algorithm compares to some built-in solvers. Could you run it many times and compare e.g.&nbsp;the speed to one of the built-in systems? (I’m sure yours will be slower, that’s find, just curious about the difference!)</p>
+<p>Grade: R</p>
 </div>
 
 

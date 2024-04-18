@@ -132,6 +132,10 @@ const initChalkboard = function (Reveal) {
 	{
 		color: 'rgba(255,220,0,1)',
 		cursor: ""
+	},
+	{
+		color: 'rgba(255,255,255,1)',
+		cursor: ""
 	}
 	];
 	var chalks = [{

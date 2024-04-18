@@ -2139,6 +2139,7 @@ function setPenOrEraserCursor(mode, color) {
 
 	if (color[mode] == 7) {
 		$('canvas').awesomeCursor('eraser', { color: 'rgba(0,0,0,0.5)' });
+		drawingCanvas[mode].sponge.style.visibility = 'visible';
 	} else {
 		$('canvas').awesomeCursor('pencil', { flip: 'vertical', color: pens[mode][color[mode]].color });
 	}

@@ -131,6 +131,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="comments.css">
 </head>
 
 <body>
@@ -359,6 +360,13 @@ window.Quarto = {
 <p>For Advertising Campaign 1, we see that for 1000 random initial distributions of market shares will tend with each iteration towards a stationary state of 0.38 for the market share of A. This suggests that Advertising Campaign 1 will allow A to stabilize at 0.3806 marketshares. This seems to be a very good strategy.</p>
 <p>For Advertising Campaign 2, we can see that the most probable market share distribution for also increases. With long iterations under numerous random intial states, A seems to always achieve the stationary state of 0.39 for its market share.</p>
 <p>Even after three years, markov simulation suggests that Advertising Campaign 2 performs better than Advertising Campaign 1, as the market share of A under Advertising Campaign 2 is bigger than the market share of A under Advertising Campaign 1. The later iterations also suggests the same thing. Therefore, my model suggests that Advertising Campaign 2 is a more effective choice both for long term and short term increase in market share for A.</p>
+<div class="comments">
+<p>I agree with these conclusions.<br>
+<br>
+Can you discuss why these results had to happen, given the specific transition matrices you had? For instance, you are multiplying by the same matrices many times. What do you see if you simply look at the matrix exponents?<br>
+<br>
+Also: there seems to be a problem with the histograms I see after 50 and 100 years. What’s going on? Did you see this on your end? Is there something else you could do to represent these data better?</p>
+</div>
 <p>It is important to note the limitations within this model. First, it simplifies the dynamics of the market. By iterating the static transition matrices over long periods of time, we are assuming that the market does not change. In other words, company B and company C are doing nothing to regain their lost customers. After all, it is quite unreasonable to assume that things will always stay the same in 100 years. The effectiveness of the advertising campaign also can change, which is not reflected in the static transition matrices. Therefore, this model may be effect in approximating the effects of the advertising campaigns for a very short period of iteration before competitors B and C have a chance to react or implement their own strategies.</p>
 <p>Now, perhaps we wish to go a step further and analyze how much of an effect gaining shares from B or C will have on the long term share of A. Then, we can simply construct functions of A market share with respect to the gaining of the market share of B or C.</p>
 <div id="a691f61d" class="cell" data-execution_count="5">
@@ -413,7 +421,10 @@ window.Quarto = {
 0.2 &amp; 0.0 &amp; 0.1\\
 0.3 &amp; 0.2 &amp; 0.6\\
 \end{bmatrix}\)</span>.</p>
-<p>Now, with the modified transition matrix by the parameter, the initial state of all companies having equal shares</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I love this - it’s a very concrete example which makes it very clear what you are doing.</p>
+</div></div><p>Now, with the modified transition matrix by the parameter, the initial state of all companies having equal shares</p>
 <span class="math display">\[\begin{bmatrix}
 \frac{1}{3}\\
 \frac{1}{3}\\
@@ -421,9 +432,17 @@ window.Quarto = {
 \end{bmatrix}\]</span>
 <p>is initialized. We apply the initial state to the modified transition matrix for 50 times. The resulting market share value of A is then recorded and plotted.</p>
 <p>Looking at the graph, if the resources needed to convert customers from C to A is the same as the resources needed to convert customers from B to A, then it is more effective to convert customers from C since the increase in the market share of A is more for C than B as we increase the parameter.</p>
-<p>#Sports Ranking</p>
+<div class="comments">
+<p>This is nicely done and very clear overall. I think you could push a little more on the <em>why</em>; why does Campaign 2 work better, how can you tell just from looking at the transition matrix?</p>
+<p>Grade: E</p>
+</div>
+<section id="sports-ranking" class="level1 page-columns page-full">
+<h1><em>Sports Ranking</em></h1>
 <p>We will first rank the teams based on their win-loss ratio. This will be the simplest way to rank them. In fact, we can create a digraph with the given edges before doing so. This allows us to create an adjacency matrix. The sum of the <span class="math inline">\(i^{th}\)</span> row of the matrix gives us the number of wins for team <span class="math inline">\(i\)</span>, while the sum of the <span class="math inline">\(i^{th}\)</span> column of the matrix gives us the number of losses for team <span class="math inline">\(i\)</span>. Therefore, to account for both wins and losses of each team, we can create a ranking score for each team determined by their number of wins subtracted by their number of losses. Using the adjacency matrix of the graph we created makes our life a lot easier, so I am introducing the graph before the simple ranking.</p>
-<div id="c7710789" class="cell" data-execution_count="6">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Not really important, but what you do isn’t actually a win-loss <strong>ratio</strong>…</p>
+</div></div><div id="c7710789" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sportsGraph <span class="op">=</span> nx.DiGraph()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sportsGraph.add_nodes_from([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>])</span>
@@ -491,7 +510,10 @@ Simple ranking of the teams based on win/loss:
 </div>
 </div>
 <p>We can see that the win-loss score gives us fairly neat ranking. Although we didn’t see the same scores on different teams, we can account for it by developing a system. If two teams have the same score, then we look at their total wins. The team with the most wins will be ranked higher. If they have the same wins, they have to have the same losses (since they have the same win-loss score). In this case, we will have to devise more sophisticated methods for ranking. This is what we do next. We will use the vertex power to rank the teams. Remember, the vertex power is the number of connections of a vertex with length two of less. This allows us to sort of consider the “weight” of the team wins. If team 1 wins team 2, and team 2 wins team 3, then we consider team 1 to be better than team 3 and count that as a “win” for team 1 (lucky!)</p>
-<p>Then, we can rank the teams based on this power concept. The team with the highest power will be first place.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I’m not sure what you mean by this: ” If they have the same wins, they have to have the same losses (since they have the same win-loss score). In this case, we will have to devise more sophisticated methods for ranking. ”</p>
+</div></div><p>Then, we can rank the teams based on this power concept. The team with the highest power will be first place.</p>
 <div id="3b63088c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Next, we use the vertex power to rank</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -524,8 +546,14 @@ Simple ranking of the teams based on win/loss:
 </div>
 </div>
 <p>We can see that, compared to the simple ranking based on win-loss scores, the power ranking has all of the places the same except for a switch in the place of team 1, 2, 4. This is interesting. This means that although team 2 has a lower win-loss score than team 1, it has a higher power than team 1. We also note that the power ranking is not satisfactory, as there are two pairs of teams (7 and 5, 4 and 1) that has the same power.</p>
-<p>Therefore, we should go further and try the Reverse PageRank method. Remember that the Reverse PageRank uses the adjoint of our original adjacency matrix. So, instead of the original PageRank ranking pages based on ingoing links, we now rank based on outgoing links. In our context, this is what we wish, since the outgoing links from team 1 to team 2 means that team 1 won over team 2. Also, Reverse PageRank involves the inclusion of a teleportation vector. This teleportation vector in this context allows us to encode in some “luck” parameter to all of the teams. Maybe team 1 won team 2 because a member in team 2 had a stomache. The teleportation vector then represents a global correction to the weighing of all wins.</p>
-<p>Now, let’s do the reverse pagerank.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Why does Team 2 have a higher power than Team 1? Can you explain it concretely in terms of games that it won?</p>
+</div></div><p>Therefore, we should go further and try the Reverse PageRank method. Remember that the Reverse PageRank uses the adjoint of our original adjacency matrix. So, instead of the original PageRank ranking pages based on ingoing links, we now rank based on outgoing links. In our context, this is what we wish, since the outgoing links from team 1 to team 2 means that team 1 won over team 2. Also, Reverse PageRank involves the inclusion of a teleportation vector. This teleportation vector in this context allows us to encode in some “luck” parameter to all of the teams. Maybe team 1 won team 2 because a member in team 2 had a stomache. The teleportation vector then represents a global correction to the weighing of all wins.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The “luck” idea is an interesting way of describing the teleportation vector; I hadn’t thought of it like this before. I think you could dig in a bit: it gives a little bit of weight to the worldview that the teams really are equally good, and that the observed wins and losses were just due to luck. I think you could</p>
+</div></div><p>Now, let’s do the reverse pagerank.</p>
 <div id="9c72fc3a" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>transitionMatrix <span class="op">=</span> np.zeros(np.shape(adj_matrix))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -570,7 +598,10 @@ Simple ranking of the teams based on win/loss:
 </div>
 </div>
 <p>Let us think about the results of this ReversePage compared to the power ranking. We can see now that when we consider the “stable state”, which is what we determine to be the ranking, Team 5 has higher “ranking score” than Team 7. This suggests that even though Team 5 and Team 7 have the same power, the influence, or the “quality” of the wins for Team 5 is higher than Team 7.</p>
-<p>Another interesting result to recognize is the change in the ranking place for Team 4 and Team 6. Even though the “quality” of their wins are the same, the power, or the amount of their wins differ.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I really want to see the <em>why</em> here! In English, why is the quality of the wins for Team 5 higher than Team 7?</p>
+</div></div><p>Another interesting result to recognize is the change in the ranking place for Team 4 and Team 6. Even though the “quality” of their wins are the same, the power, or the amount of their wins differ.</p>
 <p>Now, let us add actual weights to the wins with M.</p>
 <div id="e8465197" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">23</span>, <span class="dv">15</span>, <span class="dv">6</span>, <span class="dv">18</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">7</span>, <span class="dv">13</span>, <span class="dv">7</span>, <span class="dv">18</span>, <span class="dv">45</span>, <span class="dv">10</span>, <span class="dv">19</span>, <span class="dv">14</span>, <span class="dv">13</span>]</span>
@@ -611,7 +642,14 @@ Simple ranking of the teams based on win/loss:
 </div>
 </div>
 <p>The higher the power value for the teams, we can assume that the significance of their win is larger. This means that we know although team 5 had less wins than team 7, team 5’s wins were just so much more rewarding and meaningful. The same could be said with the other teams.</p>
-<p>#LU Factorization</p>
+<div class="comments">
+<p>You’ve done a nice job here, clearly explaining what you did and formatting the output nicely. All that’s missing to make this an E grade is an intuitive explanation in English of why the different algorithms are giving different results in a few specific cases.</p>
+<p><br>
+Grade: M</p>
+</div>
+</section>
+<section id="lu-factorization" class="level1 page-columns page-full">
+<h1><em>LU Factorization</em></h1>
 <p>Let us construct the Gaussian Elimination Algorithm and record all row exchanges with an index array. The overall idea is as follows: For a given matrix A, we first look at the first column of A and find the first nonzero component for this column vector. If this is not the first row of the column vector, we swap it with the first row of the column vector and record this swap with the index array. Then, we find all of the necessary LU factorization factors needed to make the row values of the column vector below 0, recording the multipliers in an identity matrix. Then, we move on to the 2nd column vector of A and do the same thing.</p>
 <div id="aacab2fe" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PLUSystemSolver(matrix):</span>
@@ -727,7 +765,12 @@ U Matrix:
 </div>
 </div>
 <p>We have successfully implemented the PLU function. This function takes the matrix in question and returns a tuple of (P matrix, L matrix, U matrix). We can see its success in finding the PLU matrices for HW3 Problem 12 and Problem 13.</p>
-<p>Now, let us implement the module that uses this PLU function to solve general linear systems. We will assume that the diagonals for the upper triangular and lower triangular matrices are nonzero. This systemSolver algorithm will take in the square nonsingular matrix and b in the form of a list with the correct dimension (3 numbers in a list for a 3 by 3 nonsingular square matrix).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I’d like to see more on the testing and the outputs here. How do we know that the product of the PLU matrices really is the starting matrix? How do we know that U and L are really upper and lower diagonal? (We can see this by eye, but you could say so, or you could test for it.)<br>
+<br>
+Is it possible that your algorithm fails on a matrix that is different from these two?</p>
+</div></div><p>Now, let us implement the module that uses this PLU function to solve general linear systems. We will assume that the diagonals for the upper triangular and lower triangular matrices are nonzero. This systemSolver algorithm will take in the square nonsingular matrix and b in the form of a list with the correct dimension (3 numbers in a list for a 3 by 3 nonsingular square matrix).</p>
 <div id="dca36ac6" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let us first define an upper triangular system solver.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># b will be a one dimensional array.</span></span>
@@ -845,7 +888,10 @@ Test time subtracted by matrix creation time is 2.849939</code></pre>
 </div>
 </div>
 <p>We see from the results of the test. After generating 10000 random 1 x 10 vectors for b and 10 * 10 nonsingular matrices, the algorithm always matches the linalg solution. We can conclude with confidence that our algorithm works well.</p>
-<p>Let us try something. Instead of creating a random matrix everytime, let us just use the same matrix. Everything else is the same.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I’m quite surprised that your algorithm <em>exactly</em> matches the linag one; I would have thought you’d need to allow for some rounding error. Neat!</p>
+</div></div><p>Let us try something. Instead of creating a random matrix everytime, let us just use the same matrix. Everything else is the same.</p>
 <div id="186a20f8" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>trueTimes <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>falseTimes <span class="op">=</span> <span class="dv">0</span></span>
@@ -883,7 +929,10 @@ The test took 0.883356 seconds.</code></pre>
 </div>
 </div>
 <p>The difference in the times of these tests is noticeable. The second test, which only calculates P, L, U once is noticeably faster than the first test. My hypothesis was that the second test where we did not create random matrices everytime and used the same matrix could be noticeably shorter. This makes sense, as the advantage of PLU is the fact that once we have PLU, we quickly calculate the solutions corresponding to PLU for any b.</p>
-<p>Now, we can create our final inverse matrix finder module! The inverseFinder takes in nonsingular square matrices and output the inverse :)</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>This is awesome.</p>
+</div></div><p>Now, we can create our final inverse matrix finder module! The inverseFinder takes in nonsingular square matrices and output the inverse :)</p>
 <div id="0bea8991" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inverseFinder(matrix):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  matrixSize <span class="op">=</span> np.shape(matrix)[<span class="dv">0</span>]</span>
@@ -944,8 +993,13 @@ Number of Times the Algorithm is Incorrect:  0</code></pre>
 </div>
 </div>
 <p>This code will take a little while to run. But after it finishes, we see that the inverseFinder algorithm works very well! There is no time when the algorithm is wrong during this test. It is important to note the limitations of the algorithm systemSolver and inverseFInder as they can only take square nonsingular matrices. In other words, matrices with a nonzero determinant. However, this is expected as the inverse can only be found for matrices with zero determinant. Therefore, the only big limitation will be for systemSolver. We cannot use this algorithm to solve singular matrices or matrix systems with infinite solutions. However, it is also important to note the strength of these algorithms. It uses a relatively clear and straigtforward process to find the system solution and the inverses. Once the PLU matrices are found, the solutions for the linear system corresponding to PLU for any b can be found with small computing power.</p>
+<div class="comments">
+<p>This is excellent. You’ve created the algorithms and tested them well, including cleverly measuring the effects of using the decomposition for repeated solving. Great work.</p>
+<p>Grade: E</p>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

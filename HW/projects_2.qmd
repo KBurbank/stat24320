@@ -2,6 +2,8 @@
 title: Projects 2
 publish: true
 toc-expand: true
+textbook-chapters: 3, 4
+due-date: Friday, Week 7
 ---
 
 Instructions:

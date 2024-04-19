@@ -1,0 +1,91 @@
+---
+title: Projects 2
+publish: false
+toc-expand: true
+---
+
+
+# Chapter 3 Projects
+
+## Modeling with Directed Graphs
+
+
+Project Descriptions: This project introduces more applications of digraphs as mathematical modeling tools. You are given that the digraph $G$ has vertex set $V=\{1,2,3,4,5,6\}$ and edge set
+
+$$
+E=\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\}
+$$
+
+Address the following points regarding $G$.
+
+(a) Draw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.
+
+(b) Exhibit the incidence matrix $A$ of this digraph and find a basis for $\mathcal{N}(A)$ using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element $\mathbf{c}_{1}$ might be replaced by directed $\mathbf{c}_{1}+\mathbf{c}_{2}$ ).
+
+Pick three of the following to complete:
+
+1. Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are $x_{1}, \ldots, x_{6}$. The potential difference across an edge is the potential value of head minus tail. Kirchhoff's second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p. 422) that $A \mathbf{x}=\mathbf{b}$ implies that for all $\mathbf{y} \in \mathcal{N}\left(A^{T}\right), \mathbf{y}^{T} \mathbf{b}=0$ to find conditions that a vector $\mathbf{b}$ must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.
+
+2. Assume that across each edge of a circuit a current flows. Thus, we can assign to each edge a "weight," namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff's first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.
+
+3. Think of the digraph as representing a directed communications network. Here loops determine which nodes have bidirectional communication since any two nodes of a loop can only communicate with each other by way of a loop. By examining only a basis of directed loops how could you determine which nodes in the network can communicate with each other?
+
+
+4. Think of vertices of the digraph as representing airports and edges representing flight connections between airports for Gamma Airlines. Suppose further that for each connection there is a maximum number of daily flights that will be allowed by the destination airport from an origin airport and that, in the order that the edges in $E$ are listed above, these limits are
+
+    $$
+    M=\{4,3,8,7,2,6,7,10,5,8\} .
+    $$
+
+Now suppose that Gamma wants to maximize the flow of flights into airport 1 and out of airport 6 . Count inflows into an airport as positive and outflows as negative. Assume that the net in/outflow of Gamma flights at each airport 1 to 5 is zero, while the net inflow of such flights into airport 1 matches the net outflow from 6 .
+
+(a) Describe the problem of maximizing this inflow to airport 1 as a linear programming problem and express it in a standard form (block matrices are helpful.) Note that the appropriate variables are all outflows from one airport to another, i.e., along edges, together with the net inflow into airport 1.
+
+(b) Solve the problem of part (a). Also solve the reverse problem: Maximize inflow into airport 6 and matching outflow from 1. Explain and justify your answers.
+
+5. With the same limits on allowable flights into airports as in item 5, suppose that Gamma Airlines wants to determine an allocation of planes that will maximize their profits, given the following constraints: (1) Airports 1 and 6 have repair facilities for their planes, so no limit is placed on the inflow or outflow of their planes other than the airport limits. (2) Flights through airports 2-5 of Gamma planes are pass through, i.e., inflow and outflow must match. (3) Gamma has 32 planes available for this network of airports. (4) The profits per flight in thousands are, in the order that the edges in $E$ are listed above,
+
+$$
+P=\{5,6,7,9,10,8,9,5,6,10\}
+$$
+(a) Set this problem up as a linear programming problem in standard form. Clearly identify the variables and explain how the constraints follow.
+
+(b) Solve this problem explicitly and specify the operations taken to do so. Example 3.56 is instructive for this problem, so be aware of it. Use a technology tool that allows you to use elementary operations (ALAMA calculator has this capability).
+
+# Chapter 4 Projects
+
+
+## Project 5 Image Compression and Edge Detection
+
+Problem Description: In this report you will test some limits of data compression by experimenting with an interesting image of your own choosing. It could be a photograph you have taken or some reasonably complex image from the internet that piqued your interest. You are to transform the image into suitable format and then see how much you can can compress that data storage requirements for that image while losing an acceptable amount of detail.
+
+Implementation Notes: First, you must convert the image to a grayscale format without layers with pixels stored as unsigned eight bit integers. (We are not going to deal with the additional details of color images.) For this you will need an image manipulation program such as the GNU program Gimp or
+commercial software such as Adobe Photoshop. Figure 4.7(a) is an example of the sort of file you with which you will start experimenting. Secondly, you will need a technology tool capable of importing standard flattened image grayscale images (such as .png, etc.) into matrices and vice versa. The freely available $\mathrm{R}$ programming language and Octave, as well as commercial Matlab and others are perfectly capable of these tasks. For the record, Figure 4.7 and its relatives in this chapter were converted from .pdf into grayscale .png images via Gimp and read, manipulated and written as matrices via Octave.
+
+Next, you must apply the Haar wavelet transform repeatedly to your initial image until you reach a blur that is unacceptably far from the initial image. These computations will require a mild bit of programming on your part with the technology tool of your choice. Each application of the transform will reduce storage requirements by a factor of four. How much are you able to save? Of course, "unacceptably far" is in the eye of the beholder, but here's a pretty reasonable case: Start with a some text and compress it until you can no longer read the text.
+
+A picture is worth a thousand words, so be lavish with them in your write-up. Consider the amount of savings if, in addition to saving the blurs in all their detail, you were to to save a very good approximation to the edges portion of the transformed picture. For example, consider what you might achieve by first applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level to zero, then accounting for the large number of resulting zeros by some compression technique. You might even suggest a format for such a compression format.
+
+## Least Squares
+
+Pick a league in a sport that you like. For example, you could pick the WNBA for basketball, or a soccer league. Pick a point halfway through last year's season. You will use the data from the games played up to that point to predict the outcome of the season.
+
+
+Start by making  a table of scores from the games played thus far: The $(i, j)$ th entry is team $i$ 's score in the game with team $j$. (See below for an example.)
+
+Then, you will want to use the ideas of least squares and graph theory to predict team ratings and point spreads for the remaining games. The idea is to set up a system of equations that will give you the best fit to the observed scores. You will need to use the ideas of least squares to solve this system of equations. (See below for more details.)
+
+Finally, write a brief report on your project that describes the problem, your solution to it, its limitations, and the ideas behind it.
+
+|  | $\mathrm{CU}$ | $\mathrm{IS}$ | $\mathrm{KS}$ | $\mathrm{KU}$ | $\mathrm{MU}$ | $\mathrm{NU}$ | $\mathrm{OS}$ | $\mathrm{OU}$ |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| $\mathrm{CU}$ |  | 24 |  | 21 | 45 |  | 21 | 14 |
+| $\mathrm{IS}$ | 12 |  |  | 42 | 21 | 16 |  | 7 |
+| $\mathrm{KS}$ |  |  |  | 12 | 21 | 3 | 27 | 24 |
+| $\mathrm{KU}$ | 9 | 14 | 30 |  |  | 10 |  | 14 |
+| $\mathrm{MU}$ | 8 | 3 | 52 |  |  | 18 | 21 |  |
+| $\mathrm{NU}$ |  | 51 | 48 | 63 | 26 |  | 63 |  |
+| $\mathrm{OS}$ | 41 |  | 45 |  | 49 | 42 |  | 28 |
+| $\mathrm{OU}$ | 17 | 35 | 70 | 63 |  |  | 31 |  |
+
+Implementation Notes: You will need to set up a suitable system of equations, form the normal equations, and have a technology tool solve the problem. The equations in question are formed by letting the variables be a vector x of "potentials" $x(i)$, one for each team $i$, so that the "potential differences" best approximate the actual score differences (i.e., point spreads) of the games. To find the vector $\mathbf{x}$ of potentials you solve the system $A \mathbf{x}=\mathbf{b}$, where $\mathbf{b}$ is the vector of observed potential differences. N.B: the matrix $A$ is not the table given above. You will get one equation for each game played. For example, by checking the $(1,2)$ th and $(2,1)$ th entries, we see that $\mathrm{CU}$ beat IS by a score of 24 to 12 . So the resulting equation for this game is $x(1)-x(2)=24-12=12$. Ideally, the resulting potentials would give numbers that would enable you to predict the point spread of an as yet unplayed game: all you would have to do to determine the spread for team $i$ versus team $j$ is calculate the difference $x(j)-x(i)$. Of course, it doesn't really work out this way, but this is a reasonable use of the known data. When you set up this system, you obtain an inconsistent system. This is where least squares enter the picture. You will need to set up and solve the normal equations, one way or another. You might notice that the null space of the resulting coefficient matrix is nontrivial, so this matrix does not have full column rank. This makes sense: potentials are unique only up to a constant. To fix this, you could arbitrarily fix the value of one team's potential, that is, set the weakest team's potential value to zero by adding one additional equation to the system of the form $x(i)=0$.

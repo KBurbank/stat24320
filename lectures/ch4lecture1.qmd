@@ -1,0 +1,745 @@
+---
+title: Ch4 Lecture 1
+lecture_day: 8
+readings: "4.1,4.2,4.3"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+       css: theorem.css
+    #html:
+     #   output-file: ch2_lecture4plain.html
+---
+
+# Geometrical Intuitions
+
+## Planes
+
+More copilot insanity. I wrote the first sentence, and then it autocompleted as follows:
+
+ Have students put a dot in the center of the card and say this is the origin.
+. . . 
+ Have them draw a line and say this is the x-axis. 
+. . .
+ Have them draw a line perpendicular to the x-axis and say this is the y-axis.
+
+. . .
+
+Have them draw a line perpendicular to the x and y axes and say this is the z-axis. 
+
+. . .
+
+Have them draw a line perpendicular to the x and y axes and say this is the w-axis. 
+
+. . .
+
+Have them draw a line perpendicular to the x, y, and w axes and say this is the v-axis.
+
+. . .
+
+Have them draw a line perpendicular to the x, y, w, and v axes and say this is the u-axis. 
+
+. . .
+
+Have them draw a line perpendicular to the x, y, w, v, and u axes and say this is the t-axis. Have them draw a line perpendicular to the x, y, w, v, u, and t axes and say this is the s-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, and s axes and say this is the r-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, and r axes and say this is the q-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, and q axes and say this is the p-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, and p axes and say this is the o-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, and o axes and say this is the n-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, and n axes and say this is the m-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, and m axes and say this is the l-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s, r, q, p, o, n, m, and l axes and say this is the k-axis. Have them draw a line perpendicular to the x, y, w, v, u, t, s...
+
+##
+
+
+::: notes
+Give out toothpicks and cards and markers. Have students put a dot in the center of the card and say this is the origin. Imagine the card is an infinite plane. Now have them hold one end of their marker at the "origin"; the other end of the marker represents vector coordinates. Can they come up with a simple way of describing which points are on the plane?
+
+Have them poke a toothpick through the card at the origin. (This toothpick represents the normal vector to the plane.) Now can they see a simple way of describing which points are on the plane?
+
+Write that the vector describing the toothpick is called $\vec a$, and we'll assume it is of unit length. The plane is the set of all vectors $\vec x$ such that $\vec a\cdot \vec x = 0$. This is the equation of the plane.
+:::
+
+## Finding the normal vector when we know two vectors in the plane
+
+::: notes
+Notice that the normal vector is perpendicular to the plane. It's also going to be orthogonal to vector in the plane, and to any two vectors that lie in the plane.
+:::
+For $\mathbb{R}^3$, we can find the normal vector by taking the cross product of two vectors in the plane.
+
+Let $\mathbf{i}, \mathbf{j}$, and $\mathbf{k}$  represent the standard basis $\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}$.
+
+::: definition
+$$
+\mathbf{u} \times \mathbf{v}=\left(u_{2} v_{3}-u_{3} v_{2}\right) \mathbf{i}+\left(u_{3} v_{1}-u_{1} v_{3}\right) \mathbf{j}+\left(u_{1} v_{2}-u_{2} v_{1}\right) \mathbf{k}=\left|\begin{array}{ccc}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+u_{1} & u_{2} & u_{3} \\
+v_{1} & v_{2} & v_{3}
+\end{array}\right|
+$$
+:::
+
+. . .
+
+The cross product is orthogonal to both $\mathbf{u}$ and $\mathbf{v}$:
+ $\mathbf{u} \cdot \mathbf{u} \times \mathbf{v}=0$ 
+ and
+  $\mathbf{v} \cdot \mathbf{u} \times \mathbf{v}=0$
+
+. . .
+
+We can use the cross product to find the normal vector to the plane, simply by taking the cross product of two vectors in the plane.
+
+## Finding the normal vector from the equation of the plane
+
+If the plane is specified $ax + by + cz = d$, then a normal vector is $\vec a = ( a, b, c )$.
+
+. . .
+
+Check:
+
+1. Find three points on the plane.
+   1.  Set the first point  where $x = 0$ and $y = 0$, so $z = d/c$: $(0, 0, d/c)$. 
+   2.  Set second point is where $x=0$ and $z = 0$, so $y=d/b$: $(0,d/b,0)$. 
+   3. The third point is $(d/a,0,0)$.
+2. Now find two displacement vectors in the plane: 
+   1. $\vec u = (0, d/b, 0) - (0, 0, d/c) = (0, d/b, -d/c)$ and 
+   2. $\vec v = (d/a, 0, 0) - (0, 0, d/c)=(d/a,0,-d/c)$.
+
+##
+
+Now take the cross product of these two vectors to find the normal vector:
+
+$$
+\begin{aligned}
+\vec u \times \vec v \\
+&= \left|\begin{array}{ccc}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+0 & d/b & -d/c \\
+d/a & 0 & -d/c
+\end{array}\right| \\
+&= - \mathbf{i} \left( \frac{d}{b} \frac{d}{c} \right) + \mathbf{j} \left( \frac{d}{a} \frac{d}{c} \right) - \mathbf{k} \left( \frac{d}{a} \frac{d}{b} \right) \\
+&= -d^2 \left[ \left( \frac{1}{bc} \right) \mathbf{i} - \left( \frac{1}{ac} \right) \mathbf{j} + \left( \frac{1}{ab} \right) \mathbf{k} \right]\\
+&= -\frac{d^2}{abc} \left[\left( a \right) \mathbf{i} - \left( b \right) \mathbf{j} + \left( c \right) \mathbf{k} \right]\\
+\end{aligned}
+$$
+
+This is parallel to $\vec{a} = (a, b, c)$.
+
+
+## Distances from the plane
+
+::: notes
+Have them hold the marker still with its end at the origin, but with the point not on the plane. Can they describe the distance to the plane?
+
+Notice that it's the same as the scalar projection of the vector onto the normal vector: projection of $\vec x$ onto $\vec a$. That is, the distance is $|\vec a\cdot \vec x|$. (If the normal vector is not of unit length, the distance would have been $|\vec a\cdot \vec x|/||\vec a||$.)
+:::
+
+## 
+
+::: notes
+Now have them figure out the displacement vector that points from $\vec x$ to the closest point on the plane.
+
+It is in the same direction as $\vec a$, and its length is $|\vec a\cdot \vec x|/ ||\vec a||$. This is the projection of $\vec x$ onto the normal vector.
+:::
+
+## Back onto the plane
+
+::: notes
+Now have them find the location of the point on the plane that is closest to $\vec x$.
+
+It is $\vec x - \vec a |\vec x \cdot\vec a|/||\vec a||^2$.
+
+This is the projection of $\vec x$ onto the plane. We find it by subtracting the projection of $\vec x$ onto the normal vector from $\vec x$.
+
+Projection onto the plane is the same as the displacement vector from the point to the plane is the same as the closest point on the plane to the point.
+:::
+
+## A plane not at the origin
+
+::: notes
+Have them designate the origin as some other point, not on the card.
+
+Can they come up with a simple way of describing what the displacement was?
+
+They can describe the displacement of the plane with a scalar multiple of the normal vector.
+
+Call this q $\vec a$.
+
+:::
+
+##
+
+::: notes
+Now how can they describe which points are on the plane?
+
+The simplest way (for my brain at least) is to imagine taking a point on the plane and subtracting the displacement vector from it. Is the new point where the plane would be if the plane were at the origin?
+
+So, take $\vec x$ and subtract $\vec a q$ from it. Would this point fall in a plane at the origin? That is, is $\vec a\cdot (\vec x - \vec a q) = 0$?
+
+We can simplify this: $\vec a\cdot \vec x - \vec a\cdot \vec a q = 0$. So $\vec a\cdot \vec x = \vec a\cdot \vec a q$. So $\vec a\cdot \vec x = q$.
+
+This is the equation of the plane.
+
+:::
+
+## Hyperplane
+
+::: definition
+A hyperplane in $\mathbb{R}^{n}$ is the set of all $\mathbf{x} \in \mathbb{R}^{n}$ such that $\mathbf{a} \cdot \mathbf{x}=b$, where the nonzero vector $\mathbf{a} \in \mathbb{R}^{n}$ and scalar $b$ are given.
+:::
+
+. . .
+
+::: theorem 
+Let $H$ be the hyperplane in $\mathbb{R}^{n}$ defined by the equation $\mathbf{a} \cdot \mathbf{x}=b$ and let $\mathbf{x}_{*} \in H$. Then
+
+(1) $\mathbf{a}^{\perp}=\left\{\mathbf{y} \in \mathbb{R}^{n} \mid \mathbf{a} \cdot \mathbf{y}=0\right\}$ is a subspace of $\mathbb{R}^{n}$ of dimension $n-1$.
+
+(2) $H=\mathbf{x}_{*}+\mathbf{a}^{\perp}=\left\{\mathbf{x}_{*}+\mathbf{y} \mid \mathbf{y} \in \mathbf{a}^{\perp}\right\}$.
+:::
+
+
+## Example
+
+Find an equation that defines the plane containing the three (noncollinear) points $P, Q$, and $R$ with coordinates $(1,0,2),(2,1,0)$, and $(3,1,1)$, respectively.
+
+. . .
+
+$$
+\begin{aligned}
+& \overrightarrow{P Q}=(2,1,0)-(1,0,2)=(1,1,-2) \\
+& \overrightarrow{P R}=(3,1,1)-(1,0,2)=(2,1,-1)
+\end{aligned}
+$$
+
+. . .
+
+$$
+\mathbf{u} \times \mathbf{v}=\left|\begin{array}{ccc}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+1 & 1 & -2 \\
+2 & 1 & -1
+\end{array}\right|=\mathbf{i}-3 \mathbf{j}-\mathbf{k}
+$$
+
+. . .
+
+The normal vector is $\mathbf{a}=(1,-3,-1)$. 
+
+. . .
+
+The equation of the plane is $\mathbf{a} \cdot \mathbf{x}=b$
+
+What is $b$? We can plug in any of the points and solve for it. Let's use $P$:
+
+. . .
+
+$b=\mathbf{a} \cdot \mathbf{P}=(1,-3,-1) \cdot(1,0,2)=1+0-2=-1$.
+
+## Projections to the displaced plane
+
+::: notes
+Now have them find the displacement vector that points from $\vec x$ to the closest point on the plane.
+
+This will be the same as if we again subtract to get a plane that goes through the origin. So the displaced position is $\vec x - q \vec a $, and its distance from the plane that goes through the origin is this dot a: $\vec a\cdot (\vec x - q \vec a)=\vec a\cdot\vec x - q $.
+
+Multiplying by $\vec a$ we get $\vec a \left(\vec a\cdot\vec x - q\right) $. 
+
+Then, to find the closest point on the plane, we subtract this from $\vec x$: $\vec x - \vec a \left(\vec a\cdot\vec x - q\right) $.
+
+:::
+
+## Summary
+
+- Plane through the origin: $\vec a\cdot \vec x = 0$
+
+- Plane displaced from the origin: $\vec a\cdot \vec x = q$
+
+- Component of $\vec x$ along the vector $\vec a$ (scalar projection): $\vec a\cdot \vec x / || \vec a ||$
+
+- Projection of $\vec x$ onto $\vec a$: $\vec a / ||a|| \quad \vec a\cdot \vec x/||\vec a||$
+
+- Projection of $\vec x$ onto the plane for which $\vec a$ is the normal vector, displaced by $q \vec a$ from the origin: $\vec x$ - projection onto the normal vector = $\vec x - \vec a \left(\vec a\cdot\vec x - q\right) $
+
+
+## Projection Formula for Vectors
+
+Let $\mathbf{u}$ and $\mathbf{v}$ be vectors, $\mathbf{v} \neq \mathbf{0}$.
+
+
+$$
+\mathbf{p}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v} \text { and } \quad \mathbf{q}=\mathbf{u}-\mathbf{p}
+$$
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-303.jpg?height=361&width=585&top_left_y=192&top_left_x=466)
+
+. . .
+
+Then $\mathbf{p}$ is **parallel** to $\mathbf{v}, \mathbf{q}$ is **orthogonal** to $\mathbf{v}$, and $\mathbf{u}=\mathbf{p}+\mathbf{q}$.
+
+. . .
+We say $\operatorname{proj}_{\mathbf{v}} \mathbf{u}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}$ and $\operatorname{orth}_{\mathbf{v}} \mathbf{u}=\mathbf{u}-\operatorname{proj}_{\mathbf{v}} \mathbf{u}$
+
+# Least Squares
+
+## Taking a step back from linear algebra: fitting a line to data
+
+::: notes
+
+Draw a scatter plot of some data. Draw a line that seems to fit the data well. Make a separate plot of the residuals vs x.
+
+Mention least squares. 
+
+Now draw a line that doesn't fit the data well. Make a separate plot of the residuals. Notice that now there is a relationship between the residuals and x -- their correlation is not zero.
+
+Idea of least squares can then to be to find the line such that the residuals are uncorrelated with x -- so that the slope of the residuals vs x is zero.
+
+That is, we want the residuals to be orthogonal to the line.
+
+:::
+
+## Straight lines of x and y, now in Rn
+
+::: notes
+
+Have the students draw a scatter plot of some data in x and y, which are on a straight line. Ask them what this looks like if we plot the data in $\mathbb{R}^n$. What does $x$ look like now? What is its relation to $y$?
+
+Hint: have them write the relationship between $x_1$ and $y_1$.
+
+We can think of the the data $x$ as a single point in $\mathbb{R}^n$, and the same for $y$. So if there is a linear relationship between $x$ and $y$, then $\mathbf{y}$ a multiple of $\mathbf{x}$.
+
+:::
+
+## Imperfect data
+
+::: notes
+Now have them realize what happens if the data is not on a straight line. What does the relationship between $x$ and $y$ look like now?
+
+
+$y$ is still close to a multiple of $x$, but not exactly. They aren't exactly parallel.
+
+The difference between them is the vector of *residuals*. The squared norm of the residuals vector is the sum of the individual residuals.
+:::
+
+## Guessing at a fit
+
+::: notes
+
+Suppose we think that $y$ is approximately a multiple of $x$, so that $\mathbf y \approx m \mathbf x$. How should we measure how good this guess is?
+
+Idea: calculate the residuals, which are the differences between the actual $y$ and the guess $m x$. Their norm should be small.
+
+Draw the residuals.
+
+:::
+
+## Best guess
+
+::: notes
+For different values of $m$, the residuals will be different. We want to find the value of $m$ that makes the residuals as small as possible. Geometrically, when will this be?
+
+When the residuals are orthogonal to $x$.
+
+There is a line that contains all possible values for multiples of $x$. The residuals will always be a sum of a component along this line and a component orthogonal to it. Notice that the component orthogonal to the line will always be the same -- it's the displacement from $y$ to the closest point on the line. But the parallel component will change depending on what value we choose for $m$.
+
+To make the residuals as small as possible, we want the parallel component to be zero. That is, we want the residuals to be orthogonal to $x$.
+:::
+
+## Least squares
+
+$m \mathbf{x}-\mathbf{y}$ should be orthogonal to $\mathbf{x}$.
+
+$$
+\begin{aligned}
+\mathbf{x} \cdot\left(m \mathbf{x}-\mathbf{y}\right) &=0 \\
+m \mathbf{x} \cdot \mathbf{x}-\mathbf{x} \cdot \mathbf{y} &=0 \\
+m \mathbf{x} \cdot \mathbf{x} &=\mathbf{x} \cdot \mathbf{y} \\
+\mathbf{x} \cdot \mathbf{x}\quad m  &=\mathbf{x} \cdot \mathbf{y} \\
+\end{aligned}
+$$
+
+. . .
+
+Change to matrix notation:
+
+[$\mathbf{x} \rightarrow \mathbf{A}\text{,}\qquad$  ]{.fragment} [$\mathbf{y} \rightarrow \mathbf{b}\text{,}\qquad$  ]{.fragment} [$m \rightarrow \mathbf{x}$]{.fragment} 
+
+
+. . .
+
+Linear equation becomes $\mathbf{A} \mathbf{x}= \mathbf{b}$. But it's not consistent if the data aren't on the straight line. Best fit equation becomes
+
+. . .
+
+$$
+\begin{aligned}
+\mathbf{x} \cdot \mathbf{x}\quad m  &=\mathbf{x} \cdot \mathbf{y} \\
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &=\mathbf{A}^{T} \mathbf{b} 
+\end{aligned}
+$$
+
+These are the **normal equations**. We solve them to find $\mathbf{x}$ which corresponds to the best fit.
+
+## Normal equations for a single predictor
+
+When we have a single predictor variable and a single response variable, the $\mathbf{x}$ we are trying to find is just a scalar.
+
+. . . 
+
+$\mathbf{A}$ is a column vector of the predictor variable, call it now $\mathbf{a}$
+
+. . .
+
+$\mathbf{b}$ is a column vector of the response variable.
+
+. . .
+
+The normal equations become
+
+$$
+\begin{aligned}
+\mathbf{a}^{T} \mathbf{a} \mathbf{x} &=\mathbf{a}^{T} \mathbf{b} \\
+\mathbf{a} \cdot \mathbf{a} \mathbf{x} &=\mathbf{a} \cdot \mathbf{b} \\
+x = \frac{\mathbf{a} \cdot \mathbf{b}}{\mathbf{a} \cdot \mathbf{a}}
+\end{aligned}
+$$
+
+This is the formula for the slope of the best fit line.
+
+## Example
+
+You have a scale that measures in unknown units.
+
+You have items that you know weigh approximately 2, 5, and 7 pounds (approximately.)
+
+. . .
+
+You measure the scale's output for these items and get $0.7,2.4$, and 3.2. What is the conversion factor from the scale's units to pounds?
+
+. . .
+
+You can set up the system of equations:
+
+$\mathbf{a}= \begin{bmatrix} 2 \\ 5 \\ 7 \end{bmatrix}$ and $\mathbf{b}= \begin{bmatrix} 0.7 \\ 2.4 \\ 3.2 \end{bmatrix}$
+
+Can you find $\mathbf{x}$ such that $\mathbf{a} \cdot \mathbf{x} = \mathbf{b}$?
+
+. . .
+
+No, it's inconsistent. But you can find the best fit.
+
+. . .
+
+$$
+\begin{aligned}
+\mathbf{a}^{T} \mathbf{a} \mathbf{x} &=\mathbf{a}^{T} \mathbf{b} \\
+\begin{bmatrix} 2 & 5 & 7 \end{bmatrix} \begin{bmatrix} 2 \\ 5 \\ 7 \end{bmatrix} x &= \begin{bmatrix} 2 & 5 & 7 \end{bmatrix} \begin{bmatrix} 0.7 \\ 2.4 \\ 3.2 \end{bmatrix} 
+x = \frac{2 \cdot 0.7 + 5 \cdot 2.4 + 7 \cdot 3.2}{2^2 + 5^2 + 7^2} \approx 0.459
+\end{aligned}
+$$
+
+So to go from pounds to the scale's units, multiply by 0.459.
+
+. . .
+
+(This is the opposite of what the book did -- they found the conversion factor from the scale's units to pounds.)
+
+
+
+## Normal equations for multiple predictors
+
+When we have multiple predictors, $\mathbf{A}$ is a matrix
+
+. . .
+
+Each column corresponds to a predictor variable.
+
+. . .
+
+ $\mathbf{x}$ is a column vector of the coefficients we are trying to find, one per predictor.
+
+. . .
+
+What do the normal equations tell us? We can break them apart into one equation corresponding to each column of $\mathbf{A}$.
+
+. . .
+
+$$
+\begin{aligned}
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &=\mathbf{A}^{T} \mathbf{b} \\
+\text{becomes} \\
+\mathbf{a_i}\cdot \mathbf{A} \mathbf{x} &=\mathbf{a_i} \cdot \mathbf{b}\text{ for every i} \\
+\mathbf{a_i}\cdot \left(\mathbf{b}-\mathbf{Ax}\right)&=0\text{ for every i}
+\end{aligned}
+$$
+
+. . .
+
+We need to find $\mathbf{x}$ such that the residuals are orthogonal to every column of $\mathbf{A}$.
+
+##
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-307.jpg?height=537&width=804&top_left_y=1141&top_left_x=357)
+
+## Example
+
+We have two predictors $a_1$ and $a_2$ and a response variable $b$. We have the following data:
+
+| $x_1$ | $x_2$ | $y$ |
+|-------|-------|-----|
+| 2    | 1     | 0   |
+| 1     | 1     | 0   |
+| 2     | 1     | 2   |
+
+. . .
+
+We are hoping to find a linear relationship of the form $\beta_1 x_1 + \beta_2 x_2 = y$ for some values of $\beta_1$ and $\beta_2$.
+
+. . .
+
+This would bring us the following system of equations:
+
+$$
+\begin{aligned}
+2 \beta_{1}+\beta_{2} & =0 \\
+\beta_{1}+\beta_{2} & =0 \\
+2 \beta_{1}+\beta_{2} & =2 .
+\end{aligned}
+$$
+
+. . .
+
+Obviously inconsistent! ($2 \beta_{1}+\beta_{2}$ cannot equal both 0 and 2.)
+
+. . .
+
+Find the least squares solution using the normal equations:
+
+##
+
+Change variable names, so the $\beta$s are now $\mathbf{x}$, the $x$s are now the columns $\mathbf{A}$, and the $y$s are now $\mathbf{b}$.
+
+
+$$
+A=\left[\begin{array}{ll}
+2 & 1 \\
+1 & 1 \\
+2 & 1
+\end{array}\right], \text { and } \mathbf{b}=\left[\begin{array}{l}
+0 \\
+0 \\
+2
+\end{array}\right]
+$$
+
+. . .
+
+Residuals are $\mathbf{b}-\mathbf{A} \mathbf{x}$.
+
+Normal equations are $\mathbf{A}^{T} \mathbf{A} \mathbf{x}=\mathbf{A}^{T} \mathbf{b}$.
+
+##
+
+$$
+A^{T} A=\left[\begin{array}{lll}
+2 & 1 & 2 \\
+1 & 1 & 1
+\end{array}\right]\left[\begin{array}{ll}
+2 & 1 \\
+1 & 1 \\
+2 & 1
+\end{array}\right]=\left[\begin{array}{ll}
+9 & 5 \\
+5 & 3
+\end{array}\right]
+$$
+
+with inverse 
+$$
+\left(A^{T} A\right)^{-1}=\left[\begin{array}{ll}
+9 & 5 \\
+5 & 3
+\end{array}\right]^{-1}=\frac{1}{2}\left[\begin{array}{rr}
+3 & -5 \\
+-5 & 9
+\end{array}\right]
+$$
+
+. . .
+
+$$
+A^{T} \mathbf{b}=\left[\begin{array}{lll}
+2 & 1 & 2 \\
+1 & 1 & 1
+\end{array}\right]\left[\begin{array}{l}
+0 \\
+0 \\
+2
+\end{array}\right]=\left[\begin{array}{l}
+4 \\
+2
+\end{array}\right]
+$$
+
+
+## Least Squares Solution
+
+$$
+\mathbf{x}=\left(A^{T} A\right)^{-1} A^{T} \mathbf{b}=\frac{1}{2}\left[\begin{array}{rr}
+3 & -5 \\
+-5 & 9
+\end{array}\right]\left[\begin{array}{l}
+4 \\
+2
+\end{array}\right]=\left[\begin{array}{r}
+1 \\
+-1
+\end{array}\right]
+$$
+
+. . .
+
+Back in our original variables, this means the best fit estimate for $\beta_1$ is 1 and the best $\beta_2$ is -1.
+
+# Orthogonal and Orthonormal Sets
+
+::: definition
+The set of vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ is an **orthogonal set** if $\mathbf{v}_{i} \cdot \mathbf{v}_{j}=0$ whenever $i \neq j$. 
+
+If, in addition, each vector has unit length, i.e., $\mathbf{v}_{i} \cdot \mathbf{v}_{i}=1$, then the set of vectors is  **orthonormal** .
+
+:::
+
+## Orthogonal Coordinates Theorem
+
+::: theorem
+
+If $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ are nonzero and orthogonal, and 
+
+$\mathbf{v} \in \operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right\}$,
+ 
+$\mathbf{v}$ can be expressed uniquely (up to order) as a linear combination of $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$, namely
+
+$$
+\mathbf{v}=\frac{\mathbf{v}_{1} \cdot \mathbf{v}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\frac{\mathbf{v}_{2} \cdot \mathbf{v}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}+\cdots+\frac{\mathbf{v}_{n} \cdot \mathbf{v}}{\mathbf{v}_{n} \cdot \mathbf{v}_{n}} \mathbf{v}_{n}
+$$
+
+:::
+
+## Proof
+
+Since $\mathbf{v} \in \operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right\}$, 
+
+we can write  $\mathbf{v}$ as a linear combination of the $\mathbf{v}_{i}$ 's:
+
+$$
+\mathbf{v}=c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}
+$$
+
+. . .
+
+Now take the inner product of both sides with $\mathbf{v}_{k}$:
+
+. . .
+
+Since $\mathbf{v}_{k} \cdot \mathbf{v}_{j}=0$ if $j \neq k$,
+
+$$
+\begin{aligned}
+\mathbf{v}_{k} \cdot \mathbf{v} & =\mathbf{v}_{k} \cdot\left(c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\ldots \cdots+c_{n} \mathbf{v}_{n}\right) \\
+& =c_{1} \mathbf{v}_{k} \cdot \mathbf{v}_{1}+c_{2} \mathbf{v}_{k} \cdot \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{k} \cdot \mathbf{v}_{n}=c_{k} \mathbf{v}_{k} \cdot \mathbf{v}_{k}
+\end{aligned}
+$$
+
+. . .
+
+Since $\mathbf{v}_{k} \neq 0$,  $\left\|\mathbf{v}_{k}\right\|^{2}=\mathbf{v}_{k} \cdot \mathbf{v}_{k} \neq 0$ so we can divide::
+
+$$
+c_{k}=\frac{\mathbf{v}_{k} \cdot \mathbf{v}}{\mathbf{v}_{k} \cdot \mathbf{v}_{k}}
+$$
+
+. . .
+
+Any linear combination of an orthogonal set of nonzero vectors is the sum of its projections in the direction of each vector in the set.
+
+## Orthogonal matrix
+
+Suppose $\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{n}$ is an orthonormal basis of $\mathbb{R}^{n}$
+
+. . .
+
+Make these the column vectors of $\mathbf{A}$: $A=\left[\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{n}\right]$
+
+. . .
+
+Because the $\mathbf{u}_{i}$ are orthonormal, $\mathbf{u}_{i}^{T} \mathbf{u}_{j}=\delta_{i j}$
+
+. . .
+
+Use this to calculate $A^{T} A$.
+
+- its $(i, j)$ th entry is $\mathbf{u}_{n}^{T} \mathbf{u}_{n}$
+- = $\delta_{i j}$
+- So we have = $A^{T} A=\left[\delta_{i j}\right]=I$
+- Therefore, $A^{T} = A^{-1}$
+
+## Orthogonal matrix
+
+::: definition
+A square real matrix $Q$ is called orthogonal if $Q^{T}=Q^{-1}$.
+
+ A square matrix $U$ is called unitary if $U^{*}=U^{-1}$.
+:::
+
+## Example
+
+Show that the matrix
+ $R(\theta)=\left[\begin{array}{rr}\cos \theta & -\sin \theta \\ \sin \theta & \cos \theta\end{array}\right]$ is orthogonal.
+
+ . . .
+
+$$
+\begin{aligned}
+R(\theta)^{T} R(\theta) & =\left(\left[\begin{array}{cc}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right]\right)^{T}\left[\begin{array}{cc}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right] \\
+& =\left[\begin{array}{cc}
+\cos \theta \sin \theta \\
+-\sin \theta \cos \theta
+\end{array}\right]\left[\begin{array}{cc}
+\cos \theta-\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right] \\
+& =\left[\begin{array}{cc}
+\cos ^{2} \theta+\sin ^{2} \theta & \cos \theta \sin \theta-\sin \theta \cos \theta \\
+-\cos \theta \sin \theta+\sin \theta \cos \theta & \sin ^{2} \theta+\cos ^{2} \theta
+\end{array}\right]=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right],
+\end{aligned}
+$$
+
+. . .
+
+This rotation matrix preserves vector lengths and angles between vectors (illustrate).
+
+Thus, $R(\theta)\mathbf{x}\cdot R(\theta)\mathbf{y}=\mathbf{x} \cdot \mathbf{y}$ 
+
+. . .
+
+This is true in *general* for orthogonal matrices:
+
+$$
+Q \mathbf{x} \cdot Q \mathbf{y}=(Q \mathbf{x})^{T} Q \mathbf{y}=\mathbf{x}^{T} Q^{T} Q \mathbf{y}=\mathbf{x}^{T} \mathbf{y}=\mathbf{x} \cdot \mathbf{y}
+$$
+
+also,
+
+$$
+\|Q \mathbf{x}\|^{2}=Q \mathbf{x} \cdot Q \mathbf{x}=(Q \mathbf{x})^{T} Q \mathbf{x}=\mathbf{x}^{T} Q^{T} Q \mathbf{x}=\mathbf{x}^{T} \mathbf{x}=\|\mathbf{x}\|^{2}
+$$

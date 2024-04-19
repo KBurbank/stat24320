@@ -12,7 +12,7 @@ Please do all three projects. However, in the first project (Modeling with Direc
 
 # Chapter 3 Projects
 
-## Modeling with Directed Graphs
+## 1. Modeling with Directed Graphs
 
 
 Project Descriptions: This project introduces more applications of digraphs as mathematical modeling tools. You are given that the digraph $G$ has vertex set $V=\{1,2,3,4,5,6\}$ and edge set
@@ -60,7 +60,7 @@ $$
 # Chapter 4 Projects
 
 
-## Project 5 Image Compression and Edge Detection
+## 2. Image Compression and Edge Detection
 
 Problem Description: In this report you will test some limits of data compression by experimenting with an interesting image of your own choosing. It could be a photograph you have taken or some reasonably complex image from the internet that piqued your interest. You are to transform the image into suitable format and then see how much you can can compress that data storage requirements for that image while losing an acceptable amount of detail.
 
@@ -71,7 +71,7 @@ Next, you must apply the Haar wavelet transform repeatedly to your initial image
 
 A picture is worth a thousand words, so be lavish with them in your write-up. Consider the amount of savings if, in addition to saving the blurs in all their detail, you were to to save a very good approximation to the edges portion of the transformed picture. For example, consider what you might achieve by first applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level to zero, then accounting for the large number of resulting zeros by some compression technique. You might even suggest a format for such a compression format.
 
-## Least Squares
+## 3. Least Squares
 
 Pick a league in a sport that you like. For example, you could pick the WNBA for basketball, or a soccer league. Pick a point halfway through last year's season. You will use the data from the games played up to that point to predict the outcome of the season.
 

@@ -1,0 +1,785 @@
+---
+title: Ch2 Lecture 5
+lecture_day: 7
+readings: "2.4,2.5,2.6"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+       css: theorem.css
+    #html:
+     #   output-file: ch2_lecture4plain.html
+---
+# Odds and ends
+
+# Block multiplication
+
+## Block Multiplication
+
+<!--
+
+### Block Matrices
+
+Another type of matrix that occurs frequently enough to be discussed is a block matrix. Actually, we already used the idea of blocks when we described the augmented matrix of the system $A \mathbf{x}=\mathbf{b}$ as the matrix $\tilde{A}=[A \mid \mathbf{b}]$. The blocks of $\tilde{A}$ in partitioned form $[A, \mathbf{b}]$ are $A$ and $\mathbf{b}$. There is no reason we couldn't partition by inserting more vertical lines or horizontal lines as well, and this partitioning leads to the blocks. The main point to bear in mind when using the block notation is that the blocks must be correctly Block Notation sized so that the resulting matrix makes sense. One virtue of the block form that results from partitioning is that for purposes of matrix addition or multiplication, we can treat the blocks rather like scalars, provided the addition or multiplication that results makes sense. We will use this idea from time to time without fanfare. One could go through a formal description of partitioning and proofs; we won't. Rather, we'll show how this idea can be used by example.
+
+
+
+For another (important!) example of block arithmetic, examine Example 2.9 and the discussion following it. There we view a matrix as blocked into its respective columns, and a column vector as blocked into its rows, to obtain
+
+$$
+A \mathbf{x}=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}\right]\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\mathbf{a}_{1} x_{1}+\mathbf{a}_{2} x_{2}+\mathbf{a}_{3} x_{3}
+$$
+
+-->
+
+Suppose we need to multiply these matrices...
+
+$$
+\left[\begin{array}{llll}
+1 & 2 & 0 & 0 \\
+3 & 4 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{llll}
+0 & 0 & 2 & 1 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array}\right] .
+$$
+
+**pause**
+
+::: notes
+It's a pain, right?
+
+Draw out the blocks on the left and right matrices.
+
+$$
+A=\left[\begin{array}{ll}
+1 & 2 \\
+3 & 4
+\end{array}\right], \quad B=\left[\begin{array}{ll}
+1 & 0
+\end{array}\right], \quad C=\left[\begin{array}{ll}
+2 & 1 \\
+-1 & 1
+\end{array}\right], \quad I_{2}=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1
+\end{array}\right]
+$$
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-119.jpg?height=154&width=939&top_left_y=1041&top_left_x=294)
+
+:::
+
+## Column Vectors as Blocks
+
+$$
+A \mathbf{x}=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}\right]\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\mathbf{a}_{1} x_{1}+\mathbf{a}_{2} x_{2}+\mathbf{a}_{3} x_{3}
+$$
+
+# Transpose and Conjugate Transpose
+## Transpose and Conjugate Transpose
+<!--
+
+Sometimes we prefer to work with a different form of a matrix that contains the same information as the matrix. Transposes are operations that allow us to do that. The idea is simple: Interchange rows and columns. It turns out that for complex matrices, there is an analogue that is not quite the same thing as transposing, though it yields the same result when applied to real matrices. This analogue is called the conjugate (or Hermitian) transpose. Here are the appropriate definitions.
+
+#### Definition 2.15.
+ Transpose and Conjugate Matrices Let $A=\left[a_{i j}\right]$ be an $m \times n$ matrix with (possibly) complex entries. Then the transpose of $A$ is the $n \times m$ matrix $A^{T}$ obtained by interchanging the rows and columns of $A$, so that the $(i, j)$ th entry of $A^{T}$ is $a_{j i}$. The conjugate of $A$ is the matrix $\bar{A}=\left[\overline{a_{i j}}\right]$. Finally, the conjugate (Hermitian) transpose of $A$ is the matrix $A^{*}=\bar{A}^{T}$.
+
+Notice that in the case of a real matrix (that is, a matrix with real entries) $A$ there is no difference between transpose and conjugate transpose, since in this case $A=\bar{A}$. Consider these examples.
+
+Example 2.33. Compute the transpose and conjugate transpose of the following matrices:
+(a) $\left[\begin{array}{lll}1 & 0 & 2 \\ 0 & 1 & 1\end{array}\right]$,
+(b) $\left[\begin{array}{ll}2 & 1 \\ 0 & 3\end{array}\right]$,
+(c) $\left[\begin{array}{rr}1 & 1+\mathrm{i} \\ 0 & 2 \mathrm{i}\end{array}\right]$.
+
+Solution. For matrix (a) we have
+
+$$
+\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{*}=\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1 \\
+2 & 1
+\end{array}\right]
+$$
+
+Notice how the dimensions of a transpose get switched from the original.
+
+For matrix (b) we have
+
+$$
+\left[\begin{array}{ll}
+2 & 1 \\
+0 & 3
+\end{array}\right]^{*}=\left[\begin{array}{ll}
+2 & 1 \\
+0 & 3
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+2 & 0 \\
+1 & 3
+\end{array}\right]
+$$
+
+and for matrix (c) we have
+
+$$
+\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 & 0 \\
+1-\mathrm{i} & -2 \mathrm{i}
+\end{array}\right], \quad\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 & 0 \\
+1+\mathrm{i} & 2 \mathrm{i}
+\end{array}\right]
+$$
+
+In this case, transpose and conjugate transpose are not the same.
+
+Even when dealing with vectors alone, the transpose notation is handy. For example, there is a bit of terminology that comes from tensor analysis (a branch of higher linear algebra used in many fields including differential geometry, engineering mechanics, and relativity) that can be expressed very concisely with transposes:
+-->
+
+
+
+::: definition
+- Let $A=\left[a_{i j}\right]$ be an $m \times n$ matrix with (possibly) complex entries. 
+
+- The **transpose** of $A$ is the $n \times m$ matrix $A^{T}$ obtained by interchanging the rows and columns of $A$
+
+- The **conjugate** of $A$ is the matrix $\bar{A}=\left[\overline{a_{i j}}\right]$
+
+- Finally, the **conjugate (Hermitian) transpose** of $A$ is the matrix $A^{*}=\bar{A}^{T}$.
+:::
+
+
+## Example 1
+
+Find the transpose and conjugate transpose of:
+
+$$
+\left[\begin{array}{lll}1 & 0 & 2 \\ 0 & 1 & 1\end{array}\right]
+$$
+
+. . .
+
+$$
+\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{*}=\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1 \\
+2 & 1
+\end{array}\right]
+$$
+
+## Example 2
+
+Find the transpose and conjugate transpose of:
+
+$$
+\left[\begin{array}{rr}1 & 1+\mathrm{i} \\ 0 & 2 \mathrm{i}\end{array}\right]
+$$
+
+. . .
+
+$$
+\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 & 0 \\
+1-\mathrm{i} & -2 \mathrm{i}
+\end{array}\right], \quad\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 & 0 \\
+1+\mathrm{i} & 2 \mathrm{i}
+\end{array}\right]
+$$
+
+## Laws of Matrix Transpose
+
+Let $A$ and $B$ be matrices of the appropriate sizes so that the following operations make sense, and $c$ a scalar.
+
+1. $(A+B)^{T}=A^{T}+B^{T}$
+
+2. $(A B)^{T}=B^{T} A^{T}$
+
+3. $(c A)^{T}=c A^{T}$
+
+4. $\left(A^{T}\right)^{T}=A$
+
+## Symmetric and Hermetian Matrices
+
+::: definition
+The matrix $A$ is said to be:
+
+- **symmetric** if $A^{T}=A$
+- **Hermitian** if $A^{*}=A$
+:::
+
+. . .
+
+::: example
+Is this matrix symmetric? Hermetian?
+
+$\left[\begin{array}{rr}1 & 1+\mathrm{i} \\ 1-\mathrm{i} & 2\end{array}\right]$
+
+:::: {.fragment}
+
+It's Hermetian, but not symmetric.
+
+$$
+\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+1-\mathrm{i} & 2
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 & \overline{1+\mathrm{i}} \\
+\overline{1-\mathrm{i}} & 2
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+1-\mathrm{i} & 2
+\end{array}\right]
+$$
+::::
+
+:::
+
+# Inner and outer products
+
+<!--
+
+#### Definition 2.16.
+ Inner and Outer Products Let $\mathbf{u}$ and $\mathbf{v}$ be column vectors of the same size, say $n \times 1$. Then the inner product of $\mathbf{u}$ and $\mathbf{v}$ is the scalar quantity $\mathbf{u}^{T} \mathbf{v}$, and the outer product of $\mathbf{u}$ and $\mathbf{v}$ is the $n \times n$ matrix $\mathbf{u v}^{T}$.
+
+Example 2.34. Compute the inner and outer products of the vectors
+
+$$
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+$$
+
+Solution. Here we have the inner product
+
+$$
+\mathbf{u}^{T} \mathbf{v}=[2,-1,1]\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]=2 \cdot 3+(-1) 4+1 \cdot 1=3
+$$
+
+while the outer product is
+
+$$
+\mathbf{u v}^{T}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right][3,4,1]=\left[\begin{array}{rrr}
+2 \cdot 3 & 2 \cdot 4 & 2 \cdot 1 \\
+-1 \cdot 3 & -1 \cdot 4 & -1 \cdot 1 \\
+1 \cdot 3 & 1 \cdot 4 & 1 \cdot 1
+\end{array}\right]=\left[\begin{array}{rrr}
+6 & 8 & 2 \\
+-3 & -4 & -1 \\
+3 & 4 & 1
+\end{array}\right]
+$$
+
+Here are a few basic laws relating transposes to other matrix arithmetic that we have learned. These laws remain correct if transpose is replaced by conjugate transpose, with one exception: $(c A)^{*}=\bar{c} A^{*}$.
+-->
+
+
+
+
+## Inner product
+
+::: definition
+
+- Let $\mathbf{u}$ and $\mathbf{v}$ be column vectors of the same size, say $n \times 1$.
+
+- Then the **inner product** of $\mathbf{u}$ and $\mathbf{v}$ is the scalar quantity $\mathbf{u}^{T} \mathbf{v}$
+
+:::
+
+. . .
+
+::: example
+
+Find the inner product of 
+$$
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+$$
+
+
+:::: {.fragment}
+
+
+$$
+\mathbf{u}^{T} \mathbf{v}=[2,-1,1]\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]=2 \cdot 3+(-1) 4+1 \cdot 1=3
+$$
+
+::::
+
+:::
+
+## Outer product
+
+::: definition
+- The **outer product** of $\mathbf{u}$ and $\mathbf{v}$ is the $n \times n$ matrix $\mathbf{u v}^{T}$.
+:::
+
+. . .
+
+::: example
+Find the outer product of
+
+$$
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+$$
+
+:::: {.fragment}
+
+$$
+\mathbf{u v}^{T}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right][3,4,1]=\left[\begin{array}{rrr}
+2 \cdot 3 & 2 \cdot 4 & 2 \cdot 1 \\
+-1 \cdot 3 & -1 \cdot 4 & -1 \cdot 1 \\
+1 \cdot 3 & 1 \cdot 4 & 1 \cdot 1
+\end{array}\right]=\left[\begin{array}{rrr}
+6 & 8 & 2 \\
+-3 & -4 & -1 \\
+3 & 4 & 1
+\end{array}\right]
+$$
+
+::::
+
+:::
+
+
+# Determinants
+
+##
+
+::: definition
+
+The **determinant** of a square $n \times n$ matrix $A=\left[a_{i j}\right]$, $\operatorname{det} A$, is 
+defined recursively:
+
+If $n=1$ then $\operatorname{det} A=a_{11}$;
+
+:::: {.fragment}
+
+otherwise, 
+
+- suppose we have determinents for all square matrices of size less than $n$
+- Define $M_{i j}(A)$ as the determinant of the $(n-1) \times(n-1)$ matrix obtained from $A$ by deleting the $i$ th row and $j$ th column of $A$
+
+::::
+
+:::: {.fragment}
+
+then
+
+$$
+\begin{aligned}
+\operatorname{det} A & =\sum_{k=1}^{n} a_{k 1}(-1)^{k+1} M_{k 1}(A) \\
+& =a_{11} M_{11}(A)-a_{21} M_{21}(A)+\cdots+(-1)^{n+1} a_{n 1} M_{n 1}(A)
+\end{aligned}
+$$
+::::
+
+:::
+
+## Laws of Determinants
+
+Determinant of an upper-triangular matrix:
+$$
+\begin{aligned}
+\operatorname{det} A & =\left|\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1 n} \\
+0 & a_{22} & \cdots & a_{2 n} \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & a_{n n}
+\end{array}\right|=a_{11}\left|\begin{array}{cccc}
+a_{22} & a_{23} & \cdots & a_{2 n} \\
+0 & a_{33} & \cdots & a_{3 n} \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & a_{n n}
+\end{array}\right| \\
+& =\cdots=a_{11} \cdot a_{22} \cdots a_{n n} .
+\end{aligned}
+$$
+
+. . .
+
+D1: If $A$ is an upper triangular matrix, then the determinant of $A$ is the product of all the diagonal elements of $A$.
+
+## More Laws of Determinants
+
+- D2: If $B$ is obtained from $A$ by multiplying one row of $A$ by the scalar $c$, then $\operatorname{det} B=c \cdot \operatorname{det} A$.
+
+-  D3: If $B$ is obtained from $A$ by interchanging two rows of $A$, then $\operatorname{det} B=$ $-\operatorname{det} A$.
+-  D4: If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row of $A$, then $\operatorname{det} B=\operatorname{det} A$.
+    - Note: this means that the determinant of a matrix is unchanged by elementary row operations.
+
+## Determinant Laws in terms of Elementary Matrices
+
+- D2: $\operatorname{det}\left(E_{i}(c) A\right)=c \cdot \operatorname{det} A$ (remember that for $E_{i}(c)$ to be an elementary matrix, $c \neq 0$ ).
+- D3: $\operatorname{det}\left(E_{i j} A\right)=-\operatorname{det} A$.
+- D4: $\operatorname{det}\left(E_{i j}(s) A\right)=\operatorname{det} A$.
+
+## Determinant of Row Echelon Form
+
+Let R be the reduced row echelon form of A, obtained through multiplication by elementary matrices:
+
+$$
+R=E_{1} E_{2} \cdots E_{k} A .
+$$
+
+. . .
+
+Determinant of both sides:
+
+$$
+\operatorname{det} R=\operatorname{det}\left(E_{1} E_{2} \cdots E_{k} A\right)= \pm(\text { nonzero constant }) \cdot \operatorname{det} A \text {. }
+$$
+
+. . .
+
+Therefore, $\operatorname{det} A=0$ **precisely** when $\operatorname{det} R=0$.
+
+. . .
+
+- $R$ is upper triangular, so $\operatorname{det} R$ is the product of the diagonal entries of $R$.
+- If $\operatorname{rank} A<n$, then there will be **zeros** in some of the diagonal entries, so $\operatorname{det} R=0$.
+- If $\operatorname{rank} A=n$, the diagonal entries are all 1, so $\operatorname{det} R=1$.
+  - A square matrix with rank $n$ is **invertible**
+
+. . .
+
+Therefore,
+
+D5: The matrix $A$ is invertible if and only if $\operatorname{det} A \neq 0$.
+
+## Two more Determinant Laws
+
+D6: Given matrices $A, B$ of the same size,
+
+$$
+\operatorname{det} A B=\operatorname{det} A \operatorname{det} B \text {. }
+$$
+
+. . .
+
+(but beware, $\operatorname{det} A+\operatorname{det} B \neq \operatorname{det}(A+B)$)
+
+D7: For all square matrices $A$, $\operatorname{det} A^{T}=\operatorname{det} A$
+
+## Easier way to calculate determinant
+
+Just use the `det` function in Python!  (That was copilot's autocomplete...)
+
+. . .
+
+Use elementary row operations to get the matrix into upper triangular form, then multiply the diagonal entries.
+
+## An Inverse Formula
+
+::: notes
+
+
+Let $A=\left[a_{i j}\right]$ be an $n \times n$ matrix. We have already seen that we can expand the determinant of $A$ down any column of $A$ (see the discussion following Example 2.59). These expansions lead to cofactor formulas for each column number $j$ :
+
+$$
+\operatorname{det} A=\sum_{k=1}^{n} a_{k j} A_{k j}=\sum_{k=1}^{n} A_{k j} a_{k j}
+$$
+
+This formula resembles a matrix multiplication formula. Consider the slightly altered sum
+
+$$
+\sum_{k=1}^{n} A_{k i} a_{k j}=A_{1 i} a_{1 j}+A_{2 i} a_{2 j}+\cdots+A_{n i} a_{n j}
+$$
+
+This is exactly what we would get if we replaced the $i$ th column of the matrix $A$ by its $j$ th column and then computed the determinant of the resulting matrix by expansion down the $i$ th column. 
+
+But such a matrix has two equal columns and therefore has a zero determinant. So this sum must be 0 if $i \neq j$. We can combine these two sums by means of the Kronecker delta.
+
+$$
+\begin{equation*}
+\sum_{k=1}^{n} A_{k i} a_{k j}=\delta_{i j} \operatorname{det} A \tag{2.9}
+\end{equation*}
+$$
+
+:::
+
+## Adjoint, Minor, Cofactor Matrices
+
+::: definition
+- $M_{i j}(A)$, the $(i,j)$ th **minor** of $A$, is the determinant of the $(n-1) \times (n-1)$ matrix obtained by deleting the $i$th row and $j$th column of $A$.
+- $A_{i j}=(-1)^{i+j} M_{i j}(A)$ is the $(i,j)$t h **cofactor** of $A$.
+- **Matrix of minors** $M(A)$ is the matrix whose $(i,j)$ th entry is the minor $M_{i j}(A)$.
+- **Cofactor matrix** $A_{\text {cof }}$ is the matrix whose $(i,j)$ th entry is the cofactor $A_{i j}$.
+- **Adjoint** of $A$ is the transpose of the cofactor matrix, $A^{*}=A_{\text {cof }}^{T}$.
+:::
+
+## Example
+
+ $A=\left[\begin{array}{rrr}1 & 2 & 0 \\ 0 & 0 & -1 \\ 0 & 2 & 1\end{array}\right]$
+
+. . .
+
+Matrix of minors:
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-161.jpg?height=274&width=765&top_left_y=1008&top_left_x=374){height=150}
+
+. . .
+
+Cofactor matrix and adjoint:
+
+Overlay with the checkerboard $\left[\begin{array}{l}+-+ \\ -+- \\ +-+\end{array}\right]$. Take the transpose, to get
+
+$$
+\operatorname{adj} A=\left[\begin{array}{rrr}
+2 & -2 & -2 \\
+0 & 1 & 1 \\
+0 & -2 & 0
+\end{array}\right]
+$$
+
+## Back to the Inverse Formula
+
+$$
+\begin{equation*}
+\sum_{k=1}^{n} A_{k i} a_{k j}=\delta_{i j} \operatorname{det} A 
+\end{equation*}
+$$
+
+\vspace{4in}
+
+::: notes
+
+We recognize the left-hand side as the dot product of the $i$ th row of the adjoint of $A$ with the $j$ th column of $A$.
+
+So then we have $\left(A^{*} A\right)_{i j}=\delta_{i j} \operatorname{det} A$.
+
+In matrix form, this is $A^{*} A=\operatorname{det} A I_{n}$.
+
+We can divide both sides by $\operatorname{det} A$ (if the matrix is invertible,  $\operatorname{det} A \neq 0$) to get $\frac{A^{*} A}{\operatorname{det} A}=I_{n}$.
+
+ This gives us a formula for the inverse of $A$:
+
+$$
+A^{-1}=\frac{1}{\operatorname{det} A} A^{*}
+$$
+
+:::
+
+## Checking, with our example
+
+Remeber, we had $A=\left[\begin{array}{rrr}1 & 2 & 0 \\ 0 & 0 & -1 \\ 0 & 2 & 1\end{array}\right]$
+
+. . .
+
+We had computed the adjoint as $A^{*}=\left[\begin{array}{rrr}2 & -2 & -2 \\ 0 & 1 & 1 \\ 0 & -2 & 0\end{array}\right]$
+
+. . .
+
+Check:
+
+$$
+A \operatorname{adj} A=\left[\begin{array}{rrr}
+1 & 2 & 0 \\
+0 & 0 & -1 \\
+0 & 2 & 1
+\end{array}\right]\left[\begin{array}{rrr}
+2 & -2 & -2 \\
+0 & 1 & 1 \\
+0 & -2 & 0
+\end{array}\right]=\left[\begin{array}{lll}
+2 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 2
+\end{array}\right]=(\operatorname{det} A) I_{3} .
+$$
+
+. . .
+
+So, $A^{-1}=\frac{1}{\operatorname{det} A} A^{*}$.
+
+## Cramer's Rule
+
+Explicit formula for solving linear systems with a nonsingular coefficient matrix.
+
+. . .
+
+Solve $A \mathbf{x}=\mathbf{b}$
+
+. . .
+
+Multiply both sides by $A^{-1}$:  $\mathbf{x}=A^{-1} \mathbf{b}$
+
+. . .
+
+Use the formula for $A^{-1}$:  $\mathbf{x}=\frac{1}{\operatorname{det} A} A^{*} \mathbf{b}$
+
+. . .
+
+The $i$ th component of $\mathbf{x}$ is 
+
+$$
+x_{i}=\frac{1}{\operatorname{det} A} \sum_{j=1}^{n} A_{j i} b_{j}
+$$
+
+## Interpretation of Cramer's Rule
+
+$$
+x_{i}=\frac{1}{\operatorname{det} A} \sum_{j=1}^{n} A_{j i} b_{j}
+$$
+
+::: notes
+The summation term is exactly what we would obtain if we started with the determinant of the matrix $B_{i}$ obtained from $A$ by replacing the $i$ th column of $A$ by $\mathbf{b}$ and then expanding the determinant down the $i$ th column. Therefore, we have arrived at the following rule:
+:::
+
+** pause **
+
+. . .
+
+::: definition
+- Let $A$ be an invertible $n \times n$ matrix and $\mathbf{b}$ an $n \times 1$ column vector.
+- Denote by $B_{i}$ the matrix obtained from $A$ by replacing the $i$ th column of $A$ by $\mathbf{b}$. 
+- Then the linear system $A \mathbf{x}=\mathbf{b}$ has unique solution $\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$, where
+- $$
+  x_{i}=\frac{\operatorname{det} B_{i}}{\operatorname{det} A}, \quad i=1,2, \ldots, n
+  $$
+:::
+
+
+## Summary of Laws of Determinants
+
+Let $A, B$ be $n \times n$ matrices.
+
+- D1: If $A$ is upper triangular, $\operatorname{det} A$ is the product of all the diagonal elements of $A$.
+
+- D2: $\operatorname{det}\left(E_{i}(c) A\right)=c \cdot \operatorname{det} A$.
+
+- D3: $\operatorname{det}\left(E_{i j} A\right)=-\operatorname{det} A$.
+
+- D4: $\operatorname{det}\left(E_{i j}(s) A\right)=\operatorname{det} A$.
+
+- D5: The matrix $A$ is invertible if and only if $\operatorname{det} A \neq 0$.
+
+- D6: $\operatorname{det} A B=\operatorname{det} A \operatorname{det} B$.
+
+- D7: $\operatorname{det} A^{T}=\operatorname{det} A$.
+
+- D8: $A \operatorname{adj} A=(\operatorname{adj} A) A=(\operatorname{det} A) I$.
+
+- D9: If $\operatorname{det} A \neq 0$, then $A^{-1}=\frac{1}{\operatorname{det} A} \operatorname{adj} A$.
+
+## Quadratic Forms
+
+A **quadratic form** is a homogeneous polynomial of degree 2 in $n$ variables. For example,
+
+. . .
+
+$$
+Q(x, y, z)=x^{2}+2 y^{2}+z^{2}+2 x y+y z+3 x z .
+$$
+
+. . .
+
+We can express this in matrix form!
+
+$$
+\begin{aligned}
+x(x+2 y+3 z)+y(2 y+z)+z^{2} & =\left[\begin{array}{lll}
+x & y & z
+\end{array}\right]\left[\begin{array}{c}
+x+2 y+3 z \\
+2 y+z \\
+z
+\end{array}\right]
+\end{aligned}
+$$
+
+. . .
+
+$$
+\begin{aligned}
+=\left[\begin{array}{lll}
+x & y & z
+\end{array}\right]\left[\begin{array}{lll}
+1 & 2 & 3 \\
+0 & 2 & 1 \\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{c}
+x \\
+y \\
+z
+\end{array}\right]=\mathbf{x}^{T} A \mathbf{x},
+\end{aligned}
+$$
+

@@ -113,12 +113,15 @@ window.Quarto = {
   <ul>
   <li><a href="#chapter-3-projects" id="toc-chapter-3-projects" class="nav-link active" data-scroll-target="#chapter-3-projects"><em>Chapter 3 Projects</em></a>
   <ul class="collapse">
-  <li><a href="#project-4" id="toc-project-4" class="nav-link" data-scroll-target="#project-4"><em>Project 4</em></a></li>
-  <li><a href="#project-5" id="toc-project-5" class="nav-link" data-scroll-target="#project-5"><em>Project 5</em></a></li>
-  <li><a href="#project-6" id="toc-project-6" class="nav-link" data-scroll-target="#project-6"><em>Project 6</em></a></li>
+  <li><a href="#modeling-with-directed-graphs" id="toc-modeling-with-directed-graphs" class="nav-link" data-scroll-target="#modeling-with-directed-graphs"><em>Modeling with Directed Graphs</em></a></li>
+  </ul></li>
+  <li><a href="#chapter-4-projects" id="toc-chapter-4-projects" class="nav-link" data-scroll-target="#chapter-4-projects"><em>Chapter 4 Projects</em></a>
+  <ul class="collapse">
+  <li><a href="#project-5-image-compression-and-edge-detection" id="toc-project-5-image-compression-and-edge-detection" class="nav-link" data-scroll-target="#project-5-image-compression-and-edge-detection"><em>Project 5 Image Compression and Edge Detection</em></a></li>
+  <li><a href="#least-squares" id="toc-least-squares" class="nav-link" data-scroll-target="#least-squares"><em>Least Squares</em></a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/projects_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -144,46 +147,33 @@ window.Quarto = {
 
 <section id="chapter-3-projects" class="level1">
 <h1><em>Chapter 3 Projects</em></h1>
-<section id="project-4" class="level2">
-<h2 class="anchored" data-anchor-id="project-4"><em>Project 4</em></h2>
-<p>Project Descriptions: These projects introduce more applications of digraphs as mathematical modeling tools. You are given that the digraph <span class="math inline">\(G\)</span> has vertex set <span class="math inline">\(V=\{1,2,3,4,5,6\}\)</span> and edge set</p>
+<section id="modeling-with-directed-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="modeling-with-directed-graphs"><em>Modeling with Directed Graphs</em></h2>
+<p>Project Descriptions: This project introduces more applications of digraphs as mathematical modeling tools. You are given that the digraph <span class="math inline">\(G\)</span> has vertex set <span class="math inline">\(V=\{1,2,3,4,5,6\}\)</span> and edge set</p>
 <p><span class="math display">\[
 E=\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\}
 \]</span></p>
 <p>Address the following points regarding <span class="math inline">\(G\)</span>.</p>
+<ol type="a">
+<li><p>Draw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.</p></li>
+<li><p>Exhibit the incidence matrix <span class="math inline">\(A\)</span> of this digraph and find a basis for <span class="math inline">\(\mathcal{N}(A)\)</span> using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element <span class="math inline">\(\mathbf{c}_{1}\)</span> might be replaced by directed <span class="math inline">\(\mathbf{c}_{1}+\mathbf{c}_{2}\)</span> ).</p></li>
+</ol>
+<p>Pick three of the following to complete:</p>
 <ol type="1">
-<li><ol type="a">
-<li>Draw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.</li>
-</ol></li>
-</ol>
-<ol start="2" type="a">
-<li>Exhibit the incidence matrix <span class="math inline">\(A\)</span> of this digraph and find a basis for <span class="math inline">\(\mathcal{N}(A)\)</span> using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element <span class="math inline">\(\mathbf{c}_{1}\)</span> might be replaced by directed <span class="math inline">\(\mathbf{c}_{1}+\mathbf{c}_{2}\)</span> ).</li>
-</ol>
-<ol start="2" type="1">
-<li>Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are <span class="math inline">\(x_{1}, \ldots, x_{6}\)</span>. The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p.&nbsp;422) that <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> implies that for all <span class="math inline">\(\mathbf{y} \in \mathcal{N}\left(A^{T}\right), \mathbf{y}^{T} \mathbf{b}=0\)</span> to find conditions that a vector <span class="math inline">\(\mathbf{b}\)</span> must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.</li>
-</ol>
-</section>
-<section id="project-5" class="level2">
-<h2 class="anchored" data-anchor-id="project-5"><em>Project 5</em></h2>
-<ol start="3" type="1">
+<li><p>Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are <span class="math inline">\(x_{1}, \ldots, x_{6}\)</span>. The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p.&nbsp;422) that <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> implies that for all <span class="math inline">\(\mathbf{y} \in \mathcal{N}\left(A^{T}\right), \mathbf{y}^{T} \mathbf{b}=0\)</span> to find conditions that a vector <span class="math inline">\(\mathbf{b}\)</span> must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.</p></li>
 <li><p>Assume that across each edge of a circuit a current flows. Thus, we can assign to each edge a “weight,” namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.</p></li>
 <li><p>Think of the digraph as representing a directed communications network. Here loops determine which nodes have bidirectional communication since any two nodes of a loop can only communicate with each other by way of a loop. By examining only a basis of directed loops how could you determine which nodes in the network can communicate with each other?</p></li>
-</ol>
-</section>
-<section id="project-6" class="level2">
-<h2 class="anchored" data-anchor-id="project-6"><em>Project 6</em></h2>
-<ol start="5" type="1">
-<li>Think of vertices of the digraph as representing airports and edges representing flight connections between airports for Gamma Airlines. Suppose further that for each connection there is a maximum number of daily flights that will be allowed by the destination airport from an origin airport and that, in the order that the edges in <span class="math inline">\(E\)</span> are listed above, these limits are</li>
-</ol>
+<li><p>Think of vertices of the digraph as representing airports and edges representing flight connections between airports for Gamma Airlines. Suppose further that for each connection there is a maximum number of daily flights that will be allowed by the destination airport from an origin airport and that, in the order that the edges in <span class="math inline">\(E\)</span> are listed above, these limits are</p>
 <p><span class="math display">\[
 M=\{4,3,8,7,2,6,7,10,5,8\} .
-\]</span></p>
+\]</span></p></li>
+</ol>
 <p>Now suppose that Gamma wants to maximize the flow of flights into airport 1 and out of airport 6 . Count inflows into an airport as positive and outflows as negative. Assume that the net in/outflow of Gamma flights at each airport 1 to 5 is zero, while the net inflow of such flights into airport 1 matches the net outflow from 6 .</p>
 <ol type="a">
 <li><p>Describe the problem of maximizing this inflow to airport 1 as a linear programming problem and express it in a standard form (block matrices are helpful.) Note that the appropriate variables are all outflows from one airport to another, i.e., along edges, together with the net inflow into airport 1.</p></li>
 <li><p>Solve the problem of part (a). Also solve the reverse problem: Maximize inflow into airport 6 and matching outflow from 1. Explain and justify your answers.</p></li>
 </ol>
-<ol start="6" type="1">
+<ol start="5" type="1">
 <li>With the same limits on allowable flights into airports as in item 5, suppose that Gamma Airlines wants to determine an allocation of planes that will maximize their profits, given the following constraints: (1) Airports 1 and 6 have repair facilities for their planes, so no limit is placed on the inflow or outflow of their planes other than the airport limits. (2) Flights through airports 2-5 of Gamma planes are pass through, i.e., inflow and outflow must match. (3) Gamma has 32 planes available for this network of airports. (4) The profits per flight in thousands are, in the order that the edges in <span class="math inline">\(E\)</span> are listed above,</li>
 </ol>
 <p><span class="math display">\[
@@ -192,6 +182,140 @@ P=\{5,6,7,9,10,8,9,5,6,10\}
 <ol start="2" type="a">
 <li>Solve this problem explicitly and specify the operations taken to do so. Example 3.56 is instructive for this problem, so be aware of it. Use a technology tool that allows you to use elementary operations (ALAMA calculator has this capability).</li>
 </ol>
+</section>
+</section>
+<section id="chapter-4-projects" class="level1">
+<h1><em>Chapter 4 Projects</em></h1>
+<section id="project-5-image-compression-and-edge-detection" class="level2">
+<h2 class="anchored" data-anchor-id="project-5-image-compression-and-edge-detection"><em>Project 5 Image Compression and Edge Detection</em></h2>
+<p>Problem Description: In this report you will test some limits of data compression by experimenting with an interesting image of your own choosing. It could be a photograph you have taken or some reasonably complex image from the internet that piqued your interest. You are to transform the image into suitable format and then see how much you can can compress that data storage requirements for that image while losing an acceptable amount of detail.</p>
+<p>Implementation Notes: First, you must convert the image to a grayscale format without layers with pixels stored as unsigned eight bit integers. (We are not going to deal with the additional details of color images.) For this you will need an image manipulation program such as the GNU program Gimp or commercial software such as Adobe Photoshop. Figure 4.7(a) is an example of the sort of file you with which you will start experimenting. Secondly, you will need a technology tool capable of importing standard flattened image grayscale images (such as .png, etc.) into matrices and vice versa. The freely available <span class="math inline">\(\mathrm{R}\)</span> programming language and Octave, as well as commercial Matlab and others are perfectly capable of these tasks. For the record, Figure 4.7 and its relatives in this chapter were converted from .pdf into grayscale .png images via Gimp and read, manipulated and written as matrices via Octave.</p>
+<p>Next, you must apply the Haar wavelet transform repeatedly to your initial image until you reach a blur that is unacceptably far from the initial image. These computations will require a mild bit of programming on your part with the technology tool of your choice. Each application of the transform will reduce storage requirements by a factor of four. How much are you able to save? Of course, “unacceptably far” is in the eye of the beholder, but here’s a pretty reasonable case: Start with a some text and compress it until you can no longer read the text.</p>
+<p>A picture is worth a thousand words, so be lavish with them in your write-up. Consider the amount of savings if, in addition to saving the blurs in all their detail, you were to to save a very good approximation to the edges portion of the transformed picture. For example, consider what you might achieve by first applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level to zero, then accounting for the large number of resulting zeros by some compression technique. You might even suggest a format for such a compression format.</p>
+</section>
+<section id="least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="least-squares"><em>Least Squares</em></h2>
+<p>Pick a league in a sport that you like. For example, you could pick the WNBA for basketball, or a soccer league. Pick a point halfway through last year’s season. You will use the data from the games played up to that point to predict the outcome of the season.</p>
+<p>Start by making a table of scores from the games played thus far: The <span class="math inline">\((i, j)\)</span> th entry is team <span class="math inline">\(i\)</span> ’s score in the game with team <span class="math inline">\(j\)</span>. (See below for an example.)</p>
+<p>Then, you will want to use the ideas of least squares and graph theory to predict team ratings and point spreads for the remaining games. The idea is to set up a system of equations that will give you the best fit to the observed scores. You will need to use the ideas of least squares to solve this system of equations. (See below for more details.)</p>
+<p>Finally, write a brief report on your project that describes the problem, your solution to it, its limitations, and the ideas behind it.</p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{CU}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{IS}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{KS}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{KU}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{MU}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{NU}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{OS}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\mathrm{OU}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{CU}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">24</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{IS}\)</span></td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{KS}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{KU}\)</span></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{MU}\)</span></td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">52</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{NU}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">51</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{OS}\)</span></td>
+<td style="text-align: center;">41</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">49</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\mathrm{OU}\)</span></td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">70</td>
+<td style="text-align: center;">63</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Implementation Notes: You will need to set up a suitable system of equations, form the normal equations, and have a technology tool solve the problem. The equations in question are formed by letting the variables be a vector x of “potentials” <span class="math inline">\(x(i)\)</span>, one for each team <span class="math inline">\(i\)</span>, so that the “potential differences” best approximate the actual score differences (i.e., point spreads) of the games. To find the vector <span class="math inline">\(\mathbf{x}\)</span> of potentials you solve the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b}\)</span> is the vector of observed potential differences. N.B: the matrix <span class="math inline">\(A\)</span> is not the table given above. You will get one equation for each game played. For example, by checking the <span class="math inline">\((1,2)\)</span> th and <span class="math inline">\((2,1)\)</span> th entries, we see that <span class="math inline">\(\mathrm{CU}\)</span> beat IS by a score of 24 to 12 . So the resulting equation for this game is <span class="math inline">\(x(1)-x(2)=24-12=12\)</span>. Ideally, the resulting potentials would give numbers that would enable you to predict the point spread of an as yet unplayed game: all you would have to do to determine the spread for team <span class="math inline">\(i\)</span> versus team <span class="math inline">\(j\)</span> is calculate the difference <span class="math inline">\(x(j)-x(i)\)</span>. Of course, it doesn’t really work out this way, but this is a reasonable use of the known data. When you set up this system, you obtain an inconsistent system. This is where least squares enter the picture. You will need to set up and solve the normal equations, one way or another. You might notice that the null space of the resulting coefficient matrix is nontrivial, so this matrix does not have full column rank. This makes sense: potentials are unique only up to a constant. To fix this, you could arbitrarily fix the value of one team’s potential, that is, set the weakest team’s potential value to zero by adding one additional equation to the system of the form <span class="math inline">\(x(i)=0\)</span>.</p>
 
 
 </section>
@@ -612,4 +736,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/projects_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

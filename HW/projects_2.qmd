@@ -1,9 +1,12 @@
 ---
 title: Projects 2
-publish: false
+publish: true
 toc-expand: true
 ---
 
+Instructions:
+
+Please do all three projects. However, in the first project (Modeling with Directed Graphs), you can choose which three parts of the five you'd like to complete.
 
 # Chapter 3 Projects
 

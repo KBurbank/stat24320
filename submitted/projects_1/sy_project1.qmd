@@ -4,7 +4,7 @@ format:
   html:
     code-fold: show
     code-tools: 
-      source: true
+      source: repo
       toggle: true
 author: Sally Yang
 title: Projects 1

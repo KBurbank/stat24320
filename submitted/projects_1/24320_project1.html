@@ -145,7 +145,7 @@ window.Quarto = {
         
     <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="24320_project1.out.ipynb" download="24320_project1.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -172,12 +172,12 @@ window.Quarto = {
 </header>
 
 
-<div id="c6d04772" class="cell" data-execution_count="1">
+<div id="c6d04772" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="5cdbfb5d" class="cell" data-execution_count="2">
+<div id="5cdbfb5d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Markov chain</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sp.Matrix([</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
@@ -185,7 +185,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>]</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="978291d5" class="cell" data-execution_count="3">
+<div id="978291d5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>orig <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>)])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(M<span class="op">**</span><span class="dv">3</span>)<span class="op">*</span>orig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
@@ -193,7 +193,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated, after 3 years, the Markov chain slightly favors C, with B being the least favored</p>
-<div id="19501e19" class="cell" data-execution_count="4">
+<div id="19501e19" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plan1 <span class="op">=</span> sp.Matrix([</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.5</span>, <span class="fl">0.2</span> <span class="op">+</span> <span class="fl">.6</span><span class="op">*</span><span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.2</span>, <span class="fl">0.6</span><span class="op">*</span><span class="fl">.8</span>, <span class="fl">0.1</span>],</span>
@@ -209,13 +209,16 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.5 &amp; 0.32 &amp; 0.3\\0.2 &amp; 0.48 &amp; 0.1\\0.3 &amp; 0.2 &amp; 0.6\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="6950f51e" class="cell" data-execution_count="5">
+<div id="6950f51e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>equal <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>)])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>weight_a <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">5</span>,<span class="dv">10</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>)])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>weight_b <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">5</span>,<span class="dv">10</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>)])</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>weight_c <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">5</span>,<span class="dv">10</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1c67a4e1" class="cell" data-execution_count="6">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Would be really useful to have comments here. What are <code>equal</code>, <code>weight_a</code>, <code>weight_b</code>, and <code>weight_c</code>? I figured it it out but it took me a minute…</p>
+</div></div><div id="1c67a4e1" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying states for plan 1</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>equal1 <span class="op">=</span> [equal, (plan1 <span class="op">**</span> <span class="dv">1</span>)<span class="op">*</span>equal, (plan1 <span class="op">**</span> <span class="dv">5</span>)<span class="op">*</span>equal, (plan1 <span class="op">**</span> <span class="dv">10</span>)<span class="op">*</span>equal]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>weight_a1 <span class="op">=</span> [weight_a, (plan1 <span class="op">**</span> <span class="dv">1</span>)<span class="op">*</span>weight_a, (plan1 <span class="op">**</span> <span class="dv">5</span>)<span class="op">*</span>weight_a, (plan1 <span class="op">**</span> <span class="dv">10</span>)<span class="op">*</span>weight_a]</span>
@@ -229,11 +232,12 @@ window.Quarto = {
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>weight_c2 <span class="op">=</span> [weight_c, (plan2 <span class="op">**</span> <span class="dv">1</span>)<span class="op">*</span>weight_c, (plan2 <span class="op">**</span> <span class="dv">5</span>)<span class="op">*</span>weight_c, (plan2 <span class="op">**</span> <span class="dv">10</span>)<span class="op">*</span>weight_c]</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plan2_states <span class="op">=</span> [equal2, weight_a2, weight_b2, weight_c2]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d677cf57" class="cell" data-execution_count="7">
+<p>::: column-margin I’d like to see you rewrite this using a function that takes in the plan matrix and the initial state, and returns the state after 1, 5, and 10 years. This will make it easier to read your code to understand what it’s doing (and it’s easier for you to write in general!).</p>
+<div id="d677cf57" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>companies <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="395ef7bf" class="cell" data-execution_count="8">
+<div id="395ef7bf" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find company max distribution</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_max(company, plan):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> plan[<span class="dv">0</span>][<span class="dv">3</span>][company]</span>
@@ -249,7 +253,10 @@ window.Quarto = {
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    dis <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result, dis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="135bdc42" class="cell" data-execution_count="9">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>I can’t understand what this is doing, because I don’t know what the ‘plan’ variable will be when I call this function. I’m trying to look below to see but it’s hard to follow.</p>
+</div></div><div id="135bdc42" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A's performance under different ways, original plan</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> sp.Matrix([((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>equal)[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_a)[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_b)[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_c)[<span class="dv">0</span>]])</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>base_equal <span class="op">=</span> [equal, (M <span class="op">**</span> <span class="dv">1</span>)<span class="op">*</span>equal, (M <span class="op">**</span> <span class="dv">5</span>)<span class="op">*</span>equal, (M <span class="op">**</span> <span class="dv">10</span>)<span class="op">*</span>equal]</span>
@@ -260,32 +267,32 @@ window.Quarto = {
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plan1_dis <span class="op">=</span> sp.Matrix([((plan1<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>equal)[<span class="dv">0</span>], ((plan1<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_a)[<span class="dv">0</span>], ((plan1<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_b)[<span class="dv">0</span>], ((plan1<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_c)[<span class="dv">0</span>]])</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plan2_dis <span class="op">=</span> sp.Matrix([((plan2<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>equal)[<span class="dv">0</span>], ((plan2<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_a)[<span class="dv">0</span>], ((plan2<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_b)[<span class="dv">0</span>], ((plan2<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weight_c)[<span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="21f3e66c" class="cell" data-execution_count="10">
+<div id="21f3e66c" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(plan1_dis <span class="op">-</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="10">
 <p><span class="math inline">\(\displaystyle 0.156465181152655\)</span></p>
 </div>
 </div>
-<div id="d14cb5cc" class="cell" data-execution_count="11">
+<div id="d14cb5cc" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(plan2_dis <span class="op">-</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="11">
 <p><span class="math inline">\(\displaystyle 0.194330292122828\)</span></p>
 </div>
 </div>
-<div id="c9d494ad" class="cell" data-execution_count="12">
+<div id="c9d494ad" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plan_max(<span class="dv">0</span>, plan2_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(0.390033780497374, 0)</code></pre>
 </div>
 </div>
-<div id="018bf9a8" class="cell" data-execution_count="13">
+<div id="018bf9a8" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plan2_dis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="13">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.390033780497374\\0.390040976888677\\0.390005782377759\\0.390054582225684\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>As demonstrated, we can see that overall, Plan 2 performs the best in terms of Company A’s long term market-share. This is based 4 distributions: equal distribution, and 50%, 25%, 25% market shares for each company. Overall, Plan 2 performs the best when the distribution is equal. We will now overlay Plan 2’s best performance distribution compared to its worst performance distribution.</p>
-<div id="5ae8e6d4" class="cell" data-execution_count="14">
+<div id="5ae8e6d4" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plan 1: Equal distribution</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> equal2</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
@@ -306,7 +313,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated, Company A’s performance evens out through all distributions. We will now overlay a few distributions comparing the original plan to Plan 2.</p>
-<div id="5c46d2c9" class="cell" data-execution_count="15">
+<div id="5c46d2c9" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> equal2</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Equal 2"</span>)</span>
@@ -325,7 +332,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="97671bb1" class="cell" data-execution_count="16">
+<div id="97671bb1" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> weight_a2</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight A 2"</span>)</span>
@@ -344,7 +351,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="8fbd0e99" class="cell" data-execution_count="17">
+<div id="8fbd0e99" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> weight_b2</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight B 2"</span>)</span>
@@ -363,7 +370,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="00a43351" class="cell" data-execution_count="18">
+<div id="00a43351" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> weight_c2</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight C 2"</span>)</span>
@@ -383,21 +390,33 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated, A performs consistently better under Plan 2 than the original plan. Thus, we can see that it would be ideal for the company to undergo marketing strategies to implement plan 2. However, we must consider the market distributions: all distributions provided assume no company has more than 50% of the market share. However, as displayed below, even if we start with 0 market share, our new marketing strategy will propel us to the largest market holder within a 10 year period.</p>
-<div id="fd9a0ff4" class="cell" data-execution_count="19">
+<div id="fd9a0ff4" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(plan2 <span class="op">**</span> <span class="dv">10</span>) <span class="op">*</span> sp.Matrix([<span class="fl">0.0</span>, <span class="fl">0.99</span>, <span class="fl">.01</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="19">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.389923740012833\\0.278200270113832\\0.331875989873334\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<p>Sports Ranking</p>
-<div id="4710f096" class="cell" data-execution_count="20">
+<div class="comments">
+<p>I suspect your conclusions may be correct here – but I can’t tell for sure because I don’t know what the code is doing.</p>
+<p>I get it; this is how my code often looks as well. It’s been a real challenge over the years to train myself to write code that is clear and easy to understand. It’s a skill that takes time to develop, but it’s worth it.</p>
+<p>When you want to be able to come back and understand what you’ve done, and especially if you want others to understand what you’ve done, your code will need a bunch of changes.</p>
+<p>First, you should look for areas of repeated code and make these into functions.</p>
+<p>Then you should think about how to logically order the functions, and how to name everything so that it’s very clear how your code corresponds to what you are trying to do mathematically. It may be helpful to first write (in Markdown cells) what you are computing, with formulas, and then give the code.</p>
+<p>Finally, you should add comments to your code to explain what each part is doing.</p>
+<p>If you use an editor that supports CoPilot or a similar AI code editing tool, this can be very helpful: you can take a bit of code and ask the AI to “make this more efficient”. You’ll want to make sure then that you go over it carefully to make sure it’s still correct and that you understand what it’s doing; the AI can do a good job too with “explain this”. For my code, I’ve been using VSCode with the Jupyter extension and the CoPilot plugin, all free.</p>
+<p>Once you have gotten the code into shape, it would be great to look again at your conclusions and see if you can understand what about the matrices tells you that e.g.&nbsp;Plan 2 really is best for your company.</p>
+<p>Grade: R</p>
+</div>
+<section id="sports-ranking" class="level1">
+<h1><em>Sports Ranking</em></h1>
+<div id="4710f096" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do imports</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8c0f265d" class="cell" data-execution_count="21">
+<div id="8c0f265d" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a directed graph</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -419,7 +438,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="11a80475" class="cell" data-execution_count="22">
+<div id="11a80475" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>adj_matrix <span class="op">=</span> nx.adjacency_matrix(G).toarray()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>adj_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
@@ -432,7 +451,7 @@ window.Quarto = {
        [1, 1, 1, 1, 0, 1, 0]])</code></pre>
 </div>
 </div>
-<div id="1f4d4bb0" class="cell" data-execution_count="23">
+<div id="1f4d4bb0" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Power Matrix</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>power_matrix <span class="op">=</span> adj_matrix <span class="op">+</span> adj_matrix <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>power_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -446,7 +465,7 @@ window.Quarto = {
        [2, 2, 2, 2, 0, 2, 0]])</code></pre>
 </div>
 </div>
-<div id="b3c9af60" class="cell" data-execution_count="24">
+<div id="b3c9af60" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with the power matrix</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>power_sum <span class="op">=</span> [<span class="bu">sum</span>(power_matrix[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>rrank <span class="op">=</span> np.argsort(power_sum)</span>
@@ -456,20 +475,20 @@ window.Quarto = {
 <pre><code>array([7, 5, 3, 6, 2, 1, 4])</code></pre>
 </div>
 </div>
-<div id="0fc6e67f" class="cell" data-execution_count="25">
+<div id="0fc6e67f" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with reverse pagerank: calculate diagonal matrix D</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>adjT <span class="op">=</span> adj_matrix.T</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.zeros((<span class="dv">7</span>, <span class="dv">7</span>))</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  D[i][i] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">sum</span>(adjT[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e828b335" class="cell" data-execution_count="26">
+<div id="e828b335" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine P = ATD -&gt; (AT)TD = AD with alpha a = 0.85, teleporation vector 1/7 e_7)</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> sp.Matrix(sp.Matrix(adj_matrix) <span class="op">*</span> sp.Matrix(D))</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sp.Matrix(np.ones(<span class="dv">7</span>) <span class="op">*</span> <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fdccd97d" class="cell" data-execution_count="27">
+<div id="fdccd97d" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for x</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> (sp.eye(<span class="dv">7</span>) <span class="op">-</span> a <span class="op">*</span> P)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> a) <span class="op">*</span> v</span>
@@ -481,7 +500,7 @@ window.Quarto = {
        0.13033224, 0.18418869])</code></pre>
 </div>
 </div>
-<div id="42534f9f" class="cell" data-execution_count="28">
+<div id="42534f9f" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find ranking</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pr_rank <span class="op">=</span> np.flip(np.argsort(x))<span class="op">+</span><span class="dv">1</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>pr_rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -489,7 +508,7 @@ window.Quarto = {
 <pre><code>array([5, 7, 3, 6, 4, 2, 1])</code></pre>
 </div>
 </div>
-<div id="28df719a" class="cell" data-execution_count="29">
+<div id="28df719a" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a weighted directed graph</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -526,7 +545,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="aee142bb" class="cell" data-execution_count="30">
+<div id="aee142bb" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace adjacency booleans with weights</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>weight_adj <span class="op">=</span> adj_matrix</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(length):</span>
@@ -542,7 +561,7 @@ window.Quarto = {
        [45,  6,  8, 14,  0, 19,  0]])</code></pre>
 </div>
 </div>
-<div id="420d48e9" class="cell" data-execution_count="31">
+<div id="420d48e9" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>weight_power <span class="op">=</span> weight_adj <span class="op">+</span> weight_adj<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>weight_power_sum <span class="op">=</span> [<span class="bu">sum</span>(weight_power[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>rrank_weight <span class="op">=</span> np.argsort(weight_power_sum)</span>
@@ -552,7 +571,7 @@ window.Quarto = {
 <pre><code>array([7, 6, 5, 3, 2, 1, 4])</code></pre>
 </div>
 </div>
-<div id="4698e3f7" class="cell" data-execution_count="32">
+<div id="4698e3f7" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with reverse pagerank: calculate diagonal matrix D</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>adjT_weight <span class="op">=</span> weight_adj.T</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.zeros((<span class="dv">7</span>, <span class="dv">7</span>))</span>
@@ -574,8 +593,15 @@ window.Quarto = {
 <pre><code>array([5, 3, 7, 6, 4, 2, 1])</code></pre>
 </div>
 </div>
-<p>Iso Rank</p>
-<div id="73263255" class="cell" data-execution_count="33">
+<div class="comments">
+<p>I have the same comments as before regarding the code – and in this case, we don’t have any Markdown blocks at all to describe your thinking and how it relates mathematically to the text, etc. I can’t evaluate your results yet, but I’ll be able to do so once you’ve made the changes I’ve suggested.</p>
+<p>You should start with an introduction to the problem, what you are trying to learn. Then you should describe for each step what you are trying to accomplish and how it differs from previous steps. Then, once you have a result, you’ll want to explain what it means and how it relates to the original problem.</p>
+<p>Grade: R</p>
+</div>
+</section>
+<section id="iso-rank" class="level1">
+<h1><em>Iso Rank</em></h1>
+<div id="73263255" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct adjacency matrices for A,B,C,D,E and 1,2,3,4,5</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># G1 = A,B,C,D,E</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># G2 = 1,2,3,4,5</span></span>
@@ -605,7 +631,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0\\1.0 &amp; 1.0 &amp; 0 &amp; 0.5 &amp; 0\\0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 1.0\\0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="c36bb6c6" class="cell" data-execution_count="34">
+<div id="c36bb6c6" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct G2 x G1 (Outer x Inner) surfing matrix</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sp.zeros(<span class="dv">25</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -618,7 +644,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{array}{ccccccccccccccccccccccccc}0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0.333333333333333 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0.333333333333333 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.5 &amp; 1.0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0.5 &amp; 1.0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.5 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0.333333333333333 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0.333333333333333 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 1.0 &amp; 0 &amp; 1.0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.111111111111111 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.333333333333333 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.5 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.166666666666667 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right]\)</span></p>
 </div>
 </div>
-<div id="e9946b0c" class="cell" data-execution_count="35">
+<div id="e9946b0c" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate x given alpha = 0.85, v = 1/25 * e25</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">25</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">25</span>))</span>
@@ -630,7 +656,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0422740152656166\\0.032389985878358\\0.0191626479069361\\0.0183187399484339\\0.0191626479069361\\0.0422740152656166\\0.032389985878358\\0.0191626479069361\\0.0183187399484339\\0.0191626479069361\\0.139369213132264\\0.0869558114007097\\0.0422740152656167\\0.0466847222520773\\0.0422740152656166\\0.0869558114007097\\0.0618975729669319\\0.0323899858783579\\0.0318586781711893\\0.0323899858783579\\0.0466847222520773\\0.0318586781711893\\0.0183187399484339\\0.019153234255473\\0.0183187399484339\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="74653269" class="cell" data-execution_count="36">
+<div id="74653269" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">5</span>,<span class="dv">5</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -643,7 +669,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Row Labels: A,B,C,D,E. Column Labels: 1,2,3,4,5. Thus, the best match is immediately A:3</p>
-<div id="bcad2bba" class="cell" data-execution_count="37">
+<div id="bcad2bba" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">0</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">2</span>)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -652,7 +678,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Next match is clearly B:4</p>
-<div id="49f30e38" class="cell" data-execution_count="38">
+<div id="49f30e38" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">0</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">2</span>)</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -661,7 +687,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Next choice C:1, C:2, E:1, E:2. We choose E:1</p>
-<div id="28096a7d" class="cell" data-execution_count="39">
+<div id="28096a7d" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">2</span>)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">0</span>)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -671,7 +697,7 @@ window.Quarto = {
 </div>
 <p>We round-off with C:2, D:5. Thus, our Final matching is A:3, B:4, C:2, D:5, E:1. This is 100% accurate with our original graph, thus we have found a bijective mapping.</p>
 <p>We now consider Figure 2.12 with e = {B,C} removed</p>
-<div id="025c4229" class="cell" data-execution_count="40">
+<div id="025c4229" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># G1 = P, G2 = Q</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>np_P <span class="op">=</span> np.matrix([</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
@@ -698,7 +724,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\\0.5 &amp; 0.5 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="4a88b5bd" class="cell" data-execution_count="41">
+<div id="4a88b5bd" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contruct N = Q x P</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> sp.zeros(<span class="dv">15</span>)</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -711,7 +737,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{array}{ccccccccccccccc}0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0.25 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0.5\\0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.5 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0.5\\0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right]\)</span></p>
 </div>
 </div>
-<div id="3bcab2ca" class="cell" data-execution_count="42">
+<div id="3bcab2ca" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for X</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">15</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">15</span>))</span>
@@ -723,7 +749,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0649589820860539\\0.0649589820860539\\0.0649589820860539\\0.0649589820860539\\0.0649589820860539\\0.0649589820860539\\0.037351414699481\\0.037351414699481\\0.037351414699481\\0.128712539762264\\0.128712539762264\\0.128712539762264\\0.037351414699481\\0.037351414699481\\0.037351414699481\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="196e8757" class="cell" data-execution_count="43">
+<div id="196e8757" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -735,7 +761,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Column (Top) Labels: A, B, C, D, E. Row (Side) Labels: 1, 2, 3. Best matchings: [(D:1 or D:2 or D:3), ((A:2 or A:3 or B:2 or B:3) or (A:1 or A:3 or B:1 or B:3) or (A:1 or A:2 or B:1 or B:2)), choose the remaining A or B)]</p>
-<div id="932751fa" class="cell" data-execution_count="44">
+<div id="932751fa" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for A, B</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>A_adj <span class="op">=</span> np.matrix([</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
@@ -758,7 +784,7 @@ window.Quarto = {
 <span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> A_adj.transpose()</span>
 <span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> B_adj.transpose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="2a828032" class="cell" data-execution_count="45">
+<div id="2a828032" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct C = B x A</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Contruct N = Q x P</span></span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> sp.zeros(<span class="dv">15</span>)</span>
@@ -772,7 +798,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{array}{ccccccccccccccc}0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 1.0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 1.0 &amp; 0\\0 &amp; 0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0\\1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1.0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.2 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right]\)</span></p>
 </div>
 </div>
-<div id="1fe65d97" class="cell" data-execution_count="46">
+<div id="1fe65d97" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for X</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">15</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">15</span>))</span>
@@ -784,7 +810,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0850597851234713\\0.0850597851234713\\0.0850597851234713\\0.076434208276694\\0.076434208276694\\0.076434208276694\\0.0923915254432319\\0.0923915254432319\\0.0923915254432319\\0.0593571064016549\\0.0593571064016549\\0.0593571064016549\\0.0200907080882813\\0.0200907080882813\\0.0200907080882813\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="20be6181" class="cell" data-execution_count="47">
+<div id="20be6181" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -796,8 +822,13 @@ window.Quarto = {
 </div>
 </div>
 <p>Column Labels: A,B,C,D,E Row Labels: 1,2,3 Possible matchings: [(C:1 or C:2 or C:3), ((A:2 or A:3), (A:1 or A:3), (A:1 or A:2), choose B:k where k is the remaining row. The best matching is [(C:1 or C:2 or C:3), (A:3 or A:1 or A:2), (B:2 or B:3 or B:1)] choosing each one respectively (i.e.&nbsp;choosing C:1 (index 0) chooses A:3 and B:2)</p>
+<div class="comments">
+<p>Same as above!</p>
+<p>Grade: R</p>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

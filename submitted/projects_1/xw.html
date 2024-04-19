@@ -177,7 +177,7 @@ window.Quarto = {
 
 <section id="diffusion" class="level1">
 <h1><em>Diffusion</em></h1>
-<div id="39ed1857" class="cell" data-execution_count="1">
+<div id="39ed1857" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
@@ -186,13 +186,16 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<p>
+<img alt="image.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZUAAABGCAYAAAAEhgkOAAAKrmlDQ1BJQ0MgUHJvZmlsZQAASImVlwdUk8kWx+f70kNCS4iAlNBCk94CSAk99N5shCRAKCEkBBU7srgCK4qICCgLsiCi4FoAWQtiwbYo9oIuyKKgrosFUbG8DziE3X3nvXfePWfO/HJz53/vzJnJuQGATOWIROmwIgAZwmxxuK8HPTYuno4bAWiAA/KACpgcrkTECg0NBIjNzn+393cANDXfNJvS+vfv/6sp8fgSLgBQKMKJPAk3A+GjyHjFFYmzAUDVI3695dmiKb6IMFWMFIhw/xQnz/DYFCdOMxo9HRMZ7omwKgB4EocjTgaApI/46TncZESH5IWwpZAnECKMfAauGRmZPISRvMAIiREhPKXPTPyLTvLfNBNlmhxOsoxn9jJteC+BRJTOWfl/Hsf/tox06WwOBjJIKWK/cGSmIWd2Ly0zQMbCxOCQWRbwpuOnOUXqFzXLXIln/CzzOF4BsrXpwYGznCTwYct0stmRs8yXeEfMsjgzXJYrSezJmmWOeC6vNC1K5k/hs2X6uSmRMbOcI4gOnmVJWkTAXIynzC+Whsvq5wt9Peby+sj2niH5y34FbNna7JRIP9neOXP184WsOU1JrKw2Ht/Ley4mShYvyvaQ5RKlh8ri+em+Mr8kJ0K2Nhu5kHNrQ2VnmMrxD51lEAi8QTCggzBgDRxACjADVsASgGz+iqk7CjwzRSvFguSUbDoLeWV8OlvINV9At7a0tgVg6s3OXIm396bfIkTDz/lyagFYqIc4q+Z8cZ8BaEPeqnLOnI/hCAA5C4DTGlypOGfGN/WcAAYQgQLyW6AGtIAeMEIqswb2wBm4IxX7gxAQCeLAUsBFas4AYrAcrAYbQAEoAlvBDlAJasBesA8cBIdBOzgBzoAL4Aq4Dm6Dh2AADIMXYAy8B5MQBOEgMkSB1CBtyAAyhawhJuQKeUOBUDgUByVAyZAQkkKroY1QEVQKVUK1UBP0M3QcOgNdgvqg+9AgNAq9gT7BKJgEU2FNmAFbwEyYBQfAkfASOBnOgnPhfHgLXAHXwQfgNvgMfAW+DQ/AL+BxFEDJoWgoHZQZionyRIWg4lFJKDFqLaoQVY6qQ7WgOlE9qJuoAdRL1Ec0Fk1B09FmaGe0HzoKzUVnodeii9GV6H3oNvQ59E30IHoM/RVDxmhgTDFOGDYmFpOMWY4pwJRjGjDHMOcxtzHDmPdYLJaGNcQ6YP2wcdhU7CpsMXY3thXbhe3DDmHHcTicGs4U54ILwXFw2bgC3C7cAdxp3A3cMO4DXg6vjbfG++Dj8UJ8Hr4cvx9/Cn8D/ww/SVAkGBCcCCEEHmEloYRQT+gkXCMMEyaJSkRDogsxkphK3ECsILYQzxP7iW/l5OR05RzlwuQEcuvlKuQOyV2UG5T7SFImmZA8SYtJUtIWUiOpi3Sf9JZMJjPI7uR4cjZ5C7mJfJb8mPxBniJvLs+W58mvk6+Sb5O/If9KgaBgoMBSWKqQq1CucEThmsJLRYIiQ9FTkaO4VrFK8bjiXcVxJYqSlVKIUoZSsdJ+pUtKI8o4ZYaytzJPOV95r/JZ5SEKiqJH8aRwKRsp9ZTzlGEqlmpIZVNTqUXUg9Re6piKsoqtSrTKCpUqlZMqAzQUjUFj09JpJbTDtDu0T/M057Hm8edtntcy78a8CdX5qu6qfNVC1VbV26qf1Ohq3mppatvU2tUeqaPVTdTD1Jer71E/r/5yPnW+83zu/ML5h+c/0IA1TDTCNVZp7NW4qjGuqaXpqynS3KV5VvOlFk3LXStVq0zrlNaoNkXbVVugXaZ9Wvs5XYXOoqfTK+jn6GM6Gjp+OlKdWp1enUldQ90o3TzdVt1HekQ9pl6SXplet96YvrZ+kP5q/Wb9BwYEA6ZBisFOgx6DCYYhI4axidHOGDFUNWQb5ho2G/YbkY3cjLKM6oxuGWONmcZpxruNr5vAJnYmKSZVJtdMYVN7U4HpbtO+BZgFjguEC+oW3DUjmbHMcsyazQbNaeaB5nnm7eavLPQt4i22WfRYfLW0s0y3rLd8aKVs5W+VZ9Vp9cbaxJprXWV9y4Zs42OzzqbD5rWtqS3fdo/tPTuKXZDdJrtuuy/2DvZi+xb7UQd9hwSHaoe7TCozlFnMvOiIcfRwXOd4wvGjk71TttNhpz+dzZzTnPc7jyw0XMhfWL9wyEXXheNS6zLgSndNcP3RdcBNx43jVuf2xF3Pnefe4P6MZcxKZR1gvfKw9BB7HPOY8HTyXOPZ5YXy8vUq9Or1VvaO8q70fuyj65Ps0+wz5mvnu8q3yw/jF+C3ze8uW5PNZTexx/wd/Nf4nwsgBUQEVAY8CTQJFAd2BsFB/kHbg/qDDYKFwe0hIIQdsj3kUahhaFboL2HYsNCwqrCn4Vbhq8N7IigRyyL2R7yP9IgsiXwYZRQljeqOVoheHN0UPRHjFVMaMxBrEbsm9kqcepwgriMeFx8d3xA/vsh70Y5Fw4vtFhcsvrPEcMmKJZeWqi9NX3pymcIyzrIjCZiEmIT9CZ85IZw6zngiO7E6cYzryd3JfcFz55XxRvku/FL+sySXpNKkkWSX5O3JoyluKeUpLwWegkrB61S/1JrUibSQtMa0b+kx6a0Z+IyEjONCZWGa8FymVuaKzD6RqahANJDllLUja0wcIG6QQJIlko5sKtIcXZUaSb+TDua45lTlfFgevfzICqUVwhVXV5qs3LzyWa5P7k+r0Ku4q7pX66zesHpwDWtN7VpobeLa7nV66/LXDa/3Xb9vA3FD2oZf8yzzSvPebYzZ2Jmvmb8+f+g73++aC+QLxAV3Nzlvqvke/b3g+97NNpt3bf5ayCu8XGRZVF70uZhbfPkHqx8qfvi2JWlLb4l9yZ6t2K3CrXe2uW3bV6pUmls6tD1oe1sZvayw7N2OZTsulduW1+wk7pTuHKgIrOjYpb9r667PlSmVt6s8qlqrNao3V0/s5u2+scd9T0uNZk1RzacfBT/eq/Wtbatj1JXvxe7N2fu0Prq+5yfmT00N6g1FDV8ahY0D+8L3nWtyaGrar7G/pBluljaPHlh84PpBr4MdLWYtta201qJD4JD00POfE36+czjgcPcR5pGWowZHq49RjhW2QW0r28baU9oHOuI6+o77H+/udO489ov5L40ndE5UnVQ5WXKKeCr/1LfTuafHu0RdL88knxnqXtb98Gzs2Vvnws71ng84f/GCz4WzPaye0xddLp645HTp+GXm5fYr9lfartpdPfar3a/Heu172645XOu47ni9s29h36kbbjfO3PS6eeEW+9aV28G3++5E3bl3d/HdgXu8eyP30++/fpDzYPLh+n5Mf+EjxUfljzUe1/1m/FvrgP3AyUGvwatPIp48HOIOvfhd8vvn4fyn5Kflz7SfNY1Yj5wY9Rm9/nzR8+EXoheTLwv+UPqj+pXRq6N/uv95dSx2bPi1+PW3N8Vv1d42vrN91z0eOv74fcb7yYnCD2of9n1kfuz5FPPp2eTyz7jPFV+Mv3R+Dfja/y3j2zcRR8yZbgVQyICTkgB404j0CXEAUK4DQFw001NPGzTzP2CawH/imb572uwBQKRA1HoA/N0BqEMGowvRRuZQZES6A9jGRjZm+9/pXn3KLFsASJoSAA9tJtaDf9hMH/+Xuv85gylVW/DP+V+mvwSoMgXNLgAAAFZlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA5KGAAcAAAASAAAARKACAAQAAAABAAABlaADAAQAAAABAAAARgAAAABBU0NJSQAAAFNjcmVlbnNob3QeTgWDAAAB1WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj43MDwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj40MDU8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpVc2VyQ29tbWVudD5TY3JlZW5zaG90PC9leGlmOlVzZXJDb21tZW50PgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KFj0jOQAAH8dJREFUeAHtnQlYE9fax/8oYlXca90qFlBBq0Wr4oalYFW0rnW9Kn5o6e0FWwRti6gF60VRodLQigutWq1Yr1sRrxdcwAUUEamKu6ACFVEUxSJKWM53JiFkEjNhAmGTM8+jmRnOvMvvnMyZeWfyvgaELmALI8AIMAKMACOgBwL19CCDiWAEGAFGgBFgBGQE2KTCBgIjwAgwAoyA3giwSUVvKJkgRoARYAQYATapsDHACDACjAAjoDcCbFLRG0omiBFgBBgBRoBNKmwMMAKMACPACOiNAJtU9IaSCWIEGAFGgBFgkwobA4wAI8AIMAJ6I8AmFb2hZIIYAUaAEWAEDOsaAgMDg7rmMvOXEagzBFiCkOrv6jo3qXCDjptY2OCD3jlUJ9eq0v066akqX4ROc/rUr09ZQvay/eIIsPCXOE4iWxXi/lYPLIl9JrI9a6ZKQIrUTZ/hi8hHqrsrc4vcxKbJ3yAyr3JT4JHUEEz+IgJ5lekLqp5f1fhVqdCYcD0TqPOTCsk+jmUjR+LTFWuwaNZ4TBk7Gh6RT8qJ2RDtx1gjY9fpsk8eRSmIDF6KKeaNYTR2K+6raHyESFcLGDQeCtcfduHckyKVv1bNRiGyY/zh6OiJgABP+umPmOzCiqmW3kVUwHS8Ny+Snv40LOQuIv/XBCMHtqJ/JJCm7IfXrLlYFLAaXgvWIz63WMNB2nZRGWlHETDVHvME+pSkncD/WtpgYGNAmrwLXvO+RUCQH1xH2MM59IZmO19RmYe0qABMfW8+IjU6JkVaZBxajuyDxqBcY9dj4SJf+HtOxAAHP3FcyUPE/rQEi1b4wXPcUDisOIFs9XmwlF/LCviidE4aOR89x61AZGoq4oNmY9iyOGo9f+H7RfdLb+GA1xw4LlqNAC8vBMWX93tUoqOs8cI3ha3XHAI0DFTnFkq/xOc0smNyHzL3wMOS7WwS5T6cuERkV4BJFolY8A3Zk1UoQsZVIhllRto3GkEkt/KV7bN2EieTt0iDZi4kgrdb2UCxRu333kKSFZs6fio5aDjwZSzx7j2mxK58cksyhvTxPUe0eaVVXlEqiQoJIZJ/9SHNXCKIJreKrqwlo1wPkRzOnJdnie8gB+KbSLcKThLPzu8S96inGgyV79KkuygtioRsWUv+9a6lQJ/mkSv+s4hrBNf/OSTG04rUH76RpJJiknvgU2Lc1p1ESVVVvqonn6RFbSdbJJ+Rd4X6q+gC8R+1gETkFBGSd5R4jF5LrtBVQjLJgbndiIn7UZKnqoabLnh7ikle1CIy2v8CkR32NIzMfbMX5aE6TpX8yusLTyVdzY9wIc242R1NiNlYfxLzuEC1Ad8vyi/R14EM8j1LXspY9iZt3Y8RNXwqx6v6qPInQkSMF/4RWmXxG7L1SidQx+9UcvEoMxPnoxPxSHbV1xJDxg1HG6OKPMxvjQ/GNELk4Qw6zkUs70zBZx9fR/D2RMjvR2gI7WAiOjgNRyOthxfiSeJObD1ZOaG24uvRCLvdCRYmRtQKI5hYdELK7khc1vVmQeFDPRPYOc/Gx93fVOxR+3yB64cuwHLyQDRDMXIOhyCowShM601Pa4ZDseruZQTaNVc7RvtmvU52cHZyQPeW9TU3LL6JQ9FvY/IHnE3NMNhzN/78ZRZM8ALJl67B0LoXzMt86miETnaz4PRxT7TUrAXF16MQbTkaHzSjX7ecTKSf2Yf9l57T1i3Rw6oz0hKuQPtoKULO/bs4s+MgLnGDpHlXWFk+QkJSJk8jn195feGJk622wdyIbDq75SLlwFcY0koVhqpfx/FTEMH0ab3RkLIcsupPZAbao4G6SLHbZY4XsYJYu6omUMcnlW5w9PscTbd8jHYd38OwqQuxiUzBErsWINmnEDB+BKZ6r4H3rAn4TBYKeY7kUBcMGuuBH3wdMcD2O8S8EpoyQKOhw9DmSLRaSEuoa00wevqHePjrH4jjYgs0xr83oStmDqInU8XChT5o2Mh26hL84D0bDp/tQHJmIg7+HI6YtFPYFhSE4MgUFGlqlxGObwaawaipCfoO6I5WHTwQpTFEo1Am/yzMvIc7qruAO/eQqRr/UG9R/m3ZCb4Dxg5sQWXk4nLsOfydewobvwuA5N//wjS3XUiWymb+8utQO1J2UrT4CAMbyS8iDFqawzQ7AkG+X+DzA1YICZwGk4pcX8j0yU/2FmPfl18ktJuJ3XRsLendhPZ1Bs7GpMLKvh/eVrNNddMQ7WbsRPafS9Cbzo/kfiJirr8D+4EdlM1U+NGXMPTiyzOc/P5reAWswLyp87EjmZsIFYuqX4WXT+PY3w9xcqMf1kqWwXnaN9ij0l5xHPt87QlU+r1QDVRAO1XFquLsJBJOwyTfzvmAdGhgQeaGXSLH3HsTU8+TRHbDn7WDTDaeQEJ2LSCd33IlEc+LaeQijLiP+YYcyFQLCcgk55L4Ze5k411NQR6+ahr+ctlIkmlIxN2EC9FkkcL4VcRp4w156EEWTikmz495kM6mniRGpooL2VmSMVtuy9vYSErCX2W04+x+kkrij18l2dR8blHnIN8r/18W+uCFc9S3+W0V69rklUglyZLhGsNfhfHfEXvPEzR0wi3ZJMLFjDQYsZHcldkqD1PO3POXXIyG/4V1U8Y272oIf9E+8p5OPGM0hNTyU0iYqx2x9Ykmj0tYKVQK6kmWEBseL0V7UniGeNsvJTEv1QTRkfX42DdkgO1KcvZvWVCr9BBuRVBPcSY55mFPbH1jyd+8I1T58f5QHl9KDi9KO0uOJ+fSLTq2IlxJe1sJuakwVc0v2fhoMKZkzBeSrB3TSduZu0kWzxT1VUEfSxvmC46X0iYlK2XLUj+CbVcWgTp+p3ITW72243aLnhjj5IHlm4/g9E9dsT8iEokJf8EgJRLB9C4gKPQRhq74BI2uJCK1mwW6NKaXr23HITB8Nca2VQ0J0MFNlyboN7MHLoUncwHpspdGAzHDqQm2/rwbB8KyMfwTc94xBbh/+TJSDVJwOJjaErQfj4Z+iX+825TXJg9/paThrrZ2nN0tTNDftjtairj6NmzXEaY8DbJV045op8ld9XY6bz9H4sGbsJnUl4ZOuKUhvXNsi0bmndFeZqsxWrd5hqMxN1Cgs2yBA4qScPBMd0waqAip0XDitURce0JvxYzMMPaL0XjhuwTrL/KvzgVkadldlHgYZ2w+xsCGfOj0BYKrIXDf2glB+76GtbHYr+FzXF3ng63vrMC+xYNhXKpXnZ8+fClETp4xzDrRNxhggMZdLGB+OhqxD+S3qup+ycZLo07o3J4Ll9ZHs9Yt8eJoLJL01mGlzrKVGk5A7Giu4W6U17wiPDv9G36/mFsioD6aGLeEWcc+sB7yNnLb2MDZzQ1ubp/CtkEeWlj3hsmV87jwiAtsE7yID8X2JM0nHQPzIegWG4YE+YOSMgxsgvcnToRF2CLMz7DGiDf5zwCM0Lnv++ic+xYGO39JbXHDPNsmeJjL77pU7Ps+EvXLbFeGGbw/17Okbxi1u4GklHy6Nx8pSclo72CDbny1vPYVWn0Rh9CorhjzPg0JyZZGsBw+AmZXbyBNNivn4nFWM3xkY1H+GL2KgbTvTu5D1KAReF+BuvAMVo8ahhnBF2TPtog0n3pd0eUJToYmYdCYXvQ0q1johJL8O7x+aQHvn+fBunkCltPQXtkvUXOh11X4pZUHfnYbiOYJAXALTZcLVeenD1+KLyF42kR4hcuf9hCpFFLjZmjagJscX/WrnqUdxpul40YaF1ul36vHT9DooyHoVe6HKgpe7LO2EaiU685aBaFePi7Q2PlIw74Y9fZfiLj3EX4PtkcX/I5AVxdMcE2ALc4hro07trlMwu5lC+E240vctgVi7gxAQDB3JadhMeiGKSOfYFPic/TvrzhZ8tpxrxTTu6DdB6/helcTLPxyClzsDuKaoy3qn9uF4LAkFNCrvLDgXWj1f4txNNATsybMwyVbgmNxHbBkW3MYFTlg5qO1WLk0Cc+7uGDekJm03Veq7SQ3sSuAysrIwrZgC8z+fCTMlWc4nkFqqw0H45tfHDB/pTcCrICLF4fjZ8mQMl4eUJPB3yxOQ/TmfTh+Kg0FmWEI/uk57JwmwMrYAC/ijuCKw2TlCZ5eGTfs74ofR36NxQv8YN3wJuJN6Ku+EzvyJZa5Xpwejc37j+FURjYywzbhp1wHOE2yolf4TxEXfg8Os3kne8P34fz9QvwdE47AoChknYqFxZpVcLHS0HcqmqVIj96J/cdPIaMgk/bXBuTaTcckK/ps6EUiwq/0xezSyZIemBuLFTNdsTb+KdaunUF3NEBnz2NYrCJTfaMYuWcDMNPJF/EFvlg7k/u7FTxj/kk/6QSpzq/cvvD01usJx1WfQ3JiKyR/Edw9fQ1DNnljLHfBo8mvhtaY/+NQuCz2RL61ES7Fm2FTwDgIvZbB06R5VXC8VMZVjWYT2N7yETDg4mrlO7T2HlVlv769vw1zfjJFyIqhqImzt745lE/eE0QvcMd55w34qof29920jTiddL84hgWTL8E53AM9dDxHiddDT/bRizH5/HSEf2UFHdXokO2g/PzE+8InXzG/+JLKp58vQbmuT1lKqWytPAR0Hevl0VF3j2lvh+EZh3Cskn+tXasB55zCjotWGG1Z/glFN//p68pH9+OinT0sK3X0P8TRHXdgN7qbzhOKTv5UOb8q8ksnCKxxTSJQqV+rmuRo9djyNiZMb4Rjpx5Xj/oar5We4E8ew/3xIyv5BM8HkYWTB55h/HjLSj7Zn8WB+zYYX6mTZTXwy6kKv/j9xdZrGwEW/qptPaZHe/UdMtC3PF1crSrdr5OeqvJFqB/1qV+fsoTsZfvFEahzkwo3+NjCCDACryeBOviIuMZ1ZE18flypkNigq1S8TDgjwAjUcQLsmUodHwDMfUaAEWAE9Emgzt2psPCXPocPk8UI1CwCLBJR/f1R5yYVbtCxh3rygadvDvqWp8vXo6p0v056qsoXoX7Up359yhKyl+0XR4CFv8RxYq0YAUaAEWAERBCoc3cqIpiU0YTmbkq/hjvG3WDRsuL4SHYM1q34L3LaSXF2TwoGfL8Ji23eoolKShbpRQSN9QWCd8DNvB6txhiI+RsfwUqWOuVNfC7xgI1anQvFobp8kuwTWDX/V+RYWdCcLLfQ/POVWMS3gxNGU+vHrFqMjTm0ngdu4GLz/4NkkS1alRqr0MhVjSzbTs0626Ag+T/wCbyM1haNcfvgEUid1iN4Bs37VRYrhXruU0qrTAYtgvudOUhYN5JWhFFfuAqMIVgR/hjtyHnsuWiN70O/pizzkbxzDQKvGcOi6R0c3Evg9FsAZnRRT9fC5fDSbKeqLtou5Q/4+ISD9KbVPDOaYeLyz9Ffegqr3HfiZd938CzhMfr7LNOgQ2EzV1kyGF+5p+PTBAlGqiqQNdI8jpogRZQvVISYvhVqU3ADO3024Frrzmh6OxJ7pbPwW/AMdGmQhdh1EoTnGIOcPYSLA3wRuljf44X3XVHgYp/VS4CGg+rcwn2Fyr/cJlvGWPGqRZZfEpfiPcpjNvG/wtX9KyJPDziTN008SFSeIk16LrlCKy62wHAiSaZp9MtRjVGbdUoOT8lZb5rqXXKFJjmnic5vSYhtH1/yp0qZx2JajNGH9Kbpz2/JGl0hEtvhxPdPLjW6fCmVJ8pOIZ1CVQu1syrVzZkipmqgUAVGWZXJt8jwjTepoIe0MqOpSgVDpR4hO+UsSv/XWMHyMtkz00pWvkCeVn4eMVNLE6/UI6KypNA4enaCVswU40vZfcvZKdT/BTGepHP90WRjKq3zmHuAzDW2pFUpn5RZrbLUxwqNFznpUlml4NlKdRFg4S86GnVachJx9KQphvYTqvOni7RnuJ8eix37r9C8rvXQvEcvWKZdRlIGzSRJEwVKr4Ziw/P3MaGkXpfeqzEqTC1OwZGw++hh0V52h2RgYoEeKf/Ffy/nKVrQT1qU6chh3O5hIS9cZdAeFj3Ssfu/N2idRtVFlJ2COg0FKjBqY6WqH2KqBgpVYDQcBM/IaPzi1AUoTsel84C1lYmG3G1iqisKVLC0eYCYo7no1J4rSMalle+GDmEROPNcUxq+sitLAgJsHvYT6YuYvhVuU2/wN4j8cyOcTBqgOPkSzhv2hJW5kYhqlfJ+q9h44Y9RtXHANquFQMXjN9VidnUolWej3bv7Z/zRqTMsd+9A9MR/wK6TIhZBM8me2wzvLYl4qdG8Bmg7yh3fjjXlpQfpjBm7k8HlqgWtFHL/7FlctxqMgW/TfOHFyfh9awHmLB2EkFVnZC20VWO0Upgha6njf4VZuHeHS1nOXx7gXiZN/m6lyMKcj8x7D/gN6LqUFoPMAldhg69elJ1adBpY0QqMaX8g6NeDCA2nFRhDuQqMTYRZqVklalNWgVGW7pfO33d5FRgN0dCiA9L2BuPXQ7sR3m8lQmeYK8ORPOGy6oqv2MlrUFrB8imtYCnF2/WTcTrLDiv8e8LUwhDxufKRUpT9GFm5abiTSS8m6MlY90VoHDVCy4ZifBHTt1raGLwPC9N07A36BYdCo9AvJAQzTBrDiKtWKR/cmqtVljha0fGiHKO6k2NH6J8Am1REM+WuGCdjyPENeHvSF/CiNS1UM8jXg3F/Z6ztL1qgSkOSHQ3/oKdw3zSfpnovQOqv25Ax+SvMfiNOpV3d2KAsrT6BW/feeOc+Zbr9HOx9Pix9dqPK6pUHOjoios9Wotcj6KETNm0eWFIkrAWsJrmie//2uD/1Z2yPt4eP+vMlmRbtdnJ1RXKf/Y3CN4fjC59/orNBOtpMGY9lB/fjB69R2Lnlf0geboNzG8Nwr35HvCGrVaKj+WrNX2Uj1hc1QbpuGlthkltX9H/nCaau/R3x9ouVz/rIA0T7b8ZD9wBstlYURdNVAWtfWwiw8JcuPUVSceb4S9gP7qI2oegiRENb+jB+nfs+vBO0FYutaVjt0QEsXX8XhXG/Iig4jFbPS8OpbdtxSvpm5VRjNGyDjqbqV8ht0bGdvA6j3GJ5NUZV641g2rHNK6EhUVUjBXXW116BUZ2VqkE6bnEhRrUKjCQb1+Ju4AkxgJHJx/hich58vwzBxVeKrYmprihUwTIFzR38ccinPWJ2XUBHWhysY5d+6NOxghWt1NmI9kVM32pp8+QG4q5l04BtY5iM/RSTX6zDl+vlxc4AoWqVyq6q2Hjhj1GlTLZWfQTYpKIL+8cXcOqCBWz61kf8an8czOE/TSDIv/grFrq6wlXjv/n4LvzOK88fIL2BUK89aOX9PdysGyNh+VKEYiK2x23HUq7qpOt4Wj3PBENnO2LYiI8qpxpjPXN86NAC55P+oicGGg1KSUJie1vYdqPp6KV/IekGd8Kg1Rg/tEW780lIkTWi+xNbwsHWjBfOk8MUrhpJT+LpV3GDK9krpNPsgnAFRk2sZFU4xXZiHtKTbtEJg2tPbdFQgTHz9BqMspmLYFkZ4SJI89XDgiW6tFVX5DPTWMGyLWI8eqPPNmPM+mwk3rh0FaYLpoMOKx0WHkvuKA1stv2xUpwv2vqW74vG/n8TZ1ZPg82M9fKJlxQgP1/xvdBSrZLnaYXGCzdG2VKjCNS5hJIc/XL/UCr3OBZ98G/kjO6Fxj1c4Edfc1W/vtetd5/grM84DF0eo6y93tkTMcmrMIQLTOZexN71QfBbEgtTr6/h6jwdVqnBenulmM9B8+u9rfF471x09+2GIwlL0Lue9leKlfKEXil+gL2zhsG3+29IWNIP9TS+xkxfg90biMCYApiaNqEVGI/j7iAvrPfoiVvLhFkpdVNuiqqBkRvgn2mPldM+kleZfLkPs7pL0P1IBJZ0+RM+w8ZiOa3AKF/kFRiTl7+FsJXrEUM6wrTpQ5w6/ACDfALgMUT+6qpSDz1harRzMIr3qTP7mobXLOUVLAvGIcB/PFol/AiPX5+iW9NUXNLwarZSj6Ky5EFI/DMxcuVMDJNVlnzOY2mOBE3j6MocZPqL8YUS0Pi6sI0GX9RfKf8Axin7sDIwFsTUBE2z4nD47gD4rJ8Hq1t+GDZ0Ga1WWYJYVq3yJFYNkb95ovSxIuNFvV8UuthndRFgk0p1ka8BepVfav0Yo295ulhVVbpfJz1V5YtQP+pTvz5lCdnL9osjwMJf4jixVowAI8AIMAIiCLBJRQQk1oQRYAQYAUZAHAE2qYjjxFoxAowAI8AIiCBQ556pcLFXtjACjMDrSYCmJnk9HatFXtW5Hz9yg4491JOPUH1z0Lc8Xb5HVaX7ddJTVb4I9aM+9etTlpC9bL84Aiz8JY4Ta8UIMAKMACMgggCbVERAUm2i9qMz1T/qvMWlLP9poRfNB7UQ4wZMwIqYh/RneYW4v3U2HPziSn6opxDLvc/vD0dHTwQEeNJPf8Rkc5m3Kr5wv1Pxc5yLRQGrscjRGX4yO9Tkcr9l8HOG46LVCFg0F45+J5CtMdogzk4hndLI+eg5bgUiU1MRHzQbw5bFyfKLyX6wmHYUAVPtMS/yiZpxaptc6vuA6XhvXiTNUKZpoTbGrsfCRb7w95yIAQ5+PJZcqvkATH1vPiI1H0wFcj+e3AWved8iIMgPriPs4Rx6Q0AXp5/+sjxoCkYGXZMZI+t3r2X02DXCvGUtuf/KtkfzOBJ3rEyNmL4VaiONxLyeE7Ei8hbuxwdh2rB/I14xLMvsB057xcaLzH72X80hUF3pkatTL6VfAfVVkfr+bxLv3Vf2u3XOVvm/bmTuf/5DvHuPIZJbNA0+ySe3aFr8Pr7niEqGeh08U3IQSkPPFyac+lzRqlReBVOZ50e4EPrzOOp3E2I21p/EPC6QqShKiyIhW9aSf71rSVwishVqZZ+lurmtiqS+p1zToraTLZLPyLvNXEgEh5q3KPWITH0vO7aY5F+RkBEtWhAbyVW6J5f2rxPxvfBcLvnpHuI4YQvJ0KhHuz3yQ4TKArwU6UvZfast9T3JjyAuzeTjtL7ZJOIf80BWQqGsfihlWcHxwjEolcVjyFarhwC7U6GjUaelSlLf5yDz6WhEPC+ms18x8m9tx4Jl67C6602E3e4ECxPud/xGMLHohJTdkbisyIqhkyO8xoJp6PlpxYVTn6urr3gq8zaYG0FTw5BcpBz4CkNKipDV62QHZycHdG9ZRj6TiqS+p1w72c2C08c9ob24gZjU9yWMpZcQsiEbNhM6lEJvYHQXW74NRGTac+TfuI6/rbqhVelf+Sti7BFIfZ9hINIXMX2rvU3DuRGg8y8KU/bgq5LsA6JKEFBXKz5e+LzYenUTqHMP6ssPvCpT33eAtWS53NT8RGzaKMWnK4ahWfQ+3FF34M49ZNJQw+uU+p6rD3Ly+6/hlWSKZ/EPMXjlSsx8pfKiOggdtwVT34uXU3bqe06WFKm/h0E6Zw6sQ/bgsEx8E1i5fIdPTzrCodeP6NDdBftPDCrJkCxev7KlUOp7sQkqtaS1p0rkqYi0tyk4GQg3rwswf5aEm4O/xbqZ4lMYsdT3yp58HdbYpCK6F6sy9b3ited83Nq4HndGr0EPIwMt8XrRTtSKhoY9/oG169+FrXlj5EV+gS7Ov8A6yg1dK+W+msbzX0l9LxZTWanv6VV46n+wNmME1sxuhuOlYmmG46txSOnpjQOON/Gj5w+YMa8XYkI+QTtF15e21W3l1dT3uh1frtaGPTBj7Tr0szWHUV4EXLu4Y4P1H3DryjIIl4tnLT+oUr6mtZyJsPlVlfpeYcGLGARL8tC3lzwBn6gU4YpjdfkUTEPPPyloSX2upkuUnYI66yMnzxhmnbjiYFxVRAuYn45G7APFk181ZRXapA/b1VPfi5YnJvX9Pexfug2PC+OwMWgTwpKykXEqFD8f2YNA1+sY5T0HY2etRuTFrfjw6E5EcLecFVnUU9+LliWmb7W0yXmJpmbt5Xc0jWkBO/NrOBKbIVp7xcYLf4yKVskaViIBNqnoAreqUt+XpHMvvhmH6EfN0bqZ/BmCcIpwXZzQ0FYoDX11pL7vcgvB0ybCK1x+UiJSKaTGzdBUDwWsuLeoykp9/0gDHo27RKW+74hJ2w/jt6XucHP7J8b3aoUOQ2fA2b4L3mik/OoZtDaDZfdOaN9EuU+jTpWdam8hakh9Hyq6LICWsgZlpr5vh6RgJ9h6HYKMHSmEVPoGmjeVB81UTBbYEB7XPB+1jVEBuWx39RCoc7+o5zCX+4dSVZz6viDaA53+AexMD4SdLDzOvXoZ+Jqnvm+B9IifIDnxAibtCO6evgaDKd5YNdkChunR2Lz/GCIlm5E5cj59ddUBTpOsYKzepxVJfb9qAO5H78T+4+qp5rl68vyxIzL1vex64Cku7t2EIL/vcdz0n/BynYMJRuHw2nAHnft1wPOkVLR28sFCXnVJ5RitQOr75OUwOSXGF+pYuVPf26JF+v+wRhKDIpM2wN0EXDQYh5WrpqCLYTqiN+/DcfUSBMbyyVPpo9C4FlMqgaW+lw3MGvQfm1RqUGdUtSnKL7V+NOtbni5WVZXu10lPVfki1I/61K9PWUL2sv3iCOhyvy1OImvFCDACjAAjUGcJsEmlznY9c5wRYAQYAf0TYJOK/pkyiYwAI8AI1FkCde6ZChd7ZQsjwAi8ngTkGVteT99qi1d17sePbNDVlqHJ7GQEGIHaSICFv2pjrzGbGQFGgBGooQTYpFJDO4aZxQgwAoxAbSTAJpXa2GvMZkaAEWAEaigBNqnU0I5hZjECjAAjUBsJsEmlNvYas5kRYAQYgRpKgE0qNbRjmFmMACPACNRGAmxSqY29xmxmBBgBRqCGEmCTSg3tGGYWI8AIMAK1kQCbVGpjrzGbGQFGgBGooQTYpFJDO4aZxQgwAoxAbSTw/9HnuZuJtdEkAAAAAElFTkSuQmCC">
+</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="attachment:bd15908d-1d58-4c2a-9049-68fd84558378.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
 </figure>
 </div>
-<div id="11031ab0" class="cell" data-execution_count="2">
+<div id="11031ab0" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">7</span></span>
@@ -214,21 +217,21 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}-2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -2 &amp; 1\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -2\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="3c0ba9d9" class="cell" data-execution_count="3">
+<div id="3c0ba9d9" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>t270 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.051</span>, <span class="fl">1.21</span>, <span class="fl">3.48</span>, <span class="fl">1.21</span>, <span class="fl">0.051</span>, <span class="fl">0.0</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># t270 = sym.Matrix([0.051, 1.21, 3.48, 1.21, 0.051])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d3f915f7" class="cell" data-execution_count="4">
+<div id="d3f915f7" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>t240 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.032</span>, <span class="fl">1.23</span>, <span class="fl">3.69</span>, <span class="fl">1.23</span>, <span class="fl">0.032</span>, <span class="fl">0.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Going forward from 240 to 270</p>
-<div id="6edfee51" class="cell" data-execution_count="5">
+<div id="6edfee51" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
@@ -257,7 +260,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Backwards from 270 to 240</p>
-<div id="1bfdafc9" class="cell" data-execution_count="6">
+<div id="1bfdafc9" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>current.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -266,7 +269,7 @@ window.Quarto = {
 <pre><code>(7, 1)</code></pre>
 </div>
 </div>
-<div id="7f36ddd1" class="cell" data-execution_count="7">
+<div id="7f36ddd1" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
@@ -306,7 +309,7 @@ window.Quarto = {
 0 Matrix([[0.000544502698002186], [9.92726600399977e-5], [0], [6.62637281796703], [0], [9.92726600402174e-5], [0.000544502698002148]])</code></pre>
 </div>
 </div>
-<div id="02807edf" class="cell" data-execution_count="8">
+<div id="02807edf" class="cell" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
@@ -334,13 +337,13 @@ window.Quarto = {
 </code></pre>
 </div>
 </div>
-<div id="1a147bff" class="cell" data-execution_count="9">
+<div id="1a147bff" class="cell" data-execution_count="10">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> plot_df.astype(np.float_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="44c218be" class="cell" data-execution_count="10">
+<div id="44c218be" class="cell" data-execution_count="11">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_df.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -357,7 +360,7 @@ window.Quarto = {
 </section>
 <section id="markov" class="level1">
 <h1><em>Markov</em></h1>
-<div id="f3895193" class="cell" data-execution_count="11">
+<div id="f3895193" class="cell" data-execution_count="12">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
@@ -365,7 +368,7 @@ window.Quarto = {
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="bf8b3edd" class="cell" data-execution_count="12">
+<div id="bf8b3edd" class="cell" data-execution_count="13">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.2</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.6</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
@@ -376,7 +379,7 @@ window.Quarto = {
 </div>
 </div>
 <p>3 years later</p>
-<div id="f28de4b6" class="cell" data-execution_count="13">
+<div id="f28de4b6" class="cell" data-execution_count="14">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>M<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -386,7 +389,7 @@ window.Quarto = {
 </div>
 </div>
 <p>first campaign</p>
-<div id="dee59c01" class="cell" data-execution_count="14">
+<div id="dee59c01" class="cell" data-execution_count="15">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Mc1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
@@ -396,7 +399,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.5 &amp; 0.32 &amp; 0.3\\0.2 &amp; 0.48 &amp; 0.1\\0.3 &amp; 0.2 &amp; 0.6\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="e690ea67" class="cell" data-execution_count="15">
+<div id="e690ea67" class="cell" data-execution_count="16">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -405,7 +408,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.380562995951417\\0.22266983805668\\0.396757165991903\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="4f16aa54" class="cell" data-execution_count="16">
+<div id="4f16aa54" class="cell" data-execution_count="17">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -416,7 +419,7 @@ window.Quarto = {
 </div>
 <section id="second-campaign-below" class="level4">
 <h4 class="anchored" data-anchor-id="second-campaign-below"><em>second campaign below</em></h4>
-<div id="e9a34d7f" class="cell" data-execution_count="17">
+<div id="e9a34d7f" class="cell" data-execution_count="18">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Mc2 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span><span class="op">+</span><span class="fl">.6</span><span class="op">*</span><span class="fl">.2</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span><span class="op">*</span><span class="fl">.8</span>]])</span>
@@ -426,7 +429,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.5 &amp; 0.32 &amp; 0.42\\0.2 &amp; 0.48 &amp; 0.1\\0.3 &amp; 0.2 &amp; 0.48\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="a378a33f" class="cell" data-execution_count="18">
+<div id="a378a33f" class="cell" data-execution_count="19">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -435,7 +438,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.431422288077188\\0.230872949689869\\0.337694762232943\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="4f5edcda" class="cell" data-execution_count="19">
+<div id="4f5edcda" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -450,7 +453,7 @@ window.Quarto = {
 <p>It is better to run campaign 2 as the steady state vector for campaign 2 is 43% vs 38% for campaign 1. It does not matter what the starting state is the end state after many iterations would be the same. As such the second campaign has insurance company A with a higher market share.</p>
 <p>Below is the chart for the net gain our company A gains from either company B for marketing campaign 1 or company C for marketing campaign 2 for each subsequent iteration.</p>
 <p>Implicit assumption of this model is that the effectiveness of each marketing campaign in driving consumer behavior remains constant across each time period. This is most likely not the case in reality. In either case though it looks like marketing campaign 2 is the better campaign unless company B has a lot more customers than company C in the initial period.</p>
-<div id="c749febe" class="cell" data-execution_count="20">
+<div id="c749febe" class="cell" data-execution_count="21">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>c1_state <span class="op">=</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
@@ -468,13 +471,13 @@ window.Quarto = {
 <span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    c2_state <span class="op">=</span> next_state_c2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="8c69ddd9" class="cell" data-execution_count="21">
+<div id="8c69ddd9" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gains <span class="op">=</span> gains.astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="319996f9" class="cell" data-execution_count="22">
+<div id="319996f9" class="cell" data-execution_count="23">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>gains.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -491,7 +494,7 @@ window.Quarto = {
 </section>
 <section id="ranking" class="level1">
 <h1><em>Ranking</em></h1>
-<div id="54400986" class="cell" data-execution_count="23">
+<div id="54400986" class="cell" data-execution_count="24">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
@@ -502,7 +505,7 @@ window.Quarto = {
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>sm <span class="op">=</span> sym.Matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="eccf561c" class="cell" data-execution_count="24">
+<div id="eccf561c" class="cell" data-execution_count="25">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
@@ -511,7 +514,7 @@ window.Quarto = {
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                  , (<span class="dv">5</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">4</span>), (<span class="dv">3</span>, <span class="dv">5</span>), (<span class="dv">5</span>, <span class="dv">6</span>), (<span class="dv">7</span>, <span class="dv">1</span>), (<span class="dv">5</span>, <span class="dv">2</span>), (<span class="dv">7</span>, <span class="dv">6</span>), (<span class="dv">1</span>, <span class="dv">4</span>), (<span class="dv">6</span>, <span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="d067209b" class="cell" data-execution_count="25">
+<div id="d067209b" class="cell" data-execution_count="26">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>nx.draw(G, with_labels<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -526,7 +529,7 @@ window.Quarto = {
 </div>
 <section id="adjacency-matrix" class="level4">
 <h4 class="anchored" data-anchor-id="adjacency-matrix"><em>adjacency matrix</em></h4>
-<div id="b77ddf1e" class="cell" data-execution_count="26">
+<div id="b77ddf1e" class="cell" data-execution_count="27">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>adj_mat <span class="op">=</span> nx.to_numpy_array(G)</span>
@@ -545,7 +548,7 @@ window.Quarto = {
 </section>
 <section id="win-loss-record" class="level4">
 <h4 class="anchored" data-anchor-id="win-loss-record"><em>win-loss record</em></h4>
-<div id="39921fe6" class="cell" data-execution_count="27">
+<div id="39921fe6" class="cell" data-execution_count="28">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>wins <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -555,7 +558,7 @@ window.Quarto = {
 <pre><code>array([2., 2., 4., 1., 4., 3., 5.])</code></pre>
 </div>
 </div>
-<div id="8851f08c" class="cell" data-execution_count="28">
+<div id="8851f08c" class="cell" data-execution_count="29">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
@@ -565,7 +568,7 @@ window.Quarto = {
 <pre><code>array([4., 4., 2., 5., 2., 3., 1.])</code></pre>
 </div>
 </div>
-<div id="378f0362" class="cell" data-execution_count="29">
+<div id="378f0362" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>team <span class="op">=</span> pd.DataFrame({<span class="st">'wins'</span>: wins, <span class="st">'losses'</span>: losses}, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
@@ -630,7 +633,7 @@ window.Quarto = {
 </section>
 <section id="vertex-power" class="level4">
 <h4 class="anchored" data-anchor-id="vertex-power"><em>Vertex Power</em></h4>
-<div id="4b02391c" class="cell" data-execution_count="30">
+<div id="4b02391c" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>power_rank <span class="op">=</span> (adj_mat <span class="op">+</span> adj_mat<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -650,7 +653,7 @@ dtype: float64</code></pre>
 </section>
 <section id="reverse-pagerank" class="level4">
 <h4 class="anchored" data-anchor-id="reverse-pagerank"><em>Reverse PageRank</em></h4>
-<div id="ff650065" class="cell" data-execution_count="31">
+<div id="ff650065" class="cell" data-execution_count="32">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>col_sums <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
@@ -755,7 +758,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="0af15274" class="cell" data-execution_count="32">
+<div id="0af15274" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.85</span></span>
@@ -766,7 +769,7 @@ dtype: float64</code></pre>
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{1}{7}\\\frac{1}{7}\\\frac{1}{7}\\\frac{1}{7}\\\frac{1}{7}\\\frac{1}{7}\\\frac{1}{7}\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="b03ea016" class="cell" data-execution_count="33">
+<div id="b03ea016" class="cell" data-execution_count="34">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pg_mat <span class="op">=</span> (sym.eye(P.shape[<span class="dv">0</span>]) <span class="op">-</span> alpha <span class="op">*</span> P)</span>
@@ -776,7 +779,7 @@ dtype: float64</code></pre>
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1.0 &amp; -0.2125 &amp; 0 &amp; -0.17 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 1.0 &amp; 0 &amp; -0.17 &amp; 0 &amp; -0.283333333333333 &amp; 0\\-0.2125 &amp; -0.2125 &amp; 1.0 &amp; -0.17 &amp; -0.425 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1.0 &amp; -0.425 &amp; 0 &amp; 0\\-0.2125 &amp; -0.2125 &amp; 0 &amp; 0 &amp; 1.0 &amp; -0.283333333333333 &amp; -0.85\\-0.2125 &amp; 0 &amp; -0.425 &amp; -0.17 &amp; 0 &amp; 1.0 &amp; 0\\-0.2125 &amp; -0.2125 &amp; -0.425 &amp; -0.17 &amp; 0 &amp; -0.283333333333333 &amp; 1.0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="5586d564" class="cell" data-execution_count="34">
+<div id="5586d564" class="cell" data-execution_count="35">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pd.Series(<span class="bu">list</span>(pg_mat.gauss_jordan_solve(v<span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>alpha))[<span class="dv">0</span>]), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -795,7 +798,7 @@ dtype: object</code></pre>
 </section>
 <section id="weighted-graph-power-ranking" class="level4">
 <h4 class="anchored" data-anchor-id="weighted-graph-power-ranking"><em>Weighted graph power ranking</em></h4>
-<div id="e3024dce" class="cell" data-execution_count="35">
+<div id="e3024dce" class="cell" data-execution_count="36">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Gw <span class="op">=</span> nx.DiGraph()</span>
@@ -816,7 +819,7 @@ dtype: object</code></pre>
        [45.,  6.,  8., 14.,  0., 19.,  0.]])</code></pre>
 </div>
 </div>
-<div id="eaaec11d" class="cell" data-execution_count="36">
+<div id="eaaec11d" class="cell" data-execution_count="37">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>pd.Series((adj_matw <span class="op">+</span> adj_matw<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1321,273 +1324,275 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span>
 <span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:bd15908d-1d58-4c2a-9049-68fd84558378.png)</span></span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>&lt;p&gt;&lt;img alt="image.png" src="data:image/png;base64,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"/&gt;&lt;/p&gt;</span>
 <span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">7</span></span>
-<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.zeros(N)</span>
-<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
-<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="op">&gt;</span><span class="dv">0</span>):</span>
-<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>      M[i<span class="op">-</span><span class="dv">1</span>,i]<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>  M[i,i]<span class="op">=-</span><span class="dv">2</span></span>
-<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="op">&lt;</span>N<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>      M[i<span class="op">+</span><span class="dv">1</span>,i]<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># M[0, i] = 0</span></span>
-<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># M[6, i] = 0</span></span>
-<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a><span class="co">#   M[i, 0] = 0</span></span>
-<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a><span class="co">#   M[i, 6] = 0</span></span>
-<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="co"># M[5, 6] = 0</span></span>
-<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a>M</span>
-<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>t270 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.051</span>, <span class="fl">1.21</span>, <span class="fl">3.48</span>, <span class="fl">1.21</span>, <span class="fl">0.051</span>, <span class="fl">0.0</span>])</span>
-<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="co"># t270 = sym.Matrix([0.051, 1.21, 3.48, 1.21, 0.051])</span></span>
-<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a>t240 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.032</span>, <span class="fl">1.23</span>, <span class="fl">3.69</span>, <span class="fl">1.23</span>, <span class="fl">0.032</span>, <span class="fl">0.0</span>])</span>
-<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>Going forward from 240 to 270</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:bd15908d-1d58-4c2a-9049-68fd84558378.png)</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span><span class="dv">7</span></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.zeros(N)</span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="op">&gt;</span><span class="dv">0</span>):</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>      M[i<span class="op">-</span><span class="dv">1</span>,i]<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>  M[i,i]<span class="op">=-</span><span class="dv">2</span></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i<span class="op">&lt;</span>N<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>      M[i<span class="op">+</span><span class="dv">1</span>,i]<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># M[0, i] = 0</span></span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># M[6, i] = 0</span></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="co">#   M[i, 0] = 0</span></span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a><span class="co">#   M[i, 6] = 0</span></span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="co"># M[5, 6] = 0</span></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a>M</span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>t270 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.051</span>, <span class="fl">1.21</span>, <span class="fl">3.48</span>, <span class="fl">1.21</span>, <span class="fl">0.051</span>, <span class="fl">0.0</span>])</span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a><span class="co"># t270 = sym.Matrix([0.051, 1.21, 3.48, 1.21, 0.051])</span></span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>t240 <span class="op">=</span> sym.Matrix([<span class="fl">0.0</span>, <span class="fl">0.032</span>, <span class="fl">1.23</span>, <span class="fl">3.69</span>, <span class="fl">1.23</span>, <span class="fl">0.032</span>, <span class="fl">0.0</span>])</span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
-<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> t240</span>
-<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">240</span>, <span class="dv">271</span>):</span>
-<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a>    next_step <span class="op">=</span> current <span class="op">+</span> M<span class="op">*</span>current <span class="op">*</span> Dh2</span>
-<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
-<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> next_step</span>
-<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a>Backwards from 270 to 240</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a>Going forward from 240 to 270</span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> t240</span>
+<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">240</span>, <span class="dv">271</span>):</span>
+<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a>    next_step <span class="op">=</span> current <span class="op">+</span> M<span class="op">*</span>current <span class="op">*</span> Dh2</span>
+<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
+<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> next_step</span>
+<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a>current.shape</span>
-<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
-<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> t270</span>
-<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">270</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a>    prev_step <span class="op">=</span> (sym.eye(current.shape[<span class="dv">0</span>]) <span class="op">+</span> M<span class="op">*</span> Dh2).inv()<span class="op">*</span>current </span>
-<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">40</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
-<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> sym.Matrix(np.maximum(prev_step, <span class="dv">0</span>))</span>
-<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(step, current)</span>
-<span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a>init_state <span class="op">=</span> current</span>
-<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-101"><a href="#cb48-101" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> init_state</span>
-<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> pd.DataFrame([], columns<span class="op">=</span>[<span class="st">'0'</span>, <span class="st">'1/6'</span>, <span class="st">'1/3'</span>, <span class="st">'1/2'</span>], dtype<span class="op">=</span>np.float64)</span>
-<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">301</span>):</span>
-<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a>    plot_df.loc[step] <span class="op">=</span> current[:<span class="dv">4</span>]</span>
-<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a>    next_step <span class="op">=</span> current <span class="op">+</span> M<span class="op">*</span>current <span class="op">*</span> Dh2</span>
-<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step<span class="op">==</span><span class="dv">0</span> <span class="kw">or</span> step <span class="op">==</span><span class="dv">210</span> <span class="kw">or</span> step <span class="op">==</span> <span class="dv">300</span>:</span>
-<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
-<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> next_step</span>
-<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a>plot_df.loc[step] <span class="op">=</span> current[:<span class="dv">4</span>]</span>
-<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> plot_df.astype(np.float_)</span>
-<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-123"><a href="#cb48-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-124"><a href="#cb48-124" aria-hidden="true" tabindex="-1"></a>plot_df.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
-<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a>It is expected that the center curve looks like an logarithmic decay, the 1/3 curve looks like a logarithmic increase which I suppose will decrease at the point. Using Linear Algebra does seem like a much easier approach than the actual Physics of computing the diffusion constant as well as the intial concentration.</span>
+<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a>Backwards from 270 to 240</span>
+<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a>current.shape</span>
+<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a>Dh2 <span class="op">=</span> <span class="fl">0.00004</span> <span class="op">*</span> <span class="dv">36</span></span>
+<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> t270</span>
+<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">270</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a>    prev_step <span class="op">=</span> (sym.eye(current.shape[<span class="dv">0</span>]) <span class="op">+</span> M<span class="op">*</span> Dh2).inv()<span class="op">*</span>current </span>
+<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">40</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
+<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> sym.Matrix(np.maximum(prev_step, <span class="dv">0</span>))</span>
+<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(step, current)</span>
+<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a>init_state <span class="op">=</span> current</span>
+<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-99"><a href="#cb48-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a>current <span class="op">=</span> init_state</span>
+<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> pd.DataFrame([], columns<span class="op">=</span>[<span class="st">'0'</span>, <span class="st">'1/6'</span>, <span class="st">'1/3'</span>, <span class="st">'1/2'</span>], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">301</span>):</span>
+<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a>    plot_df.loc[step] <span class="op">=</span> current[:<span class="dv">4</span>]</span>
+<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a>    next_step <span class="op">=</span> current <span class="op">+</span> M<span class="op">*</span>current <span class="op">*</span> Dh2</span>
+<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step<span class="op">==</span><span class="dv">0</span> <span class="kw">or</span> step <span class="op">==</span><span class="dv">210</span> <span class="kw">or</span> step <span class="op">==</span> <span class="dv">300</span>:</span>
+<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(step, current)</span>
+<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a>    current <span class="op">=</span> next_step</span>
+<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a>plot_df.loc[step] <span class="op">=</span> current[:<span class="dv">4</span>]</span>
+<span id="cb48-115"><a href="#cb48-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-119"><a href="#cb48-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-120"><a href="#cb48-120" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> plot_df.astype(np.float_)</span>
+<span id="cb48-121"><a href="#cb48-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-122"><a href="#cb48-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-125"><a href="#cb48-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-126"><a href="#cb48-126" aria-hidden="true" tabindex="-1"></a>plot_df.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<span id="cb48-127"><a href="#cb48-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-128"><a href="#cb48-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markov</span></span>
+<span id="cb48-129"><a href="#cb48-129" aria-hidden="true" tabindex="-1"></a>It is expected that the center curve looks like an logarithmic decay, the 1/3 curve looks like a logarithmic increase which I suppose will decrease at the point. Using Linear Algebra does seem like a much easier approach than the actual Physics of computing the diffusion constant as well as the intial concentration.</span>
+<span id="cb48-130"><a href="#cb48-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-131"><a href="#cb48-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-134"><a href="#cb48-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-135"><a href="#cb48-135" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
-<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span>
-<span id="cb48-137"><a href="#cb48-137" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb48-138"><a href="#cb48-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-139"><a href="#cb48-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-142"><a href="#cb48-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-143"><a href="#cb48-143" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.2</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.6</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
-<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a>M</span>
-<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a>3 years later</span>
+<span id="cb48-132"><a href="#cb48-132" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markov</span></span>
+<span id="cb48-133"><a href="#cb48-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-136"><a href="#cb48-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-137"><a href="#cb48-137" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
+<span id="cb48-138"><a href="#cb48-138" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span>
+<span id="cb48-139"><a href="#cb48-139" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb48-140"><a href="#cb48-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-141"><a href="#cb48-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-144"><a href="#cb48-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-145"><a href="#cb48-145" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.2</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.6</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
+<span id="cb48-146"><a href="#cb48-146" aria-hidden="true" tabindex="-1"></a>M</span>
+<span id="cb48-147"><a href="#cb48-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-148"><a href="#cb48-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-151"><a href="#cb48-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-152"><a href="#cb48-152" aria-hidden="true" tabindex="-1"></a>M<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
-<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-155"><a href="#cb48-155" aria-hidden="true" tabindex="-1"></a>first campaign</span>
+<span id="cb48-149"><a href="#cb48-149" aria-hidden="true" tabindex="-1"></a>3 years later</span>
+<span id="cb48-150"><a href="#cb48-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-153"><a href="#cb48-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-154"><a href="#cb48-154" aria-hidden="true" tabindex="-1"></a>M<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
+<span id="cb48-155"><a href="#cb48-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-156"><a href="#cb48-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-159"><a href="#cb48-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-160"><a href="#cb48-160" aria-hidden="true" tabindex="-1"></a>Mc1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
-<span id="cb48-161"><a href="#cb48-161" aria-hidden="true" tabindex="-1"></a>Mc1</span>
-<span id="cb48-162"><a href="#cb48-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-166"><a href="#cb48-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-167"><a href="#cb48-167" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
-<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-169"><a href="#cb48-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-172"><a href="#cb48-172" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-173"><a href="#cb48-173" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
-<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-175"><a href="#cb48-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-176"><a href="#cb48-176" aria-hidden="true" tabindex="-1"></a><span class="fu">#### second campaign below</span></span>
+<span id="cb48-157"><a href="#cb48-157" aria-hidden="true" tabindex="-1"></a>first campaign</span>
+<span id="cb48-158"><a href="#cb48-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-161"><a href="#cb48-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-162"><a href="#cb48-162" aria-hidden="true" tabindex="-1"></a>Mc1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span>]])</span>
+<span id="cb48-163"><a href="#cb48-163" aria-hidden="true" tabindex="-1"></a>Mc1</span>
+<span id="cb48-164"><a href="#cb48-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-165"><a href="#cb48-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-168"><a href="#cb48-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-169"><a href="#cb48-169" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
+<span id="cb48-170"><a href="#cb48-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-171"><a href="#cb48-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-174"><a href="#cb48-174" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-175"><a href="#cb48-175" aria-hidden="true" tabindex="-1"></a>Mc1<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb48-176"><a href="#cb48-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-177"><a href="#cb48-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-180"><a href="#cb48-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-181"><a href="#cb48-181" aria-hidden="true" tabindex="-1"></a>Mc2 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span><span class="op">+</span><span class="fl">.6</span><span class="op">*</span><span class="fl">.2</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span><span class="op">*</span><span class="fl">.8</span>]])</span>
-<span id="cb48-182"><a href="#cb48-182" aria-hidden="true" tabindex="-1"></a>Mc2</span>
-<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-187"><a href="#cb48-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-188"><a href="#cb48-188" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
-<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-193"><a href="#cb48-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-194"><a href="#cb48-194" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
-<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="fu">### Report</span></span>
+<span id="cb48-178"><a href="#cb48-178" aria-hidden="true" tabindex="-1"></a><span class="fu">#### second campaign below</span></span>
+<span id="cb48-179"><a href="#cb48-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-182"><a href="#cb48-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-183"><a href="#cb48-183" aria-hidden="true" tabindex="-1"></a>Mc2 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span>, <span class="fl">.3</span><span class="op">+</span><span class="fl">.6</span><span class="op">*</span><span class="fl">.2</span>],[<span class="fl">.2</span>, <span class="fl">.48</span>, <span class="fl">.1</span>], [<span class="fl">.3</span>, <span class="fl">.2</span>, <span class="fl">.6</span><span class="op">*</span><span class="fl">.8</span>]])</span>
+<span id="cb48-184"><a href="#cb48-184" aria-hidden="true" tabindex="-1"></a>Mc2</span>
+<span id="cb48-185"><a href="#cb48-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-186"><a href="#cb48-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-189"><a href="#cb48-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-190"><a href="#cb48-190" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
+<span id="cb48-191"><a href="#cb48-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-192"><a href="#cb48-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-195"><a href="#cb48-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-196"><a href="#cb48-196" aria-hidden="true" tabindex="-1"></a>Mc2<span class="op">**</span><span class="dv">50</span> <span class="op">*</span> sym.Matrix([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb48-197"><a href="#cb48-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-198"><a href="#cb48-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a>It is better to run campaign 2 as the steady state vector for campaign 2 is 43% vs 38% for campaign 1. It does not matter what the starting state is the end state after many iterations would be the same. As such the second campaign has insurance company A with a higher market share.</span>
+<span id="cb48-199"><a href="#cb48-199" aria-hidden="true" tabindex="-1"></a><span class="fu">### Report</span></span>
 <span id="cb48-200"><a href="#cb48-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a>Below is the chart for the net gain our company A gains from either company B for marketing campaign 1 or company C for marketing campaign 2 for each subsequent iteration.</span>
+<span id="cb48-201"><a href="#cb48-201" aria-hidden="true" tabindex="-1"></a>It is better to run campaign 2 as the steady state vector for campaign 2 is 43% vs 38% for campaign 1. It does not matter what the starting state is the end state after many iterations would be the same. As such the second campaign has insurance company A with a higher market share.</span>
 <span id="cb48-202"><a href="#cb48-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a>Implicit assumption of this model is that the effectiveness of each marketing campaign in driving consumer behavior remains constant across each time period. This is most likely not the case in reality. In either case though it looks like marketing campaign 2 is the better campaign unless company B has a lot more customers than company C in the initial period.</span>
+<span id="cb48-203"><a href="#cb48-203" aria-hidden="true" tabindex="-1"></a>Below is the chart for the net gain our company A gains from either company B for marketing campaign 1 or company C for marketing campaign 2 for each subsequent iteration.</span>
 <span id="cb48-204"><a href="#cb48-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-207"><a href="#cb48-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-208"><a href="#cb48-208" aria-hidden="true" tabindex="-1"></a>c1_state <span class="op">=</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
-<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a>c2_state <span class="op">=</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
-<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a>gains <span class="op">=</span> pd.DataFrame([], columns<span class="op">=</span>[<span class="st">'Percentage from B'</span>, <span class="st">'Percentage from C'</span>])</span>
-<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a>gain_from_b <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a>gain_from_c <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">21</span>):</span>
-<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a>    gains.loc[<span class="bu">int</span>(step)] <span class="op">=</span> (gain_from_b, gain_from_c)</span>
-<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a>    next_state_c1 <span class="op">=</span> Mc1 <span class="op">*</span> c1_state</span>
-<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a>    next_state_c2 <span class="op">=</span> Mc2 <span class="op">*</span> c2_state</span>
-<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a>    gain_from_b <span class="op">=</span> next_state_c1[<span class="dv">1</span>] <span class="op">*</span> Mc1[<span class="dv">0</span>, <span class="dv">1</span>] <span class="op">-</span> c1_state[<span class="dv">0</span>] <span class="op">*</span> Mc1[<span class="dv">1</span>, <span class="dv">0</span>]</span>
-<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a>    gain_from_c <span class="op">=</span> next_state_c2[<span class="dv">2</span>] <span class="op">*</span> Mc2[<span class="dv">0</span>, <span class="dv">2</span>] <span class="op">-</span> c2_state[<span class="dv">0</span>] <span class="op">*</span> Mc1[<span class="dv">2</span>, <span class="dv">0</span>]</span>
-<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a>    c1_state <span class="op">=</span> next_state_c1</span>
-<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a>    c2_state <span class="op">=</span> next_state_c2</span>
-<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-225"><a href="#cb48-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-226"><a href="#cb48-226" aria-hidden="true" tabindex="-1"></a>gains <span class="op">=</span> gains.astype(<span class="bu">float</span>)</span>
-<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-231"><a href="#cb48-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-232"><a href="#cb48-232" aria-hidden="true" tabindex="-1"></a>gains.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
-<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-205"><a href="#cb48-205" aria-hidden="true" tabindex="-1"></a>Implicit assumption of this model is that the effectiveness of each marketing campaign in driving consumer behavior remains constant across each time period. This is most likely not the case in reality. In either case though it looks like marketing campaign 2 is the better campaign unless company B has a lot more customers than company C in the initial period.</span>
+<span id="cb48-206"><a href="#cb48-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-209"><a href="#cb48-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-210"><a href="#cb48-210" aria-hidden="true" tabindex="-1"></a>c1_state <span class="op">=</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
+<span id="cb48-211"><a href="#cb48-211" aria-hidden="true" tabindex="-1"></a>c2_state <span class="op">=</span> sym.Matrix([<span class="fl">0.33333</span>, <span class="fl">0.33333</span>, <span class="fl">0.33333</span>])</span>
+<span id="cb48-212"><a href="#cb48-212" aria-hidden="true" tabindex="-1"></a>gains <span class="op">=</span> pd.DataFrame([], columns<span class="op">=</span>[<span class="st">'Percentage from B'</span>, <span class="st">'Percentage from C'</span>])</span>
+<span id="cb48-213"><a href="#cb48-213" aria-hidden="true" tabindex="-1"></a>gain_from_b <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb48-214"><a href="#cb48-214" aria-hidden="true" tabindex="-1"></a>gain_from_c <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb48-215"><a href="#cb48-215" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">21</span>):</span>
+<span id="cb48-216"><a href="#cb48-216" aria-hidden="true" tabindex="-1"></a>    gains.loc[<span class="bu">int</span>(step)] <span class="op">=</span> (gain_from_b, gain_from_c)</span>
+<span id="cb48-217"><a href="#cb48-217" aria-hidden="true" tabindex="-1"></a>    next_state_c1 <span class="op">=</span> Mc1 <span class="op">*</span> c1_state</span>
+<span id="cb48-218"><a href="#cb48-218" aria-hidden="true" tabindex="-1"></a>    next_state_c2 <span class="op">=</span> Mc2 <span class="op">*</span> c2_state</span>
+<span id="cb48-219"><a href="#cb48-219" aria-hidden="true" tabindex="-1"></a>    gain_from_b <span class="op">=</span> next_state_c1[<span class="dv">1</span>] <span class="op">*</span> Mc1[<span class="dv">0</span>, <span class="dv">1</span>] <span class="op">-</span> c1_state[<span class="dv">0</span>] <span class="op">*</span> Mc1[<span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb48-220"><a href="#cb48-220" aria-hidden="true" tabindex="-1"></a>    gain_from_c <span class="op">=</span> next_state_c2[<span class="dv">2</span>] <span class="op">*</span> Mc2[<span class="dv">0</span>, <span class="dv">2</span>] <span class="op">-</span> c2_state[<span class="dv">0</span>] <span class="op">*</span> Mc1[<span class="dv">2</span>, <span class="dv">0</span>]</span>
+<span id="cb48-221"><a href="#cb48-221" aria-hidden="true" tabindex="-1"></a>    c1_state <span class="op">=</span> next_state_c1</span>
+<span id="cb48-222"><a href="#cb48-222" aria-hidden="true" tabindex="-1"></a>    c2_state <span class="op">=</span> next_state_c2</span>
+<span id="cb48-223"><a href="#cb48-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-224"><a href="#cb48-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-227"><a href="#cb48-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-228"><a href="#cb48-228" aria-hidden="true" tabindex="-1"></a>gains <span class="op">=</span> gains.astype(<span class="bu">float</span>)</span>
+<span id="cb48-229"><a href="#cb48-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-230"><a href="#cb48-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-233"><a href="#cb48-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-234"><a href="#cb48-234" aria-hidden="true" tabindex="-1"></a>gains.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<span id="cb48-235"><a href="#cb48-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-236"><a href="#cb48-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ranking</span></span>
+<span id="cb48-237"><a href="#cb48-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-238"><a href="#cb48-238" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-239"><a href="#cb48-239" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ranking</span></span>
 <span id="cb48-240"><a href="#cb48-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-243"><a href="#cb48-243" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-244"><a href="#cb48-244" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
-<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
-<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span>
-<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a>sm <span class="op">=</span> sym.Matrix</span>
-<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-254"><a href="#cb48-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-255"><a href="#cb48-255" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
-<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a>G.add_nodes_from([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>])</span>
-<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a>G.add_edges_from([(<span class="dv">1</span>, <span class="dv">2</span>), (<span class="dv">7</span>, <span class="dv">3</span>), (<span class="dv">2</span>, <span class="dv">4</span>), (<span class="dv">4</span>, <span class="dv">5</span>), (<span class="dv">3</span>, <span class="dv">2</span>), (<span class="dv">5</span>, <span class="dv">1</span>), (<span class="dv">6</span>, <span class="dv">1</span>), (<span class="dv">3</span>, <span class="dv">1</span>), (<span class="dv">7</span>, <span class="dv">2</span>), (<span class="dv">2</span>, <span class="dv">6</span>), (<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">7</span>, <span class="dv">4</span>)</span>
-<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a>                  , (<span class="dv">5</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">4</span>), (<span class="dv">3</span>, <span class="dv">5</span>), (<span class="dv">5</span>, <span class="dv">6</span>), (<span class="dv">7</span>, <span class="dv">1</span>), (<span class="dv">5</span>, <span class="dv">2</span>), (<span class="dv">7</span>, <span class="dv">6</span>), (<span class="dv">1</span>, <span class="dv">4</span>), (<span class="dv">6</span>, <span class="dv">3</span>)])</span>
-<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-260"><a href="#cb48-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-263"><a href="#cb48-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-264"><a href="#cb48-264" aria-hidden="true" tabindex="-1"></a>nx.draw(G, with_labels<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a><span class="fu">#### adjacency matrix</span></span>
+<span id="cb48-241"><a href="#cb48-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-242"><a href="#cb48-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-245"><a href="#cb48-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-246"><a href="#cb48-246" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
+<span id="cb48-247"><a href="#cb48-247" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb48-248"><a href="#cb48-248" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb48-249"><a href="#cb48-249" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb48-250"><a href="#cb48-250" aria-hidden="true" tabindex="-1"></a>sb <span class="op">=</span> sym.Symbol</span>
+<span id="cb48-251"><a href="#cb48-251" aria-hidden="true" tabindex="-1"></a>sm <span class="op">=</span> sym.Matrix</span>
+<span id="cb48-252"><a href="#cb48-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-253"><a href="#cb48-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-256"><a href="#cb48-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-257"><a href="#cb48-257" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb48-258"><a href="#cb48-258" aria-hidden="true" tabindex="-1"></a>G.add_nodes_from([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>])</span>
+<span id="cb48-259"><a href="#cb48-259" aria-hidden="true" tabindex="-1"></a>G.add_edges_from([(<span class="dv">1</span>, <span class="dv">2</span>), (<span class="dv">7</span>, <span class="dv">3</span>), (<span class="dv">2</span>, <span class="dv">4</span>), (<span class="dv">4</span>, <span class="dv">5</span>), (<span class="dv">3</span>, <span class="dv">2</span>), (<span class="dv">5</span>, <span class="dv">1</span>), (<span class="dv">6</span>, <span class="dv">1</span>), (<span class="dv">3</span>, <span class="dv">1</span>), (<span class="dv">7</span>, <span class="dv">2</span>), (<span class="dv">2</span>, <span class="dv">6</span>), (<span class="dv">3</span>, <span class="dv">4</span>), (<span class="dv">7</span>, <span class="dv">4</span>)</span>
+<span id="cb48-260"><a href="#cb48-260" aria-hidden="true" tabindex="-1"></a>                  , (<span class="dv">5</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">4</span>), (<span class="dv">3</span>, <span class="dv">5</span>), (<span class="dv">5</span>, <span class="dv">6</span>), (<span class="dv">7</span>, <span class="dv">1</span>), (<span class="dv">5</span>, <span class="dv">2</span>), (<span class="dv">7</span>, <span class="dv">6</span>), (<span class="dv">1</span>, <span class="dv">4</span>), (<span class="dv">6</span>, <span class="dv">3</span>)])</span>
+<span id="cb48-261"><a href="#cb48-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-262"><a href="#cb48-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-265"><a href="#cb48-265" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-266"><a href="#cb48-266" aria-hidden="true" tabindex="-1"></a>nx.draw(G, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb48-267"><a href="#cb48-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-268"><a href="#cb48-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-271"><a href="#cb48-271" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-272"><a href="#cb48-272" aria-hidden="true" tabindex="-1"></a>adj_mat <span class="op">=</span> nx.to_numpy_array(G)</span>
-<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a>adj_mat</span>
-<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-276"><a href="#cb48-276" aria-hidden="true" tabindex="-1"></a><span class="fu">#### win-loss record</span></span>
+<span id="cb48-269"><a href="#cb48-269" aria-hidden="true" tabindex="-1"></a><span class="fu">#### adjacency matrix</span></span>
+<span id="cb48-270"><a href="#cb48-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-273"><a href="#cb48-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-274"><a href="#cb48-274" aria-hidden="true" tabindex="-1"></a>adj_mat <span class="op">=</span> nx.to_numpy_array(G)</span>
+<span id="cb48-275"><a href="#cb48-275" aria-hidden="true" tabindex="-1"></a>adj_mat</span>
+<span id="cb48-276"><a href="#cb48-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-277"><a href="#cb48-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-280"><a href="#cb48-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-281"><a href="#cb48-281" aria-hidden="true" tabindex="-1"></a>wins <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a>wins</span>
-<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-284"><a href="#cb48-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-287"><a href="#cb48-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-288"><a href="#cb48-288" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a>losses</span>
-<span id="cb48-290"><a href="#cb48-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-294"><a href="#cb48-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-295"><a href="#cb48-295" aria-hidden="true" tabindex="-1"></a>team <span class="op">=</span> pd.DataFrame({<span class="st">'wins'</span>: wins, <span class="st">'losses'</span>: losses}, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
-<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a>team.sort_values([<span class="st">'wins'</span>, <span class="st">'losses'</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span>
-<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vertex Power</span></span>
+<span id="cb48-278"><a href="#cb48-278" aria-hidden="true" tabindex="-1"></a><span class="fu">#### win-loss record</span></span>
+<span id="cb48-279"><a href="#cb48-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-282"><a href="#cb48-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-283"><a href="#cb48-283" aria-hidden="true" tabindex="-1"></a>wins <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb48-284"><a href="#cb48-284" aria-hidden="true" tabindex="-1"></a>wins</span>
+<span id="cb48-285"><a href="#cb48-285" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-286"><a href="#cb48-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-289"><a href="#cb48-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-290"><a href="#cb48-290" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb48-291"><a href="#cb48-291" aria-hidden="true" tabindex="-1"></a>losses</span>
+<span id="cb48-292"><a href="#cb48-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-293"><a href="#cb48-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-296"><a href="#cb48-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-297"><a href="#cb48-297" aria-hidden="true" tabindex="-1"></a>team <span class="op">=</span> pd.DataFrame({<span class="st">'wins'</span>: wins, <span class="st">'losses'</span>: losses}, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
+<span id="cb48-298"><a href="#cb48-298" aria-hidden="true" tabindex="-1"></a>team.sort_values([<span class="st">'wins'</span>, <span class="st">'losses'</span>], ascending<span class="op">=</span>[<span class="va">False</span>, <span class="va">True</span>])</span>
+<span id="cb48-299"><a href="#cb48-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-300"><a href="#cb48-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-303"><a href="#cb48-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-304"><a href="#cb48-304" aria-hidden="true" tabindex="-1"></a>power_rank <span class="op">=</span> (adj_mat <span class="op">+</span> adj_mat<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a>pd.Series(power_rank, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>)).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-307"><a href="#cb48-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-308"><a href="#cb48-308" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reverse PageRank</span></span>
+<span id="cb48-301"><a href="#cb48-301" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vertex Power</span></span>
+<span id="cb48-302"><a href="#cb48-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-305"><a href="#cb48-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-306"><a href="#cb48-306" aria-hidden="true" tabindex="-1"></a>power_rank <span class="op">=</span> (adj_mat <span class="op">+</span> adj_mat<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb48-307"><a href="#cb48-307" aria-hidden="true" tabindex="-1"></a>pd.Series(power_rank, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>)).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb48-308"><a href="#cb48-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-309"><a href="#cb48-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-312"><a href="#cb48-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-313"><a href="#cb48-313" aria-hidden="true" tabindex="-1"></a>col_sums <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb48-314"><a href="#cb48-314" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.zeros(adj_mat.shape)</span>
-<span id="cb48-315"><a href="#cb48-315" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(adj_mat.shape[<span class="dv">0</span>]):</span>
-<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a>    P[i, :] <span class="op">=</span> adj_mat[i, :] <span class="op">/</span> col_sums</span>
-<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(P)</span>
-<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-322"><a href="#cb48-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-323"><a href="#cb48-323" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.85</span></span>
-<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sym.ones(adj_mat.shape[<span class="dv">0</span>])[:, <span class="dv">0</span>] <span class="op">/</span> adj_mat.shape[<span class="dv">0</span>]</span>
-<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a>v</span>
-<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-330"><a href="#cb48-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-331"><a href="#cb48-331" aria-hidden="true" tabindex="-1"></a>pg_mat <span class="op">=</span> (sym.eye(P.shape[<span class="dv">0</span>]) <span class="op">-</span> alpha <span class="op">*</span> P)</span>
-<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a>pg_mat</span>
-<span id="cb48-333"><a href="#cb48-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-334"><a href="#cb48-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-337"><a href="#cb48-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-338"><a href="#cb48-338" aria-hidden="true" tabindex="-1"></a>pd.Series(<span class="bu">list</span>(pg_mat.gauss_jordan_solve(v<span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>alpha))[<span class="dv">0</span>]), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
-<span id="cb48-339"><a href="#cb48-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-340"><a href="#cb48-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Weighted graph power ranking</span></span>
+<span id="cb48-310"><a href="#cb48-310" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Reverse PageRank</span></span>
+<span id="cb48-311"><a href="#cb48-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-314"><a href="#cb48-314" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-315"><a href="#cb48-315" aria-hidden="true" tabindex="-1"></a>col_sums <span class="op">=</span> adj_mat.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb48-316"><a href="#cb48-316" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.zeros(adj_mat.shape)</span>
+<span id="cb48-317"><a href="#cb48-317" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(adj_mat.shape[<span class="dv">0</span>]):</span>
+<span id="cb48-318"><a href="#cb48-318" aria-hidden="true" tabindex="-1"></a>    P[i, :] <span class="op">=</span> adj_mat[i, :] <span class="op">/</span> col_sums</span>
+<span id="cb48-319"><a href="#cb48-319" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(P)</span>
+<span id="cb48-320"><a href="#cb48-320" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-321"><a href="#cb48-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-324"><a href="#cb48-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-325"><a href="#cb48-325" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.85</span></span>
+<span id="cb48-326"><a href="#cb48-326" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sym.ones(adj_mat.shape[<span class="dv">0</span>])[:, <span class="dv">0</span>] <span class="op">/</span> adj_mat.shape[<span class="dv">0</span>]</span>
+<span id="cb48-327"><a href="#cb48-327" aria-hidden="true" tabindex="-1"></a>v</span>
+<span id="cb48-328"><a href="#cb48-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-329"><a href="#cb48-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-332"><a href="#cb48-332" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-333"><a href="#cb48-333" aria-hidden="true" tabindex="-1"></a>pg_mat <span class="op">=</span> (sym.eye(P.shape[<span class="dv">0</span>]) <span class="op">-</span> alpha <span class="op">*</span> P)</span>
+<span id="cb48-334"><a href="#cb48-334" aria-hidden="true" tabindex="-1"></a>pg_mat</span>
+<span id="cb48-335"><a href="#cb48-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-336"><a href="#cb48-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-339"><a href="#cb48-339" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-340"><a href="#cb48-340" aria-hidden="true" tabindex="-1"></a>pd.Series(<span class="bu">list</span>(pg_mat.gauss_jordan_solve(v<span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>alpha))[<span class="dv">0</span>]), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
+<span id="cb48-341"><a href="#cb48-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb48-342"><a href="#cb48-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-345"><a href="#cb48-345" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-346"><a href="#cb48-346" aria-hidden="true" tabindex="-1"></a>Gw <span class="op">=</span> nx.DiGraph()</span>
-<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a>Gw.add_nodes_from([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>])</span>
-<span id="cb48-348"><a href="#cb48-348" aria-hidden="true" tabindex="-1"></a>Gw.add_weighted_edges_from([(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), (<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>), (<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>), (<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>), (<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>), (<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">23</span>)</span>
-<span id="cb48-349"><a href="#cb48-349" aria-hidden="true" tabindex="-1"></a>                            , (<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">15</span>), (<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">6</span>), (<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">18</span>), (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">14</span>)</span>
-<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a>                  , (<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>), (<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">18</span>), (<span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">45</span>), (<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">10</span>), (<span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">19</span>), (<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">13</span>)])</span>
-<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a>adj_matw <span class="op">=</span> nx.to_numpy_array(Gw)</span>
-<span id="cb48-352"><a href="#cb48-352" aria-hidden="true" tabindex="-1"></a>adj_matw</span>
-<span id="cb48-353"><a href="#cb48-353" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-357"><a href="#cb48-357" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb48-358"><a href="#cb48-358" aria-hidden="true" tabindex="-1"></a>pd.Series((adj_matw <span class="op">+</span> adj_matw<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
-<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-343"><a href="#cb48-343" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Weighted graph power ranking</span></span>
+<span id="cb48-344"><a href="#cb48-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-347"><a href="#cb48-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-348"><a href="#cb48-348" aria-hidden="true" tabindex="-1"></a>Gw <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb48-349"><a href="#cb48-349" aria-hidden="true" tabindex="-1"></a>Gw.add_nodes_from([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>])</span>
+<span id="cb48-350"><a href="#cb48-350" aria-hidden="true" tabindex="-1"></a>Gw.add_weighted_edges_from([(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>), (<span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">8</span>), (<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">7</span>), (<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>), (<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">7</span>), (<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">23</span>)</span>
+<span id="cb48-351"><a href="#cb48-351" aria-hidden="true" tabindex="-1"></a>                            , (<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">15</span>), (<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">6</span>), (<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">18</span>), (<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">14</span>)</span>
+<span id="cb48-352"><a href="#cb48-352" aria-hidden="true" tabindex="-1"></a>                  , (<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), (<span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>), (<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">18</span>), (<span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">45</span>), (<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">10</span>), (<span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">19</span>), (<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">13</span>), (<span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">13</span>)])</span>
+<span id="cb48-353"><a href="#cb48-353" aria-hidden="true" tabindex="-1"></a>adj_matw <span class="op">=</span> nx.to_numpy_array(Gw)</span>
+<span id="cb48-354"><a href="#cb48-354" aria-hidden="true" tabindex="-1"></a>adj_matw</span>
+<span id="cb48-355"><a href="#cb48-355" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-356"><a href="#cb48-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-359"><a href="#cb48-359" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb48-360"><a href="#cb48-360" aria-hidden="true" tabindex="-1"></a>pd.Series((adj_matw <span class="op">+</span> adj_matw<span class="op">**</span><span class="dv">2</span>).<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>), index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>))</span>
+<span id="cb48-361"><a href="#cb48-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-362"><a href="#cb48-362" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -1,0 +1,124 @@
+# Snippets
+
+## First_Projects.qmd
+
+###  comments
+Very nice work overall! There's a bit more I'd like to see on the second project – and I've got a few small questions about the first one, if you've got time.
+
+###  column-margin
+I appreciate having the explanation of what this initial state means, right here when you first present it.
+
+###  comments
+I agree with these conclusions.
+
+Can you discuss why these results had to happen, given the specific transition matrices you had? For instance, you are multiplying by the same matrices many times. What do you see if you simply look at the matrix exponents?
+
+Also: there seems to be a problem with the histograms I see after 50 and 100 years. What's going on? Did you see this on your end? Is there something else you could do to represent these data better?
+
+###  column-margin
+I love this - it's a very concrete example which makes it very clear what you are doing.
+
+###  comments
+This is nicely done and very clear overall. I think you could push a little more on the *why*; why does Campaign 2 work better, how can you tell just from looking at the transition matrix?
+
+Grade: E
+
+###  column-margin
+Not really important, but what you do isn't actually a win-loss **ratio**...
+
+###  column-margin
+I'm not sure what you mean by this: " If they have the same wins, they have to have the same losses (since they have the same win-loss score). In this case, we will have to devise more sophisticated methods for ranking. "
+
+###  column-margin
+Why does Team 2 have a higher power than Team 1? Can you explain it concretely in terms of games that it won?
+
+###  column-margin
+The "luck" idea is an interesting way of describing the teleportation vector; I hadn't thought of it like this before. I think you could dig in a bit: it gives a little bit of weight to the worldview that the teams really are equally good, and that the observed wins and losses were just due to luck. I think you could
+
+###  column-margin
+I really want to see the *why* here! In English, why is the quality of the wins for Team 5 higher than Team 7?
+
+###  comments
+You've done a nice job here, clearly explaining what you did and formatting the output nicely. All that's missing to make this an E grade is an intuitive explanation in English of why the different algorithms are giving different results in a few specific cases.
+
+
+Grade: M
+
+###  column-margin
+I'd like to see more on the testing and the outputs here. How do we know that the product of the PLU matrices really is the starting matrix? How do we know that U and L are really upper and lower diagonal? (We can see this by eye, but you could say so, or you could test for it.)
+
+Is it possible that your algorithm fails on a matrix that is different from these two?
+
+###  column-margin
+I'm quite surprised that your algorithm *exactly* matches the linag one; I would have thought you'd need to allow for some rounding error. Neat!
+
+###  column-margin
+This is awesome.
+
+###  comments
+This is excellent. You've created the algorithms and tested them well, including cleverly measuring the effects of using the decomposition for repeated solving. Great work.
+
+Grade: E
+
+## 24320_project1.qmd
+
+## stat243_project1.qmd
+
+### .comments
+This was nice work overall. I've left a bunch of comments and places where I'd like to see more explanation or more testing; I hope you'll take the opportunity to revise and resubmit!
+
+### .column-margin
+What do these variables represent? (I know from reading the project prompt, but it would be good to include this information in the text as well.)
+
+### .comments
+For efficiency, it would be much faster to calculate the matrices to the 10th power once and then use this for each of your 2000 random vectors! If you do this, you'll also be able to look at the 10 year matrices and reach a conclusion about which campaign is best for the long term, even without having to do the simulation.
+
+There is an issue with the random vectors here -- the first element of the vector ends up being twice as large as the other two, on average.
+
+```{python}
+x=[]
+for i in range(2000):
+    x.append(generate_input_vector())
+import pylab as plt
+```
+
+```{python}
+import numpy as np
+y=np.array(x)
+y.shape
+np.mean(y, axis=0)
+```
+
+### .comments
+I liked that you chose to use many random vectors for evaluating the different campaigns (although see the note about the random vectors above).
+
+I would like to see a bit more thinking about why you got the results that you did. Is there something about the transition matrices that tells you why the second campaign is the best?
+
+Grade: S (satisfactory)
+
+
+### .column-margin
+Is this actually a ratio? A bit misleading to use that term!
+
+### .column-margin
+Can you comment on what about the math gives the difference? Why do teams 5 and 7 look the same for the second method, but different for the first?
+
+### .column-margin
+What is the math behind what's happening in this code here? What is reverse page rank, and what exactly is happening in the find_stable function? How can I, the reader, know that it's working as it should?
+
+### .comments
+I would like to see more explanation about what is happening mathematically in these different cases; what are each of the rankings measuring, what formulas apply, and why your code matches what these formulas say. Then, I'd like a discussion of why the different rankings give different results, and which one you think is the most accurate.
+
+Also: there are a lot of places where you are doing things manually (like entering the identity matrix by hand) or using loops to do matrix computations. You'd be better off using numpy or sympy functions to do these things, as they are much faster and less error-prone (and easier to write, too!)
+
+Grade: R
+
+### .comments
+It looks like you have a lot of the pieces in place here. But I'd like to see a better job testing the outputs. When you run the problems from HW3, how am I supposed to know if these outputs are what they should be? You could either write something like "this should be upper triangular, and it is, and this should be ...", and/or you could do some kind of test (I bet either numpy or sympy has a function to test whether a matrix is upper triangular.)
+
+In general, I'm trying to read your code to figure out what you were doing, but I'd prefer to have you tell me what you're doing and why you're doing it in prose as well as in the code.
+
+For the testing, I'm curious about how this algorithm compares to some built-in solvers. Could you run it many times and compare e.g. the speed to one of the built-in systems? (I'm sure yours will be slower, that's find, just curious about the difference!)
+
+Grade: R
+

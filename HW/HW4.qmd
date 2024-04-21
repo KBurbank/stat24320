@@ -4,9 +4,11 @@ number-sections: true
 section-divs: true
 publish: false
 due-date: Friday, Week 6
-textbook-chapters: 3.4, 3.6
+textbook-chapters: 3.4, 3.6, 4.2
 publish-solutions-on: 2024-05-01
 ---
+
+Reading: Sections 3.4, 3.6, 4.2
 
 #
 For the following matrices find the null space of $I-A$ and find state vectors with nonnegative entries that sum to 1 in the null space, if any. Are these matrices stable (yes/no)?
@@ -17,7 +19,7 @@ For the following matrices find the null space of $I-A$ and find state vectors w
 
 
 ::: solutions
-Exercise 3.7.7
+Exercise 3.6.7
 :::
 
 #

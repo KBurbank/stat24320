@@ -128,6 +128,30 @@ Further analysis shows that there is a diminishing marginal return if more money
 
 Additionally, although the initial market share doesn't matter, it is important to note that we're assuming these events are independent of each other. For example, perhaps customers are more likely to follow the pack if a majority of the population are using companies which means that the market would be more volatile than my simulations suggest. This would also mean that it's more important for us to have the highest market share at the beginning, making initial market shares more important.
 
+::: comments
+
+This is excellent. You've found a good balance between what to show and what to hide (in code), so that the reader can understand your point without getting bogged down in details. But your code, when I look at it, is well organized and sufficiently commented.
+
+(Just FYI, one option, if you'd like to let the reader see your code if they like, is to put this code in the yaml at the top of the document:
+
+```
+format:
+  html:
+    code-fold: show
+    code-tools: 
+      source: true
+      toggle: true
+```
+Then if you remove the "echo: false" from your code chunks, the code will be hidden by default, but the reader can click to see it. I've done this for one of your code chunks below, just so you can see what it looks like.)
+
+
+Regarding this project, the only thing that I might suggest would be to discuss why these results had to happen, regardless of initial state given the specific transition matrices you had? For instance, can you look at the matrix you calculate after three years and tell from this which company will do best? 
+
+Grade: E
+
+:::
+
+
 # Gas in a Tube
 
 Before I start, I want to preface this problem by saying that I wasn't too clear what the procedure that was listed meant. For example, it said "One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of D that is, the one that gives the best approximation to t = 180 from the t = 360 values" I wasn't sure where t came from. Anyway, I think my result is decent and I'll try to explain what I did.
@@ -139,7 +163,6 @@ The time dependent reaction diffusion equation is shown below and I translated i
 ![Matrix Form](){width="50%"} -->
 
 ```{python}
-#| echo: false
 given1 = [0, 0.032, 1.23, 3.69, 1.23, 0.032, 0]
 given2 = [0, 0.051, 1.21, 3.48, 1.21, 0.051, 0]
 
@@ -154,8 +177,7 @@ plt.ylabel('Concentration')
 plt.show()
 ```
 
-I identified the constants: N = 7, h = 1/6, and k = 1. After a preliminary graph of the table, I thought it looked similar to a normal distribution so I defined that as my function. The mean has to be 0.5 as seen in the prelimina
-rly graph. This meant that my parameters that I can tweak to get the best approximation are the standard deviation, D, and the initial concentration.
+I identified the constants: N = 7, h = 1/6, and k = 1. After a preliminary graph of the table, I thought it looked similar to a normal distribution so I defined that as my function. The mean has to be 0.5 as seen in the preliminary graph. This meant that my parameters that I can tweak to get the best approximation are the standard deviation, D, and the initial concentration.
 
 Here is the code so far.
 
@@ -249,6 +271,15 @@ for i in range(t):
     y_t = reaction_diffusion_equation(y_t)
 display(y_t)
 ```
+
+::: comments
+
+As we discussed, you didn't need to use the normal distribution here. I'd like to see you work this problem including the backwards time method. There was a mistake in the original project description, which I apologize for --  the times should have been 240 and 270, not 180 and 360, so you are trying to find the best D to approximate the values at t=240 and given the values at t=270.
+
+I think it will just take a bit more work to get this right!
+
+Grade: R
+:::
 
 # Sports Ranking
 
@@ -386,3 +417,10 @@ df = pd.DataFrame({'Team': team, 'Vertex Power': vertex_power}).sort_values(by='
 df
 
 ```
+
+::: comments
+
+This is a good start. Your code seems good -- but I'd like to also see some writing: describing the problem, explanation about what is happening mathematically in these different cases, and why your code matches what these formulas say. Then, it would be good to see a brief discussion of why the different rankings give different results, and which one you think is the most accurate.
+
+Grade: R
+:::

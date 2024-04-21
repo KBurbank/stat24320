@@ -1,0 +1,9 @@
+---
+title: Homework 3
+number-sections: true
+section-divs: true
+publish: true
+due-date: Wednesday, Week 4
+textbook-chapters: 2.4, 2.5, 2.8
+publish-solutions-on: 2024-04-18
+---

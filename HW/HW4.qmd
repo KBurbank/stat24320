@@ -1,15 +1,11 @@
 ---
 title: Homework 4
-number-sections: true
-section-divs: true
 publish: false
 due-date: Friday, Week 6
 textbook-chapters: 3.4, 3.6, 4.2
 publish-solutions-on: 2024-05-01
-format: 
-  html: 
-    template-partials: 
-      - title-metadata.html
+
+
 
 ---
 

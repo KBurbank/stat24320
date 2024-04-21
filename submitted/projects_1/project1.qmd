@@ -22,7 +22,7 @@ import networkx as nx
 
 Here is the system of equations that represents the scenario.
 
-![Systems of equations](){width="50%"}
+<!-- ![Systems of equations](){width="50%"} -->
 
 Here is the transition matrix. The market shares after 3 years are shown below given that the initial market shares are equal, which meant that the initial vector is \[1/3, 1/3, 1/3\].
 
@@ -134,9 +134,9 @@ Before I start, I want to preface this problem by saying that I wasn't too clear
 
 The time dependent reaction diffusion equation is shown below and I translated it to matrix form.
 
-![Equation](){width="50%"}
+<!-- ![Equation](){width="50%"}
 
-![Matrix Form](){width="50%"}
+![Matrix Form](){width="50%"} -->
 
 ```{python}
 #| echo: false

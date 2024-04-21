@@ -189,12 +189,12 @@ window.Quarto = {
 <p>Here is the system of equations that represents the scenario.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="systemofequations.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src=".png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Systems of equations</figcaption>
 </figure>
 </div>
 <p>Here is the transition matrix. The market shares after 3 years are shown below given that the initial market shares are equal, which meant that the initial vector is [1/3, 1/3, 1/3].</p>
-<div id="98ac6c98" class="cell" data-execution_count="2">
+<div id="98ac6c98" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.5 &amp; 0.2 &amp; 0.3\\0.2 &amp; 0.6 &amp; 0.1\\0.3 &amp; 0.2 &amp; 0.6\end{matrix}\right]\)</span></p>
 </div>
@@ -206,7 +206,7 @@ window.Quarto = {
 <section id="recommendation" class="level2">
 <h2 class="anchored" data-anchor-id="recommendation"><em>Recommendation</em></h2>
 <p>As seen in the below graphs, the effect of launching campaign 2 is better than campaign 1. Note that campaign 0 shows what would happen if no campiagn is launched. In that scenario, company C would have the highest market share whereas we would be stuck in the middle. Launching campaign 1 would not change this situation but we would be closer to C. However, launching campaign 2 would allow us to surpass C and have the highest market share, bringing us to 0.4.</p>
-<div id="5660fa56" class="cell" data-execution_count="3">
+<div id="5660fa56" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -230,7 +230,7 @@ window.Quarto = {
 </div>
 </div>
 <p>You might have noticed that we’re assuming that the market shares are equal at the beginning. However, it is shown that the market shares would be the same after a couple years regardless of the initial market shares. An example is seen below where the initial market shares are [0, 0, 1].</p>
-<div id="b5da137b" class="cell" data-execution_count="4">
+<div id="b5da137b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -263,17 +263,17 @@ window.Quarto = {
 <p>The time dependent reaction diffusion equation is shown below and I translated it to matrix form.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="reactiondiffusionequation.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src=".png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Equation</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="reactiondiffusionmatrix.jpeg" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src=".png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Matrix Form</figcaption>
 </figure>
 </div>
-<div id="41e4e9d4" class="cell" data-execution_count="5">
+<div id="41e4e9d4" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -284,7 +284,7 @@ window.Quarto = {
 </div>
 <p>I identified the constants: N = 7, h = 1/6, and k = 1. After a preliminary graph of the table, I thought it looked similar to a normal distribution so I defined that as my function. The mean has to be 0.5 as seen in the prelimina rly graph. This meant that my parameters that I can tweak to get the best approximation are the standard deviation, D, and the initial concentration.</p>
 <p>Here is the code so far.</p>
-<div id="705425f7" class="cell" data-execution_count="6">
+<div id="705425f7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constants and initial conditions</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">7</span> <span class="co"># number of nodes</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> <span class="co"># distance between nodes</span></span>
@@ -317,7 +317,7 @@ window.Quarto = {
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k<span class="op">*</span>D<span class="op">/</span>h<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M <span class="op">*</span> y <span class="op">+</span> y <span class="op">+</span> k <span class="op">*</span> y.applyfunc(normal_distribution_function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>After this, I tweaked the parameters to get the best approximation. I found that D = 0.000005, mean = 3/6, std = 1, and the initial concentration of [0, 0, 1.25, 4, 1.25, 0, 0] gave me the best approximation. The comparison between the approximation and the actual values for t = 240 and t = 270 are shown below.</p>
-<div id="f449aeac" class="cell" data-execution_count="7">
+<div id="f449aeac" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.000005</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y_t0 <span class="op">=</span> sp.Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">1.25</span>, <span class="dv">4</span>, <span class="fl">1.25</span>, <span class="dv">0</span>, <span class="dv">0</span>]) <span class="co"># initial condition</span></span>
@@ -368,13 +368,13 @@ window.Quarto = {
 </div>
 </div>
 <p>For t = 210, I got:</p>
-<div id="8ec7a5d1" class="cell" data-execution_count="8">
+<div id="8ec7a5d1" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.00339238903943445\\0.0627957873877538\\1.30195014227816\\3.80169149504986\\1.30195014227816\\0.0627957873877538\\0.00339238903943445\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>For t = 300, I got:</p>
-<div id="237cfb02" class="cell" data-execution_count="9">
+<div id="237cfb02" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.00504182505136563\\1.34308086470352\\1.32654572490819\\3.72231947194962\\1.32654572490819\\1.34308086470352\\0.00504182505136563\end{matrix}\right]\)</span></p>
 </div>
@@ -384,7 +384,7 @@ window.Quarto = {
 <h1><em>Sports Ranking</em></h1>
 <section id="win-loss-ratio" class="level2">
 <h2 class="anchored" data-anchor-id="win-loss-ratio"><em>Win Loss Ratio</em></h2>
-<div id="343723b6" class="cell" data-execution_count="10">
+<div id="343723b6" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <pre><code>array([[0., 1., 0., 1., 0., 0., 0.],
        [0., 0., 0., 1., 0., 1., 0.],
@@ -467,7 +467,7 @@ window.Quarto = {
 </section>
 <section id="vertex-power" class="level2">
 <h2 class="anchored" data-anchor-id="vertex-power"><em>Vertex Power</em></h2>
-<div id="6896ddae" class="cell" data-execution_count="11">
+<div id="6896ddae" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># directed graph </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph() </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>rows, columns <span class="op">=</span> M.shape</span>
@@ -546,7 +546,7 @@ window.Quarto = {
 <section id="reverse-page-rank" class="level2">
 <h2 class="anchored" data-anchor-id="reverse-page-rank"><em>Reverse Page Rank</em></h2>
 <p>Note that I used alpha = 0.85 and the teleportation vector is [1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7].</p>
-<div id="5317a445" class="cell" data-execution_count="12">
+<div id="5317a445" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse graph</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> M.transpose()</span>
@@ -624,7 +624,7 @@ window.Quarto = {
 <section id="weighted-vertex-power" class="level2">
 <h2 class="anchored" data-anchor-id="weighted-vertex-power"><em>Weighted Vertex Power</em></h2>
 <p>Note I couldn’t figure out how to rename the nodes to 1-7 instead of 0-6.</p>
-<div id="ff9f4601" class="cell" data-execution_count="13">
+<div id="ff9f4601" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># weighted adjacency matrix</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.zeros((<span class="dv">7</span>,<span class="dv">7</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">4</span></span>

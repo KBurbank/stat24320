@@ -13,8 +13,6 @@ format:
 
 ---
 
-**Reading: Chapters {{< meta textbook-chapters >}}**
-
 #
 For the following matrices find the null space of $I-A$ and find state vectors with nonnegative entries that sum to 1 in the null space, if any. Are these matrices stable (yes/no)?
 

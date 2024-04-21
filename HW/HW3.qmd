@@ -1,0 +1,123 @@
+---
+title: Homework 3
+number-sections: true
+section-divs: true
+publish: true
+due-date: Wednesday, Week 4
+textbook-chapters: 2.4, 2.5, 2.8
+publish-solutions-on: 2024-04-18
+---
+
+
+#
+::: aside
+2.4.29
+:::
+Show that if $P$ and $Q$ are stochastic matrices of the same size, then $P Q$ is also stochastic.
+
+
+#
+::: aside
+2.4.36
+:::
+
+The digraph $H$ that results from reversing all the arrows in a digraph $G$ is called reverse digraph of $G$. Show that if $A$ is the adjacency matrix for $G$ then $A^{T}$ is the adjacency matrix for the reverse digraph $H$.
+
+#
+::: aside
+2.5.21
+:::
+
+Solve the PageRank problem with $P$ as in Example 2.46, teleportation vector $\mathbf{v}=\frac{1}{6} \mathbf{e}$ and teleportation parameter $\alpha=0.8$. (In this example, the correction vector was $\frac{1}{3}(1,1,1,0,0,0)$; that's what you'll use here.)
+
+#
+::: aside
+2.5.22
+:::
+Modify the surfing matrix $P$ of Example 2.46 by using the correction vector $\frac{1}{5}(1,1,1,0,1,1)$ and solve the resulting PageRank problem with teleportation vector $\mathbf{v}=\frac{1}{6} \mathbf{e}$ and teleportation parameter $\alpha=0.8$.
+
+#
+::: aside
+2.5.29
+:::
+
+Show that there is more than one stationary state for the Markov chain of Example 2.46.
+
+#
+::: aside
+2.5.30
+:::
+
+Repair the dangling node problem of the graph of Figure 2.7 by creating a correction vector that makes transition to all nodes equally likely. (Note that this means **all** nodes, includes transitioning back to the dangling node.)
+
+Next, find all stationary states for the resulting Markov chain.
+
+#
+::: aside
+2.5.25
+:::
+
+Solve the nonlinear system of equations of Example 2.48 by using nine iterations of the vector Newton formula (2.5), starting with the initial guess $\mathbf{x}^{(0)}=(0,1)$. Evaluate $F\left(\mathbf{x}^{(9)}\right)$.
+
+
+#
+::: aside
+2.5.26
+:::
+
+Find the minimum value of the function $F(x, y)=\left(x^{2}+y+1\right)^{2}+$ $x^{4}+y^{4}$ by using the Newton method to find critical points of the function $F(x, y)$, i.e., points where $f(x, y)=F_{x}(x, y)=0$ and $g(x, y)=F_{y}(x, y)=0$.
+
+
+#
+::: aside
+2.8.9
+:::
+
+Apply the following digital filter to the noisy data of Example 2.71 and graph the results. Does it appear to be a low pass filter?
+
+$$
+y_{k}=\frac{1}{2} x_{k}+\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
+$$
+
+#
+::: aside
+2.8.10
+:::
+
+Apply the following digital filter to the noisy data of Example 2.71 and graph the results. Does it appear to be a high pass filter?
+
+$$
+y_{k}=\frac{1}{2} x_{k}-\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
+$$
+
+
+
+
+
+
+#
+::: aside
+2.8.1
+:::
+
+(I'll talk about LU factorization in class on the Wednesday that this homework is due; you may want to hold off on the next few problems until then.)
+
+Show that $L=\left[\begin{array}{lll}1 & 0 & 0 \\ 1 & 1 & 0 \\ 2 & 1 & 1\end{array}\right]$ and $U=\left[\begin{array}{rrr}2 & -1 & 1 \\ 0 & 4 & -3 \\ 0 & 0 & -1\end{array}\right]$ is an LU factorization of $A=\left[\begin{array}{rrr}2 & -1 & 1 \\ 2 & 3 & -2 \\ 4 & 2 & -2\end{array}\right]$.
+
+#
+By hand:
+
+::: aside
+2.8.5
+:::
+
+Find an LU factorization of the matrix $A=\left[\begin{array}{rrr}2 & 1 & 0 \\ -4 & -1 & -1 \\ 2 & 3 & -3\end{array}\right]$.
+
+#
+By hand:
+
+::: aside
+2.8.6
+:::
+
+Find a PLU factorization of the matrix $A=\left[\begin{array}{rrr}2 & 1 & 3 \\ -4 & -2 & -1 \\ 2 & 3 & -3\end{array}\right]$.

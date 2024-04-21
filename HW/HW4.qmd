@@ -1,6 +1,6 @@
 ---
 title: Homework 4
-publish: false
+publish: true
 due-date: Friday, Week 6
 textbook-chapters: 3.4, 3.6, 4.2
 publish-solutions-on: 2024-05-01

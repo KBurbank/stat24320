@@ -2,3 +2,8 @@
 .header-section-number::before {
     content: "Problem ";
   }
+
+textbook-chapters-heading, textbook-chapters {
+  font-weight: bold;
+  font-size: 1.5em;
+}

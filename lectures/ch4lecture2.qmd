@@ -426,3 +426,7 @@ $\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}
 
 # QR Factorization
 
+::: theorem
+If $A$ is an $m \times n$ full-column-rank matrix, then $A=Q R$, where the columns of the $m \times n$ matrix $Q$ are orthonormal vectors and the $n \times n$ matrix $R$ is upper triangular with nonzero diagonal entries.
+:::
+

@@ -153,7 +153,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project 1</h1>
+<div class="quarto-title-block"><div><h1 class="title">Project 1</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -189,7 +189,7 @@ window.Quarto = {
 <p>Here is the system of equations that represents the scenario.</p>
 <!-- ![Systems of equations](){width="50%"} -->
 <p>Here is the transition matrix. The market shares after 3 years are shown below given that the initial market shares are equal, which meant that the initial vector is [1/3, 1/3, 1/3].</p>
-<div id="cba091f6" class="cell" data-execution_count="2">
+<div id="cba091f6" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.5 &amp; 0.2 &amp; 0.3\\0.2 &amp; 0.6 &amp; 0.1\\0.3 &amp; 0.2 &amp; 0.6\end{matrix}\right]\)</span></p>
 </div>
@@ -201,7 +201,7 @@ window.Quarto = {
 <section id="recommendation" class="level2">
 <h2 class="anchored" data-anchor-id="recommendation"><em>Recommendation</em></h2>
 <p>As seen in the below graphs, the effect of launching campaign 2 is better than campaign 1. Note that campaign 0 shows what would happen if no campiagn is launched. In that scenario, company C would have the highest market share whereas we would be stuck in the middle. Launching campaign 1 would not change this situation but we would be closer to C. However, launching campaign 2 would allow us to surpass C and have the highest market share, bringing us to 0.4.</p>
-<div id="6cdf0ee0" class="cell" data-execution_count="3">
+<div id="6cdf0ee0" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -225,7 +225,7 @@ window.Quarto = {
 </div>
 </div>
 <p>You might have noticed that we’re assuming that the market shares are equal at the beginning. However, it is shown that the market shares would be the same after a couple years regardless of the initial market shares. An example is seen below where the initial market shares are [0, 0, 1].</p>
-<div id="375f7b46" class="cell" data-execution_count="4">
+<div id="375f7b46" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -272,7 +272,9 @@ window.Quarto = {
 <!-- ![Equation](){width="50%"}
 
 ![Matrix Form](){width="50%"} -->
-<div id="e36c4399" class="cell" data-execution_count="5">
+<div id="e36c4399" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>given1 <span class="op">=</span> [<span class="dv">0</span>, <span class="fl">0.032</span>, <span class="fl">1.23</span>, <span class="fl">3.69</span>, <span class="fl">1.23</span>, <span class="fl">0.032</span>, <span class="dv">0</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>given2 <span class="op">=</span> [<span class="dv">0</span>, <span class="fl">0.051</span>, <span class="fl">1.21</span>, <span class="fl">3.48</span>, <span class="fl">1.21</span>, <span class="fl">0.051</span>, <span class="dv">0</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -285,6 +287,7 @@ window.Quarto = {
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Meter'</span>)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Concentration'</span>)</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -295,7 +298,9 @@ window.Quarto = {
 </div>
 <p>I identified the constants: N = 7, h = 1/6, and k = 1. After a preliminary graph of the table, I thought it looked similar to a normal distribution so I defined that as my function. The mean has to be 0.5 as seen in the preliminary graph. This meant that my parameters that I can tweak to get the best approximation are the standard deviation, D, and the initial concentration.</p>
 <p>Here is the code so far.</p>
-<div id="52e8dd67" class="cell" data-execution_count="6">
+<div id="52e8dd67" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constants and initial conditions</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">7</span> <span class="co"># number of nodes</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> <span class="co"># distance between nodes</span></span>
@@ -326,9 +331,12 @@ window.Quarto = {
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reaction_diffusion_equation(y):</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k<span class="op">*</span>D<span class="op">/</span>h<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M <span class="op">*</span> y <span class="op">+</span> y <span class="op">+</span> k <span class="op">*</span> y.applyfunc(normal_distribution_function)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>After this, I tweaked the parameters to get the best approximation. I found that D = 0.000005, mean = 3/6, std = 1, and the initial concentration of [0, 0, 1.25, 4, 1.25, 0, 0] gave me the best approximation. The comparison between the approximation and the actual values for t = 240 and t = 270 are shown below.</p>
-<div id="e25579b8" class="cell" data-execution_count="7">
+<div id="e25579b8" class="cell" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.000005</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y_t0 <span class="op">=</span> sp.Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">1.25</span>, <span class="dv">4</span>, <span class="fl">1.25</span>, <span class="dv">0</span>, <span class="dv">0</span>]) <span class="co"># initial condition</span></span>
@@ -360,6 +368,7 @@ window.Quarto = {
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Meter'</span>)</span>
 <span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Concentration'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Text(0, 0.5, 'Concentration')</code></pre>
 </div>
@@ -379,13 +388,13 @@ window.Quarto = {
 </div>
 </div>
 <p>For t = 210, I got:</p>
-<div id="ab5ace2a" class="cell" data-execution_count="8">
+<div id="ab5ace2a" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.00339238903943445\\0.0627957873877538\\1.30195014227816\\3.80169149504986\\1.30195014227816\\0.0627957873877538\\0.00339238903943445\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>For t = 300, I got:</p>
-<div id="579dd801" class="cell" data-execution_count="9">
+<div id="579dd801" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.00504182505136563\\1.34308086470352\\1.32654572490819\\3.72231947194962\\1.32654572490819\\1.34308086470352\\0.00504182505136563\end{matrix}\right]\)</span></p>
 </div>
@@ -400,7 +409,7 @@ window.Quarto = {
 <h1><em>Sports Ranking</em></h1>
 <section id="win-loss-ratio" class="level2">
 <h2 class="anchored" data-anchor-id="win-loss-ratio"><em>Win Loss Ratio</em></h2>
-<div id="6b77fb8a" class="cell" data-execution_count="10">
+<div id="6b77fb8a" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <pre><code>array([[0., 1., 0., 1., 0., 0., 0.],
        [0., 0., 0., 1., 0., 1., 0.],
@@ -483,7 +492,9 @@ window.Quarto = {
 </section>
 <section id="vertex-power" class="level2">
 <h2 class="anchored" data-anchor-id="vertex-power"><em>Vertex Power</em></h2>
-<div id="db4138d7" class="cell" data-execution_count="11">
+<div id="db4138d7" class="cell" data-execution_count="12">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># directed graph </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph() </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>rows, columns <span class="op">=</span> M.shape</span>
@@ -499,6 +510,7 @@ window.Quarto = {
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>vertex_power <span class="op">=</span> np.<span class="bu">sum</span>(vertex_power_matrix, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Vertex Power'</span>: vertex_power}).sort_values(by<span class="op">=</span><span class="st">'Vertex Power'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <div>
@@ -562,7 +574,9 @@ window.Quarto = {
 <section id="reverse-page-rank" class="level2">
 <h2 class="anchored" data-anchor-id="reverse-page-rank"><em>Reverse Page Rank</em></h2>
 <p>Note that I used alpha = 0.85 and the teleportation vector is [1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7].</p>
-<div id="4c539752" class="cell" data-execution_count="12">
+<div id="4c539752" class="cell" data-execution_count="13">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse graph</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> M.transpose()</span>
@@ -584,6 +598,7 @@ window.Quarto = {
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linalg.solve(lhs, rhs)</span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Page Rank'</span>: x}).sort_values(by<span class="op">=</span><span class="st">'Page Rank'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 <div>
@@ -640,7 +655,9 @@ window.Quarto = {
 <section id="weighted-vertex-power" class="level2">
 <h2 class="anchored" data-anchor-id="weighted-vertex-power"><em>Weighted Vertex Power</em></h2>
 <p>Note I couldn’t figure out how to rename the nodes to 1-7 instead of 0-6.</p>
-<div id="b609a68b" class="cell" data-execution_count="13">
+<div id="b609a68b" class="cell" data-execution_count="14">
+<details open="" class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># weighted adjacency matrix</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.zeros((<span class="dv">7</span>,<span class="dv">7</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">4</span></span>
@@ -683,6 +700,7 @@ window.Quarto = {
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>vertex_power <span class="op">=</span> np.<span class="bu">sum</span>(vertex_power_matrix, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Vertex Power'</span>: vertex_power}).sort_values(by<span class="op">=</span><span class="st">'Vertex Power'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
 <span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <pre><code>array([[ 0.,  4.,  0., 14.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  7.,  0., 18.,  0.],
@@ -756,6 +774,8 @@ window.Quarto = {
 <p>Grade: R</p>
 </div>
 
+
+<!-- -->
 
 </section>
 </section>
@@ -840,6 +860,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1169,7 +1240,439 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Project 1"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Vincent"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "4/14/2024"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    html:</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">        code-fold: show</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">        code-tools: </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">            toggle: true</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Markov Chains</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>Here is the system of equations that represents the scenario.</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ![Systems of equations](){width="50%"} --&gt;</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>Here is the transition matrix. The market shares after 3 years are shown below given that the initial market shares are equal, which meant that the initial vector is <span class="sc">\[</span>1/3, 1/3, 1/3<span class="sc">\]</span>.</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co"># transition matrix</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> sp.Matrix([[<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.6</span>, <span class="fl">0.1</span>], [<span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>display(A)</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co"># intial vector</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>x1, x2, x3 <span class="op">=</span> sp.symbols(<span class="st">'x1 x2 x3'</span>)</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> sp.Matrix([x1, x2, x3])</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 steps, equal shares</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>xtest <span class="op">=</span> x.subs({x1: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x2: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x3: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>})</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>A3 <span class="op">=</span> (A<span class="op">**</span><span class="dv">3</span>)<span class="op">*</span>xtest</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>display(A3)</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recommendation</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>As seen in the below graphs, the effect of launching campaign 2 is better than campaign 1. Note that campaign 0 shows what would happen if no campiagn is launched. In that scenario, company C would have the highest market share whereas we would be stuck in the middle. Launching campaign 1 would not change this situation but we would be closer to C. However, launching campaign 2 would allow us to surpass C and have the highest market share, bringing us to 0.4.</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="co"># first campaign will convince 20% of the B customers who would otherwise stay with B</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="co"># in a given year to switch to A</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>event1 <span class="op">=</span> <span class="fl">0.6</span><span class="op">*</span><span class="fl">0.2</span></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> sp.Matrix([[<span class="fl">0.5</span>, <span class="fl">0.2</span> <span class="op">+</span> event1 , <span class="fl">0.3</span>], [<span class="fl">0.2</span>, <span class="fl">0.6</span> <span class="op">-</span> event1, <span class="fl">0.1</span>], [<span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>]])</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a><span class="co">#  second advertising campaign would convince 20% </span></span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a><span class="co">#  of the customers who would otherwise stay with C in a given year to switch to A</span></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>event2 <span class="op">=</span> <span class="fl">0.6</span><span class="op">*</span><span class="fl">0.2</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> sp.Matrix([[<span class="fl">0.5</span>, <span class="fl">0.2</span> , <span class="fl">0.3</span> <span class="op">+</span> event2 ], [<span class="fl">0.2</span>, <span class="fl">0.6</span>, <span class="fl">0.1</span>], [<span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span> <span class="op">-</span> event2]])</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>campaigns <span class="op">=</span> [A, B, C]</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>xtest1 <span class="op">=</span> x.subs({x1: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x2: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x3: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>})</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a>xtest2 <span class="op">=</span> x.subs({x1: <span class="dv">0</span>, x2: <span class="dv">1</span>, x3: <span class="dv">0</span>})</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>xtest3 <span class="op">=</span> x.subs({x1: <span class="dv">0</span>, x2: <span class="dv">0</span>, x3: <span class="dv">1</span>})</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>xtestlist <span class="op">=</span> [xtest1]</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> campaign <span class="kw">in</span> campaigns:</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Campaign"</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(campaigns.index(campaign)))</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xtest <span class="kw">in</span> xtestlist:</span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a>        lst <span class="op">=</span> []</span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> steps:</span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a>            l <span class="op">=</span> [i]</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a>            xstep <span class="op">=</span> (campaign<span class="op">**</span>i)<span class="op">*</span>xtest</span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>            l.extend(xstep)</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>            lst.append(l)</span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.DataFrame(lst, columns<span class="op">=</span>[<span class="st">'Step'</span>, <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])</span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'A'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'A'</span>)</span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'B'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'B'</span>)</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'C'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'C'</span>)</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Step'</span>)</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'Porportion of Customers'</span>)</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>        plt.legend()</span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>You might have noticed that we're assuming that the market shares are equal at the beginning. However, it is shown that the market shares would be the same after a couple years regardless of the initial market shares. An example is seen below where the initial market shares are <span class="sc">\[</span>0, 0, 1<span class="sc">\]</span>.</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="co"># %%</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>campaigns <span class="op">=</span> [A, B, C]</span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>xtest1 <span class="op">=</span> x.subs({x1: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x2: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, x3: <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>})</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>xtest2 <span class="op">=</span> x.subs({x1: <span class="dv">0</span>, x2: <span class="dv">1</span>, x3: <span class="dv">0</span>})</span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>xtest3 <span class="op">=</span> x.subs({x1: <span class="dv">0</span>, x2: <span class="dv">0</span>, x3: <span class="dv">1</span>})</span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>xtestlist <span class="op">=</span> [xtest3]</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> campaign <span class="kw">in</span> campaigns:</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Campaign"</span> <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> <span class="bu">str</span>(campaigns.index(campaign)))</span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> xtest <span class="kw">in</span> xtestlist:</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>        lst <span class="op">=</span> []</span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> steps:</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a>            l <span class="op">=</span> [i]</span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>            xstep <span class="op">=</span> (campaign<span class="op">**</span>i)<span class="op">*</span>xtest</span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a>            l.extend(xstep)</span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a>            lst.append(l)</span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.DataFrame(lst, columns<span class="op">=</span>[<span class="st">'Step'</span>, <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'A'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'A'</span>)</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'B'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'B'</span>)</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>        plt.plot(df[<span class="st">'Step'</span>], df[<span class="st">'C'</span>], <span class="st">"o-"</span>, label<span class="op">=</span><span class="st">'C'</span>)</span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>        plt.xlabel(<span class="st">'Step'</span>)</span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>        plt.ylabel(<span class="st">'Porportion of Customers'</span>)</span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>        plt.legend()</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a>Further analysis shows that there is a diminishing marginal return if more money is spent on a campaign to take more customers away from B or C. The is shown as the curves are concave down. Additionally, these graphs also show that spending money on taking C's customers is more valuable than taking B's because A increases around 0.15 for the former and 0.1 for the latter. Taking C's customers also makes A the market leader by a significant margin. It should be noted that this also assumes the amount of money it takes to take B's customers is the same as taking C's customers.</span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a>Additionally, although the initial market share doesn't matter, it is important to note that we're assuming these events are independent of each other. For example, perhaps customers are more likely to follow the pack if a majority of the population are using companies which means that the market would be more volatile than my simulations suggest. This would also mean that it's more important for us to have the highest market share at the beginning, making initial market shares more important.</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a>::: comments</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a>This is excellent. You've found a good balance between what to show and what to hide (in code), so that the reader can understand your point without getting bogged down in details. But your code, when I look at it, is well organized and sufficiently commented.</span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a>(Just FYI, one option, if you'd like to let the reader see your code if they like, is to put this code in the yaml at the top of the document:</span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="in">format:</span></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="in">  html:</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="in">    code-fold: show</span></span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="in">    code-tools: </span></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="in">      source: true</span></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a><span class="in">      toggle: true</span></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a>Then if you remove the "echo: false" from your code chunks, the code will be hidden by default, but the reader can click to see it. I've done this for one of your code chunks below, just so you can see what it looks like.)</span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a>Regarding this project, the only thing that I might suggest would be to discuss why these results had to happen, regardless of initial state given the specific transition matrices you had? For instance, can you look at the matrix you calculate after three years and tell from this which company will do best? </span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>Grade: E</span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="fu"># Gas in a Tube</span></span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>Before I start, I want to preface this problem by saying that I wasn't too clear what the procedure that was listed meant. For example, it said "One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of D that is, the one that gives the best approximation to t = 180 from the t = 360 values" I wasn't sure where t came from. Anyway, I think my result is decent and I'll try to explain what I did.</span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>The time dependent reaction diffusion equation is shown below and I translated it to matrix form.</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- ![Equation](){width="50%"}</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="co">![Matrix Form](){width="50%"} --&gt;</span></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a>given1 <span class="op">=</span> [<span class="dv">0</span>, <span class="fl">0.032</span>, <span class="fl">1.23</span>, <span class="fl">3.69</span>, <span class="fl">1.23</span>, <span class="fl">0.032</span>, <span class="dv">0</span>]</span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>given2 <span class="op">=</span> [<span class="dv">0</span>, <span class="fl">0.051</span>, <span class="fl">1.21</span>, <span class="fl">3.48</span>, <span class="fl">1.21</span>, <span class="fl">0.051</span>, <span class="dv">0</span>]</span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>meter <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">1</span>)<span class="op">/</span><span class="dv">6</span></span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a>meter</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, given1, label<span class="op">=</span><span class="st">'Given t = 240'</span>)</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, given2, label<span class="op">=</span><span class="st">'Given t = 270'</span>)</span>
+<span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Meter'</span>)</span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Concentration'</span>)</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>I identified the constants: N = 7, h = 1/6, and k = 1. After a preliminary graph of the table, I thought it looked similar to a normal distribution so I defined that as my function. The mean has to be 0.5 as seen in the preliminary graph. This meant that my parameters that I can tweak to get the best approximation are the standard deviation, D, and the initial concentration.</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>Here is the code so far.</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="co"># constants and initial conditions</span></span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">7</span> <span class="co"># number of nodes</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">6</span> <span class="co"># distance between nodes</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">1</span> <span class="co"># time step</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> <span class="dv">3</span><span class="op">/</span><span class="dv">6</span></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sp.zeros(N) <span class="co"># matrix M</span></span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i<span class="op">&gt;</span><span class="dv">1</span>):</span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a>        M[i<span class="op">-</span><span class="dv">1</span>,i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">&gt;</span> <span class="dv">0</span>) <span class="kw">and</span> (i <span class="op">&lt;</span> N<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a>        M[i,i] <span class="op">=</span> <span class="op">-</span><span class="dv">2</span></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i<span class="op">&lt;</span>N<span class="op">-</span><span class="dv">2</span>):</span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a>      M[i<span class="op">+</span><span class="dv">1</span>,i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters</span></span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>y_t0 <span class="op">=</span> sp.Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]) <span class="co"># initial condition</span></span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> normal_distribution_function(x):</span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> std</span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> mean</span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(s<span class="op">*</span>np.sqrt(<span class="dv">2</span><span class="op">*</span>np.pi))<span class="op">*</span>(sp.exp(<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">*</span>((x<span class="op">-</span>m)<span class="op">/</span>s)<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-230"><a href="#cb11-230" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reaction_diffusion_equation(y):</span>
+<span id="cb11-231"><a href="#cb11-231" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> k<span class="op">*</span>D<span class="op">/</span>h<span class="op">**</span><span class="dv">2</span> <span class="op">*</span> M <span class="op">*</span> y <span class="op">+</span> y <span class="op">+</span> k <span class="op">*</span> y.applyfunc(normal_distribution_function)</span>
+<span id="cb11-232"><a href="#cb11-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-233"><a href="#cb11-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-234"><a href="#cb11-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-235"><a href="#cb11-235" aria-hidden="true" tabindex="-1"></a>After this, I tweaked the parameters to get the best approximation. I found that D = 0.000005, mean = 3/6, std = 1, and the initial concentration of <span class="sc">\[</span>0, 0, 1.25, 4, 1.25, 0, 0<span class="sc">\]</span> gave me the best approximation. The comparison between the approximation and the actual values for t = 240 and t = 270 are shown below.</span>
+<span id="cb11-236"><a href="#cb11-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-239"><a href="#cb11-239" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-240"><a href="#cb11-240" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb11-241"><a href="#cb11-241" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> <span class="fl">0.000005</span></span>
+<span id="cb11-242"><a href="#cb11-242" aria-hidden="true" tabindex="-1"></a>y_t0 <span class="op">=</span> sp.Matrix([<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">1.25</span>, <span class="dv">4</span>, <span class="fl">1.25</span>, <span class="dv">0</span>, <span class="dv">0</span>]) <span class="co"># initial condition</span></span>
+<span id="cb11-243"><a href="#cb11-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-244"><a href="#cb11-244" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb11-245"><a href="#cb11-245" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">240</span></span>
+<span id="cb11-246"><a href="#cb11-246" aria-hidden="true" tabindex="-1"></a>y_t <span class="op">=</span> y_t0</span>
+<span id="cb11-247"><a href="#cb11-247" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
+<span id="cb11-248"><a href="#cb11-248" aria-hidden="true" tabindex="-1"></a>    y_t <span class="op">=</span> reaction_diffusion_equation(y_t)</span>
+<span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a>yplot <span class="op">=</span> [item[<span class="dv">0</span>] <span class="cf">for</span> item <span class="kw">in</span> y_t.tolist()]</span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, yplot, label <span class="op">=</span> <span class="st">'Predicted t = 240'</span>)</span>
+<span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, given1, label<span class="op">=</span><span class="st">'Given t = 240'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Meter'</span>)</span>
+<span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Concentration'</span>)</span>
+<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">270</span></span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a>y_t <span class="op">=</span> y_t0</span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a>    y_t <span class="op">=</span> reaction_diffusion_equation(y_t)</span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a>yplot <span class="op">=</span> [item[<span class="dv">0</span>] <span class="cf">for</span> item <span class="kw">in</span> y_t.tolist()]</span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, yplot, label <span class="op">=</span> <span class="st">'Predicted t = 270'</span>)</span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a>plt.plot(meter, given2, label<span class="op">=</span><span class="st">'Given t = 270'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Meter'</span>)</span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Concentration'</span>)</span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a>For t = 210, I got:</span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">210</span></span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a>y_t <span class="op">=</span> y_t0</span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a>    y_t <span class="op">=</span> reaction_diffusion_equation(y_t)</span>
+<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a>display(y_t)</span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a>For t = 300, I got:</span>
+<span id="cb11-289"><a href="#cb11-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-290"><a href="#cb11-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-291"><a href="#cb11-291" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb11-292"><a href="#cb11-292" aria-hidden="true" tabindex="-1"></a>y_t <span class="op">=</span> y_t0</span>
+<span id="cb11-293"><a href="#cb11-293" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
+<span id="cb11-294"><a href="#cb11-294" aria-hidden="true" tabindex="-1"></a>    y_t <span class="op">=</span> reaction_diffusion_equation(y_t)</span>
+<span id="cb11-295"><a href="#cb11-295" aria-hidden="true" tabindex="-1"></a>display(y_t)</span>
+<span id="cb11-296"><a href="#cb11-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-297"><a href="#cb11-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-298"><a href="#cb11-298" aria-hidden="true" tabindex="-1"></a>::: comments</span>
+<span id="cb11-299"><a href="#cb11-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-300"><a href="#cb11-300" aria-hidden="true" tabindex="-1"></a>As we discussed, you didn't need to use the normal distribution here. I'd like to see you work this problem including the backwards time method. There was a mistake in the original project description, which I apologize for --  the times should have been 240 and 270, not 180 and 360, so you are trying to find the best D to approximate the values at t=240 and given the values at t=270.</span>
+<span id="cb11-301"><a href="#cb11-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-302"><a href="#cb11-302" aria-hidden="true" tabindex="-1"></a>I think it will just take a bit more work to get this right!</span>
+<span id="cb11-303"><a href="#cb11-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-304"><a href="#cb11-304" aria-hidden="true" tabindex="-1"></a>Grade: R</span>
+<span id="cb11-305"><a href="#cb11-305" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb11-306"><a href="#cb11-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-307"><a href="#cb11-307" aria-hidden="true" tabindex="-1"></a><span class="fu"># Sports Ranking</span></span>
+<span id="cb11-308"><a href="#cb11-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-309"><a href="#cb11-309" aria-hidden="true" tabindex="-1"></a><span class="fu">## Win Loss Ratio</span></span>
+<span id="cb11-310"><a href="#cb11-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-313"><a href="#cb11-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-314"><a href="#cb11-314" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-315"><a href="#cb11-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-316"><a href="#cb11-316" aria-hidden="true" tabindex="-1"></a><span class="co">#adjacency matrix</span></span>
+<span id="cb11-317"><a href="#cb11-317" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.zeros((<span class="dv">7</span>,<span class="dv">7</span>))</span>
+<span id="cb11-318"><a href="#cb11-318" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-319"><a href="#cb11-319" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-320"><a href="#cb11-320" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-321"><a href="#cb11-321" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">3</span>,<span class="dv">4</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-322"><a href="#cb11-322" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-323"><a href="#cb11-323" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-324"><a href="#cb11-324" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-325"><a href="#cb11-325" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-326"><a href="#cb11-326" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-327"><a href="#cb11-327" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-328"><a href="#cb11-328" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-329"><a href="#cb11-329" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-330"><a href="#cb11-330" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">6</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-331"><a href="#cb11-331" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-332"><a href="#cb11-332" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">4</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-333"><a href="#cb11-333" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-334"><a href="#cb11-334" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-335"><a href="#cb11-335" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-336"><a href="#cb11-336" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-337"><a href="#cb11-337" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-338"><a href="#cb11-338" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb11-339"><a href="#cb11-339" aria-hidden="true" tabindex="-1"></a>display(M)</span>
+<span id="cb11-340"><a href="#cb11-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-341"><a href="#cb11-341" aria-hidden="true" tabindex="-1"></a><span class="co"># win loss</span></span>
+<span id="cb11-342"><a href="#cb11-342" aria-hidden="true" tabindex="-1"></a>team <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">8</span>)</span>
+<span id="cb11-343"><a href="#cb11-343" aria-hidden="true" tabindex="-1"></a>wins <span class="op">=</span> np.<span class="bu">sum</span>(M, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-344"><a href="#cb11-344" aria-hidden="true" tabindex="-1"></a>losses <span class="op">=</span> np.<span class="bu">sum</span>(M, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-345"><a href="#cb11-345" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Wins'</span>: wins, <span class="st">'Losses'</span>: losses, <span class="st">'Ratio'</span>: wins<span class="op">/</span>losses}).sort_values(by<span class="op">=</span><span class="st">'Ratio'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
+<span id="cb11-346"><a href="#cb11-346" aria-hidden="true" tabindex="-1"></a>display(df)</span>
+<span id="cb11-347"><a href="#cb11-347" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-348"><a href="#cb11-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-349"><a href="#cb11-349" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vertex Power</span></span>
+<span id="cb11-350"><a href="#cb11-350" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-351"><a href="#cb11-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-354"><a href="#cb11-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-355"><a href="#cb11-355" aria-hidden="true" tabindex="-1"></a><span class="co"># directed graph </span></span>
+<span id="cb11-356"><a href="#cb11-356" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph() </span>
+<span id="cb11-357"><a href="#cb11-357" aria-hidden="true" tabindex="-1"></a>rows, columns <span class="op">=</span> M.shape</span>
+<span id="cb11-358"><a href="#cb11-358" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(rows): </span>
+<span id="cb11-359"><a href="#cb11-359" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(columns): </span>
+<span id="cb11-360"><a href="#cb11-360" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> M[i][j] <span class="op">==</span> <span class="dv">1</span>: </span>
+<span id="cb11-361"><a href="#cb11-361" aria-hidden="true" tabindex="-1"></a>      G.add_edge(i<span class="op">+</span><span class="dv">1</span>,j<span class="op">+</span><span class="dv">1</span>) </span>
+<span id="cb11-362"><a href="#cb11-362" aria-hidden="true" tabindex="-1"></a>nx.draw(G, with_labels<span class="op">=</span><span class="va">True</span>, node_size <span class="op">=</span> <span class="dv">5000</span>, node_color <span class="op">=</span> <span class="st">'lightblue'</span>, font_size <span class="op">=</span> <span class="dv">20</span>, font_color <span class="op">=</span> <span class="st">'black'</span>)</span>
+<span id="cb11-363"><a href="#cb11-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-364"><a href="#cb11-364" aria-hidden="true" tabindex="-1"></a>Msquared <span class="op">=</span> np.dot(M,M)</span>
+<span id="cb11-365"><a href="#cb11-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-366"><a href="#cb11-366" aria-hidden="true" tabindex="-1"></a>vertex_power_matrix <span class="op">=</span> Msquared <span class="op">+</span> M</span>
+<span id="cb11-367"><a href="#cb11-367" aria-hidden="true" tabindex="-1"></a>vertex_power <span class="op">=</span> np.<span class="bu">sum</span>(vertex_power_matrix, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-368"><a href="#cb11-368" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Vertex Power'</span>: vertex_power}).sort_values(by<span class="op">=</span><span class="st">'Vertex Power'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
+<span id="cb11-369"><a href="#cb11-369" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb11-370"><a href="#cb11-370" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-371"><a href="#cb11-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-372"><a href="#cb11-372" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reverse Page Rank</span></span>
+<span id="cb11-373"><a href="#cb11-373" aria-hidden="true" tabindex="-1"></a>Note that I used alpha = 0.85 and the teleportation vector is <span class="sc">\[</span>1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7<span class="sc">\]</span>.</span>
+<span id="cb11-376"><a href="#cb11-376" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-377"><a href="#cb11-377" aria-hidden="true" tabindex="-1"></a><span class="co"># reverse graph</span></span>
+<span id="cb11-378"><a href="#cb11-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-379"><a href="#cb11-379" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> M.transpose()</span>
+<span id="cb11-380"><a href="#cb11-380" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.identity(<span class="dv">7</span>)</span>
+<span id="cb11-381"><a href="#cb11-381" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
+<span id="cb11-382"><a href="#cb11-382" aria-hidden="true" tabindex="-1"></a>    D[i,i] <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(np.<span class="bu">sum</span>(T[i],axis <span class="op">=</span> <span class="dv">0</span>))</span>
+<span id="cb11-383"><a href="#cb11-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-384"><a href="#cb11-384" aria-hidden="true" tabindex="-1"></a><span class="co"># transition matrix</span></span>
+<span id="cb11-385"><a href="#cb11-385" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.dot(T.transpose(),D)</span>
+<span id="cb11-386"><a href="#cb11-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-387"><a href="#cb11-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-388"><a href="#cb11-388" aria-hidden="true" tabindex="-1"></a><span class="co"># teleportation vector</span></span>
+<span id="cb11-389"><a href="#cb11-389" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>])</span>
+<span id="cb11-390"><a href="#cb11-390" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
+<span id="cb11-391"><a href="#cb11-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-392"><a href="#cb11-392" aria-hidden="true" tabindex="-1"></a>lhs <span class="op">=</span> (np.identity(<span class="dv">7</span>) <span class="op">-</span> a <span class="op">*</span> P)</span>
+<span id="cb11-393"><a href="#cb11-393" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> (<span class="dv">1</span><span class="op">-</span>a) <span class="op">*</span> v</span>
+<span id="cb11-394"><a href="#cb11-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-395"><a href="#cb11-395" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linalg.solve(lhs, rhs)</span>
+<span id="cb11-396"><a href="#cb11-396" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Page Rank'</span>: x}).sort_values(by<span class="op">=</span><span class="st">'Page Rank'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
+<span id="cb11-397"><a href="#cb11-397" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb11-398"><a href="#cb11-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-399"><a href="#cb11-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-400"><a href="#cb11-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-401"><a href="#cb11-401" aria-hidden="true" tabindex="-1"></a><span class="fu">## Weighted Vertex Power</span></span>
+<span id="cb11-402"><a href="#cb11-402" aria-hidden="true" tabindex="-1"></a>Note I couldn't figure out how to rename the nodes to 1-7 instead of 0-6.</span>
+<span id="cb11-405"><a href="#cb11-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-406"><a href="#cb11-406" aria-hidden="true" tabindex="-1"></a><span class="co"># weighted adjacency matrix</span></span>
+<span id="cb11-407"><a href="#cb11-407" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.zeros((<span class="dv">7</span>,<span class="dv">7</span>))</span>
+<span id="cb11-408"><a href="#cb11-408" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb11-410"><a href="#cb11-410" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb11-411"><a href="#cb11-411" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">3</span>,<span class="dv">4</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb11-412"><a href="#cb11-412" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb11-413"><a href="#cb11-413" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb11-414"><a href="#cb11-414" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">23</span></span>
+<span id="cb11-415"><a href="#cb11-415" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb11-416"><a href="#cb11-416" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb11-417"><a href="#cb11-417" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">1</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb11-418"><a href="#cb11-418" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb11-419"><a href="#cb11-419" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">14</span></span>
+<span id="cb11-420"><a href="#cb11-420" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">6</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb11-421"><a href="#cb11-421" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb11-422"><a href="#cb11-422" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">2</span>,<span class="dv">4</span>] <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb11-423"><a href="#cb11-423" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">18</span></span>
+<span id="cb11-424"><a href="#cb11-424" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">45</span></span>
+<span id="cb11-425"><a href="#cb11-425" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">4</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb11-426"><a href="#cb11-426" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">6</span>,<span class="dv">5</span>] <span class="op">=</span> <span class="dv">19</span></span>
+<span id="cb11-427"><a href="#cb11-427" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">0</span>,<span class="dv">3</span>] <span class="op">=</span> <span class="dv">14</span></span>
+<span id="cb11-428"><a href="#cb11-428" aria-hidden="true" tabindex="-1"></a>M[<span class="dv">5</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">13</span></span>
+<span id="cb11-429"><a href="#cb11-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-430"><a href="#cb11-430" aria-hidden="true" tabindex="-1"></a>display(M)</span>
+<span id="cb11-431"><a href="#cb11-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-432"><a href="#cb11-432" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.from_numpy_array(np.matrix(M), create_using<span class="op">=</span>nx.DiGraph)</span>
+<span id="cb11-433"><a href="#cb11-433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-434"><a href="#cb11-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-435"><a href="#cb11-435" aria-hidden="true" tabindex="-1"></a>layout <span class="op">=</span> nx.spring_layout(G)</span>
+<span id="cb11-436"><a href="#cb11-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-437"><a href="#cb11-437" aria-hidden="true" tabindex="-1"></a>nx.draw(G, layout, with_labels<span class="op">=</span><span class="va">True</span>, node_size <span class="op">=</span> <span class="dv">1000</span>, node_color <span class="op">=</span> <span class="st">'lightblue'</span>, font_size <span class="op">=</span> <span class="dv">20</span>, font_color <span class="op">=</span> <span class="st">'black'</span>)</span>
+<span id="cb11-438"><a href="#cb11-438" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> nx.get_edge_attributes(G, <span class="st">"weight"</span>)</span>
+<span id="cb11-439"><a href="#cb11-439" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_edge_labels(G, pos<span class="op">=</span>layout, edge_labels<span class="op">=</span>labels)</span>
+<span id="cb11-440"><a href="#cb11-440" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-441"><a href="#cb11-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-442"><a href="#cb11-442" aria-hidden="true" tabindex="-1"></a>Msquared <span class="op">=</span> np.dot(M,M)</span>
+<span id="cb11-443"><a href="#cb11-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-444"><a href="#cb11-444" aria-hidden="true" tabindex="-1"></a>vertex_power_matrix <span class="op">=</span> Msquared <span class="op">+</span> M</span>
+<span id="cb11-445"><a href="#cb11-445" aria-hidden="true" tabindex="-1"></a>vertex_power <span class="op">=</span> np.<span class="bu">sum</span>(vertex_power_matrix, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-446"><a href="#cb11-446" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'Team'</span>: team, <span class="st">'Vertex Power'</span>: vertex_power}).sort_values(by<span class="op">=</span><span class="st">'Vertex Power'</span>, ascending<span class="op">=</span><span class="va">False</span>).set_index(<span class="st">'Team'</span>)</span>
+<span id="cb11-447"><a href="#cb11-447" aria-hidden="true" tabindex="-1"></a>df</span>
+<span id="cb11-448"><a href="#cb11-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-449"><a href="#cb11-449" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-450"><a href="#cb11-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-451"><a href="#cb11-451" aria-hidden="true" tabindex="-1"></a>::: comments</span>
+<span id="cb11-452"><a href="#cb11-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-453"><a href="#cb11-453" aria-hidden="true" tabindex="-1"></a>This is a good start. Your code seems good -- but I'd like to also see some writing: describing the problem, explanation about what is happening mathematically in these different cases, and why your code matches what these formulas say. Then, it would be good to see a brief discussion of why the different rankings give different results, and which one you think is the most accurate.</span>
+<span id="cb11-454"><a href="#cb11-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-455"><a href="#cb11-455" aria-hidden="true" tabindex="-1"></a>Grade: R</span>
+<span id="cb11-456"><a href="#cb11-456" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

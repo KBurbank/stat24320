@@ -256,9 +256,9 @@ Use this to calculate $A^{T} A$.
 ## Orthogonal matrix
 
 ::: definition
-A square real matrix $Q$ is called orthogonal if $Q^{T}=Q^{-1}$.
+A square real matrix $Q$ is called **orthogonal** if $Q^{T}=Q^{-1}$.
 
- A square matrix $U$ is called unitary if $U^{*}=U^{-1}$.
+ A square matrix $U$ is called **unitary** if $U^{*}=U^{-1}$.
 :::
 
 ## Example
@@ -294,9 +294,9 @@ R(\theta)^{T} R(\theta) & =\left(\left[\begin{array}{cc}
 \end{aligned}
 $$
 
-. . .
+## Rigidity of orthogonal (and unitary) matrices
 
-This rotation matrix preserves vector lengths and angles between vectors (illustrate).
+This rotation matrix preserves vector lengths and angles between vectors (illustrate by hand).
 
 Thus, $R(\theta)\mathbf{x}\cdot R(\theta)\mathbf{y}=\mathbf{x} \cdot \mathbf{y}$ 
 
@@ -313,4 +313,115 @@ also,
 $$
 \|Q \mathbf{x}\|^{2}=Q \mathbf{x} \cdot Q \mathbf{x}=(Q \mathbf{x})^{T} Q \mathbf{x}=\mathbf{x}^{T} Q^{T} Q \mathbf{x}=\mathbf{x}^{T} \mathbf{x}=\|\mathbf{x}\|^{2}
 $$
+
+# Finding orthogonal bases
+
+## Gram-Schmidt Algorithm
+
+
+Let $\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n}$ be linearly independent vectors in a standard space. 
+
+. . .
+
+Define vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ **recursively**:
+
+Take each $\mathbf{w}_{k}$ and subtract off the projection of $\mathbf{w}_{k}$ onto each of the previous vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k-1}$
+
+. . .
+
+$$
+\mathbf{v}_{k}=\mathbf{w}_{k}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{k}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}-\cdots-\frac{\mathbf{v}_{k-1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{k-1} \cdot \mathbf{v}_{k-1}} \mathbf{v}_{k-1}, \quad k=1, \ldots, n
+$$
+
+##
+
+
+$$
+\mathbf{v}_{k}=\mathbf{w}_{k}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{k}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}-\cdots-\frac{\mathbf{v}_{k-1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{k-1} \cdot \mathbf{v}_{k-1}} \mathbf{v}_{k-1}, \quad k=1, \ldots, n
+$$
+
+Then
+
+(1) The vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}$ form an orthogonal set.
+
+(2) For each index $k=1, \ldots, n$,
+
+$$
+\operatorname{span}\left\{\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{k}\right\}=\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}\right\}
+$$
+
+## Example
+
+Let $V=\mathcal{C}(A)$ with the standard inner product and compute an orthonormal basis of $V$, where
+
+$$
+A=\left[\begin{array}{rrrr}
+1 & 2 & 0 & -1 \\
+1 & -1 & 3 & 2 \\
+1 & -1 & 3 & 2 \\
+-1 & 1 & -3 & 1
+\end{array}\right]
+$$
+
+. . .
+
+::: notes
+We need to check that the columns of $A$ are linearly independent. We can do that by checking the rank of $A$. 
+- One way to do this is to row reduce $A$ to see if we get a row of zeros. If we do, then the rank is less than 4 and the columns are linearly dependent. If we don't, then the rank is 4 and the columns are linearly independent. 
+- Another way is to compute the determinant of $A^{T}A$. If the determinant is nonzero, then the columns are linearly independent. If the determinant is zero, then the columns are linearly dependent.
+
+But we can see right away that it's not full rank, since we have a repeated row!
+:::
+
+RREF of $A$ is:
+
+$$
+R=\left[\begin{array}{rrrr}
+1 & 0 & 2 & 0 \\
+0 & 1 & -1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+$$
+
+. . .
+
+The independent columns are columns 1, 2, and 4.
+
+. . .
+
+So let these be our $\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}$.
+
+. . .
+
+Step 1: $\mathbf{v}_{1}=\mathbf{w}_{1}=(1,1,1,-1)$
+
+. . .
+
+Step 2: $\mathbf{v}_{2}=\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}$
+. . .
+
+$=(2,-1,-1,1)-\frac{-1}{4}(1,1,1,-1)=\frac{1}{4}(9,-3,-3,3)$
+
+. . .
+
+Step 3: $\mathbf{v}_{3}=\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}$
+
+. . .
+
+$=(-1,2,2,1)-\frac{2}{4}(1,1,1,-1)-\frac{-18}{108}(9,-3,-3,3)=(0,1,1,2)$
+
+## Finding orthonormal basis
+
+Now we need to normalize these vectors to get an orthonormal basis.
+
+. . .
+
+$\mathbf{u}_{1}=\frac{1}{\|\mathbf{v}_{1}\|} \mathbf{v}_{1}=\frac{1}{2}(1,1,1,-1)$
+
+. . .
+
+$\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}(9,-3,-3,3)$ etc.
+
+
 

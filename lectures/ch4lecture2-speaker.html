@@ -348,6 +348,7 @@
 <h2 id="toc-title">Outline for today</h2>
 <ul>
 <li class="fragment"><a href="#/orthogonal-and-orthonormal-sets" id="/toc-orthogonal-and-orthonormal-sets"><em>Orthogonal and Orthonormal Sets</em></a></li>
+<li class="fragment"><a href="#/finding-orthogonal-bases" id="/toc-finding-orthogonal-bases"><em>Finding orthogonal bases</em></a></li>
 </ul>
 </nav>
 </section>
@@ -586,8 +587,8 @@ c_{k}=\frac{\mathbf{v}_{k} \cdot \mathbf{v}}{\mathbf{v}_{k} \cdot \mathbf{v}_{k}
 <section id="orthogonal-matrix-1" class="title-slide slide level2 center">
 <h2><em>Orthogonal matrix</em></h2>
 <div class="definition">
-<p>A square real matrix <span class="math inline">\(Q\)</span> is called orthogonal if <span class="math inline">\(Q^{T}=Q^{-1}\)</span>.</p>
-<p>A square matrix <span class="math inline">\(U\)</span> is called unitary if <span class="math inline">\(U^{*}=U^{-1}\)</span>.</p>
+<p>A square real matrix <span class="math inline">\(Q\)</span> is called <strong>orthogonal</strong> if <span class="math inline">\(Q^{T}=Q^{-1}\)</span>.</p>
+<p>A square matrix <span class="math inline">\(U\)</span> is called <strong>unitary</strong> if <span class="math inline">\(U^{*}=U^{-1}\)</span>.</p>
 </div>
 </section>
 
@@ -621,10 +622,12 @@ R(\theta)^{T} R(\theta) &amp; =\left(\left[\begin{array}{cc}
 \end{aligned}
 \]</span></p>
 </div>
-<div class="fragment">
-<p>This rotation matrix preserves vector lengths and angles between vectors (illustrate).</p>
+</section>
+
+<section id="rigidity-of-orthogonal-and-unitary-matrices" class="title-slide slide level2 center">
+<h2><em>Rigidity of orthogonal (and unitary) matrices</em></h2>
+<p>This rotation matrix preserves vector lengths and angles between vectors (illustrate by hand).</p>
 <p>Thus, <span class="math inline">\(R(\theta)\mathbf{x}\cdot R(\theta)\mathbf{y}=\mathbf{x} \cdot \mathbf{y}\)</span></p>
-</div>
 <div class="fragment">
 <p>This is true in <em>general</em> for orthogonal matrices:</p>
 <p><span class="math display">\[
@@ -634,6 +637,108 @@ Q \mathbf{x} \cdot Q \mathbf{y}=(Q \mathbf{x})^{T} Q \mathbf{y}=\mathbf{x}^{T} Q
 <p><span class="math display">\[
 \|Q \mathbf{x}\|^{2}=Q \mathbf{x} \cdot Q \mathbf{x}=(Q \mathbf{x})^{T} Q \mathbf{x}=\mathbf{x}^{T} Q^{T} Q \mathbf{x}=\mathbf{x}^{T} \mathbf{x}=\|\mathbf{x}\|^{2}
 \]</span></p>
+</div>
+</section>
+</section>
+<section>
+<section id="finding-orthogonal-bases" class="title-slide slide level1 center">
+<h1><em>Finding orthogonal bases</em></h1>
+
+</section>
+<section id="gram-schmidt-algorithm" class="title-slide slide level2 center">
+<h2><em>Gram-Schmidt Algorithm</em></h2>
+<p>Let <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n}\)</span> be linearly independent vectors in a standard space.</p>
+<div class="fragment">
+<p>Define vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> <strong>recursively</strong>:</p>
+<p>Take each <span class="math inline">\(\mathbf{w}_{k}\)</span> and subtract off the projection of <span class="math inline">\(\mathbf{w}_{k}\)</span> onto each of the previous vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k-1}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{v}_{k}=\mathbf{w}_{k}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{k}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}-\cdots-\frac{\mathbf{v}_{k-1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{k-1} \cdot \mathbf{v}_{k-1}} \mathbf{v}_{k-1}, \quad k=1, \ldots, n
+\]</span></p>
+</div>
+</section>
+
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\mathbf{v}_{k}=\mathbf{w}_{k}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{k}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}-\cdots-\frac{\mathbf{v}_{k-1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{k-1} \cdot \mathbf{v}_{k-1}} \mathbf{v}_{k-1}, \quad k=1, \ldots, n
+\]</span></p>
+<p>Then</p>
+<ol type="1">
+<li class="fragment"><p>The vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}\)</span> form an orthogonal set.</p></li>
+<li class="fragment"><p>For each index <span class="math inline">\(k=1, \ldots, n\)</span>,</p></li>
+</ol>
+<p><span class="math display">\[
+\operatorname{span}\left\{\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{k}\right\}=\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}\right\}
+\]</span></p>
+</section>
+
+<section id="example-2" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Let <span class="math inline">\(V=\mathcal{C}(A)\)</span> with the standard inner product and compute an orthonormal basis of <span class="math inline">\(V\)</span>, where</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{rrrr}
+1 &amp; 2 &amp; 0 &amp; -1 \\
+1 &amp; -1 &amp; 3 &amp; 2 \\
+1 &amp; -1 &amp; 3 &amp; 2 \\
+-1 &amp; 1 &amp; -3 &amp; 1
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<aside class="notes">
+<p>We need to check that the columns of <span class="math inline">\(A\)</span> are linearly independent. We can do that by checking the rank of <span class="math inline">\(A\)</span>. - One way to do this is to row reduce <span class="math inline">\(A\)</span> to see if we get a row of zeros. If we do, then the rank is less than 4 and the columns are linearly dependent. If we don’t, then the rank is 4 and the columns are linearly independent. - Another way is to compute the determinant of <span class="math inline">\(A^{T}A\)</span>. If the determinant is nonzero, then the columns are linearly independent. If the determinant is zero, then the columns are linearly dependent.</p>
+<p>But we can see right away that it’s not full rank, since we have a repeated row!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>RREF of <span class="math inline">\(A\)</span> is:</p>
+<p><span class="math display">\[
+R=\left[\begin{array}{rrrr}
+1 &amp; 0 &amp; 2 &amp; 0 \\
+0 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The independent columns are columns 1, 2, and 4.</p>
+</div>
+<div class="fragment">
+<p>So let these be our <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Step 1: <span class="math inline">\(\mathbf{v}_{1}=\mathbf{w}_{1}=(1,1,1,-1)\)</span></p>
+</div>
+<div class="fragment">
+<p>Step 2: <span class="math inline">\(\mathbf{v}_{2}=\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}\)</span> . . .</p>
+<p><span class="math inline">\(=(2,-1,-1,1)-\frac{-1}{4}(1,1,1,-1)=\frac{1}{4}(9,-3,-3,3)\)</span></p>
+</div>
+<div class="fragment">
+<p>Step 3: <span class="math inline">\(\mathbf{v}_{3}=\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(=(-1,2,2,1)-\frac{2}{4}(1,1,1,-1)-\frac{-18}{108}(9,-3,-3,3)=(0,1,1,2)\)</span></p>
+</div>
+</section>
+
+<section id="finding-orthonormal-basis" class="title-slide slide level2 center">
+<h2><em>Finding orthonormal basis</em></h2>
+<p>Now we need to normalize these vectors to get an orthonormal basis.</p>
+<div class="fragment">
+<p><span class="math inline">\(\mathbf{u}_{1}=\frac{1}{\|\mathbf{v}_{1}\|} \mathbf{v}_{1}=\frac{1}{2}(1,1,1,-1)\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}(9,-3,-3,3)\)</span> etc.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1058,7 +1163,7 @@ Q \mathbf{x} \cdot Q \mathbf{y}=(Q \mathbf{x})^{T} Q \mathbf{y}=\mathbf{x}^{T} Q
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

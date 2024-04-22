@@ -1055,13 +1055,17 @@ A=\left[\begin{array}{rrr}
 <h2><em>Solving a linear system with QR</em></h2>
 <p><span class="math inline">\(R \mathbf{x}=Q^{T} \mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b}=(1,1,1,1)\)</span></p>
 <div class="fragment">
+<div id="620fc471" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb1-2"><a></a>Q <span class="op">=</span> sp.Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">0</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">1</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">1</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)], [<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">2</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)]])</span>
 <span id="cb1-3"><a></a>R <span class="op">=</span> sp.Matrix([[<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">3</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)<span class="op">/</span><span class="dv">2</span>, <span class="op">-</span>sp.sqrt(<span class="dv">3</span>)], [<span class="dv">0</span>, <span class="dv">0</span>, sp.sqrt(<span class="dv">6</span>)]])</span>
 <span id="cb1-4"><a></a>b <span class="op">=</span> sp.Matrix([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
 <span id="cb1-5"><a></a>Q.T<span class="op">*</span>b</span>
 <span id="cb1-6"><a></a><span class="bu">print</span>(sp.latex(R)<span class="op">+</span><span class="st">'='</span><span class="op">+</span>sp.latex(Q.T<span class="op">*</span>b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>=</p>
+<div class="cell-output cell-output-stdout">
+<pre><code>\left[\begin{matrix}2 &amp; -0.5 &amp; 1\\0 &amp; \frac{3 \sqrt{3}}{2} &amp; - \sqrt{3}\\0 &amp; 0 &amp; \sqrt{6}\end{matrix}\right]=\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{matrix}\right]</code></pre>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1486,7 +1490,7 @@ A=\left[\begin{array}{rrr}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

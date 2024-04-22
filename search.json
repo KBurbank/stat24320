@@ -2650,6 +2650,6 @@
     "href": "lectures/ch4lecture2.html#solving-a-linear-system-with-qr",
     "title": "Ch4 Lecture 2",
     "section": "Solving a linear system with QR",
-    "text": "Solving a linear system with QR\n\\(R \\mathbf{x}=Q^{T} \\mathbf{b}\\), where \\(\\mathbf{b}=(1,1,1,1)\\)\n\nimport sympy as sp\nQ = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])\nR = sp.Matrix([[2, -1/2, 1], [0, 3*sp.sqrt(3)/2, -sp.sqrt(3)], [0, 0, sp.sqrt(6)]])\nb = sp.Matrix([1, 1, 1, 1])\nQ.T*b\nprint(sp.latex(R)+'='+sp.latex(Q.T*b))\n="
+    "text": "Solving a linear system with QR\n\\(R \\mathbf{x}=Q^{T} \\mathbf{b}\\), where \\(\\mathbf{b}=(1,1,1,1)\\)\n\n\nimport sympy as sp\nQ = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])\nR = sp.Matrix([[2, -1/2, 1], [0, 3*sp.sqrt(3)/2, -sp.sqrt(3)], [0, 0, sp.sqrt(6)]])\nb = sp.Matrix([1, 1, 1, 1])\nQ.T*b\nprint(sp.latex(R)+'='+sp.latex(Q.T*b))\n\n\\left[\\begin{matrix}2 & -0.5 & 1\\\\0 & \\frac{3 \\sqrt{3}}{2} & - \\sqrt{3}\\\\0 & 0 & \\sqrt{6}\\end{matrix}\\right]=\\left[\\begin{matrix}1.0\\\\\\frac{\\sqrt{3}}{3}\\\\\\frac{2 \\sqrt{6}}{3}\\end{matrix}\\right]"
   }
 ]

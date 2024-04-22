@@ -939,8 +939,6 @@ $$
 
 . . .
 
-In matrix form,
-
 $$
 W_{N}=\frac{\sqrt{2}}{2}\left[\begin{array}{ccccccc}
 1 & 1 & 0 & 0 & \ldots & 0 & 0  \\

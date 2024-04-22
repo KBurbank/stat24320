@@ -965,9 +965,9 @@ $$
 
 ::: {#fig-lady layout-ncol=2}
 
-![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246)
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246){width=25%}
 
-![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&width=526&top_left_y=201&top_left_x=756)
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&width=526&top_left_y=201&top_left_x=756){width=25%}
 
 :::
 

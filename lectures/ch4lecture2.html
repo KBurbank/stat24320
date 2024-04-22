@@ -743,11 +743,254 @@ R=\left[\begin{array}{rrrr}
 </div>
 </section>
 </section>
+<section>
 <section id="qr-factorization" class="title-slide slide level1 center">
 <h1><em>QR Factorization</em></h1>
 <div class="theorem">
 <p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> full-column-rank matrix, then <span class="math inline">\(A=Q R\)</span>, where the columns of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(Q\)</span> are orthonormal vectors and the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(R\)</span> is upper triangular with nonzero diagonal entries.</p>
 </div>
+<div class="fragment">
+<p>Why do we care?</p>
+<ul>
+<li class="fragment">Can use to solve linear systems:</li>
+</ul>
+<aside class="notes">
+<p><span class="math display">\[
+Q^{T} A \mathbf{x}=Q^{T} Q R \mathbf{x}=I R \mathbf{x}=R \mathbf{x}=Q^{T} b .
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment">can be less susceptible to round-off error than Gauss-Jordan.</li>
+<li class="fragment">Can be used to solve least squares problems (will show you how!)</li>
+</ul>
+</div>
+</section>
+<section id="how-to-find-q-and-r" class="title-slide slide level2 center">
+<h2><em>How to find <span class="math inline">\(Q\)</span> and <span class="math inline">\(R\)</span></em></h2>
+<ol type="1">
+<li class="fragment">Start with the columns of A, <span class="math inline">\(A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]\)</span>. (For now assume they are linearly independent.)</li>
+<li class="fragment">Do Gram-Schmidt on the columns of <span class="math inline">\(A\)</span>:</li>
+</ol>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mathbf{v}_{1}=\mathbf{w}_{1} \\
+&amp; \mathbf{v}_{2}=\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1} \\
+&amp; \mathbf{v}_{3}=\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2} .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li class="fragment">Solve these equations for <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\)</span>:</li>
+</ol>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mathbf{w}_{1}=\mathbf{v}_{1} \\
+&amp; \mathbf{w}_{2}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\mathbf{v}_{2} \\
+&amp; \mathbf{w}_{3}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}+\mathbf{v}_{3} .
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+
+<section id="section-4" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mathbf{w}_{1}=\mathbf{v}_{1} \\
+&amp; \mathbf{w}_{2}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\mathbf{v}_{2} \\
+&amp; \mathbf{w}_{3}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}+\mathbf{v}_{3} .
+\end{aligned}
+\]</span></p>
+<p>In matrix form, these become:</p>
+<div class="fragment">
+<p><span class="math display">\[
+A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{ccc}
+1 &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \\
+0 &amp; 1 &amp; \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\]</span></p>
+<aside class="notes">
+<p>We are almost there! We have an upper triangular matrix and we have an <em>orthogonal</em> matrix; it’s just not normalized yet.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+
+<section id="normalizing-q" class="title-slide slide level2 center">
+<h2><em>Normalizing <span class="math inline">\(Q\)</span></em></h2>
+<p>We can normalize the columns of <span class="math inline">\(Q\)</span> by dividing each column by its length.</p>
+<div class="fragment">
+<p>Set <span class="math inline">\(\mathbf{q}_{j}=\mathbf{v}_{j} /\left\|\mathbf{v}_{j}\right\|\)</span>..</p>
+<aside class="notes">
+<p>Start with <span class="math inline">\(\mathbf{v}_{j}=\mathbf{q}_{j}\left\|\mathbf{v}_{j}\right\|\)</span></p>
+<p>Then <span class="math display">\[
+\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| &amp; 0 &amp; 0 \\
+0 &amp; \left\|\mathbf{v}_{2}\right\| &amp; 0 \\
+0 &amp; 0 &amp; \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+A &amp; =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| &amp; 0 &amp; 0 \\
+0 &amp; \left\|\mathbf{v}_{2}\right\| &amp; 0 \\
+0 &amp; 0 &amp; \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]\left[\begin{array}{ccc}
+1 &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \\
+0 &amp; 1 &amp; \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2}, \mathbf{v}_{2}} \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\left\|\mathbf{v}_{1}\right\|} &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{1}\right\|} \\
+0 &amp; \left\|\mathbf{v}_{2}\right\| &amp; \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{2}\right\|} \\
+0 &amp; 0 &amp; \left\|\mathbf{v}_{3}\right\|
+\end{array}\right] .
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+
+<section id="final-form" class="title-slide slide level2 center">
+<h2><em>Final form</em></h2>
+<p><span class="math display">\[
+\begin{aligned}
+A &amp; =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\left\|\mathbf{v}_{1}\right\|} &amp; \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{1}\right\|} \\
+0 &amp; \left\|\mathbf{v}_{2}\right\| &amp; \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{2}\right\|} \\
+0 &amp; 0 &amp; \left\|\mathbf{v}_{3}\right\|
+\end{array}\right] \\[10pt]
+&amp;= \left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| &amp; \mathbf{q}_{1} \cdot \mathbf{w}_{2} &amp; \mathbf{q}_{1} \cdot \mathbf{w}_{3} \\
+0 &amp; \left\|\mathbf{v}_{2}\right\| &amp; \mathbf{q}_{2} \cdot \mathbf{w}_{3} \\
+0 &amp; 0 &amp; \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+</section>
+
+<section id="example-3" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Find the QR factorization of the matrix</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{rrr}
+1 &amp; 2 &amp; -1 \\
+1 &amp; -1 &amp; 2 \\
+1 &amp; -1 &amp; 2 \\
+-1 &amp; 1 &amp; 1
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>We already found the Gram-Schmidt orthogonalization of this matrix:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{v}_{1} &amp; =\mathbf{w}_{1}=(1,1,1,-1), \\
+\mathbf{v}_{2} &amp; =\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1} \\
+&amp; =(2,-1,-1,1)-\frac{-1}{4}(1,1,1,-1)=\frac{1}{4}(9,-3,-3,3), \\
+\mathbf{v}_{3} &amp; =\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2} \\
+&amp; =(-1,2,2,1)-\frac{2}{4}(1,1,1,-1)-\frac{-18}{108}(9,-3,-3,3) \\
+&amp; =\frac{1}{4}(-4,8,8,4)-\frac{1}{4}(2,2,2,-2)+\frac{1}{4}(6,-2,-2,2)=(0,1,1,2) .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mathbf{u}_{1}=\frac{\mathbf{v}_{1}}{\left\|\mathbf{v}_{1}\right\|}=\frac{1}{2}(1,1,1,-1), \\
+&amp; \mathbf{u}_{2}=\frac{\mathbf{v}_{2}}{\left\|\mathbf{v}_{2}\right\|}=\frac{1}{\sqrt{108}}(9,-3,-3,3)=\frac{1}{2 \sqrt{3}}(3,-1,-1,1), \\
+&amp; \mathbf{u}_{3}=\frac{\mathbf{v}_{3}}{\left\|\mathbf{v}_{3}\right\|}=\frac{1}{\sqrt{6}}(0,1,1,2) .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>The <span class="math inline">\(\mathbf{u}\)</span> vectors we calculated before are the <span class="math inline">\(\mathbf{q}\)</span> vectors in the QR factorization.</p>
+</div>
+</section>
+
+<section id="section-5" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{gathered}
+\left\|\mathbf{v}_{1}\right\|=\|(1,1,1,-1)\|=2 \text { and } \mathbf{q}_{1}=\frac{1}{2}(1,1,1,-1) \\
+\left\|\mathbf{v}_{2}\right\|=\left\|\frac{1}{4}(9,-3,-3,3)\right\|=\frac{3}{2} \sqrt{3} \text { and } \mathbf{q}_{2}=\frac{1}{2 \sqrt{3}}(3,-1,-1,1) \\
+\left\|\mathbf{v}_{3}\right\|=\|(0,1,1,2)\|=\sqrt{6} \text { and } \mathbf{q}_{3}=\frac{1}{\sqrt{6}}(0,1,1,2)
+\end{gathered}
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+\left\langle\mathbf{q}_{1}, \mathbf{w}_{2}\right\rangle &amp; =\frac{1}{2}(1,1,1,-1) \cdot(2,-1,-1,1)=-\frac{1}{2} \\
+\left\langle\mathbf{q}_{1}, \mathbf{w}_{3}\right\rangle &amp; =\frac{1}{2}(1,1,1,-1) \cdot(-1,2,2,1)=1 \\
+\left\langle\mathbf{q}_{2}, \mathbf{w}_{3}\right\rangle &amp; =\frac{1}{2 \sqrt{3}}(3,-1,-1,1) \cdot(-1,2,2,1)=-\sqrt{3} .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+A=\left[\begin{array}{rrr}
+1 / 2 &amp; 3 /(2 \sqrt{3}) &amp; 0 \\
+1 / 2 &amp; -1 /(2 \sqrt{3}) &amp; 1 / \sqrt{6} \\
+1 / 2 &amp; -1 /(2 \sqrt{3}) &amp; 1 / \sqrt{6} \\
+-1 / 2 &amp; 1 /(2 \sqrt{3}) &amp; 2 / \sqrt{6}
+\end{array}\right]\left[\begin{array}{rrr}
+2 &amp; -1 / 2 &amp; 1 \\
+0 &amp; \frac{3}{2} \sqrt{3} &amp; -\sqrt{3} \\
+0 &amp; 0 &amp; \sqrt{6}
+\end{array}\right]=Q R
+\]</span></p>
+</div>
+</section>
+
+<section id="solving-a-linear-system-with-qr" class="title-slide slide level2 center">
+<h2><em>Solving a linear system with QR</em></h2>
+<p><span class="math inline">\(R \mathbf{x}=Q^{T} \mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b}=(1,1,1,1)\)</span></p>
+<div class="fragment">
+<p>=</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -776,6 +1019,8 @@ R=\left[\begin{array}{rrrr}
 <p> </p>
 </div>
 </div>
+</div>
+</section>
 </section>
     </div>
   </div>
@@ -1170,7 +1415,7 @@ R=\left[\begin{array}{rrrr}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

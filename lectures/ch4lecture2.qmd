@@ -430,3 +430,237 @@ $\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}
 If $A$ is an $m \times n$ full-column-rank matrix, then $A=Q R$, where the columns of the $m \times n$ matrix $Q$ are orthonormal vectors and the $n \times n$ matrix $R$ is upper triangular with nonzero diagonal entries.
 :::
 
+
+
+. . . 
+
+Why do we care?
+
+- Can use to solve linear systems: 
+
+::: notes
+$$
+Q^{T} A \mathbf{x}=Q^{T} Q R \mathbf{x}=I R \mathbf{x}=R \mathbf{x}=Q^{T} b .
+$$
+:::
+. . .
+
+- can be less susceptible to round-off error than Gauss-Jordan.
+- Can be used to solve least squares problems (will show you how!)
+
+## How to find $Q$ and $R$
+
+1. Start with the columns of A, $A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]$. (For now assume they are linearly independent.)
+2. Do Gram-Schmidt on the columns of $A$:
+
+. . .
+
+$$
+\begin{aligned}
+& \mathbf{v}_{1}=\mathbf{w}_{1} \\
+& \mathbf{v}_{2}=\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1} \\
+& \mathbf{v}_{3}=\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2} .
+\end{aligned}
+$$
+
+. . .
+
+3. Solve these equations for $\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}$:
+
+. . .
+
+$$
+\begin{aligned}
+& \mathbf{w}_{1}=\mathbf{v}_{1} \\
+& \mathbf{w}_{2}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\mathbf{v}_{2} \\
+& \mathbf{w}_{3}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}+\mathbf{v}_{3} .
+\end{aligned}
+$$
+
+##
+
+
+
+$$
+\begin{aligned}
+& \mathbf{w}_{1}=\mathbf{v}_{1} \\
+& \mathbf{w}_{2}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\mathbf{v}_{2} \\
+& \mathbf{w}_{3}=\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}+\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}+\mathbf{v}_{3} .
+\end{aligned}
+$$
+
+In matrix form, these become:
+
+. . .
+
+$$
+A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{ccc}
+1 & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \\
+0 & 1 & \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \\
+0 & 0 & 1
+\end{array}\right]
+$$
+
+::: notes
+We are almost there! We have an upper triangular matrix and we have an *orthogonal* matrix; it's just not normalized yet.
+:::
+
+## Normalizing $Q$
+
+We can normalize the columns of $Q$ by dividing each column by its length.
+
+. . .
+
+Set $\mathbf{q}_{j}=\mathbf{v}_{j} /\left\|\mathbf{v}_{j}\right\|$..
+
+::: notes
+
+Start with $\mathbf{v}_{j}=\mathbf{q}_{j}\left\|\mathbf{v}_{j}\right\|$
+
+Then 
+$$
+\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| & 0 & 0 \\
+0 & \left\|\mathbf{v}_{2}\right\| & 0 \\
+0 & 0 & \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]
+$$
+:::
+
+. . .
+
+$$
+\begin{aligned}
+A & =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| & 0 & 0 \\
+0 & \left\|\mathbf{v}_{2}\right\| & 0 \\
+0 & 0 & \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]\left[\begin{array}{ccc}
+1 & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \\
+0 & 1 & \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2}, \mathbf{v}_{2}} \\
+0 & 0 & 1
+\end{array}\right] 
+\end{aligned}
+$$
+
+. . .
+
+$$
+\begin{aligned}
+& =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\left\|\mathbf{v}_{1}\right\|} & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{1}\right\|} \\
+0 & \left\|\mathbf{v}_{2}\right\| & \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{2}\right\|} \\
+0 & 0 & \left\|\mathbf{v}_{3}\right\|
+\end{array}\right] .
+\end{aligned}
+$$
+
+## Final form
+
+$$
+\begin{aligned}
+A & =\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\left\|\mathbf{v}_{1}\right\|} & \frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{1}\right\|} \\
+0 & \left\|\mathbf{v}_{2}\right\| & \frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\left\|\mathbf{v}_{2}\right\|} \\
+0 & 0 & \left\|\mathbf{v}_{3}\right\|
+\end{array}\right] \\[10pt]
+&= \left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+\left\|\mathbf{v}_{1}\right\| & \mathbf{q}_{1} \cdot \mathbf{w}_{2} & \mathbf{q}_{1} \cdot \mathbf{w}_{3} \\
+0 & \left\|\mathbf{v}_{2}\right\| & \mathbf{q}_{2} \cdot \mathbf{w}_{3} \\
+0 & 0 & \left\|\mathbf{v}_{3}\right\|
+\end{array}\right]
+\end{aligned}
+$$
+
+## Example
+
+Find the QR factorization of the matrix
+
+$$
+A=\left[\begin{array}{rrr}
+1 & 2 & -1 \\
+1 & -1 & 2 \\
+1 & -1 & 2 \\
+-1 & 1 & 1
+\end{array}\right]
+$$
+
+. . .
+
+We already found the Gram-Schmidt orthogonalization of this matrix:
+
+$$
+\begin{aligned}
+\mathbf{v}_{1} & =\mathbf{w}_{1}=(1,1,1,-1), \\
+\mathbf{v}_{2} & =\mathbf{w}_{2}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{2}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1} \\
+& =(2,-1,-1,1)-\frac{-1}{4}(1,1,1,-1)=\frac{1}{4}(9,-3,-3,3), \\
+\mathbf{v}_{3} & =\mathbf{w}_{3}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{3}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{3}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2} \\
+& =(-1,2,2,1)-\frac{2}{4}(1,1,1,-1)-\frac{-18}{108}(9,-3,-3,3) \\
+& =\frac{1}{4}(-4,8,8,4)-\frac{1}{4}(2,2,2,-2)+\frac{1}{4}(6,-2,-2,2)=(0,1,1,2) .
+\end{aligned}
+$$
+
+. . .
+
+$$
+\begin{aligned}
+& \mathbf{u}_{1}=\frac{\mathbf{v}_{1}}{\left\|\mathbf{v}_{1}\right\|}=\frac{1}{2}(1,1,1,-1), \\
+& \mathbf{u}_{2}=\frac{\mathbf{v}_{2}}{\left\|\mathbf{v}_{2}\right\|}=\frac{1}{\sqrt{108}}(9,-3,-3,3)=\frac{1}{2 \sqrt{3}}(3,-1,-1,1), \\
+& \mathbf{u}_{3}=\frac{\mathbf{v}_{3}}{\left\|\mathbf{v}_{3}\right\|}=\frac{1}{\sqrt{6}}(0,1,1,2) .
+\end{aligned}
+$$
+
+. . .
+
+The $\mathbf{u}$ vectors we calculated before are the $\mathbf{q}$ vectors in the QR factorization.
+
+##
+
+$$
+\begin{gathered}
+\left\|\mathbf{v}_{1}\right\|=\|(1,1,1,-1)\|=2 \text { and } \mathbf{q}_{1}=\frac{1}{2}(1,1,1,-1) \\
+\left\|\mathbf{v}_{2}\right\|=\left\|\frac{1}{4}(9,-3,-3,3)\right\|=\frac{3}{2} \sqrt{3} \text { and } \mathbf{q}_{2}=\frac{1}{2 \sqrt{3}}(3,-1,-1,1) \\
+\left\|\mathbf{v}_{3}\right\|=\|(0,1,1,2)\|=\sqrt{6} \text { and } \mathbf{q}_{3}=\frac{1}{\sqrt{6}}(0,1,1,2)
+\end{gathered}
+$$
+
+. . .
+
+$$
+\begin{aligned}
+\left\langle\mathbf{q}_{1}, \mathbf{w}_{2}\right\rangle & =\frac{1}{2}(1,1,1,-1) \cdot(2,-1,-1,1)=-\frac{1}{2} \\
+\left\langle\mathbf{q}_{1}, \mathbf{w}_{3}\right\rangle & =\frac{1}{2}(1,1,1,-1) \cdot(-1,2,2,1)=1 \\
+\left\langle\mathbf{q}_{2}, \mathbf{w}_{3}\right\rangle & =\frac{1}{2 \sqrt{3}}(3,-1,-1,1) \cdot(-1,2,2,1)=-\sqrt{3} .
+\end{aligned}
+$$
+
+. . .
+
+$$
+A=\left[\begin{array}{rrr}
+1 / 2 & 3 /(2 \sqrt{3}) & 0 \\
+1 / 2 & -1 /(2 \sqrt{3}) & 1 / \sqrt{6} \\
+1 / 2 & -1 /(2 \sqrt{3}) & 1 / \sqrt{6} \\
+-1 / 2 & 1 /(2 \sqrt{3}) & 2 / \sqrt{6}
+\end{array}\right]\left[\begin{array}{rrr}
+2 & -1 / 2 & 1 \\
+0 & \frac{3}{2} \sqrt{3} & -\sqrt{3} \\
+0 & 0 & \sqrt{6}
+\end{array}\right]=Q R
+$$
+
+## Solving a linear system with QR
+
+$R \mathbf{x}=Q^{T} \mathbf{b}$, where $\mathbf{b}=(1,1,1,1)$
+
+. . .
+
+```{python}
+#| output: 'asis'
+import sympy as sp
+Q = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])
+R = sp.Matrix([[2, -1/2, 1], [0, 3*sp.sqrt(3)/2, -sp.sqrt(3)], [0, 0, sp.sqrt(6)]])
+b = sp.Matrix([1, 1, 1, 1])
+Q.T*b
+print(sp.latex(R)+'='+sp.latex(Q.T*b))
+```

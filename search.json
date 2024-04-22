@@ -2602,5 +2602,54 @@
     "title": "Ch4 Lecture 2",
     "section": "Finding orthonormal basis",
     "text": "Finding orthonormal basis\nNow we need to normalize these vectors to get an orthonormal basis.\n\n\\(\\mathbf{u}_{1}=\\frac{1}{\\|\\mathbf{v}_{1}\\|} \\mathbf{v}_{1}=\\frac{1}{2}(1,1,1,-1)\\)\n\n\n\\(\\mathbf{u}_{2}=\\frac{1}{\\|\\mathbf{v}_{2}\\|} \\mathbf{v}_{2}=\\frac{1}{\\sqrt(108)}(9,-3,-3,3)\\) etc."
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#how-to-find-q-and-r",
+    "href": "lectures/ch4lecture2.html#how-to-find-q-and-r",
+    "title": "Ch4 Lecture 2",
+    "section": "How to find \\(Q\\) and \\(R\\)",
+    "text": "How to find \\(Q\\) and \\(R\\)\n\nStart with the columns of A, \\(A=\\left[\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\mathbf{w}_{3}\\right]\\). (For now assume they are linearly independent.)\nDo Gram-Schmidt on the columns of \\(A\\):\n\n\n\\[\n\\begin{aligned}\n& \\mathbf{v}_{1}=\\mathbf{w}_{1} \\\\\n& \\mathbf{v}_{2}=\\mathbf{w}_{2}-\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1} \\\\\n& \\mathbf{v}_{3}=\\mathbf{w}_{3}-\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}-\\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\mathbf{v}_{2} .\n\\end{aligned}\n\\]\n\n\n\nSolve these equations for \\(\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\mathbf{w}_{3}\\):\n\n\n\n\\[\n\\begin{aligned}\n& \\mathbf{w}_{1}=\\mathbf{v}_{1} \\\\\n& \\mathbf{w}_{2}=\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}+\\mathbf{v}_{2} \\\\\n& \\mathbf{w}_{3}=\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}+\\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\mathbf{v}_{2}+\\mathbf{v}_{3} .\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#section-4",
+    "href": "lectures/ch4lecture2.html#section-4",
+    "title": "Ch4 Lecture 2",
+    "section": "",
+    "text": "\\[\n\\begin{aligned}\n& \\mathbf{w}_{1}=\\mathbf{v}_{1} \\\\\n& \\mathbf{w}_{2}=\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}+\\mathbf{v}_{2} \\\\\n& \\mathbf{w}_{3}=\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}+\\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\mathbf{v}_{2}+\\mathbf{v}_{3} .\n\\end{aligned}\n\\]\nIn matrix form, these become:\n\n\\[\nA=\\left[\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\mathbf{w}_{3}\\right]=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]\\left[\\begin{array}{ccc}\n1 & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\\\\n0 & 1 & \\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\\\\n0 & 0 & 1\n\\end{array}\\right]\n\\]\n\nWe are almost there! We have an upper triangular matrix and we have an orthogonal matrix; it’s just not normalized yet."
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#normalizing-q",
+    "href": "lectures/ch4lecture2.html#normalizing-q",
+    "title": "Ch4 Lecture 2",
+    "section": "Normalizing \\(Q\\)",
+    "text": "Normalizing \\(Q\\)\nWe can normalize the columns of \\(Q\\) by dividing each column by its length.\n\nSet \\(\\mathbf{q}_{j}=\\mathbf{v}_{j} /\\left\\|\\mathbf{v}_{j}\\right\\|\\)..\n\nStart with \\(\\mathbf{v}_{j}=\\mathbf{q}_{j}\\left\\|\\mathbf{v}_{j}\\right\\|\\)\nThen \\[\n\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]=\\left[\\mathbf{q}_{1}, \\mathbf{q}_{2}, \\mathbf{q}_{3}\\right]\\left[\\begin{array}{ccc}\n\\left\\|\\mathbf{v}_{1}\\right\\| & 0 & 0 \\\\\n0 & \\left\\|\\mathbf{v}_{2}\\right\\| & 0 \\\\\n0 & 0 & \\left\\|\\mathbf{v}_{3}\\right\\|\n\\end{array}\\right]\n\\]\n\n\n\n\\[\n\\begin{aligned}\nA & =\\left[\\mathbf{q}_{1}, \\mathbf{q}_{2}, \\mathbf{q}_{3}\\right]\\left[\\begin{array}{ccc}\n\\left\\|\\mathbf{v}_{1}\\right\\| & 0 & 0 \\\\\n0 & \\left\\|\\mathbf{v}_{2}\\right\\| & 0 \\\\\n0 & 0 & \\left\\|\\mathbf{v}_{3}\\right\\|\n\\end{array}\\right]\\left[\\begin{array}{ccc}\n1 & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\\\\n0 & 1 & \\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2}, \\mathbf{v}_{2}} \\\\\n0 & 0 & 1\n\\end{array}\\right]\n\\end{aligned}\n\\]\n\n\n\\[\n\\begin{aligned}\n& =\\left[\\mathbf{q}_{1}, \\mathbf{q}_{2}, \\mathbf{q}_{3}\\right]\\left[\\begin{array}{ccc}\n\\left\\|\\mathbf{v}_{1}\\right\\| & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\left\\|\\mathbf{v}_{1}\\right\\|} & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\left\\|\\mathbf{v}_{1}\\right\\|} \\\\\n0 & \\left\\|\\mathbf{v}_{2}\\right\\| & \\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\left\\|\\mathbf{v}_{2}\\right\\|} \\\\\n0 & 0 & \\left\\|\\mathbf{v}_{3}\\right\\|\n\\end{array}\\right] .\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#final-form",
+    "href": "lectures/ch4lecture2.html#final-form",
+    "title": "Ch4 Lecture 2",
+    "section": "Final form",
+    "text": "Final form\n\\[\n\\begin{aligned}\nA & =\\left[\\mathbf{q}_{1}, \\mathbf{q}_{2}, \\mathbf{q}_{3}\\right]\\left[\\begin{array}{ccc}\n\\left\\|\\mathbf{v}_{1}\\right\\| & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\left\\|\\mathbf{v}_{1}\\right\\|} & \\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\left\\|\\mathbf{v}_{1}\\right\\|} \\\\\n0 & \\left\\|\\mathbf{v}_{2}\\right\\| & \\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\left\\|\\mathbf{v}_{2}\\right\\|} \\\\\n0 & 0 & \\left\\|\\mathbf{v}_{3}\\right\\|\n\\end{array}\\right] \\\\[10pt]\n&= \\left[\\mathbf{q}_{1}, \\mathbf{q}_{2}, \\mathbf{q}_{3}\\right]\\left[\\begin{array}{ccc}\n\\left\\|\\mathbf{v}_{1}\\right\\| & \\mathbf{q}_{1} \\cdot \\mathbf{w}_{2} & \\mathbf{q}_{1} \\cdot \\mathbf{w}_{3} \\\\\n0 & \\left\\|\\mathbf{v}_{2}\\right\\| & \\mathbf{q}_{2} \\cdot \\mathbf{w}_{3} \\\\\n0 & 0 & \\left\\|\\mathbf{v}_{3}\\right\\|\n\\end{array}\\right]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#example-3",
+    "href": "lectures/ch4lecture2.html#example-3",
+    "title": "Ch4 Lecture 2",
+    "section": "Example",
+    "text": "Example\nFind the QR factorization of the matrix\n\\[\nA=\\left[\\begin{array}{rrr}\n1 & 2 & -1 \\\\\n1 & -1 & 2 \\\\\n1 & -1 & 2 \\\\\n-1 & 1 & 1\n\\end{array}\\right]\n\\]\n\nWe already found the Gram-Schmidt orthogonalization of this matrix:\n\\[\n\\begin{aligned}\n\\mathbf{v}_{1} & =\\mathbf{w}_{1}=(1,1,1,-1), \\\\\n\\mathbf{v}_{2} & =\\mathbf{w}_{2}-\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{2}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1} \\\\\n& =(2,-1,-1,1)-\\frac{-1}{4}(1,1,1,-1)=\\frac{1}{4}(9,-3,-3,3), \\\\\n\\mathbf{v}_{3} & =\\mathbf{w}_{3}-\\frac{\\mathbf{v}_{1} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{1} \\cdot \\mathbf{v}_{1}} \\mathbf{v}_{1}-\\frac{\\mathbf{v}_{2} \\cdot \\mathbf{w}_{3}}{\\mathbf{v}_{2} \\cdot \\mathbf{v}_{2}} \\mathbf{v}_{2} \\\\\n& =(-1,2,2,1)-\\frac{2}{4}(1,1,1,-1)-\\frac{-18}{108}(9,-3,-3,3) \\\\\n& =\\frac{1}{4}(-4,8,8,4)-\\frac{1}{4}(2,2,2,-2)+\\frac{1}{4}(6,-2,-2,2)=(0,1,1,2) .\n\\end{aligned}\n\\]\n\n\n\\[\n\\begin{aligned}\n& \\mathbf{u}_{1}=\\frac{\\mathbf{v}_{1}}{\\left\\|\\mathbf{v}_{1}\\right\\|}=\\frac{1}{2}(1,1,1,-1), \\\\\n& \\mathbf{u}_{2}=\\frac{\\mathbf{v}_{2}}{\\left\\|\\mathbf{v}_{2}\\right\\|}=\\frac{1}{\\sqrt{108}}(9,-3,-3,3)=\\frac{1}{2 \\sqrt{3}}(3,-1,-1,1), \\\\\n& \\mathbf{u}_{3}=\\frac{\\mathbf{v}_{3}}{\\left\\|\\mathbf{v}_{3}\\right\\|}=\\frac{1}{\\sqrt{6}}(0,1,1,2) .\n\\end{aligned}\n\\]\n\n\nThe \\(\\mathbf{u}\\) vectors we calculated before are the \\(\\mathbf{q}\\) vectors in the QR factorization."
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#section-5",
+    "href": "lectures/ch4lecture2.html#section-5",
+    "title": "Ch4 Lecture 2",
+    "section": "",
+    "text": "\\[\n\\begin{gathered}\n\\left\\|\\mathbf{v}_{1}\\right\\|=\\|(1,1,1,-1)\\|=2 \\text { and } \\mathbf{q}_{1}=\\frac{1}{2}(1,1,1,-1) \\\\\n\\left\\|\\mathbf{v}_{2}\\right\\|=\\left\\|\\frac{1}{4}(9,-3,-3,3)\\right\\|=\\frac{3}{2} \\sqrt{3} \\text { and } \\mathbf{q}_{2}=\\frac{1}{2 \\sqrt{3}}(3,-1,-1,1) \\\\\n\\left\\|\\mathbf{v}_{3}\\right\\|=\\|(0,1,1,2)\\|=\\sqrt{6} \\text { and } \\mathbf{q}_{3}=\\frac{1}{\\sqrt{6}}(0,1,1,2)\n\\end{gathered}\n\\]\n\n\\[\n\\begin{aligned}\n\\left\\langle\\mathbf{q}_{1}, \\mathbf{w}_{2}\\right\\rangle & =\\frac{1}{2}(1,1,1,-1) \\cdot(2,-1,-1,1)=-\\frac{1}{2} \\\\\n\\left\\langle\\mathbf{q}_{1}, \\mathbf{w}_{3}\\right\\rangle & =\\frac{1}{2}(1,1,1,-1) \\cdot(-1,2,2,1)=1 \\\\\n\\left\\langle\\mathbf{q}_{2}, \\mathbf{w}_{3}\\right\\rangle & =\\frac{1}{2 \\sqrt{3}}(3,-1,-1,1) \\cdot(-1,2,2,1)=-\\sqrt{3} .\n\\end{aligned}\n\\]\n\n\n\\[\nA=\\left[\\begin{array}{rrr}\n1 / 2 & 3 /(2 \\sqrt{3}) & 0 \\\\\n1 / 2 & -1 /(2 \\sqrt{3}) & 1 / \\sqrt{6} \\\\\n1 / 2 & -1 /(2 \\sqrt{3}) & 1 / \\sqrt{6} \\\\\n-1 / 2 & 1 /(2 \\sqrt{3}) & 2 / \\sqrt{6}\n\\end{array}\\right]\\left[\\begin{array}{rrr}\n2 & -1 / 2 & 1 \\\\\n0 & \\frac{3}{2} \\sqrt{3} & -\\sqrt{3} \\\\\n0 & 0 & \\sqrt{6}\n\\end{array}\\right]=Q R\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#solving-a-linear-system-with-qr",
+    "href": "lectures/ch4lecture2.html#solving-a-linear-system-with-qr",
+    "title": "Ch4 Lecture 2",
+    "section": "Solving a linear system with QR",
+    "text": "Solving a linear system with QR\n\\(R \\mathbf{x}=Q^{T} \\mathbf{b}\\), where \\(\\mathbf{b}=(1,1,1,1)\\)\n\n="
   }
 ]

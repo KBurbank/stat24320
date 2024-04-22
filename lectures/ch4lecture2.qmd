@@ -1,6 +1,6 @@
 ---
 title: Ch4 Lecture 2
-lecture_day: 11
+lecture_day: 10
 readings: "4.2,4.3,4.4"
 publish: true
 execute: 
@@ -15,6 +15,8 @@ format:
     #html:
      #   output-file: ch2_lecture4plain.html
 ---
+
+# More Least Squares
 
 ## Normal equations for multiple predictors
 

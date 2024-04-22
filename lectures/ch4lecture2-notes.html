@@ -412,12 +412,18 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
+<li class="fragment"><a href="#/more-least-squares" id="/toc-more-least-squares"><em>More Least Squares</em></a></li>
 <li class="fragment"><a href="#/orthogonal-and-orthonormal-sets" id="/toc-orthogonal-and-orthonormal-sets"><em>Orthogonal and Orthonormal Sets</em></a></li>
 <li class="fragment"><a href="#/finding-orthogonal-bases" id="/toc-finding-orthogonal-bases"><em>Finding orthogonal bases</em></a></li>
 <li class="fragment"><a href="#/qr-factorization" id="/toc-qr-factorization"><em>QR Factorization</em></a></li>
 <li class="fragment"><a href="#/haar-wavelet-transform" id="/toc-haar-wavelet-transform"><em>Haar Wavelet Transform</em></a></li>
 </ul>
 </nav>
+</section>
+<section>
+<section id="more-least-squares" class="title-slide slide level1 center">
+<h1><em>More Least Squares</em></h1>
+
 </section>
 <section id="normal-equations-for-multiple-predictors" class="title-slide slide level2 center">
 <h2><em>Normal equations for multiple predictors</em></h2>
@@ -580,7 +586,7 @@ A^{T} \mathbf{b}=\left[\begin{array}{lll}
 <p>Back in our original variables, this means the best fit estimate for <span class="math inline">\(\beta_1\)</span> is 1 and the best <span class="math inline">\(\beta_2\)</span> is -1.</p>
 </div>
 </section>
-
+</section>
 <section>
 <section id="orthogonal-and-orthonormal-sets" class="title-slide slide level1 center">
 <h1><em>Orthogonal and Orthonormal Sets</em></h1>
@@ -1881,7 +1887,7 @@ Figure&nbsp;1: Effects of Haar wavelet transform on an image.
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

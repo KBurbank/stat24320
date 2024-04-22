@@ -1162,12 +1162,7 @@ R \mathbf{x}&amp;= Q^{T} \mathbf{b}
 </section>
 <section id="image-compression-idea" class="title-slide slide level2 center">
 <h2><em>Image compression idea</em></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="ch4_lady.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Lady"><img data-src="ch4_lady.jpg" alt="Lady"></a></p>
-<figcaption>Lady</figcaption>
-</figure>
-</div>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&amp;width=515&amp;top_left_y=200&amp;top_left_x=246" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&amp;width=515&amp;top_left_y=200&amp;top_left_x=246"></a></p>
 <aside class="notes">
 <p>How can we represent this image in a way that captures the most important features?</p>
 <p>Simple way is pixel by pixel… but that’s a lot of data!</p>
@@ -1367,6 +1362,39 @@ U \\
 L
 \end{array}\right]
 \]</span></p>
+</div>
+</section>
+
+<section id="moving-to-2d" class="title-slide slide level2 center">
+<h2><em>Moving to 2D</em></h2>
+<p>For a 2D image represented pixel-by-pixel in the matrix <span class="math inline">\(\mathbf{A}\)</span>, we can apply the 1D transform to each row and then to each column.</p>
+<div class="fragment">
+<p><span class="math inline">\(W_{m} A W_{n}^{T}\)</span></p>
+</div>
+<div class="fragment">
+<p>Can do this</p>
+<p><span class="math display">\[
+W_{m} A W_{n}^{T}=2\left[\begin{array}{ll}
+B &amp; V  \tag{4.10}\\
+H &amp; D
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<div id="fig-lady" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-lady-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&amp;width=515&amp;top_left_y=200&amp;top_left_x=246" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&amp;width=515&amp;top_left_y=200&amp;top_left_x=246"></a>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lady-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: <a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&amp;width=526&amp;top_left_y=201&amp;top_left_x=756" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&amp;width=526&amp;top_left_y=201&amp;top_left_x=756"></a>
+</figcaption>
+</figure>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1396,8 +1424,9 @@ L
 </div>
 </div>
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-2">Lady</span>
 <span class="glightbox-desc lightbox-desc-3">x: black, y: red, z: green</span>
+<span class="glightbox-desc lightbox-desc-5">Figure&nbsp;1: <img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&amp;width=526&amp;top_left_y=201&amp;top_left_x=756"></span>
+<span class="glightbox-desc lightbox-desc-6">Figure&nbsp;1: <img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&amp;width=526&amp;top_left_y=201&amp;top_left_x=756"></span>
 </div>
 </div>
 </section>
@@ -1795,7 +1824,7 @@ L
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

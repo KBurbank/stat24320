@@ -760,7 +760,7 @@ This is just what we solved above!
 
 ## Image compression idea
 
-![Lady](ch4_lady.jpg)
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246)
 
 ::: notes
 How can we represent this image in a way that captures the most important features?
@@ -941,3 +941,33 @@ U \\
 L
 \end{array}\right]
 $$
+
+## Moving to 2D
+
+For a 2D image represented pixel-by-pixel in the matrix $\mathbf{A}$, we can apply the 1D transform to each row and then to each column.
+
+. . .
+
+$W_{m} A W_{n}^{T}$
+
+. . .
+
+Can do this 
+
+$$
+W_{m} A W_{n}^{T}=2\left[\begin{array}{ll}
+B & V  \tag{4.10}\\
+H & D
+\end{array}\right]
+$$
+
+. . .
+
+::: {#fig-lady layout-ncol=2}
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246)
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&width=526&top_left_y=201&top_left_x=756)
+
+:::
+

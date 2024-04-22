@@ -2664,7 +2664,7 @@
     "href": "lectures/ch4lecture2.html#image-compression-idea",
     "title": "Ch4 Lecture 2",
     "section": "Image compression idea",
-    "text": "Image compression idea\n\n\n\nLady\n\n\n\nHow can we represent this image in a way that captures the most important features?\nSimple way is pixel by pixel… but that’s a lot of data!\nWe note that the high frequency information is pretty sparse, the low frequency information more dense. So maybe separate these out and use different techniques for each."
+    "text": "Image compression idea\n\n\nHow can we represent this image in a way that captures the most important features?\nSimple way is pixel by pixel… but that’s a lot of data!\nWe note that the high frequency information is pretty sparse, the low frequency information more dense. So maybe separate these out and use different techniques for each."
   },
   {
     "objectID": "lectures/ch4lecture2.html#haaar-wavelet-transform",
@@ -2692,6 +2692,13 @@
     "href": "lectures/ch4lecture2.html#haar-wavelet-transform-matrix",
     "title": "Ch4 Lecture 2",
     "section": "Haar Wavelet Transform Matrix",
-    "text": "Haar Wavelet Transform Matrix\nCan make them orthogonal by dividing by \\(\\sqrt{2}\\):\n\\[\n\\begin{equation*}\ny_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.7}\n\\end{equation*}\n\\]\nand\n\\[\n\\begin{equation*}\nz_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.8}\n\\end{equation*}\n\\]\n\nIn matrix form,\n\\[\nW_{N}=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{ccccccc}\n1 & 1 & 0 & 0 & \\ldots & 0 & 0  \\\\\n0 & 0 & 1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & 1 & 1 \\\\\n\\ldots & \\ldots & \\ldots & \\ldots & \\ldots & \\ldots \\\\\n-1 & 1 & 0 & 0 & \\ldots & 0 & 0 \\\\\n0 & 0 & -1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & -1 & 1\n\\end{array}\\right]=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{c}\nU \\\\\n\\ldots \\\\\nL\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nLady\nx: black, y: red, z: green"
+    "text": "Haar Wavelet Transform Matrix\nCan make them orthogonal by dividing by \\(\\sqrt{2}\\):\n\\[\n\\begin{equation*}\ny_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.7}\n\\end{equation*}\n\\]\nand\n\\[\n\\begin{equation*}\nz_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.8}\n\\end{equation*}\n\\]\n\nIn matrix form,\n\\[\nW_{N}=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{ccccccc}\n1 & 1 & 0 & 0 & \\ldots & 0 & 0  \\\\\n0 & 0 & 1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & 1 & 1 \\\\\n\\ldots & \\ldots & \\ldots & \\ldots & \\ldots & \\ldots \\\\\n-1 & 1 & 0 & 0 & \\ldots & 0 & 0 \\\\\n0 & 0 & -1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & -1 & 1\n\\end{array}\\right]=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{c}\nU \\\\\n\\ldots \\\\\nL\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#moving-to-2d",
+    "href": "lectures/ch4lecture2.html#moving-to-2d",
+    "title": "Ch4 Lecture 2",
+    "section": "Moving to 2D",
+    "text": "Moving to 2D\nFor a 2D image represented pixel-by-pixel in the matrix \\(\\mathbf{A}\\), we can apply the 1D transform to each row and then to each column.\n\n\\(W_{m} A W_{n}^{T}\\)\n\n\nCan do this\n\\[\nW_{m} A W_{n}^{T}=2\\left[\\begin{array}{ll}\nB & V  \\tag{4.10}\\\\\nH & D\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nx: black, y: red, z: green\nFigure 1: \nFigure 1:"
   }
 ]

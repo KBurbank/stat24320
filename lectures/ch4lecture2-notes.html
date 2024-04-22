@@ -415,6 +415,7 @@
 <li class="fragment"><a href="#/orthogonal-and-orthonormal-sets" id="/toc-orthogonal-and-orthonormal-sets"><em>Orthogonal and Orthonormal Sets</em></a></li>
 <li class="fragment"><a href="#/finding-orthogonal-bases" id="/toc-finding-orthogonal-bases"><em>Finding orthogonal bases</em></a></li>
 <li class="fragment"><a href="#/qr-factorization" id="/toc-qr-factorization"><em>QR Factorization</em></a></li>
+<li class="fragment"><a href="#/haar-wavelet-transform" id="/toc-haar-wavelet-transform"><em>Haar Wavelet Transform</em></a></li>
 </ul>
 </nav>
 </section>
@@ -1053,7 +1054,28 @@ A=\left[\begin{array}{rrr}
 
 <section id="solving-a-linear-system-with-qr" class="title-slide slide level2 center">
 <h2><em>Solving a linear system with QR</em></h2>
-<p><span class="math inline">\(R \mathbf{x}=Q^{T} \mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b}=(1,1,1,1)\)</span></p>
+<p>We would like to solve the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>.</p>
+<div class="fragment">
+<p><span class="math inline">\(Q R \mathbf{x}=\mathbf{b}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Multiply both sides by <span class="math inline">\(Q^{T}\)</span>:</p>
+<p>Since <span class="math inline">\(Q\)</span> is orthogonal, <span class="math inline">\(Q^{T} Q=I\)</span> and <span class="math inline">\(Q^{T} Q R \mathbf{x}=R \mathbf{x}=Q^{T} \mathbf{b}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Suppose we have <span class="math inline">\(\mathbf{b}=(1,1,1,1)\)</span>. Then we are trying to solve</p>
+<p><span class="math display">\[\left[\begin{array}{rrr}
+2 &amp; -1 / 2 &amp; 1 \\
+0 &amp; \frac{3}{2} \sqrt{3} &amp; -\sqrt{3} \\
+0 &amp; 0 &amp; \sqrt{6}
+\end{array}\right]\mathbf{x}=\left[\begin{array}{rrr}
+1 / 2 &amp; 3 /(2 \sqrt{3}) &amp; 0 \\
+1 / 2 &amp; -1 /(2 \sqrt{3}) &amp; 1 / \sqrt{6} \\
+1 / 2 &amp; -1 /(2 \sqrt{3}) &amp; 1 / \sqrt{6} \\
+-1 / 2 &amp; 1 /(2 \sqrt{3}) &amp; 2 / \sqrt{6}
+\end{array}\right]^T \left[\begin{array}{rrr}1 \\ 1 \\ 1 \\ 1 \end{array}\right]
+\]</span></p>
+</div>
 <div class="fragment">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb1-2"><a></a>Q <span class="op">=</span> sp.Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">3</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">0</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">1</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">1</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)], [<span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>sp.sqrt(<span class="dv">3</span>)), <span class="dv">2</span><span class="op">/</span>sp.sqrt(<span class="dv">6</span>)]])</span>
@@ -1066,6 +1088,166 @@ Q^T b =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{mat
 \]</span> <span class="math display">\[
 \left[\begin{matrix}2 &amp; -0.5 &amp; 1\\0 &amp; \frac{3 \sqrt{3}}{2} &amp; - \sqrt{3}\\0 &amp; 0 &amp; \sqrt{6}\end{matrix}\right] \mathbf{x} =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{matrix}\right]
 \]</span></p>
+</div>
+<div class="fragment">
+<p>Find <span class="math display">\[
+\mathbf{x}=\left[\begin{array}{l}
+1 / 3 \\
+2 / 3 \\
+2 / 3
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Check:</p>
+<p><span class="math display">\[
+\mathbf{r}=\mathbf{b}-A \mathbf{x}=\left[\begin{array}{l}
+1 \\
+1 \\
+1 \\
+1
+\end{array}\right]-\left[\begin{array}{rrr}
+1 &amp; 2 &amp; -1 \\
+1 &amp; -1 &amp; 2 \\
+1 &amp; -1 &amp; 2 \\
+-1 &amp; 1 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+1 / 3 \\
+2 / 3 \\
+2 / 3
+\end{array}\right]=\left[\begin{array}{l}
+0 \\
+0 \\
+0 \\
+0
+\end{array}\right] .
+\]</span></p>
+</div>
+</section>
+
+<section id="least-squares-with-qr-factorization" class="title-slide slide level2 center">
+<h2><em>Least Squares with QR factorization</em></h2>
+<p>What if we have a system that’s not consistent?</p>
+<div class="fragment">
+<aside class="notes">
+<p>Solve a related problem, just by multiplying both sides of the equation by <span class="math inline">\(A^{T}\)</span> to get the Normal equations: <span class="math display">\[
+A^{T} A \mathbf{x}=R^{T} Q^{T} Q R \mathbf{x}=R^{T} I R \mathbf{x}=R^{T} R \mathbf{x}=A^{T} \mathbf{b}=R^{T} Q^{T} \mathbf{b} .
+\]</span></p>
+<p>Notice that we can invert <span class="math inline">\(R\)</span> because its diagonal entries are nonzero. So we can cancel it out to find</p>
+<p><span class="math display">\[
+\begin{aligned}
+R^{T} R \mathbf{x}&amp;=R^{T} Q^{T} \mathbf{b} \\
+R \mathbf{x}&amp;= Q^{T} \mathbf{b}
+\end{aligned}
+\]</span></p>
+<p>This is just what we solved above!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+</section>
+<section>
+<section id="haar-wavelet-transform" class="title-slide slide level1 center">
+<h1><em>Haar Wavelet Transform</em></h1>
+
+</section>
+<section id="image-compression-idea" class="title-slide slide level2 center">
+<h2><em>Image compression idea</em></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="ch4_lady.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Lady"><img data-src="ch4_lady.jpg" alt="Lady"></a></p>
+<figcaption>Lady</figcaption>
+</figure>
+</div>
+<aside class="notes">
+<p>How can we represent this image in a way that captures the most important features?</p>
+<p>Simple way is pixel by pixel… but that’s a lot of data!</p>
+<p>We note that the high frequency information is pretty sparse, the low frequency information more dense. So maybe separate these out and use different techniques for each.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="haaar-wavelet-transform" class="title-slide slide level2 center">
+<h2><em>Haaar wavelet transform</em></h2>
+<p>In 1D, N data points <span class="math inline">\(\left\{x_{k}\right\}_{k=1}^{N}\)</span></p>
+<p>Can average terms:</p>
+<p><span class="math display">\[
+\begin{equation*}
+y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.4}
+\end{equation*}
+\]</span></p>
+<aside class="notes">
+<p>This is the average of two adjacent points.</p>
+<p>We end up with as many points as we started with, but now they are “averaged” points, so we’ve lost information.</p>
+<p>Can’t recover the original data from this, but we can get a sense of the “low frequency” information.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<p>At the same time, we can apply a difference filter (“unsmoothing”):</p>
+<p><span class="math display">\[
+\begin{equation*}
+z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
+\end{equation*}
+\]</span></p>
+<aside class="notes">
+<p>Now we can fully recover the original data, because <span class="math inline">\(y_{k}+z_{k}=x_{k}, k=1, \ldots, N\)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<p>Idea: take our data, apply both filters to it and keep the results.</p>
+</div>
+</section>
+
+<section id="example-4" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p><span class="math inline">\(g(t)=\frac{3}{2}+\cos \left(\frac{\pi}{4} t\right)-\frac{1}{4} \cos \left(\frac{7 \pi}{4} t\right), 0 \leq t \leq 8\)</span></p>
+<div class="fragment">
+<p>Sample at <span class="math inline">\(t_{k}=k / 5, k=0,1, \ldots, 40\)</span></p>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="x: black, y: red, z: green"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" alt="x: black, y: red, z: green"></a></p>
+<figcaption>x: black, y: red, z: green</figcaption>
+</figure>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1093,6 +1275,10 @@ Q^T b =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{mat
 <div class="footer-section">
 <p> </p>
 </div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-2">Lady</span>
+<span class="glightbox-desc lightbox-desc-3">x: black, y: red, z: green</span>
 </div>
 </div>
 </section>
@@ -1490,7 +1676,7 @@ Q^T b =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{mat
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

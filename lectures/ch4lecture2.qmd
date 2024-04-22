@@ -651,7 +651,34 @@ $$
 
 ## Solving a linear system with QR
 
-$R \mathbf{x}=Q^{T} \mathbf{b}$, where $\mathbf{b}=(1,1,1,1)$
+We would like to solve the system $A \mathbf{x}=\mathbf{b}$.
+
+. . .
+
+$Q R \mathbf{x}=\mathbf{b}$.
+
+. . .
+
+Multiply both sides by $Q^{T}$:
+
+Since $Q$ is orthogonal, $Q^{T} Q=I$ and $Q^{T} Q R \mathbf{x}=R \mathbf{x}=Q^{T} \mathbf{b}$.
+
+. . .
+
+Suppose we have $\mathbf{b}=(1,1,1,1)$. Then we are trying to solve
+
+$$\left[\begin{array}{rrr}
+2 & -1 / 2 & 1 \\
+0 & \frac{3}{2} \sqrt{3} & -\sqrt{3} \\
+0 & 0 & \sqrt{6}
+\end{array}\right]\mathbf{x}=\left[\begin{array}{rrr}
+1 / 2 & 3 /(2 \sqrt{3}) & 0 \\
+1 / 2 & -1 /(2 \sqrt{3}) & 1 / \sqrt{6} \\
+1 / 2 & -1 /(2 \sqrt{3}) & 1 / \sqrt{6} \\
+-1 / 2 & 1 /(2 \sqrt{3}) & 2 / \sqrt{6}
+\end{array}\right]^T \left[\begin{array}{rrr}1 \\ 1 \\ 1 \\ 1 \end{array}\right]
+$$
+
 
 . . .
 
@@ -665,3 +692,136 @@ b = sp.Matrix([1, 1, 1, 1])
 print('$$\n Q^T b ='+sp.latex(Q.T*b)+'\n$$')
 print('$$\n '+sp.latex(R)+' \mathbf{x} ='+sp.latex(Q.T*b)+'\n$$')
 ```
+
+. . .
+
+Find 
+$$
+\mathbf{x}=\left[\begin{array}{l}
+1 / 3 \\
+2 / 3 \\
+2 / 3
+\end{array}\right]
+$$
+
+. . .
+
+Check:
+
+$$
+\mathbf{r}=\mathbf{b}-A \mathbf{x}=\left[\begin{array}{l}
+1 \\
+1 \\
+1 \\
+1
+\end{array}\right]-\left[\begin{array}{rrr}
+1 & 2 & -1 \\
+1 & -1 & 2 \\
+1 & -1 & 2 \\
+-1 & 1 & 1
+\end{array}\right]\left[\begin{array}{l}
+1 / 3 \\
+2 / 3 \\
+2 / 3
+\end{array}\right]=\left[\begin{array}{l}
+0 \\
+0 \\
+0 \\
+0
+\end{array}\right] .
+$$
+
+## Least Squares with QR factorization
+
+What if we have a system that's not consistent?
+
+. . .
+
+::: notes
+Solve a related problem, just by multiplying both sides of the equation by $A^{T}$ to get the Normal equations:
+$$
+A^{T} A \mathbf{x}=R^{T} Q^{T} Q R \mathbf{x}=R^{T} I R \mathbf{x}=R^{T} R \mathbf{x}=A^{T} \mathbf{b}=R^{T} Q^{T} \mathbf{b} .
+$$
+
+Notice that we can invert $R$ because its diagonal entries are nonzero. So we can cancel it out to find
+
+
+$$
+\begin{aligned}
+R^{T} R \mathbf{x}&=R^{T} Q^{T} \mathbf{b} \\
+ R \mathbf{x}&= Q^{T} \mathbf{b}
+\end{aligned}
+$$
+
+This is just what we solved above!
+:::
+
+# Haar Wavelet Transform
+
+## Image compression idea
+
+![Lady](ch4_lady.jpg)
+
+::: notes
+How can we represent this image in a way that captures the most important features?
+
+Simple way is pixel by pixel... but that's a lot of data!
+
+We note that the high frequency information is pretty sparse, the low frequency information more dense. So maybe separate these out and use different techniques for each.
+:::
+
+## Haaar wavelet transform
+
+In 1D, N data points $\left\{x_{k}\right\}_{k=1}^{N}$
+
+Can average terms:
+
+$$
+\begin{equation*}
+y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.4}
+\end{equation*}
+$$
+
+::: notes
+This is the average of two adjacent points.
+
+We end up with as many points as we started with, but now they are "averaged" points, so we've lost information.
+
+Can't recover the original data from this, but we can get a sense of the "low frequency" information.
+:::
+
+. . .
+
+At the same time, we can apply a difference filter ("unsmoothing"):
+
+$$
+\begin{equation*}
+z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
+\end{equation*}
+$$
+
+::: notes
+Now we can fully recover the original data, because
+$y_{k}+z_{k}=x_{k}, k=1, \ldots, N$
+
+:::
+
+. . .
+
+Idea: take our data, apply both filters to it and keep the results.
+
+## Example
+
+$g(t)=\frac{3}{2}+\cos \left(\frac{\pi}{4} t\right)-\frac{1}{4} \cos \left(\frac{7 \pi}{4} t\right), 0 \leq t \leq 8$
+
+. . .
+
+Sample at $t_{k}=k / 5, k=0,1, \ldots, 40$ 
+
+. . .
+
+![x: black, y: red, z: green](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&width=1021&top_left_y=197&top_left_x=248)
+
+
+
+

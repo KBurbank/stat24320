@@ -822,6 +822,6 @@ Sample at $t_{k}=k / 5, k=0,1, \ldots, 40$
 
 ![x: black, y: red, z: green](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&width=1021&top_left_y=197&top_left_x=248)
 
-
-
-
+::: notes
+But now we have twice as much data as we started with! We can just drop every other point "downsample", and still be able to fully recover the original data.
+:::

@@ -2678,6 +2678,6 @@
     "href": "lectures/ch4lecture2.html#example-4",
     "title": "Ch4 Lecture 2",
     "section": "Example",
-    "text": "Example\n\\(g(t)=\\frac{3}{2}+\\cos \\left(\\frac{\\pi}{4} t\\right)-\\frac{1}{4} \\cos \\left(\\frac{7 \\pi}{4} t\\right), 0 \\leq t \\leq 8\\)\n\nSample at \\(t_{k}=k / 5, k=0,1, \\ldots, 40\\)\n\n\n\n\n\nx: black, y: red, z: green\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nLady\nx: black, y: red, z: green"
+    "text": "Example\n\\(g(t)=\\frac{3}{2}+\\cos \\left(\\frac{\\pi}{4} t\\right)-\\frac{1}{4} \\cos \\left(\\frac{7 \\pi}{4} t\\right), 0 \\leq t \\leq 8\\)\n\nSample at \\(t_{k}=k / 5, k=0,1, \\ldots, 40\\)\n\n\n\n\n\nx: black, y: red, z: green\n\n\n\nBut now we have twice as much data as we started with! We can just drop every other point “downsample”, and still be able to fully recover the original data.\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nLady\nx: black, y: red, z: green"
   }
 ]

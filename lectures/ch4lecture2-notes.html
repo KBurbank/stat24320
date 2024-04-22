@@ -1164,7 +1164,7 @@ R \mathbf{x}&amp;= Q^{T} \mathbf{b}
 <h2><em>Image compression idea</em></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="ch4_lady.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="Lady"><img data-src="ch4_lady.jpg" alt="Lady"></a></p>
+<p><a href="ch4_lady.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Lady"><img data-src="ch4_lady.jpg" alt="Lady"></a></p>
 <figcaption>Lady</figcaption>
 </figure>
 </div>
@@ -1244,10 +1244,23 @@ z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
 <div class="fragment">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="x: black, y: red, z: green"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" alt="x: black, y: red, z: green"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="x: black, y: red, z: green"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-332.jpg?height=673&amp;width=1021&amp;top_left_y=197&amp;top_left_x=248" alt="x: black, y: red, z: green"></a></p>
 <figcaption>x: black, y: red, z: green</figcaption>
 </figure>
 </div>
+<aside class="notes">
+<p>But now we have twice as much data as we started with! We can just drop every other point “downsample”, and still be able to fully recover the original data.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1676,7 +1689,7 @@ z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

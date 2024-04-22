@@ -340,11 +340,15 @@ $$
 \mathbf{v}_{k}=\mathbf{w}_{k}-\frac{\mathbf{v}_{1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{1} \cdot \mathbf{v}_{1}} \mathbf{v}_{1}-\frac{\mathbf{v}_{2} \cdot \mathbf{w}_{k}}{\mathbf{v}_{2} \cdot \mathbf{v}_{2}} \mathbf{v}_{2}-\cdots-\frac{\mathbf{v}_{k-1} \cdot \mathbf{w}_{k}}{\mathbf{v}_{k-1} \cdot \mathbf{v}_{k-1}} \mathbf{v}_{k-1}, \quad k=1, \ldots, n
 $$
 
+. . .
+
 Then
 
 (1) The vectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}$ form an orthogonal set.
 
 (2) For each index $k=1, \ldots, n$,
+
+. . .
 
 $$
 \operatorname{span}\left\{\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{k}\right\}=\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{k}\right\}
@@ -392,7 +396,7 @@ The independent columns are columns 1, 2, and 4.
 
 So let these be our $\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}$.
 
-. . .
+##
 
 Step 1: $\mathbf{v}_{1}=\mathbf{w}_{1}=(1,1,1,-1)$
 
@@ -421,7 +425,9 @@ $\mathbf{u}_{1}=\frac{1}{\|\mathbf{v}_{1}\|} \mathbf{v}_{1}=\frac{1}{2}(1,1,1,-1
 
 . . .
 
-$\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}(9,-3,-3,3)$ etc.
+$\mathbf{u}_{2}=\frac{1}{\|\mathbf{v}_{2}\|} \mathbf{v}_{2}=\frac{1}{\sqrt(108)}(9,-3,-3,3)$ 
+
+etc.
 
 
 # QR Factorization
@@ -589,6 +595,8 @@ $$
 
 We already found the Gram-Schmidt orthogonalization of this matrix:
 
+##
+
 $$
 \begin{aligned}
 \mathbf{v}_{1} & =\mathbf{w}_{1}=(1,1,1,-1), \\
@@ -680,7 +688,7 @@ $$\left[\begin{array}{rrr}
 $$
 
 
-. . .
+##
 
 ```{python}
 #| echo: true
@@ -866,6 +874,7 @@ $$
 ## Almost orthogonal
 
 $$
+\begin{gather}
 A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
 1 & 1 & 0 & 0 & 0 & 0 \\
 0 & 0 & 1 & 1 & 0 & 0 \\
@@ -880,17 +889,18 @@ A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
 0 & 1 & 0 & 0 & 1 & 0 \\
 0 & 0 & 1 & 0 & 0 & -1 \\
 0 & 0 & 1 & 0 & 0 & 1
-\end{array}\right]=\frac{1}{2}\left[\begin{array}{llllll}
+\end{array}\right] \\[10pt] =\frac{1}{2}\left[\begin{array}{llllll}
 1 & 0 & 0 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 & 0 & 0 \\
 0 & 0 & 1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 0 & 0 & 1
-\end{array}\right]=\frac{1}{2} I_{6} .
+\end{array}\right]=\frac{1}{2} I_{6}
+\end{gather}
 $$
 
-. . .
+##
 
 In general,
 

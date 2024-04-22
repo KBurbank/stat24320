@@ -964,16 +964,17 @@ $$
 . . .
 
 ::: {#fig-lady layout-ncol=4}
-![Original image](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246){width=180}
+![Original image](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=757&width=515&top_left_y=200&top_left_x=246){width=150}
 
-![After transform](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&width=526&top_left_y=201&top_left_x=756){width=180}
+![After transform](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-335.jpg?height=759&width=526&top_left_y=201&top_left_x=756){width=150}
 
-![Enlarged blur](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-336.jpg?height=813&width=560&top_left_y=199&top_left_x=199){width=180}
+![Enlarged blur](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-336.jpg?height=813&width=560&top_left_y=199&top_left_x=199){width=150}
 
-
+![Edge image](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-336.jpg?height=813&width=549&top_left_y=199&top_left_x=769){width=150}
 
 Effects of Haar wavelet transform on an image.
 :::
+
 . . .
 
  $B$ represents the blurred image of $A$, while $V, H$ and $D$ represent edges of the image $A$ along vertical, horizontal and diagonal directions, respectively.

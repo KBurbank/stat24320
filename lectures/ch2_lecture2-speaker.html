@@ -611,7 +611,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"fig-cap":"","warning":"true","dpi":72,"message":"true","label":"","fig-width":7,"fig-height":5,"classes":"","output":"true","context":"interactive","out-height":"","comment":"","autorun":"","results":"markup","read-only":"false","out-width":"700px"},"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"code":"import sympy as sym\nM=sym.Matrix([[0.7,0.4],[0.3,0.6]])\na_0,b_0=sym.symbols('a_0, b_0')\n# construct the column vector for the initial state\nx_0=_______\n# find the state after 1 quarter\n______","options":{"comment":"","out-width":"700px","fig-height":5,"autorun":"","results":"markup","output":"true","fig-cap":"","warning":"true","read-only":"false","context":"interactive","classes":"","dpi":72,"fig-width":7,"label":"","message":"true","out-height":""}}];
 
 
   </script>
@@ -2532,7 +2532,7 @@ A+A^{2}=\left[\begin{array}{llllll}
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

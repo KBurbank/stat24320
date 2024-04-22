@@ -1,8 +1,8 @@
 ---
 title: Ch4 Lecture 2
-lecture_day: 8
-readings: "4.2,4.3"
-publish: false
+lecture_day: 11
+readings: "4.2,4.3,4.4"
+publish: true
 execute: 
   cache: true
 lightbox: true

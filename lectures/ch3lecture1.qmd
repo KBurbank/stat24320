@@ -1,6 +1,6 @@
 ---
 title: Ch3 Lecture 1
-lecture_day: 8
+lecture_day: 9
 readings: "3.3, 3.4, 3.6"
 publish: true
 execute: 

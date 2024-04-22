@@ -656,6 +656,7 @@ $R \mathbf{x}=Q^{T} \mathbf{b}$, where $\mathbf{b}=(1,1,1,1)$
 . . .
 
 ```{python}
+#| echo: true
 #| output: 'asis'
 import sympy as sp
 Q = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])

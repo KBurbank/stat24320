@@ -712,7 +712,7 @@ $$
 \end{array}\right]
 $$
 
-. . .
+##
 
 Check:
 
@@ -763,6 +763,11 @@ $$
 
 This is just what we solved above!
 :::
+*pause*
+
+. . .
+
+The QR factorization can be used to solve the least squares problem $A \mathbf{x} \approx \mathbf{b}$.
 
 # Haar Wavelet Transform
 
@@ -782,11 +787,13 @@ We note that the high frequency information is pretty sparse, the low frequency 
 
 In 1D, N data points $\left\{x_{k}\right\}_{k=1}^{N}$
 
+. . .
+
 Can average terms:
 
 $$
 \begin{equation*}
-y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.4}
+y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} 
 \end{equation*}
 $$
 
@@ -804,7 +811,7 @@ At the same time, we can apply a difference filter ("unsmoothing"):
 
 $$
 \begin{equation*}
-z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
+z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N 
 \end{equation*}
 $$
 
@@ -834,7 +841,7 @@ Sample at $t_{k}=k / 5, k=0,1, \ldots, 40$
 But now we have twice as much data as we started with! We can just drop every other point "downsample", and still be able to fully recover the original data.
 :::
 
-. . .
+##
 
 $$
 \begin{array}{rlll}
@@ -918,7 +925,7 @@ Can make them orthogonal by dividing by $\sqrt{2}$:
 
 $$
 \begin{equation*}
-y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.7}
+y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z}
 \end{equation*}
 $$
 
@@ -926,7 +933,7 @@ and
 
 $$
 \begin{equation*}
-z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.8}
+z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z} 
 \end{equation*}
 $$
 
@@ -954,19 +961,15 @@ $$
 
 ## Moving to 2D
 
-For a 2D image represented pixel-by-pixel in the matrix $\mathbf{A}$, we can apply the 1D transform to each row and then to each column.
+For a 2D image represented pixel-by-pixel in the matrix $\mathbf{A}$, we can apply the 1D transform to each row and then to each column: $W_{m} A W_{n}^{T}$
 
 . . .
 
-$W_{m} A W_{n}^{T}$
-
-. . .
-
-Can do this 
+Result ends up in block form:
 
 $$
 W_{m} A W_{n}^{T}=2\left[\begin{array}{ll}
-B & V  \tag{4.10}\\
+B & V  \\
 H & D
 \end{array}\right]
 $$

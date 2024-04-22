@@ -1111,7 +1111,10 @@ Q^T b =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{mat
 \end{array}\right]
 \]</span></p>
 </div>
-<div class="fragment">
+</section>
+
+<section id="section-9" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>Check:</p>
 <p><span class="math display">\[
 \mathbf{r}=\mathbf{b}-A \mathbf{x}=\left[\begin{array}{l}
@@ -1135,7 +1138,6 @@ Q^T b =\left[\begin{matrix}1.0\\\frac{\sqrt{3}}{3}\\\frac{2 \sqrt{6}}{3}\end{mat
 0
 \end{array}\right] .
 \]</span></p>
-</div>
 </section>
 
 <section id="least-squares-with-qr-factorization" class="title-slide slide level2 center">
@@ -1165,6 +1167,10 @@ R \mathbf{x}&amp;= Q^{T} \mathbf{b}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+<p><em>pause</em></p>
+</div>
+<div class="fragment">
+<p>The QR factorization can be used to solve the least squares problem <span class="math inline">\(A \mathbf{x} \approx \mathbf{b}\)</span>.</p>
 </div>
 </section>
 </section>
@@ -1196,10 +1202,11 @@ R \mathbf{x}&amp;= Q^{T} \mathbf{b}
 <section id="haaar-wavelet-transform" class="title-slide slide level2 center">
 <h2><em>Haaar wavelet transform</em></h2>
 <p>In 1D, N data points <span class="math inline">\(\left\{x_{k}\right\}_{k=1}^{N}\)</span></p>
+<div class="fragment">
 <p>Can average terms:</p>
 <p><span class="math display">\[
 \begin{equation*}
-y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.4}
+y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z}
 \end{equation*}
 \]</span></p>
 <aside class="notes">
@@ -1217,11 +1224,12 @@ y_{k}=\frac{1}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.4}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 <div class="fragment">
 <p>At the same time, we can apply a difference filter (“unsmoothing”):</p>
 <p><span class="math display">\[
 \begin{equation*}
-z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
+z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N
 \end{equation*}
 \]</span></p>
 <aside class="notes">
@@ -1270,14 +1278,16 @@ z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
           display:block!important;
       }</style></aside>
 </div>
-<div class="fragment">
+</section>
+
+<section id="section-10" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p><span class="math display">\[
 \begin{array}{rlll}
 \frac{1}{2}\left(x_{1}+x_{2}\right)=y_{2} &amp; \frac{1}{2}\left(x_{3}+x_{4}\right)=y_{4} &amp; \frac{1}{2}\left(x_{5}+x_{6}\right)=y_{6} \\
 \frac{1}{2}\left(-x_{1}+x_{2}\right)=z_{2} &amp; \frac{1}{2}\left(-x_{3}+x_{4}\right)=z_{4} &amp; \frac{1}{2}\left(-x_{5}+x_{6}\right)=z_{6}
 \end{array}
 \]</span></p>
-</div>
 <div class="fragment">
 <p><span class="math display">\[
 A_{6} \mathbf{x} \equiv \frac{1}{2}\left[\begin{array}{rrrrrr}
@@ -1336,7 +1346,7 @@ A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
 \]</span></p>
 </section>
 
-<section id="section-9" class="title-slide slide level2 center">
+<section id="section-11" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>In general,</p>
 <p><span class="math inline">\(A_{N} A_{N}^{T}=\frac{1}{2} I_{N}\)</span></p>
@@ -1351,13 +1361,13 @@ A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
 <p>Can make them orthogonal by dividing by <span class="math inline">\(\sqrt{2}\)</span>:</p>
 <p><span class="math display">\[
 \begin{equation*}
-y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.7}
+y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z}
 \end{equation*}
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
 \begin{equation*}
-z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.8}
+z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z}
 \end{equation*}
 \]</span></p>
 <div class="fragment">
@@ -1384,15 +1394,12 @@ L
 
 <section id="moving-to-2d" class="title-slide slide level2 center">
 <h2><em>Moving to 2D</em></h2>
-<p>For a 2D image represented pixel-by-pixel in the matrix <span class="math inline">\(\mathbf{A}\)</span>, we can apply the 1D transform to each row and then to each column.</p>
+<p>For a 2D image represented pixel-by-pixel in the matrix <span class="math inline">\(\mathbf{A}\)</span>, we can apply the 1D transform to each row and then to each column: <span class="math inline">\(W_{m} A W_{n}^{T}\)</span></p>
 <div class="fragment">
-<p><span class="math inline">\(W_{m} A W_{n}^{T}\)</span></p>
-</div>
-<div class="fragment">
-<p>Can do this</p>
+<p>Result ends up in block form:</p>
 <p><span class="math display">\[
 W_{m} A W_{n}^{T}=2\left[\begin{array}{ll}
-B &amp; V  \tag{4.10}\\
+B &amp; V  \\
 H &amp; D
 \end{array}\right]
 \]</span></p>
@@ -1875,7 +1882,7 @@ Figure&nbsp;1: Effects of Haar wavelet transform on an image.
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

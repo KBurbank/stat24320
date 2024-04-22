@@ -2657,7 +2657,7 @@
     "href": "lectures/ch4lecture2.html#least-squares-with-qr-factorization",
     "title": "Ch4 Lecture 2",
     "section": "Least Squares with QR factorization",
-    "text": "Least Squares with QR factorization\nWhat if we have a system that’s not consistent?\n\n\nSolve a related problem, just by multiplying both sides of the equation by \\(A^{T}\\) to get the Normal equations: \\[\nA^{T} A \\mathbf{x}=R^{T} Q^{T} Q R \\mathbf{x}=R^{T} I R \\mathbf{x}=R^{T} R \\mathbf{x}=A^{T} \\mathbf{b}=R^{T} Q^{T} \\mathbf{b} .\n\\]\nNotice that we can invert \\(R\\) because its diagonal entries are nonzero. So we can cancel it out to find\n\\[\n\\begin{aligned}\nR^{T} R \\mathbf{x}&=R^{T} Q^{T} \\mathbf{b} \\\\\nR \\mathbf{x}&= Q^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThis is just what we solved above!"
+    "text": "Least Squares with QR factorization\nWhat if we have a system that’s not consistent?\n\n\nSolve a related problem, just by multiplying both sides of the equation by \\(A^{T}\\) to get the Normal equations: \\[\nA^{T} A \\mathbf{x}=R^{T} Q^{T} Q R \\mathbf{x}=R^{T} I R \\mathbf{x}=R^{T} R \\mathbf{x}=A^{T} \\mathbf{b}=R^{T} Q^{T} \\mathbf{b} .\n\\]\nNotice that we can invert \\(R\\) because its diagonal entries are nonzero. So we can cancel it out to find\n\\[\n\\begin{aligned}\nR^{T} R \\mathbf{x}&=R^{T} Q^{T} \\mathbf{b} \\\\\nR \\mathbf{x}&= Q^{T} \\mathbf{b}\n\\end{aligned}\n\\]\nThis is just what we solved above!\n\npause\n\n\nThe QR factorization can be used to solve the least squares problem \\(A \\mathbf{x} \\approx \\mathbf{b}\\)."
   },
   {
     "objectID": "lectures/ch4lecture2.html#image-compression-idea",
@@ -2671,14 +2671,14 @@
     "href": "lectures/ch4lecture2.html#haaar-wavelet-transform",
     "title": "Ch4 Lecture 2",
     "section": "Haaar wavelet transform",
-    "text": "Haaar wavelet transform\nIn 1D, N data points \\(\\left\\{x_{k}\\right\\}_{k=1}^{N}\\)\nCan average terms:\n\\[\n\\begin{equation*}\ny_{k}=\\frac{1}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.4}\n\\end{equation*}\n\\]\n\nThis is the average of two adjacent points.\nWe end up with as many points as we started with, but now they are “averaged” points, so we’ve lost information.\nCan’t recover the original data from this, but we can get a sense of the “low frequency” information.\n\n\nAt the same time, we can apply a difference filter (“unsmoothing”):\n\\[\n\\begin{equation*}\nz_{k}=\\frac{1}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k=1, \\ldots, N \\tag{4.5}\n\\end{equation*}\n\\]\n\nNow we can fully recover the original data, because \\(y_{k}+z_{k}=x_{k}, k=1, \\ldots, N\\)\n\n\n\nIdea: take our data, apply both filters to it and keep the results."
+    "text": "Haaar wavelet transform\nIn 1D, N data points \\(\\left\\{x_{k}\\right\\}_{k=1}^{N}\\)\n\nCan average terms:\n\\[\n\\begin{equation*}\ny_{k}=\\frac{1}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z}\n\\end{equation*}\n\\]\n\nThis is the average of two adjacent points.\nWe end up with as many points as we started with, but now they are “averaged” points, so we’ve lost information.\nCan’t recover the original data from this, but we can get a sense of the “low frequency” information.\n\n\n\nAt the same time, we can apply a difference filter (“unsmoothing”):\n\\[\n\\begin{equation*}\nz_{k}=\\frac{1}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k=1, \\ldots, N\n\\end{equation*}\n\\]\n\nNow we can fully recover the original data, because \\(y_{k}+z_{k}=x_{k}, k=1, \\ldots, N\\)\n\n\n\nIdea: take our data, apply both filters to it and keep the results."
   },
   {
     "objectID": "lectures/ch4lecture2.html#example-4",
     "href": "lectures/ch4lecture2.html#example-4",
     "title": "Ch4 Lecture 2",
     "section": "Example",
-    "text": "Example\n\\(g(t)=\\frac{3}{2}+\\cos \\left(\\frac{\\pi}{4} t\\right)-\\frac{1}{4} \\cos \\left(\\frac{7 \\pi}{4} t\\right), 0 \\leq t \\leq 8\\)\n\nSample at \\(t_{k}=k / 5, k=0,1, \\ldots, 40\\)\n\n\n\n\n\nx: black, y: red, z: green\n\n\n\nBut now we have twice as much data as we started with! We can just drop every other point “downsample”, and still be able to fully recover the original data.\n\n\n\n\\[\n\\begin{array}{rlll}\n\\frac{1}{2}\\left(x_{1}+x_{2}\\right)=y_{2} & \\frac{1}{2}\\left(x_{3}+x_{4}\\right)=y_{4} & \\frac{1}{2}\\left(x_{5}+x_{6}\\right)=y_{6} \\\\\n\\frac{1}{2}\\left(-x_{1}+x_{2}\\right)=z_{2} & \\frac{1}{2}\\left(-x_{3}+x_{4}\\right)=z_{4} & \\frac{1}{2}\\left(-x_{5}+x_{6}\\right)=z_{6}\n\\end{array}\n\\]\n\n\n\\[\nA_{6} \\mathbf{x} \\equiv \\frac{1}{2}\\left[\\begin{array}{rrrrrr}\n1 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & 1 \\\\\n-1 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & -1 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & -1 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3} \\\\\nx_{4} \\\\\nx_{5} \\\\\nx_{6}\n\\end{array}\\right]=\\left[\\begin{array}{l}\ny_{2} \\\\\ny_{4} \\\\\ny_{6} \\\\\nz_{2} \\\\\nz_{4} \\\\\nz_{6}\n\\end{array}\\right]\n\\]"
+    "text": "Example\n\\(g(t)=\\frac{3}{2}+\\cos \\left(\\frac{\\pi}{4} t\\right)-\\frac{1}{4} \\cos \\left(\\frac{7 \\pi}{4} t\\right), 0 \\leq t \\leq 8\\)\n\nSample at \\(t_{k}=k / 5, k=0,1, \\ldots, 40\\)\n\n\n\n\n\nx: black, y: red, z: green\n\n\n\nBut now we have twice as much data as we started with! We can just drop every other point “downsample”, and still be able to fully recover the original data."
   },
   {
     "objectID": "lectures/ch4lecture2.html#almost-orthogonal",
@@ -2692,14 +2692,14 @@
     "href": "lectures/ch4lecture2.html#haar-wavelet-transform-matrix",
     "title": "Ch4 Lecture 2",
     "section": "Haar Wavelet Transform Matrix",
-    "text": "Haar Wavelet Transform Matrix\nCan make them orthogonal by dividing by \\(\\sqrt{2}\\):\n\\[\n\\begin{equation*}\ny_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.7}\n\\end{equation*}\n\\]\nand\n\\[\n\\begin{equation*}\nz_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k \\in \\mathbb{Z} \\tag{4.8}\n\\end{equation*}\n\\]\n\nIn matrix form,\n\\[\nW_{N}=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{ccccccc}\n1 & 1 & 0 & 0 & \\ldots & 0 & 0  \\\\\n0 & 0 & 1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & 1 & 1 \\\\\n\\ldots & \\ldots & \\ldots & \\ldots & \\ldots & \\ldots \\\\\n-1 & 1 & 0 & 0 & \\ldots & 0 & 0 \\\\\n0 & 0 & -1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & -1 & 1\n\\end{array}\\right]=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{c}\nU \\\\\n\\ldots \\\\\nL\n\\end{array}\\right]\n\\]"
+    "text": "Haar Wavelet Transform Matrix\nCan make them orthogonal by dividing by \\(\\sqrt{2}\\):\n\\[\n\\begin{equation*}\ny_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}+x_{k-1}\\right), \\quad k \\in \\mathbb{Z}\n\\end{equation*}\n\\]\nand\n\\[\n\\begin{equation*}\nz_{k}=\\frac{\\sqrt{2}}{2}\\left(x_{k}-x_{k-1}\\right), \\quad k \\in \\mathbb{Z}\n\\end{equation*}\n\\]\n\nIn matrix form,\n\\[\nW_{N}=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{ccccccc}\n1 & 1 & 0 & 0 & \\ldots & 0 & 0  \\\\\n0 & 0 & 1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & 1 & 1 \\\\\n\\ldots & \\ldots & \\ldots & \\ldots & \\ldots & \\ldots \\\\\n-1 & 1 & 0 & 0 & \\ldots & 0 & 0 \\\\\n0 & 0 & -1 & 1 & \\ldots & 0 & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\ddots & \\vdots & \\vdots \\\\\n0 & 0 & 0 & 0 & \\ldots & -1 & 1\n\\end{array}\\right]=\\frac{\\sqrt{2}}{2}\\left[\\begin{array}{c}\nU \\\\\n\\ldots \\\\\nL\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch4lecture2.html#moving-to-2d",
     "href": "lectures/ch4lecture2.html#moving-to-2d",
     "title": "Ch4 Lecture 2",
     "section": "Moving to 2D",
-    "text": "Moving to 2D\nFor a 2D image represented pixel-by-pixel in the matrix \\(\\mathbf{A}\\), we can apply the 1D transform to each row and then to each column.\n\n\\(W_{m} A W_{n}^{T}\\)\n\n\nCan do this\n\\[\nW_{m} A W_{n}^{T}=2\\left[\\begin{array}{ll}\nB & V  \\tag{4.10}\\\\\nH & D\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\nOriginal image\n\n\n\n\n\n\n\nAfter transform\n\n\n\n\n\n\n\nEnlarged blur\n\n\n\n\n\n\n\nEdge image\n\n\n\n\n\n\nFigure 1: Effects of Haar wavelet transform on an image.\n\n\n\n\n\n\\(B\\) represents the blurred image of \\(A\\), while \\(V, H\\) and \\(D\\) represent edges of the image \\(A\\) along vertical, horizontal and diagonal directions, respectively.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nx: black, y: red, z: green\nOriginal image\nAfter transform\nEnlarged blur\nEdge image"
+    "text": "Moving to 2D\nFor a 2D image represented pixel-by-pixel in the matrix \\(\\mathbf{A}\\), we can apply the 1D transform to each row and then to each column: \\(W_{m} A W_{n}^{T}\\)\n\nResult ends up in block form:\n\\[\nW_{m} A W_{n}^{T}=2\\left[\\begin{array}{ll}\nB & V  \\\\\nH & D\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\nOriginal image\n\n\n\n\n\n\n\nAfter transform\n\n\n\n\n\n\n\nEnlarged blur\n\n\n\n\n\n\n\nEdge image\n\n\n\n\n\n\nFigure 1: Effects of Haar wavelet transform on an image.\n\n\n\n\n\n\\(B\\) represents the blurred image of \\(A\\), while \\(V, H\\) and \\(D\\) represent edges of the image \\(A\\) along vertical, horizontal and diagonal directions, respectively.\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nx: black, y: red, z: green\nOriginal image\nAfter transform\nEnlarged blur\nEdge image"
   },
   {
     "objectID": "lectures/ch4lecture2.html#section-6",
@@ -2720,11 +2720,25 @@
     "href": "lectures/ch4lecture2.html#section-8",
     "title": "Ch4 Lecture 2",
     "section": "",
-    "text": "import sympy as sp\nQ = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])\nR = sp.Matrix([[2, -1/2, 1], [0, 3*sp.sqrt(3)/2, -sp.sqrt(3)], [0, 0, sp.sqrt(6)]])\nb = sp.Matrix([1, 1, 1, 1])\nprint('$$\\n Q^T b ='+sp.latex(Q.T*b)+'\\n$$')\nprint('$$\\n '+sp.latex(R)+' \\mathbf{x} ='+sp.latex(Q.T*b)+'\\n$$')\n\\[\nQ^T b =\\left[\\begin{matrix}1.0\\\\\\frac{\\sqrt{3}}{3}\\\\\\frac{2 \\sqrt{6}}{3}\\end{matrix}\\right]\n\\] \\[\n\\left[\\begin{matrix}2 & -0.5 & 1\\\\0 & \\frac{3 \\sqrt{3}}{2} & - \\sqrt{3}\\\\0 & 0 & \\sqrt{6}\\end{matrix}\\right] \\mathbf{x} =\\left[\\begin{matrix}1.0\\\\\\frac{\\sqrt{3}}{3}\\\\\\frac{2 \\sqrt{6}}{3}\\end{matrix}\\right]\n\\]\n\nFind \\[\n\\mathbf{x}=\\left[\\begin{array}{l}\n1 / 3 \\\\\n2 / 3 \\\\\n2 / 3\n\\end{array}\\right]\n\\]\n\n\nCheck:\n\\[\n\\mathbf{r}=\\mathbf{b}-A \\mathbf{x}=\\left[\\begin{array}{l}\n1 \\\\\n1 \\\\\n1 \\\\\n1\n\\end{array}\\right]-\\left[\\begin{array}{rrr}\n1 & 2 & -1 \\\\\n1 & -1 & 2 \\\\\n1 & -1 & 2 \\\\\n-1 & 1 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 / 3 \\\\\n2 / 3 \\\\\n2 / 3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n0 \\\\\n0 \\\\\n0 \\\\\n0\n\\end{array}\\right] .\n\\]"
+    "text": "import sympy as sp\nQ = sp.Matrix([[1/2, 3/(2*sp.sqrt(3)), 0], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [1/2, -1/(2*sp.sqrt(3)), 1/sp.sqrt(6)], [-1/2, 1/(2*sp.sqrt(3)), 2/sp.sqrt(6)]])\nR = sp.Matrix([[2, -1/2, 1], [0, 3*sp.sqrt(3)/2, -sp.sqrt(3)], [0, 0, sp.sqrt(6)]])\nb = sp.Matrix([1, 1, 1, 1])\nprint('$$\\n Q^T b ='+sp.latex(Q.T*b)+'\\n$$')\nprint('$$\\n '+sp.latex(R)+' \\mathbf{x} ='+sp.latex(Q.T*b)+'\\n$$')\n\\[\nQ^T b =\\left[\\begin{matrix}1.0\\\\\\frac{\\sqrt{3}}{3}\\\\\\frac{2 \\sqrt{6}}{3}\\end{matrix}\\right]\n\\] \\[\n\\left[\\begin{matrix}2 & -0.5 & 1\\\\0 & \\frac{3 \\sqrt{3}}{2} & - \\sqrt{3}\\\\0 & 0 & \\sqrt{6}\\end{matrix}\\right] \\mathbf{x} =\\left[\\begin{matrix}1.0\\\\\\frac{\\sqrt{3}}{3}\\\\\\frac{2 \\sqrt{6}}{3}\\end{matrix}\\right]\n\\]\n\nFind \\[\n\\mathbf{x}=\\left[\\begin{array}{l}\n1 / 3 \\\\\n2 / 3 \\\\\n2 / 3\n\\end{array}\\right]\n\\]"
   },
   {
     "objectID": "lectures/ch4lecture2.html#section-9",
     "href": "lectures/ch4lecture2.html#section-9",
+    "title": "Ch4 Lecture 2",
+    "section": "",
+    "text": "Check:\n\\[\n\\mathbf{r}=\\mathbf{b}-A \\mathbf{x}=\\left[\\begin{array}{l}\n1 \\\\\n1 \\\\\n1 \\\\\n1\n\\end{array}\\right]-\\left[\\begin{array}{rrr}\n1 & 2 & -1 \\\\\n1 & -1 & 2 \\\\\n1 & -1 & 2 \\\\\n-1 & 1 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\n1 / 3 \\\\\n2 / 3 \\\\\n2 / 3\n\\end{array}\\right]=\\left[\\begin{array}{l}\n0 \\\\\n0 \\\\\n0 \\\\\n0\n\\end{array}\\right] .\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#section-10",
+    "href": "lectures/ch4lecture2.html#section-10",
+    "title": "Ch4 Lecture 2",
+    "section": "",
+    "text": "\\[\n\\begin{array}{rlll}\n\\frac{1}{2}\\left(x_{1}+x_{2}\\right)=y_{2} & \\frac{1}{2}\\left(x_{3}+x_{4}\\right)=y_{4} & \\frac{1}{2}\\left(x_{5}+x_{6}\\right)=y_{6} \\\\\n\\frac{1}{2}\\left(-x_{1}+x_{2}\\right)=z_{2} & \\frac{1}{2}\\left(-x_{3}+x_{4}\\right)=z_{4} & \\frac{1}{2}\\left(-x_{5}+x_{6}\\right)=z_{6}\n\\end{array}\n\\]\n\n\\[\nA_{6} \\mathbf{x} \\equiv \\frac{1}{2}\\left[\\begin{array}{rrrrrr}\n1 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & 1 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & 1 & 1 \\\\\n-1 & 1 & 0 & 0 & 0 & 0 \\\\\n0 & 0 & -1 & 1 & 0 & 0 \\\\\n0 & 0 & 0 & 0 & -1 & 1\n\\end{array}\\right]\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3} \\\\\nx_{4} \\\\\nx_{5} \\\\\nx_{6}\n\\end{array}\\right]=\\left[\\begin{array}{l}\ny_{2} \\\\\ny_{4} \\\\\ny_{6} \\\\\nz_{2} \\\\\nz_{4} \\\\\nz_{6}\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ch4lecture2.html#section-11",
+    "href": "lectures/ch4lecture2.html#section-11",
     "title": "Ch4 Lecture 2",
     "section": "",
     "text": "In general,\n\\(A_{N} A_{N}^{T}=\\frac{1}{2} I_{N}\\)\n\n\nThese matrices are nearly orthogonal."

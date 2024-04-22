@@ -825,3 +825,119 @@ Sample at $t_{k}=k / 5, k=0,1, \ldots, 40$
 ::: notes
 But now we have twice as much data as we started with! We can just drop every other point "downsample", and still be able to fully recover the original data.
 :::
+
+. . .
+
+$$
+\begin{array}{rlll}
+\frac{1}{2}\left(x_{1}+x_{2}\right)=y_{2} & \frac{1}{2}\left(x_{3}+x_{4}\right)=y_{4} & \frac{1}{2}\left(x_{5}+x_{6}\right)=y_{6} \\
+\frac{1}{2}\left(-x_{1}+x_{2}\right)=z_{2} & \frac{1}{2}\left(-x_{3}+x_{4}\right)=z_{4} & \frac{1}{2}\left(-x_{5}+x_{6}\right)=z_{6}
+\end{array}
+$$
+
+. . .
+
+$$
+A_{6} \mathbf{x} \equiv \frac{1}{2}\left[\begin{array}{rrrrrr}
+1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+-1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & -1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & -1 & 1
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4} \\
+x_{5} \\
+x_{6}
+\end{array}\right]=\left[\begin{array}{l}
+y_{2} \\
+y_{4} \\
+y_{6} \\
+z_{2} \\
+z_{4} \\
+z_{6}
+\end{array}\right]
+$$
+
+
+## Almost orthogonal
+
+$$
+A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
+1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 1 \\
+-1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & -1 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & -1 & 1
+\end{array}\right]\left[\begin{array}{cccccc}
+1 & 0 & 0 & -1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 & -1 & 0 \\
+0 & 1 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0 & -1 \\
+0 & 0 & 1 & 0 & 0 & 1
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{llllll}
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right]=\frac{1}{2} I_{6} .
+$$
+
+. . .
+
+In general,
+
+$A_{N} A_{N}^{T}=\frac{1}{2} I_{N}$
+
+![](https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-333.jpg?height=444&width=733&top_left_y=711&top_left_x=390)
+
+. . .
+
+These matrices are **nearly** orthogonal. 
+
+
+## Haar Wavelet Transform Matrix
+Can make them orthogonal by dividing by $\sqrt{2}$:
+
+$$
+\begin{equation*}
+y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.7}
+\end{equation*}
+$$
+
+and
+
+$$
+\begin{equation*}
+z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.8}
+\end{equation*}
+$$
+
+. . .
+
+In matrix form,
+
+$$
+W_{N}=\frac{\sqrt{2}}{2}\left[\begin{array}{ccccccc}
+1 & 1 & 0 & 0 & \ldots & 0 & 0  \\
+0 & 0 & 1 & 1 & \ldots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & 1 & 1 \\
+\ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+-1 & 1 & 0 & 0 & \ldots & 0 & 0 \\
+0 & 0 & -1 & 1 & \ldots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & 0 & \ldots & -1 & 1
+\end{array}\right]=\frac{\sqrt{2}}{2}\left[\begin{array}{c}
+U \\
+\ldots \\
+L
+\end{array}\right]
+$$

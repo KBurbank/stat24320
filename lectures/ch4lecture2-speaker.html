@@ -1261,6 +1261,112 @@ z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{array}{rlll}
+\frac{1}{2}\left(x_{1}+x_{2}\right)=y_{2} &amp; \frac{1}{2}\left(x_{3}+x_{4}\right)=y_{4} &amp; \frac{1}{2}\left(x_{5}+x_{6}\right)=y_{6} \\
+\frac{1}{2}\left(-x_{1}+x_{2}\right)=z_{2} &amp; \frac{1}{2}\left(-x_{3}+x_{4}\right)=z_{4} &amp; \frac{1}{2}\left(-x_{5}+x_{6}\right)=z_{6}
+\end{array}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+A_{6} \mathbf{x} \equiv \frac{1}{2}\left[\begin{array}{rrrrrr}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4} \\
+x_{5} \\
+x_{6}
+\end{array}\right]=\left[\begin{array}{l}
+y_{2} \\
+y_{4} \\
+y_{6} \\
+z_{2} \\
+z_{4} \\
+z_{6}
+\end{array}\right]
+\]</span></p>
+</div>
+</section>
+
+<section id="almost-orthogonal" class="title-slide slide level2 center">
+<h2><em>Almost orthogonal</em></h2>
+<p><span class="math display">\[
+A_{6} A_{6}^{T}=\frac{1}{4}\left[\begin{array}{rrrrrr}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\
+-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1
+\end{array}\right]\left[\begin{array}{cccccc}
+1 &amp; 0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; -1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{llllll}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right]=\frac{1}{2} I_{6} .
+\]</span></p>
+<div class="fragment">
+<p>In general,</p>
+<p><span class="math inline">\(A_{N} A_{N}^{T}=\frac{1}{2} I_{N}\)</span></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-333.jpg?height=444&amp;width=733&amp;top_left_y=711&amp;top_left_x=390" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-333.jpg?height=444&amp;width=733&amp;top_left_y=711&amp;top_left_x=390"></a></p>
+</div>
+<div class="fragment">
+<p>These matrices are <strong>nearly</strong> orthogonal.</p>
+</div>
+</section>
+
+<section id="haar-wavelet-transform-matrix" class="title-slide slide level2 center">
+<h2><em>Haar Wavelet Transform Matrix</em></h2>
+<p>Can make them orthogonal by dividing by <span class="math inline">\(\sqrt{2}\)</span>:</p>
+<p><span class="math display">\[
+\begin{equation*}
+y_{k}=\frac{\sqrt{2}}{2}\left(x_{k}+x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.7}
+\end{equation*}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\begin{equation*}
+z_{k}=\frac{\sqrt{2}}{2}\left(x_{k}-x_{k-1}\right), \quad k \in \mathbb{Z} \tag{4.8}
+\end{equation*}
+\]</span></p>
+<div class="fragment">
+<p>In matrix form,</p>
+<p><span class="math display">\[
+W_{N}=\frac{\sqrt{2}}{2}\left[\begin{array}{ccccccc}
+1 &amp; 1 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 0  \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; \ldots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \ldots &amp; 1 &amp; 1 \\
+\ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots &amp; \ldots \\
+-1 &amp; 1 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; \ldots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; \ldots &amp; -1 &amp; 1
+\end{array}\right]=\frac{\sqrt{2}}{2}\left[\begin{array}{c}
+U \\
+\ldots \\
+L
+\end{array}\right]
+\]</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1689,7 +1795,7 @@ z_{k}=\frac{1}{2}\left(x_{k}-x_{k-1}\right), \quad k=1, \ldots, N \tag{4.5}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

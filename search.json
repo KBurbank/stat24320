@@ -2699,6 +2699,6 @@
     "href": "lectures/ch4lecture2.html#moving-to-2d",
     "title": "Ch4 Lecture 2",
     "section": "Moving to 2D",
-    "text": "Moving to 2D\nFor a 2D image represented pixel-by-pixel in the matrix \\(\\mathbf{A}\\), we can apply the 1D transform to each row and then to each column.\n\n\\(W_{m} A W_{n}^{T}\\)\n\n\nCan do this\n\\[\nW_{m} A W_{n}^{T}=2\\left[\\begin{array}{ll}\nB & V  \\tag{4.10}\\\\\nH & D\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nx: black, y: red, z: green\nFigure 1: \nFigure 1:"
+    "text": "Moving to 2D\nFor a 2D image represented pixel-by-pixel in the matrix \\(\\mathbf{A}\\), we can apply the 1D transform to each row and then to each column.\n\n\\(W_{m} A W_{n}^{T}\\)\n\n\nCan do this\n\\[\nW_{m} A W_{n}^{T}=2\\left[\\begin{array}{ll}\nB & V  \\tag{4.10}\\\\\nH & D\n\\end{array}\\right]\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nx: black, y: red, z: green\nFigure 1:"
   }
 ]

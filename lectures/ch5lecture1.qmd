@@ -1,0 +1,222 @@
+---
+title: Ch5 Lecture 1
+lecture_day: 11
+readings: "5.1,5.2"
+publish: talse
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+       css: theorem.css
+    #html:
+     #   output-file: ch2_lecture4plain.html
+---
+
+# Eigenvalues and Eigenvectors
+
+## Eigenvalues and Eigenvectors
+
+::: definition
+ An **eigenvector** of $A$ is a nonzero vector $\mathbf{x}$ in $\mathbb{R}^{n}$ (or $\mathbb{C}^{n}$) such that for some scalar $\lambda$, we have
+
+$$
+A \mathbf{x}=\lambda \mathbf{x}
+$$
+:::
+
+. . .
+
+Why do we care? One reason: matrix multiplication can become *scalar* multiplication:
+
+
+$$
+\begin{aligned}
+A \mathbf{x} & =\lambda \mathbf{x} \\
+A^{2} \mathbf{x} & =A(A \mathbf{x})=A \lambda \mathbf{x}=\lambda A \mathbf{x}=\lambda^{2} \mathbf{x} \\
+& \vdots \\
+A^{k} \mathbf{x} & =A\left(A^{k-1} \mathbf{x}\right)=\cdots=\lambda^{k} \mathbf{x} .
+\end{aligned}
+$$
+
+. . .
+
+Will see how to use these ideas to understand dynamics even for vectors that aren't eigenvectors.
+
+## Finding Eigenvalues and Eigenvectors
+
+$\lambda$ is an eigenvalue of $A$ if $A \mathbf{x}=\lambda \mathbf{x}\left(=\lambda I \mathbf{x}\right)$
+
+. . .
+
+$$
+\mathbf{0}=\lambda I \mathbf{x}-A \mathbf{x}=(\lambda I-A) \mathbf{x}
+$$
+
+. . .
+
+*pause*
+
+::: notes
+Remember a system of equations $A \mathbf{x}=0$ has a non-trivial solution if and only if $A$ is singular, or in other words $\operatorname{det}(A)=0$.
+:::
+
+. . .
+
+So, $\lambda$ is an eigenvalue of $A$ $\iff$ $\operatorname{det}(\lambda I-A)=0$.
+
+. . .
+
+::: definition
+If $A$ is a square $n \times n$ matrix, the equation $\operatorname{det}(\lambda I-A)=0$ is called the **characteristic equation** of $A$, and the $n$ th-degree monic polynomial $p(\lambda)=\operatorname{det}(\lambda I-A)$ is called the **characteristic polynomial** of $A$.
+:::
+
+## Eigenspaces and Eigensystems
+
+::: definition
+The **eigenspace** corresponding to eigenvalue $\lambda$ is the subspace $\mathcal{N}(\lambda I-A)$ of $\mathbb{R}^{n}$ (or $\left.\mathbb{C}^{n}\right)$. 
+
+We write $\mathcal{E}_{\lambda}(A)=\mathcal{N}(\lambda I-A)$.
+:::
+
+. . .
+
+Note: $\mathbf{0}$ is in every eigenspace, but it is not an eigenvector.
+
+. . .
+
+::: definition
+The **eigensystem** of the matrix $A$ is a list of all the eigenvalues of $A$ and, for each eigenvalue $\lambda$, a complete description of its eigenspace -- usually a basis.
+:::
+
+. . .
+
+::: theorem
+Eigensystem Algorithm:
+
+Given $n \times n$ matrix $A$, to find an eigensystem for $A$ :
+
+(1) Find the eigenvalues of $A$.
+
+(2) For each scalar $\lambda$ in (1), use the null space algorithm to find a basis of the eigenspace $\mathcal{N}(\lambda I-A)$.
+:::
+
+## A reminder: the Null Space algorithm
+
+
+Given an $m \times n$ matrix $A$.
+
+1. Compute the reduced row echelon form $R$ of $A$.
+
+2. Use $R$ to find the general solution to the homogeneous system $A \mathbf{x}=0$.
+
+. . .
+
+3. Write the general solution $\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ to the homogeneous system in the form
+
+$$
+\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+$$
+
+where $x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}$ are the free variables.
+
+. . .
+
+4. List the vectors $\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}$. These form a basis of $\mathcal{N}(A)$.
+
+
+## Example of the Null Space algorithm
+
+Find a basis for the null space of the matrix 
+$$A=\left[\begin{array}{llll}
+1 & 0 & 1 & 2 \\
+1 & 2 & 0 & 1 \\
+3 & 2 & 2 & 5 \\
+3 & 4 & 1 & 4
+\end{array}\right]
+$$
+
+
+. . .
+
+The reduced row echelon form of $A$ is
+
+$$
+R=\left[\begin{array}{rrrr}
+1 & 0 & 1 & 2 \\
+0 & 1 & -1 / 2 & -1 / 2 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+$$
+
+
+::: pause
+blank
+:::
+
+
+::: notes
+The variables $x_{3}$ and $x_{4}$ are free, while $x_{1}$ and $x_{2}$ are bound. 
+
+
+
+Hence, the general solution of $A \mathbf{x}=0$ can be written as
+
+$$
+\begin{aligned}
+x_{1} & =-x_{3}-2 x_{4}, \\
+x_{2} & =\frac{1}{2} x_{3}+\frac{1}{2} x_{4}, \\
+x_{3} & =x_{3}, \\
+x_{4} & =x_{4},
+\end{aligned}
+$$
+
+$$
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right]=x_{3}\left[\begin{array}{r}
+-1 \\
+1 / 2 \\
+1 \\
+0
+\end{array}\right]+x_{4}\left[\begin{array}{r}
+-2 \\
+1 / 2 \\
+0 \\
+1
+\end{array}\right] .
+$$
+:::
+which becomes, in vector notation,
+
+$$
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right]=x_{3}\left[\begin{array}{r}
+-1 \\
+1 / 2 \\
+1 \\
+0
+\end{array}\right]+x_{4}\left[\begin{array}{r}
+-2 \\
+1 / 2 \\
+0 \\
+1
+\end{array}\right] .
+$$
+
+. . .
+
+$\mathbf{w}_{1}=(-1,1 / 2,1,0)$ and $\mathbf{w}_{1}=(-2,1 / 2,0,1)$ form a basis of $\mathcal{N}(A)$.
+
+## 

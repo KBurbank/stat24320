@@ -215,8 +215,5 @@ x_{4}
 \end{array}\right] .
 $$
 
-. . .
-
-$\mathbf{w}_{1}=(-1,1 / 2,1,0)$ and $\mathbf{w}_{1}=(-2,1 / 2,0,1)$ form a basis of $\mathcal{N}(A)$.
 
 ## 

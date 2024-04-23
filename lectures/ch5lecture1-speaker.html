@@ -541,6 +541,68 @@ x_{4}
 1
 \end{array}\right] .
 \]</span></p>
+<p>:::</p>
+</div>
+</section>
+
+<section id="example" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Find an eigensystem for the matrix <span class="math inline">\(A=\left[\begin{array}{ll}7 &amp; 4 \\ 3 &amp; 6\end{array}\right]\)</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{aligned}
+0 &amp; =\operatorname{det}(\lambda I-A)=\operatorname{det}\left[\begin{array}{rr}
+\lambda-7 &amp; -4 \\
+-3 &amp; \lambda-6
+\end{array}\right] \\
+&amp; =(\lambda-7)(\lambda-6)-(-3)(-4) \\
+&amp; =\lambda^{2}-13 \lambda+42-12 \\
+&amp; =\lambda^{2}-13 \lambda+30 \\
+&amp; =(\lambda-3)(\lambda-10) .
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Eigenvalues are <span class="math inline">\(\lambda=3\)</span> and <span class="math inline">\(\lambda=10\)</span>.</p>
+</div>
+<div class="fragment">
+<p>For <span class="math inline">\(\lambda=3\)</span>, we have</p>
+<p><span class="math display">\[
+A-3 I=\left[\begin{array}{rr}
+7-3 &amp; 4 \\
+3 &amp; 3-3
+\end{array}\right] =  {\left[\begin{array}{ll}
+4 &amp; 4 \\
+3 &amp; 3
+\end{array}\right] \xrightarrow[E_{21}(-3 / 4)]{E_{1}(1 / 4)}\left[\begin{array}{ll}
+1 &amp; 1 \\
+0 &amp; 0
+\end{array}\right]}
+\]</span></p>
+</div>
+<div class="fragment">
+<div class="pause">
+
+</div>
+<p>::: notes So <span class="math inline">\(x_{2}\)</span> is free and <span class="math inline">\(x_{1}\)</span> is bound, <span class="math inline">\(x_{1}=-x_{2}\)</span>,so <span class="math display">\[
+\left[\begin{array}{l}
+x_{1} \\
+x_{2}
+\end{array}\right]=\left[\begin{array}{c}
+-x_{2} \\
+x_{2}
+\end{array}\right]=x_{2}\left[\begin{array}{r}
+-1 \\
+1
+\end{array}\right]
+\]</span></p>
+<p>so the eigenspace is spanned by <span class="math inline">\(\left[\begin{array}{l}1 \\ -1\end{array}\right]\)</span>. :::</p>
+</div>
+<div class="fragment">
+<p>Thus, a basis of <span class="math inline">\(\mathcal{E}_{3}(A)\)</span> is <span class="math inline">\(\{(-1,1)\}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Similarly, for <span class="math inline">\(\lambda=10\)</span>, the basis of <span class="math inline">\(\mathcal{E}_{10}(A)\)</span> is <span class="math inline">\(\{(4 / 3,1)\}\)</span></p>
 </div>
 </section>
 

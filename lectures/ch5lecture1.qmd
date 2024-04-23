@@ -215,5 +215,78 @@ x_{4}
 \end{array}\right] .
 $$
 
+:::
 
-## 
+## Example
+
+Find an eigensystem for the matrix $A=\left[\begin{array}{ll}7 & 4 \\ 3 & 6\end{array}\right]$
+
+. . .
+
+$$
+\begin{aligned}
+0 & =\operatorname{det}(\lambda I-A)=\operatorname{det}\left[\begin{array}{rr}
+\lambda-7 & -4 \\
+-3 & \lambda-6
+\end{array}\right] \\
+& =(\lambda-7)(\lambda-6)-(-3)(-4) \\
+& =\lambda^{2}-13 \lambda+42-12 \\
+& =\lambda^{2}-13 \lambda+30 \\
+& =(\lambda-3)(\lambda-10) .
+\end{aligned}
+$$
+
+. . .
+
+Eigenvalues are $\lambda=3$ and $\lambda=10$.
+
+. . .
+
+For $\lambda=3$, we have
+
+$$
+A-3 I=\left[\begin{array}{rr}
+7-3 & 4 \\
+3 & 3-3
+\end{array}\right] =  {\left[\begin{array}{ll}
+4 & 4 \\
+3 & 3
+\end{array}\right] \xrightarrow[E_{21}(-3 / 4)]{E_{1}(1 / 4)}\left[\begin{array}{ll}
+1 & 1 \\
+0 & 0
+\end{array}\right]}
+$$
+
+. . .
+
+::: pause
+:::
+
+::: notes
+So $x_{2}$ is free and $x_{1}$ is bound, $x_{1}=-x_{2}$,so 
+$$
+\left[\begin{array}{l}
+x_{1} \\
+x_{2}
+\end{array}\right]=\left[\begin{array}{c}
+-x_{2} \\
+x_{2}
+\end{array}\right]=x_{2}\left[\begin{array}{r}
+-1 \\
+1
+\end{array}\right]
+$$
+
+ so the eigenspace is spanned by $\left[\begin{array}{l}1 \\ -1\end{array}\right]$.
+ :::
+
+. . .
+
+Thus, a basis of $\mathcal{E}_{3}(A)$ is $\{(-1,1)\}$.
+
+. . .
+
+Similarly, for $\lambda=10$, the basis of $\mathcal{E}_{10}(A)$ is $\{(4 / 3,1)\}$
+
+
+##

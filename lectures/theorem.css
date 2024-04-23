@@ -34,3 +34,10 @@
     border: solid;
     height: 2in;
 }
+
+.fillin {
+    background-color: rgb(244, 238, 243);
+    padding: 1em;
+    border: solid;
+    height: .1in;
+}

@@ -154,7 +154,7 @@ R=\left[\begin{array}{rrrr}
 $$
 
 
-::: fillin{height=.1in}
+::: fillin{height=1in}
 
 :::
 

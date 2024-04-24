@@ -612,7 +612,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"out-width":"700px","classes":"","warning":"true","autorun":"","context":"interactive","message":"true","results":"markup","fig-width":7,"fig-cap":"","read-only":"false","label":"","out-height":"","fig-height":5,"output":"true","dpi":72,"comment":""},"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics')\n  plt.show()\n\nA = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)"}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics')\n  plt.show()\n\nA = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)","id":1,"options":{"read-only":"false","output":"true","out-width":"700px","results":"markup","comment":"","fig-width":7,"dpi":72,"warning":"true","out-height":"","message":"true","label":"","autorun":"","fig-cap":"","context":"interactive","classes":"","fig-height":5}}];
 
 
   </script>
@@ -2840,7 +2840,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

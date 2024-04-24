@@ -956,7 +956,10 @@ def plot_iterations(x0, A, n1=10, n2=1):
       x = A @ x
     x_vals.append(x)
   x_vals = np.array(x_vals)
-  plt.plot(x_vals[:,0], x_vals[:,1], 'o-')
+  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)
+  for i, txt in enumerate(range(len(x_vals))):
+    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))
+  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')
   plt.xlabel('B')
   plt.ylabel('F')
   plt.title('Population dynamics')

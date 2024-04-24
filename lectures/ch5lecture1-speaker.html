@@ -1160,7 +1160,7 @@ F_{k}
 \]</span></p>
 <div class="fragment">
 <p>Find eigenvalues and eigenvectors of the transition matrix.</p>
-<div id="05dbfba7" class="cell" data-execution_count="2">
+<div id="2584ef1d" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1179,6 +1179,16 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 </div>
 <div class="pause">
 
+</div>
+<p>Check: use Sympy to diagonalize the matrix.</p>
+<div id="571d3938" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>D : Matrix([[0.858578643762691, 0], [0, 1.14142135623731]])
+P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598960745815]])</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.6 &amp; 0.4\\-0.35 &amp; 1.4\end{matrix}\right]\)</span></p>
+</div>
 </div>
 <aside class="notes">
 <p>What this means is that the component of the initial vector which is in the direction of the eigenvector corresponding to the dominant eigenvalue will grow exponentially, while the other component will decay.</p>
@@ -1199,19 +1209,19 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="b54b13d0" class="cell" data-execution_count="3">
+<div id="4f1c0c85" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="kw">def</span> print_iterations(x0, A, n1<span class="op">=</span><span class="dv">10</span>, n2<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb3-4"><a></a>  x <span class="op">=</span> x0</span>
-<span id="cb3-5"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n1):</span>
-<span id="cb3-6"><a></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n2):</span>
-<span id="cb3-7"><a></a>      x <span class="op">=</span> A <span class="op">@</span> x</span>
-<span id="cb3-8"><a></a>    <span class="bu">print</span>(x)</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="kw">def</span> print_iterations(x0, A, n1<span class="op">=</span><span class="dv">10</span>, n2<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb4-4"><a></a>  x <span class="op">=</span> x0</span>
+<span id="cb4-5"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n1):</span>
+<span id="cb4-6"><a></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n2):</span>
+<span id="cb4-7"><a></a>      x <span class="op">=</span> A <span class="op">@</span> x</span>
+<span id="cb4-8"><a></a>    <span class="bu">print</span>(x)</span>
+<span id="cb4-9"><a></a></span>
+<span id="cb4-10"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 4060. 13965.]
@@ -1231,11 +1241,11 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Different starting points…</p>
-<div id="c24d4074" class="cell" data-execution_count="4">
+<div id="6b163795" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
-<span id="cb5-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb6-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[692.45212576 967.75040247]
@@ -1255,11 +1265,11 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What if we start with the second eigenvector?</p>
-<div id="ad458e60" class="cell" data-execution_count="5">
+<div id="89d810b9" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
-<span id="cb7-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb8-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[699.73831812 478.5377227 ]
@@ -1276,11 +1286,11 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 </div>
 <div class="fragment">
 <p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
-<div id="ff1c41d1" class="cell" data-execution_count="6">
+<div id="ace164b0" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
-<span id="cb9-2"><a></a>print_iterations(x0, A,n1 <span class="op">=</span> <span class="dv">10</span>, n2 <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb10-2"><a></a>print_iterations(x0, A,n1 <span class="op">=</span> <span class="dv">10</span>, n2 <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[289.83410604 273.50529084]
@@ -1311,8 +1321,32 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 </div>
 </section>
 
-<section id="section-6" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="what-about-complex-eigenvalues" class="title-slide slide level2 center">
+<h2><em>What about complex eigenvalues?</em></h2>
+<p>Let’s repeat the above for a different matrix:</p>
+<p><span class="math display">\[
+\left[\begin{array}{ll}
+0 &amp; 2 \\
+2 &amp; 0
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<div id="6b5a1fb8" class="cell" data-execution_count="7">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>A <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
+<span id="cb12-2"><a></a>eigvals, eigvecs <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb12-3"><a></a>eigvals_sorted <span class="op">=</span> np.sort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb12-4"><a></a>eigvecs_sorted <span class="op">=</span> eigvecs[:, np.argsort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]]</span>
+<span id="cb12-5"><a></a><span class="bu">print</span>(<span class="st">'Eigenvalues: '</span> <span class="op">+</span> <span class="bu">str</span>(eigvals_sorted))</span>
+<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="st">'Eigenvectors: '</span><span class="op">+</span> <span class="bu">str</span>(eigvecs_sorted))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues: [0.+2.j 0.-2.j]
+Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
+ [0.70710678+0.j         0.70710678-0.j        ]]</code></pre>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1339,6 +1373,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
+</div>
 </div>
 </div>
 </section>

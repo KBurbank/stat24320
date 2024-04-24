@@ -802,6 +802,24 @@ print('Eigenvectors: '+ str(eigvecs_sorted))
 ::: pause
 :::
 
+
+Check: use Sympy to diagonalize the matrix.
+
+```{python}
+import sympy as sp
+#| echo: true
+Asym = sp.Matrix(A)
+P,D = Asym.diagonalize()
+
+      
+print("D : {}".format(D))
+print("P : {}".format(P))
+
+P*D*P.inv()
+```
+
+
+
 ::: notes
 What this means is that the component of the initial vector which is in the direction of the eigenvector corresponding to the dominant eigenvalue will grow exponentially, while the other component will decay.
 
@@ -864,4 +882,32 @@ print_iterations(x0, A,n1 = 10, n2 = 10)
 Even the roundoff errors are starting to make the frog population explode.
 :::
 
-##
+
+## What about complex eigenvalues?
+
+Let's repeat the above for a different matrix:
+
+$$
+\left[\begin{array}{ll}
+0 & 2 \\
+2 & 0
+\end{array}\right]
+$$
+
+
+
+. . .
+
+
+```{python}
+#| echo: true
+A = np.array([[0, 2], [-2, 0]])
+eigvals, eigvecs = np.linalg.eig(A)
+eigvals_sorted = np.sort(eigvals)[::-1]
+eigvecs_sorted = eigvecs[:, np.argsort(eigvals)[::-1]]
+print('Eigenvalues: ' + str(eigvals_sorted))
+print('Eigenvectors: '+ str(eigvecs_sorted))
+```
+
+
+

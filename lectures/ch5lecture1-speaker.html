@@ -13,7 +13,10 @@
 <script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Ch5 Lecture 1</title>
@@ -394,8 +397,423 @@
       margin-right: 0; 
     }
   </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+  <style type="text/css">
+  .monaco-editor pre {
+    background-color: unset !important;
+  }
+
+  .qpyodide-editor-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .qpyodide-editor-toolbar-left-buttons, .qpyodide-editor-toolbar-right-buttons {
+    display: flex;
+  }
+
+
+
+  .qpyodide-non-interactive-loading-container.qpyodide-cell-needs-evaluation, .qpyodide-non-interactive-loading-container.qpyodide-cell-evaluated {
+    justify-content: center;
+    display: flex;
+    background-color: rgba(250, 250, 250, 0.65);
+    border: 1px solid rgba(233, 236, 239, 0.65);
+    border-radius: 0.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .qpyodide-r-project-logo {
+    color: #2767B0; /* R Project's blue color */
+  }
+
+  .qpyodide-icon-status-spinner {
+    color: #7894c4;
+  }
+
+  .qpyodide-icon-run-code {
+    color: #0d9c29
+  }
+
+  .qpyodide-output-code-stdout {
+    color: #111;
+  }
+
+  .qpyodide-output-code-stderr {
+    color: #db4133;
+  }
+
+  .qpyodide-editor {
+    border: 1px solid #EEEEEE;
+    text-align: left;
+  }
+
+  .qpyodide-editor-toolbar {
+    background-color: #EEEEEE;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .qpyodide-button {
+    background-color: #EEEEEE;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+    color: #000;
+    border-color: #dee2e6;
+    border: 1px solid rgba(0,0,0,0);
+    padding: 0.375rem 0.75rem;
+    font-size: .9rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .qpyodide-button:hover {
+    color: #000;
+    background-color: #d9dce0;
+    border-color: #c8ccd0;
+  }
+
+  .qpyodide-button:disabled,.qpyodide-button.disabled,fieldset:disabled .qpyodide-button {
+    pointer-events: none;
+    opacity: .65
+  }
+
+  .qpyodide-button-reset {
+    color: #696969; /*#4682b4;*/
+  }
+
+  .qpyodide-button-copy {
+    color: #696969;
+  }
+
+
+  /* Custom styling for RevealJS Presentations*/
+
+  /* Reset the style of the interactive area */
+  .reveal div.qpyodide-interactive-area {
+    display: block;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  } 
+
+  /* Provide space to entries */
+  .reveal div.qpyodide-output-code-area pre div {
+    margin: 1px 2px 1px 10px;
+    text-align: left;
+    padding-left: 10px;
+
+  }
+
+  /* Collapse the inside code tags to avoid extra space between line outputs */
+  .reveal pre div code.qpyodide-output-code-stdout, .reveal pre div code.qpyodide-output-code-stderr {
+    padding: 0;
+    display: contents;
+
+  }
+
+  .qpyodide-outside-insertion-location {
+      height: 90dvh;
+      width: 90dvw;
+      position: fixed;
+      z-index: 100;
+      /* top: 0px; */
+      margin: 30px;
+      border: black solid;
+      background-color: white;
+      /* scale: 1; */
+      pointer-events: auto;
+      display:none;
+      overflow-y: scroll;
+      scale: 1;
+      font-size: 1rem;
+    }
+
+    .qpyodide-outside-insertion-location .qpyodide-interactive-area {
+    /*  font-size: 12px!important;
+      line-height: 14px!important; */
+      scale: 1;
+    }
+
+  .qpyodide-outside-insertion-location .view-lines,
+   .qpyodide-outside-insertion-location .margin-view-overlays, .qpyodide-outside-insertion-location .qpyodide-output-code-area  {
+    font-size: inherit!important;
+    line-height: inherit!important;
+  }
+
+
+    .qpyodide-output-graph-area {
+      width: 80dvw;
+    }
+
+
+
+  .reveal pre div code.qpyodide-output-code-stdout {
+    color: #111;
+
+  }
+
+  .reveal pre div code.qpyodide-output-code-stderr {
+    color: #db4133;
+  }
+
+
+  /* Create a border around console and output (does not effect graphs) */
+  .reveal div.qpyodide-console-area {
+    border: 1px solid #251cc7;
+    box-shadow: 2px 2px 10px #EEEEEE;
+    background: white;
+  }
+
+  /* Cap output height and allow text to scroll */
+  /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
+  .reveal div.qpyodide-output-code-area pre {
+    max-height: 400px;
+    min-height: 100px;
+    overflow: scroll;
+    font-size:1rem;
+  }
+
+  .slide {
+    height:100%;
+  }
+
+
+  </style>
+  <script type="module">
+  // Document level settings ----
+
+  // Determine if we need to install python packages
+  globalThis.qpyodideInstallPythonPackagesList = [''];
+
+  // Check to see if we have an empty array, if we do set to skip the installation.
+  globalThis.qpyodideSetupPythonPackages = !(qpyodideInstallPythonPackagesList.indexOf("") !== -1);
+
+  // Display a startup message?
+  globalThis.qpyodideShowStartupMessage = true;
+
+  // Describe the webR settings that should be used
+  globalThis.qpyodideCustomizedPyodideOptions = {
+    "indexURL": "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
+    "env": {
+      "HOME": "/home/pyodide",
+    }, 
+    stdout: (text) => {qpyodideAddToOutputArray(text, "out");},
+    stderr: (text) => {qpyodideAddToOutputArray(text, "error");}
+  }
+
+  // Store cell data
+  globalThis.qpyodideCellDetails = [{"options":{"output":"true","label":"","message":"true","autorun":"","read-only":"false","context":"interactive","dpi":72,"fig-height":5,"fig-width":7,"fig-cap":"","out-width":"700px","comment":"","classes":"","warning":"true","results":"markup","out-height":""},"id":1,"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics')\n  plt.show()\n\nA = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)"}];
+
+
+  </script>
+  <script type="module">
+  // Declare startupMessageqpyodide globally
+  globalThis.qpyodideStartupMessage = document.createElement("p");
+
+  // Function to set the button text
+  globalThis.qpyodideSetInteractiveButtonState = function(buttonText, enableCodeButton = true) {
+    document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+      btn.innerHTML = buttonText;
+      btn.disabled = !enableCodeButton;
+    });
+  }
+
+  // Function to update the status message in non-interactive cells
+  globalThis.qpyodideUpdateStatusMessage = function(message) {
+    document.querySelectorAll(".qpyodide-status-text.qpyodide-cell-needs-evaluation").forEach((elem) => {
+      elem.innerText = message;
+    });
+  }
+
+  // Function to update the status message
+  globalThis.qpyodideUpdateStatusHeader = function(message) {
+
+    if (!qpyodideShowStartupMessage) return;
+
+    qpyodideStartupMessage.innerHTML = message;
+  }
+
+  // Status header update with customized spinner message
+  globalThis.qpyodideUpdateStatusHeaderSpinner = function(message) {
+
+    qpyodideUpdateStatusHeader(`
+      <i class="fa-solid fa-spinner fa-spin qpyodide-icon-status-spinner"></i>
+      <span>${message}</span>
+    `);
+  }
+
+
+  // Function that attaches the document status message
+  function qpyodideDisplayStartupMessage(showStartupMessage) {
+    if (!showStartupMessage) {
+      return;
+    }
+
+    // Get references to header elements
+    const headerHTML = document.getElementById("title-block-header");
+    const headerRevealJS = document.getElementById("title-slide");
+
+    // Create the outermost div element for metadata
+    const quartoTitleMeta = document.createElement("div");
+    quartoTitleMeta.classList.add("quarto-title-meta");
+
+    // Create the first inner div element
+    const firstInnerDiv = document.createElement("div");
+    firstInnerDiv.setAttribute("id", "qpyodide-status-message-area");
+
+    // Create the second inner div element for "Pyodide Status" heading and contents
+    const secondInnerDiv = document.createElement("div");
+    secondInnerDiv.setAttribute("id", "qpyodide-status-message-title");
+    secondInnerDiv.classList.add("quarto-title-meta-heading");
+    secondInnerDiv.innerText = "Pyodide Status";
+
+    // Create another inner div for contents
+    const secondInnerDivContents = document.createElement("div");
+    secondInnerDivContents.setAttribute("id", "qpyodide-status-message-body");
+    secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+    // Describe the Pyodide state
+    qpyodideStartupMessage.innerText = "🟡 Loading...";
+    qpyodideStartupMessage.setAttribute("id", "qpyodide-status-message-text");
+    // Add `aria-live` to auto-announce the startup status to screen readers
+    qpyodideStartupMessage.setAttribute("aria-live", "assertive");
+
+    // Append the startup message to the contents
+    secondInnerDivContents.appendChild(qpyodideStartupMessage);
+
+    // Combine the inner divs and contents
+    firstInnerDiv.appendChild(secondInnerDiv);
+    firstInnerDiv.appendChild(secondInnerDivContents);
+    quartoTitleMeta.appendChild(firstInnerDiv);
+
+    // Determine where to insert the quartoTitleMeta element
+    if (headerHTML || headerRevealJS) {
+      // Append to the existing "title-block-header" element or "title-slide" div
+      (headerHTML || headerRevealJS).appendChild(quartoTitleMeta);
+    } else {
+      // If neither headerHTML nor headerRevealJS is found, insert after "Pyodide-monaco-editor-init" script
+      const monacoScript = document.getElementById("qpyodide-monaco-editor-init");
+      const header = document.createElement("header");
+      header.setAttribute("id", "title-block-header");
+      header.appendChild(quartoTitleMeta);
+      monacoScript.after(header);
+    }
+  }
+
+  qpyodideDisplayStartupMessage(qpyodideShowStartupMessage);
+  </script>
+  <script type="module">
+  // Create a logging setup
+  globalThis.qpyodideMessageArray = []
+
+  // Add messages to array
+  globalThis.qpyodideAddToOutputArray = function(message, type) {
+    qpyodideMessageArray.push({ message, type });
+  }
+
+  // Function to reset the output array
+  globalThis.qpyodideResetOutputArray = function() {
+    qpyodideMessageArray = [];
+  }
+
+  globalThis.qpyodideRetrieveOutput = function() {
+    return qpyodideMessageArray.map(entry => entry.message).join('\n');
+  }
+
+  // Start a timer
+  const initializePyodideTimerStart = performance.now();
+
+  // Encase with a dynamic import statement
+  globalThis.qpyodideInstance = await import(
+    qpyodideCustomizedPyodideOptions.indexURL + "pyodide.mjs").then(
+     async({ loadPyodide }) => {
+
+      console.log("Start loading Pyodide");
+      
+      // Populate Pyodide options with defaults or new values based on `pyodide`` meta
+      let mainPyodide = await loadPyodide(
+        qpyodideCustomizedPyodideOptions
+      );
+      
+      // Setup a namespace for global scoping
+      // await loadedPyodide.runPythonAsync("globalScope = {}"); 
+      
+      // Update status to reflect the next stage of the procedure
+      qpyodideUpdateStatusHeaderSpinner("Initializing Python Packages");
+
+      // Load the `micropip` package to allow installation of packages.
+      await mainPyodide.loadPackage("micropip");
+      await mainPyodide.runPythonAsync(`import micropip`);
+
+      // Load the `pyodide_http` package to shim uses of `requests` and `urllib3`.
+      // This allows for `pd.read_csv(url)` to work flawlessly.
+      // Details: https://github.com/coatless-quarto/pyodide/issues/9
+      await mainPyodide.loadPackage("pyodide_http");
+      await mainPyodide.runPythonAsync(`
+      import pyodide_http
+      pyodide_http.patch_all()  # Patch all libraries
+      `);
+
+      // Load the `matplotlib` package with necessary environment hook
+      await mainPyodide.loadPackage("matplotlib");
+
+      // Set the backend for matplotlib to be interactive.
+      await mainPyodide.runPythonAsync(`
+      import matplotlib
+      matplotlib.use("module://matplotlib_pyodide.html5_canvas_backend")
+      from matplotlib import pyplot as plt
+      `);
+
+      // Unlock interactive buttons
+      qpyodideSetInteractiveButtonState(
+        `<i class="fa-solid fa-play qpyodide-icon-run-code"></i> <span>Run Code</span>`, 
+        true
+      );
+
+      // Set document status to viable
+      qpyodideUpdateStatusHeader(
+        "🟢 Ready!"
+      );
+
+      // Assign Pyodide into the global environment
+      globalThis.mainPyodide = mainPyodide;
+
+      console.log("Completed loading Pyodide");
+      return mainPyodide;
+    }
+  );
+
+  // Stop timer
+  const initializePyodideTimerEnd = performance.now();
+
+  // Create a function to retrieve the promise object.
+  globalThis._qpyodideGetInstance = function() {
+      return qpyodideInstance;
+  }
+
+  </script>
 </head>
 <body class="quarto-light">
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs/loader.js"></script>
+<script type="module" id="qpyodide-monaco-editor-init">
+
+  // Configure the Monaco Editor's loader
+  require.config({
+    paths: {
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.46.0/min/vs'
+    }
+  });
+</script>
   <div class="reveal">
     <div class="slides">
 
@@ -1160,7 +1578,7 @@ F_{k}
 \]</span></p>
 <div class="fragment">
 <p>Find eigenvalues and eigenvectors of the transition matrix.</p>
-<div id="2584ef1d" class="cell" data-execution_count="1">
+<div id="6082028c" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1181,7 +1599,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 
 </div>
 <p>Check: use Sympy to diagonalize the matrix.</p>
-<div id="571d3938" class="cell" data-execution_count="2">
+<div id="2143c019" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>D : Matrix([[0.858578643762691, 0], [0, 1.14142135623731]])
 P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598960745815]])</code></pre>
@@ -1209,7 +1627,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="4f1c0c85" class="cell" data-execution_count="3">
+<div id="7dcdba87" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
@@ -1221,7 +1639,8 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <span id="cb4-7"><a></a>      x <span class="op">=</span> A <span class="op">@</span> x</span>
 <span id="cb4-8"><a></a>    <span class="bu">print</span>(x)</span>
 <span id="cb4-9"><a></a></span>
-<span id="cb4-10"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 4060. 13965.]
@@ -1241,7 +1660,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Different starting points…</p>
-<div id="6b163795" class="cell" data-execution_count="4">
+<div id="22b431dc" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1265,7 +1684,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What if we start with the second eigenvector?</p>
-<div id="89d810b9" class="cell" data-execution_count="5">
+<div id="b87eed78" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1286,7 +1705,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 </div>
 <div class="fragment">
 <p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
-<div id="ace164b0" class="cell" data-execution_count="6">
+<div id="4bdbedf9" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1305,19 +1724,9 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 [18024969.23527191 24397758.22361141]</code></pre>
 </div>
 </div>
-<aside class="notes">
-<p>Even the roundoff errors are starting to make the frog population explode.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
+<div class="fragment">
+<p>Even the roundoff errors are starting to make the frog population explode</p>
 </div>
 </section>
 
@@ -1327,11 +1736,11 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <p><span class="math display">\[
 \left[\begin{array}{ll}
 0 &amp; 2 \\
-2 &amp; 0
+-2 &amp; 0
 \end{array}\right]
 \]</span></p>
 <div class="fragment">
-<div id="6b5a1fb8" class="cell" data-execution_count="7">
+<div id="203aa60f" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>A <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
@@ -1339,14 +1748,64 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <span id="cb12-3"><a></a>eigvals_sorted <span class="op">=</span> np.sort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb12-4"><a></a>eigvecs_sorted <span class="op">=</span> eigvecs[:, np.argsort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]]</span>
 <span id="cb12-5"><a></a><span class="bu">print</span>(<span class="st">'Eigenvalues: '</span> <span class="op">+</span> <span class="bu">str</span>(eigvals_sorted))</span>
-<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="st">'Eigenvectors: '</span><span class="op">+</span> <span class="bu">str</span>(eigvecs_sorted))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a></a><span class="bu">print</span>(<span class="st">'Eigenvectors: '</span><span class="op">+</span> <span class="bu">str</span>(eigvecs_sorted))</span>
+<span id="cb12-7"><a></a>print_iterations(np.array([<span class="dv">1</span>,<span class="dv">2</span>]), A,n1 <span class="op">=</span> <span class="dv">10</span>, n2 <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Eigenvalues: [0.+2.j 0.-2.j]
 Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
- [0.70710678+0.j         0.70710678-0.j        ]]</code></pre>
+ [0.70710678+0.j         0.70710678-0.j        ]]
+[ 4 -2]
+[-4 -8]
+[-16   8]
+[16 32]
+[ 64 -32]
+[ -64 -128]
+[-256  128]
+[256 512]
+[1024 -512]
+[-1024 -2048]</code></pre>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p>Let’s plot that…</p>
+<div id="b4c206b1" class="cell" data-fig="true" data-execution_count="8">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a><span class="kw">def</span> plot_iterations(x0, A, n1<span class="op">=</span><span class="dv">10</span>, n2<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb14-4"><a></a>  x <span class="op">=</span> x0</span>
+<span id="cb14-5"><a></a>  x_vals <span class="op">=</span> [x]</span>
+<span id="cb14-6"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n1):</span>
+<span id="cb14-7"><a></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n2):</span>
+<span id="cb14-8"><a></a>      x <span class="op">=</span> A <span class="op">@</span> x</span>
+<span id="cb14-9"><a></a>    x_vals.append(x)</span>
+<span id="cb14-10"><a></a>  x_vals <span class="op">=</span> np.array(x_vals)</span>
+<span id="cb14-11"><a></a>  plt.plot(x_vals[:,<span class="dv">0</span>], x_vals[:,<span class="dv">1</span>], <span class="st">'o-'</span>)</span>
+<span id="cb14-12"><a></a>  plt.xlabel(<span class="st">'B'</span>)</span>
+<span id="cb14-13"><a></a>  plt.ylabel(<span class="st">'F'</span>)</span>
+<span id="cb14-14"><a></a>  plt.title(<span class="st">'Population dynamics'</span>)</span>
+<span id="cb14-15"><a></a>  plt.show()</span>
+<span id="cb14-16"><a></a></span>
+<span id="cb14-17"><a></a>plot_iterations(np.array([<span class="dv">1</span>,<span class="dv">2</span>]), A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture1_files/figure-revealjs/complex_eigenvalues-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="ch5lecture1_files/figure-revealjs/complex_eigenvalues-output-1.png" id="complex_eigenvalues" width="836" height="449"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="your-turn" class="title-slide slide level2 center">
+<h2><em>Your turn</em></h2>
+<div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1373,7 +1832,6 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
-</div>
 </div>
 </div>
 </section>
@@ -1771,6 +2229,642 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
       }
     });
     </script>
+    <script type="module">
+    /**
+     * Factory function to create different types of cells based on options.
+     * @param {Object} cellData - JSON object containing code, id, and options.
+     * @returns {BaseCell} Instance of the appropriate cell class.
+     */
+    globalThis.qpyodideCreateCell = function(cellData) {
+        switch (cellData.options.context) {
+            case 'interactive':
+                return new InteractiveCell(cellData);
+            case 'output':
+                return new OutputCell(cellData);
+            case 'setup':
+                return new SetupCell(cellData);
+            default:
+                return new InteractiveCell(cellData);
+                // throw new Error('Invalid cell type specified in options.');
+        }
+    }  
+
+    /**
+     * CellContainer class for managing a collection of cells.
+     * @class
+     */
+    class CellContainer {
+        /**
+         * Constructor for CellContainer.
+         * Initializes an empty array to store cells.
+         * @constructor
+         */
+        constructor() {
+            this.cells = [];
+        }
+
+        /**
+         * Add a cell to the container.
+         * @param {BaseCell} cell - Instance of a cell (BaseCell or its subclasses).
+         */
+        addCell(cell) {
+            this.cells.push(cell);
+        }
+
+        /**
+         * Execute all cells in the container.
+         */
+        async executeAllCells() {
+            for (const cell of this.cells) {
+                await cell.executeCode();
+            }
+        }
+
+        /**
+         * Execute all cells in the container.
+         */
+        async autoRunExecuteAllCells() {
+            for (const cell of this.cells) {
+                await cell.autoRunExecuteCode();
+            }
+        }
+    }
+      
+
+    /**
+     * BaseCell class for handling code execution using Pyodide.
+     * @class
+     */
+    class BaseCell {
+        /**
+         * Constructor for BaseCell.
+         * @constructor
+         * @param {Object} cellData - JSON object containing code, id, and options.
+         */
+        constructor(cellData) {
+            this.code = cellData.code;
+            this.id = cellData.id;
+            this.options = cellData.options;
+            this.insertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            
+            // FIX THIS WHEN YOU GET BACK
+            // check if a div already exists
+            if(document.getElementById(`qpyodide-outside-insertion-location`)==null){
+                var outsideInsertionDiv = document.createElement('div');
+                outsideInsertionDiv.id='qpyodide-outside-insertion-location';
+                outsideInsertionDiv.className='qpyodide-outside-insertion-location';
+                document.getElementsByClassName("reveal-viewport")[0].appendChild(outsideInsertionDiv);
+                this.outsideInsertionLocation = outsideInsertionDiv
+            }
+
+            
+            this.executionLock = false;
+        }
+
+        cellOptions() {
+            // Subclass this? 
+            console.log(this.options);
+            return this.options;
+        }
+
+        /**
+         * Execute the Python code using Pyodide.
+         * @returns {*} Result of the code execution.
+         */
+        async executeCode() {
+            // Execute code using Pyodide
+            const result = getPyodide().runPython(this.code);
+            return result;
+        }
+    };
+
+    /**
+     * InteractiveCell class for creating editable code editor with Monaco Editor.
+     * @class
+     * @extends BaseCell
+     */
+    class InteractiveCell extends BaseCell {
+
+        /**
+         * Constructor for InteractiveCell.
+         * @constructor
+         * @param {Object} cellData - JSON object containing code, id, and options.
+         */
+        constructor(cellData) {
+            super(cellData);
+            this.editor = null;
+            this.setupElement();
+            this.setupMonacoEditor();
+        }
+
+        /**
+         * Set up the interactive cell elements
+         */
+        setupElement() {
+
+            // Create main div element
+            var mainDiv = document.createElement('div');
+            mainDiv.id = `qpyodide-interactive-area-${this.id}`;
+            mainDiv.className = `qpyodide-interactive-area`;
+            if (this.options.classes) {
+                mainDiv.className += " " + this.options.classes
+            }
+
+            // Create outside insertion location div
+            var outsideDiv = document.createElement('div');
+            outsideDiv.className = `qpyodide-outside-insertion-area`;
+
+            // Add a unique cell identifier that users can customize
+            if (this.options.label) {
+                mainDiv.setAttribute('data-id', this.options.label);
+            }
+
+            // Create toolbar div
+            var toolbarDiv = document.createElement('div');
+            toolbarDiv.className = 'qpyodide-editor-toolbar';
+            toolbarDiv.id = `qpyodide-editor-toolbar-${this.id}`;
+
+            // Create a div to hold the left buttons
+            var leftButtonsDiv = document.createElement('div');
+            leftButtonsDiv.className = 'qpyodide-editor-toolbar-left-buttons';
+
+            // Create a div to hold the right buttons
+            var rightButtonsDiv = document.createElement('div');
+            rightButtonsDiv.className = 'qpyodide-editor-toolbar-right-buttons';
+
+            // Create Run Code button
+            var runCodeButton = document.createElement('button');
+            runCodeButton.className = 'btn btn-default qpyodide-button qpyodide-button-run';
+            runCodeButton.disabled = true;
+            runCodeButton.type = 'button';
+            runCodeButton.id = `qpyodide-button-run-${this.id}`;
+            runCodeButton.textContent = '🟡 Loading Pyodide...';
+            runCodeButton.title = `Run code (Shift + Enter)`;
+
+            // Append buttons to the leftButtonsDiv
+            leftButtonsDiv.appendChild(runCodeButton);
+
+
+
+
+
+            // Create Reset button
+            var resetButton = document.createElement('button');
+            resetButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-reset';
+            resetButton.type = 'button';
+            resetButton.id = `qpyodide-button-reset-${this.id}`;
+            resetButton.title = 'Start over';
+            resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+            // Create Popout button
+
+          // Create Zoom button
+            var zoomButton = document.createElement('button');
+            zoomButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-zoom';
+            zoomButton.type = 'button';
+            zoomButton.id = `qpyodide-button-zoom-${this.id}`;
+            zoomButton.title = 'Zoom code editor';
+            zoomButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+            // Create Copy button
+            var copyButton = document.createElement('button');
+            copyButton.className = 'btn btn-light btn-xs qpyodide-button qpyodide-button-copy';
+            copyButton.type = 'button';
+            copyButton.id = `qpyodide-button-copy-${this.id}`;
+            copyButton.title = 'Copy code';
+            copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+            // Append buttons to the rightButtonsDiv
+            rightButtonsDiv.appendChild(resetButton);
+            rightButtonsDiv.appendChild(copyButton);
+            rightButtonsDiv.appendChild(zoomButton);
+
+            // Create console area div
+            var consoleAreaDiv = document.createElement('div');
+            consoleAreaDiv.id = `qpyodide-console-area-${this.id}`;
+            consoleAreaDiv.className = 'qpyodide-console-area';
+
+            // Create editor div
+            var editorDiv = document.createElement('div');
+            editorDiv.id = `qpyodide-editor-${this.id}`;
+            editorDiv.className = 'qpyodide-editor';
+
+            // Create output code area div
+            var outputCodeAreaDiv = document.createElement('div');
+            outputCodeAreaDiv.id = `qpyodide-output-code-area-${this.id}`;
+            outputCodeAreaDiv.className = 'qpyodide-output-code-area';
+            outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+            // Create pre element inside output code area
+            // This preserves whitespace  and is displayed in a fixed-width font
+            var preElement = document.createElement('pre');
+            preElement.style.visibility = 'hidden';
+            outputCodeAreaDiv.appendChild(preElement);
+
+            // Create output graph area div
+            var outputGraphAreaDiv = document.createElement('div');
+            outputGraphAreaDiv.id = `qpyodide-output-graph-area-${this.id}`;
+            outputGraphAreaDiv.className = 'qpyodide-output-graph-area';
+            
+
+            if (typeof(Reveal)=="function"){
+              const resizeObserver = new ResizeObserver((entries) => {
+                for (const entry of entries) {
+                  Reveal.layout()
+                  console.log("size changed")
+                }
+              }
+              )
+              
+              resizeObserver.observe(outputGraphAreaDiv);
+              resizeObserver.observe(outputCodeAreaDiv);
+            }
+            // Append buttons to the toolbar
+            toolbarDiv.appendChild(leftButtonsDiv);
+            toolbarDiv.appendChild(rightButtonsDiv);
+
+            // Append all elements to the main div
+            mainDiv.appendChild(toolbarDiv);
+            consoleAreaDiv.appendChild(editorDiv);
+            consoleAreaDiv.appendChild(outputCodeAreaDiv);
+            mainDiv.appendChild(consoleAreaDiv);
+            mainDiv.appendChild(outputGraphAreaDiv);
+
+            // Insert the dynamically generated object at the document location.
+
+           this.insertionLocation.appendChild(mainDiv);
+            //console.log(this.outsideInsertionLocation)
+        }
+
+        /**
+         * Set up Monaco Editor for code editing.
+         */
+        setupMonacoEditor() {
+
+            // Retrieve the previously created document elements
+            this.runButton = document.getElementById(`qpyodide-button-run-${this.id}`);
+            this.resetButton = document.getElementById(`qpyodide-button-reset-${this.id}`);
+            this.copyButton = document.getElementById(`qpyodide-button-copy-${this.id}`);
+            this.zoomButton = document.getElementById(`qpyodide-button-zoom-${this.id}`);
+            this.editorDiv = document.getElementById(`qpyodide-editor-${this.id}`);
+            this.outputCodeDiv = document.getElementById(`qpyodide-output-code-area-${this.id}`);
+            this.outputGraphDiv = document.getElementById(`qpyodide-output-graph-area-${this.id}`);
+            this.outsideInsertionLocation=document.getElementsByClassName("qpyodide-outside-insertion-location")[0];
+            this.InsertionLocation = document.getElementById(`qpyodide-insertion-location-${this.id}`);
+            this.mainDiv=document.getElementById(`qpyodide-interactive-area-${this.id}`);
+            // Store reference to the object
+            var thiz = this;
+
+            // Load the Monaco Editor and create an instance
+            require(['vs/editor/editor.main'], function () {
+                thiz.editor = monaco.editor.create(
+                    thiz.editorDiv, {
+                        value: thiz.code,
+                        language: 'python',
+                        theme: 'vs-light',
+                        automaticLayout: true,           // Works wonderfully with RevealJS
+                        scrollBeyondLastLine: false,
+                        minimap: {
+                            enabled: false
+                        },
+                        fontSize: '17.5pt',              // Bootstrap is 1 rem
+                        renderLineHighlight: "none",     // Disable current line highlighting
+                        hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+                        readOnly: thiz.options['read-only'] ?? false
+                    }
+                );
+            
+                // Store the official counter ID to be used in keyboard shortcuts
+                thiz.editor.__qpyodideCounter = thiz.id;
+            
+                // Store the official div container ID
+                thiz.editor.__qpyodideEditorId = `qpyodide-editor-${thiz.id}`;
+            
+                // Store the initial code value and options
+                thiz.editor.__qpyodideinitialCode = thiz.code;
+                thiz.editor.__qpyodideOptions = thiz.options;
+            
+                // Set at the model level the preferred end of line (EOL) character to LF.
+                // This prevent `\r\n` from being given to the Pyodide engine if the user is on Windows.
+                // See details in: https://github.com/coatless/quarto-Pyodide/issues/94
+                // Associated error text: 
+                // Error: <text>:1:7 unexpected input
+            
+                // Retrieve the underlying model
+                const model = thiz.editor.getModel();
+                // Set EOL for the model
+                model.setEOL(monaco.editor.EndOfLineSequence.LF);
+            
+                // Dynamically modify the height of the editor window if new lines are added.
+                let ignoreEvent = false;
+                const updateHeight = () => {
+                const contentHeight = thiz.editor.getContentHeight();
+                // We're avoiding a width change
+                //editorDiv.style.width = `${width}px`;
+                thiz.editorDiv.style.height = `${contentHeight}px`;
+                    try {
+                        ignoreEvent = true;
+                
+                        // The key to resizing is this call
+                        thiz.editor.layout();
+                    } finally {
+                        ignoreEvent = false;
+                    }
+                };
+            
+                // Helper function to check if selected text is empty
+                function isEmptyCodeText(selectedCodeText) {
+                    return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+                }
+            
+                // Registry of keyboard shortcuts that should be re-added to each editor window
+                // when focus changes.
+                const addPyodideKeyboardShortCutCommands = () => {
+                // Add a keydown event listener for Shift+Enter to run all code in cell
+                thiz.editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+                    // Retrieve all text inside the editor
+                    thiz.runCode(thiz.editor.getValue());
+                });
+            
+                // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+                thiz.editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+                        // Get the selected text from the editor
+                        const selectedText = thiz.editor.getModel().getValueInRange(thiz.editor.getSelection());
+                        // Check if no code is selected
+                        if (isEmptyCodeText(selectedText)) {
+                            // Obtain the current cursor position
+                            let currentPosition = thiz.editor.getPosition();
+                            // Retrieve the current line content
+                            let currentLine = thiz.editor.getModel().getLineContent(currentPosition.lineNumber);
+                    
+                            // Propose a new position to move the cursor to
+                            let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+                    
+                            // Check if the new position is beyond the last line of the editor
+                            if (newPosition.lineNumber > thiz.editor.getModel().getLineCount()) {
+                                // Add a new line at the end of the editor
+                                thiz.editor.executeEdits("addNewLine", [{
+                                range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+                                text: "\n", 
+                                forceMoveMarkers: true,
+                                }]);
+                            }
+                            
+                            // Run the entire line of code.
+                            thiz.runCode(currentLine);
+                    
+                            // Move cursor to new position
+                            thiz.editor.setPosition(newPosition);
+                        } else {
+                            // Code to run when Ctrl+Enter is pressed with selected code
+                            thiz.runCode(selectedText);
+                        }
+                    });
+                }
+            
+                // Register an on focus event handler for when a code cell is selected to update
+                // what keyboard shortcut commands should work.
+                // This is a workaround to fix a regression that happened with multiple
+                // editor windows since Monaco 0.32.0 
+                // https://github.com/microsoft/monaco-editor/issues/2947
+                thiz.editor.onDidFocusEditorText(addPyodideKeyboardShortCutCommands);
+            
+                // Register an on change event for when new code is added to the editor window
+                thiz.editor.onDidContentSizeChange(updateHeight);
+            
+                // Manually re-update height to account for the content we inserted into the call
+                updateHeight();
+                    
+            });
+
+            
+            // Add a click event listener to the run button
+            thiz.runButton.onclick = function () {
+                thiz.runCode(
+                    thiz.editor.getValue()
+                );
+            };
+            
+            // Add a click event listener to the reset button
+            thiz.copyButton.onclick = function () {
+                // Retrieve current code data
+                const data = thiz.editor.getValue();
+                
+                // Write code data onto the clipboard.
+                navigator.clipboard.writeText(data || "");
+            };
+
+            thiz.zoomButton.onclick = function () {
+                // Retrieve current code data
+                console.log(thiz.mainDiv.parentNode)
+                if(thiz.mainDiv.parentNode===thiz.outsideInsertionLocation){
+                    console.log(thiz.InsertionLocation)
+                    thiz.InsertionLocation.appendChild(thiz.mainDiv)
+                    console.log("inserted into main doc")
+                    thiz.outsideInsertionLocation.style.display = "none";
+                    thiz.editor.EditorOptions.fontSize='17.5px';
+                  }  else {
+                        console.log("inserted into outside location")
+                    thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
+                    thiz.outsideInsertionLocation.style.display = "block";
+                    thiz.editor.EditorOptions.fontSize='12px';
+              //  thiz.outsideInsertionLocation.appendChild(thiz.mainDiv)
+
+                    }
+
+           //     document.getElementById("")
+           //     const data = thiz.editor.getValue();
+                
+                // Write code data onto the clipboard.
+           //     navigator.clipboard.writeText(data || "");
+            };
+            
+            // Add a click event listener to the copy button
+            thiz.resetButton.onclick = function () {
+                thiz.editor.setValue(thiz.editor.__qpyodideinitialCode);
+            };
+        }
+
+        disableInteractiveCells() {
+            // Enable locking of execution for the cell
+            this.executionLock = true;
+
+            // Disallowing execution of other code cells
+            document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+                btn.disabled = true;
+            });
+        }
+
+        enableInteractiveCells() {
+            // Remove locking of execution for the cell
+            this.executionLock = false;
+
+            // All execution of other code cells
+            document.querySelectorAll(".qpyodide-button-run").forEach((btn) => {
+                btn.disabled = false;
+            });
+        }
+
+        /**
+         * Execute the Python code inside the editor.
+         */
+        async runCode(code) {
+            
+            // Check if we have an execution lock
+            if (this.executeLock) return; 
+            
+            this.disableInteractiveCells();
+
+            // Force wait procedure
+            await mainPyodide;
+
+            // Clear the output stock
+            qpyodideResetOutputArray();
+
+            // Generate a new canvas element, avoid attaching until the end
+            let graphFigure = document.createElement("figure");
+            document.pyodideMplTarget = graphFigure;
+
+            console.log("Running code!");
+            // Obtain results from the base class
+            try {
+                // Always check to see if the user adds new packages
+                await mainPyodide.loadPackagesFromImports(code);
+
+                // Process result
+                const output = await mainPyodide.runPythonAsync(code);
+
+                // Add output
+                qpyodideAddToOutputArray(output, "stdout");
+            } catch (err) {
+                // Add error message
+                qpyodideAddToOutputArray(err, "stderr");
+                // TODO: There has to be a way to remove the Pyodide portion of the errors... 
+            }
+
+            const result = qpyodideRetrieveOutput();
+
+            // Nullify the output area of content
+            this.outputCodeDiv.innerHTML = "";
+            this.outputGraphDiv.innerHTML = "";        
+
+            // Design an output object for messages
+            const pre = document.createElement("pre");
+            if (/\S/.test(result)) {
+                // Display results as HTML elements to retain output styling
+                const div = document.createElement("div");
+                div.innerHTML = result;
+                pre.appendChild(div);
+            } else {
+                // If nothing is present, hide the element.
+                pre.style.visibility = "hidden";
+            }
+
+            // Add output under interactive div
+            this.outputCodeDiv.appendChild(pre);
+
+            // Place the graphics onto the page
+            if (graphFigure) {
+
+                if (this.options['fig-cap']) {
+                    // Create figcaption element
+                    const figcaptionElement = document.createElement('figcaption');
+                    figcaptionElement.innerText = this.options['fig-cap'];
+                    // Append figcaption to figure
+                    graphFigure.appendChild(figcaptionElement);    
+                }
+
+                this.outputGraphDiv.appendChild(graphFigure);
+            }
+
+            // Re-enable execution
+            this.enableInteractiveCells();
+        }
+    };
+
+    /**
+     * OutputCell class for customizing and displaying output.
+     * @class
+     * @extends BaseCell
+     */
+    class OutputCell extends BaseCell {
+        /**
+         * Constructor for OutputCell.
+         * @constructor
+         * @param {Object} cellData - JSON object containing code, id, and options.
+         */
+        constructor(cellData) {
+          super(cellData);
+        }
+      
+        /**
+         * Display customized output on the page.
+         * @param {*} output - Result to be displayed.
+         */
+        displayOutput(output) {
+            const results = this.executeCode();
+            return results;
+        }
+      }
+
+    /**
+     * SetupCell class for suppressed output.
+     * @class
+     * @extends BaseCell
+     */
+    class SetupCell extends BaseCell {
+        /**
+         * Constructor for SetupCell.
+         * @constructor
+         * @param {Object} cellData - JSON object containing code, id, and options.
+         */
+        constructor(cellData) {
+            super(cellData);
+        }
+
+        /**
+         * Execute the Python code without displaying the results.
+         */
+        runSetupCode() {
+            // Execute code without displaying output
+            this.executeCode();
+        }
+    };
+    </script>
+    <script type="module">
+    // Handle cell initialization initialization
+    qpyodideCellDetails.map(
+        (entry) => {
+          // Handle the creation of the element
+          qpyodideCreateCell(entry);
+        }
+      );
+    </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

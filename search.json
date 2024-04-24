@@ -2965,11 +2965,18 @@
     "href": "lectures/ch5lecture1.html#section-10",
     "title": "Ch5 Lecture 1",
     "section": "",
-    "text": "Finally,\n\\[\n\\left[\\begin{array}{c}\nF_{k} \\\\\nF_{k+1}\n\\end{array}\\right]=A^{k} \\bar{x}_{0}=\\frac{1}{\\sqrt{5}}\\left[\\begin{array}{cc}\n-\\psi \\varphi^{k}+\\varphi \\psi^{k} & \\varphi^{k}-\\psi^{k} \\\\\n-\\psi \\varphi^{k+1}+\\varphi \\psi^{k+1} & \\varphi^{k+1}-\\psi^{k+1}\n\\end{array}\\right]\\left[\\begin{array}{l}\n0 \\\\\n1\n\\end{array}\\right]=\\frac{1}{\\sqrt{5}}\\left[\\begin{array}{c}\n\\varphi^{k}-\\psi^{k} \\\\\n\\varphi^{k+1}-\\psi^{k+1}\n\\end{array}\\right]\n\\]\n\nand so\n\\[\nF_{k}=\\frac{1}{\\sqrt{5}}\\left(\\varphi^{k}-\\psi^{k}\\right)=\\frac{1}{\\sqrt{5}}\\left(\\left(\\frac{1+\\sqrt{5}}{2}\\right)^{k}+\\left(\\frac{1-\\sqrt{5}}{2}\\right)^{k}\\right)\n\\]\n\n\nBut for large \\(k\\), \\(\\psi^{k}\\) is very small, so\n\\[\nF_{k} \\approx \\frac{\\varphi^{k}}{\\sqrt{5}}\n\\]\n\n\n\\[\n\\lim _{k \\rightarrow \\infty} \\frac{F_{k+1}}{F_{k}}=\\varphi\n\\]\nThis is the golden ratio!\n\n\n\n\n\nGolden Ratio spiral"
+    "text": "Finally,\n\\[\n\\left[\\begin{array}{c}\nF_{k} \\\\\nF_{k+1}\n\\end{array}\\right]=A^{k} \\bar{x}_{0}=\\frac{1}{\\sqrt{5}}\\left[\\begin{array}{cc}\n-\\psi \\varphi^{k}+\\varphi \\psi^{k} & \\varphi^{k}-\\psi^{k} \\\\\n-\\psi \\varphi^{k+1}+\\varphi \\psi^{k+1} & \\varphi^{k+1}-\\psi^{k+1}\n\\end{array}\\right]\\left[\\begin{array}{l}\n0 \\\\\n1\n\\end{array}\\right]=\\frac{1}{\\sqrt{5}}\\left[\\begin{array}{c}\n\\varphi^{k}-\\psi^{k} \\\\\n\\varphi^{k+1}-\\psi^{k+1}\n\\end{array}\\right]\n\\]\n\nand so\n\\[\nF_{k}=\\frac{1}{\\sqrt{5}}\\left(\\varphi^{k}-\\psi^{k}\\right)=\\frac{1}{\\sqrt{5}}\\left(\\left(\\frac{1+\\sqrt{5}}{2}\\right)^{k}+\\left(\\frac{1-\\sqrt{5}}{2}\\right)^{k}\\right)\n\\]\n\n\nBut for large \\(k\\), \\(\\psi^{k}\\) is very small, so\n\\[\nF_{k} \\approx \\frac{\\varphi^{k}}{\\sqrt{5}}\n\\]\n\n\n\\[\n\\lim _{k \\rightarrow \\infty} \\frac{F_{k+1}}{F_{k}}=\\varphi\n\\]"
   },
   {
     "objectID": "lectures/ch5lecture1.html#section-11",
     "href": "lectures/ch5lecture1.html#section-11",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "This is the golden ratio!\n\n\n\nGolden Ratio spiral"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section-12",
+    "href": "lectures/ch5lecture1.html#section-12",
     "title": "Ch5 Lecture 1",
     "section": "",
     "text": "Go back to some of the previous examples we’ve used, or that you’ve used in your projects. Work in pairs to find the eigenvalues and eigenvectors of the transition matrix. What do the eigenvalues tell you about the dynamics of the system?\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n \n\n\n\n\n \n\n\n\nFibonacci Statue\nGolden Ratio spiral"

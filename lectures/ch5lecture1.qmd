@@ -1162,9 +1162,11 @@ $$
 \lim _{k \rightarrow \infty} \frac{F_{k+1}}{F_{k}}=\varphi
 $$
 
+##
+
 This is the golden ratio!
 
-. . .
+
 
 ![Golden Ratio spiral](https://upload.wikimedia.org/wikipedia/commons/b/b9/Fibonacci_Spiral.svg)
 

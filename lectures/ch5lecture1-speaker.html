@@ -612,7 +612,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","fig-cap":"","classes":"","out-height":"","comment":"","output":"true","fig-height":5,"read-only":"false","warning":"true","autorun":"","results":"markup","label":"","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive"},"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics: eigenvalues='+str(np.linalg.eig(A)[0]))\n  plt.show()"},{"id":2,"options":{"message":"true","fig-cap":"","classes":"","out-height":"","comment":"","output":"true","fig-height":5,"read-only":"false","warning":"true","autorun":"","results":"markup","label":"","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive"},"code":"A = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)"}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics: eigenvalues='+str(np.linalg.eig(A)[0]))\n  plt.show()","id":1,"options":{"label":"","fig-cap":"","read-only":"false","output":"true","out-height":"","warning":"true","message":"true","classes":"","fig-height":5,"context":"interactive","dpi":72,"results":"markup","fig-width":7,"out-width":"700px","autorun":"","comment":""}},{"code":"A = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)","id":2,"options":{"label":"","fig-cap":"","read-only":"false","output":"true","out-height":"","warning":"true","message":"true","classes":"","fig-height":5,"context":"interactive","dpi":72,"results":"markup","fig-width":7,"out-width":"700px","autorun":"","comment":""}}];
 
 
   </script>
@@ -1578,7 +1578,7 @@ F_{k}
 \]</span></p>
 <div class="fragment">
 <p>Find eigenvalues and eigenvectors of the transition matrix.</p>
-<div id="7d93c835" class="cell" data-execution_count="1">
+<div id="7d93c835" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1599,7 +1599,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 
 </div>
 <p>Check: use Sympy to diagonalize the matrix.</p>
-<div id="d9043755" class="cell" data-execution_count="2">
+<div id="d9043755" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>D : Matrix([[0.858578643762691, 0], [0, 1.14142135623731]])
 P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598960745815]])</code></pre>
@@ -1627,7 +1627,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="6f9afbd4" class="cell" data-execution_count="3">
+<div id="6f9afbd4" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
@@ -1660,7 +1660,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Different starting points…</p>
-<div id="fdd74652" class="cell" data-execution_count="4">
+<div id="fdd74652" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1684,7 +1684,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What if we start with the second eigenvector?</p>
-<div id="049f30a4" class="cell" data-execution_count="5">
+<div id="049f30a4" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1705,7 +1705,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 </div>
 <div class="fragment">
 <p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
-<div id="90dbbcaf" class="cell" data-execution_count="6">
+<div id="90dbbcaf" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1740,7 +1740,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 \end{array}\right]
 \]</span></p>
 <div class="fragment">
-<div id="e3240447" class="cell" data-execution_count="7">
+<div id="e3240447" class="cell" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>A <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
@@ -1770,7 +1770,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 </div>
 <div class="fragment">
 <p>Let’s plot that…</p>
-<div id="complex_eigenvalues" class="cell" data-fig="true" data-execution_count="8">
+<div id="complex_eigenvalues" class="cell" data-fig="true" data-execution_count="9">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1794,7 +1794,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <span id="cb14-19"><a></a>  plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="3ce72e94" class="cell" data-execution_count="9">
+<div id="3ce72e94" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1818,7 +1818,185 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 
+<section id="another-example" class="title-slide slide level2 center">
+<h2><em>Another example</em></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://www.epsilones.com/material/artes/027-fibonacci-pisa.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Fibonacci Statue"><img data-src="https://www.epsilones.com/material/artes/027-fibonacci-pisa.jpg" height="200" alt="Fibonacci Statue"></a></p>
+<figcaption>Fibonacci Statue</figcaption>
+</figure>
+</div>
+<div class="fragment">
+<p>Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, …</p>
+<p><span class="math inline">\(F_{0}=0\)</span> and <span class="math inline">\(F_{1}=1\)</span>. For <span class="math inline">\(n \geq 2\)</span>, the <span class="math inline">\(n\)</span>-th Fibonacci number is</p>
+<p><span class="math display">\[
+F_{n}=F_{n-1}+F_{n-2}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>What is the <span class="math inline">\(n\)</span>-th Fibonacci number? What is <span class="math inline">\(F_{100}\)</span>?</p>
+<p>(Treatment from <a href="https://www.math.umd.edu/~immortal/MATH401/book/ch_discrete_dynamical_systems.pdf">here</a>)</p>
+</div>
+</section>
+
 <section id="section-7" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Get this into matrix form.</p>
+<p>Let <span class="math display">\[
+\bar{x}_{k}=\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Then</p>
+<p><span class="math display">\[
+\bar{x}_{k+1}=\left[\begin{array}{c}
+F_{k+1} \\
+F_{k+2}
+\end{array}\right]=\left[\begin{array}{c}
+F_{k+1} \\
+F_{k}+F_{k+1}
+\end{array}\right]=\left[\begin{array}{ll}
+0 &amp; 1 \\
+1 &amp; 1
+\end{array}\right]\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]=\left[\begin{array}{ll}
+0 &amp; 1 \\
+1 &amp; 1
+\end{array}\right] \bar{x}_{k}
+\]</span></p>
+<p>for <span class="math inline">\(\bar{x}_{0}=\left[\begin{array}{l}0 \\1\end{array}\right]\)</span></p>
+</div>
+<div class="fragment">
+<p>To understand the dynamics, we need to diagonalize the matrix.</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{det}(A-\lambda I) &amp; =0 \\
+\operatorname{det}\left[\begin{array}{cc}
+-\lambda &amp; 1 \\
+1 &amp; 1-\lambda
+\end{array}\right] &amp; =0 \\
+\lambda^{2}-\lambda-1 &amp; =0 \\
+\lambda &amp; =\frac{1 \pm \sqrt{5}}{2}
+\end{aligned}
+\]</span></p>
+</div>
+</section>
+
+<section id="section-8" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Eigenvalues (call them phi and psi): <span class="math display">\[
+\begin{aligned}
+&amp; \varphi=\frac{1+\sqrt{5}}{2} \approx 1.618 \\
+&amp; \psi=\frac{1-\sqrt{5}}{2} \approx-0.618
+\end{aligned}
+\]</span></p>
+<p>Eigenvectors:</p>
+<p><span class="math display">\[
+\bar{v}_{\varphi}=\left[\begin{array}{l}
+1 \\
+\varphi
+\end{array}\right] \quad \text { and } \quad \bar{v}_{\psi}=\left[\begin{array}{l}
+1 \\
+\psi
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+A=P D P^{-1}=\left[\begin{array}{ll}
+1 &amp; 1 \\
+\varphi &amp; \psi
+\end{array}\right]\left[\begin{array}{ll}
+\varphi &amp; 0 \\
+0 &amp; \psi
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi &amp; 1 \\
+\varphi &amp; -1
+\end{array}\right]
+\]</span></p>
+</div>
+</section>
+
+<section id="section-9" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; A^{k}=P D^{k} P^{-1} \\
+&amp; =\left[\begin{array}{cc}
+1 &amp; 1 \\
+\varphi &amp; \psi
+\end{array}\right]\left[\begin{array}{cc}
+\varphi^{k} &amp; 0 \\
+0 &amp; \psi^{k}
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi &amp; 1 \\
+\varphi &amp; -1
+\end{array}\right] \\
+&amp; =\left[\begin{array}{cc}
+\varphi^{k} &amp; \psi^{k} \\
+\varphi^{k+1} &amp; \psi^{k+1}
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi &amp; 1 \\
+\varphi &amp; -1
+\end{array}\right] \\
+&amp; =\frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi \varphi^{k}+\varphi \psi^{k} &amp; \varphi^{k}-\psi^{k} \\
+-\psi \varphi^{k+1}+\varphi \psi^{k+1} &amp; \varphi^{k+1}-\psi^{k+1}
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+</section>
+
+<section id="section-10" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Finally,</p>
+<p><span class="math display">\[
+\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]=A^{k} \bar{x}_{0}=\frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi \varphi^{k}+\varphi \psi^{k} &amp; \varphi^{k}-\psi^{k} \\
+-\psi \varphi^{k+1}+\varphi \psi^{k+1} &amp; \varphi^{k+1}-\psi^{k+1}
+\end{array}\right]\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]=\frac{1}{\sqrt{5}}\left[\begin{array}{c}
+\varphi^{k}-\psi^{k} \\
+\varphi^{k+1}-\psi^{k+1}
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>and so</p>
+<p><span class="math display">\[
+F_{k}=\frac{1}{\sqrt{5}}\left(\varphi^{k}-\psi^{k}\right)=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{k}+\left(\frac{1-\sqrt{5}}{2}\right)^{k}\right)
+\]</span></p>
+</div>
+<div class="fragment">
+<p>But for large <span class="math inline">\(k\)</span>, <span class="math inline">\(\psi^{k}\)</span> is very small, so</p>
+<p><span class="math display">\[
+F_{k} \approx \frac{\varphi^{k}}{\sqrt{5}}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\lim _{k \rightarrow \infty} \frac{F_{k+1}}{F_{k}}=\varphi
+\]</span></p>
+<p>This is the golden ratio!</p>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="https://commons.wikimedia.org/wiki/File:Fibonacci_Spiral.svg#/media/File:Fibonacci_Spiral.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Golden Ratio spiral"><img data-src="https://commons.wikimedia.org/wiki/File:Fibonacci_Spiral.svg#/media/File:Fibonacci_Spiral.svg" alt="Golden Ratio spiral"></a></p>
+<figcaption>Golden Ratio spiral</figcaption>
+</figure>
+</div>
+</div>
+</section>
+
+<section id="section-11" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Go back to some of the previous examples we’ve used, or that you’ve used in your projects. Work in pairs to find the eigenvalues and eigenvectors of the transition matrix. What do the eigenvalues tell you about the dynamics of the system?</p>
 
@@ -1848,6 +2026,10 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <div class="footer-section">
 <p> </p>
 </div>
+</div>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-2">Fibonacci Statue</span>
+<span class="glightbox-desc lightbox-desc-3">Golden Ratio spiral</span>
 </div>
 </section>
 </section>
@@ -2855,7 +3037,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

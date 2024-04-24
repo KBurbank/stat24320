@@ -1,8 +1,8 @@
 ---
 title: Ch5 Lecture 1
 lecture_day: 11
-readings: "5.1,5.2"
-publish: talse
+readings: "5.1,5.2,5.3"
+publish: true
 execute: 
   cache: true
 lightbox: true
@@ -978,6 +978,201 @@ def plot_iterations(x0, A, n1=10, n2=1):
 A = np.array([[0, 2], [-2, 0]])
 plot_iterations(np.array([1,2]), A)
 ```
+
+
+## Another example
+
+![Fibonacci Statue](https://www.epsilones.com/material/artes/027-fibonacci-pisa.jpg){height=200}
+
+. . .
+
+Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+$F_{0}=0$ and $F_{1}=1$. For $n \geq 2$, the $n$-th Fibonacci number is
+
+$$
+F_{n}=F_{n-1}+F_{n-2}
+$$
+
+. . .
+
+What is the $n$-th Fibonacci number? What is $F_{100}$?
+
+(Treatment from [here](https://www.math.umd.edu/~immortal/MATH401/book/ch_discrete_dynamical_systems.pdf))
+
+
+##
+
+Get this into matrix form.
+
+Let
+$$
+\bar{x}_{k}=\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]
+$$
+
+. . .
+
+Then 
+
+$$
+\bar{x}_{k+1}=\left[\begin{array}{c}
+F_{k+1} \\
+F_{k+2}
+\end{array}\right]=\left[\begin{array}{c}
+F_{k+1} \\
+F_{k}+F_{k+1}
+\end{array}\right]=\left[\begin{array}{ll}
+0 & 1 \\
+1 & 1
+\end{array}\right]\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]=\left[\begin{array}{ll}
+0 & 1 \\
+1 & 1
+\end{array}\right] \bar{x}_{k}
+$$
+
+for $\bar{x}_{0}=\left[\begin{array}{l}0 \\1\end{array}\right]$
+
+. . .
+
+To understand the dynamics, we need to diagonalize the matrix.
+
+$$
+\begin{aligned}
+\operatorname{det}(A-\lambda I) & =0 \\
+\operatorname{det}\left[\begin{array}{cc}
+-\lambda & 1 \\
+1 & 1-\lambda
+\end{array}\right] & =0 \\
+\lambda^{2}-\lambda-1 & =0 \\
+\lambda & =\frac{1 \pm \sqrt{5}}{2}
+\end{aligned}
+$$
+
+##
+
+Eigenvalues (call them phi and psi):
+$$
+\begin{aligned}
+& \varphi=\frac{1+\sqrt{5}}{2} \approx 1.618 \\
+& \psi=\frac{1-\sqrt{5}}{2} \approx-0.618
+\end{aligned}
+$$
+
+Eigenvectors:
+
+$$
+\bar{v}_{\varphi}=\left[\begin{array}{l}
+1 \\
+\varphi
+\end{array}\right] \quad \text { and } \quad \bar{v}_{\psi}=\left[\begin{array}{l}
+1 \\
+\psi
+\end{array}\right]
+$$
+
+. . .
+
+$$
+A=P D P^{-1}=\left[\begin{array}{ll}
+1 & 1 \\
+\varphi & \psi
+\end{array}\right]\left[\begin{array}{ll}
+\varphi & 0 \\
+0 & \psi
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi & 1 \\
+\varphi & -1
+\end{array}\right]
+$$
+
+##
+
+$$
+\begin{aligned}
+& A^{k}=P D^{k} P^{-1} \\
+& =\left[\begin{array}{cc}
+1 & 1 \\
+\varphi & \psi
+\end{array}\right]\left[\begin{array}{cc}
+\varphi^{k} & 0 \\
+0 & \psi^{k}
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi & 1 \\
+\varphi & -1
+\end{array}\right] \\
+& =\left[\begin{array}{cc}
+\varphi^{k} & \psi^{k} \\
+\varphi^{k+1} & \psi^{k+1}
+\end{array}\right] \frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi & 1 \\
+\varphi & -1
+\end{array}\right] \\
+& =\frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi \varphi^{k}+\varphi \psi^{k} & \varphi^{k}-\psi^{k} \\
+-\psi \varphi^{k+1}+\varphi \psi^{k+1} & \varphi^{k+1}-\psi^{k+1}
+\end{array}\right]
+\end{aligned}
+$$
+
+##
+
+Finally,
+
+$$
+\left[\begin{array}{c}
+F_{k} \\
+F_{k+1}
+\end{array}\right]=A^{k} \bar{x}_{0}=\frac{1}{\sqrt{5}}\left[\begin{array}{cc}
+-\psi \varphi^{k}+\varphi \psi^{k} & \varphi^{k}-\psi^{k} \\
+-\psi \varphi^{k+1}+\varphi \psi^{k+1} & \varphi^{k+1}-\psi^{k+1}
+\end{array}\right]\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]=\frac{1}{\sqrt{5}}\left[\begin{array}{c}
+\varphi^{k}-\psi^{k} \\
+\varphi^{k+1}-\psi^{k+1}
+\end{array}\right]
+$$
+
+. . .
+
+and so
+
+$$
+F_{k}=\frac{1}{\sqrt{5}}\left(\varphi^{k}-\psi^{k}\right)=\frac{1}{\sqrt{5}}\left(\left(\frac{1+\sqrt{5}}{2}\right)^{k}+\left(\frac{1-\sqrt{5}}{2}\right)^{k}\right)
+$$
+
+. . .
+
+But for large $k$, $\psi^{k}$ is very small, so
+
+$$
+F_{k} \approx \frac{\varphi^{k}}{\sqrt{5}}
+$$
+
+. . .
+
+$$
+\lim _{k \rightarrow \infty} \frac{F_{k+1}}{F_{k}}=\varphi
+$$
+
+This is the golden ratio!
+
+. . .
+
+![Golden Ratio spiral](https://commons.wikimedia.org/wiki/File:Fibonacci_Spiral.svg#/media/File:Fibonacci_Spiral.svg)
+
+
+
+
+
+
 
 ## 
 

@@ -289,4 +289,565 @@ Thus, a basis of $\mathcal{E}_{3}(A)$ is $\{(-1,1)\}$.
 Similarly, for $\lambda=10$, the basis of $\mathcal{E}_{10}(A)$ is $\{(4 / 3,1)\}$
 
 
+## Two examples with repeated eigenvalues
+
+What happens when an eigenvalue is repeated?
+
+Example: find the eigenspace for eigenvalue $\lambda=2$ of these two matrices:
+
+$$
+\text { (a) }\left[\begin{array}{rrr}
+2 & 1 & 2 \\
+0 & 1 & -2 \\
+0 & 0 & 2
+\end{array}\right] \quad \text { (b) }\left[\begin{array}{lll}
+2 & 1 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 2
+\end{array}\right]
+$$
+
+. . .
+
+Both matrices have eigenvalues $\lambda=1,2,2$, but their eigenspaces for $\lambda=2$ are different:
+
+. . .
+
+After row reducing the first matrix, we get
+
+$$
+\left[\begin{array}{rrr}
+0 & 1 & 2 \\
+0 & -1 & -2 \\
+0 & 0 & 0
+\end{array}\right] \xrightarrow[E_{21}(1)]{\longrightarrow}\left[\begin{array}{lll}
+0 & 1 & 2 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{array}\right]
+$$
+
+. . .
+
+$$
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\left[\begin{array}{c}
+x_{1} \\
+-2 x_{3} \\
+x_{3}
+\end{array}\right]=x_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right]+x_{3}\left[\begin{array}{r}
+0 \\
+-2 \\
+1
+\end{array}\right] .
+$$
+
+. . .
+
+A basis for $\mathcal{E}_{2}(A)$ is $\{(1,0,0),(0,-2,1)\}$.
+
+Dimension of $\mathcal{E}_{2}(A)=2$.
+
+##
+
+$$
+\text { (a) }\left[\begin{array}{rrr}
+2 & 1 & 2 \\
+0 & 1 & -2 \\
+0 & 0 & 2
+\end{array}\right] \quad \text { (b) }\left[\begin{array}{lll}
+2 & 1 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 2
+\end{array}\right]
+$$
+
+For the second matrix, we have
+$$
+\left[\begin{array}{rrr}
+0 & 1 & 1 \\
+0 & -1 & 1 \\
+0 & 0 & 0
+\end{array}\right] \xrightarrow[E_{21}(1)]{\longrightarrow}\left[\begin{array}{lll}
+0 & 1 & 1 \\
+0 & 0 & 2 \\
+0 & 0 & 0
+\end{array}\right] \xrightarrow{E_{2}(1 / 2)}\left[\begin{array}{lll}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0
+\end{array}\right]
+$$
+
+. . .
+
+Only free variable is $x_{1}$, so
+
+$$
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\left[\begin{array}{c}
+x_{1} \\
+0 \\
+0
+\end{array}\right]=x_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right]
+$$
+
+. . .
+
+A basis for $\mathcal{E}_{2}(A)$ is $\{(1,0,0)\}$. Dimension of $\mathcal{E}_{2}(A)=1$.
+
+## Eigenvalue Multiplicity
+
+::: definition
+The **algebraic multiplicity** of $\lambda$ is the multiplicity of $\lambda$ as a root of the characteristic equation. The **geometric multiplicity** of $\lambda$ is the dimension of the space $\mathcal{E}_{\lambda}(A)=\mathcal{N}(\lambda I-A)$.
+:::
+
+. . .
+
+::: definition
+The eigenvalue $\lambda$ of $A$ is said to be **simple** if its algebraic multiplicity is 1 , that is, the number of times it occurs as a root of the characteristic equation is 1 . Otherwise, the eigenvalue is said to be **repeated**.
+:::
+
+. . .
+
+::: theorem
+1. For an $n \times n$ matrix $A$, the sum of the algebraic multiplicities of all the eigenvalues of $A$ is $n$.
+
+(In other words, there are $n$ eigenvalues, counting algebraic multiplicities and complex numbers).
+
+2. The *geometric multiplicity* of an eigenvalue is always less than or equal to its *algebraic multiplicity*.
+
+:::
+
+## Defective Matrices
+
+::: definition
+A matrix is **defective** if one of its eigenvalues has geometric multiplicity less than its algebraic multiplicity.
+:::
+
+. . .
+
+This means that the sum of the geometric multiplicities of all the eigenvalues is less than $n$.
+
+
+# Similarity and Diagonalization
+
+## Functions of Diagonal Matrices
+
+It's easy to find functions of matrices if the matrix is **diagonal**.
+
+$$
+D = \operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}=\left[\begin{array}{ccc}
+\lambda_{1} & 0 & 0 \\
+0 & \lambda_{2} & 0 \\
+0 & 0 & \lambda_{3}
+\end{array}\right]
+$$
+
+. . .
+
+$D^{k}=\operatorname{diag}\left\{\lambda_{1}^{k}, \lambda_{2}^{k}, \ldots, \lambda_{n}^{k}\right\}$
+
+. . .
+
+$$
+f(D)=\operatorname{diag}\left\{f\left(\lambda_{1}\right), f\left(\lambda_{2}\right), \ldots, f\left(\lambda_{n}\right)\right\}
+$$
+
+## Similar Matrices
+
+::: definition
+A matrix $A$ is said to be **similar** to matrix $B$ if there exists an invertible matrix $P$ such that
+
+$$
+P^{-1} A P=B .
+$$
+
+$P$ is called a **similarity transformation matrix**.
+:::
+
+. . .
+
+::: theorem
+If $A$ is similar to $M$, say $P^{-1} A P=M$. Then:
+
+. . .
+
+(1) For every polynomial $q(x)$,
+$$
+q(M)=P^{-1} q(A) P .
+$$
+
+. . .
+
+(2) The matrices $A$ and $M$ have the same eigenvalues.
+
+:::
+
+. . .
+
+So in particular, 
+
+$$
+\begin{equation*}
+A^{k}=P D^{k} P^{-1} 
+\end{equation*}
+$$
+
+## Diagonalization
+
+::: fillin
+:::
+
+::: fillin
+:::
+
+::: notes
+
+Suppose we have a $3 \times 3$ matrix $A$
+
+Suppose we then find three linearly independent eigenvectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}$
+
+$A \mathbf{v}_{1}=\lambda_{1} \mathbf{v}_{1}, A \mathbf{v}_{2}=\lambda_{2} \mathbf{v}_{2}$
+
+$A \mathbf{v}_{1}=\lambda_{1} \mathbf{v}_{1}, A \mathbf{v}_{2}=\lambda_{2} \mathbf{v}_{2}$ etc
+
+Put this together:
+$$
+A\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{ccc}
+\lambda_{1} & 0 & 0 \\
+0 & \lambda_{2} & 0 \\
+0 & 0 & \lambda_{3}
+\end{array}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right] \operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}
+$$
+
+Now define $P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]$ and $D=\operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}$
+
+Multiply on the right by $P^{-1}$ (can do because columns of $P$ are linearly independent, so it's invertible):
+
+$A P=P D\Rightarrow P^{-1} D P=A$
+
+:::
+
+. . .
+
+To diagonalize an $n \times n$ matrix $A$, we just need to find $n$ independent eigenvectors and put them into the columns of a matrix $P$. Then $P^{-1} A P=D$
+
+## Example
+
+Find $f(A)$ for $A=\left[\begin{array}{rrr} 2 & 1 & 2 \\0 & 1 & -2 \\0 & 0 & 2\end{array}\right]$ with $f(x)=\sin \left(\frac{\pi}{2} x\right)$
+
+. . .
+
+From before, the basis vectors for the eigenspace of $\lambda=2$ are $\{(1,0,0),(0,-2,1)\}$
+
+The basis for the eigenspace of $\lambda=1$ is $\{(-1,1,0)\}$
+
+. . .
+
+$$
+P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\begin{array}{rrr}
+1 & 0 & -1 \\
+0 & -2 & 1 \\
+0 & 1 & 0
+\end{array}\right] .
+$$
+
+. . . 
+
+$$
+P^{-1}=\left[\begin{array}{lll}
+1 & 1 & 2 \\
+0 & 0 & 1 \\
+0 & 1 & 2
+\end{array}\right]
+$$
+
+. . .
+
+$$
+P^{-1} A P=\left[\begin{array}{lll}
+2 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 1
+\end{array}\right]=D
+$$
+
+##
+
+$$
+\begin{aligned}
+\sin \left(\frac{\pi}{2} A\right)&=P^{-1} \sin \left(\frac{\pi}{2} D\right) P \\[20pt]
+&= \left[\begin{array}{rrr}1 & 0 & -1 \\ 0 & -2 & 1 \\ 0 & 1 & 0\end{array}\right]\left[\begin{array}{ccc}\sin \left(2 \frac{\pi}{2}\right) & 0 & 0 \\ 0 & \sin \left(2 \frac{\pi}{2}\right) & 0 \\ 0 & 0 & \sin \left(1 \frac{\pi}{2}\right)\end{array}\right]\left[\begin{array}{lll}1 & 1 & 2 \\ 0 & 0 & 1 \\ 0 & 1 & 2\end{array}\right]\\[10pt]
+&=\left[\begin{array}{ccc}0 & -1 & -2 \\ 0 & 1 & 2 \\ 0 & 0 & 0\end{array}\right]
+\end{aligned}
+$$
+
+## When  are matrices diagonalizable?
+
+::: theorem
+The $n \times n$ matrix $A$ is diagonalizable if and only if there exists a linearly independent set of eigenvectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$ of $A$
+$\dots$
+in which case $P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]$ is a diagonalizing matrix for $A$.
+:::
+
+. . .
+
+::: theorem
+If the $n \times n$ matrix $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
+
+. . .
+
+Caution: Just because the $n \times n$ matrix $A$ has fewer than $n$ distinct eigenvalues, you may not conclude that it is not diagonalizable.
+:::
+
+# Application to Discrete Dynamical Systems
+
+## Diagonalizable Transition Matrices
+
+Suppose you have the discrete dynamical system
+$$
+\mathbf{x}^{(k+1)}=A \mathbf{x}^{(k)}
+$$
+
+. . .
+
+Assume $A$ is diagonalizable, then we can write complete, linearly independent eigenvectors $\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}$, with eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$.
+
+Suppose the eigenvalues are ordered, so that $|\lambda_{1}| \geq|\lambda_{2}| \geq \cdots \geq|\lambda_{n}|$.
+
+. . .
+
+::: fillin
+:::
+
+::: fillin
+:::
+
+::: notes
+
+Then the eigenvectors form a basis of $\mathbb{R}^{n}$ (or $\mathbb{C}^{n}$), so we can express our initial state as a linear combination of the eigenvectors:
+$$
+\begin{equation*}
+\mathbf{x}^{(0)}=c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n} 
+\end{equation*}
+$$
+
+Now we know the effect of multiplying by $A$:
+
+$$
+\begin{aligned}
+A \mathbf{x}^{(0)} & =A\left(c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}\right) \\
+& =c_{1}\left(A \mathbf{v}_{1}\right)+c_{2}\left(A \mathbf{v}_{2}\right)+\cdots+c_{n}\left(A \mathbf{v}_{n}\right) \\
+& =c_{1} \lambda_{1} \mathbf{v}_{1}+c_{2} \lambda_{2} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n} \mathbf{v}_{n}
+\end{aligned}
+$$
+
+Can do it repeatedly:
+$$
+\begin{equation*}
+\mathbf{x}^{(k)}=c_{1} \lambda_{1}^{k} \mathbf{v}_{1}+c_{2} \lambda_{2}^{k} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n}^{k} \mathbf{v}_{n} 
+\end{equation*}
+$$
+
+:::
+
+## Spectral Radius and Dominant Eigenvalue
+$$
+\begin{equation*}
+\mathbf{x}^{(k)}=c_{1} \lambda_{1}^{k} \mathbf{v}_{1}+c_{2} \lambda_{2}^{k} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n}^{k} \mathbf{v}_{n} 
+\end{equation*}
+$$
+
+::: pause
+:::
+
+::: notes
+What will happen when $\lambda_{1}$ is greater than 1? Equal to one? Less than one? What about the others?
+:::
+
+. . .
+
+::: definition
+ The **spectral radius** $\rho(A)$ of a matrix $A$ with eigenvalues $\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}$ is 
+
+$$
+\rho(A)=\max \left\{\left|\lambda_{1}\right|,\left|\lambda_{2}\right|, \ldots,\left|\lambda_{n}\right|\right\} .
+$$
+:::
+
+. . .
+
+::: definition
+If $\left|\lambda_{k}\right|=\rho(A)$ and $\lambda_{k}$ is the **only** eigenvalue with this property, then $\lambda_{k}$ is the **dominant eigenvalue** of $A$.
+:::
+
+## Implications of the Spectral Radius
+
+::: theorem
+For $n \times n$ transition matrix $A$, initial state vector $\mathbf{x}^{(0)}$:
+
+. . .
+
+(1) If $\rho(A)<1$, then $\lim _{k \rightarrow \infty} A^{k} \mathbf{x}^{(0)}=\mathbf{0}$.
+
+. . .
+
+(2) If $\rho(A)=1$, then the sequence of norms $\left\{\left\|\mathbf{x}^{(k)}\right\|\right\}_{k=0}^{\infty}$ is bounded.
+
+. . .
+
+(3) If $\rho(A)=1$ and $\lambda=1$ is the dominant eigenvalue of $A$, then $\lim _{k \rightarrow \infty} \mathbf{x}^{(k)}$ is an element of $\mathcal{E}_{1}(A)$ --   either an eigenvector or $\mathbf{0}$.
+
+. . .
+
+(4) If $\rho(A)>1$, then for some choices of $\mathbf{x}^{(0)}$ we have $\lim _{k \rightarrow \infty}\|\mathbf{x}\|=\infty$
+
+:::
+
+
+
+## Example
+You have too many frogs.
+
+. . .
+
+There is a species of bird that eats frogs. (Yay!) Can these help you with your frog problem?
+
+. . .
+
+Let $F_{k}$ and $B_{k}$ be the number of frogs and birds at year $k$.
+
+$$
+\begin{aligned}
+B_{k+1} & =0.6 B_{k}+0.4 F_{k}, \\
+F_{k+1} & =-r B_{k}+1.4 F_{k},
+\end{aligned}
+$$
+
+where $r$ is the rate at which the birds eat the frogs. (Suppose it's around 0.35).
+
+::: pause
+:::
+
+::: notes
+There are some issues with this model. You can end up with negative frogs. And you can have birds appear from nowhere. But let's ignore that for now.
+:::
+
+. . .
+
+Is it a good idea to introduce these birds?
+
+
+
+##
+
+Let the population vector in the $k$ th year be $\mathbf{x}^{(k)}=\left(B_{k}, F_{k}\right)$
+
+$$
+\left[\begin{array}{l}
+B_{k+1} \\
+F_{k+1}
+\end{array}\right]=\left[\begin{array}{rr}
+0.6 & 0.4 \\
+-0.35 & 1.4
+\end{array}\right]\left[\begin{array}{l}
+B_{k} \\
+F_{k}
+\end{array}\right]
+$$
+
+. . .
+
+Find eigenvalues and eigenvectors of the transition matrix.
+
+```{python}
+#| echo: true
+import numpy as np
+A = np.array([[0.6, 0.4], [-0.35, 1.4]])
+eigvals, eigvecs = np.linalg.eig(A)
+eigvals_sorted = np.sort(eigvals)[::-1]
+eigvecs_sorted = eigvecs[:, np.argsort(eigvals)[::-1]]
+print('Eigenvalues: ' + str(eigvals_sorted))
+print('Eigenvectors: '+ str(eigvecs_sorted))
+```
+::: pause
+:::
+
+::: notes
+What this means is that the component of the initial vector which is in the direction of the eigenvector corresponding to the dominant eigenvalue will grow exponentially, while the other component will decay.
+
+Unless we start only with a vector that's proportional to the second eigenvector, the frog population will explode.
+:::
+
+
+
+. . .
+
+```{python}
+#| echo: true
+
+x0 = np.array([100, 10000]) 
+
+def print_iterations(x0, A, n1=10, n2=1):
+  x = x0
+  for i in range(n1):
+    for j in range(n2):
+      x = A @ x
+    print(x)
+
+print_iterations(x0, A)
+```
+
+## 
+
+Different starting points...
+
+```{python}
+#| echo: true
+
+x0 = eigvecs_sorted[0]*-1000
+print_iterations(x0, A)
+```
+
+. . .
+
+What if we start with the second eigenvector?
+
+```{python}
+#| echo: true
+
+x0 = eigvecs_sorted[1]*-1000
+print_iterations(x0, A)
+```
+
+. . .
+
+Looks good so far, doesn't blow up. But if we continue (only printing results every 10 years now):
+
+```{python}
+#| echo: true
+
+x0 = eigvecs_sorted[1]*-1000
+print_iterations(x0, A,n1 = 10, n2 = 10)
+```
+
+::: notes
+Even the roundoff errors are starting to make the frog population explode.
+:::
+
 ##

@@ -2784,5 +2784,117 @@
     "title": "Ch5 Lecture 1",
     "section": "Example",
     "text": "Example\nFind an eigensystem for the matrix \\(A=\\left[\\begin{array}{ll}7 & 4 \\\\ 3 & 6\\end{array}\\right]\\)\n\n\\[\n\\begin{aligned}\n0 & =\\operatorname{det}(\\lambda I-A)=\\operatorname{det}\\left[\\begin{array}{rr}\n\\lambda-7 & -4 \\\\\n-3 & \\lambda-6\n\\end{array}\\right] \\\\\n& =(\\lambda-7)(\\lambda-6)-(-3)(-4) \\\\\n& =\\lambda^{2}-13 \\lambda+42-12 \\\\\n& =\\lambda^{2}-13 \\lambda+30 \\\\\n& =(\\lambda-3)(\\lambda-10) .\n\\end{aligned}\n\\]\n\n\nEigenvalues are \\(\\lambda=3\\) and \\(\\lambda=10\\).\n\n\nFor \\(\\lambda=3\\), we have\n\\[\nA-3 I=\\left[\\begin{array}{rr}\n7-3 & 4 \\\\\n3 & 3-3\n\\end{array}\\right] =  {\\left[\\begin{array}{ll}\n4 & 4 \\\\\n3 & 3\n\\end{array}\\right] \\xrightarrow[E_{21}(-3 / 4)]{E_{1}(1 / 4)}\\left[\\begin{array}{ll}\n1 & 1 \\\\\n0 & 0\n\\end{array}\\right]}\n\\]\n\n\n\n\n\n::: notes So \\(x_{2}\\) is free and \\(x_{1}\\) is bound, \\(x_{1}=-x_{2}\\),so \\[\n\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2}\n\\end{array}\\right]=\\left[\\begin{array}{c}\n-x_{2} \\\\\nx_{2}\n\\end{array}\\right]=x_{2}\\left[\\begin{array}{r}\n-1 \\\\\n1\n\\end{array}\\right]\n\\]\nso the eigenspace is spanned by \\(\\left[\\begin{array}{l}1 \\\\ -1\\end{array}\\right]\\). :::\n\n\nThus, a basis of \\(\\mathcal{E}_{3}(A)\\) is \\(\\{(-1,1)\\}\\).\n\n\nSimilarly, for \\(\\lambda=10\\), the basis of \\(\\mathcal{E}_{10}(A)\\) is \\(\\{(4 / 3,1)\\}\\)"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#two-examples-with-repeated-eigenvalues",
+    "href": "lectures/ch5lecture1.html#two-examples-with-repeated-eigenvalues",
+    "title": "Ch5 Lecture 1",
+    "section": "Two examples with repeated eigenvalues",
+    "text": "Two examples with repeated eigenvalues\nWhat happens when an eigenvalue is repeated?\nExample: find the eigenspace for eigenvalue \\(\\lambda=2\\) of these two matrices:\n\\[\n\\text { (a) }\\left[\\begin{array}{rrr}\n2 & 1 & 2 \\\\\n0 & 1 & -2 \\\\\n0 & 0 & 2\n\\end{array}\\right] \\quad \\text { (b) }\\left[\\begin{array}{lll}\n2 & 1 & 1 \\\\\n0 & 1 & 1 \\\\\n0 & 0 & 2\n\\end{array}\\right]\n\\]\n\nBoth matrices have eigenvalues \\(\\lambda=1,2,2\\), but their eigenspaces for \\(\\lambda=2\\) are different:\n\n\nAfter row reducing the first matrix, we get\n\\[\n\\left[\\begin{array}{rrr}\n0 & 1 & 2 \\\\\n0 & -1 & -2 \\\\\n0 & 0 & 0\n\\end{array}\\right] \\xrightarrow[E_{21}(1)]{\\longrightarrow}\\left[\\begin{array}{lll}\n0 & 1 & 2 \\\\\n0 & 0 & 0 \\\\\n0 & 0 & 0\n\\end{array}\\right]\n\\]\n\n\n\\[\n\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right]=\\left[\\begin{array}{c}\nx_{1} \\\\\n-2 x_{3} \\\\\nx_{3}\n\\end{array}\\right]=x_{1}\\left[\\begin{array}{l}\n1 \\\\\n0 \\\\\n0\n\\end{array}\\right]+x_{3}\\left[\\begin{array}{r}\n0 \\\\\n-2 \\\\\n1\n\\end{array}\\right] .\n\\]\n\n\nA basis for \\(\\mathcal{E}_{2}(A)\\) is \\(\\{(1,0,0),(0,-2,1)\\}\\).\nDimension of \\(\\mathcal{E}_{2}(A)=2\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section",
+    "href": "lectures/ch5lecture1.html#section",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "\\[\n\\text { (a) }\\left[\\begin{array}{rrr}\n2 & 1 & 2 \\\\\n0 & 1 & -2 \\\\\n0 & 0 & 2\n\\end{array}\\right] \\quad \\text { (b) }\\left[\\begin{array}{lll}\n2 & 1 & 1 \\\\\n0 & 1 & 1 \\\\\n0 & 0 & 2\n\\end{array}\\right]\n\\]\nFor the second matrix, we have \\[\n\\left[\\begin{array}{rrr}\n0 & 1 & 1 \\\\\n0 & -1 & 1 \\\\\n0 & 0 & 0\n\\end{array}\\right] \\xrightarrow[E_{21}(1)]{\\longrightarrow}\\left[\\begin{array}{lll}\n0 & 1 & 1 \\\\\n0 & 0 & 2 \\\\\n0 & 0 & 0\n\\end{array}\\right] \\xrightarrow{E_{2}(1 / 2)}\\left[\\begin{array}{lll}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n0 & 0 & 0\n\\end{array}\\right]\n\\]\n\nOnly free variable is \\(x_{1}\\), so\n\\[\n\\left[\\begin{array}{l}\nx_{1} \\\\\nx_{2} \\\\\nx_{3}\n\\end{array}\\right]=\\left[\\begin{array}{c}\nx_{1} \\\\\n0 \\\\\n0\n\\end{array}\\right]=x_{1}\\left[\\begin{array}{l}\n1 \\\\\n0 \\\\\n0\n\\end{array}\\right]\n\\]\n\n\nA basis for \\(\\mathcal{E}_{2}(A)\\) is \\(\\{(1,0,0)\\}\\). Dimension of \\(\\mathcal{E}_{2}(A)=1\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#eigenvalue-multiplicity",
+    "href": "lectures/ch5lecture1.html#eigenvalue-multiplicity",
+    "title": "Ch5 Lecture 1",
+    "section": "Eigenvalue Multiplicity",
+    "text": "Eigenvalue Multiplicity\n\nThe algebraic multiplicity of \\(\\lambda\\) is the multiplicity of \\(\\lambda\\) as a root of the characteristic equation. The geometric multiplicity of \\(\\lambda\\) is the dimension of the space \\(\\mathcal{E}_{\\lambda}(A)=\\mathcal{N}(\\lambda I-A)\\).\n\n\n\nThe eigenvalue \\(\\lambda\\) of \\(A\\) is said to be simple if its algebraic multiplicity is 1 , that is, the number of times it occurs as a root of the characteristic equation is 1 . Otherwise, the eigenvalue is said to be repeated.\n\n\n\n\n\nFor an \\(n \\times n\\) matrix \\(A\\), the sum of the algebraic multiplicities of all the eigenvalues of \\(A\\) is \\(n\\).\n\n(In other words, there are \\(n\\) eigenvalues, counting algebraic multiplicities and complex numbers).\n\nThe geometric multiplicity of an eigenvalue is always less than or equal to its algebraic multiplicity."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#defective-matrices",
+    "href": "lectures/ch5lecture1.html#defective-matrices",
+    "title": "Ch5 Lecture 1",
+    "section": "Defective Matrices",
+    "text": "Defective Matrices\n\nA matrix is defective if one of its eigenvalues has geometric multiplicity less than its algebraic multiplicity.\n\n\nThis means that the sum of the geometric multiplicities of all the eigenvalues is less than \\(n\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#functions-of-diagonal-matrices",
+    "href": "lectures/ch5lecture1.html#functions-of-diagonal-matrices",
+    "title": "Ch5 Lecture 1",
+    "section": "Functions of Diagonal Matrices",
+    "text": "Functions of Diagonal Matrices\nIt’s easy to find functions of matrices if the matrix is diagonal.\n\\[\nD = \\operatorname{diag}\\left\\{\\lambda_{1}, \\lambda_{2}, \\lambda_{3}\\right\\}=\\left[\\begin{array}{ccc}\n\\lambda_{1} & 0 & 0 \\\\\n0 & \\lambda_{2} & 0 \\\\\n0 & 0 & \\lambda_{3}\n\\end{array}\\right]\n\\]\n\n\\(D^{k}=\\operatorname{diag}\\left\\{\\lambda_{1}^{k}, \\lambda_{2}^{k}, \\ldots, \\lambda_{n}^{k}\\right\\}\\)\n\n\n\\[\nf(D)=\\operatorname{diag}\\left\\{f\\left(\\lambda_{1}\\right), f\\left(\\lambda_{2}\\right), \\ldots, f\\left(\\lambda_{n}\\right)\\right\\}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#similar-matrices",
+    "href": "lectures/ch5lecture1.html#similar-matrices",
+    "title": "Ch5 Lecture 1",
+    "section": "Similar Matrices",
+    "text": "Similar Matrices\n\nA matrix \\(A\\) is said to be similar to matrix \\(B\\) if there exists an invertible matrix \\(P\\) such that\n\\[\nP^{-1} A P=B .\n\\]\n\\(P\\) is called a similarity transformation matrix.\n\n\n\nIf \\(A\\) is similar to \\(M\\), say \\(P^{-1} A P=M\\). Then:\n. . .\n\nFor every polynomial \\(q(x)\\), \\[\nq(M)=P^{-1} q(A) P .\n\\]\n\n. . .\n\nThe matrices \\(A\\) and \\(M\\) have the same eigenvalues.\n\n\n\n\nSo in particular,\n\\[\n\\begin{equation*}\nA^{k}=P D^{k} P^{-1}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#diagonalization",
+    "href": "lectures/ch5lecture1.html#diagonalization",
+    "title": "Ch5 Lecture 1",
+    "section": "Diagonalization",
+    "text": "Diagonalization\n\n\n\n\n\n\n\nSuppose we have a \\(3 \\times 3\\) matrix \\(A\\)\nSuppose we then find three linearly independent eigenvectors \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\)\n\\(A \\mathbf{v}_{1}=\\lambda_{1} \\mathbf{v}_{1}, A \\mathbf{v}_{2}=\\lambda_{2} \\mathbf{v}_{2}\\)\n\\(A \\mathbf{v}_{1}=\\lambda_{1} \\mathbf{v}_{1}, A \\mathbf{v}_{2}=\\lambda_{2} \\mathbf{v}_{2}\\) etc\nPut this together: \\[\nA\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]\\left[\\begin{array}{ccc}\n\\lambda_{1} & 0 & 0 \\\\\n0 & \\lambda_{2} & 0 \\\\\n0 & 0 & \\lambda_{3}\n\\end{array}\\right]=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right] \\operatorname{diag}\\left\\{\\lambda_{1}, \\lambda_{2}, \\lambda_{3}\\right\\}\n\\]\nNow define \\(P=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]\\) and \\(D=\\operatorname{diag}\\left\\{\\lambda_{1}, \\lambda_{2}, \\lambda_{3}\\right\\}\\)\nMultiply on the right by \\(P^{-1}\\) (can do because columns of \\(P\\) are linearly independent, so it’s invertible):\n\\(A P=P D\\Rightarrow P^{-1} D P=A\\)\n\n\nTo diagonalize an \\(n \\times n\\) matrix \\(A\\), we just need to find \\(n\\) independent eigenvectors and put them into the columns of a matrix \\(P\\). Then \\(P^{-1} A P=D\\)"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#example-1",
+    "href": "lectures/ch5lecture1.html#example-1",
+    "title": "Ch5 Lecture 1",
+    "section": "Example",
+    "text": "Example\nFind \\(f(A)\\) for \\(A=\\left[\\begin{array}{rrr} 2 & 1 & 2 \\\\0 & 1 & -2 \\\\0 & 0 & 2\\end{array}\\right]\\) with \\(f(x)=\\sin \\left(\\frac{\\pi}{2} x\\right)\\)\n\nFrom before, the basis vectors for the eigenspace of \\(\\lambda=2\\) are \\(\\{(1,0,0),(0,-2,1)\\}\\)\nThe basis for the eigenspace of \\(\\lambda=1\\) is \\(\\{(-1,1,0)\\}\\)\n\n\n\\[\nP=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\mathbf{v}_{3}\\right]=\\left[\\begin{array}{rrr}\n1 & 0 & -1 \\\\\n0 & -2 & 1 \\\\\n0 & 1 & 0\n\\end{array}\\right] .\n\\]\n\n\n\\[\nP^{-1}=\\left[\\begin{array}{lll}\n1 & 1 & 2 \\\\\n0 & 0 & 1 \\\\\n0 & 1 & 2\n\\end{array}\\right]\n\\]\n\n\n\\[\nP^{-1} A P=\\left[\\begin{array}{lll}\n2 & 0 & 0 \\\\\n0 & 2 & 0 \\\\\n0 & 0 & 1\n\\end{array}\\right]=D\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section-1",
+    "href": "lectures/ch5lecture1.html#section-1",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "\\[\n\\begin{aligned}\n\\sin \\left(\\frac{\\pi}{2} A\\right)&=P^{-1} \\sin \\left(\\frac{\\pi}{2} D\\right) P \\\\[20pt]\n&= \\left[\\begin{array}{rrr}1 & 0 & -1 \\\\ 0 & -2 & 1 \\\\ 0 & 1 & 0\\end{array}\\right]\\left[\\begin{array}{ccc}\\sin \\left(2 \\frac{\\pi}{2}\\right) & 0 & 0 \\\\ 0 & \\sin \\left(2 \\frac{\\pi}{2}\\right) & 0 \\\\ 0 & 0 & \\sin \\left(1 \\frac{\\pi}{2}\\right)\\end{array}\\right]\\left[\\begin{array}{lll}1 & 1 & 2 \\\\ 0 & 0 & 1 \\\\ 0 & 1 & 2\\end{array}\\right]\\\\[10pt]\n&=\\left[\\begin{array}{ccc}0 & -1 & -2 \\\\ 0 & 1 & 2 \\\\ 0 & 0 & 0\\end{array}\\right]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#when-are-matrices-diagonalizable",
+    "href": "lectures/ch5lecture1.html#when-are-matrices-diagonalizable",
+    "title": "Ch5 Lecture 1",
+    "section": "When are matrices diagonalizable?",
+    "text": "When are matrices diagonalizable?\n\nThe \\(n \\times n\\) matrix \\(A\\) is diagonalizable if and only if there exists a linearly independent set of eigenvectors \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\) of \\(A\\) \\(\\dots\\) in which case \\(P=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right]\\) is a diagonalizing matrix for \\(A\\).\n\n\n\nIf the \\(n \\times n\\) matrix \\(A\\) has \\(n\\) distinct eigenvalues, then \\(A\\) is diagonalizable.\n. . .\nCaution: Just because the \\(n \\times n\\) matrix \\(A\\) has fewer than \\(n\\) distinct eigenvalues, you may not conclude that it is not diagonalizable."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#diagonalizable-transition-matrices",
+    "href": "lectures/ch5lecture1.html#diagonalizable-transition-matrices",
+    "title": "Ch5 Lecture 1",
+    "section": "Diagonalizable Transition Matrices",
+    "text": "Diagonalizable Transition Matrices\nSuppose you have the discrete dynamical system \\[\n\\mathbf{x}^{(k+1)}=A \\mathbf{x}^{(k)}\n\\]\n\nAssume \\(A\\) is diagonalizable, then we can write complete, linearly independent eigenvectors \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\), with eigenvalues \\(\\lambda_{1}, \\lambda_{2}, \\ldots, \\lambda_{n}\\).\nSuppose the eigenvalues are ordered, so that \\(|\\lambda_{1}| \\geq|\\lambda_{2}| \\geq \\cdots \\geq|\\lambda_{n}|\\).\n\n\n\n\n\n\n\n\n\nThen the eigenvectors form a basis of \\(\\mathbb{R}^{n}\\) (or \\(\\mathbb{C}^{n}\\)), so we can express our initial state as a linear combination of the eigenvectors: \\[\n\\begin{equation*}\n\\mathbf{x}^{(0)}=c_{1} \\mathbf{v}_{1}+c_{2} \\mathbf{v}_{2}+\\cdots+c_{n} \\mathbf{v}_{n}\n\\end{equation*}\n\\]\nNow we know the effect of multiplying by \\(A\\):\n\\[\n\\begin{aligned}\nA \\mathbf{x}^{(0)} & =A\\left(c_{1} \\mathbf{v}_{1}+c_{2} \\mathbf{v}_{2}+\\cdots+c_{n} \\mathbf{v}_{n}\\right) \\\\\n& =c_{1}\\left(A \\mathbf{v}_{1}\\right)+c_{2}\\left(A \\mathbf{v}_{2}\\right)+\\cdots+c_{n}\\left(A \\mathbf{v}_{n}\\right) \\\\\n& =c_{1} \\lambda_{1} \\mathbf{v}_{1}+c_{2} \\lambda_{2} \\mathbf{v}_{2}+\\cdots+c_{n} \\lambda_{n} \\mathbf{v}_{n}\n\\end{aligned}\n\\]\nCan do it repeatedly: \\[\n\\begin{equation*}\n\\mathbf{x}^{(k)}=c_{1} \\lambda_{1}^{k} \\mathbf{v}_{1}+c_{2} \\lambda_{2}^{k} \\mathbf{v}_{2}+\\cdots+c_{n} \\lambda_{n}^{k} \\mathbf{v}_{n}\n\\end{equation*}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#spectral-radius-and-dominant-eigenvalue",
+    "href": "lectures/ch5lecture1.html#spectral-radius-and-dominant-eigenvalue",
+    "title": "Ch5 Lecture 1",
+    "section": "Spectral Radius and Dominant Eigenvalue",
+    "text": "Spectral Radius and Dominant Eigenvalue\n\\[\n\\begin{equation*}\n\\mathbf{x}^{(k)}=c_{1} \\lambda_{1}^{k} \\mathbf{v}_{1}+c_{2} \\lambda_{2}^{k} \\mathbf{v}_{2}+\\cdots+c_{n} \\lambda_{n}^{k} \\mathbf{v}_{n}\n\\end{equation*}\n\\]\n\n\n\n\nWhat will happen when \\(\\lambda_{1}\\) is greater than 1? Equal to one? Less than one? What about the others?\n\n\n\nThe spectral radius \\(\\rho(A)\\) of a matrix \\(A\\) with eigenvalues \\(\\lambda_{1}, \\lambda_{2}, \\ldots, \\lambda_{n}\\) is\n\\[\n\\rho(A)=\\max \\left\\{\\left|\\lambda_{1}\\right|,\\left|\\lambda_{2}\\right|, \\ldots,\\left|\\lambda_{n}\\right|\\right\\} .\n\\]\n\n\n\n\nIf \\(\\left|\\lambda_{k}\\right|=\\rho(A)\\) and \\(\\lambda_{k}\\) is the only eigenvalue with this property, then \\(\\lambda_{k}\\) is the dominant eigenvalue of \\(A\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#implications-of-the-spectral-radius",
+    "href": "lectures/ch5lecture1.html#implications-of-the-spectral-radius",
+    "title": "Ch5 Lecture 1",
+    "section": "Implications of the Spectral Radius",
+    "text": "Implications of the Spectral Radius\n\nFor \\(n \\times n\\) transition matrix \\(A\\), initial state vector \\(\\mathbf{x}^{(0)}\\):\n. . .\n\nIf \\(\\rho(A)&lt;1\\), then \\(\\lim _{k \\rightarrow \\infty} A^{k} \\mathbf{x}^{(0)}=\\mathbf{0}\\).\n\n. . .\n\nIf \\(\\rho(A)=1\\), then the sequence of norms \\(\\left\\{\\left\\|\\mathbf{x}^{(k)}\\right\\|\\right\\}_{k=0}^{\\infty}\\) is bounded.\n\n. . .\n\nIf \\(\\rho(A)=1\\) and \\(\\lambda=1\\) is the dominant eigenvalue of \\(A\\), then \\(\\lim _{k \\rightarrow \\infty} \\mathbf{x}^{(k)}\\) is an element of \\(\\mathcal{E}_{1}(A)\\) – either an eigenvector or \\(\\mathbf{0}\\).\n\n. . .\n\nIf \\(\\rho(A)&gt;1\\), then for some choices of \\(\\mathbf{x}^{(0)}\\) we have \\(\\lim _{k \\rightarrow \\infty}\\|\\mathbf{x}\\|=\\infty\\)"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#example-2",
+    "href": "lectures/ch5lecture1.html#example-2",
+    "title": "Ch5 Lecture 1",
+    "section": "Example",
+    "text": "Example\nYou have too many frogs.\n\nThere is a species of bird that eats frogs. (Yay!) Can these help you with your frog problem?\n\n\nLet \\(F_{k}\\) and \\(B_{k}\\) be the number of frogs and birds at year \\(k\\).\n\\[\n\\begin{aligned}\nB_{k+1} & =0.6 B_{k}+0.4 F_{k}, \\\\\nF_{k+1} & =-r B_{k}+1.4 F_{k},\n\\end{aligned}\n\\]\nwhere \\(r\\) is the rate at which the birds eat the frogs. (Suppose it’s around 0.35).\n\n\n\n\nThere are some issues with this model. You can end up with negative frogs. And you can have birds appear from nowhere. But let’s ignore that for now.\n\n\n\nIs it a good idea to introduce these birds?"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section-2",
+    "href": "lectures/ch5lecture1.html#section-2",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "Let the population vector in the \\(k\\) th year be \\(\\mathbf{x}^{(k)}=\\left(B_{k}, F_{k}\\right)\\)\n\\[\n\\left[\\begin{array}{l}\nB_{k+1} \\\\\nF_{k+1}\n\\end{array}\\right]=\\left[\\begin{array}{rr}\n0.6 & 0.4 \\\\\n-0.35 & 1.4\n\\end{array}\\right]\\left[\\begin{array}{l}\nB_{k} \\\\\nF_{k}\n\\end{array}\\right]\n\\]\n\nFind eigenvalues and eigenvectors of the transition matrix.\n\nimport numpy as np\nA = np.array([[0.6, 0.4], [-0.35, 1.4]])\neigvals, eigvecs = np.linalg.eig(A)\neigvals_sorted = np.sort(eigvals)[::-1]\neigvecs_sorted = eigvecs[:, np.argsort(eigvals)[::-1]]\nprint('Eigenvalues: ' + str(eigvals_sorted))\nprint('Eigenvectors: '+ str(eigvecs_sorted))\n\nEigenvalues: [1.14142136 0.85857864]\nEigenvectors: [[-0.59421716 -0.83980458]\n [-0.80430465 -0.54288882]]\n\n\n\n\n\n\nWhat this means is that the component of the initial vector which is in the direction of the eigenvector corresponding to the dominant eigenvalue will grow exponentially, while the other component will decay.\nUnless we start only with a vector that’s proportional to the second eigenvector, the frog population will explode.\n\n\n\n\nx0 = np.array([100, 10000]) \n\ndef print_iterations(x0, A, n1=10, n2=1):\n  x = x0\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    print(x)\n\nprint_iterations(x0, A)\n\n[ 4060. 13965.]\n[ 8022. 18130.]\n[12065.2 22574.3]\n[16268.84 27381.2 ]\n[20713.784 32639.586]\n[25484.1048 38445.596 ]\n[30668.70128 44904.39772]\n[36362.979856 52132.11136 ]\n[42670.6324576 60257.9129544]\n[49705.54465632 69426.356776  ]"
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section-3",
+    "href": "lectures/ch5lecture1.html#section-3",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "Different starting points…\n\nx0 = eigvecs_sorted[0]*-1000\nprint_iterations(x0, A)\n\n[692.45212576 967.75040247]\n[ 802.57143644 1112.49231944]\n[ 926.53978964 1276.58924446]\n[1066.55957157 1462.93601587]\n[1225.11014929 1674.81457217]\n[1404.99191844 1915.95184879]\n[1609.37589058 2190.58541685]\n[1841.85970109 2503.53802188]\n[2106.5310294  2860.30233525]\n[2408.03955174 3267.13740907]\n\n\n\nWhat if we start with the second eigenvector?\n\nx0 = eigvecs_sorted[1]*-1000\nprint_iterations(x0, A)\n\n[699.73831812 478.5377227 ]\n[611.25807995 425.04440043]\n[536.77260814 381.12183262]\n[474.51229793 345.70015282]\n[422.98743989 317.90090967]\n[380.9528278  297.01566957]\n[347.37796451 282.48844767]\n[321.42215777 273.90153916]\n[302.41391033 270.96439961]\n[289.83410604 273.50529084]\n\n\n\n\nLooks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):\n\nx0 = eigvecs_sorted[1]*-1000\nprint_iterations(x0, A,n1 = 10, n2 = 10)\n\n[289.83410604 273.50529084]\n[493.86429346 642.61221892]\n[1724.50444871 2328.57998379]\n[6445.12974686 8722.60198143]\n[24186.97763221 32738.09888286]\n[ 90789.4036837  122888.24713326]\n[340796.1924577  461285.82916599]\n[1279247.72362158 1731530.09096614]\n[4801916.36748821 6499650.17996028]\n[18024969.23527191 24397758.22361141]\n\n\n\nEven the roundoff errors are starting to make the frog population explode."
   }
 ]

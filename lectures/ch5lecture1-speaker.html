@@ -34,6 +34,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="theorem.css">
@@ -345,6 +410,8 @@
 <h2 id="toc-title">Outline for today</h2>
 <ul>
 <li class="fragment"><a href="#/eigenvalues-and-eigenvectors" id="/toc-eigenvalues-and-eigenvectors"><em>Eigenvalues and Eigenvectors</em></a></li>
+<li class="fragment"><a href="#/similarity-and-diagonalization" id="/toc-similarity-and-diagonalization"><em>Similarity and Diagonalization</em></a></li>
+<li class="fragment"><a href="#/application-to-discrete-dynamical-systems" id="/toc-application-to-discrete-dynamical-systems"><em>Application to Discrete Dynamical Systems</em></a></li>
 </ul>
 </nav>
 </section>
@@ -606,7 +673,610 @@ x_{2}
 </div>
 </section>
 
+<section id="two-examples-with-repeated-eigenvalues" class="title-slide slide level2 center">
+<h2><em>Two examples with repeated eigenvalues</em></h2>
+<p>What happens when an eigenvalue is repeated?</p>
+<p>Example: find the eigenspace for eigenvalue <span class="math inline">\(\lambda=2\)</span> of these two matrices:</p>
+<p><span class="math display">\[
+\text { (a) }\left[\begin{array}{rrr}
+2 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; -2 \\
+0 &amp; 0 &amp; 2
+\end{array}\right] \quad \text { (b) }\left[\begin{array}{lll}
+2 &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 2
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Both matrices have eigenvalues <span class="math inline">\(\lambda=1,2,2\)</span>, but their eigenspaces for <span class="math inline">\(\lambda=2\)</span> are different:</p>
+</div>
+<div class="fragment">
+<p>After row reducing the first matrix, we get</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr}
+0 &amp; 1 &amp; 2 \\
+0 &amp; -1 &amp; -2 \\
+0 &amp; 0 &amp; 0
+\end{array}\right] \xrightarrow[E_{21}(1)]{\longrightarrow}\left[\begin{array}{lll}
+0 &amp; 1 &amp; 2 \\
+0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\left[\begin{array}{c}
+x_{1} \\
+-2 x_{3} \\
+x_{3}
+\end{array}\right]=x_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right]+x_{3}\left[\begin{array}{r}
+0 \\
+-2 \\
+1
+\end{array}\right] .
+\]</span></p>
+</div>
+<div class="fragment">
+<p>A basis for <span class="math inline">\(\mathcal{E}_{2}(A)\)</span> is <span class="math inline">\(\{(1,0,0),(0,-2,1)\}\)</span>.</p>
+<p>Dimension of <span class="math inline">\(\mathcal{E}_{2}(A)=2\)</span>.</p>
+</div>
+</section>
+
 <section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\text { (a) }\left[\begin{array}{rrr}
+2 &amp; 1 &amp; 2 \\
+0 &amp; 1 &amp; -2 \\
+0 &amp; 0 &amp; 2
+\end{array}\right] \quad \text { (b) }\left[\begin{array}{lll}
+2 &amp; 1 &amp; 1 \\
+0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 2
+\end{array}\right]
+\]</span></p>
+<p>For the second matrix, we have <span class="math display">\[
+\left[\begin{array}{rrr}
+0 &amp; 1 &amp; 1 \\
+0 &amp; -1 &amp; 1 \\
+0 &amp; 0 &amp; 0
+\end{array}\right] \xrightarrow[E_{21}(1)]{\longrightarrow}\left[\begin{array}{lll}
+0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 2 \\
+0 &amp; 0 &amp; 0
+\end{array}\right] \xrightarrow{E_{2}(1 / 2)}\left[\begin{array}{lll}
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Only free variable is <span class="math inline">\(x_{1}\)</span>, so</p>
+<p><span class="math display">\[
+\left[\begin{array}{l}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\left[\begin{array}{c}
+x_{1} \\
+0 \\
+0
+\end{array}\right]=x_{1}\left[\begin{array}{l}
+1 \\
+0 \\
+0
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p>A basis for <span class="math inline">\(\mathcal{E}_{2}(A)\)</span> is <span class="math inline">\(\{(1,0,0)\}\)</span>. Dimension of <span class="math inline">\(\mathcal{E}_{2}(A)=1\)</span>.</p>
+</div>
+</section>
+
+<section id="eigenvalue-multiplicity" class="title-slide slide level2 center">
+<h2><em>Eigenvalue Multiplicity</em></h2>
+<div class="definition">
+<p>The <strong>algebraic multiplicity</strong> of <span class="math inline">\(\lambda\)</span> is the multiplicity of <span class="math inline">\(\lambda\)</span> as a root of the characteristic equation. The <strong>geometric multiplicity</strong> of <span class="math inline">\(\lambda\)</span> is the dimension of the space <span class="math inline">\(\mathcal{E}_{\lambda}(A)=\mathcal{N}(\lambda I-A)\)</span>.</p>
+</div>
+<div class="fragment">
+<div class="definition">
+<p>The eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(A\)</span> is said to be <strong>simple</strong> if its algebraic multiplicity is 1 , that is, the number of times it occurs as a root of the characteristic equation is 1 . Otherwise, the eigenvalue is said to be <strong>repeated</strong>.</p>
+</div>
+</div>
+<div class="fragment">
+<div class="theorem">
+<ol type="1">
+<li class="fragment">For an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, the sum of the algebraic multiplicities of all the eigenvalues of <span class="math inline">\(A\)</span> is <span class="math inline">\(n\)</span>.</li>
+</ol>
+<p>(In other words, there are <span class="math inline">\(n\)</span> eigenvalues, counting algebraic multiplicities and complex numbers).</p>
+<ol start="2" type="1">
+<li class="fragment">The <em>geometric multiplicity</em> of an eigenvalue is always less than or equal to its <em>algebraic multiplicity</em>.</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="defective-matrices" class="title-slide slide level2 center">
+<h2><em>Defective Matrices</em></h2>
+<div class="definition">
+<p>A matrix is <strong>defective</strong> if one of its eigenvalues has geometric multiplicity less than its algebraic multiplicity.</p>
+</div>
+<div class="fragment">
+<p>This means that the sum of the geometric multiplicities of all the eigenvalues is less than <span class="math inline">\(n\)</span>.</p>
+</div>
+</section>
+</section>
+<section>
+<section id="similarity-and-diagonalization" class="title-slide slide level1 center">
+<h1><em>Similarity and Diagonalization</em></h1>
+
+</section>
+<section id="functions-of-diagonal-matrices" class="title-slide slide level2 center">
+<h2><em>Functions of Diagonal Matrices</em></h2>
+<p>It’s easy to find functions of matrices if the matrix is <strong>diagonal</strong>.</p>
+<p><span class="math display">\[
+D = \operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}=\left[\begin{array}{ccc}
+\lambda_{1} &amp; 0 &amp; 0 \\
+0 &amp; \lambda_{2} &amp; 0 \\
+0 &amp; 0 &amp; \lambda_{3}
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math inline">\(D^{k}=\operatorname{diag}\left\{\lambda_{1}^{k}, \lambda_{2}^{k}, \ldots, \lambda_{n}^{k}\right\}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+f(D)=\operatorname{diag}\left\{f\left(\lambda_{1}\right), f\left(\lambda_{2}\right), \ldots, f\left(\lambda_{n}\right)\right\}
+\]</span></p>
+</div>
+</section>
+
+<section id="similar-matrices" class="title-slide slide level2 center">
+<h2><em>Similar Matrices</em></h2>
+<div class="definition">
+<p>A matrix <span class="math inline">\(A\)</span> is said to be <strong>similar</strong> to matrix <span class="math inline">\(B\)</span> if there exists an invertible matrix <span class="math inline">\(P\)</span> such that</p>
+<p><span class="math display">\[
+P^{-1} A P=B .
+\]</span></p>
+<p><span class="math inline">\(P\)</span> is called a <strong>similarity transformation matrix</strong>.</p>
+</div>
+<div class="fragment">
+<div class="theorem">
+<p>If <span class="math inline">\(A\)</span> is similar to <span class="math inline">\(M\)</span>, say <span class="math inline">\(P^{-1} A P=M\)</span>. Then:</p>
+<p>. . .</p>
+<ol type="1">
+<li class="fragment">For every polynomial <span class="math inline">\(q(x)\)</span>, <span class="math display">\[
+q(M)=P^{-1} q(A) P .
+\]</span></li>
+</ol>
+<p>. . .</p>
+<ol start="2" type="1">
+<li class="fragment">The matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(M\)</span> have the same eigenvalues.</li>
+</ol>
+</div>
+</div>
+<div class="fragment">
+<p>So in particular,</p>
+<p><span class="math display">\[
+\begin{equation*}
+A^{k}=P D^{k} P^{-1}
+\end{equation*}
+\]</span></p>
+</div>
+</section>
+
+<section id="diagonalization" class="title-slide slide level2 center">
+<h2><em>Diagonalization</em></h2>
+<div class="fillin">
+
+</div>
+<div class="fillin">
+
+</div>
+<aside class="notes">
+<p>Suppose we have a <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(A\)</span></p>
+<p>Suppose we then find three linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\)</span></p>
+<p><span class="math inline">\(A \mathbf{v}_{1}=\lambda_{1} \mathbf{v}_{1}, A \mathbf{v}_{2}=\lambda_{2} \mathbf{v}_{2}\)</span></p>
+<p><span class="math inline">\(A \mathbf{v}_{1}=\lambda_{1} \mathbf{v}_{1}, A \mathbf{v}_{2}=\lambda_{2} \mathbf{v}_{2}\)</span> etc</p>
+<p>Put this together: <span class="math display">\[
+A\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{ccc}
+\lambda_{1} &amp; 0 &amp; 0 \\
+0 &amp; \lambda_{2} &amp; 0 \\
+0 &amp; 0 &amp; \lambda_{3}
+\end{array}\right]=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right] \operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}
+\]</span></p>
+<p>Now define <span class="math inline">\(P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\)</span> and <span class="math inline">\(D=\operatorname{diag}\left\{\lambda_{1}, \lambda_{2}, \lambda_{3}\right\}\)</span></p>
+<p>Multiply on the right by <span class="math inline">\(P^{-1}\)</span> (can do because columns of <span class="math inline">\(P\)</span> are linearly independent, so it’s invertible):</p>
+<p><span class="math inline">\(A P=P D\Rightarrow P^{-1} D P=A\)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<p>To diagonalize an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, we just need to find <span class="math inline">\(n\)</span> independent eigenvectors and put them into the columns of a matrix <span class="math inline">\(P\)</span>. Then <span class="math inline">\(P^{-1} A P=D\)</span></p>
+</div>
+</section>
+
+<section id="example-1" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>Find <span class="math inline">\(f(A)\)</span> for <span class="math inline">\(A=\left[\begin{array}{rrr} 2 &amp; 1 &amp; 2 \\0 &amp; 1 &amp; -2 \\0 &amp; 0 &amp; 2\end{array}\right]\)</span> with <span class="math inline">\(f(x)=\sin \left(\frac{\pi}{2} x\right)\)</span></p>
+<div class="fragment">
+<p>From before, the basis vectors for the eigenspace of <span class="math inline">\(\lambda=2\)</span> are <span class="math inline">\(\{(1,0,0),(0,-2,1)\}\)</span></p>
+<p>The basis for the eigenspace of <span class="math inline">\(\lambda=1\)</span> is <span class="math inline">\(\{(-1,1,0)\}\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]=\left[\begin{array}{rrr}
+1 &amp; 0 &amp; -1 \\
+0 &amp; -2 &amp; 1 \\
+0 &amp; 1 &amp; 0
+\end{array}\right] .
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+P^{-1}=\left[\begin{array}{lll}
+1 &amp; 1 &amp; 2 \\
+0 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 2
+\end{array}\right]
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+P^{-1} A P=\left[\begin{array}{lll}
+2 &amp; 0 &amp; 0 \\
+0 &amp; 2 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]=D
+\]</span></p>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{aligned}
+\sin \left(\frac{\pi}{2} A\right)&amp;=P^{-1} \sin \left(\frac{\pi}{2} D\right) P \\[20pt]
+&amp;= \left[\begin{array}{rrr}1 &amp; 0 &amp; -1 \\ 0 &amp; -2 &amp; 1 \\ 0 &amp; 1 &amp; 0\end{array}\right]\left[\begin{array}{ccc}\sin \left(2 \frac{\pi}{2}\right) &amp; 0 &amp; 0 \\ 0 &amp; \sin \left(2 \frac{\pi}{2}\right) &amp; 0 \\ 0 &amp; 0 &amp; \sin \left(1 \frac{\pi}{2}\right)\end{array}\right]\left[\begin{array}{lll}1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 2\end{array}\right]\\[10pt]
+&amp;=\left[\begin{array}{ccc}0 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0\end{array}\right]
+\end{aligned}
+\]</span></p>
+</section>
+
+<section id="when-are-matrices-diagonalizable" class="title-slide slide level2 center">
+<h2><em>When are matrices diagonalizable?</em></h2>
+<div class="theorem">
+<p>The <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> is diagonalizable if and only if there exists a linearly independent set of eigenvectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> of <span class="math inline">\(A\)</span> <span class="math inline">\(\dots\)</span> in which case <span class="math inline">\(P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]\)</span> is a diagonalizing matrix for <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="fragment">
+<div class="theorem">
+<p>If the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> distinct eigenvalues, then <span class="math inline">\(A\)</span> is diagonalizable.</p>
+<p>. . .</p>
+<p>Caution: Just because the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> has fewer than <span class="math inline">\(n\)</span> distinct eigenvalues, you may not conclude that it is not diagonalizable.</p>
+</div>
+</div>
+</section>
+</section>
+<section>
+<section id="application-to-discrete-dynamical-systems" class="title-slide slide level1 center">
+<h1><em>Application to Discrete Dynamical Systems</em></h1>
+
+</section>
+<section id="diagonalizable-transition-matrices" class="title-slide slide level2 center">
+<h2><em>Diagonalizable Transition Matrices</em></h2>
+<p>Suppose you have the discrete dynamical system <span class="math display">\[
+\mathbf{x}^{(k+1)}=A \mathbf{x}^{(k)}
+\]</span></p>
+<div class="fragment">
+<p>Assume <span class="math inline">\(A\)</span> is diagonalizable, then we can write complete, linearly independent eigenvectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span>, with eigenvalues <span class="math inline">\(\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}\)</span>.</p>
+<p>Suppose the eigenvalues are ordered, so that <span class="math inline">\(|\lambda_{1}| \geq|\lambda_{2}| \geq \cdots \geq|\lambda_{n}|\)</span>.</p>
+</div>
+<div class="fragment">
+<div class="fillin">
+
+</div>
+<div class="fillin">
+
+</div>
+<aside class="notes">
+<p>Then the eigenvectors form a basis of <span class="math inline">\(\mathbb{R}^{n}\)</span> (or <span class="math inline">\(\mathbb{C}^{n}\)</span>), so we can express our initial state as a linear combination of the eigenvectors: <span class="math display">\[
+\begin{equation*}
+\mathbf{x}^{(0)}=c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}
+\end{equation*}
+\]</span></p>
+<p>Now we know the effect of multiplying by <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+A \mathbf{x}^{(0)} &amp; =A\left(c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}\right) \\
+&amp; =c_{1}\left(A \mathbf{v}_{1}\right)+c_{2}\left(A \mathbf{v}_{2}\right)+\cdots+c_{n}\left(A \mathbf{v}_{n}\right) \\
+&amp; =c_{1} \lambda_{1} \mathbf{v}_{1}+c_{2} \lambda_{2} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n} \mathbf{v}_{n}
+\end{aligned}
+\]</span></p>
+<p>Can do it repeatedly: <span class="math display">\[
+\begin{equation*}
+\mathbf{x}^{(k)}=c_{1} \lambda_{1}^{k} \mathbf{v}_{1}+c_{2} \lambda_{2}^{k} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n}^{k} \mathbf{v}_{n}
+\end{equation*}
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+
+<section id="spectral-radius-and-dominant-eigenvalue" class="title-slide slide level2 center">
+<h2><em>Spectral Radius and Dominant Eigenvalue</em></h2>
+<p><span class="math display">\[
+\begin{equation*}
+\mathbf{x}^{(k)}=c_{1} \lambda_{1}^{k} \mathbf{v}_{1}+c_{2} \lambda_{2}^{k} \mathbf{v}_{2}+\cdots+c_{n} \lambda_{n}^{k} \mathbf{v}_{n}
+\end{equation*}
+\]</span></p>
+<div class="pause">
+
+</div>
+<aside class="notes">
+<p>What will happen when <span class="math inline">\(\lambda_{1}\)</span> is greater than 1? Equal to one? Less than one? What about the others?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<div class="definition">
+<p>The <strong>spectral radius</strong> <span class="math inline">\(\rho(A)\)</span> of a matrix <span class="math inline">\(A\)</span> with eigenvalues <span class="math inline">\(\lambda_{1}, \lambda_{2}, \ldots, \lambda_{n}\)</span> is</p>
+<p><span class="math display">\[
+\rho(A)=\max \left\{\left|\lambda_{1}\right|,\left|\lambda_{2}\right|, \ldots,\left|\lambda_{n}\right|\right\} .
+\]</span></p>
+</div>
+</div>
+<div class="fragment">
+<div class="definition">
+<p>If <span class="math inline">\(\left|\lambda_{k}\right|=\rho(A)\)</span> and <span class="math inline">\(\lambda_{k}\)</span> is the <strong>only</strong> eigenvalue with this property, then <span class="math inline">\(\lambda_{k}\)</span> is the <strong>dominant eigenvalue</strong> of <span class="math inline">\(A\)</span>.</p>
+</div>
+</div>
+</section>
+
+<section id="implications-of-the-spectral-radius" class="title-slide slide level2 center">
+<h2><em>Implications of the Spectral Radius</em></h2>
+<div class="theorem">
+<p>For <span class="math inline">\(n \times n\)</span> transition matrix <span class="math inline">\(A\)</span>, initial state vector <span class="math inline">\(\mathbf{x}^{(0)}\)</span>:</p>
+<p>. . .</p>
+<ol type="1">
+<li class="fragment">If <span class="math inline">\(\rho(A)&lt;1\)</span>, then <span class="math inline">\(\lim _{k \rightarrow \infty} A^{k} \mathbf{x}^{(0)}=\mathbf{0}\)</span>.</li>
+</ol>
+<p>. . .</p>
+<ol start="2" type="1">
+<li class="fragment">If <span class="math inline">\(\rho(A)=1\)</span>, then the sequence of norms <span class="math inline">\(\left\{\left\|\mathbf{x}^{(k)}\right\|\right\}_{k=0}^{\infty}\)</span> is bounded.</li>
+</ol>
+<p>. . .</p>
+<ol start="3" type="1">
+<li class="fragment">If <span class="math inline">\(\rho(A)=1\)</span> and <span class="math inline">\(\lambda=1\)</span> is the dominant eigenvalue of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\lim _{k \rightarrow \infty} \mathbf{x}^{(k)}\)</span> is an element of <span class="math inline">\(\mathcal{E}_{1}(A)\)</span> – either an eigenvector or <span class="math inline">\(\mathbf{0}\)</span>.</li>
+</ol>
+<p>. . .</p>
+<ol start="4" type="1">
+<li class="fragment">If <span class="math inline">\(\rho(A)&gt;1\)</span>, then for some choices of <span class="math inline">\(\mathbf{x}^{(0)}\)</span> we have <span class="math inline">\(\lim _{k \rightarrow \infty}\|\mathbf{x}\|=\infty\)</span></li>
+</ol>
+</div>
+</section>
+
+<section id="example-2" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p>You have too many frogs.</p>
+<div class="fragment">
+<p>There is a species of bird that eats frogs. (Yay!) Can these help you with your frog problem?</p>
+</div>
+<div class="fragment">
+<p>Let <span class="math inline">\(F_{k}\)</span> and <span class="math inline">\(B_{k}\)</span> be the number of frogs and birds at year <span class="math inline">\(k\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+B_{k+1} &amp; =0.6 B_{k}+0.4 F_{k}, \\
+F_{k+1} &amp; =-r B_{k}+1.4 F_{k},
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the rate at which the birds eat the frogs. (Suppose it’s around 0.35).</p>
+<div class="pause">
+
+</div>
+<aside class="notes">
+<p>There are some issues with this model. You can end up with negative frogs. And you can have birds appear from nowhere. But let’s ignore that for now.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<p>Is it a good idea to introduce these birds?</p>
+</div>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Let the population vector in the <span class="math inline">\(k\)</span> th year be <span class="math inline">\(\mathbf{x}^{(k)}=\left(B_{k}, F_{k}\right)\)</span></p>
+<p><span class="math display">\[
+\left[\begin{array}{l}
+B_{k+1} \\
+F_{k+1}
+\end{array}\right]=\left[\begin{array}{rr}
+0.6 &amp; 0.4 \\
+-0.35 &amp; 1.4
+\end{array}\right]\left[\begin{array}{l}
+B_{k} \\
+F_{k}
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p>Find eigenvalues and eigenvectors of the transition matrix.</p>
+<div id="05dbfba7" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a>A <span class="op">=</span> np.array([[<span class="fl">0.6</span>, <span class="fl">0.4</span>], [<span class="op">-</span><span class="fl">0.35</span>, <span class="fl">1.4</span>]])</span>
+<span id="cb1-3"><a></a>eigvals, eigvecs <span class="op">=</span> np.linalg.eig(A)</span>
+<span id="cb1-4"><a></a>eigvals_sorted <span class="op">=</span> np.sort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-5"><a></a>eigvecs_sorted <span class="op">=</span> eigvecs[:, np.argsort(eigvals)[::<span class="op">-</span><span class="dv">1</span>]]</span>
+<span id="cb1-6"><a></a><span class="bu">print</span>(<span class="st">'Eigenvalues: '</span> <span class="op">+</span> <span class="bu">str</span>(eigvals_sorted))</span>
+<span id="cb1-7"><a></a><span class="bu">print</span>(<span class="st">'Eigenvectors: '</span><span class="op">+</span> <span class="bu">str</span>(eigvecs_sorted))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Eigenvalues: [1.14142136 0.85857864]
+Eigenvectors: [[-0.59421716 -0.83980458]
+ [-0.80430465 -0.54288882]]</code></pre>
+</div>
+</div>
+<div class="pause">
+
+</div>
+<aside class="notes">
+<p>What this means is that the component of the initial vector which is in the direction of the eigenvector corresponding to the dominant eigenvalue will grow exponentially, while the other component will decay.</p>
+<p>Unless we start only with a vector that’s proportional to the second eigenvector, the frog population will explode.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<div class="fragment">
+<div id="b54b13d0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="kw">def</span> print_iterations(x0, A, n1<span class="op">=</span><span class="dv">10</span>, n2<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb3-4"><a></a>  x <span class="op">=</span> x0</span>
+<span id="cb3-5"><a></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n1):</span>
+<span id="cb3-6"><a></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n2):</span>
+<span id="cb3-7"><a></a>      x <span class="op">=</span> A <span class="op">@</span> x</span>
+<span id="cb3-8"><a></a>    <span class="bu">print</span>(x)</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 4060. 13965.]
+[ 8022. 18130.]
+[12065.2 22574.3]
+[16268.84 27381.2 ]
+[20713.784 32639.586]
+[25484.1048 38445.596 ]
+[30668.70128 44904.39772]
+[36362.979856 52132.11136 ]
+[42670.6324576 60257.9129544]
+[49705.54465632 69426.356776  ]</code></pre>
+</div>
+</div>
+</div>
+</section>
+
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Different starting points…</p>
+<div id="c24d4074" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb5-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[692.45212576 967.75040247]
+[ 802.57143644 1112.49231944]
+[ 926.53978964 1276.58924446]
+[1066.55957157 1462.93601587]
+[1225.11014929 1674.81457217]
+[1404.99191844 1915.95184879]
+[1609.37589058 2190.58541685]
+[1841.85970109 2503.53802188]
+[2106.5310294  2860.30233525]
+[2408.03955174 3267.13740907]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>What if we start with the second eigenvector?</p>
+<div id="ad458e60" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb7-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[699.73831812 478.5377227 ]
+[611.25807995 425.04440043]
+[536.77260814 381.12183262]
+[474.51229793 345.70015282]
+[422.98743989 317.90090967]
+[380.9528278  297.01566957]
+[347.37796451 282.48844767]
+[321.42215777 273.90153916]
+[302.41391033 270.96439961]
+[289.83410604 273.50529084]</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
+<div id="ff1c41d1" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
+<span id="cb9-2"><a></a>print_iterations(x0, A,n1 <span class="op">=</span> <span class="dv">10</span>, n2 <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[289.83410604 273.50529084]
+[493.86429346 642.61221892]
+[1724.50444871 2328.57998379]
+[6445.12974686 8722.60198143]
+[24186.97763221 32738.09888286]
+[ 90789.4036837  122888.24713326]
+[340796.1924577  461285.82916599]
+[1279247.72362158 1731530.09096614]
+[4801916.36748821 6499650.17996028]
+[18024969.23527191 24397758.22361141]</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Even the roundoff errors are starting to make the frog population explode.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+
+<section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 
 <div class="quarto-auto-generated-content">

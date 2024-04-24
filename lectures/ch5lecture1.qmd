@@ -619,9 +619,11 @@ in which case $P=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\ri
 ::: theorem
 If the $n \times n$ matrix $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable.
 
-. . .
+::::{.fragment}
 
 Caution: Just because the $n \times n$ matrix $A$ has fewer than $n$ distinct eigenvalues, you may not conclude that it is not diagonalizable.
+::::
+
 :::
 
 # Application to Discrete Dynamical Systems

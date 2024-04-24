@@ -2853,7 +2853,7 @@
     "href": "lectures/ch5lecture1.html#when-are-matrices-diagonalizable",
     "title": "Ch5 Lecture 1",
     "section": "When are matrices diagonalizable?",
-    "text": "When are matrices diagonalizable?\n\nThe \\(n \\times n\\) matrix \\(A\\) is diagonalizable if and only if there exists a linearly independent set of eigenvectors \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\) of \\(A\\) \\(\\dots\\) in which case \\(P=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right]\\) is a diagonalizing matrix for \\(A\\).\n\n\n\nIf the \\(n \\times n\\) matrix \\(A\\) has \\(n\\) distinct eigenvalues, then \\(A\\) is diagonalizable.\n. . .\nCaution: Just because the \\(n \\times n\\) matrix \\(A\\) has fewer than \\(n\\) distinct eigenvalues, you may not conclude that it is not diagonalizable."
+    "text": "When are matrices diagonalizable?\n\nThe \\(n \\times n\\) matrix \\(A\\) is diagonalizable if and only if there exists a linearly independent set of eigenvectors \\(\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\) of \\(A\\) \\(\\dots\\) in which case \\(P=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right]\\) is a diagonalizing matrix for \\(A\\).\n\n\n\nIf the \\(n \\times n\\) matrix \\(A\\) has \\(n\\) distinct eigenvalues, then \\(A\\) is diagonalizable.\n\nCaution: Just because the \\(n \\times n\\) matrix \\(A\\) has fewer than \\(n\\) distinct eigenvalues, you may not conclude that it is not diagonalizable."
   },
   {
     "objectID": "lectures/ch5lecture1.html#diagonalizable-transition-matrices",

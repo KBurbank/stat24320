@@ -612,7 +612,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","read-only":"false","dpi":72,"classes":"","fig-width":7,"warning":"true","context":"interactive","output":"true","comment":"","out-height":"","fig-cap":"","fig-height":5,"autorun":"","results":"markup","out-width":"700px","label":""},"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics: eigenvalues='+str(np.linalg.eig(A)[0]))\n  plt.show()"},{"id":2,"options":{"message":"true","read-only":"false","dpi":72,"classes":"","fig-width":7,"warning":"true","context":"interactive","output":"true","comment":"","out-height":"","fig-cap":"","fig-height":5,"autorun":"","results":"markup","out-width":"700px","label":""},"code":"A = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)"}];
+  globalThis.qpyodideCellDetails = [{"id":1,"options":{"message":"true","fig-cap":"","classes":"","out-height":"","comment":"","output":"true","fig-height":5,"read-only":"false","warning":"true","autorun":"","results":"markup","label":"","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive"},"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics: eigenvalues='+str(np.linalg.eig(A)[0]))\n  plt.show()"},{"id":2,"options":{"message":"true","fig-cap":"","classes":"","out-height":"","comment":"","output":"true","fig-height":5,"read-only":"false","warning":"true","autorun":"","results":"markup","label":"","dpi":72,"fig-width":7,"out-width":"700px","context":"interactive"},"code":"A = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)"}];
 
 
   </script>
@@ -1578,7 +1578,7 @@ F_{k}
 \]</span></p>
 <div class="fragment">
 <p>Find eigenvalues and eigenvectors of the transition matrix.</p>
-<div id="52fef861" class="cell" data-execution_count="1">
+<div id="7d93c835" class="cell" data-execution_count="1">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1599,12 +1599,12 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 
 </div>
 <p>Check: use Sympy to diagonalize the matrix.</p>
-<div id="5b41fb2f" class="cell" data-execution_count="2">
+<div id="d9043755" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>D : Matrix([[0.858578643762691, 0], [0, 1.14142135623731]])
 P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598960745815]])</code></pre>
 </div>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="18">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="34">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.6 &amp; 0.4\\-0.35 &amp; 1.4\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -1627,7 +1627,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="31e0a2f8" class="cell" data-execution_count="3">
+<div id="6f9afbd4" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
@@ -1660,7 +1660,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Different starting points…</p>
-<div id="ea1f3a9a" class="cell" data-execution_count="4">
+<div id="fdd74652" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1684,7 +1684,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What if we start with the second eigenvector?</p>
-<div id="a1058286" class="cell" data-execution_count="5">
+<div id="049f30a4" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1705,7 +1705,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 </div>
 <div class="fragment">
 <p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
-<div id="bd284d43" class="cell" data-execution_count="6">
+<div id="90dbbcaf" class="cell" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
@@ -1740,7 +1740,7 @@ P : Matrix([[0.839804577036026, 0.635068381284203], [0.542888821389189, 0.859598
 \end{array}\right]
 \]</span></p>
 <div class="fragment">
-<div id="53bef8e2" class="cell" data-execution_count="7">
+<div id="e3240447" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a>A <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">2</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
@@ -1770,7 +1770,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 </div>
 <div class="fragment">
 <p>Let’s plot that…</p>
-<div id="924fcef8" class="cell" data-fig="true" data-execution_count="8">
+<div id="complex_eigenvalues" class="cell" data-fig="true" data-execution_count="8">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1791,14 +1791,14 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <span id="cb14-16"><a></a>  plt.xlabel(<span class="st">'B'</span>)</span>
 <span id="cb14-17"><a></a>  plt.ylabel(<span class="st">'F'</span>)</span>
 <span id="cb14-18"><a></a>  plt.title(<span class="st">'Population dynamics: eigenvalues='</span><span class="op">+</span><span class="bu">str</span>(np.linalg.eig(A)[<span class="dv">0</span>]))</span>
-<span id="cb14-19"><a></a>  plt.show()</span>
-<span id="cb14-20"><a></a></span>
-<span id="cb14-21"><a></a>plot_iterations(np.array([<span class="dv">1</span>,<span class="dv">2</span>]), A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-19"><a></a>  plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div id="3ce72e94" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><a href="ch5lecture1_files/figure-revealjs/complex_eigenvalues-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="ch5lecture1_files/figure-revealjs/complex_eigenvalues-output-1.png" id="complex_eigenvalues" width="836" height="449"></a></p>
+<p><a href="ch5lecture1_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="ch5lecture1_files/figure-revealjs/cell-10-output-1.png" width="836" height="449"></a></p>
 </figure>
 </div>
 </div>
@@ -2855,7 +2855,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

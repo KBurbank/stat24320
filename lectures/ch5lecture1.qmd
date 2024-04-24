@@ -1166,10 +1166,7 @@ This is the golden ratio!
 
 . . .
 
-![Golden Ratio spiral](https://commons.wikimedia.org/wiki/File:Fibonacci_Spiral.svg#/media/File:Fibonacci_Spiral.svg)
-
-
-
+![Golden Ratio spiral](https://upload.wikimedia.org/wikipedia/commons/b/b9/Fibonacci_Spiral.svg)
 
 
 

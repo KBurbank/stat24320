@@ -433,11 +433,11 @@ The eigenvalue $\lambda$ of $A$ is said to be **simple** if its algebraic multip
 ::: theorem
 For an $n \times n$ matrix $A$, the sum of the algebraic multiplicities of all the eigenvalues of $A$ is $n$.
 
-. . .
+{.fragment}
 
 (In other words, there are $n$ eigenvalues, counting algebraic multiplicities and complex numbers).
 
-. . .
+{.fragment}
 
 The *geometric multiplicity* of an eigenvalue is always less than or equal to its *algebraic multiplicity*.
 

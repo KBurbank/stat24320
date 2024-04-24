@@ -2924,5 +2924,12 @@
     "title": "Ch5 Lecture 1",
     "section": "Your turn",
     "text": "Your turn\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "lectures/ch5lecture1.html#section-6",
+    "href": "lectures/ch5lecture1.html#section-6",
+    "title": "Ch5 Lecture 1",
+    "section": "",
+    "text": "Go back to some of the previous examples we’ve used, or that you’ve used in your projects. Work in pairs to find the eigenvalues and eigenvectors of the transition matrix. What do the eigenvalues tell you about the dynamics of the system?"
   }
 ]

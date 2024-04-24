@@ -612,7 +612,7 @@
   }
 
   // Store cell data
-  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics')\n  plt.show()\n\nA = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)","id":1,"options":{"read-only":"false","output":"true","out-width":"700px","results":"markup","comment":"","fig-width":7,"dpi":72,"warning":"true","out-height":"","message":"true","label":"","autorun":"","fig-cap":"","context":"interactive","classes":"","fig-height":5}}];
+  globalThis.qpyodideCellDetails = [{"code":"import matplotlib.pyplot as plt\nimport numpy as np\ndef plot_iterations(x0, A, n1=10, n2=1):\n  plt.clf()\n  x = x0\n  x_vals = [x]\n  for i in range(n1):\n    for j in range(n2):\n      x = A @ x\n    x_vals.append(x)\n  x_vals = np.array(x_vals)\n  plt.plot(x_vals[:,0], x_vals[:,1], 'o-',)\n  for i, txt in enumerate(range(len(x_vals))):\n    plt.annotate(txt, (x_vals[i,0]+1, x_vals[i,1]+1))\n  #plt.plot(x_vals[:,0], x_vals[:,1], 'o-')\n  plt.xlabel('B')\n  plt.ylabel('F')\n  plt.title('Population dynamics: eigenvalues='+str(np.linalg.eig(A)[0]))\n  plt.show()\n\nA = np.array([[0, 2], [-2, 0]])\nplot_iterations(np.array([1,2]), A)","options":{"fig-width":7,"context":"interactive","out-width":"700px","comment":"","results":"markup","read-only":"false","classes":"","label":"","output":"true","fig-height":5,"message":"true","autorun":"","out-height":"","dpi":72,"warning":"true","fig-cap":""},"id":1}];
 
 
   </script>
@@ -1806,6 +1806,11 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
 <h2><em>Your turn</em></h2>
 <div id="qpyodide-insertion-location-1" class="qpyodide-insertion-class"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+
+<section id="section-6" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Go back to some of the previous examples we’ve used, or that you’ve used in your projects. Work in pairs to find the eigenvalues and eigenvectors of the transition matrix. What do the eigenvalues tell you about the dynamics of the system?</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -2840,7 +2845,7 @@ Eigenvectors: [[0.        -0.70710678j 0.        +0.70710678j]
         }
       );
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false,"openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

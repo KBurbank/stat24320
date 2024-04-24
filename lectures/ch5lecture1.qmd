@@ -284,7 +284,7 @@ $$
 
  so the eigenspace is spanned by $\left[\begin{array}{l}1 \\ -1\end{array}\right]$.
 
- :::
+:::
 
 . . .
 
@@ -431,13 +431,15 @@ The eigenvalue $\lambda$ of $A$ is said to be **simple** if its algebraic multip
 . . .
 
 ::: theorem
-1. For an $n \times n$ matrix $A$, the sum of the algebraic multiplicities of all the eigenvalues of $A$ is $n$.
+For an $n \times n$ matrix $A$, the sum of the algebraic multiplicities of all the eigenvalues of $A$ is $n$.
 
 . . .
 
 (In other words, there are $n$ eigenvalues, counting algebraic multiplicities and complex numbers).
 
-2. The *geometric multiplicity* of an eigenvalue is always less than or equal to its *algebraic multiplicity*.
+. . .
+
+The *geometric multiplicity* of an eigenvalue is always less than or equal to its *algebraic multiplicity*.
 
 :::
 

@@ -830,7 +830,7 @@ x0 = eigvecs_sorted[0]*-1000
 print_iterations(x0, A)
 ```
 
-. . .
+##  
 
 What if we start with the second eigenvector?
 

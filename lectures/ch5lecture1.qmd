@@ -117,6 +117,8 @@ Given an $m \times n$ matrix $A$.
 
 3. Write the general solution $\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ to the homogeneous system in the form
 
+. . .
+
 $$
 \mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
 $$

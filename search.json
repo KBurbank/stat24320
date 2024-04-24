@@ -2769,7 +2769,7 @@
     "href": "lectures/ch5lecture1.html#a-reminder-the-null-space-algorithm",
     "title": "Ch5 Lecture 1",
     "section": "A reminder: the Null Space algorithm",
-    "text": "A reminder: the Null Space algorithm\nGiven an \\(m \\times n\\) matrix \\(A\\).\n\nCompute the reduced row echelon form \\(R\\) of \\(A\\).\nUse \\(R\\) to find the general solution to the homogeneous system \\(A \\mathbf{x}=0\\).\n\n\n\nWrite the general solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\) to the homogeneous system in the form\n\n\\[\n\\mathbf{x}=x_{i_{1}} \\mathbf{w}_{1}+x_{i_{2}} \\mathbf{w}_{2}+\\cdots+x_{i_{n-r}} \\mathbf{w}_{n-r}\n\\]\nwhere \\(x_{i_{1}}, x_{i_{2}}, \\ldots, x_{i_{n-r}}\\) are the free variables.\n\n\n\nList the vectors \\(\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\ldots, \\mathbf{w}_{n-r}\\). These form a basis of \\(\\mathcal{N}(A)\\)."
+    "text": "A reminder: the Null Space algorithm\nGiven an \\(m \\times n\\) matrix \\(A\\).\n\nCompute the reduced row echelon form \\(R\\) of \\(A\\).\nUse \\(R\\) to find the general solution to the homogeneous system \\(A \\mathbf{x}=0\\).\n\n\n\nWrite the general solution \\(\\mathbf{x}=\\left(x_{1}, x_{2}, \\ldots, x_{n}\\right)\\) to the homogeneous system in the form\n\n\n\n\\[\n\\mathbf{x}=x_{i_{1}} \\mathbf{w}_{1}+x_{i_{2}} \\mathbf{w}_{2}+\\cdots+x_{i_{n-r}} \\mathbf{w}_{n-r}\n\\]\nwhere \\(x_{i_{1}}, x_{i_{2}}, \\ldots, x_{i_{n-r}}\\) are the free variables.\n\n\n\nList the vectors \\(\\mathbf{w}_{1}, \\mathbf{w}_{2}, \\ldots, \\mathbf{w}_{n-r}\\). These form a basis of \\(\\mathcal{N}(A)\\)."
   },
   {
     "objectID": "lectures/ch5lecture1.html#example-of-the-null-space-algorithm",

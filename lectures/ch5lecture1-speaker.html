@@ -515,6 +515,8 @@ A^{k} \mathbf{x} &amp; =A\left(A^{k-1} \mathbf{x}\right)=\cdots=\lambda^{k} \mat
 <ol start="3" type="1">
 <li class="fragment">Write the general solution <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\)</span> to the homogeneous system in the form</li>
 </ol>
+</div>
+<div class="fragment">
 <p><span class="math display">\[
 \mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
 \]</span></p>
@@ -1144,7 +1146,7 @@ F_{k}
 \]</span></p>
 <div class="fragment">
 <p>Find eigenvalues and eigenvectors of the transition matrix.</p>
-<div id="05dbfba7" class="cell" data-execution_count="1">
+<div id="05dbfba7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a></a>A <span class="op">=</span> np.array([[<span class="fl">0.6</span>, <span class="fl">0.4</span>], [<span class="op">-</span><span class="fl">0.35</span>, <span class="fl">1.4</span>]])</span>
 <span id="cb1-3"><a></a>eigvals, eigvecs <span class="op">=</span> np.linalg.eig(A)</span>
@@ -1177,7 +1179,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
       }</style></aside>
 </div>
 <div class="fragment">
-<div id="b54b13d0" class="cell" data-execution_count="2">
+<div id="b54b13d0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>x0 <span class="op">=</span> np.array([<span class="dv">100</span>, <span class="dv">10000</span>]) </span>
 <span id="cb3-2"><a></a></span>
 <span id="cb3-3"><a></a><span class="kw">def</span> print_iterations(x0, A, n1<span class="op">=</span><span class="dv">10</span>, n2<span class="op">=</span><span class="dv">1</span>):</span>
@@ -1207,7 +1209,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Different starting points…</p>
-<div id="c24d4074" class="cell" data-execution_count="3">
+<div id="c24d4074" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">0</span>]<span class="op">*-</span><span class="dv">1000</span></span>
 <span id="cb5-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1225,7 +1227,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 </div>
 <div class="fragment">
 <p>What if we start with the second eigenvector?</p>
-<div id="ad458e60" class="cell" data-execution_count="4">
+<div id="ad458e60" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
 <span id="cb7-2"><a></a>print_iterations(x0, A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1244,7 +1246,7 @@ Eigenvectors: [[-0.59421716 -0.83980458]
 </div>
 <div class="fragment">
 <p>Looks good so far, doesn’t blow up. But if we continue (only printing results every 10 years now):</p>
-<div id="ff1c41d1" class="cell" data-execution_count="5">
+<div id="ff1c41d1" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>x0 <span class="op">=</span> eigvecs_sorted[<span class="dv">1</span>]<span class="op">*-</span><span class="dv">1000</span></span>
 <span id="cb9-2"><a></a>print_iterations(x0, A,n1 <span class="op">=</span> <span class="dv">10</span>, n2 <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

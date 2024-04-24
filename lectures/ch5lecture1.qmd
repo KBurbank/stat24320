@@ -11,7 +11,8 @@ filters:
 kernel: jupyter
 format: 
     course-presentation-revealjs:
-       css: theorem.css
+      css: theorem.css
+      code-fold: show
     #html:
      #   output-file: ch2_lecture4plain.html
 ---
@@ -265,7 +266,9 @@ $$
 :::
 
 ::: notes
-So $x_{2}$ is free and $x_{1}$ is bound, $x_{1}=-x_{2}$,so 
+
+So $x_{2}$ is free and $x_{1}$ is bound, $x_{1}=-x_{2}$,so
+ 
 $$
 \left[\begin{array}{l}
 x_{1} \\
@@ -280,6 +283,7 @@ x_{2}
 $$
 
  so the eigenspace is spanned by $\left[\begin{array}{l}1 \\ -1\end{array}\right]$.
+
  :::
 
 . . .
@@ -429,6 +433,8 @@ The eigenvalue $\lambda$ of $A$ is said to be **simple** if its algebraic multip
 ::: theorem
 1. For an $n \times n$ matrix $A$, the sum of the algebraic multiplicities of all the eigenvalues of $A$ is $n$.
 
+. . .
+
 (In other words, there are $n$ eigenvalues, counting algebraic multiplicities and complex numbers).
 
 2. The *geometric multiplicity* of an eigenvalue is always less than or equal to its *algebraic multiplicity*.
@@ -487,14 +493,12 @@ $P$ is called a **similarity transformation matrix**.
 ::: theorem
 If $A$ is similar to $M$, say $P^{-1} A P=M$. Then:
 
-. . .
 
 (1) For every polynomial $q(x)$,
 $$
 q(M)=P^{-1} q(A) P .
 $$
 
-. . .
 
 (2) The matrices $A$ and $M$ have the same eigenvalues.
 
@@ -796,9 +800,9 @@ What this means is that the component of the initial vector which is in the dire
 Unless we start only with a vector that's proportional to the second eigenvector, the frog population will explode.
 :::
 
+##
 
 
-. . .
 
 ```{python}
 #| echo: true

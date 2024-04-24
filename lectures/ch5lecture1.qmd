@@ -712,22 +712,25 @@ If $\left|\lambda_{k}\right|=\rho(A)$ and $\lambda_{k}$ is the **only** eigenval
 ::: theorem
 For $n \times n$ transition matrix $A$, initial state vector $\mathbf{x}^{(0)}$:
 
-. . .
+::::{.fragment}
 
 (1) If $\rho(A)<1$, then $\lim _{k \rightarrow \infty} A^{k} \mathbf{x}^{(0)}=\mathbf{0}$.
 
-. . .
+::::
+::::{.fragment}
 
 (2) If $\rho(A)=1$, then the sequence of norms $\left\{\left\|\mathbf{x}^{(k)}\right\|\right\}_{k=0}^{\infty}$ is bounded.
 
-. . .
+::::
+::::{.fragment}
 
 (3) If $\rho(A)=1$ and $\lambda=1$ is the dominant eigenvalue of $A$, then $\lim _{k \rightarrow \infty} \mathbf{x}^{(k)}$ is an element of $\mathcal{E}_{1}(A)$ --   either an eigenvector or $\mathbf{0}$.
 
-. . .
+::::
+::::{.fragment}
 
 (4) If $\rho(A)>1$, then for some choices of $\mathbf{x}^{(0)}$ we have $\lim _{k \rightarrow \infty}\|\mathbf{x}\|=\infty$
-
+::::
 :::
 
 

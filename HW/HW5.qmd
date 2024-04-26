@@ -1,0 +1,175 @@
+---
+title: Homework 5
+publish: false
+due-date: Wednesday, Week 7
+textbook-chapters: 5.1,
+publish-solutions-on: 2024-05-10
+---
+
+#
+ By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.
+
+(a) $\left[\begin{array}{rr}7 & -10 \\ 5 & -8\end{array}\right]$
+(b) $\left[\begin{array}{rrr}-1 & 0 & 0 \\ 1 & -1 & 0 \\ 0 & 1 & -1\end{array}\right]$
+(c) $\left[\begin{array}{lll}2 & 1 & 1 \\ 0 & 3 & 1 \\ 0 & 0 & 2\end{array}\right]$
+(d) $\left[\begin{array}{ll}0 & 2 \\ 2 & 0\end{array}\right]$
+(e) $\left[\begin{array}{rr}0 & -2 \\ 2 & 0\end{array}\right]$
+
+::: solutions
+5.1.1 and 5.1.3
+:::
+
+#
+Compute the eigensystems of these matrices, and identify any defective matrices. (You can do this by hand or on the computer.)
+
+(a) $\left[\begin{array}{lll}2 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 2\end{array}\right]$ (b) $\left[\begin{array}{lll}2 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 6 & 2\end{array}\right]$ (c) $\left[\begin{array}{rr}1+\mathrm{i} & 3 \\ 0 & \mathrm{i}\end{array}\right]$ (d) $\left[\begin{array}{rrr}1 & -2 & 1 \\ -2 & 4 & -2 \\ 0 & 0 & 1\end{array}\right]$ (e) $\left[\begin{array}{rrrr}2 & 1 & -1 & -2 \\ 0 & 1 & -1 & -2 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0\end{array}\right]$
+
+::: solutions
+5.1.2 and 5.1.4
+:::
+
+# 
+
+By hand,  find a matrix $P$ such that $P^{-1} A P$ is diagonal for each of the following matrices. Then use $P$ to find a formula for $A^{k}, k$ a positive integer.
+(a) $\left[\begin{array}{lll}2 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 3\end{array}\right]$
+(b) $\left[\begin{array}{lll}1 & 2 & 2 \\ 0 & 0 & 0 \\ 0 & 2 & 2\end{array}\right]$
+(c) $\left[\begin{array}{ll}1 & 2 \\ 3 & 2\end{array}\right]$
+(d) $\left[\begin{array}{ll}0 & 2 \\ 2 & 0\end{array}\right]$
+(e) $\left[\begin{array}{rrrr}2 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 3 & 1 \\ 0 & 0 & 0 & 1\end{array}\right]$
+
+::: solutions
+5.2.3 and 4
+:::
+
+#
+ Compute $\sin \left(\frac{\pi}{6} A\right)$ and $\cos \left(\frac{\pi}{6} A\right)$, where $A=\left[\begin{array}{rr}2 & 4 \\ 0 & -3\end{array}\right]$.
+
+::: solutions
+5.2.11
+:::
+
+#
+By hand,  find the spectral radius and dominant eigenvalue, if any, for each of these matrices:
+(a) $\left[\begin{array}{rr}-7 & -6 \\ 9 & 8\end{array}\right]$
+(b) $\frac{1}{3}\left[\begin{array}{ll}1 & 3 \\ 2 & 0\end{array}\right]$
+(c) $\left[\begin{array}{lll}0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0\end{array}\right]$
+(d) $\frac{1}{2}\left[\begin{array}{lll}1 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 2 & 1\end{array}\right]$
+(e) $\left[\begin{array}{rr}1 & 1 \\ -1 & -1\end{array}\right]$
+
+::: solutions
+5.3.2
+:::
+
+# 
+ If the matrices of the previous exercise are transition matrices, for which do all $\mathbf{x}^{(k)}$ remain bounded as $k \rightarrow \infty$ ? Are any of these matrices stable?
+
+::: solutions
+5.3.6
+:::
+
+#
+The three-stage insect model of Example 2.21 yields a transition matrix
+
+$$
+A=\left[\begin{array}{ccc}
+0.2 & 0 & 0.25 \\
+0.6 & 0.3 & 0 \\
+0 & 0.6 & 0.8
+\end{array}\right]
+$$
+
+Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $A$ is diagonalizable and determine the approximate growth rate from one state to the next (after much time has passed), given a random initial vector.
+
+#
+
+The financial model of Example 2.27 gives rise to a discrete dynamical system $x^{(k+1)}=A x^{(k)}$, where the transition matrix is
+
+$$
+A=\left[\begin{array}{rrr}
+1 & 0.06 & 0.12 \\
+1 & 0 & 0 \\
+0 & 1 & 0
+\end{array}\right]
+$$
+
+Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $A$ is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector. 
+
+
+Find a starting vector $x^{(0)}$ such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.
+
+(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector never reach the approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g. `x = N(x)`.)
+
+::: solutions
+
+Doing it with numpy:
+```{python}
+import numpy as np
+A = np.array([[1, 0.06, 0.12], [1, 0, 0], [0, 1, 0]])
+# find the eigenvectors and eigenvalues
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print(eigenvalues)
+print(eigenvectors)
+```
+
+
+```{python}
+x = eigenvectors[2]
+# pick a random initial vector
+x = np.random.rand(3)
+for i in range(10):
+    xnew = A @ x
+    print(xnew[0] / x[0])
+    x = xnew
+```
+
+Doing it with sympy:
+
+```{python}
+from sympy import Matrix, symbols, randprime, Rational,N
+from sympy.abc import x
+
+
+A = Matrix([[1, Rational(6, 100), Rational(12, 100)], [1, 0, 0], [0, 1, 0]])
+
+
+# find the eigenvalues and eigenvectors
+eigenvalues = A.eigenvals()
+eigenvectors = A.eigenvects()
+
+print("Eigenvalues:")
+for value in eigenvalues:
+    print(value)
+
+print("\nEigenvectors:")
+for vector in eigenvectors:
+    print(vector)
+
+# pick a random initial vector
+#x = Matrix([randprime(1, 10) for _ in range(3)])
+
+# use the third eigenvector as the initial
+x = eigenvectors[0][2][0]
+
+for i in range(100):
+    #xnew = N(A * x)
+    xnew= A * x
+    growth_rate = N(xnew[0] / x[0])
+    print(f"Growth rate at iteration {i}: {growth_rate}")
+    x = xnew
+```
+
+:::
+
+#
+
+Do this by hand.
+
+A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are $50 \%$ and 75\%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years). 
+
+(a) Model this bird population as a discrete dynamical system and analyze the long-term change in the population -- give a percentage by which the population of group 1 changes from year to year.
+
+(b) Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50\% and 75\%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?
+
+::: solutions
+5.3.20
+:::

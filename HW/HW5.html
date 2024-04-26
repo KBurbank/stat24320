@@ -182,7 +182,7 @@ window.Quarto = {
 <div>
     <div class="quarto-title-meta-heading">Textbook Chapters:</div>
       <div class="quarto-title-meta-contents">
-      <p class="due-date">5.1,</p>
+      <p class="due-date">5.1,5.2,5.3</p>
     </div>
   </div>
 
@@ -268,8 +268,8 @@ A=\left[\begin{array}{rrr}
 \]</span></p>
 <p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector.</p>
 <p>Find a starting vector <span class="math inline">\(x^{(0)}\)</span> such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.</p>
-<p>(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector never reach the approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g.&nbsp;<code>x = N(x)</code>.)</p>
-<div id="124c1970" class="cell" data-execution_count="1">
+<p>(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector which will <em>never</em> reach your approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g.&nbsp;<code>x = N(x)</code>.)</p>
+<div id="124c1970" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Rational</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the matrix A in symbolic form</span></span>

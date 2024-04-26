@@ -2,7 +2,7 @@
 title: Homework 5
 publish: false
 due-date: Wednesday, Week 7
-textbook-chapters: 5.1,
+textbook-chapters: 5.1,5.2,5.3
 publish-solutions-on: 2024-05-10
 ---
 
@@ -119,7 +119,7 @@ Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $
 
 Find a starting vector $x^{(0)}$ such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.
 
-(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector never reach the approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g. `x = N(x)`.)
+(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector which will *never* reach your approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g. `x = N(x)`.)
 
 ```{python}
 #| echo: true

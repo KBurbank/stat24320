@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -162,23 +196,34 @@ window.Quarto = {
 <h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
 <p>By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.</p>
 <ol type="a">
-<li><span class="math inline">\(\left[\begin{array}{rr}7 &amp; -10 \\ 5 &amp; -8\end{array}\right]\)</span></li>
-<li><span class="math inline">\(\left[\begin{array}{rrr}-1 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 \\ 0 &amp; 1 &amp; -1\end{array}\right]\)</span></li>
-<li><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 1 &amp; 1 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 2\end{array}\right]\)</span></li>
-<li><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></li>
-<li><span class="math inline">\(\left[\begin{array}{rr}0 &amp; -2 \\ 2 &amp; 0\end{array}\right]\)</span></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rr}7 &amp; -10 \\ 5 &amp; -8\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rrr}-1 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 \\ 0 &amp; 1 &amp; -1\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 1 &amp; 1 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 2\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rr}0 &amp; -2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
 </ol>
 </section>
 <section id="section-1" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
 <p>Compute the eigensystems of these matrices, and identify any defective matrices. (You can do this by hand or on the computer.)</p>
 <ol type="a">
-<li><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 2\end{array}\right]\)</span> (b) <span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 6 &amp; 2\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{rr}1+\mathrm{i} &amp; 3 \\ 0 &amp; \mathrm{i}\end{array}\right]\)</span> (d) <span class="math inline">\(\left[\begin{array}{rrr}1 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 0 &amp; 0 &amp; 1\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\)</span></li>
+<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 2\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 6 &amp; 2\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rr}1+\mathrm{i} &amp; 3 \\ 0 &amp; \mathrm{i}\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rrr}1 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\)</span></p></li>
 </ol>
 </section>
 <section id="section-2" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
-<p>By hand, find a matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{-1} A P\)</span> is diagonal for each of the following matrices. Then use <span class="math inline">\(P\)</span> to find a formula for <span class="math inline">\(A^{k}, k\)</span> a positive integer. (a) <span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 3\end{array}\right]\)</span> (b) <span class="math inline">\(\left[\begin{array}{lll}1 &amp; 2 &amp; 2 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 2\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{ll}1 &amp; 2 \\ 3 &amp; 2\end{array}\right]\)</span> (d) <span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p>
+<p>By hand, find a matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{-1} A P\)</span> is diagonal for each of the following matrices. Then use <span class="math inline">\(P\)</span> to find a formula for <span class="math inline">\(A^{k}, k\)</span> a positive integer.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 3\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{lll}1 &amp; 2 &amp; 2 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 2\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{ll}1 &amp; 2 \\ 3 &amp; 2\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p></li>
+</ol>
 </section>
 <section id="section-3" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
@@ -186,7 +231,14 @@ window.Quarto = {
 </section>
 <section id="section-4" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
-<p>By hand, find the spectral radius and dominant eigenvalue, if any, for each of these matrices: (a) <span class="math inline">\(\left[\begin{array}{rr}-7 &amp; -6 \\ 9 &amp; 8\end{array}\right]\)</span> (b) <span class="math inline">\(\frac{1}{3}\left[\begin{array}{ll}1 &amp; 3 \\ 2 &amp; 0\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{lll}0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{array}\right]\)</span> (d) <span class="math inline">\(\frac{1}{2}\left[\begin{array}{lll}1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 1\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1 \\ -1 &amp; -1\end{array}\right]\)</span></p>
+<p>By hand, find the spectral radius and dominant eigenvalue, if any, for each of these matrices:</p>
+<ol type="a">
+<li><p><span class="math inline">\(\left[\begin{array}{rr}-7 &amp; -6 \\ 9 &amp; 8\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{3}\left[\begin{array}{ll}1 &amp; 3 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{lll}0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{2}\left[\begin{array}{lll}1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 1\end{array}\right]\)</span></p></li>
+<li><p><span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1 \\ -1 &amp; -1\end{array}\right]\)</span></p></li>
+</ol>
 </section>
 <section id="section-5" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
@@ -217,6 +269,12 @@ A=\left[\begin{array}{rrr}
 <p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector.</p>
 <p>Find a starting vector <span class="math inline">\(x^{(0)}\)</span> such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.</p>
 <p>(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector never reach the approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g.&nbsp;<code>x = N(x)</code>.)</p>
+<div id="124c1970" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Rational</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the matrix A in symbolic form</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, Rational(<span class="dv">6</span>, <span class="dv">100</span>), Rational(<span class="dv">12</span>, <span class="dv">100</span>)], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="section-8" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> <em></em></h1>

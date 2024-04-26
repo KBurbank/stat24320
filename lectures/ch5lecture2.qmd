@@ -1,0 +1,17 @@
+---
+title: Ch5 Lecture 2
+lecture_day: 11
+readings: "5.1,5.2,5.3"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+

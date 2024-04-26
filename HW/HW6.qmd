@@ -1,0 +1,7 @@
+---
+title: Homework 6
+publish: false
+due-date: Wednesday, Week 7
+textbook-chapters: 5.1,
+publish-solutions-on: 2024-05-10
+---

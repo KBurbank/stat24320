@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stat 24320 - Projects 1</title>
+<title>Stat 24320 - Homework 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,7 +97,6 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="project_styles.css">
 </head>
 
 <body>
@@ -108,31 +107,28 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions"><em>Instructions</em></a></li>
-  <li><a href="#chapter-1-projects" id="toc-chapter-1-projects" class="nav-link" data-scroll-target="#chapter-1-projects"><em>Chapter 1 projects</em></a>
-  <ul class="collapse">
-  <li><a href="#gas-in-a-tube" id="toc-gas-in-a-tube" class="nav-link" data-scroll-target="#gas-in-a-tube"><em>Gas in a Tube</em></a></li>
-  </ul></li>
-  <li><a href="#chapter-2-projects" id="toc-chapter-2-projects" class="nav-link" data-scroll-target="#chapter-2-projects"><em>Chapter 2 Projects</em></a>
-  <ul class="collapse">
-  <li><a href="#lu-factorization" id="toc-lu-factorization" class="nav-link" data-scroll-target="#lu-factorization"><em>LU Factorization</em></a></li>
-  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><em>Markov Chains</em></a></li>
-  <li><a href="#sports-ranking" id="toc-sports-ranking" class="nav-link" data-scroll-target="#sports-ranking"><em>Sports Ranking</em></a></li>
-  <li><a href="#isorank" id="toc-isorank" class="nav-link" data-scroll-target="#isorank"><em>IsoRank</em></a></li>
-  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">4</span> <em></em></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">5</span> <em></em></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6</span> <em></em></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7</span> <em></em></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8</span> <em></em></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">9</span> <em></em></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/projects_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects 1</h1>
+<h1 class="title">Homework 5</h1>
 </div>
 
 
@@ -145,14 +141,14 @@ window.Quarto = {
 <div>
     <div class="quarto-title-meta-heading">Due Date:</div>
       <div class="quarto-title-meta-contents">
-      <p class="due-date">Friday, Week 4</p>
+      <p class="due-date">Wednesday, Week 7</p>
     </div>
   </div>
 
 <div>
     <div class="quarto-title-meta-heading">Textbook Chapters:</div>
       <div class="quarto-title-meta-contents">
-      <p class="due-date">1, 2</p>
+      <p class="due-date">5.1,</p>
     </div>
   </div>
 
@@ -162,120 +158,77 @@ window.Quarto = {
 </div></header>
 
 
-<h1 id="instructions"><em>Instructions</em></h1>
-<ol type="1">
-<li>Pick three projects from the list below.</li>
-<li>Please format each project as a Jupyter notebook or a Quarto document (or some similar format which allows me to see/run code.)</li>
-<li>You are welcome to work with a partner on some or all of the projects, but please make sure you are each contributing to each part of the project – don’t just divide up the work.
-<ol type="1">
-<li>If you work with a partner, you may choose to submit one report for both of you, or you may submit separate reports. Either way, please make sure to indicate who your partner was. (Please indicate very clearly what you are doing – which reports if any are joint, and with whom, etc, so I don’t get confused!)</li>
-</ol></li>
-<li>This is the first time I’m assigning something like this, so please feel to reach out with questions or suggestions for improvement.</li>
-<li>Projects will be due on Friday night, 11:59pm.</li>
+<section id="section" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
+<p>By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.</p>
+<ol type="a">
+<li><span class="math inline">\(\left[\begin{array}{rr}7 &amp; -10 \\ 5 &amp; -8\end{array}\right]\)</span></li>
+<li><span class="math inline">\(\left[\begin{array}{rrr}-1 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 \\ 0 &amp; 1 &amp; -1\end{array}\right]\)</span></li>
+<li><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 1 &amp; 1 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 2\end{array}\right]\)</span></li>
+<li><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></li>
+<li><span class="math inline">\(\left[\begin{array}{rr}0 &amp; -2 \\ 2 &amp; 0\end{array}\right]\)</span></li>
 </ol>
-<h1 id="chapter-1-projects"><em>Chapter 1 projects</em></h1>
-<h2 id="gas-in-a-tube" class="anchored"><em>Gas in a Tube</em></h2>
-<p>(Shores 62)</p>
-<p>Problem Description: You are given a long tube of still dry air in which there are 7 sampling/insertion points equally spaced <span class="math inline">\(1 / 6\)</span> meters apart from each other. The position of each point is measured by setting the leftmost point at 0.0 meters and rightmost at 1.0 meters. Initially, a small amount of a certain gas is inserted in the central insertion point. Subsequently, measurements of the concentration of the gas at each sampling/insertion point are taken at later times in seconds. The results of these measurements, which you may assume are accurate to about 2-3 digits, are specified in Table 1.1. Based on this information, your task is to determine the best estimate you can find for the true value of the diffusion coefficient <span class="math inline">\(D\)</span> of this gas in a motionless air medium. Use this estimate and a marching method to calculate values of the material density function on the interval <span class="math inline">\([0,1]\)</span> at times <span class="math inline">\(t=210\)</span> and <span class="math inline">\(t=300\)</span> and at the given spatial nodes.</p>
-<table class="table">
-<caption>Concentration data measurements of a gaseous material.</caption>
-<colgroup>
-<col style="width: 28%">
-<col style="width: 7%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Sec <span class="math inline">\(\backslash\)</span> Meter</th>
-<th>0</th>
-<th><span class="math inline">\(1 / 6\)</span></th>
-<th><span class="math inline">\(1 / 3\)</span></th>
-<th><span class="math inline">\(1 / 2\)</span></th>
-<th><span class="math inline">\(2 / 3\)</span></th>
-<th><span class="math inline">\(5 / 6\)</span></th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(t=240\)</span></td>
-<td>0.0</td>
-<td>0.032</td>
-<td>1.23</td>
-<td>3.69</td>
-<td>1.23</td>
-<td>0.032</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(t=270\)</span></td>
-<td>0.0</td>
-<td>0.051</td>
-<td>1.21</td>
-<td>3.48</td>
-<td>1.21</td>
-<td>0.051</td>
-<td>0.0</td>
-</tr>
-</tbody>
-</table>
-<p>Procedure: You should use equation (1.10) or some variant to move backward and forward in time. These will result in linear systems, which ALAMA calculator or another technology tool can solve. One way to proceed is simply to use trial and error until you think you’ve hit on a reasonable value of <span class="math inline">\(D\)</span>, that is, the one that gives the best approximation to <span class="math inline">\(t=240\)</span> from the <span class="math inline">\(t=270\)</span> values. Do not expect perfect matches - the data is relatively sparse. Then march backwards in time once more to get the initial values at <span class="math inline">\(t=0\)</span>. Finally, march forward in time to compute and plot the resulting approximate density function.</p>
-<p>Output: Discus your results and provide a graph of profiles of the material density function at times in the data table along with your computed profiles.</p>
-<p>Comments: This project introduces you to a very interesting area of mathematics called “inverse theory.” The idea is, rather than proceeding from problem (the governing equations for concentration values) to solution (concentration profiles), you are given the “solution,” namely the measured solution values at various points, and are to determine from this information the “problem,” i.e., the diffusion coefficient needed to define the governing equations.</p>
-<h1 id="chapter-2-projects"><em>Chapter 2 Projects</em></h1>
-<h2 id="lu-factorization" class="anchored"><em>LU Factorization</em></h2>
-<p><em>We didn’t yet get to the discussion of this in class. If you’re interested in doing this project, you can look at the second part of the Chapter 2 Lecture 4 slides.</em></p>
-<p>(Shores p.&nbsp;177) Write a program module that implements Theorem 2.14 using partial pivoting and implicit row exchanges. This means that space is allocated for the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A=[a[i, j]]\)</span> and an array of row indices, say indx <span class="math inline">\([i]\)</span>. Initially, indx should consist of the integers <span class="math inline">\(1,2, \ldots, n\)</span>. Whenever two rows need to be exchanged, say the first and third, then the indices indx[1] and indx[3] are exchanged. References to array elements throughout the Gaussian elimination process should be indirect: Refer to the <span class="math inline">\((1,4)\)</span> th entry of <span class="math inline">\(A\)</span> as the element <span class="math inline">\(a[\operatorname{indx}[1], 4]\)</span>. This method of reference has the same effect as physically exchanging rows, but without the work. It also has the appealing feature that we can design the algorithm as though no row exchanges have taken place provided we replace the direct reference <span class="math inline">\(a[i, j]\)</span> by the indirect reference <span class="math inline">\(a[\operatorname{indx}[i], j]\)</span>. The module should return the lower/upper matrix in the format of Example 2.70 as well as the permuted array indx <span class="math inline">\([i]\)</span>. Effectively, this index array tells the user what the permutation matrix <span class="math inline">\(P\)</span> is.</p>
-<p>Use this module to implement an LU system solver module that uses the <span class="math inline">\(\mathrm{LU}\)</span> factorization to solve a general linear system. Also write a module that finds the inverse of an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span> by first using the LU factorization module, then making repeated use of the LU system solver to solve <span class="math inline">\(A \mathbf{x}^{(i)}=\mathbf{e}_{i}\)</span>, where <span class="math inline">\(\mathbf{e}_{i}\)</span> is the <span class="math inline">\(i\)</span> th column of the identity. Then we will have</p>
+</section>
+<section id="section-1" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
+<p>Compute the eigensystems of these matrices, and identify any defective matrices. (You can do this by hand or on the computer.)</p>
+<ol type="a">
+<li><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 2\end{array}\right]\)</span> (b) <span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 6 &amp; 2\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{rr}1+\mathrm{i} &amp; 3 \\ 0 &amp; \mathrm{i}\end{array}\right]\)</span> (d) <span class="math inline">\(\left[\begin{array}{rrr}1 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 0 &amp; 0 &amp; 1\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\)</span></li>
+</ol>
+</section>
+<section id="section-2" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
+<p>By hand, find a matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{-1} A P\)</span> is diagonal for each of the following matrices. Then use <span class="math inline">\(P\)</span> to find a formula for <span class="math inline">\(A^{k}, k\)</span> a positive integer. (a) <span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 3\end{array}\right]\)</span> (b) <span class="math inline">\(\left[\begin{array}{lll}1 &amp; 2 &amp; 2 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 2\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{ll}1 &amp; 2 \\ 3 &amp; 2\end{array}\right]\)</span> (d) <span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p>
+</section>
+<section id="section-3" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
+<p>Compute <span class="math inline">\(\sin \left(\frac{\pi}{6} A\right)\)</span> and <span class="math inline">\(\cos \left(\frac{\pi}{6} A\right)\)</span>, where <span class="math inline">\(A=\left[\begin{array}{rr}2 &amp; 4 \\ 0 &amp; -3\end{array}\right]\)</span>.</p>
+</section>
+<section id="section-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
+<p>By hand, find the spectral radius and dominant eigenvalue, if any, for each of these matrices: (a) <span class="math inline">\(\left[\begin{array}{rr}-7 &amp; -6 \\ 9 &amp; 8\end{array}\right]\)</span> (b) <span class="math inline">\(\frac{1}{3}\left[\begin{array}{ll}1 &amp; 3 \\ 2 &amp; 0\end{array}\right]\)</span> (c) <span class="math inline">\(\left[\begin{array}{lll}0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{array}\right]\)</span> (d) <span class="math inline">\(\frac{1}{2}\left[\begin{array}{lll}1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 1\end{array}\right]\)</span> (e) <span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1 \\ -1 &amp; -1\end{array}\right]\)</span></p>
+</section>
+<section id="section-5" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
+<p>If the matrices of the previous exercise are transition matrices, for which do all <span class="math inline">\(\mathbf{x}^{(k)}\)</span> remain bounded as <span class="math inline">\(k \rightarrow \infty\)</span> ? Are any of these matrices stable?</p>
+</section>
+<section id="section-6" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <em></em></h1>
+<p>The three-stage insect model of Example 2.21 yields a transition matrix</p>
 <p><span class="math display">\[
-A^{-1}=\left[\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right]
+A=\left[\begin{array}{ccc}
+0.2 &amp; 0 &amp; 0.25 \\
+0.6 &amp; 0.3 &amp; 0 \\
+0 &amp; 0.6 &amp; 0.8
+\end{array}\right]
 \]</span></p>
-<p>Be sure to document and test your code and report on the results.</p>
-<h2 id="markov-chains" class="anchored"><em>Markov Chains</em></h2>
-<p>(Shores p.&nbsp;177)</p>
-<p>Refer to Example 2.19 and Section 2.3 for background. Three automobile insurance firms compete for a fixed market of customers. Annual premiums are sold to these customers. Label the companies A, B, and C. You work for Company A, and your team of market analysts has done a survey that draws the following conclusions: In each of the past three years, the number of A customers switching to B is <span class="math inline">\(20 \%\)</span>, and to <span class="math inline">\(\mathrm{C}\)</span> is <span class="math inline">\(30 \%\)</span>. The number of <span class="math inline">\(\mathrm{B}\)</span> customers switching to <span class="math inline">\(\mathrm{A}\)</span> is <span class="math inline">\(20 \%\)</span>, and to <span class="math inline">\(\mathrm{C}\)</span> is <span class="math inline">\(20 \%\)</span>. The number of <span class="math inline">\(\mathrm{C}\)</span> customers switching to <span class="math inline">\(\mathrm{A}\)</span> is <span class="math inline">\(30 \%\)</span>, and to <span class="math inline">\(\mathrm{B}\)</span> is <span class="math inline">\(10 \%\)</span>. Those who do not switch continue to use their current company’s insurance for the next year. Model this market as a Markov chain. Display the transition matrix for the model. Illustrate the workings of the model by showing what it would predict as the market shares three years from now if currently <span class="math inline">\(\mathrm{A}, \mathrm{B}\)</span>, and <span class="math inline">\(\mathrm{C}\)</span> owned equal shares of the market.</p>
-<p>The next part of your problem is as follows: Your team has tested two advertising campaigns in some smaller test markets and are confident that the first campaign will convince <span class="math inline">\(20 \%\)</span> of the B customers who would otherwise stay with B in a given year to switch to A. The second advertising campaign would convince <span class="math inline">\(20 \%\)</span> of the <span class="math inline">\(\mathrm{C}\)</span> customers who would otherwise stay with C in a given year to switch to A. Both campaigns have about equal costs and would not change other customers’ habits. Make a recommendation, based on your experiments with various possible initial state vectors for the market. Will these campaigns actually improve your company’s market share? If so, which one do you recommend? Write up your recommendation in the form of a report, with supporting evidence. It’s a good idea to hedge on your bets a little by pointing out limitations to your model and claims, so devote a few sentences to those points.</p>
-<p>It would be a plus to carry the analysis further (your manager might appreciate that). For instance, you could turn the additional market share from, say B customers, into a variable and plot the long-term gain for your company against this variable. A manager could use this data to decide whether it was worthwhile to attempt gaining more customers from B.</p>
-<h2 id="sports-ranking" class="anchored"><em>Sports Ranking</em></h2>
-<p>(Shores p.&nbsp;180)</p>
-<p>Refer to Example 2.24 and Section 2.3 for background. As a sports analyst you are given the following data about a league of seven teams numbered 1-7, where the pair <span class="math inline">\((j, k)\)</span> represents a game in which team <span class="math inline">\(j\)</span> defeated team <span class="math inline">\(k\)</span> :</p>
+<p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next (after much time has passed), given a random initial vector.</p>
+</section>
+<section id="section-7" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> <em></em></h1>
+<p>The financial model of Example 2.27 gives rise to a discrete dynamical system <span class="math inline">\(x^{(k+1)}=A x^{(k)}\)</span>, where the transition matrix is</p>
 <p><span class="math display">\[
-\begin{aligned}
-E= &amp; \{(1,2),(7,3),(2,4),(4,5),(3,2),(5,1),(6,1),(3,1),(7,2),(2,6), \\
-&amp; (3,4),(7,4),(5,7),(6,4),(3,5),(5,6),(7,1),(5,2),(7,6),(1,4),(6,3)\}
-\end{aligned}
+A=\left[\begin{array}{rrr}
+1 &amp; 0.06 &amp; 0.12 \\
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0
+\end{array}\right]
 \]</span></p>
-<p>Based on these data you are to rank the teams. To this end, begin with the simplest method, ranking by win/loss record. Next, treat the data as defining a digraph. Begin this analysis by constructing the adjacency matrix of this digraph and drawing a picture of the digraph either by hand or using some software. Then rank the teams by using the following methods: First use the method of Example 2.26 to find a power ranking of each team. Then use the reverse PageRank idea of Example 2.47 to rank the the teams.</p>
-<p>Next, suppose you are given additional information, namely, the game margins (winning score minus losing score) for each game. Following is a list of these margins matching the order of matches in the definition of <span class="math inline">\(E\)</span> :</p>
-<p><span class="math display">\[
-M=\{4,8,7,3,7,7,23,15,6,18,13,14,7,13,7,18,45,10,19,14,13\}
-\]</span></p>
-<p>In order to utilize these data examine your picture of the digraph and label each edge with the margin that matches it in <span class="math inline">\(M\)</span>. You are now dealing with a weighted graph and one can construct a different sort of “adjacency matrix” by entering this margin in the <span class="math inline">\((i, j)\)</span> th entry according as team <span class="math inline">\(i\)</span> defeated team <span class="math inline">\(j\)</span> by that margin. Use this approach to calculate “power ranking”.</p>
-<h2 id="isorank" class="anchored"><em>IsoRank</em></h2>
-<p>Read the discussion of <em>IsoRank</em> on pages 172-176.</p>
-<p>The notion of embedding one graph into another is a useful idea for some scientific studies. In this report you will test the basic idea of network embedding by using the variant IsoRank of the PageRank technique on three relatively simple examples. This project requires a technology tool for these calculations and the resulting output should be interpreted as in the discussion of the IsoRank technique following Example 2.73 of Section 2.8.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-191.jpg?height=298&amp;width=582&amp;top_left_y=468&amp;top_left_x=468" class="img-fluid figure-img"></p>
-<figcaption>Figure 2.13</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-191.jpg?height=242&amp;width=914&amp;top_left_y=875&amp;top_left_x=300" class="img-fluid figure-img"></p>
-<figcaption>Figure 2.14</figcaption>
-</figure>
-</div>
-<p>By an isomorphism of graphs we mean a one-to-one edge preserving map of vertices from one graph onto another. One can think of an isomorphism as simply a relabeling of the vertices of a graph. The first test is to provide an example of how well IsoRank can recognize isomorphisms. Consider the graph of Figure 2.13. Let <span class="math inline">\(G_{1}\)</span> be the graph with vertices <span class="math inline">\(1,2,3,4,5\)</span> in that order and <span class="math inline">\(G_{2}\)</span> the same graph with vertices <span class="math inline">\(A, B, C, D, E\)</span> in that order. Apply IsoRank to these two graphs and discuss the validity of your results.</p>
-<p>The next embedding test is to remove the edge connecting vertices <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> in Figure 2.12 and use IsoRank with teleportation vector <span class="math inline">\(\mathbf{v}=\mathbf{e} / 15\)</span> and teleportation parameter <span class="math inline">\(\alpha=0.85\)</span> to find the best matchings of the graph <span class="math inline">\(G_{1}\)</span> with the resulting graph <span class="math inline">\(G_{2}\)</span>. List all possible mappings that are calculated.</p>
-<p>The last embedding test is to use IsoRank with teleportation vector <span class="math inline">\(\mathbf{v}=\)</span> <span class="math inline">\(\mathrm{e} / 15\)</span> and teleportation parameter <span class="math inline">\(\alpha=0.85\)</span>, along with correction vector <span class="math inline">\(\mathbf{u}=\mathbf{e} / 5\)</span> for <span class="math inline">\(G_{2}\)</span>, to find the best matchings of the digraph <span class="math inline">\(G_{1}\)</span> with the digraph <span class="math inline">\(G_{2}\)</span> in Figure 2.14. List all possible mappings and discuss your calculations.</p>
+<p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector.</p>
+<p>Find a starting vector <span class="math inline">\(x^{(0)}\)</span> such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.</p>
+<p>(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector never reach the approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g.&nbsp;<code>x = N(x)</code>.)</p>
+</section>
+<section id="section-8" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> <em></em></h1>
+<p>Do this by hand.</p>
+<p>A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are <span class="math inline">\(50 \%\)</span> and 75%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years).</p>
+<ol type="a">
+<li><p>Model this bird population as a discrete dynamical system and analyze the long-term change in the population – give a percentage by which the population of group 1 changes from year to year.</p></li>
+<li><p>Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50% and 75%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -692,4 +645,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/projects_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

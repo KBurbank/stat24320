@@ -1,6 +1,6 @@
 ---
 title: Homework 5
-publish: false
+publish: true
 due-date: Wednesday, Week 7
 textbook-chapters: 5.1,5.2,5.3
 publish-solutions-on: 2024-05-10

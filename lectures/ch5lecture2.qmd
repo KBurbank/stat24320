@@ -118,7 +118,7 @@ x-y=0
 \end{array}
 $$
 
-. . .
+##
 
 General solution:
 $$
@@ -166,19 +166,21 @@ $$
 (A \mathbf{v}) \cdot \mathbf{v}=\mathbf{v} \cdot(A \mathbf{v})=\mathbf{v} \cdot(\lambda \mathbf{v})=\mathbf{v}^{T} \overline{\lambda \mathbf{v}}=\bar{\lambda}\|\mathbf{v}\|^{2}
 $$
 
+::: notes
 (We didn't talk about this, but for complex vectors, we have $\mathbf{v} \cdot \mathbf{w}=\mathbf{w} \cdot \mathbf{v}^{*}$)
-
+:::
 . . .
 
-Therefore, we have $\lambda\|\mathbf{v}\|^{2}=\bar{\lambda}\|\mathbf{v}\|^{2}$, which implies $\lambda=\bar{\lambda}$, so $\lambda$ is real.
+$\Rightarrow$,  $\lambda\|\mathbf{v}\|^{2}=\bar{\lambda}\|\mathbf{v}\|^{2}$ $\Rightarrow$ $\lambda=\bar{\lambda}$, so $\lambda$ is real.
 
 ## Proof of part (b)
 
-(b) Eigenvectors corresponding to distinct eigenvalues are orthogonal.
+Part b: Eigenvectors corresponding to distinct eigenvalues are orthogonal.
 
 
 Suppose $A \mathbf{v}=\lambda \mathbf{v}, A \mathbf{w}=\mu \mathbf{w}$, where $\lambda \neq \mu$ are distinct real eigenvalues. 
 
+. . .
 
 $\lambda \mathbf{v} \cdot \mathbf{w}=(A \mathbf{v}) \cdot \mathbf{w}=\mathbf{v} \cdot(A \mathbf{w})=\mathbf{v} \cdot(\mu \mathbf{w})=\mu \mathbf{v} \cdot \mathbf{w}, \quad$ and hence $\quad(\lambda-\mu) \mathbf{v} \cdot \mathbf{w}=0$.
 
@@ -188,7 +190,7 @@ Since $\lambda \neq \mu$, this implies that $\mathbf{v} \cdot \mathbf{w}=0$, so 
 
 ## Proof of part (c)
 
-(c) There is an orthonormal basis of $\mathbb{R}^{n}$ consisting of $n$ eigenvectors of $A$. 
+Part c: There is an orthonormal basis of $\mathbb{R}^{n}$ consisting of $n$ eigenvectors of $A$. 
 
 . . .
 
@@ -220,7 +222,7 @@ $$
 The eigenvalues of $A$ appear on the diagonal of $\Lambda$, while the columns of $Q$ are the corresponding orthonormal eigenvectors.
 :::
 
-## Quadratic Forms
+## One example of a useful symmetric matrix: Quadratic Forms
 
 ::: definition
 A **quadratic form** is a homogeneous polynomial of degree 2 in $n$ variables $x_{1}, \ldots, x_{n}$. For example, in $x, y, z$: $Q(x, y, z)=a x^{2}+b y^{2}+c z^{2}+2 d x y+2 e y z+2 f z x$.
@@ -267,7 +269,7 @@ Now, if we have a quadratic form $Q(\mathbf{x})=\mathbf{x}^{T} A \mathbf{x}$, we
 
 (See Exercise 2.4.34 in your texbook.)
 
-. . .
+##
 
 So in this case, we can write $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}$ where 
 
@@ -293,9 +295,11 @@ Yes, this is the same as the original quadratic form.
 
 ## Diagonalizing Quadratic Forms
 
-Because symmetric matrices are diagonalizable, we can always find a basis in which the quadratic form takes a particularly simple form.
+Symmetric matrices are diagonalizable $\Rightarrow$ we can always find a basis in which the quadratic form takes a particularly simple form. Just diagonalize:
 
-We can write $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}=x^{T} P D P^{T} x$ where $P$ is the matrix of eigenvectors of $B$ and $D$ is the diagonal matrix of eigenvalues of $B$. 
+. . .
+
+$Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}=x^{T} P D P^{T} x$ where $P$ is the matrix of eigenvectors of $B$ and $D$ is the diagonal matrix of eigenvalues of $B$. 
 
 . . .
 
@@ -303,13 +307,18 @@ Then if we define new variables $\mathbf{y}=P^{T} \mathbf{x}$, we have $Q(\mathb
 
 . . .
 
-which just becomes a sum of squares.
+which just becomes a sum of squares:
+
+$$
+q(\mathbf{x})=\lambda_{1} y_{1}^{2}+\cdots+\lambda_{n} y_{n}^{2}
+$$
+
 
 ##
 
 Example: 
 
-Suppose we have the quadratic form $3x^2+2xy+3y^2$. We can write this in matrix form as $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}$ where $\mathbf{x}=\binom{x}{y}$ and
+Suppose we have the quadratic form $3x^2+2xy+3y^2$. We can write this in matrix form as $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}$ where $\mathbf{x}=\binom{x_1}{x_2}$ and
 
 $$
 B=\frac{1}{2}\left[\begin{array}{ll}
@@ -338,7 +347,7 @@ $$
 \end{array}\right)
 $$
 
-Now, if we define $\mathbf{y}=P^{T} \mathbf{x}$, we have $Q(\mathbf{x})=\mathbf{y}^{T} D \mathbf{y}$, or
+Now, if we define $\mathbf{y}=P^{T} \mathbf{x}=\frac{1}{\sqrt{2}}\binom{x_1+x_2}{-x_1+x_2}$, we have $Q(\mathbf{x})=\mathbf{y}^{T} D \mathbf{y}$, or
 
 $$
 q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
@@ -346,7 +355,7 @@ $$
 
 ##
 
-The numbers aren't always clean, thougbh!
+The numbers aren't always clean, though!
 
 
 
@@ -362,4 +371,146 @@ Lambda
 ```
 
 Yuck!
+
+
+
+##
+
+We can visualize the previous example as a *rotation* of the axes (a change of basis) to a new coordinate system where the quadratic form is just a sum of squares.
+
+```{python}
+#| echo: true
+#| name: rotation
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(-2,2,100)
+y = np.linspace(-2,2,100)
+X,Y = np.meshgrid(x,y)
+Z = 3*X**2+2*X*Y+3*Y**2
+plt.contour(X,Y,Z,levels=[1,2,3,4,5,6,7,8,9,10])
+plt.xlabel('x1')
+plt.ylabel('x2')
+plt.axis('equal')
+# plot the vector P.T times (1,0) and (0,1)
+P = np.array([[1/np.sqrt(2),1/np.sqrt(2)],[-1/np.sqrt(2),1/np.sqrt(2)]])
+v1 = P.T @ np.array([1,0])
+v2 = P.T @ np.array([0,1])
+plt.quiver(0,0,v1[0],v1[1],angles='xy',scale_units='xy',scale=1,color='r')
+plt.quiver(0,0,v2[0],v2[1],angles='xy',scale_units='xy',scale=1,color='r')
+# label the two quivers ("x1=1, x2=0" and "x1=0, x2=1")
+plt.text(v1[0],v1[1],'y(x1=1,x2=0)',fontsize=12)
+plt.text(v2[0],v2[1],'y(x1=0,x2=1)',fontsize=12)
+plt.show()
+```
+
+##
+
+Now make the same plot but in y coordinates:
+
+```{python}
+#| echo: true
+#| name: rotation2
+#| depends: rotation
+x = np.linspace(-2,2,100)
+y = np.linspace(-2,2,100)
+X,Y = np.meshgrid(x,y)
+Z = 4*X**2+2*Y**2
+plt.contour(X,Y,Z,levels=[1,2,3,4,5,6,7,8,9,10])
+plt.xlabel('y1')
+plt.ylabel('y2')
+plt.axis('equal')
+v1 = P.T @ np.array([1,0])
+v2 = P.T @ np.array([0,1])
+plt.quiver(0,0,1,0,angles='xy',scale_units='xy',scale=1,color='r')
+plt.quiver(0,0,0,1,angles='xy',scale_units='xy',scale=1,color='r')
+# label the two quivers ("x1=1, x2=0" and "x1=0, x2=1")
+plt.show()
+```
+
+##
+
+In general, we can think of the diagonalization as a *rotation* of the axes followed by a *scaling* of the axes.
+
+We often visualize this by plotting the effects of the transformations on the unit circle.
+
+
+![](https://cdn.mathpix.com/cropped/2024_04_29_4f6d38c079cada204833g-36.jpg?height=369&width=854&top_left_y=257&top_left_x=630)
+
+
+## Singular Values
+
+We've talked a lot about eigenvalues and eigenvectors, but these only make any sense for square matrices. What can we do for a general $m \times n$ matrix $A$?
+
+. . .
+
+It turns out we can learn a lot from the matrix $A^{T} A$ (or $A A^{T}$), which is always square and symmetric.
+
+. . .
+
+::: definition
+The **singular values** $\sigma_{1}, \ldots, \sigma_{r}$ of an $m \times n$ matrix $A$ are the positive square roots, $\sigma_{i}=\sqrt{\lambda_{i}}>0$, of the nonzero eigenvalues of the associated "Gram matrix" $K=A^{T} A$. 
+
+. . .
+
+The corresponding eigenvectors of $K$ are known as the **singular vectors** of $A$.
+:::
+
+. . .
+
+All of the eigenvalues of $K$ are real and nonnegative -- but some may be zero.
+
+. . .
+
+If $K=A^{T} A$ has repeated eigenvalues, the singular values of $A$ are repeated with the same multiplicities.
+
+. . .
+
+The number $r$ of singular values is equal to the rank of the matrices $A$ and $K$.
+
+## Example
+
+Let $A=\left(\begin{array}{ll}3 & 5 \\ 4 & 0\end{array}\right)$. 
+
+$$
+K=A^{T} A=\left(\begin{array}{ll}
+3 & 4 \\
+5 & 0
+\end{array}\right)\left(\begin{array}{ll}
+3 & 5 \\
+4 & 0
+\end{array}\right)=\left(\begin{array}{ll}
+25 & 15 \\
+15 & 25
+\end{array}\right)
+$$
+
+. . .
+
+This has eigenvalues $\lambda_{1}=40, \lambda_{2}=10$, and corresponding eigenvectors $\mathbf{v}_{1}=\binom{1}{1}, \mathbf{v}_{2}=\binom{1}{-1}$. 
+
+. . .
+
+Therefore, the singular values of $A$ are $\sigma_{1}=\sqrt{40}=2 \sqrt{10}, \sigma_{2}=\sqrt{10}$.
+
+*pause*
+
+::: note
+Are the singular values here equal to the eigenvalues of $A$? No!
+
+The eigenvalues of A  are $\lambda_{1}=\frac{1}{2}(3+\sqrt{89}) \simeq 6.2170$ and $\lambda_{2}=\frac{1}{2}(3-\sqrt{89}) \simeq-3.2170$, nor are the singular vectors eigenvectors of $A$.
+:::
+
+## Singular Values of a Symmetric Matrix
+
+If $A$ is a symmetric matrix, then $K = A^{T} A= A^2$.
+
+So if $\mathbf{v}$ is an eigenvector of $A$ with eigenvalue $\lambda$, then $A \mathbf{v}=\lambda \mathbf{v}$, and $K \mathbf{v}=A^{T} A \mathbf{v}=A \lambda \mathbf{v}=\lambda^{2} \mathbf{v}$.
+
+. . .
+
+Therefore the eigenvalues of $K$ are the squares of the eigenvalues of $A$.
+
+. . .
+
+Thus the singular values of $A$, which are the square roots of the non-zero eigenvalues of $K$, are the absolute values of the eigenvalues of $A$.
 

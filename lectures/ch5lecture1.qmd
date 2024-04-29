@@ -1,7 +1,7 @@
 ---
 title: Ch5 Lecture 1
 lecture_day: 11
-readings: "5.1,5.2,5.3"
+readings: "5.1,5.2"
 publish: true
 execute: 
   cache: true

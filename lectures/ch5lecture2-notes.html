@@ -938,6 +938,86 @@ K=A^{T} A=\left(\begin{array}{ll}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+
+<section id="geometric-interpretation-of-the-svd" class="title-slide slide level2 center">
+<h2><em>Geometric interpretation of the SVD</em></h2>
+<p>(following closely this <a href="https://towardsdatascience.com/svd-a-geometric-view-point-cfc0c689bdc0">blog post</a>)</p>
+<p>Goal: to understand the SVD as finding perpendicular axes that remain perpendicular after a transformation.</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-02.jpg?height=576&amp;width=1426&amp;top_left_y=934&amp;top_left_x=356" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-02.jpg?height=576&amp;width=1426&amp;top_left_y=934&amp;top_left_x=356"></a></p>
+</section>
+
+<section id="section-9" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Take a very simple matrix:</p>
+<p><span class="math display">\[
+A=\left(\begin{array}{cc}
+6 &amp; 2 \\
+-7 &amp; 6
+\end{array}\right)
+\]</span></p>
+<div class="fragment">
+<p>Represents a linear map <span class="math inline">\(\mathrm{T}: \mathrm{R}^{2} \rightarrow \mathbf{R}^{2}\)</span> with respect to the standard basis <span class="math inline">\(e_{1}=(1,0)\)</span> and <span class="math inline">\(e_{2}=(0,1)\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Sends the usual basis elements <span class="math inline">\(e_{1} \rightsquigarrow(6,-7)\)</span> and <span class="math inline">\(e_{2} \rightsquigarrow(2,6)\)</span>.</p>
+</div>
+</section>
+
+<section id="section-10" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>We can see what T does to any vector:</p>
+<p><span class="math display">\[
+\begin{aligned}
+T(2,3) &amp; =T(2,0)+T(0,3)=T\left(2 e_{1}\right)+T\left(3 e_{2}\right) \\
+&amp; =2 T\left(e_{1}\right)+3 T\left(e_{2}\right)=2(6,-7)+3(2,6) \\
+&amp; =(18,4)
+\end{aligned}
+\]</span></p>
+</section>
+
+<section id="section-11" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The usual basis elements are no longer perpendicular after the transformation:</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-04.jpg?height=835&amp;width=873&amp;top_left_y=1111&amp;top_left_x=607" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-04.jpg?height=835&amp;width=873&amp;top_left_y=1111&amp;top_left_x=607"></a></p>
+</section>
+
+<section id="section-12" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Given a linear map T:Rm <span class="math inline">\(\rightarrow R^{n}\)</span> (which is represented by a <span class="math inline">\(n \times m\)</span> matrix <span class="math inline">\(A\)</span> with respect to the standard basis),</p>
+<ul>
+<li class="fragment">can we find an orthonormal basis <span class="math inline">\(\left\{v_{-} 1, v_{-} 2, \ldots, v_{-} m\right\}\)</span> of <span class="math inline">\(R^{m}\)</span> such that</li>
+<li class="fragment"><span class="math inline">\(\left\{T\left(v_{-} 1\right), T\left(v_{-} 2\right), \ldots\right.\)</span> <span class="math inline">\(\left.\mathrm{T}\left(\mathrm{v}_{-} \mathrm{m}\right)\right\}\)</span> are still mutually perpendicular to each other?</li>
+</ul>
+<div class="fragment">
+<p>This is what the SVD does!</p>
+<p>Let the SVD of <span class="math inline">\(A\)</span> be <span class="math inline">\(A=U \Sigma V^{T}\)</span></p>
+</div>
+<div class="fragment">
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-06.jpg?height=843&amp;width=867&amp;top_left_y=153&amp;top_left_x=607" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-06.jpg?height=843&amp;width=867&amp;top_left_y=153&amp;top_left_x=607"></a></p>
+</div>
+</section>
+
+<section id="section-13" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>How are <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> related?</p>
+<aside class="notes">
+<p>What we want to do is see what happens to two vectors that are orthogonoal to each other – specifically, two of the columns of V.</p>
+<p>Right-multiplying the equation <span class="math inline">\(\mathrm{A}=\mathrm{U} \Sigma \mathrm{V}^{\mathrm{T}}\)</span> by <span class="math inline">\(\mathrm{V}\)</span>, gives</p>
+<p><span class="math inline">\(\mathrm{AV}=\left(U \Sigma V^{T}\right) \mathrm{V}=U \Sigma\left(V^{I} \mathrm{~V}\right)=\mathrm{U} \Sigma\)</span></p>
+<p>Also, since <span class="math inline">\(\Sigma\)</span> is an <span class="math inline">\(\mathrm{n} \times \mathrm{m}\)</span> matrix with non-zero entries only along the diagonal entries ( <span class="math inline">\(\Sigma \mathrm{i}, \mathrm{i})\)</span> if at all, the columns of <span class="math inline">\(\mathrm{U} \Sigma\)</span> are just the first <span class="math inline">\(\mathrm{m}\)</span> columns of <span class="math inline">\(U\)</span> scaled by the respective diagonal entries of <span class="math inline">\(\Sigma\)</span></p>
+<p>Thus T(v_i)=(Σi,i)u_i and they are mutually perpendicular to each other. Since u_i are unit vectors, the length of T(v_i) is precisely the diagonal entry Σi,i.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1361,7 +1441,7 @@ K=A^{T} A=\left(\begin{array}{ll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

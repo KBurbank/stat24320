@@ -3148,5 +3148,47 @@
     "title": "Ch5 Lecture 2",
     "section": "",
     "text": "Proof:\n\n\nAssume \\(m \\geq n\\) (the case \\(m&lt;n\\) is similar).\nLet \\(B=A^{T} A\\) and let \\(\\lambda_{1} \\geq \\lambda_{2} \\geq \\cdots \\geq \\lambda_{n}\\) be the eigenvalues of \\(B\\).\nFind the basis of eigenvectoers of \\(B\\): \\(B \\mathbf{v}_{k}=\\sigma_{k}^{2} \\mathbf{v}_{k}, k=1,2, \\ldots, n\\)\nLet \\(V=\\left[\\mathbf{v}_{1}, \\mathbf{v}_{2}, \\ldots, \\mathbf{v}_{n}\\right]\\). Then \\(V\\) is an orthogonal \\(n \\times n\\) matrix.\nWe may assume for some index \\(r\\) that \\(\\sigma_{r+1}, \\sigma_{r+2}, \\ldots, \\sigma_{n}\\) are zero, while \\(\\sigma_{r} \\neq 0\\).\nNext set \\(\\mathbf{u}_{j}=\\frac{1}{\\sigma_{j}} A \\mathbf{v}_{j}, j=1,2, \\ldots, r\\). These are orthonormal vectors in \\(\\mathbb{R}^{m}\\) since\n\n\\[\n\\mathbf{u}_{j}^{T} \\mathbf{u}_{k}=\\frac{1}{\\sigma_{j} \\sigma_{k}} \\mathbf{v}_{j}^{T} A^{T} A \\mathbf{v}_{k}=\\frac{1}{\\sigma_{j} \\sigma_{k}} \\mathbf{v}_{j}^{T} B \\mathbf{v}_{k}=\\frac{\\sigma_{k}^{2}}{\\sigma_{j} \\sigma_{k}} \\mathbf{v}_{j}^{T} \\mathbf{v}_{k}= \\begin{cases}0, & \\text { if } j \\neq k \\\\ 1, & \\text { if } j=k\\end{cases}\n\\]\n\nNow expand this set to an orthonormal basis \\(\\mathbf{u}_{1}, \\mathbf{u}_{2}, \\ldots, \\mathbf{u}_{m}\\) of \\(\\mathbb{R}^{m}\\). This is possible by Theorem 4.7 in Section 4.3. Set \\(U=\\left[\\mathbf{u}_{1}, \\mathbf{u}_{2}, \\ldots, \\mathbf{u}_{m}\\right]\\). This matrix is orthogonal. We calculate that if \\(k&gt;r\\), then \\(\\mathbf{u}_{j}^{T} A \\mathbf{v}_{k}=0\\) since \\(A \\mathbf{v}_{k}=\\mathbf{0}\\), and if \\(k&lt;r\\), then\n\n\\[\n\\mathbf{u}_{j}^{T} A \\mathbf{v}_{k}=\\sigma_{k} \\mathbf{u}_{j}^{T} \\mathbf{u}_{k}=\\left\\{\\begin{array}{l}\n0, \\text { if } j \\neq k, \\\\\n\\sigma_{k}, \\text { if } j=k\n\\end{array}\\right.\n\\]\n\\(U^{T} A V=\\left[\\mathbf{u}_{j}^{T} A \\mathbf{v}_{k}\\right]=\\Sigma\\), which is the desired SVD."
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#geometric-interpretation-of-the-svd",
+    "href": "lectures/ch5lecture2.html#geometric-interpretation-of-the-svd",
+    "title": "Ch5 Lecture 2",
+    "section": "Geometric interpretation of the SVD",
+    "text": "Geometric interpretation of the SVD\n(following closely this blog post)\nGoal: to understand the SVD as finding perpendicular axes that remain perpendicular after a transformation."
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#section-9",
+    "href": "lectures/ch5lecture2.html#section-9",
+    "title": "Ch5 Lecture 2",
+    "section": "",
+    "text": "Take a very simple matrix:\n\\[\nA=\\left(\\begin{array}{cc}\n6 & 2 \\\\\n-7 & 6\n\\end{array}\\right)\n\\]\n\nRepresents a linear map \\(\\mathrm{T}: \\mathrm{R}^{2} \\rightarrow \\mathbf{R}^{2}\\) with respect to the standard basis \\(e_{1}=(1,0)\\) and \\(e_{2}=(0,1)\\).\n\n\nSends the usual basis elements \\(e_{1} \\rightsquigarrow(6,-7)\\) and \\(e_{2} \\rightsquigarrow(2,6)\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#section-10",
+    "href": "lectures/ch5lecture2.html#section-10",
+    "title": "Ch5 Lecture 2",
+    "section": "",
+    "text": "We can see what T does to any vector:\n\\[\n\\begin{aligned}\nT(2,3) & =T(2,0)+T(0,3)=T\\left(2 e_{1}\\right)+T\\left(3 e_{2}\\right) \\\\\n& =2 T\\left(e_{1}\\right)+3 T\\left(e_{2}\\right)=2(6,-7)+3(2,6) \\\\\n& =(18,4)\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#section-11",
+    "href": "lectures/ch5lecture2.html#section-11",
+    "title": "Ch5 Lecture 2",
+    "section": "",
+    "text": "The usual basis elements are no longer perpendicular after the transformation:"
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#section-12",
+    "href": "lectures/ch5lecture2.html#section-12",
+    "title": "Ch5 Lecture 2",
+    "section": "",
+    "text": "Given a linear map T:Rm \\(\\rightarrow R^{n}\\) (which is represented by a \\(n \\times m\\) matrix \\(A\\) with respect to the standard basis),\n\ncan we find an orthonormal basis \\(\\left\\{v_{-} 1, v_{-} 2, \\ldots, v_{-} m\\right\\}\\) of \\(R^{m}\\) such that\n\\(\\left\\{T\\left(v_{-} 1\\right), T\\left(v_{-} 2\\right), \\ldots\\right.\\) \\(\\left.\\mathrm{T}\\left(\\mathrm{v}_{-} \\mathrm{m}\\right)\\right\\}\\) are still mutually perpendicular to each other?\n\n\nThis is what the SVD does!\nLet the SVD of \\(A\\) be \\(A=U \\Sigma V^{T}\\)"
+  },
+  {
+    "objectID": "lectures/ch5lecture2.html#section-13",
+    "href": "lectures/ch5lecture2.html#section-13",
+    "title": "Ch5 Lecture 2",
+    "section": "",
+    "text": "How are \\(U\\) and \\(V\\) related?\n\nWhat we want to do is see what happens to two vectors that are orthogonoal to each other – specifically, two of the columns of V.\nRight-multiplying the equation \\(\\mathrm{A}=\\mathrm{U} \\Sigma \\mathrm{V}^{\\mathrm{T}}\\) by \\(\\mathrm{V}\\), gives\n\\(\\mathrm{AV}=\\left(U \\Sigma V^{T}\\right) \\mathrm{V}=U \\Sigma\\left(V^{I} \\mathrm{~V}\\right)=\\mathrm{U} \\Sigma\\)\nAlso, since \\(\\Sigma\\) is an \\(\\mathrm{n} \\times \\mathrm{m}\\) matrix with non-zero entries only along the diagonal entries ( \\(\\Sigma \\mathrm{i}, \\mathrm{i})\\) if at all, the columns of \\(\\mathrm{U} \\Sigma\\) are just the first \\(\\mathrm{m}\\) columns of \\(U\\) scaled by the respective diagonal entries of \\(\\Sigma\\)\nThus T(v_i)=(Σi,i)u_i and they are mutually perpendicular to each other. Since u_i are unit vectors, the length of T(v_i) is precisely the diagonal entry Σi,i."
   }
 ]

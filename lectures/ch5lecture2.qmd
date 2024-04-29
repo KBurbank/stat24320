@@ -550,5 +550,84 @@ $U^{T} A V=\left[\mathbf{u}_{j}^{T} A \mathbf{v}_{k}\right]=\Sigma$, which is th
 
 :::
 
+## Geometric interpretation of the SVD
+(following closely this [blog post](https://towardsdatascience.com/svd-a-geometric-view-point-cfc0c689bdc0))
+
+Goal: to understand the SVD as finding perpendicular axes that remain perpendicular after a transformation.
+
+![](https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-02.jpg?height=576&width=1426&top_left_y=934&top_left_x=356)
 
 
+##
+
+Take a very simple matrix:
+
+$$
+A=\left(\begin{array}{cc}
+6 & 2 \\
+-7 & 6
+\end{array}\right)
+$$
+
+
+. . .
+
+Represents a linear map $\mathrm{T}: \mathrm{R}^{2} \rightarrow \mathbf{R}^{2}$ with respect to the standard basis $e_{1}=(1,0)$ and $e_{2}=(0,1)$. 
+
+. . .
+
+Sends the usual basis elements $e_{1} \rightsquigarrow(6,-7)$ and $e_{2} \rightsquigarrow(2,6)$. 
+
+
+
+##
+
+We can see what T does to any vector:
+
+$$
+\begin{aligned}
+T(2,3) & =T(2,0)+T(0,3)=T\left(2 e_{1}\right)+T\left(3 e_{2}\right) \\
+& =2 T\left(e_{1}\right)+3 T\left(e_{2}\right)=2(6,-7)+3(2,6) \\
+& =(18,4)
+\end{aligned}
+$$
+
+##
+The usual basis elements are no longer perpendicular after the transformation:
+
+![](https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-04.jpg?height=835&width=873&top_left_y=1111&top_left_x=607)
+
+##
+
+Given a linear map T:Rm $\rightarrow R^{n}$ (which is represented by a $n \times m$ matrix $A$ with respect to the standard basis),
+
+- can we find an orthonormal basis $\left\{v_{-} 1, v_{-} 2, \ldots, v_{-} m\right\}$ of $R^{m}$ such that 
+- $\left\{T\left(v_{-} 1\right), T\left(v_{-} 2\right), \ldots\right.$ $\left.\mathrm{T}\left(\mathrm{v}_{-} \mathrm{m}\right)\right\}$ are still mutually perpendicular to each other?
+
+. . .
+
+This is what the SVD does!
+
+Let the SVD of $A$ be $A=U \Sigma V^{T}$
+
+. . .
+
+![](https://cdn.mathpix.com/cropped/2024_04_29_b72edac85056b927eea7g-06.jpg?height=843&width=867&top_left_y=153&top_left_x=607)
+
+##
+
+How are $U$ and $V$ related?
+
+::: notes
+
+What we want to do is see what happens to two vectors that are orthogonoal to each other -- specifically, two of the columns of V.
+
+Right-multiplying the equation $\mathrm{A}=\mathrm{U} \Sigma \mathrm{V}^{\mathrm{T}}$ by $\mathrm{V}$, gives
+
+$\mathrm{AV}=\left(U \Sigma V^{T}\right) \mathrm{V}=U \Sigma\left(V^{I} \mathrm{~V}\right)=\mathrm{U} \Sigma$
+
+Also, since $\Sigma$ is an $\mathrm{n} \times \mathrm{m}$ matrix with non-zero entries only along the diagonal entries ( $\Sigma \mathrm{i}, \mathrm{i})$ if at all, the columns of $\mathrm{U} \Sigma$ are just the first $\mathrm{m}$ columns of $U$ scaled by the respective diagonal entries of $\Sigma$
+
+Thus T(v_i)=(Σi,i)u_i and they are mutually perpendicular to each other. Since u_i are unit vectors, the length of T(v_i) is precisely the diagonal entry Σi,i.
+
+:::

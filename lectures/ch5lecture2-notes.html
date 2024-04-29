@@ -892,6 +892,52 @@ K=A^{T} A=\left(\begin{array}{ll}
 </div>
 <div class="fragment">
 <p>Thus the singular values of <span class="math inline">\(A\)</span>, which are the square roots of the non-zero eigenvalues of <span class="math inline">\(K\)</span>, are the absolute values of the eigenvalues of <span class="math inline">\(A\)</span>.</p>
+</div>
+</section>
+
+<section id="singular-value-decomposition" class="title-slide slide level2 center">
+<h2><em>Singular Value Decomposition</em></h2>
+<div class="theorem">
+<p>Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(m \times n\)</span> real matrix. Then there exist an <span class="math inline">\(m \times m\)</span> orthogonal matrix <span class="math inline">\(U\)</span>, an <span class="math inline">\(n \times n\)</span> orthogonal matrix <span class="math inline">\(V\)</span>, and an <span class="math inline">\(m \times n\)</span> diagonal matrix <span class="math inline">\(\Sigma\)</span> with diagonal entries <span class="math inline">\(\sigma_{1} \geq \sigma_{2} \geq \cdots \geq \sigma_{p} \geq 0\)</span>, with <span class="math inline">\(p=\min \{m, n\}\)</span>, such that <span class="math inline">\(U^{T} A V=\Sigma\)</span>. Moreover, the numbers <span class="math inline">\(\sigma_{1}, \sigma_{2}, \ldots, \sigma_{p}\)</span> are uniquely determined by <span class="math inline">\(A\)</span>.</p>
+</div>
+</section>
+
+<section id="section-8" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Proof:</p>
+<aside class="notes">
+<ul>
+<li>Assume <span class="math inline">\(m \geq n\)</span> (the case <span class="math inline">\(m&lt;n\)</span> is similar).</li>
+<li>Let <span class="math inline">\(B=A^{T} A\)</span> and let <span class="math inline">\(\lambda_{1} \geq \lambda_{2} \geq \cdots \geq \lambda_{n}\)</span> be the eigenvalues of <span class="math inline">\(B\)</span>.</li>
+<li>Find the basis of eigenvectoers of <span class="math inline">\(B\)</span>: <span class="math inline">\(B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n\)</span></li>
+<li>Let <span class="math inline">\(V=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]\)</span>. Then <span class="math inline">\(V\)</span> is an orthogonal <span class="math inline">\(n \times n\)</span> matrix.</li>
+<li>We may assume for some index <span class="math inline">\(r\)</span> that <span class="math inline">\(\sigma_{r+1}, \sigma_{r+2}, \ldots, \sigma_{n}\)</span> are zero, while <span class="math inline">\(\sigma_{r} \neq 0\)</span>.</li>
+<li>Next set <span class="math inline">\(\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r\)</span>. These are orthonormal vectors in <span class="math inline">\(\mathbb{R}^{m}\)</span> since</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{u}_{j}^{T} \mathbf{u}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} A^{T} A \mathbf{v}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} B \mathbf{v}_{k}=\frac{\sigma_{k}^{2}}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} \mathbf{v}_{k}= \begin{cases}0, &amp; \text { if } j \neq k \\ 1, &amp; \text { if } j=k\end{cases}
+\]</span></p>
+<ul>
+<li>Now expand this set to an orthonormal basis <span class="math inline">\(\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span>. This is possible by Theorem 4.7 in Section 4.3. Set <span class="math inline">\(U=\left[\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}\right]\)</span>. This matrix is orthogonal. We calculate that if <span class="math inline">\(k&gt;r\)</span>, then <span class="math inline">\(\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=0\)</span> since <span class="math inline">\(A \mathbf{v}_{k}=\mathbf{0}\)</span>, and if <span class="math inline">\(k&lt;r\)</span>, then</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=\sigma_{k} \mathbf{u}_{j}^{T} \mathbf{u}_{k}=\left\{\begin{array}{l}
+0, \text { if } j \neq k, \\
+\sigma_{k}, \text { if } j=k
+\end{array}\right.
+\]</span></p>
+<p><span class="math inline">\(U^{T} A V=\left[\mathbf{u}_{j}^{T} A \mathbf{v}_{k}\right]=\Sigma\)</span>, which is the desired SVD.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -918,7 +964,6 @@ K=A^{T} A=\left(\begin{array}{ll}
 <div class="reveal-footer">
 <div class="footer-section">
 <p> </p>
-</div>
 </div>
 </div>
 </section>
@@ -1316,7 +1361,7 @@ K=A^{T} A=\left(\begin{array}{ll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

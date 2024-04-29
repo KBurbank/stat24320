@@ -936,7 +936,9 @@ K=A^{T} A=\left(\begin{array}{ll}
 <li>Find the basis of eigenvectoers of <span class="math inline">\(B\)</span>: <span class="math inline">\(B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n\)</span></li>
 <li>Let <span class="math inline">\(V=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]\)</span>. Then <span class="math inline">\(V\)</span> is an orthogonal <span class="math inline">\(n \times n\)</span> matrix.</li>
 <li>We may assume for some index <span class="math inline">\(r\)</span> that <span class="math inline">\(\sigma_{r+1}, \sigma_{r+2}, \ldots, \sigma_{n}\)</span> are zero, while <span class="math inline">\(\sigma_{r} \neq 0\)</span>.</li>
-<li>Next set <span class="math inline">\(\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r\)</span>. These are orthonormal vectors in <span class="math inline">\(\mathbb{R}^{m}\)</span> since</li>
+<li>Next set <span class="math inline">\(\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r\)</span>.</li>
+<li>In other words, <span class="math inline">\(\mathbf{u}_{j}\)</span> is the vector that you get when you transform <span class="math inline">\(\mathbf{v}_{j}\)</span> by <span class="math inline">\(A\)</span> and then normalize it by the singular value <span class="math inline">\(\sigma_{j}\)</span>.</li>
+<li>These are orthonormal vectors in <span class="math inline">\(\mathbb{R}^{m}\)</span> since</li>
 </ul>
 <p><span class="math display">\[
 \mathbf{u}_{j}^{T} \mathbf{u}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} A^{T} A \mathbf{v}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} B \mathbf{v}_{k}=\frac{\sigma_{k}^{2}}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} \mathbf{v}_{k}= \begin{cases}0, &amp; \text { if } j \neq k \\ 1, &amp; \text { if } j=k\end{cases}
@@ -951,6 +953,7 @@ K=A^{T} A=\left(\begin{array}{ll}
 \end{array}\right.
 \]</span></p>
 <p><span class="math inline">\(U^{T} A V=\left[\mathbf{u}_{j}^{T} A \mathbf{v}_{k}\right]=\Sigma\)</span>, which is the desired SVD.</p>
+<p>And because <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthonormal, their inverses are their transposes, so <span class="math inline">\(A=U \Sigma V^{T}\)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1465,7 +1468,7 @@ T(2,3) &amp; =T(2,0)+T(0,3)=T\left(2 e_{1}\right)+T\left(3 e_{2}\right) \\
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

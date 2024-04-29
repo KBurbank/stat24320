@@ -309,7 +309,7 @@ which just becomes a sum of squares.
 
 Example: 
 
-Suppose we have the quadratic form $3x^2+2xy+3y^2$. We can write this in matrix form as $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}$ where
+Suppose we have the quadratic form $3x^2+2xy+3y^2$. We can write this in matrix form as $Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}$ where $\mathbf{x}=\binom{x}{y}$ and
 
 $$
 B=\frac{1}{2}\left[\begin{array}{ll}

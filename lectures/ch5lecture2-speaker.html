@@ -641,7 +641,7 @@ B=\frac{1}{2}\left[\begin{array}{lll}
 \end{array}\right]
 \]</span></p>
 <p>Check:</p>
-<div id="4e63a452" class="cell" data-execution_count="1">
+<div id="4e63a452" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -672,7 +672,7 @@ B=\frac{1}{2}\left[\begin{array}{lll}
 <section id="section-1" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Example:</p>
-<p>Suppose we have the quadratic form <span class="math inline">\(3x^2+2xy+3y^2\)</span>. We can write this in matrix form as <span class="math inline">\(Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}\)</span> where</p>
+<p>Suppose we have the quadratic form <span class="math inline">\(3x^2+2xy+3y^2\)</span>. We can write this in matrix form as <span class="math inline">\(Q(\mathbf{x})=\mathbf{x}^{T} B \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}=\binom{x}{y}\)</span> and</p>
 <p><span class="math display">\[
 B=\frac{1}{2}\left[\begin{array}{ll}
 3 &amp; 1 \\
@@ -706,7 +706,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The numbers aren’t always clean, thougbh!</p>
-<div id="07785200" class="cell" data-execution_count="2">
+<div id="07785200" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>Q,Lambda <span class="op">=</span> B.diagonalize()</span>
@@ -716,7 +716,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{- 13248 \cdot \left(1 + \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 72 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(11 - \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(53 + 9 \sqrt{1167} i\right)}{792 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{72 \left(1 - \sqrt{3} i\right)^{3} \cdot \left(11 + \left(-1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(53 + 9 \sqrt{1167} i\right) + \left(-1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} - 13248 \left(1 - \sqrt{3} i\right)^{2} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{792 \left(1 - \sqrt{3} i\right)^{3} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{126 \sqrt{1167} - 289 i \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 3 \sqrt{1167} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 742 i + 352 i \sqrt[3]{53 + 9 \sqrt{1167} i} + 60 \sqrt{1167} \sqrt[3]{53 + 9 \sqrt{1167} i}}{66 \cdot \left(9 \sqrt{1167} - 53 i\right)}\\\frac{28 \left(-22 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right) + \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 5152 \cdot \left(1 + \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{264 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{5152 \cdot \left(1 - \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} + \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 28 \left(-22 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)}{264 \left(1 - \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{18 \sqrt{1167} - 2222 i \sqrt[3]{53 + 9 \sqrt{1167} i} - 145 i \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 106 i + 18 \sqrt{1167} \sqrt[3]{53 + 9 \sqrt{1167} i} + 9 \sqrt{1167} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{66 \cdot \left(9 \sqrt{1167} - 53 i\right)}\\1 &amp; 1 &amp; 1\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="5be85d47" class="cell" data-execution_count="3">
+<div id="5be85d47" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{4}{3} + \left(- \frac{1}{2} - \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}} + \frac{23}{18 \left(- \frac{1}{2} - \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} &amp; 0 &amp; 0\\0 &amp; \frac{4}{3} + \frac{23}{18 \left(- \frac{1}{2} + \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} + \left(- \frac{1}{2} + \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}} &amp; 0\\0 &amp; 0 &amp; \frac{4}{3} + \frac{23}{18 \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} + \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}\end{matrix}\right]\)</span></p>
 </div>

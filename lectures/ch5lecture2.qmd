@@ -15,7 +15,7 @@ format:
       code-fold: show
 ---
 
-# Eigensystems of Symmetric Matrices
+# Eigenvalues of Symmetric Matrices
 
 ## Positive Definite Matrices
 
@@ -199,6 +199,8 @@ If the eigenvalues are distinct, then the eigenvectors are orthogonal by part (b
 . . .
 
 If the eigenvalues are repeated, then we can use the Gram-Schmidt process to orthogonalize the eigenvectors.
+
+# Diagonalization of Symmetric Matrices
 
 ## Diagonalizability of Symmetric Matrices: the Spectral Theorem
 
@@ -436,6 +438,7 @@ We often visualize this by plotting the effects of the transformations on the un
 
 ![](https://cdn.mathpix.com/cropped/2024_04_29_4f6d38c079cada204833g-36.jpg?height=369&width=854&top_left_y=257&top_left_x=630)
 
+# The SVD
 
 ## Singular Values
 

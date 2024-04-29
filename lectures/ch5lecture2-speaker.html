@@ -412,13 +412,15 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/eigensystems-of-symmetric-matrices" id="/toc-eigensystems-of-symmetric-matrices"><em>Eigensystems of Symmetric Matrices</em></a></li>
+<li class="fragment"><a href="#/eigenvalues-of-symmetric-matrices" id="/toc-eigenvalues-of-symmetric-matrices"><em>Eigenvalues of Symmetric Matrices</em></a></li>
+<li class="fragment"><a href="#/diagonalization-of-symmetric-matrices" id="/toc-diagonalization-of-symmetric-matrices"><em>Diagonalization of Symmetric Matrices</em></a></li>
+<li class="fragment"><a href="#/the-svd" id="/toc-the-svd"><em>The SVD</em></a></li>
 </ul>
 </nav>
 </section>
 <section>
-<section id="eigensystems-of-symmetric-matrices" class="title-slide slide level1 center">
-<h1><em>Eigensystems of Symmetric Matrices</em></h1>
+<section id="eigenvalues-of-symmetric-matrices" class="title-slide slide level1 center">
+<h1><em>Eigenvalues of Symmetric Matrices</em></h1>
 
 </section>
 <section id="positive-definite-matrices" class="title-slide slide level2 center">
@@ -584,7 +586,12 @@ x=y=a, \quad \text { so } \quad \mathbf{v}=\binom{a}{a}=a\binom{1}{1}
 <p>If the eigenvalues are repeated, then we can use the Gram-Schmidt process to orthogonalize the eigenvectors.</p>
 </div>
 </section>
+</section>
+<section>
+<section id="diagonalization-of-symmetric-matrices" class="title-slide slide level1 center">
+<h1><em>Diagonalization of Symmetric Matrices</em></h1>
 
+</section>
 <section id="diagonalizability-of-symmetric-matrices-the-spectral-theorem" class="title-slide slide level2 center">
 <h2><em>Diagonalizability of Symmetric Matrices: the Spectral Theorem</em></h2>
 <ul>
@@ -820,7 +827,12 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <p>We often visualize this by plotting the effects of the transformations on the unit circle.</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_04_29_4f6d38c079cada204833g-36.jpg?height=369&amp;width=854&amp;top_left_y=257&amp;top_left_x=630" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_04_29_4f6d38c079cada204833g-36.jpg?height=369&amp;width=854&amp;top_left_y=257&amp;top_left_x=630"></a></p>
 </section>
+</section>
+<section>
+<section id="the-svd" class="title-slide slide level1 center">
+<h1><em>The SVD</em></h1>
 
+</section>
 <section id="singular-values" class="title-slide slide level2 center">
 <h2><em>Singular Values</em></h2>
 <p>We’ve talked a lot about eigenvalues and eigenvectors, but these only make any sense for square matrices. What can we do for a general <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>?</p>
@@ -1441,7 +1453,7 @@ T(2,3) &amp; =T(2,0)+T(0,3)=T\left(2 e_{1}\right)+T\left(3 e_{2}\right) \\
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

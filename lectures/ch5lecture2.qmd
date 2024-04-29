@@ -494,7 +494,7 @@ Therefore, the singular values of $A$ are $\sigma_{1}=\sqrt{40}=2 \sqrt{10}, \si
 
 *pause*
 
-::: note
+::: notes
 Are the singular values here equal to the eigenvalues of $A$? No!
 
 The eigenvalues of A  are $\lambda_{1}=\frac{1}{2}(3+\sqrt{89}) \simeq 6.2170$ and $\lambda_{2}=\frac{1}{2}(3-\sqrt{89}) \simeq-3.2170$, nor are the singular vectors eigenvectors of $A$.

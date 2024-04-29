@@ -659,7 +659,7 @@ B=\frac{1}{2}\left[\begin{array}{lll}
 \end{array}\right]
 \]</span></p>
 <p>Check:</p>
-<div id="1eb58ca4" class="cell" data-execution_count="1">
+<div id="1eb58ca4" class="cell" data-execution_count="2">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
@@ -728,7 +728,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The numbers aren’t always clean, though!</p>
-<div id="83681a8c" class="cell" data-execution_count="2">
+<div id="83681a8c" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>Q,Lambda <span class="op">=</span> B.diagonalize()</span>
@@ -738,7 +738,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{- 13248 \cdot \left(1 + \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 72 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(11 - \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(53 + 9 \sqrt{1167} i\right)}{792 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{72 \left(1 - \sqrt{3} i\right)^{3} \cdot \left(11 + \left(-1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(53 + 9 \sqrt{1167} i\right) + \left(-1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} - 13248 \left(1 - \sqrt{3} i\right)^{2} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{792 \left(1 - \sqrt{3} i\right)^{3} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{126 \sqrt{1167} - 289 i \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 3 \sqrt{1167} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 742 i + 352 i \sqrt[3]{53 + 9 \sqrt{1167} i} + 60 \sqrt{1167} \sqrt[3]{53 + 9 \sqrt{1167} i}}{66 \cdot \left(9 \sqrt{1167} - 53 i\right)}\\\frac{28 \left(-22 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right) + \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 + \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 5152 \cdot \left(1 + \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{264 \left(1 + \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{5152 \cdot \left(1 - \sqrt{3} i\right) \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} + \sqrt[3]{53 + 9 \sqrt{1167} i} \left(184 + \left(-16 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right)^{2} + 28 \left(-22 + \left(1 - \sqrt{3} i\right) \sqrt[3]{53 + 9 \sqrt{1167} i}\right) \left(1 - \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)}{264 \left(1 - \sqrt{3} i\right)^{2} \cdot \left(53 + 9 \sqrt{1167} i\right)} &amp; \frac{18 \sqrt{1167} - 2222 i \sqrt[3]{53 + 9 \sqrt{1167} i} - 145 i \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}} - 106 i + 18 \sqrt{1167} \sqrt[3]{53 + 9 \sqrt{1167} i} + 9 \sqrt{1167} \left(53 + 9 \sqrt{1167} i\right)^{\frac{2}{3}}}{66 \cdot \left(9 \sqrt{1167} - 53 i\right)}\\1 &amp; 1 &amp; 1\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="22d538f7" class="cell" data-execution_count="3">
+<div id="22d538f7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{4}{3} + \left(- \frac{1}{2} - \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}} + \frac{23}{18 \left(- \frac{1}{2} - \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} &amp; 0 &amp; 0\\0 &amp; \frac{4}{3} + \frac{23}{18 \left(- \frac{1}{2} + \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} + \left(- \frac{1}{2} + \frac{\sqrt{3} i}{2}\right) \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}} &amp; 0\\0 &amp; 0 &amp; \frac{4}{3} + \frac{23}{18 \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}} + \sqrt[3]{\frac{53}{216} + \frac{\sqrt{1167} i}{24}}\end{matrix}\right]\)</span></p>
 </div>
@@ -749,7 +749,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>We can visualize the previous example as a <em>rotation</em> of the axes (a change of basis) to a new coordinate system where the quadratic form is just a sum of squares.</p>
-<div id="6abbc364" class="cell" data-execution_count="4">
+<div id="6abbc364" class="cell" data-execution_count="5">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -786,7 +786,7 @@ q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
 <section id="section-6" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Now make the same plot but in y coordinates:</p>
-<div id="bd7b2eff" class="cell" data-depends="rotation" data-execution_count="5">
+<div id="bd7b2eff" class="cell" data-depends="rotation" data-execution_count="6">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">100</span>)</span>
@@ -866,10 +866,20 @@ K=A^{T} A=\left(\begin{array}{ll}
 <div class="fragment">
 <p>Therefore, the singular values of <span class="math inline">\(A\)</span> are <span class="math inline">\(\sigma_{1}=\sqrt{40}=2 \sqrt{10}, \sigma_{2}=\sqrt{10}\)</span>.</p>
 <p><em>pause</em></p>
-<div class="note">
+<aside class="notes">
 <p>Are the singular values here equal to the eigenvalues of <span class="math inline">\(A\)</span>? No!</p>
 <p>The eigenvalues of A are <span class="math inline">\(\lambda_{1}=\frac{1}{2}(3+\sqrt{89}) \simeq 6.2170\)</span> and <span class="math inline">\(\lambda_{2}=\frac{1}{2}(3-\sqrt{89}) \simeq-3.2170\)</span>, nor are the singular vectors eigenvectors of <span class="math inline">\(A\)</span>.</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 </section>
 
@@ -1306,7 +1316,7 @@ K=A^{T} A=\left(\begin{array}{ll}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

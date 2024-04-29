@@ -349,6 +349,8 @@ $$
 \end{array}\right)
 $$
 
+. . .
+
 Now, if we define $\mathbf{y}=P^{T} \mathbf{x}=\frac{1}{\sqrt{2}}\binom{x_1+x_2}{-x_1+x_2}$, we have $Q(\mathbf{x})=\mathbf{y}^{T} D \mathbf{y}$, or
 
 $$
@@ -505,6 +507,7 @@ The eigenvalues of A  are $\lambda_{1}=\frac{1}{2}(3+\sqrt{89}) \simeq 6.2170$ a
 
 ## Singular Values of a Symmetric Matrix
 
+::: notes
 If $A$ is a symmetric matrix, then $K = A^{T} A= A^2$.
 
 So if $\mathbf{v}$ is an eigenvector of $A$ with eigenvalue $\lambda$, then $A \mathbf{v}=\lambda \mathbf{v}$, and $K \mathbf{v}=A^{T} A \mathbf{v}=A \lambda \mathbf{v}=\lambda^{2} \mathbf{v}$.
@@ -516,6 +519,8 @@ Therefore the eigenvalues of $K$ are the squares of the eigenvalues of $A$.
 . . .
 
 Thus the singular values of $A$, which are the square roots of the non-zero eigenvalues of $K$, are the absolute values of the eigenvalues of $A$.
+
+:::
 
 ## Singular Value Decomposition
 

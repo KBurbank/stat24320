@@ -725,6 +725,8 @@ B=\frac{1}{2}\left[\begin{array}{ll}
 -\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}}
 \end{array}\right)
 \]</span></p>
+</div>
+<div class="fragment">
 <p>Now, if we define <span class="math inline">\(\mathbf{y}=P^{T} \mathbf{x}=\frac{1}{\sqrt{2}}\binom{x_1+x_2}{-x_1+x_2}\)</span>, we have <span class="math inline">\(Q(\mathbf{x})=\mathbf{y}^{T} D \mathbf{y}\)</span>, or</p>
 <p><span class="math display">\[
 q(\mathbf{x})=3 x_{1}^{2}+2 x_{1} x_{2}+3 x_{2}^{2}=4 y_{1}^{2}+2 y_{2}^{2}
@@ -897,14 +899,24 @@ K=A^{T} A=\left(\begin{array}{ll}
 
 <section id="singular-values-of-a-symmetric-matrix" class="title-slide slide level2 center">
 <h2><em>Singular Values of a Symmetric Matrix</em></h2>
+<aside class="notes">
 <p>If <span class="math inline">\(A\)</span> is a symmetric matrix, then <span class="math inline">\(K = A^{T} A= A^2\)</span>.</p>
 <p>So if <span class="math inline">\(\mathbf{v}\)</span> is an eigenvector of <span class="math inline">\(A\)</span> with eigenvalue <span class="math inline">\(\lambda\)</span>, then <span class="math inline">\(A \mathbf{v}=\lambda \mathbf{v}\)</span>, and <span class="math inline">\(K \mathbf{v}=A^{T} A \mathbf{v}=A \lambda \mathbf{v}=\lambda^{2} \mathbf{v}\)</span>.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>Therefore the eigenvalues of <span class="math inline">\(K\)</span> are the squares of the eigenvalues of <span class="math inline">\(A\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Thus the singular values of <span class="math inline">\(A\)</span>, which are the square roots of the non-zero eigenvalues of <span class="math inline">\(K\)</span>, are the absolute values of the eigenvalues of <span class="math inline">\(A\)</span>.</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="singular-value-decomposition" class="title-slide slide level2 center">
@@ -1453,7 +1465,7 @@ T(2,3) &amp; =T(2,0)+T(0,3)=T\left(2 e_{1}\right)+T\left(3 e_{2}\right) \\
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

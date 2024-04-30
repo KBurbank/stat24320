@@ -53,7 +53,7 @@ When we have some zeros on the diagonal, multiplying by $D$ is a *projection* of
 
 If $A$ is a  <span style="color:red">$m \times n$</span> square matrix, 
 
-- then we can write it as <span style="color:red">$A = U\Sigma V^{T}$<\span> where $\Sigma$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
+- then we can write it as <span style="color:red">$A = U\Sigma V^{T}$</span> where $\Sigma$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
 
 - We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will also be a column vector of length <span style="color:red">$m$</span>.
 

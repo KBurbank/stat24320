@@ -1,0 +1,97 @@
+---
+title: Ch 5 Lecture 3
+lecture_day: 12 
+readings: ""
+publish: false
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+# Intuition about SVD
+
+## Thinking again about matrix diagonalization
+
+If $A$ is a (non-defective) $n \times n$ square matrix, 
+
+- then we can write it as $A = PDP^{T}$ where $D$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
+
+- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will also be a column vector of length $n$.
+
+- What's the intuition behind the diagonalization?
+
+- The matrix $P^{T}$ is a change of basis matrix. It takes a vector $\mathbf{x}$ expressed in the standard basis and expresses it in terms of the basis of eigenvectors of $A$. 
+  - This works because $P$ is orthogonal.
+
+- The matrix $D$ is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If $A$ is not full rank, then $D$ will have some zeros on the diagonal.)
+
+- The matrix $P$ is the inverse of $P^{T}$ (because $P$ is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.
+
+::: notes
+  - This inverse projection is what we want because the columns of $P$ are *eigenvectors* of $A$. 
+  - We can see this most easily by imagining that $\mathbf{x}$ is a multiple of one of the eigenvectors.
+  - $P\mathbf{x}$ will give the coordinates of $\mathbf{x}$ in the basis of eigenvectors. For instance, if $P\mathbf{x}=\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}$, we know that $\mathbf{x}$ equals the first eigenvector.
+    - After multiplication by the diagonal matrix, we'll just have $\begin{bmatrix} \lambda_{1} \\0\\ \vdots \\ 0\end{bmatrix}$.
+  - Then $P^{T}$ will take this back to a multiple of the first eigenvector, back in the standard basis.
+  - That's what we want *because* we are supposing that $\mathbf{x}$ is a multiple of the first eigenvector.
+  - The same logic will hold when $\mathbf{x}$ is weighted sum of the eigenvectors.
+    - Because $P$ is orthonormal, $P\mathbf{x}$ will give the weights of the eigenvectors in the basis of eigenvectors.
+  -  $P^{T}$ will take it back to the weighted sum of the eigenvectors in the standard basis, with the new weights being determined by the original weights and the eigenvalues.
+
+
+When we have some zeros on the diagonal, multiplying by $D$ is a *projection* of $\mathbf{x}$ onto the row space of $A$. We are removing the components of $\mathbf{x}$ that are in the null space of $A$.
+:::
+
+## The same logic, applied to a general matrix
+
+If $A$ is a  <span style="color:red">$m \times n$</span> square matrix, 
+
+- then we can write it as <span style="color:red">$A = U\Sigma V^{T}$<\span> where $\Sigma$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
+
+- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will also be a column vector of length <span style="color:red">$m$</span>.
+
+
+Start with Figure 5.12.1 from Meyer.
+
+Awesome explanation of PCA [here](https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579)
+
+Where does the covariance matrix come in? This explanation [here](https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579) the one that starts "I can give you an explanation".
+
+> As for the mean of the projections, let's observe that $v$ is part of some orthogonal basis of our space, and that if we project our data points on every vector of that basis, their sum will cancel out (it's like that because projecting on the vectors from the basis is like writing the data points in the new orthogonal basis). So the sum of all the projections on the vector $v$ (let's call the sum $S_v$) and the sum of projections on other vectors from the basis (let's call it $S_o$) is 0, because it's the mean of the data points. But $S_v$ is orthogonal to $S_o$! That means $S_o = S_v = 0$.
+> 
+> **So the mean of our projections is $0$.** Well, that's convenient, because that means the variance is just the sum of squares of lengths of projections, or in symbols 
+> $$
+> \sum_{i=1}^M (x_i' \cdot v)^2 = \sum_{i=1}^M v^T \cdot x_i'^T \cdot x_i' \cdot v =  v^T \cdot (\sum_{i=1}^M x_i'^T \cdot x_i) \cdot v.
+>  $$
+> 
+> **Well well, suddenly the covariance matrix popped out.** Let's denote it simply by $X$. It means we are now looking for a unit vector $v$ that maximizes $v^T \cdot X \cdot v$, for some semi-positive definite matrix $X$.
+
+## pseudoinverse
+
+We can simply note that the least squares solution we found earlier can be written in a simple way in terms of the SVD matrices.
+
+[Here](https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49) is a decent writeup.
+
+##
+Here is what $A$ does to a vector $\mathbf{x}$: first, $V$ expresses $\mathbf{x}$ in terms of the orthonormal basis of the column space of $A$. Then $\Sigma$ scales the components of $\mathbf{x}$ according to the singular values. Finally, $U^{T}$ rotates the scaled components from the basis of the row space of $A$ to express them in terms of the standard basis.
+
+Remember $A$ will take a column vector  $x$ from the row space of $A$ to the column space of $A$. (Actually, first it will project it onto the row space, then it will transform it, and the product $A\mathbf{x}$ will be in the column space. The V is a basis for the whole space, but the first $r$ vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)
+
+ The SVD is a way to express this transformation in terms of a simple scaling followed by a rotation.
+
+For the spectral decomposition, you express $x$ in terms of a particular basis that has a very simple action of the matrix -- each element just gets multiplied by the eigenvalues. Then you just go back to the standard basis, using the inverse of the matrix of eigenvectors. (Since this is orthogonal, it's just the transpose.)
+
+For the SVD, you first express $x$ in terms of the special basis where the action of the matrix is to multiply each element by the corresponding singular value. Then you express the result in terms of the standard basis. But because the row space and column space are not the same, you need two different bases for where you start and when you finish, and so you need two different matrices to go back to the standard basis.
+
+
+
+... We want to find vectors $\mathbf{v}_1$ and $\mathbf{v}_2$ in the row space $\mathbb{R}^2, \mathbf{u}_1$ and $\mathbf{u}_2$ in the column space $\mathbb{R}^2$, and positive numbers $\sigma_1$ and $\sigma_2$ so that the $\mathbf{v}_i$ are orthonormal, the $\mathbf{u}_i$ are orthonormal, and the $\sigma_i$ are the scaling factors for which $A \mathbf{v}_i=\sigma_i u_i$.
+
+From [here](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/d273f75ee2552a5c3c35ccab37e5edce_MIT18_06SCF11_Ses3.5sum.pdf)

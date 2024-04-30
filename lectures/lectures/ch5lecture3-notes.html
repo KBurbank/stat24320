@@ -366,6 +366,7 @@
 </ul></li>
 <li class="fragment"><p>The matrix <span class="math inline">\(D\)</span> is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If <span class="math inline">\(A\)</span> is not full rank, then <span class="math inline">\(D\)</span> will have some zeros on the diagonal.)</p></li>
 <li class="fragment"><p>The matrix <span class="math inline">\(P\)</span> is the inverse of <span class="math inline">\(P^{T}\)</span> (because <span class="math inline">\(P\)</span> is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.</p></li>
+<li class="fragment"><p>This all works because <span class="math inline">\(P\)</span> is orthogonal and there’s a correspondence between the rows of <span class="math inline">\(P^{T}\)</span> and the columns of <span class="math inline">\(P\)</span>.</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -382,6 +383,7 @@
 <li>Because <span class="math inline">\(P\)</span> is orthonormal, <span class="math inline">\(P\mathbf{x}\)</span> will give the weights of the eigenvectors in the basis of eigenvectors.</li>
 </ul></li>
 <li><span class="math inline">\(P^{T}\)</span> will take it back to the weighted sum of the eigenvectors in the standard basis, with the new weights being determined by the original weights and the eigenvalues.</li>
+<li>This will all works when <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthogonal and there’s a correspondence between the rows of <span class="math inline">\(V^{T}\)</span> and the columns of <span class="math inline">\(U\)</span>.</li>
 </ul>
 <p>When we have some zeros on the diagonal, multiplying by <span class="math inline">\(D\)</span> is a <em>projection</em> of <span class="math inline">\(\mathbf{x}\)</span> onto the row space of <span class="math inline">\(A\)</span>. We are removing the components of <span class="math inline">\(\mathbf{x}\)</span> that are in the null space of <span class="math inline">\(A\)</span>.</p>
 <style type="text/css">
@@ -405,8 +407,17 @@
 <li class="fragment"><p>We can find the product of <span class="math inline">\(A\)</span> with a vector <span class="math inline">\(\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is a column vector of length <span class="math inline">\(n\)</span>. This product will now be a column vector of length <span style="color:red"><span class="math inline">\(m\)</span></span>.</p></li>
 <li class="fragment"><p>The matrix <span class="math inline">\(V^{T}\)</span> is a change of basis matrix. It takes a vector <span class="math inline">\(\mathbf{x}\)</span> expressed in the standard basis and expresses it in terms of the basis of <span style="color:red"><em>right singular vectors</em></span> of <span class="math inline">\(A\)</span>.</p></li>
 <li class="fragment"><p>The matrix <span style="color:red"><span class="math inline">\(\Sigma\)</span></span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red"><span class="math inline">\(A\)</span> is not square or <span class="math inline">\(A\)</span> is not full rank</span>, then <span class="math inline">\(\Sigma\)</span> will have some zeros on the diagonal.)</p></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(U\)</span> <span style="color:red">is <em>not</em> generally</span> the inverse of <span class="math inline">\(V^{T}\)</span>. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of <span class="math inline">\(\mathbb{R}^m\)</span></span>.</p></li>
+<li class="fragment"><p>The matrix <span class="math inline">\(U\)</span> <span style="color:red">is <em>not</em> generally</span> the inverse of <span class="math inline">\(V^{T}\)</span>. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of <span class="math inline">\(\mathbb{R}^m\)</span></span>. ::: notes</p>
+<ul>
+<li class="fragment">Specifically, the first column of <span class="math inline">\(U\)</span> must be the correct vector to express the first row of <span class="math inline">\(V^{T}\)</span> in <span class="math inline">\(\mathbbb{R}^m\)</span></li>
+</ul></li>
+<li class="fragment"><ul>
+<li class="fragment">that is, we need the first column of <span class="math inline">\(U\)</span> to be <span class="math inline">\(A\mathbf{v}_1\)</span> (divided by the scaling factor).</li>
+<li class="fragment">This is because <span class="math inline">\(\Sigma V^{T}\mathbf{v}_1=\sigma_1\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}\)</span>, so that <span class="math inline">\(U\Sigma V^{T}\mathbf{v}_1=\sigma_1 U \begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}=\sigma_1\mathbf{u_1}\)</span>.</li>
+<li class="fragment">So we’d better have <span class="math inline">\(\mathbf{u_1}=A\mathbf{v}_1/\sigma_1\)</span>. :::</li>
+</ul></li>
 </ul>
+<p>##</p>
 <p>Start with Figure 5.12.1 from Meyer.</p>
 <p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
 <p>Where does the covariance matrix come in? This explanation <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a> the one that starts “I can give you an explanation”.</p>

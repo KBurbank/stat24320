@@ -33,6 +33,8 @@ If $A$ is a (non-defective) $n \times n$ square matrix,
 - The matrix $D$ is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If $A$ is not full rank, then $D$ will have some zeros on the diagonal.)
 
 - The matrix $P$ is the inverse of $P^{T}$ (because $P$ is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.
+  
+- This all works because $P$ is orthogonal and there's a correspondence between the rows of $P^{T}$ and the columns of $P$.
 
 ::: notes
   - This inverse projection is what we want because the columns of $P$ are *eigenvectors* of $A$. 
@@ -44,7 +46,9 @@ If $A$ is a (non-defective) $n \times n$ square matrix,
   - The same logic will hold when $\mathbf{x}$ is weighted sum of the eigenvectors.
     - Because $P$ is orthonormal, $P\mathbf{x}$ will give the weights of the eigenvectors in the basis of eigenvectors.
   -  $P^{T}$ will take it back to the weighted sum of the eigenvectors in the standard basis, with the new weights being determined by the original weights and the eigenvalues.
-
+-  This will all works when $U$ and $V$ are orthogonal and there's a correspondence between the rows of $V^{T}$ and the columns of $U$.
+  
+  
 
 When we have some zeros on the diagonal, multiplying by $D$ is a *projection* of $\mathbf{x}$ onto the row space of $A$. We are removing the components of $\mathbf{x}$ that are in the null space of $A$.
 :::
@@ -62,6 +66,15 @@ If $A$ is a  <span style="color:red">$m \times n$</span> square matrix,
 - The matrix <span style="color:red">$\Sigma$</span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red">$A$ is not square or $A$ is not full rank</span>, then $\Sigma$ will have some zeros on the diagonal.)
 
 - The matrix $U$ <span style="color:red">is *not* generally</span> the inverse of $V^{T}$. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of $\mathbb{R}^m$</span>.
+::: notes
+   -  Specifically, the first column of $U$ must be the correct vector to express the first row of $V^{T}$ in $\mathbbb{R}^m$
+- 
+   -  that is, we need the first column of $U$ to be $A\mathbf{v}_1$ (divided by the scaling factor).
+   - This is because $\Sigma V^{T}\mathbf{v}_1=\sigma_1\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}$, so that $U\Sigma V^{T}\mathbf{v}_1=\sigma_1 U \begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}=\sigma_1\mathbf{u_1}$.
+   - So we'd better have $\mathbf{u_1}=A\mathbf{v}_1/\sigma_1$.
+ :::
+
+ ##
 
 
 Start with Figure 5.12.1 from Meyer.

@@ -55,7 +55,13 @@ If $A$ is a  <span style="color:red">$m \times n$</span> square matrix,
 
 - then we can write it as <span style="color:red">$A = U\Sigma V^{T}$</span> where $\Sigma$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
 
-- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will also be a column vector of length <span style="color:red">$m$</span>.
+- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will now be a column vector of length <span style="color:red">$m$</span>.
+
+- The matrix $V^{T}$ is a change of basis matrix. It takes a vector $\mathbf{x}$ expressed in the standard basis and expresses it in terms of the basis of <span style="color:red">*right singular vectors*</span> of $A$.
+
+- The matrix <span style="color:red">$\Sigma$</span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red">$A$ is not square or $A$ is not full rank</span>, then $\Sigma$ will have some zeros on the diagonal.)
+
+- The matrix $U$ <span style="color:red">is *not* generally</span> the inverse of $V^{T}$. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of $\mathbb{R}^m$</span>.
 
 
 Start with Figure 5.12.1 from Meyer.

@@ -348,6 +348,8 @@
 <h2 id="toc-title">Outline for today</h2>
 <ul>
 <li class="fragment"><a href="#/intuition-about-svd" id="/toc-intuition-about-svd"><em>Intuition about SVD</em></a></li>
+<li class="fragment"><a href="#/uses-of-svd" id="/toc-uses-of-svd"><em>Uses of SVD</em></a></li>
+<li class="fragment"><a href="#/matrices-as-data" id="/toc-matrices-as-data"><em>Matrices as data</em></a></li>
 </ul>
 </nav>
 </section>
@@ -559,6 +561,7 @@ A=U S V^{T}=\left(\begin{array}{cc}
 
 <section id="reformulating-svd" class="title-slide slide level2 center">
 <h2><em>Reformulating SVD</em></h2>
+<aside class="notes">
 <p>Since matrix <span class="math inline">\(V\)</span> is orthogonal, <span class="math inline">\(V^{I} V\)</span> equals <span class="math inline">\(I\)</span>. We can rewrite the SVD equation as:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -576,10 +579,22 @@ A b_{1} &amp; A b_{2} &amp; \ldots &amp; A b_{n}
 <p>Apply <span class="math inline">\(A V=U S\)</span>,</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282"></a></p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686"></a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
+<aside class="notes">
 <p><span class="math display">\[
 \begin{aligned}
 &amp; =\left(\begin{array}{c}
@@ -627,37 +642,307 @@ u_{n} \\
 <p><span class="math display">\[
 A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 \]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="svd-as-a-sum-of-rank-one-matrices" class="title-slide slide level2 center">
+<h2><em>SVD as a sum of rank-one matrices</em></h2>
+<p><span class="math display">\[
+A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
+\]</span></p>
+</section>
+
+<section id="back-to-our-example" class="title-slide slide level2 center">
+<h2><em>Back to our example</em></h2>
+<p><span class="math display">\[
+A=\left(\begin{array}{ccc}
+3 &amp; 2 &amp; 2 \\
+2 &amp; 3 &amp; -2
+\end{array}\right)
+\]</span></p>
+<div class="fragment">
+<p>Can decompose as</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-12.jpg?height=260&amp;width=1545&amp;top_left_y=46&amp;top_left_x=260" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-12.jpg?height=260&amp;width=1545&amp;top_left_y=46&amp;top_left_x=260"></a></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(=\left(\begin{array}{ccc}3 &amp; 2 &amp; 2 \\ 2 &amp; 3 &amp; -2\end{array}\right)\)</span></p>
+</div>
 </section>
 
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<p>Start with Figure 5.12.1 from Meyer.</p>
-<p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
-<p>Where does the covariance matrix come in? This explanation <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a> the one that starts “I can give you an explanation”.</p>
-<blockquote>
-<p>As for the mean of the projections, let’s observe that <span class="math inline">\(v\)</span> is part of some orthogonal basis of our space, and that if we project our data points on every vector of that basis, their sum will cancel out (it’s like that because projecting on the vectors from the basis is like writing the data points in the new orthogonal basis). So the sum of all the projections on the vector <span class="math inline">\(v\)</span> (let’s call the sum <span class="math inline">\(S_v\)</span>) and the sum of projections on other vectors from the basis (let’s call it <span class="math inline">\(S_o\)</span>) is 0, because it’s the mean of the data points. But <span class="math inline">\(S_v\)</span> is orthogonal to <span class="math inline">\(S_o\)</span>! That means <span class="math inline">\(S_o = S_v = 0\)</span>.</p>
-<p><strong>So the mean of our projections is <span class="math inline">\(0\)</span>.</strong> Well, that’s convenient, because that means the variance is just the sum of squares of lengths of projections, or in symbols <span class="math display">\[
-\sum_{i=1}^M (x_i' \cdot v)^2 = \sum_{i=1}^M v^T \cdot x_i'^T \cdot x_i' \cdot v =  v^T \cdot (\sum_{i=1}^M x_i'^T \cdot x_i) \cdot v.
+
+</section>
+</section>
+<section>
+<section id="uses-of-svd" class="title-slide slide level1 center">
+<h1><em>Uses of SVD</em></h1>
+
+</section>
+<section id="moore-penrose-pseudoinverse" class="title-slide slide level2 center">
+<h2><em>Moore-Penrose pseudoinverse</em></h2>
+<p>If we have a linear system</p>
+<p><span class="math display">\[
+\begin{aligned}
+A x &amp; =b \\
+\end{aligned}
 \]</span></p>
-<p><strong>Well well, suddenly the covariance matrix popped out.</strong> Let’s denote it simply by <span class="math inline">\(X\)</span>. It means we are now looking for a unit vector <span class="math inline">\(v\)</span> that maximizes <span class="math inline">\(v^T \cdot X \cdot v\)</span>, for some semi-positive definite matrix <span class="math inline">\(X\)</span>.</p>
-</blockquote>
+<p>and <span class="math inline">\(A\)</span> is invertible, then we can solve for <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x &amp; =A^{-1} b
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>If <span class="math inline">\(A\)</span> is not invertible, we can define instead a <em>pseudoinverse</em> <span class="math inline">\(A^{+}\)</span></p>
+</div>
+<div class="fragment">
+<p>Define <span class="math inline">\(A^{+}\)</span> in order to minimize the least squares error:</p>
+<p><span class="math display">\[
+\left\|\mathbf{A} \mathbf{A}^{+}-\mathbf{I}_{\mathbf{n}}\right\|_{2}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Then we can estimate <span class="math inline">\(x\)</span> as</p>
+<p><span class="math display">\[
+\begin{aligned}
+A x &amp; =b \\
+x &amp; \approx A^{+} b
+\end{aligned}
+\]</span></p>
+</div>
 </section>
 
-<section id="pseudoinverse" class="title-slide slide level2 center">
-<h2><em>pseudoinverse</em></h2>
-<p>We can simply note that the least squares solution we found earlier can be written in a simple way in terms of the SVD matrices.</p>
-<p><a href="https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49">Here</a> is a decent writeup.</p>
+<section id="finding-the-form-of-the-pseudoinverse" class="title-slide slide level2 center">
+<h2><em>Finding the form of the pseudoinverse</em></h2>
+<aside class="notes">
+<p>Remember the Normal equations:</p>
+<p><span class="math display">\[
+A^{T} A x=A^{T} b
+\]</span></p>
+<p>Now we do the SVD decomposition of <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+A=U S V^{T}
+\]</span></p>
+<p>Then we can write the Normal equations as</p>
+<p><span class="math display">\[
+V S^{T} U^{T} U S V^{T} x= V S^2 V^{T} x = V S^{T} U^{T} b
+\]</span></p>
+<p>so</p>
+<p><span class="math display">\[
+S^2 V^{T} x = S U^{T} b
+\]</span></p>
+<p>Now we define <span class="math inline">\(S^{+}\)</span> as the matrix with the reciprocals of the non-zero singular values on the diagonal, and zeros elsewhere. Then <span class="math inline">\(S S^{+}\)</span> has ones in place of all the singular values. So</p>
+<p><span class="math display">\[
+\begin{aligned}
+V^{T} x &amp;= S^+ S^+ S U^{T} b = S^+ U^{T} b \\
+x &amp;= V S^+ U^{T} b
+\end{aligned}
+\]</span></p>
+<p>Example: <span class="math display">\[
+\left[\begin{array}{ccc}
+-3 &amp; 0 &amp; 0 \\
+0 &amp; 4 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]^{+}=\left[\begin{array}{ccc}
+-1 / 3 &amp; 0 &amp; 0 \\
+0 &amp; 1 / 4 &amp; 0 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>Therefore, the pseudoinverse of <span class="math inline">\(A\)</span> is <span class="math inline">\(A^{+}=V S^+ U^{T}\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="example-1" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<aside class="notes">
+<p><span class="math display">\[
+\begin{aligned}
+&amp; A=\left[\begin{array}{ll}
+1 &amp; 1 \\
+1 &amp; 1
+\end{array}\right] \text { (singular, inverse does not exist) } \\
+&amp; A=U \Sigma V^{T}=\frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 &amp; 1 \\
+1 &amp; -1
+\end{array}\right]\left[\begin{array}{rr}
+2 &amp; 0 \\
+0 &amp; 0
+\end{array}\right] \frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 &amp; 1 \\
+1 &amp; -1
+\end{array}\right] \\
+&amp; A^{+}=V \Sigma^{+} U^{T}=\frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 &amp; 1 \\
+1 &amp; -1
+\end{array}\right]\left[\begin{array}{cc}
+1 / 2 &amp; 0 \\
+0 &amp; 0
+\end{array}\right] \frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 &amp; 1 \\
+1 &amp; -1
+\end{array}\right]=\frac{1}{4}\left[\begin{array}{ll}
+1 &amp; 1 \\
+1 &amp; 1
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+</section>
+<section>
+<section id="matrices-as-data" class="title-slide slide level1 center">
+<h1><em>Matrices as data</em></h1>
+
+</section>
+<section id="example-height-and-weight" class="title-slide slide level2 center">
+<h2><em>Example: Height and weight</em></h2>
+<p><span class="math inline">\(A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 &amp; -1.5 &amp; 0.1 &amp; -1.0 &amp; 2.1 &amp; -4.0 &amp; -2.0 &amp; 2.2 &amp; 0.2 &amp; 2.0 &amp; 1.5 &amp; -2.5 \\ 4.0 &amp; -0.9 &amp; 0.0 &amp; -1.0 &amp; 3.0 &amp; -5.0 &amp; -3.5 &amp; 2.6 &amp; 1.0 &amp; 3.5 &amp; 1.0 &amp; -4.7\end{array}\right]\)</span></p>
+<div class="fragment">
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&amp;width=1379&amp;top_left_y=49&amp;top_left_x=446" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&amp;width=1379&amp;top_left_y=49&amp;top_left_x=446"></a></p>
+</div>
+</section>
+
+<section id="covariance-matrix" class="title-slide slide level2 center">
+<h2><em>Covariance matrix</em></h2>
+<p>Covariance: <span class="math display">\[
+\begin{aligned}
+\sigma_{a b}^{2} &amp; =\operatorname{cov}(a, b)=\mathrm{E}[(a-\bar{a})(b-\bar{b})] \\
+\sigma_{a}^{2} &amp; =\operatorname{var}(a)=\operatorname{cov}(a, a)=\mathrm{E}\left[(a-\bar{a})^{2}\right]
+\end{aligned}
+\]</span></p>
+<div class="fragment">
+<p>Covariance matrix:</p>
+<p><span class="math display">\[
+\mathbf{\Sigma}=\left(\begin{array}{cccc}
+E\left[\left(x_{1}-\mu_{1}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[\left(x_{1}-\mu_{1}\right)\left(x_{2}-\mu_{2}\right)\right] &amp; \ldots &amp; E\left[\left(x_{1}-\mu_{1}\right)\left(x_{p}-\mu_{p}\right)\right] \\
+E\left[\left(x_{2}-\mu_{2}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[\left(x_{2}-\mu_{2}\right)\left(x_{2}-\mu_{2}\right)\right] &amp; \ldots &amp; E\left[\left(x_{2}-\mu_{2}\right)\left(x_{p}-\mu_{p}\right)\right] \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[\left(x_{p}-\mu_{p}\right)\left(x_{2}-\mu_{2}\right)\right] &amp; \ldots &amp; E\left[\left(x_{p}-\mu_{p}\right)\left(x_{p}-\mu_{p}\right)\right]
+\end{array}\right)
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\Sigma=\mathrm{E}\left[(X-\bar{X})(X-\bar{X})^{\mathrm{T}}\right]
+\]</span></p>
+<p>. . . <span class="math display">\[
+\Sigma=\frac{X X^{\mathrm{T}}}{n} \quad \text { (if } X \text { is already zero centered) }
+\]</span></p>
+</div>
+<div class="fragment">
+<p>For our dataset,</p>
+<p><span class="math display">\[
+\text { Sample covariance } S^{2}=\frac{A^{T} A}{(\mathrm{n}-1)}=\frac{1}{11}\left[\begin{array}{rr}
+53.46 &amp; 73.42 \\
+73.42 &amp; 107.16
+\end{array}\right]
+\]</span></p>
+</div>
 </section>
 
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<p>Here is what <span class="math inline">\(A\)</span> does to a vector <span class="math inline">\(\mathbf{x}\)</span>: first, <span class="math inline">\(V\)</span> expresses <span class="math inline">\(\mathbf{x}\)</span> in terms of the orthonormal basis of the column space of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\Sigma\)</span> scales the components of <span class="math inline">\(\mathbf{x}\)</span> according to the singular values. Finally, <span class="math inline">\(U^{T}\)</span> rotates the scaled components from the basis of the row space of <span class="math inline">\(A\)</span> to express them in terms of the standard basis.</p>
-<p>Remember <span class="math inline">\(A\)</span> will take a column vector <span class="math inline">\(x\)</span> from the row space of <span class="math inline">\(A\)</span> to the column space of <span class="math inline">\(A\)</span>. (Actually, first it will project it onto the row space, then it will transform it, and the product <span class="math inline">\(A\mathbf{x}\)</span> will be in the column space. The V is a basis for the whole space, but the first <span class="math inline">\(r\)</span> vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)</p>
-<p>The SVD is a way to express this transformation in terms of a simple scaling followed by a rotation.</p>
-<p>For the spectral decomposition, you express <span class="math inline">\(x\)</span> in terms of a particular basis that has a very simple action of the matrix – each element just gets multiplied by the eigenvalues. Then you just go back to the standard basis, using the inverse of the matrix of eigenvectors. (Since this is orthogonal, it’s just the transpose.)</p>
-<p>For the SVD, you first express <span class="math inline">\(x\)</span> in terms of the special basis where the action of the matrix is to multiply each element by the corresponding singular value. Then you express the result in terms of the standard basis. But because the row space and column space are not the same, you need two different bases for where you start and when you finish, and so you need two different matrices to go back to the standard basis.</p>
-<p>… We want to find vectors <span class="math inline">\(\mathbf{v}_1\)</span> and <span class="math inline">\(\mathbf{v}_2\)</span> in the row space <span class="math inline">\(\mathbb{R}^2, \mathbf{u}_1\)</span> and <span class="math inline">\(\mathbf{u}_2\)</span> in the column space <span class="math inline">\(\mathbb{R}^2\)</span>, and positive numbers <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span> so that the <span class="math inline">\(\mathbf{v}_i\)</span> are orthonormal, the <span class="math inline">\(\mathbf{u}_i\)</span> are orthonormal, and the <span class="math inline">\(\sigma_i\)</span> are the scaling factors for which <span class="math inline">\(A \mathbf{v}_i=\sigma_i u_i\)</span>.</p>
-<p>From <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/d273f75ee2552a5c3c35ccab37e5edce_MIT18_06SCF11_Ses3.5sum.pdf">here</a></p>
+<p><span class="math inline">\(A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 &amp; -1.5 &amp; 0.1 &amp; -1.0 &amp; 2.1 &amp; -4.0 &amp; -2.0 &amp; 2.2 &amp; 0.2 &amp; 2.0 &amp; 1.5 &amp; -2.5 \\ 4.0 &amp; -0.9 &amp; 0.0 &amp; -1.0 &amp; 3.0 &amp; -5.0 &amp; -3.5 &amp; 2.6 &amp; 1.0 &amp; 3.5 &amp; 1.0 &amp; -4.7\end{array}\right]\)</span></p>
+</section>
+
+<section id="plotting" class="title-slide slide level2 center">
+<h2><em>Plotting</em></h2>
+<div id="6e9cbaa4" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture3_files/figure-revealjs/cell-2-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="ch5lecture3_files/figure-revealjs/cell-2-output-1.png" width="792" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The columns of the V matrix:</p>
+<div id="75963948" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture3_files/figure-revealjs/cell-3-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="ch5lecture3_files/figure-revealjs/cell-3-output-1.png" width="792" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="section-5" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The components of the data matrix</p>
+<div id="1deec377" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture3_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="ch5lecture3_files/figure-revealjs/cell-4-output-1.png" width="792" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="the-columns-of-the-u-matrix" class="title-slide slide level2 center">
+<h2><em>The columns of the U matrix</em></h2>
+<div id="fc451a90" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture3_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="ch5lecture3_files/figure-revealjs/cell-5-output-1.png" width="810" height="430"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="what-if-we-had-different-orthogonal-matrix-for-v-that-wasnt-eigenvectors-of-the-covariance-matrix" class="title-slide slide level2 center">
+<h2><em>What if we had different orthogonal matrix for V, that wasn’t eigenvectors of the covariance matrix?</em></h2>
+<div id="7ad1b596" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[4.86       6.67454545]
+ [6.67454545 9.74181818]]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture3_files/figure-revealjs/cell-6-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="ch5lecture3_files/figure-revealjs/cell-6-output-2.png" width="810" height="429"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The columns of the U matrix are no longer orthogonal.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1081,7 +1366,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

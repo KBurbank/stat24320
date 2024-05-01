@@ -630,3 +630,12 @@ plt.show()
 
 The columns of the U matrix are no longer orthogonal.
 
+## 
+
+The U matrix as a heat plot
+```{python}
+# make a heatmap of the Ud matrix
+plt.imshow(Ud, cmap='hot', interpolation='nearest')
+plt.colorbar()
+plt.show()
+```

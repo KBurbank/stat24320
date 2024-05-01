@@ -3484,5 +3484,12 @@
     "title": "Ch 5 Lecture 3",
     "section": "What if we had different orthogonal matrix for V, that wasn’t eigenvectors of the covariance matrix?",
     "text": "What if we had different orthogonal matrix for V, that wasn’t eigenvectors of the covariance matrix?\n\n\n[[4.86       6.67454545]\n [6.67454545 9.74181818]]\n\n\n\n\n\n\n\n\n\nThe columns of the U matrix are no longer orthogonal."
+  },
+  {
+    "objectID": "lectures/ch5lecture3.html#section-6",
+    "href": "lectures/ch5lecture3.html#section-6",
+    "title": "Ch 5 Lecture 3",
+    "section": "",
+    "text": "The U matrix as a heat plot"
   }
 ]

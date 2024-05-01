@@ -19,6 +19,10 @@ format:
 
 ## Thinking again about matrix diagonalization
 
+::: aside
+Many parts of this inspired by [this blog post](https://jonathan-hui.medium.com/machine-learning-singular-value-decomposition-svd-principal-component-analysis-pca-1d45e885e491)
+:::
+
 ::: notes
 If $A$ is a (non-defective) $n \times n$ square matrix, 
 

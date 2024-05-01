@@ -120,15 +120,6 @@ $$
 
 where
 
-$$
-\begin{tabular}{ | c | c | c | }
-  \hline
-  symbol & value & unit \\ \hline            
-  $z Na$ & 11 & - \\ \hline      
-  $z F$ & 9 & - \\ \hline      
-  $Emax Na$ & 0.545 & $[MeV]$ \\ \hline
-\end{tabular}
-$$
 
 
 
@@ -263,6 +254,7 @@ Apply $A V=U S$,
 
 ![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&width=770&top_left_y=1212&top_left_x=686)
 
+##
 $$
 \begin{aligned}
 & =\left(\begin{array}{c}

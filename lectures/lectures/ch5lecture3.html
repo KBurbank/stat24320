@@ -457,15 +457,6 @@
 A=U S V^{T}
 \]</span></p>
 <p>where</p>
-<p><span class="math display">\[
-\begin{tabular}{ | c | c | c | }
-  \hline
-  symbol &amp; value &amp; unit \\ \hline            
-  $z Na$ &amp; 11 &amp; - \\ \hline      
-  $z F$ &amp; 9 &amp; - \\ \hline      
-  $Emax Na$ &amp; 0.545 &amp; $[MeV]$ \\ \hline
-\end{tabular}
-\]</span></p>
 $$
 <span class="math display">\[\begin{array}{lccc}
 &amp; &amp; &amp; U &amp; V
@@ -585,6 +576,10 @@ A b_{1} &amp; A b_{2} &amp; \ldots &amp; A b_{n}
 <p>Apply <span class="math inline">\(A V=U S\)</span>,</p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282"></a></p>
 <p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686"></a></p>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p><span class="math display">\[
 \begin{aligned}
 &amp; =\left(\begin{array}{c}
@@ -634,7 +629,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 \]</span></p>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Start with Figure 5.12.1 from Meyer.</p>
 <p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
@@ -654,7 +649,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 <p><a href="https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49">Here</a> is a decent writeup.</p>
 </section>
 
-<section id="section-3" class="title-slide slide level2 center">
+<section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Here is what <span class="math inline">\(A\)</span> does to a vector <span class="math inline">\(\mathbf{x}\)</span>: first, <span class="math inline">\(V\)</span> expresses <span class="math inline">\(\mathbf{x}\)</span> in terms of the orthonormal basis of the column space of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\Sigma\)</span> scales the components of <span class="math inline">\(\mathbf{x}\)</span> according to the singular values. Finally, <span class="math inline">\(U^{T}\)</span> rotates the scaled components from the basis of the row space of <span class="math inline">\(A\)</span> to express them in terms of the standard basis.</p>
 <p>Remember <span class="math inline">\(A\)</span> will take a column vector <span class="math inline">\(x\)</span> from the row space of <span class="math inline">\(A\)</span> to the column space of <span class="math inline">\(A\)</span>. (Actually, first it will project it onto the row space, then it will transform it, and the product <span class="math inline">\(A\mathbf{x}\)</span> will be in the column space. The V is a basis for the whole space, but the first <span class="math inline">\(r\)</span> vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)</p>
@@ -1086,7 +1081,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

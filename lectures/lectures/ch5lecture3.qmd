@@ -238,7 +238,6 @@ $$
 
 ## Reformulating SVD
 
-::: notes
 Since matrix $V$ is orthogonal, $V^{I} V$ equals $I$. We can rewrite the SVD equation as:
 
 $$
@@ -320,7 +319,7 @@ $$
 A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 $$
 
-:::
+##
 
 
 

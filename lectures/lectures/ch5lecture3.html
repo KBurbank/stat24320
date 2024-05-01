@@ -568,7 +568,6 @@ A=U S V^{T}=\left(\begin{array}{cc}
 
 <section id="reformulating-svd" class="title-slide slide level2 center">
 <h2><em>Reformulating SVD</em></h2>
-<aside class="notes">
 <p>Since matrix <span class="math inline">\(V\)</span> is orthogonal, <span class="math inline">\(V^{I} V\)</span> equals <span class="math inline">\(I\)</span>. We can rewrite the SVD equation as:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -633,17 +632,10 @@ u_{n} \\
 <p><span class="math display">\[
 A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 \]</span></p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>Start with Figure 5.12.1 from Meyer.</p>
 <p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
 <p>Where does the covariance matrix come in? This explanation <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a> the one that starts “I can give you an explanation”.</p>
@@ -662,7 +654,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
 <p><a href="https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49">Here</a> is a decent writeup.</p>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Here is what <span class="math inline">\(A\)</span> does to a vector <span class="math inline">\(\mathbf{x}\)</span>: first, <span class="math inline">\(V\)</span> expresses <span class="math inline">\(\mathbf{x}\)</span> in terms of the orthonormal basis of the column space of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\Sigma\)</span> scales the components of <span class="math inline">\(\mathbf{x}\)</span> according to the singular values. Finally, <span class="math inline">\(U^{T}\)</span> rotates the scaled components from the basis of the row space of <span class="math inline">\(A\)</span> to express them in terms of the standard basis.</p>
 <p>Remember <span class="math inline">\(A\)</span> will take a column vector <span class="math inline">\(x\)</span> from the row space of <span class="math inline">\(A\)</span> to the column space of <span class="math inline">\(A\)</span>. (Actually, first it will project it onto the row space, then it will transform it, and the product <span class="math inline">\(A\mathbf{x}\)</span> will be in the column space. The V is a basis for the whole space, but the first <span class="math inline">\(r\)</span> vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)</p>
@@ -1094,7 +1086,7 @@ A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","loop":false,"selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

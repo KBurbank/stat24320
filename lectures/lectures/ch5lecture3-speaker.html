@@ -13,7 +13,10 @@
 <script src="../../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Ch 5 Lecture 3</title>
@@ -453,26 +456,37 @@
 <p><span class="math display">\[
 A=U S V^{T}
 \]</span></p>
-<p>where <span class="math display">\[
-\begin{aligned}
-&amp; U \quad V \\
-&amp; S \\
-&amp; \left(\begin{array}{ccc}
-\mid &amp; &amp; \mid \\
-\boldsymbol{u}_{1} &amp; \cdots &amp; \boldsymbol{u}_{m} \\
-\mid &amp; &amp; \mid
-\end{array}\right)\left(\begin{array}{ccc}
-\mid &amp; &amp; \mid \\
-\boldsymbol{v}_{1} &amp; \cdots &amp; \boldsymbol{v}_{n} \\
-\mid &amp; &amp; \mid
-\end{array}\right)\left(\begin{array}{cccc}
-\sqrt{1} &amp; &amp; &amp; \\
-&amp; \sqrt{x_{2}} &amp; \cdots &amp; \\
-&amp; &amp; \sqrt{x_{x}} &amp; \\
-&amp; &amp; &amp; 0
-\end{array}\right)
-\end{aligned}
+<p>where</p>
+<p><span class="math display">\[
+\begin{tabular}{ | c | c | c | }
+  \hline
+  symbol &amp; value &amp; unit \\ \hline            
+  $z Na$ &amp; 11 &amp; - \\ \hline      
+  $z F$ &amp; 9 &amp; - \\ \hline      
+  $Emax Na$ &amp; 0.545 &amp; $[MeV]$ \\ \hline
+\end{tabular}
 \]</span></p>
+$$
+<span class="math display">\[\begin{array}{lccc}
+&amp; &amp; &amp; U &amp; V
+&amp; S \\
+&amp; &amp; &amp;\left(\begin{array}{ccc}
+\mid &amp; &amp; \mid \\
+\mathbf{u}_{1} &amp; \cdots &amp; \mathbf{u}_{m} \\
+\mid &amp; &amp; \mid
+\end{array}\right) &amp;\left(\begin{array}{ccc}
+\mid &amp; &amp; \mid \\
+\mathbf{v}_{1} &amp; \cdots &amp; \mathbf{v}_{n} \\
+\mid &amp; &amp; \mid
+\end{array}\right) &amp;\left(\begin{array}{cccc}
+\sigma_1 &amp; &amp; &amp; \\
+&amp; \sigma_2 &amp; \\  &amp; &amp; \ddots &amp; \\
+&amp; &amp; &amp;  \sigma_r &amp; \\ &amp; &amp; &amp; &amp; \ddots \\ &amp; &amp; &amp; &amp; &amp; 0
+
+\end{array}\right)\\
+\text{eigenvectors of} &amp; &amp; &amp; A A^{T}  &amp; A^{T} A \\
+\end{array}\]</span>
+<p>$$</p>
 <p>eigenvectors of <span class="math inline">\(\mathrm{AA}^{\mathrm{T}}\)</span></p>
 <p><span class="math inline">\(\mathrm{A}^{\mathrm{T}} \mathrm{A}\)</span></p>
 </section>
@@ -552,8 +566,84 @@ A=U S V^{T}=\left(\begin{array}{cc}
 \]</span></p>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="reformulating-svd" class="title-slide slide level2 center">
+<h2><em>Reformulating SVD</em></h2>
+<aside class="notes">
+<p>Since matrix <span class="math inline">\(V\)</span> is orthogonal, <span class="math inline">\(V^{I} V\)</span> equals <span class="math inline">\(I\)</span>. We can rewrite the SVD equation as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; A=U S V^{T} \\
+&amp; A V=U S
+\end{aligned}
+\]</span></p>
+<p>This equation establishes an important relationship between <span class="math inline">\(u_{i}\)</span> and <span class="math inline">\(v_{i}\)</span>.</p>
+<p>Recall</p>
+<p><span class="math display">\[
+A B=\left[\begin{array}{llll}
+A b_{1} &amp; A b_{2} &amp; \ldots &amp; A b_{n}
+\end{array}\right]
+\]</span></p>
+<p>Apply <span class="math inline">\(A V=U S\)</span>,</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&amp;width=1501&amp;top_left_y=867&amp;top_left_x=282"></a></p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&amp;width=770&amp;top_left_y=1212&amp;top_left_x=686"></a></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; =\left(\begin{array}{c}
+u_{11} \\
+\vdots \\
+u_{1 m}
+\end{array}\right) \sigma_{1} \\
+&amp; A v_{1}=\sigma_{1} u_{1}
+\end{aligned}
+\]</span></p>
+<p>This can be generalized as</p>
+<p><span class="math display">\[
+A v_{i}=\sigma_{i} u_{i}
+\]</span></p>
+<p>Recall,</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-11.jpg?height=207&amp;width=841&amp;top_left_y=54&amp;top_left_x=653" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-11.jpg?height=207&amp;width=841&amp;top_left_y=54&amp;top_left_x=653"></a></p>
+<p>and</p>
+<p><span class="math display">\[
+\left(\begin{array}{ccc}
+\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array} &amp; \ldots &amp;
+\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}
+\end{array}\right)\left(\begin{array}{c}
+-v_{l}- \\
+\vdots \\
+-v_{n}-
+\end{array}\right)=\left(\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array}\right)\left(-v_{l} \textemdash\right)+\ldots+\left(\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}\right)\left(-v_{n} \textemdash\right)
+\]</span></p>
+<p>The SVD decomposition can be recognized as a series of outer products of <span class="math inline">\(u_{i}\)</span> and <span class="math inline">\(v_{i}\)</span>.</p>
+<p><span class="math display">\[
+A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p>Start with Figure 5.12.1 from Meyer.</p>
 <p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
 <p>Where does the covariance matrix come in? This explanation <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a> the one that starts “I can give you an explanation”.</p>
@@ -572,7 +662,7 @@ A=U S V^{T}=\left(\begin{array}{cc}
 <p><a href="https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49">Here</a> is a decent writeup.</p>
 </section>
 
-<section id="section-3" class="title-slide slide level2 center">
+<section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Here is what <span class="math inline">\(A\)</span> does to a vector <span class="math inline">\(\mathbf{x}\)</span>: first, <span class="math inline">\(V\)</span> expresses <span class="math inline">\(\mathbf{x}\)</span> in terms of the orthonormal basis of the column space of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\Sigma\)</span> scales the components of <span class="math inline">\(\mathbf{x}\)</span> according to the singular values. Finally, <span class="math inline">\(U^{T}\)</span> rotates the scaled components from the basis of the row space of <span class="math inline">\(A\)</span> to express them in terms of the standard basis.</p>
 <p>Remember <span class="math inline">\(A\)</span> will take a column vector <span class="math inline">\(x\)</span> from the row space of <span class="math inline">\(A\)</span> to the column space of <span class="math inline">\(A\)</span>. (Actually, first it will project it onto the row space, then it will transform it, and the product <span class="math inline">\(A\mathbf{x}\)</span> will be in the column space. The V is a basis for the whole space, but the first <span class="math inline">\(r\)</span> vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)</p>
@@ -1004,6 +1094,31 @@ A=U S V^{T}=\left(\begin{array}{cc}
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

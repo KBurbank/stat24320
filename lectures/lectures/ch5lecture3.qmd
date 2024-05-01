@@ -119,26 +119,41 @@ A=U S V^{T}
 $$
 
 where
+
 $$
-\begin{aligned}
-& U \quad V \\
+\begin{tabular}{ | c | c | c | }
+  \hline
+  symbol & value & unit \\ \hline            
+  $z Na$ & 11 & - \\ \hline      
+  $z F$ & 9 & - \\ \hline      
+  $Emax Na$ & 0.545 & $[MeV]$ \\ \hline
+\end{tabular}
+$$
+
+
+
+$$
+\begin{array}{lccc}
+ & & & U & V 
 & S \\
-& \left(\begin{array}{ccc}
+& & &\left(\begin{array}{ccc}
 \mid & & \mid \\
-\boldsymbol{u}_{1} & \cdots & \boldsymbol{u}_{m} \\
+\mathbf{u}_{1} & \cdots & \mathbf{u}_{m} \\
 \mid & & \mid
-\end{array}\right)\left(\begin{array}{ccc}
+\end{array}\right) &\left(\begin{array}{ccc}
 \mid & & \mid \\
-\boldsymbol{v}_{1} & \cdots & \boldsymbol{v}_{n} \\
+\mathbf{v}_{1} & \cdots & \mathbf{v}_{n} \\
 \mid & & \mid
-\end{array}\right)\left(\begin{array}{cccc}
-\sqrt{1} & & & \\
-& \sqrt{x_{2}} & \cdots & \\
-& & \sqrt{x_{x}} & \\
-& & & 0
-\end{array}\right)
-\end{aligned}
+\end{array}\right) &\left(\begin{array}{cccc}
+\sigma_1 & & & \\
+& \sigma_2 & \\  & & \ddots & \\
+& & &  \sigma_r & \\ & & & & \ddots \\ & & & & & 0
+
+\end{array}\right)\\
+\text{eigenvectors of} & & & A A^{T}  & A^{T} A \\
+\end{array}
 $$
+
 
 eigenvectors of $\mathrm{AA}^{\mathrm{T}}$
 
@@ -221,7 +236,91 @@ A=U S V^{T}=\left(\begin{array}{cc}
 \end{array}\right)
 $$
 
-##
+## Reformulating SVD
+
+::: notes
+Since matrix $V$ is orthogonal, $V^{I} V$ equals $I$. We can rewrite the SVD equation as:
+
+$$
+\begin{aligned}
+& A=U S V^{T} \\
+& A V=U S
+\end{aligned}
+$$
+
+This equation establishes an important relationship between $u_{i}$ and $v_{i}$.
+
+Recall
+
+$$
+A B=\left[\begin{array}{llll}
+A b_{1} & A b_{2} & \ldots & A b_{n}
+\end{array}\right]
+$$
+
+Apply $A V=U S$,
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&width=1501&top_left_y=867&top_left_x=282)
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&width=770&top_left_y=1212&top_left_x=686)
+
+$$
+\begin{aligned}
+& =\left(\begin{array}{c}
+u_{11} \\
+\vdots \\
+u_{1 m}
+\end{array}\right) \sigma_{1} \\
+& A v_{1}=\sigma_{1} u_{1}
+\end{aligned}
+$$
+
+This can be generalized as
+
+$$
+A v_{i}=\sigma_{i} u_{i}
+$$
+
+Recall,
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-11.jpg?height=207&width=841&top_left_y=54&top_left_x=653)
+
+and
+
+$$
+\left(\begin{array}{ccc}
+\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array} & \ldots &
+\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}
+\end{array}\right)\left(\begin{array}{c}
+-v_{l}- \\
+\vdots \\
+-v_{n}-
+\end{array}\right)=\left(\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array}\right)\left(-v_{l} \textemdash\right)+\ldots+\left(\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}\right)\left(-v_{n} \textemdash\right)
+$$
+
+The SVD decomposition can be recognized as a series of outer products of $u_{i}$ and $v_{i}$.
+
+$$
+A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
+$$
+
+:::
 
 
 

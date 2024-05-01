@@ -298,11 +298,11 @@ u_{n} \\
 \mid \\
 u_{1} \\
 \mid
-\end{array}\right)\left(-v_{l} \textemdash\right)+\ldots+\left(\begin{array}{c}
+\end{array}\right)\left(-v_{l} \textrm{---}\right)+\ldots+\left(\begin{array}{c}
 \mid \\
 u_{n} \\
 \mid
-\end{array}\right)\left(-v_{n} \textemdash\right)
+\end{array}\right)\left(-v_{n} \textrm{---}\right)
 $$
 
 The SVD decomposition can be recognized as a series of outer products of $u_{i}$ and $v_{i}$.

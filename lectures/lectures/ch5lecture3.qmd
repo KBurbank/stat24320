@@ -113,6 +113,12 @@ Note also that we can find $U$ as the eigenvectors of $A A^{T}$ and $V$ as the e
 
 ## Recap
 
+
+$$
+A=U S V^{T}
+$$
+
+where
 $$
 \begin{aligned}
 & U \quad V \\

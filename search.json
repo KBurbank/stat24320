@@ -3224,7 +3224,7 @@
     "href": "lectures/lectures/ch5lecture3.html#recap",
     "title": "Ch 5 Lecture 3",
     "section": "Recap",
-    "text": "Recap\n\\[\nA=U S V^{T}\n\\]\nwhere\n$$\n\\[\\begin{array}{lccc}\n& & & U & V\n& S \\\\\n& & &\\left(\\begin{array}{ccc}\n\\mid & & \\mid \\\\\n\\mathbf{u}_{1} & \\cdots & \\mathbf{u}_{m} \\\\\n\\mid & & \\mid\n\\end{array}\\right) &\\left(\\begin{array}{ccc}\n\\mid & & \\mid \\\\\n\\mathbf{v}_{1} & \\cdots & \\mathbf{v}_{n} \\\\\n\\mid & & \\mid\n\\end{array}\\right) &\\left(\\begin{array}{cccc}\n\\sigma_1 & & & \\\\\n& \\sigma_2 & \\\\  & & \\ddots & \\\\\n& & &  \\sigma_r & \\\\ & & & & \\ddots \\\\ & & & & & 0\n\n\\end{array}\\right)\\\\\n\\text{eigenvectors of} & & & A A^{T}  & A^{T} A \\\\\n\\end{array}\\]\n$$\neigenvectors of \\(\\mathrm{AA}^{\\mathrm{T}}\\)\n\\(\\mathrm{A}^{\\mathrm{T}} \\mathrm{A}\\)"
+    "text": "Recap\n\\[\nA=U S V^{T}\n\\]\nwhere\n$$\n\\[\\begin{array}{lccc}\n& & & U & V\n& S \\\\\n& & &\\left(\\begin{array}{ccc}\n\\mid & & \\mid \\\\\n\\mathbf{u}_{1} & \\cdots & \\mathbf{u}_{m} \\\\\n\\mid & & \\mid\n\\end{array}\\right) &\\left(\\begin{array}{ccc}\n\\mid & & \\mid \\\\\n\\mathbf{v}_{1} & \\cdots & \\mathbf{v}_{n} \\\\\n\\mid & & \\mid\n\\end{array}\\right) &\\left(\\begin{array}{cccc}\n\\sigma_1 & & & \\\\\n& \\sigma_2 & \\\\  & & \\ddots & \\\\\n& & &  \\sigma_r & \\\\ & & & & \\ddots \\\\ & & & & & 0\n\n\\end{array}\\right)\\\\\n\\text{eigenvectors of} & & & A A^{T}  & A^{T} A \\\\\n\\end{array}\\]\n$$"
   },
   {
     "objectID": "lectures/lectures/ch5lecture3.html#example",

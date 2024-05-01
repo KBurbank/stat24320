@@ -146,9 +146,6 @@ $$
 $$
 
 
-eigenvectors of $\mathrm{AA}^{\mathrm{T}}$
-
-$\mathrm{A}^{\mathrm{T}} \mathrm{A}$
 
 
 ## Example

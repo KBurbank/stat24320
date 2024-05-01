@@ -480,8 +480,6 @@ $$
 \text{eigenvectors of} &amp; &amp; &amp; A A^{T}  &amp; A^{T} A \\
 \end{array}\]</span>
 <p>$$</p>
-<p>eigenvectors of <span class="math inline">\(\mathrm{AA}^{\mathrm{T}}\)</span></p>
-<p><span class="math inline">\(\mathrm{A}^{\mathrm{T}} \mathrm{A}\)</span></p>
 </section>
 
 <section id="example" class="title-slide slide level2 center">
@@ -879,7 +877,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
 
 <section id="plotting" class="title-slide slide level2 center">
 <h2><em>Plotting</em></h2>
-<div id="6e9cbaa4" class="cell" data-execution_count="1">
+<div id="6e9cbaa4" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -889,7 +887,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
 </div>
 </div>
 <p>The columns of the V matrix:</p>
-<div id="75963948" class="cell" data-execution_count="2">
+<div id="75963948" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -903,7 +901,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The components of the data matrix</p>
-<div id="1deec377" class="cell" data-execution_count="3">
+<div id="1deec377" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -916,7 +914,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
 
 <section id="the-columns-of-the-u-matrix" class="title-slide slide level2 center">
 <h2><em>The columns of the U matrix</em></h2>
-<div id="fc451a90" class="cell" data-execution_count="4">
+<div id="fc451a90" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -929,7 +927,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
 
 <section id="what-if-we-had-different-orthogonal-matrix-for-v-that-wasnt-eigenvectors-of-the-covariance-matrix" class="title-slide slide level2 center">
 <h2><em>What if we had different orthogonal matrix for V, that wasn’t eigenvectors of the covariance matrix?</em></h2>
-<div id="7ad1b596" class="cell" data-execution_count="5">
+<div id="7ad1b596" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>[[4.86       6.67454545]
  [6.67454545 9.74181818]]</code></pre>
@@ -1366,7 +1364,7 @@ E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] &amp; E\left[
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

@@ -535,7 +535,7 @@ Proof:
 ::: notes
 - Assume $m \geq n$ (the case $m<n$ is similar).
 - Let $B=A^{T} A$ and let $\lambda_{1} \geq \lambda_{2} \geq \cdots \geq \lambda_{n}$ be the eigenvalues of $B$.
-- Find the basis of eigenvectoers of $B$: $B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n$
+- Find the basis of eigenvectors of $B$: $B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n$
 - Let $V=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]$. Then $V$ is an orthogonal $n \times n$ matrix.
 -  We may assume for some index $r$ that $\sigma_{r+1}, \sigma_{r+2}, \ldots, \sigma_{n}$ are zero, while $\sigma_{r} \neq 0$.
 -  Next set $\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r$. 

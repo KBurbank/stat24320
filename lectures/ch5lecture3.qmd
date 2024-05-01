@@ -1,0 +1,632 @@
+---
+title: Ch 5 Lecture 3
+lecture_day: 12 
+readings: ""
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+# Intuition about SVD
+
+## Thinking again about matrix diagonalization
+
+::: notes
+If $A$ is a (non-defective) $n \times n$ square matrix, 
+
+- then we can write it as $A = PDP^{T}$ where $D$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
+
+- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will also be a column vector of length $n$.
+
+- What's the intuition behind the diagonalization?
+
+- The matrix $P^{T}$ is a change of basis matrix. It takes a vector $\mathbf{x}$ expressed in the standard basis and expresses it in terms of the basis of eigenvectors of $A$. 
+  - This works because $P$ is orthogonal.
+
+- The matrix $D$ is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If $A$ is not full rank, then $D$ will have some zeros on the diagonal.)
+
+- The matrix $P$ is the inverse of $P^{T}$ (because $P$ is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.
+  
+- This all works because $P$ is orthogonal and there's a correspondence between the rows of $P^{T}$ and the columns of $P$.
+
+
+  - This inverse projection is what we want because the columns of $P$ are *eigenvectors* of $A$. 
+  - We can see this most easily by imagining that $\mathbf{x}$ is a multiple of one of the eigenvectors.
+  - $P\mathbf{x}$ will give the coordinates of $\mathbf{x}$ in the basis of eigenvectors. For instance, if $P\mathbf{x}=\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}$, we know that $\mathbf{x}$ equals the first eigenvector.
+    - After multiplication by the diagonal matrix, we'll just have $\begin{bmatrix} \lambda_{1} \\0\\ \vdots \\ 0\end{bmatrix}$.
+  - Then $P^{T}$ will take this back to a multiple of the first eigenvector, back in the standard basis.
+  - That's what we want *because* we are supposing that $\mathbf{x}$ is a multiple of the first eigenvector.
+  - The same logic will hold when $\mathbf{x}$ is weighted sum of the eigenvectors.
+    - Because $P$ is orthonormal, $P\mathbf{x}$ will give the weights of the eigenvectors in the basis of eigenvectors.
+  -  $P^{T}$ will take it back to the weighted sum of the eigenvectors in the standard basis, with the new weights being determined by the original weights and the eigenvalues.
+-  This will all works when $U$ and $V$ are orthogonal and there's a correspondence between the rows of $V^{T}$ and the columns of $U$.
+  
+  
+
+When we have some zeros on the diagonal, multiplying by $D$ is a *projection* of $\mathbf{x}$ onto the row space of $A$. We are removing the components of $\mathbf{x}$ that are in the null space of $A$.
+:::
+
+## The same logic, applied to a general matrix
+
+::: notes
+If $A$ is a  <span style="color:red">$m \times n$</span> square matrix, 
+
+- then we can write it as <span style="color:red">$A = U\Sigma V^{T}$</span> where $\Sigma$ is a diagonal matrix and $P$ is an orthogonal matrix of eigenvectors.
+
+- We can find the product of $A$ with a vector $\mathbf{x}$ where $\mathbf{x}$ is a column vector of length $n$. This product will now be a column vector of length <span style="color:red">$m$</span>.
+
+- The matrix $V^{T}$ is a change of basis matrix. It takes a vector $\mathbf{x}$ expressed in the standard basis and expresses it in terms of the basis of <span style="color:red">*right singular vectors*</span> of $A$.
+
+- The matrix <span style="color:red">$\Sigma$</span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red">$A$ is not square or $A$ is not full rank</span>, then $\Sigma$ will have some zeros on the diagonal.)
+
+- The matrix $U$ <span style="color:red">is *not* generally</span> the inverse of $V^{T}$. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of $\mathbb{R}^m$</span>.
+
+   -  Specifically, the first column of $U$ must be the correct vector to express the first row of $V^{T}$ in $\mathbbb{R}^m$
+- 
+   -  that is, we need the first column of $U$ to be $A\mathbf{v}_1$ (divided by the scaling factor).
+   - This is because $\Sigma V^{T}\mathbf{v}_1=\sigma_1\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}$, so that $U\Sigma V^{T}\mathbf{v}_1=\sigma_1 U \begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}=\sigma_1\mathbf{u_1}$.
+   - So we'd better have $\mathbf{u_1}=A\mathbf{v}_1/\sigma_1$.
+ :::
+
+ ## SVD
+
+ ::: notes
+- Assume $m \geq n$ (the case $m<n$ is similar).
+- Let $B=A^{T} A$ and let $\lambda_{1} \geq \lambda_{2} \geq \cdots \geq \lambda_{n}$ be the eigenvalues of $B$.
+- Find the basis of eigenvectors of $B$: $B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n$
+- Let $V=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]$. Then $V$ is an orthogonal $n \times n$ matrix.
+-  We may assume for some index $r$ that $\sigma_{r+1}, \sigma_{r+2}, \ldots, \sigma_{n}$ are zero, while $\sigma_{r} \neq 0$.
+-  Next set $\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r$. 
+-  In other words, $\mathbf{u}_{j}$ is the vector that you get when you transform $\mathbf{v}_{j}$ by $A$ and then normalize it by the singular value $\sigma_{j}$.
+-  These are orthonormal vectors in $\mathbb{R}^{m}$ since
+
+$$
+\mathbf{u}_{j}^{T} \mathbf{u}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} A^{T} A \mathbf{v}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} B \mathbf{v}_{k}=\frac{\sigma_{k}^{2}}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} \mathbf{v}_{k}= \begin{cases}0, & \text { if } j \neq k \\ 1, & \text { if } j=k\end{cases}
+$$
+
+- Now expand this set to an orthonormal basis $\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}$ of $\mathbb{R}^{m}$. This is possible by Theorem 4.7 in Section 4.3. Set $U=\left[\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}\right]$. This matrix is orthogonal. We calculate that if $k>r$, then $\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=0$ since $A \mathbf{v}_{k}=\mathbf{0}$, and if $k<r$, then
+
+$$
+\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=\sigma_{k} \mathbf{u}_{j}^{T} \mathbf{u}_{k}=\left\{\begin{array}{l}
+0, \text { if } j \neq k, \\
+\sigma_{k}, \text { if } j=k
+\end{array}\right.
+$$
+
+
+
+$U^{T} A V=\left[\mathbf{u}_{j}^{T} A \mathbf{v}_{k}\right]=\Sigma$, which is the desired SVD.
+
+And because $U$ and $V$ are orthonormal, their inverses are their transposes, so $A=U \Sigma V^{T}$.
+
+Note also that we can find $U$ as the eigenvectors of $A A^{T}$ and $V$ as the eigenvectors of $A^{T} A$.
+
+:::
+
+## Recap
+
+
+$$
+A=U S V^{T}
+$$
+
+where
+
+
+
+
+$$
+\begin{array}{lccc}
+ & & & U & V 
+& S \\
+& & &\left(\begin{array}{ccc}
+\mid & & \mid \\
+\mathbf{u}_{1} & \cdots & \mathbf{u}_{m} \\
+\mid & & \mid
+\end{array}\right) &\left(\begin{array}{ccc}
+\mid & & \mid \\
+\mathbf{v}_{1} & \cdots & \mathbf{v}_{n} \\
+\mid & & \mid
+\end{array}\right) &\left(\begin{array}{cccc}
+\sigma_1 & & & \\
+& \sigma_2 & \\  & & \ddots & \\
+& & &  \sigma_r & \\ & & & & \ddots \\ & & & & & 0
+
+\end{array}\right)\\
+\text{eigenvectors of} & & & A A^{T}  & A^{T} A \\
+\end{array}
+$$
+
+
+
+
+## Example
+
+
+$$
+A=\left(\begin{array}{ccc}
+3 & 2 & 2 \\
+2 & 3 & -2
+\end{array}\right)
+$$
+
+. . .
+
+$$
+A A^{T}=\left(\begin{array}{cc}
+17 & 8 \\
+8 & 17
+\end{array}\right), \quad A^{T} A=\left(\begin{array}{ccc}
+13 & 12 & 2 \\
+12 & 13 & -2 \\
+2 & -2 & 8
+\end{array}\right)
+$$
+
+##
+
+
+$$
+\begin{array}{cc}
+A A^{T}=\left(\begin{array}{cc}
+17 & 8 \\
+8 & 17
+\end{array}\right) & A^{T} A=\left(\begin{array}{ccc}
+13 & 12 & 2 \\
+12 & 13 & -2 \\
+2 & -2 & 8
+\end{array}\right) \\
+\begin{array}{c}
+\text { eigenvalues: } \lambda_{1}=25, \lambda_{2}=9 \\
+\text { eigenvectors }
+\end{array} & \begin{array}{c}
+\text { eigenvalues: } \lambda_{1}=25, \lambda_{2}=9, \lambda_{3}=0 \\
+\text { eigenvectors }
+\end{array} \\
+u_{1}=\binom{1 / \sqrt{2}}{1 / \sqrt{2}} \quad u_{2}=\binom{1 / \sqrt{2}}{-1 / \sqrt{2}} & v_{1}=\left(\begin{array}{c}
+1 / \sqrt{2} \\
+1 / \sqrt{2} \\
+0
+\end{array}\right) \quad v_{2}=\left(\begin{array}{c}
+1 / \sqrt{18} \\
+-1 / \sqrt{18} \\
+4 / \sqrt{18}
+\end{array}\right) \quad v_{3}=\left(\begin{array}{c}
+2 / 3 \\
+-2 / 3 \\
+-1 / 3
+\end{array}\right)
+\end{array}
+$$
+
+##
+
+SVD decomposition of $A$:
+$$
+A=U S V^{T}=\left(\begin{array}{cc}
+1 / \sqrt{2} & 1 / \sqrt{2} \\
+1 / \sqrt{2} & -1 / \sqrt{2}
+\end{array}\right)\left(\begin{array}{ccc}
+5 & 0 & 0 \\
+0 & 3 & 0
+\end{array}\right)\left(\begin{array}{rrr}
+1 / \sqrt{2} & 1 / \sqrt{2} & 0 \\
+1 / \sqrt{18} & -1 / \sqrt{18} & 4 / \sqrt{18} \\
+2 / 3 & -2 / 3 & -1 / 3
+\end{array}\right)
+$$
+
+## Reformulating SVD
+::: notes
+Since matrix $V$ is orthogonal, $V^{I} V$ equals $I$. We can rewrite the SVD equation as:
+
+$$
+\begin{aligned}
+& A=U S V^{T} \\
+& A V=U S
+\end{aligned}
+$$
+
+This equation establishes an important relationship between $u_{i}$ and $v_{i}$.
+
+Recall
+
+$$
+A B=\left[\begin{array}{llll}
+A b_{1} & A b_{2} & \ldots & A b_{n}
+\end{array}\right]
+$$
+
+Apply $A V=U S$,
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=309&width=1501&top_left_y=867&top_left_x=282)
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-10.jpg?height=265&width=770&top_left_y=1212&top_left_x=686)
+:::
+
+##
+
+::: notes
+$$
+\begin{aligned}
+& =\left(\begin{array}{c}
+u_{11} \\
+\vdots \\
+u_{1 m}
+\end{array}\right) \sigma_{1} \\
+& A v_{1}=\sigma_{1} u_{1}
+\end{aligned}
+$$
+
+This can be generalized as
+
+$$
+A v_{i}=\sigma_{i} u_{i}
+$$
+
+Recall,
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-11.jpg?height=207&width=841&top_left_y=54&top_left_x=653)
+
+and
+
+$$
+\left(\begin{array}{ccc}
+\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array} & \ldots &
+\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}
+\end{array}\right)\left(\begin{array}{c}
+-v_{l}- \\
+\vdots \\
+-v_{n}-
+\end{array}\right)=\left(\begin{array}{c}
+\mid \\
+u_{1} \\
+\mid
+\end{array}\right)\left(-v_{l} \textrm{---}\right)+\ldots+\left(\begin{array}{c}
+\mid \\
+u_{n} \\
+\mid
+\end{array}\right)\left(-v_{n} \textrm{---}\right)
+$$
+
+The SVD decomposition can be recognized as a series of outer products of $u_{i}$ and $v_{i}$.
+
+$$
+A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
+$$
+:::
+
+
+## SVD as a sum of rank-one matrices
+
+$$
+A=\sigma_{l} u_{l} v_{l}^{T}+\ldots+\sigma_{r} u_{r} v_{r}^{T}
+$$
+
+## Back to our example
+
+$$
+A=\left(\begin{array}{ccc}
+3 & 2 & 2 \\
+2 & 3 & -2
+\end{array}\right)
+$$
+
+. . .
+
+Can decompose as
+
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-12.jpg?height=260&width=1545&top_left_y=46&top_left_x=260)
+
+. . .
+
+$=\left(\begin{array}{ccc}3 & 2 & 2 \\ 2 & 3 & -2\end{array}\right)$
+
+##
+
+# Uses of SVD
+
+## Moore-Penrose pseudoinverse
+
+If we have a linear system
+
+
+$$
+\begin{aligned}
+A x & =b \\
+\end{aligned}
+$$
+
+and $A$ is invertible, then we can solve for $x$:
+
+$$
+\begin{aligned}
+x & =A^{-1} b
+\end{aligned}
+$$
+
+. . .
+
+If $A$ is not invertible, we can define instead a *pseudoinverse* $A^{+}$
+
+. . .
+
+Define $A^{+}$ in order to minimize the least squares error:
+
+$$
+\left\|\mathbf{A} \mathbf{A}^{+}-\mathbf{I}_{\mathbf{n}}\right\|_{2}
+$$
+
+. . .
+
+Then we can estimate $x$ as
+
+$$
+\begin{aligned}
+A x & =b \\
+x & \approx A^{+} b
+\end{aligned}
+$$
+
+## Finding the form of the pseudoinverse
+
+::: notes
+Remember the Normal equations:
+
+$$
+A^{T} A x=A^{T} b
+$$
+
+Now we do the SVD decomposition of $A$:
+
+$$
+A=U S V^{T}
+$$
+
+Then we can write the Normal equations as
+
+$$
+V S^{T} U^{T} U S V^{T} x= V S^2 V^{T} x = V S^{T} U^{T} b
+$$
+
+so
+
+$$
+S^2 V^{T} x = S U^{T} b
+$$
+
+Now we define $S^{+}$ as the matrix with the reciprocals of the non-zero singular values on the diagonal, and zeros elsewhere. Then $S S^{+}$ has ones in place of all the singular values. So
+
+$$
+\begin{aligned}
+V^{T} x &= S^+ S^+ S U^{T} b = S^+ U^{T} b \\
+x &= V S^+ U^{T} b
+\end{aligned}
+$$
+
+Example:
+$$
+\left[\begin{array}{ccc}
+-3 & 0 & 0 \\
+0 & 4 & 0 \\
+0 & 0 & 0
+\end{array}\right]^{+}=\left[\begin{array}{ccc}
+-1 / 3 & 0 & 0 \\
+0 & 1 / 4 & 0 \\
+0 & 0 & 0
+\end{array}\right]
+$$
+
+
+
+Therefore, the pseudoinverse of $A$ is $A^{+}=V S^+ U^{T}$.
+
+:::
+
+## Example
+
+::: notes
+$$
+\begin{aligned}
+& A=\left[\begin{array}{ll}
+1 & 1 \\
+1 & 1
+\end{array}\right] \text { (singular, inverse does not exist) } \\
+& A=U \Sigma V^{T}=\frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 & 1 \\
+1 & -1
+\end{array}\right]\left[\begin{array}{rr}
+2 & 0 \\
+0 & 0
+\end{array}\right] \frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 & 1 \\
+1 & -1
+\end{array}\right] \\
+& A^{+}=V \Sigma^{+} U^{T}=\frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 & 1 \\
+1 & -1
+\end{array}\right]\left[\begin{array}{cc}
+1 / 2 & 0 \\
+0 & 0
+\end{array}\right] \frac{1}{\sqrt{2}}\left[\begin{array}{rr}
+1 & 1 \\
+1 & -1
+\end{array}\right]=\frac{1}{4}\left[\begin{array}{ll}
+1 & 1 \\
+1 & 1
+\end{array}\right]
+\end{aligned}
+$$
+
+:::
+
+# Matrices as data
+
+## Example: Height and weight
+
+$A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 & -1.5 & 0.1 & -1.0 & 2.1 & -4.0 & -2.0 & 2.2 & 0.2 & 2.0 & 1.5 & -2.5 \\ 4.0 & -0.9 & 0.0 & -1.0 & 3.0 & -5.0 & -3.5 & 2.6 & 1.0 & 3.5 & 1.0 & -4.7\end{array}\right]$
+
+. . .
+
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&width=1379&top_left_y=49&top_left_x=446)
+
+
+## Covariance matrix
+
+Covariance:
+$$
+\begin{aligned}
+\sigma_{a b}^{2} & =\operatorname{cov}(a, b)=\mathrm{E}[(a-\bar{a})(b-\bar{b})] \\
+\sigma_{a}^{2} & =\operatorname{var}(a)=\operatorname{cov}(a, a)=\mathrm{E}\left[(a-\bar{a})^{2}\right]
+\end{aligned}
+$$
+
+. . .
+
+Covariance matrix:
+
+$$
+\mathbf{\Sigma}=\left(\begin{array}{cccc}
+E\left[\left(x_{1}-\mu_{1}\right)\left(x_{1}-\mu_{1}\right)\right] & E\left[\left(x_{1}-\mu_{1}\right)\left(x_{2}-\mu_{2}\right)\right] & \ldots & E\left[\left(x_{1}-\mu_{1}\right)\left(x_{p}-\mu_{p}\right)\right] \\
+E\left[\left(x_{2}-\mu_{2}\right)\left(x_{1}-\mu_{1}\right)\right] & E\left[\left(x_{2}-\mu_{2}\right)\left(x_{2}-\mu_{2}\right)\right] & \ldots & E\left[\left(x_{2}-\mu_{2}\right)\left(x_{p}-\mu_{p}\right)\right] \\
+\vdots & \vdots & \ddots & \vdots \\
+E\left[\left(x_{p}-\mu_{p}\right)\left(x_{1}-\mu_{1}\right)\right] & E\left[\left(x_{p}-\mu_{p}\right)\left(x_{2}-\mu_{2}\right)\right] & \ldots & E\left[\left(x_{p}-\mu_{p}\right)\left(x_{p}-\mu_{p}\right)\right]
+\end{array}\right)
+$$
+
+. . .
+
+$$
+\Sigma=\mathrm{E}\left[(X-\bar{X})(X-\bar{X})^{\mathrm{T}}\right] 
+$$
+
+. . .
+$$
+\Sigma=\frac{X X^{\mathrm{T}}}{n} \quad \text { (if } X \text { is already zero centered) }
+$$
+
+. . .
+
+For our dataset,
+
+$$
+\text { Sample covariance } S^{2}=\frac{A^{T} A}{(\mathrm{n}-1)}=\frac{1}{11}\left[\begin{array}{rr}
+53.46 & 73.42 \\
+73.42 & 107.16
+\end{array}\right]
+$$
+
+
+
+
+##
+
+
+
+$A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 & -1.5 & 0.1 & -1.0 & 2.1 & -4.0 & -2.0 & 2.2 & 0.2 & 2.0 & 1.5 & -2.5 \\ 4.0 & -0.9 & 0.0 & -1.0 & 3.0 & -5.0 & -3.5 & 2.6 & 1.0 & 3.5 & 1.0 & -4.7\end{array}\right]$
+
+. . .
+
+
+## Plotting
+
+
+
+The columns of the V matrix:
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+data = np.array([[2.9, 4.0], [-1.5, -0.9], [0.1, 0.0], [-1.0, -1.0], [2.1, 3.0], [-4.0, -5.0], [-2.0, -3.5], [2.2, 2.6], [0.2, 1.0], [2.0, 3.5], [1.5, 1.0], [-2.5, -4.7]])
+Ud,Sd,Vd=np.linalg.svd(data)
+print(Vd)
+plt.clf()
+
+plt.scatter(data[:,0],data[:,1])
+plt.quiver(0,0,Vd.T[0,0]*Sd[0]/5,Vd.T[1,0]*Sd[0]/5,angles='xy',scale_units='xy',scale=1, color = 'red')
+plt.quiver(0,0,Vd.T[0,1],Vd.T[1,1],angles='xy',scale_units='xy',scale=1, color = 'blue')
+plt.axis('equal')
+plt.show()
+```
+
+Walk through why these vectors are actually the eigenvectors of the covariance matrix.
+
+::: notes
+Look at the covariance matrix:
+$$
+\text { Sample covariance } S^{2}=\frac{A^{T} A}{(\mathrm{n}-1)}=\frac{1}{11}\left[\begin{array}{rr}
+53.46 & 73.42 \\
+73.42 & 107.16
+\end{array}\right]
+$$
+
+Calculate the covariance matrix times the eigenvector, by hand. See why it comes out the same, because it captures the results of the covariance matrix.
+:::
+
+##
+
+The components of the data matrix
+```{python}
+#plt.scatter(data[:,0],data[:,1])
+plt.clf()
+component1 = np.outer(Ud[:,0],Sd[0]*Vd[0])
+component2 = np.outer(Ud[:,1],Sd[1]*Vd[1])
+plt.scatter(component1[:,0],component1[:,1])
+plt.scatter(component2[:,0],component2[:,1])
+combined = component1 + component2
+plt.scatter(combined[:,0],combined[:,1])
+plt.axis('equal')
+# add a legend
+plt.legend(["component 1", "component 2", "combined"])
+plt.show()
+```
+
+
+## The columns of the U matrix
+
+```{python}
+plt.scatter(Ud.T[0]*Sd[0],Ud.T[1]*Sd[1])
+plt.quiver(0,0,0,1,angles='xy',scale_units='xy',scale=1)
+plt.quiver(0,0,1,0,angles='xy',scale_units='xy',scale=1)
+plt.axis('equal')
+# give x label "column u1" and y label "column u2"
+plt.xlabel("column u1")
+plt.ylabel("column u2")
+
+plt.show()
+```
+
+## What if we had different orthogonal matrix for V, that wasn't eigenvectors of the covariance matrix?
+
+```{python}
+va=np.array([[1,0],[0,1]])
+ua=np.matmul(data,va)
+plt.scatter(ua[:,0],ua[:,1])
+print(np.cov(ua.T))
+plt.axis('equal')
+# give x label "column u1" and y label "column u2"
+plt.xlabel("column u1")
+plt.ylabel("column u2")
+
+plt.show()
+```
+
+The columns of the U matrix are no longer orthogonal.
+

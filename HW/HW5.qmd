@@ -194,11 +194,12 @@ for i in range(100):
 
 #
 
-Do this by hand.
+On this problem,you may use a computer to find eigensystems etc, but don't solve it using simulations and trial and error.
 
 A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are $50 \%$ and 75\%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years). 
 
 (a) Model this bird population as a discrete dynamical system and analyze the long-term change in the population -- give a percentage by which the population of group 1 changes from year to year.
+
 
 (b) Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50\% and 75\%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?
 

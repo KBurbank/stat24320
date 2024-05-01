@@ -355,20 +355,19 @@
 </section>
 <section id="thinking-again-about-matrix-diagonalization" class="title-slide slide level2 center">
 <h2><em>Thinking again about matrix diagonalization</em></h2>
+<aside class="notes">
 <p>If <span class="math inline">\(A\)</span> is a (non-defective) <span class="math inline">\(n \times n\)</span> square matrix,</p>
 <ul>
-<li class="fragment"><p>then we can write it as <span class="math inline">\(A = PDP^{T}\)</span> where <span class="math inline">\(D\)</span> is a diagonal matrix and <span class="math inline">\(P\)</span> is an orthogonal matrix of eigenvectors.</p></li>
-<li class="fragment"><p>We can find the product of <span class="math inline">\(A\)</span> with a vector <span class="math inline">\(\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is a column vector of length <span class="math inline">\(n\)</span>. This product will also be a column vector of length <span class="math inline">\(n\)</span>.</p></li>
-<li class="fragment"><p>What’s the intuition behind the diagonalization?</p></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(P^{T}\)</span> is a change of basis matrix. It takes a vector <span class="math inline">\(\mathbf{x}\)</span> expressed in the standard basis and expresses it in terms of the basis of eigenvectors of <span class="math inline">\(A\)</span>.</p>
+<li><p>then we can write it as <span class="math inline">\(A = PDP^{T}\)</span> where <span class="math inline">\(D\)</span> is a diagonal matrix and <span class="math inline">\(P\)</span> is an orthogonal matrix of eigenvectors.</p></li>
+<li><p>We can find the product of <span class="math inline">\(A\)</span> with a vector <span class="math inline">\(\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is a column vector of length <span class="math inline">\(n\)</span>. This product will also be a column vector of length <span class="math inline">\(n\)</span>.</p></li>
+<li><p>What’s the intuition behind the diagonalization?</p></li>
+<li><p>The matrix <span class="math inline">\(P^{T}\)</span> is a change of basis matrix. It takes a vector <span class="math inline">\(\mathbf{x}\)</span> expressed in the standard basis and expresses it in terms of the basis of eigenvectors of <span class="math inline">\(A\)</span>.</p>
 <ul>
-<li class="fragment">This works because <span class="math inline">\(P\)</span> is orthogonal.</li>
+<li>This works because <span class="math inline">\(P\)</span> is orthogonal.</li>
 </ul></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(D\)</span> is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If <span class="math inline">\(A\)</span> is not full rank, then <span class="math inline">\(D\)</span> will have some zeros on the diagonal.)</p></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(P\)</span> is the inverse of <span class="math inline">\(P^{T}\)</span> (because <span class="math inline">\(P\)</span> is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.</p></li>
-<li class="fragment"><p>This all works because <span class="math inline">\(P\)</span> is orthogonal and there’s a correspondence between the rows of <span class="math inline">\(P^{T}\)</span> and the columns of <span class="math inline">\(P\)</span>.</p></li>
-</ul>
-<aside class="notes">
+<li><p>The matrix <span class="math inline">\(D\)</span> is a scaling matrix. It scales the eigenvectors by the corresponding eigenvalues. (If <span class="math inline">\(A\)</span> is not full rank, then <span class="math inline">\(D\)</span> will have some zeros on the diagonal.)</p></li>
+<li><p>The matrix <span class="math inline">\(P\)</span> is the inverse of <span class="math inline">\(P^{T}\)</span> (because <span class="math inline">\(P\)</span> is orthogonal). It just takes the scaled eigenvectors and expresses them in terms of the standard basis.</p></li>
+<li><p>This all works because <span class="math inline">\(P\)</span> is orthogonal and there’s a correspondence between the rows of <span class="math inline">\(P^{T}\)</span> and the columns of <span class="math inline">\(P\)</span>.</p>
 <ul>
 <li>This inverse projection is what we want because the columns of <span class="math inline">\(P\)</span> are <em>eigenvectors</em> of <span class="math inline">\(A\)</span>.</li>
 <li>We can see this most easily by imagining that <span class="math inline">\(\mathbf{x}\)</span> is a multiple of one of the eigenvectors.</li>
@@ -383,7 +382,8 @@
 <li>Because <span class="math inline">\(P\)</span> is orthonormal, <span class="math inline">\(P\mathbf{x}\)</span> will give the weights of the eigenvectors in the basis of eigenvectors.</li>
 </ul></li>
 <li><span class="math inline">\(P^{T}\)</span> will take it back to the weighted sum of the eigenvectors in the standard basis, with the new weights being determined by the original weights and the eigenvalues.</li>
-<li>This will all works when <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthogonal and there’s a correspondence between the rows of <span class="math inline">\(V^{T}\)</span> and the columns of <span class="math inline">\(U\)</span>.</li>
+</ul></li>
+<li><p>This will all works when <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthogonal and there’s a correspondence between the rows of <span class="math inline">\(V^{T}\)</span> and the columns of <span class="math inline">\(U\)</span>.</p></li>
 </ul>
 <p>When we have some zeros on the diagonal, multiplying by <span class="math inline">\(D\)</span> is a <em>projection</em> of <span class="math inline">\(\mathbf{x}\)</span> onto the row space of <span class="math inline">\(A\)</span>. We are removing the components of <span class="math inline">\(\mathbf{x}\)</span> that are in the null space of <span class="math inline">\(A\)</span>.</p>
 <style type="text/css">
@@ -401,23 +401,156 @@
 
 <section id="the-same-logic-applied-to-a-general-matrix" class="title-slide slide level2 center">
 <h2><em>The same logic, applied to a general matrix</em></h2>
+<aside class="notes">
 <p>If <span class="math inline">\(A\)</span> is a <span style="color:red"><span class="math inline">\(m \times n\)</span></span> square matrix,</p>
 <ul>
-<li class="fragment"><p>then we can write it as <span style="color:red"><span class="math inline">\(A = U\Sigma V^{T}\)</span></span> where <span class="math inline">\(\Sigma\)</span> is a diagonal matrix and <span class="math inline">\(P\)</span> is an orthogonal matrix of eigenvectors.</p></li>
-<li class="fragment"><p>We can find the product of <span class="math inline">\(A\)</span> with a vector <span class="math inline">\(\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is a column vector of length <span class="math inline">\(n\)</span>. This product will now be a column vector of length <span style="color:red"><span class="math inline">\(m\)</span></span>.</p></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(V^{T}\)</span> is a change of basis matrix. It takes a vector <span class="math inline">\(\mathbf{x}\)</span> expressed in the standard basis and expresses it in terms of the basis of <span style="color:red"><em>right singular vectors</em></span> of <span class="math inline">\(A\)</span>.</p></li>
-<li class="fragment"><p>The matrix <span style="color:red"><span class="math inline">\(\Sigma\)</span></span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red"><span class="math inline">\(A\)</span> is not square or <span class="math inline">\(A\)</span> is not full rank</span>, then <span class="math inline">\(\Sigma\)</span> will have some zeros on the diagonal.)</p></li>
-<li class="fragment"><p>The matrix <span class="math inline">\(U\)</span> <span style="color:red">is <em>not</em> generally</span> the inverse of <span class="math inline">\(V^{T}\)</span>. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of <span class="math inline">\(\mathbb{R}^m\)</span></span>. ::: notes</p>
+<li><p>then we can write it as <span style="color:red"><span class="math inline">\(A = U\Sigma V^{T}\)</span></span> where <span class="math inline">\(\Sigma\)</span> is a diagonal matrix and <span class="math inline">\(P\)</span> is an orthogonal matrix of eigenvectors.</p></li>
+<li><p>We can find the product of <span class="math inline">\(A\)</span> with a vector <span class="math inline">\(\mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is a column vector of length <span class="math inline">\(n\)</span>. This product will now be a column vector of length <span style="color:red"><span class="math inline">\(m\)</span></span>.</p></li>
+<li><p>The matrix <span class="math inline">\(V^{T}\)</span> is a change of basis matrix. It takes a vector <span class="math inline">\(\mathbf{x}\)</span> expressed in the standard basis and expresses it in terms of the basis of <span style="color:red"><em>right singular vectors</em></span> of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>The matrix <span style="color:red"><span class="math inline">\(\Sigma\)</span></span> is a scaling matrix. It scales the singular vectors by the corresponding <span style="color:red">singular values</span>. (If <span style="color:red"><span class="math inline">\(A\)</span> is not square or <span class="math inline">\(A\)</span> is not full rank</span>, then <span class="math inline">\(\Sigma\)</span> will have some zeros on the diagonal.)</p></li>
+<li><p>The matrix <span class="math inline">\(U\)</span> <span style="color:red">is <em>not</em> generally</span> the inverse of <span class="math inline">\(V^{T}\)</span>. It takes the scaled singular vectors and expresses them in terms of the standard basis <span style="color:red">of <span class="math inline">\(\mathbb{R}^m\)</span></span>.</p>
 <ul>
-<li class="fragment">Specifically, the first column of <span class="math inline">\(U\)</span> must be the correct vector to express the first row of <span class="math inline">\(V^{T}\)</span> in <span class="math inline">\(\mathbbb{R}^m\)</span></li>
+<li>Specifically, the first column of <span class="math inline">\(U\)</span> must be the correct vector to express the first row of <span class="math inline">\(V^{T}\)</span> in <span class="math inline">\(\mathbbb{R}^m\)</span></li>
 </ul></li>
-<li class="fragment"><ul>
-<li class="fragment">that is, we need the first column of <span class="math inline">\(U\)</span> to be <span class="math inline">\(A\mathbf{v}_1\)</span> (divided by the scaling factor).</li>
-<li class="fragment">This is because <span class="math inline">\(\Sigma V^{T}\mathbf{v}_1=\sigma_1\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}\)</span>, so that <span class="math inline">\(U\Sigma V^{T}\mathbf{v}_1=\sigma_1 U \begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}=\sigma_1\mathbf{u_1}\)</span>.</li>
-<li class="fragment">So we’d better have <span class="math inline">\(\mathbf{u_1}=A\mathbf{v}_1/\sigma_1\)</span>. :::</li>
+<li><ul>
+<li>that is, we need the first column of <span class="math inline">\(U\)</span> to be <span class="math inline">\(A\mathbf{v}_1\)</span> (divided by the scaling factor).</li>
+<li>This is because <span class="math inline">\(\Sigma V^{T}\mathbf{v}_1=\sigma_1\begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}\)</span>, so that <span class="math inline">\(U\Sigma V^{T}\mathbf{v}_1=\sigma_1 U \begin{bmatrix} 1 \\0\\ \vdots \\ 0\end{bmatrix}=\sigma_1\mathbf{u_1}\)</span>.</li>
+<li>So we’d better have <span class="math inline">\(\mathbf{u_1}=A\mathbf{v}_1/\sigma_1\)</span>. :::</li>
 </ul></li>
 </ul>
-<p>##</p>
+<p>## SVD</p>
+<p>::: notes - Assume <span class="math inline">\(m \geq n\)</span> (the case <span class="math inline">\(m&lt;n\)</span> is similar). - Let <span class="math inline">\(B=A^{T} A\)</span> and let <span class="math inline">\(\lambda_{1} \geq \lambda_{2} \geq \cdots \geq \lambda_{n}\)</span> be the eigenvalues of <span class="math inline">\(B\)</span>. - Find the basis of eigenvectors of <span class="math inline">\(B\)</span>: <span class="math inline">\(B \mathbf{v}_{k}=\sigma_{k}^{2} \mathbf{v}_{k}, k=1,2, \ldots, n\)</span> - Let <span class="math inline">\(V=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\right]\)</span>. Then <span class="math inline">\(V\)</span> is an orthogonal <span class="math inline">\(n \times n\)</span> matrix. - We may assume for some index <span class="math inline">\(r\)</span> that <span class="math inline">\(\sigma_{r+1}, \sigma_{r+2}, \ldots, \sigma_{n}\)</span> are zero, while <span class="math inline">\(\sigma_{r} \neq 0\)</span>. - Next set <span class="math inline">\(\mathbf{u}_{j}=\frac{1}{\sigma_{j}} A \mathbf{v}_{j}, j=1,2, \ldots, r\)</span>. - In other words, <span class="math inline">\(\mathbf{u}_{j}\)</span> is the vector that you get when you transform <span class="math inline">\(\mathbf{v}_{j}\)</span> by <span class="math inline">\(A\)</span> and then normalize it by the singular value <span class="math inline">\(\sigma_{j}\)</span>. - These are orthonormal vectors in <span class="math inline">\(\mathbb{R}^{m}\)</span> since</p>
+<p><span class="math display">\[
+\mathbf{u}_{j}^{T} \mathbf{u}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} A^{T} A \mathbf{v}_{k}=\frac{1}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} B \mathbf{v}_{k}=\frac{\sigma_{k}^{2}}{\sigma_{j} \sigma_{k}} \mathbf{v}_{j}^{T} \mathbf{v}_{k}= \begin{cases}0, &amp; \text { if } j \neq k \\ 1, &amp; \text { if } j=k\end{cases}
+\]</span></p>
+<ul>
+<li>Now expand this set to an orthonormal basis <span class="math inline">\(\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span>. This is possible by Theorem 4.7 in Section 4.3. Set <span class="math inline">\(U=\left[\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{m}\right]\)</span>. This matrix is orthogonal. We calculate that if <span class="math inline">\(k&gt;r\)</span>, then <span class="math inline">\(\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=0\)</span> since <span class="math inline">\(A \mathbf{v}_{k}=\mathbf{0}\)</span>, and if <span class="math inline">\(k&lt;r\)</span>, then</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{u}_{j}^{T} A \mathbf{v}_{k}=\sigma_{k} \mathbf{u}_{j}^{T} \mathbf{u}_{k}=\left\{\begin{array}{l}
+0, \text { if } j \neq k, \\
+\sigma_{k}, \text { if } j=k
+\end{array}\right.
+\]</span></p>
+<p><span class="math inline">\(U^{T} A V=\left[\mathbf{u}_{j}^{T} A \mathbf{v}_{k}\right]=\Sigma\)</span>, which is the desired SVD.</p>
+<p>And because <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> are orthonormal, their inverses are their transposes, so <span class="math inline">\(A=U \Sigma V^{T}\)</span>.</p>
+<p>Note also that we can find <span class="math inline">\(U\)</span> as the eigenvectors of <span class="math inline">\(A A^{T}\)</span> and <span class="math inline">\(V\)</span> as the eigenvectors of <span class="math inline">\(A^{T} A\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="recap" class="title-slide slide level2 center">
+<h2><em>Recap</em></h2>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; U \quad V \\
+&amp; S \\
+&amp; \left(\begin{array}{ccc}
+\mid &amp; &amp; \mid \\
+\boldsymbol{u}_{1} &amp; \cdots &amp; \boldsymbol{u}_{m} \\
+\mid &amp; &amp; \mid
+\end{array}\right)\left(\begin{array}{ccc}
+\mid &amp; &amp; \mid \\
+\boldsymbol{v}_{1} &amp; \cdots &amp; \boldsymbol{v}_{n} \\
+\mid &amp; &amp; \mid
+\end{array}\right)\left(\begin{array}{cccc}
+\sqrt{1} &amp; &amp; &amp; \\
+&amp; \sqrt{x_{2}} &amp; \cdots &amp; \\
+&amp; &amp; \sqrt{x_{x}} &amp; \\
+&amp; &amp; &amp; 0
+\end{array}\right)
+\end{aligned}
+\]</span></p>
+<p>eigenvectors of <span class="math inline">\(\mathrm{AA}^{\mathrm{T}}\)</span></p>
+<p><span class="math inline">\(\mathrm{A}^{\mathrm{T}} \mathrm{A}\)</span></p>
+</section>
+
+<section id="example" class="title-slide slide level2 center">
+<h2><em>Example</em></h2>
+<p><span class="math display">\[
+A=\left(\begin{array}{ccc}
+3 &amp; 2 &amp; 2 \\
+2 &amp; 3 &amp; -2
+\end{array}\right)
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+A A^{T}=\left(\begin{array}{cc}
+17 &amp; 8 \\
+8 &amp; 17
+\end{array}\right), \quad A^{T} A=\left(\begin{array}{ccc}
+13 &amp; 12 &amp; 2 \\
+12 &amp; 13 &amp; -2 \\
+2 &amp; -2 &amp; 8
+\end{array}\right)
+\]</span></p>
+</div>
+</section>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">\[
+\begin{array}{cc}
+A A^{T}=\left(\begin{array}{cc}
+17 &amp; 8 \\
+8 &amp; 17
+\end{array}\right) &amp; A^{T} A=\left(\begin{array}{ccc}
+13 &amp; 12 &amp; 2 \\
+12 &amp; 13 &amp; -2 \\
+2 &amp; -2 &amp; 8
+\end{array}\right) \\
+\begin{array}{c}
+\text { eigenvalues: } \lambda_{1}=25, \lambda_{2}=9 \\
+\text { eigenvectors }
+\end{array} &amp; \begin{array}{c}
+\text { eigenvalues: } \lambda_{1}=25, \lambda_{2}=9, \lambda_{3}=0 \\
+\text { eigenvectors }
+\end{array} \\
+u_{1}=\binom{1 / \sqrt{2}}{1 / \sqrt{2}} \quad u_{2}=\binom{1 / \sqrt{2}}{-1 / \sqrt{2}} &amp; v_{1}=\left(\begin{array}{c}
+1 / \sqrt{2} \\
+1 / \sqrt{2} \\
+0
+\end{array}\right) \quad v_{2}=\left(\begin{array}{c}
+1 / \sqrt{18} \\
+-1 / \sqrt{18} \\
+4 / \sqrt{18}
+\end{array}\right) \quad v_{3}=\left(\begin{array}{c}
+2 / 3 \\
+-2 / 3 \\
+-1 / 3
+\end{array}\right)
+\end{array}
+\]</span></p>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>SVD decomposition of <span class="math inline">\(A\)</span>: <span class="math display">\[
+A=U S V^{T}=\left(\begin{array}{cc}
+1 / \sqrt{2} &amp; 1 / \sqrt{2} \\
+1 / \sqrt{2} &amp; -1 / \sqrt{2}
+\end{array}\right)\left(\begin{array}{ccc}
+5 &amp; 0 &amp; 0 \\
+0 &amp; 3 &amp; 0
+\end{array}\right)\left(\begin{array}{rrr}
+1 / \sqrt{2} &amp; 1 / \sqrt{2} &amp; 0 \\
+1 / \sqrt{18} &amp; -1 / \sqrt{18} &amp; 4 / \sqrt{18} \\
+2 / 3 &amp; -2 / 3 &amp; -1 / 3
+\end{array}\right)
+\]</span></p>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>Start with Figure 5.12.1 from Meyer.</p>
 <p>Awesome explanation of PCA <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a></p>
 <p>Where does the covariance matrix come in? This explanation <a href="https://stats.stackexchange.com/questions/2691/making-sense-of-principal-component-analysis-eigenvectors-eigenvalues/140579#140579">here</a> the one that starts “I can give you an explanation”.</p>
@@ -436,7 +569,7 @@
 <p><a href="https://www.cantorsparadise.com/demystifying-the-moore-penrose-generalized-inverse-a1b989a1dd49">Here</a> is a decent writeup.</p>
 </section>
 
-<section id="section" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Here is what <span class="math inline">\(A\)</span> does to a vector <span class="math inline">\(\mathbf{x}\)</span>: first, <span class="math inline">\(V\)</span> expresses <span class="math inline">\(\mathbf{x}\)</span> in terms of the orthonormal basis of the column space of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\Sigma\)</span> scales the components of <span class="math inline">\(\mathbf{x}\)</span> according to the singular values. Finally, <span class="math inline">\(U^{T}\)</span> rotates the scaled components from the basis of the row space of <span class="math inline">\(A\)</span> to express them in terms of the standard basis.</p>
 <p>Remember <span class="math inline">\(A\)</span> will take a column vector <span class="math inline">\(x\)</span> from the row space of <span class="math inline">\(A\)</span> to the column space of <span class="math inline">\(A\)</span>. (Actually, first it will project it onto the row space, then it will transform it, and the product <span class="math inline">\(A\mathbf{x}\)</span> will be in the column space. The V is a basis for the whole space, but the first <span class="math inline">\(r\)</span> vectors are an orthonormal basis for the row space, and the r+1 up to n vectors are an orthonormal basis for the null space. Because these last singular values are 0, the corresponding vectors in V are not used in the transformation.)</p>

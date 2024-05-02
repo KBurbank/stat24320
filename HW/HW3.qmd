@@ -10,68 +10,227 @@ publish-solutions-on: 2024-04-18
 
 
 #
-::: aside
-2.4.29
-:::
+
 Show that if $P$ and $Q$ are stochastic matrices of the same size, then $P Q$ is also stochastic.
 
 
-#
-::: aside
-2.4.36
+::: solutions
+2.4.29
+Block $Q$ into columns $\mathbf{q}_{i}$, each of which is a probability distribution vector, and obtain
+
+$$
+P Q=P\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \ldots, \mathbf{q}_{n}\right]=\left[P \mathbf{q}_{1}, P \mathbf{q}_{2}, \ldots, P \mathbf{q}_{n}\right]
+$$
+
+Since any product of a stochastic matrix and probability distribution vector is itself a probability distribution vector, the result follows.
 :::
+
+
+#
+
 
 The digraph $H$ that results from reversing all the arrows in a digraph $G$ is called reverse digraph of $G$. Show that if $A$ is the adjacency matrix for $G$ then $A^{T}$ is the adjacency matrix for the reverse digraph $H$.
 
-#
-::: aside
-2.5.21
+::: solutions
+
+2.4.36
+
+In terms of the edge set $E=\left\{\left(\left(v_{1}, w_{1}\right),\left(v_{2}, w_{2}\right), \ldots,\left(v_{m}, w_{m}\right)\right)\right\}$ of the digraph $G$, the edge set of its reverse digraph $H$ is
+
+$$
+F=\left\{\left(\left(w_{1}, v_{1}\right),\left(w_{2}, v_{2}\right), \ldots,\left(w_{m}, v_{m}\right)\right)\right\}
+$$
+
+which means that whenever the edge $\left(v_{k}, w_{k}\right)$ contributes 1 to the $(i, j)$ th entry of the adjacency matrix $A$ of $G$, the edge $\left(w_{k}, v_{k}\right)$ contributes 1 to the $(j, i)$ th entry of the adjacence matrix $B$ of $H$. Hence, $B=A^{T}$.
 :::
+
+#
+
 
 Solve the PageRank problem with $P$ as in Example 2.46, teleportation vector $\mathbf{v}=\frac{1}{6} \mathbf{e}$ and teleportation parameter $\alpha=0.8$. (In this example, the correction vector was $\frac{1}{3}(1,1,1,0,0,0)$; that's what you'll use here.)
 
-#
-::: aside
-2.5.22
+::: solutions
+2.5.21
+
+Solution vector is $\mathbf{x}=(95,133,189,75,123,123) / 738$ exactly, $\mathbf{x}=$ $(0.129,0.180,0.256,0.102,0.167,0.167)$ approximately.
+
+
+```{python}
+from sympy import Matrix, Rational,N, nsimplify
+P = Matrix([
+    [0, 0, 1/3, 1/3, 0, 0],
+    [1/2, 0, 1/3, 1/3, 0, 0],
+    [1/2, 1, 0, 1/3, 0, 0],
+    [0, 0, 1/3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 1, 0]
+])
+P=nsimplify(P,rational=True)
+v = Matrix([Rational(1,6)] * 6)
+alpha = Rational(8,10)
+```
+
+We start with our surfing matrix
+$$
+P=\left[\begin{array}{llllll}
+0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\
+\frac{1}{2} & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\
+\frac{1}{2} & 1 & 0 & \frac{1}{3} & 0 & 0 \\
+0 & 0 & \frac{1}{3} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 & 0
+\end{array}\right]
+$$
+
+We want to solve this:
+
+
+$$
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x} =\mathbf{x}
+\end{equation*}
+$$
+
+
+One approach: find eigenvalues of value 1.
+
+```{python}
+M_sympy = alpha * P + (1 - alpha) * v * Matrix([1]*P.shape[0]).T
+eigenvalues_sympy = M_sympy.eigenvals()
+eigenvectors_sympy = M_sympy.eigenvects()
+```
+
+```{python}
+# Find the first eigenvector whose eigenvalue equals 1
+for eigenvalue, multiplicity, eigenvectors in eigenvectors_sympy:
+    if eigenvalue == 1:
+        ev = eigenvectors[0]
+        break
+# Normalize the eigenvector
+ev = ev / sum(ev)
+ev.T
+```
+
+Second approach: subtract x from both sides of the equation and solve it using sympy's solve function.
+
+Now we want to solve this:
+
+$$
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x}-\mathbf{x} =0
+\end{equation*}
+$$
+
+
+ Initially, sympy complains that the matrix is not invertible. This means that there will be infinitely many solutions. We can use gauss_jordan_solve to find the general form...
+
+ (Also note: if we don't define $\alpha$ using symbols, sympy will make everything numeric and only find the trivial solution.)
+
+```{python}
+from sympy import symbols, solve, Matrix, zeros, eye
+
+x = Matrix(symbols('x:6'))
+
+# Define the equation
+eqn = (alpha*P + (1-alpha)*v*Matrix([1]*P.shape[0]).T)-eye(6)
+soln=eqn.gauss_jordan_solve(zeros(6,1))[0]
+display(soln.T)
+```
+
+Next, we would need to pick a value for $\tau_0$ to find a specific solution. We want the sum of the elements of $\mathbf{x}$ to be 1; conveniently, if we simply divide by the sum of the elements of the general solution, the $\tau_0$ will cancel out. 
+
+```{python}
+from sympy import simplify, collect, together
+from IPython.display import Latex
+import sympy as sp
+from sympy.printing.latex import LatexPrinter
+sp.init_printing()
+
+display(Latex("$$\\frac{1}{738}"+sp.latex(simplify(soln/sum(soln)*738)[:,0])+"\\approx"+sp.latex(N(soln/sum(soln),4))+"$$"))
+```
+
+
 :::
-Modify the surfing matrix $P$ of Example 2.46 by using the correction vector $\frac{1}{5}(1,1,1,0,1,1)$ and solve the resulting PageRank problem with teleportation vector $\mathbf{v}=\frac{1}{6} \mathbf{e}$ and teleportation parameter $\alpha=0.8$.
 
 #
-::: aside
-2.5.29
+
+Modify the surfing matrix $P$ of Example 2.46 by using the correction vector $\frac{1}{5}(1,1,1,0,1,1)$ and solve the resulting 
+PageRank problem with teleportation vector $\mathbf{v}=\frac{1}{6} \mathbf{e}$ and teleportation parameter $\alpha=0.8$.
+
+::: Solutions
+2.5.22
+
+Solution vector is $\mathbf{x}=(95,133,189,75,123,123) / 738$ or $\mathbf{x}=$ $(0.101,0.141,0.200,0.087,0.236,0.236)$ exactly.
 :::
+
+
+#
+
 
 Show that there is more than one stationary state for the Markov chain of Example 2.46.
 
-#
-::: aside
-2.5.30
+::: solutions
+2.5.29
+
+Solution. The reduced row echelon form for $I-P$ is
+
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-057.jpg?height=278&width=300&top_left_y=1951&top_left_x=896)
+Two solutions whose coordinates sum to one are $\mathbf{x}=\left(0,0,0,0, \frac{1}{2}, \frac{1}{2}\right)$ and $\mathbf{x}=\frac{1}{22}(4,6,9,3,0,0)$.
 :::
+
+#
+
 
 Repair the dangling node problem of the graph of Figure 2.7 by creating a correction vector that makes transition to all nodes equally likely. (Note that this means **all** nodes, includes transitioning back to the dangling node.)
 
 Next, find all stationary states for the resulting Markov chain.
 
-#
-::: aside
-2.5.25
+::: solutions
+2.5.30
+
+The matrix $P$ will be as in Example 2.46 except that the fourth column will have the value $1 / 6$ in each entry. The reduced row echelon form for $I-P$ is
+
+$$
+\left[\begin{array}{cccccc}
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{array}\right] .
+$$
+
+The only solution whose coordinates sum to one is $\mathbf{x}=\left(0,0,0,0, \frac{1}{2}, \frac{1}{2}\right)$.
 :::
+
+
+#
+
 
 Solve the nonlinear system of equations of Example 2.48 by using nine iterations of the vector Newton formula (2.5), starting with the initial guess $\mathbf{x}^{(0)}=(0,1)$. Evaluate $F\left(\mathbf{x}^{(9)}\right)$.
+::: solutions
+2.5.25
+ $\quad \mathbf{x}=(x, y), \mathbf{x}^{(9)} \approx\left[\begin{array}{r}1.00001 \\ -0.99999\end{array}\right], \mathbf{F}\left(\mathbf{x}^{(9)}\right) \approx 10^{-6}\left[\begin{array}{r}-1.3422 \\ 2.0226\end{array}\right], \mathbf{F}(\mathbf{x})=$
 
+$\left[\begin{array}{l}x^{2}+\sin (\pi x y)-1 \\ x+y^{2}+e^{x+y}-3\end{array}\right], J_{\mathbf{F}}(\mathbf{x})=\left[\begin{array}{cc}2 x+\cos (\pi x y), \pi y \cos (\pi x y) \pi x \\ 1+e^{x+y}, & 2 y+e^{x+y}\end{array}\right]$
+:::
 
 #
-::: aside
-2.5.26
-:::
+
 
 Find the minimum value of the function $F(x, y)=\left(x^{2}+y+1\right)^{2}+$ $x^{4}+y^{4}$ by using the Newton method to find critical points of the function $F(x, y)$, i.e., points where $f(x, y)=F_{x}(x, y)=0$ and $g(x, y)=F_{y}(x, y)=0$.
 
+::: solutions
+2.5.26
+
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-057.jpg?height=89&width=1265&top_left_y=1208&top_left_x=457)
+and all initial choices converge to $(-0.96401,-0.82131)$, and $F(-0.96401,-0.82131)=$ 2.54632 .
+
+:::
 
 #
-::: aside
-2.8.9
-:::
+
 
 Apply the following digital filter to the noisy data of Example 2.71 and graph the results. Does it appear to be a low pass filter?
 
@@ -79,10 +238,19 @@ $$
 y_{k}=\frac{1}{2} x_{k}+\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
 $$
 
-#
-::: aside
-2.8.10
+::: solutions
+2.8.9
+
+Yes, but rather mediocrely. A graph is in Figure 1 and comparison of exact and filtered in Figure 2:
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-071.jpg?height=718&width=1539&top_left_y=340&top_left_x=453)
+
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-072.jpg?height=1054&width=1507&top_left_y=644&top_left_x=472)
+
+
 :::
+
+#
+
 
 Apply the following digital filter to the noisy data of Example 2.71 and graph the results. Does it appear to be a high pass filter?
 
@@ -92,32 +260,48 @@ $$
 
 
 
+::: solutions
+2.8.10
 
+Yes, definitely high pass. A graph is in Figure 3:
+
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-073.jpg?height=713&width=1526&top_left_y=340&top_left_x=465)
+
+:::
 
 
 #
-::: aside
-2.8.1
-:::
+
 
 (I'll talk about LU factorization in class on the Wednesday that this homework is due; you may want to hold off on the next few problems until then.)
 
 Show that $L=\left[\begin{array}{lll}1 & 0 & 0 \\ 1 & 1 & 0 \\ 2 & 1 & 1\end{array}\right]$ and $U=\left[\begin{array}{rrr}2 & -1 & 1 \\ 0 & 4 & -3 \\ 0 & 0 & -1\end{array}\right]$ is an LU factorization of $A=\left[\begin{array}{rrr}2 & -1 & 1 \\ 2 & 3 & -2 \\ 4 & 2 & -2\end{array}\right]$.
 
+::: solutions
+2.8.1
+
+$L U=\left[\begin{array}{lll}1 & 0 & 0 \\ 1 & 1 & 0 \\ 2 & 1 & 1\end{array}\right]\left[\begin{array}{rrr}2 & -1 & 1 \\ 0 & 4 & -3 \\ 0 & 0 & -1\end{array}\right]=A=\left[\begin{array}{rrr}2 & -1 & 1 \\ 2 & 3 & -2 \\ 4 & 2 & -2\end{array}\right]$.
+:::
 #
 By hand:
 
-::: aside
-2.8.5
-:::
+
 
 Find an LU factorization of the matrix $A=\left[\begin{array}{rrr}2 & 1 & 0 \\ -4 & -1 & -1 \\ 2 & 3 & -3\end{array}\right]$.
 
+::: solutions
+2.8.5
+
+$L=\left[\begin{array}{rrr}1 & 0 & 0 \\ -2 & 1 & 0 \\ 1 & 2 & 1\end{array}\right]$ and $U=\left[\begin{array}{rrr}2 & 1 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & -1\end{array}\right]$.
+:::
+
 #
 By hand:
 
-::: aside
-2.8.6
-:::
-
 Find a PLU factorization of the matrix $A=\left[\begin{array}{rrr}2 & 1 & 3 \\ -4 & -2 & -1 \\ 2 & 3 & -3\end{array}\right]$.
+
+::: solutions
+2.8.6
+
+$P=\left[\begin{array}{lll}1 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0\end{array}\right], L=\left[\begin{array}{rrr}1 & 0 & 0 \\ 1 & 1 & 0 \\ -2 & 0 & 1\end{array}\right]$ and $U=\left[\begin{array}{rrr}2 & 1 & 3 \\ 0 & 2 & -6 \\ 0 & 0 & 5\end{array}\right]$.
+:::

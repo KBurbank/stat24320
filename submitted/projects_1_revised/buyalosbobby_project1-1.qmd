@@ -1,0 +1,674 @@
+---
+title: 'Project #1 Revisions - Bobby Buyalos'
+jupyter: python3
+css: comments.css
+publish: true
+format:
+    html:
+        embed-resources: true
+---
+
+## Markov Chains:
+
+Three automobile insurance firms compete for a fixed market of customers. We have three companies in our market, company A, B, and C. Let $a$ denote the market share of company A, $b$ represent the market share of company B, and $c$ represent the market share of company C. Let $a_n, b_n, c_n$ represent the market share of the relative companies in year $n$. So, for a given $n$, we know that $a_n + b_n + c_n = 1$, in other words, these three companies disjointly parition the market.
+
+We know what preportion of each companies market share moves or stays with the company the following year, in other words, we know how their relative market shares change yearly. So, using the data for say the $n-1$-th year, we know precicely the market share for the $n$-th year. We can represent this using Markov Chain. First, view the linear equations that dictate what the $n$-th year market shares will be based on the $n-1$-th year:
+
+Consider our system ($n = 1, 2, \ldots$): $\begin{align*}
+    &a_n = .5a_{n-1} + .2b_{n-1} + .3c_{n-1} \\
+    &b_n = .2a_{n-1} + .6b_{n-1} + .1c_{n-1} \\
+    &c_n = .3a_{n-1} + .2b_{n-1} + .6c_{n-1}
+\end{align*}$
+
+We can then put these linear equations into a transition matrix:
+
+$$
+ \begin{pmatrix}
+    .5 & .2 & .3 \\
+    .2 & .6 & .1 \\
+    .3 & .2 & .6
+\end{pmatrix}
+$$
+
+Since this matrix is stochastic, if we initalize it with a distribution vector, then we will have a Markov chain. Lets see what the market shares will be for the next three years if we start off with all three companies having equal market share ($a_{0} = b_{0} = c_{0} = 1/3$). See the output of the code cell below for the distribution vector that contains the market distribution for each company after each year (first compnent represents share of company A, second component represents that of B, and the last component represents that of C).
+
+```{python}
+import sympy as sym
+
+#create our transition matrix
+P = sym.Matrix([[.5, .2 , .3 ],
+    [.2 , .6 , .1],
+    [.3 , .2 , .6]])
+
+#inital vector
+x = sym.Matrix([[1/3], [1/3], [1/3]])
+
+#run it for each year and print result
+for i in range(4):
+    print(f"\n Year {i}:")
+    print((P**i)*x)
+```
+
+Now, assume that you and I are employees of Company A. We are considering three different advertising campaigns to implement, and want run some tests to see which would be better. Creating a transition matrix in the identical fashion as above, each of the campaigns have the following transition matrices:
+
+Campaign #1 has the following transition matrix:
+
+$$
+\begin{pmatrix}
+    .5 & .32 & .3 \\
+    .2 & .48 & .1 \\
+    .3 & .2 & .6
+\end{pmatrix}
+$$
+
+Campaign #2 has the following transition matrix:
+
+$$
+\begin{pmatrix}
+    .5 & .2 & .42 \\
+    .2 & .6 & .1 \\
+    .3 & .2 & .48
+\end{pmatrix}
+$$
+
+The first way we will test how "good" each campaign is is just by looking at the transition matrix after $k$-many years.
+
+Recall that $\mathbf{x^{(k)}} = A^k\cdot\mathbf{x^{(0)}}$.
+
+If we want company A to have the greatest market share after $k$ many years, then we want the sum of the top row of our matrix to be as large as possible.
+
+Lets look at the transition matrix for Campaign 1, Campaign 2, and no campaign after 5 years:
+
+```{python}
+import random
+
+C1 = sym.Matrix([[.5, .32 , .3 ],
+    [.2 , .48 , .1],
+    [.3 , .2 , .6]])
+
+C2 = sym.Matrix([[.5, .2 , .42 ],
+    [.2 , .6 , .1],
+    [.3 , .2 , .48]])
+
+
+def count_top_row(T):
+    return sum(T[0, :])
+
+print("campaign 1", count_top_row(C1**5))
+print("campaign 2", count_top_row(C2**5))
+print("no campaign", count_top_row(P**5))
+```
+
+Since the sum of the coefficents of the top row of a respective transition matrix is the highest in campaign 2, it seems that, on average, campaign 2 will yield the highest market share, at least after 5 years.
+
+Lets run a different type of test to measure how "good" each campaign is to see if we can corroborate this finding.
+
+For each test, we will generate 2000 random inital distribution vectors, and feed it into each of our transition matrices for a given amount of years. We will do this for 2 and 5 years, gauging both short and long term interests. We will assign each campaign/no campaign a score out of 2000: the transition matrix that yields the highest market share for a given inital state will win a 'point'.
+
+```{python}
+import random
+
+C1 = sym.Matrix([[.5, .32 , .3 ],
+    [.2 , .48 , .1],
+    [.3 , .2 , .6]])
+
+C2 = sym.Matrix([[.5, .2 , .42 ],
+    [.2 , .6 , .1],
+    [.3 , .2 , .48]])
+
+def generate_input_vector():
+    random1 = random.randint(1, 1000)
+    random2 = random.randint(1, 1000)
+    random3 = random.randint(1, 1000)
+    total = random1 + random2 + random3
+    return sym.Matrix([[random1/total], [random2/total], [random3/total]])
+
+def test_system(years):
+    P_score = 0
+    C1_score = 0
+    C2_score = 0
+    for i in range(2000):
+        x = generate_input_vector()
+        new_P = P**years
+        new_C1 = C1**years
+        new_C2 = C2**years
+        P_value = (new_P*x)[0]
+        C1_value = (new_C1*x)[0]
+        C2_value = (new_C2*x)[0]
+    
+        if P_value >= max(C1_value, C2_value):
+            P_score += 1
+        if C1_value >= max(P_value, C2_value):
+            C1_score += 1
+        if C2_value >= max(C1_value, P_value):
+            C2_score += 1
+    return (f"run time of {years} years, P: {P_score}", f"C1: {C1_score}", f"C2: {C2_score}")
+
+print(test_system(2))
+print(test_system(5))
+
+```
+
+Based on these tests, I would reccomend the second campaign. It is clear that the second campaign performs the best in the long term. After just 5 years, it will yield conclusively higher market share than doing nothing or doing campaign 1. This is corroborated by theoritical evidence (observing the transition matrix), and experimental evidence, based on our randomized trials. Even after only 2 years, campaign 2 performs better on average than campaign one, with over half of the inital states resulting with a higher market share after campaign 2. So, when considering both short and long term interests, campaign 2 is the clear winner.
+
+Some limitations of this study may be that it only looks yearly benchmarks. If the company wants some thing in a shorter time frame, such as the next quarter, then these models would not be useful. In addition, this model assumes that all other conditions are held constant, and that the only factor affecting market share are the campaigns, or other controlled factors used when getting the data to construct the transition matrices. However, it is unlikely that there would be no counter-ad campaign from another company that may change the real transition matrix. In other words, this study does not anticipate other changing factors in the market that may change the transition matrix and thus the results.
+
+::: comments
+Nicely done! You've addressed the issue with the random vectors, you've made it much more clear what you've done, and I like the thinking about the meaning of the transition matrix. (Of course, now that we have the tools of the eivenvalue problem, you might choose a different approach – like looking at the market share for company A in the dominant eigenvector!)
+
+Grade: E
+:::
+
+## Sports Ranking:
+
+We have a leage of 7 teams who have played 21 games. Now, based off of the play data of these 21 games, we want to create a ranking of these teams. We will explore multiple methods to do this.
+
+Our first naïve measure of rankings is through the win/loss score of each time. We will calculate this as \# wins - \# losses (see later below for how to calculate this cleverly):
+
+| Team | win/loss score |
+|------|----------------|
+| 7    | 4              |
+| 5    | 2              |
+| 3    | 1              |
+| 6    | 0              |
+| 1    | -1             |
+| 2    | -2             |
+| 4    | -4             |
+
+Now, we can put their play data into a graph like structure. We can represent each game played as a tuple $(j, k)$, that represents a game where team $j$ beat team $k$. This is what the graph looks like:
+
+```{python}
+import networkx as nx
+import matplotlib.pyplot as plt
+import numpy as np
+
+E = [(1, 2), (7, 3), (2, 4), (4, 5), (3, 2), (5, 1), (6, 1), (7, 2), (2, 6), (3, 4), (7, 4), (5, 7), (6, 4), (3, 5), (5, 6), (7, 1), (5, 2), (7, 6), (1, 4), (6, 3)]
+M = [4, 8, 7, 3, 7, 23, 15, 6, 18, 13, 14, 7, 13, 7, 18, 45, 10, 19, 14, 13]
+G = nx.DiGraph()
+
+# Add nodes
+G.add_nodes_from([1, 2, 3, 4, 5, 6, 7])
+
+# Add vertices
+G.add_edges_from(E)
+
+# Draw the graph
+nx.draw_circular(G, with_labels=True)
+plt.show()
+```
+
+Now that we have encoded this data into a graph structure, we can create an adjacency matrix from it that represents the graph. The jk-th entry of this matrix counts the number of times that team j beat team k. The matrix is as follows:
+
+$$
+\begin{pmatrix}
+0 & 1 & 0 &  1 & 0 & 0 & 0\\
+ 0 &0 &0 &1& 0 &1 &0\\
+ 0 &1 &0 &1 &1& 0& 0\\
+ 0 &0& 0 &0 &1 &0& 0\\
+ 1 &1& 0& 0& 0 &1 &1\\
+ 1& 0 &1 &1& 0& 0& 0\\
+ 1& 1& 1& 1& 0& 1& 0
+ \end{pmatrix}
+$$
+
+Some things we can observe from here: 1) no team played themselves (i-i-th entry is always 0) 2) no team won against another team more than once
+
+This matrix provides a clever method to calculate the win-loss ratio: for team j, sum row j and then subtract the sum of column j. This works becase the sum of row j counts the number of wins of team j, and the sum of column j counts the number of losses of team j (recall that spot ij represents an indicator of a win-loss of team i over team j).
+
+::: comments
+Nice!
+:::
+
+Now that we have created an adjacency matrix, we can now calculate the vertex power for each team. The vertex power is defined formally as "number of directed walks of length 1 or 2 originating at the vertex" (Shores 95). Now, lets decode what this means in our context. A directed walk of length one from vertex j represents a win of team j over some team, say team k. A directe walk of length two, say from j to k to l, then we know that team j beat team k who beat team l. We care about this because if team k beat team l, then it means that team k is somewhat formidable, so thus it means more if team j was able to beat them out! Just any old win means less, because mean their opponent was not very good. But beating someoone who beat someone else indicates that team j is not to be messed with! So, when calculating vertex powers, we are taking into account the 'quality' of the wins and summing not only wins, but wins of people who won.
+
+To calculate the vertex power for team j, we will sum the j-th row of $A^2 + A$, since the row of $A$ counts the numbers of walks length 1 from j and $A^2$ counts the number of walks length 2 from $j$.
+
+This next code cell will contain the work used to express the ideas in the preceding text boxes, and then will compute the vertex powers.
+
+```{python}
+import scipy
+
+#convert to numpy
+adj_matrix = nx.adjacency_matrix(G)
+adj_matrix = adj_matrix.toarray()
+print(adj_matrix)
+
+#form transpose to make summing columns easy
+transpose = adj_matrix.transpose()
+
+#calculate win-loss score
+for i in range (7):
+    print(f"Team {i + 1}'s win-loss score: {sum(adj_matrix[i] - transpose[i])}")
+
+print("\n")
+
+#Calculate powers of all verticies:
+power_matrix = adj_matrix + adj_matrix.dot(adj_matrix)
+for i in range (7):
+    print(f"Team {i + 1}'s power: {sum(power_matrix[i])}")
+```
+
+Here is our vertex power rankings:
+
+| Team | Power |
+|------|-------|
+| 5    | 16    |
+| 7    | 16    |
+| 3    | 10    |
+| 6    | 9     |
+| 2    | 6     |
+| 1    | 5     |
+| 4    | 5     |
+
+Notice that this is somewhat close to our win-los ratio. The one noticable difference between these two rankings is the fact that 5 and 7 are tied in the vertex power rankings, but team 7 has double the win/loss score than team 5.
+
+One reason for this is that team 5 has beaten team 7! So, our power ranking for team 5 also counts the runs of length two that stop over at team 7, of which there are four! In other words, while team 7 has beaten a large quantity of teams (high win-loss score), many of these teams have been relatively weak (team 1 and 2 for example), while team 5 has less wins total (lower win-loss score), but has good quality wins, such as their win against team 7. This 'quality' of win is therefore reflected in the power rankings!
+
+::: comments
+Excellent, this is exactly the kind of thinking I was looking for!
+:::
+
+Now we will do a reverse page rank methodology. This method is useful here because it is a way to measure the importance of a page based on how many outgoing links it has. Since an outgoing link in this context is a win, then this method is useful! To do this method, we will take the transpose of our adjacency matrix and apply the PageRank method.
+
+The next code block does the following: 1. Creates a diagonal matrix D where the diag. entry of row i is the inverse of the sum of row i of A\^T 2. forms our transition matrix by A\*D (A is our adjacency matrix) 3. Finds our stable distribution vector by using equation 2.5 from Shores (page 131)
+
+This will find our stationary distribution vector x that satisfies equation 2.4 from Shores (page 131). We will use this distribution vector as our rankings for each respective team / vector component.
+
+```{python}
+from sympy import eye
+## Create Transition matrix for our reverse graph (A^T) ##
+
+#Create Diag. Matrix D used to create transition matrix
+diag_vals = []
+for i in range(7):
+    total = np.sum(transpose[i])
+    if total != 0:
+        diag_vals.append(1/total)
+    else:
+        diag_vals.append(0)
+D = np.diag(diag_vals)
+
+#form our transition matrix
+transition = adj_matrix.dot(D)
+
+#create function to solve our system
+def find_stable(alpha, v, P, Id):
+    to_invert = Id - alpha*P
+    inverse = to_invert.inv()
+    stable = inverse*((1-alpha)*v)
+    return stable
+
+#inital distribution vector
+v = sym.Matrix([[1/7], [1/7], [1/7], [1/7], [1/7], [1/7], [1/7]])
+
+find_stable(0.85, v, transition, eye(7))
+```
+
+Since the i-th row of the output distribution vector represents team i, then we can use the output to form the following ranking. Note that the 'value' represents the zero-sum value that each team holds. There is only a total of 1 value/influence to give out (our output is a distribution vector!), and we can rank each team based on how much influence they hoard:
+
+| Index | Value |
+|-------|-------|
+| 5     | 0.250 |
+| 7     | 0.185 |
+| 3     | 0.166 |
+| 6     | 0.131 |
+| 4     | 0.128 |
+| 2     | 0.080 |
+| 1     | 0.060 |
+
+We can interrept these values as the amount of 'influence' each team has based on their outgoing links. Observe that these rankings are very close to the power ranks. This is likely because both are measuring the influence of outgoing links (wins), one in the form of runs of length one and two, and one in terms of PageRank.
+
+The major difference between the power rankings and the reverse PageRank rankings is team 4, who jumps from last place to third to last. This is likely because team 4 has beaten team 5! So, in the reverse graph, 1/2 of team 5's influence is going to team 4! Since team 5 is such a high performer, then by extension, team 4 will receive a high number of influence. However, in the power ranking, there is only one path out of vertex 4, so there will be a relatively lower power ranking.
+
+Now, suppose that we have additional information: the margin by which a given team won. Using this information, we can create a weighted graph, where each directed edge from i to j represents the margin by which i won over j. We can visualize this graph below:
+
+```{python}
+import networkx as nx
+import matplotlib.pyplot as plt
+import scipy
+import numpy as np
+
+E = [(1, 2), (7, 3), (2, 4), (4, 5), (3, 2), (5, 1), (6, 1), (7, 2), (2, 6), (3, 4), (7, 4), (5, 7), (6, 4), (3, 5), (5, 6), (7, 1), (5, 2), (7, 6), (1, 4), (6, 3)]
+
+M = [4, 8, 7, 3, 7, 23, 15, 6, 18, 13, 14, 7, 13, 7, 18, 45, 10, 19, 14, 13]
+
+F = nx.DiGraph()
+nodes = range(1, 8)
+F.add_nodes_from(nodes)
+
+for i, tuple in enumerate(E):
+    a, b = tuple
+    F.add_edge(a, b, weight = M[i])
+
+pos = nx.circular_layout(F)
+nx.draw(F, pos, with_labels=True, node_size=1000, font_size=12, arrows=True)
+
+labels = nx.get_edge_attributes(F, 'weight')
+nx.draw_networkx_edge_labels(F, pos, edge_labels=labels)
+
+plt.show()
+
+```
+
+Now, lets create an adjacency matrix for this weighted graph, where instead of an indicator of 0 and 1, we can use 0 to represent a lack of a edge, and an integer to represent that there is an edge and what the weight of that edge is (this works since none of our weights are 0).
+
+In the same way as before, we can use this adjacency matrix to construct a power matrix. Like before, we care about runs of length two, because a run from j to i to k means that j beat team i, who in turn beat k, therefore giving more credence to j for beating i.
+
+But, now that we have weights, this power matrix gives us even more information. We are not only counting how many runs of length 1 and 2 each team has, the margins of those wins. So, if team j beat team i by 5 points, and team i beat team k by 8 points, then team j will get all 13 points. This works because if team i beat team k by 8 points, and team j beat team i, then it is likely that team j would also beat team k by at least 8 points! By considering these weighted power rankings, we can more information how the 'scale' of each win and are able to account for that, giving more credit to big wins versus games won by a hair.
+
+```{python}
+
+#calculate weighted average:
+weighted_adj = nx.adjacency_matrix(F)
+weighted_adj = weighted_adj.toarray()
+print(weighted_adj)
+
+#power matrix for weighted graphj
+power_weighted_matrix = weighted_adj + weighted_adj.dot(weighted_adj)
+for i in range (7):
+    print(f"Team {i + 1}'s power: {sum(power_weighted_matrix[i])}")
+```
+
+We can see the power ranking of the weighted matrix:
+
+| Team   | Power |
+|--------|-------|
+| Team 5 | 2104  |
+| Team 7 | 2089  |
+| Team 2 | 784   |
+| Team 6 | 701   |
+| Team 3 | 647   |
+| Team 4 | 177   |
+| Team 1 | 160   |
+
+We can observe that this rankings is largely the same as all the previous rankings, except for the fact that team 2 is in third place, whereas it is near the bottom in all the other rankings. Upon inspection, we see that team 2 beat team 6 by a margin of 18 points! Observe that when we are calculating the 'score' assigned to a run of length two, we are actually multiplying the margins of both games. So, for all 3 runs of length two that pass through team 6, we are multiplying by the large number 18. Since the second leg of these three runs also have large margins, their product is quite large, giving team 4 a large weighted power ranking here. In fact, I believe that this is a weakness of this ranking:
+
+say we have three teams A and B and C, and A beat B by 10 points and B beat C by 5 points. Then, the run from A to C will collect 50 points. But, if team B beat team C by 6 points instead of 5, then that run will collect 60 points! However, I would argue that these two cases should be weighted almost the same, and surely doesn't merit increasing the value of the run by 20%! Therefore, I would rely more on the first power ranking and the inverse PageRank rankings.
+
+::: comments
+Awesome work.
+
+My son recently watched the movie \[Next Goal Wins\](<https://en.wikipedia.org/wiki/Next_Goal_Wins_(2023_film)>), about the soccer team from American Samoa who played Australia in a World Cup qualifying match in 2001. Australia won 31-0. By the PageRank metric, any team that ever beat Australia would just zoom to the top of any ranking!
+
+Grade: E
+:::
+
+## PLU Factorization
+
+We will first create the PLU_factorization algo (assuming non-zero diag entries).
+
+The pseudo code that summerizes the following code block is as follows: 1. deepcopy A so we do not change our input as we modify it 2. index our rows in an index list (index_list) and call upon row i of matrix P as P\[index_list\[i\]\]\[j\] rather than P\[i\]\[j\] 3. For each column zero out everything below the diagonal and keep track of the multipliers for the places that are zeroed out 4. use our stored multiplier data to form a lower triangular matrix 5. use our index_list data to form permulation matrix and upper triangular matrix
+
+```{python}
+import copy
+def PLU_factorization(A):
+    """
+    PLU factorization algo. Assuming non-zero diag. entires.
+
+    Inputs:
+    P [numpy array] - input square matrix
+
+    Outputs tuple[numpy array, numpy array, numpy array] - will reutrn P, L 
+    and U matrices in that order
+    """
+    P = copy.deepcopy(A)
+    numrows = len(P)
+    numcols = len(P[0])
+    index_list = [i for i in range(numrows)]
+    multipliers = {}
+
+    for k in range(numcols - 1):
+        if int(P[index_list[k]][k]) == 0:
+            for i in range(index_list[k], numrows):
+                if P[i][k] != 0:
+                    i_index = index_list.index(i)
+                    k_index = index_list.index(k)
+                    index_list[k_index], index_list[i_index] = index_list[i_index], index_list[k_index]
+                    break
+        #run again in case we dont find a nonzero value
+        if int(P[index_list[k]][k]) != 0:
+            for i in range(k + 1, numrows):
+                m = index_list.index(i)
+                multiplier = - P[m][k] / P[index_list[k]][k]
+                multipliers[(m, k)] = multiplier
+                P[m] = P[m] + multiplier*(P[index_list[k]])
+    
+    #Create Lower Triangular Matrix
+    zero_matrix = np.eye((numrows))
+    for tuple in multipliers:
+        x, y = tuple
+        zero_matrix[index_list[x]][y] = - multipliers[tuple]
+    
+    #Create Permutation Matrix and Upper Triangular Matrix:
+    perm_matrix = []
+    U = []
+    for i in index_list:
+        y = [0]*numrows
+        y[i] = 1
+        perm_matrix.append(y)
+        U.append(list(P[i]))
+    return (np.array(perm_matrix), zero_matrix, np.array(U))
+
+```
+
+To show that these work, we will show the LU factorization problems from HW3.
+
+Let A be the original matrix. Then, we will decompose each into its (P)LU factorization.
+
+For each, we will use SymPy's upper and lower triangular tester (is_upper, is_lower), and test if (P)LU = A by using numpy's np.array_equal function. View the output of the following code cell:
+
+(the first two examples we check LU = A since P is the identity, but we check PA = LU for the third problem)
+
+```{python}
+from sympy import Matrix
+
+#Problem 11:
+test1 = np.array([[2, -1, 1], [2, 3, -2], [4, 2, 2]])
+P, L, U = PLU_factorization(test1)
+print("PROBLEM 11")
+print("Is L lower triangular:", Matrix(L).is_lower)
+print("Is U upper triangular:", Matrix(U).is_upper)
+print("Does LU = A:", np.array_equal(L.dot(U), test1))
+print("\n")
+
+#Problem 12:
+test2 = np.array([[2, 1, 0], [-4, -1, -1], [2, 3, -3]])
+P, L, U = PLU_factorization(test2)
+print("PROBLEM 12")
+print("Is L lower triangular:", Matrix(L).is_lower)
+print("Is U upper triangular:", Matrix(U).is_upper)
+print("Does LU = A:", np.array_equal(L.dot(U), test2))
+print("\n")
+
+#problem 13
+test3 = np.array([[2, 1, 3], [-4, -2, -1], [2, 3, -3]])
+P, L, U = PLU_factorization(test3)
+print("PROBLEM 13")
+print("Is L lower triangular:", Matrix(L).is_lower)
+print("Is U upper triangular:", Matrix(U).is_upper)
+print("Does LU = PA:", np.array_equal(L.dot(U), P.dot(test3)))
+
+
+```
+
+Now we will code the PLU solver algo. Given A and b, we want to find vector x such that Ax = b.
+
+The pseudo code that summerizes the following code block is the following: 1. decompose A into its P, L, U so we have PA = LU 2. solve y by solving Ly = Pb by forward solving 3. solve x by solving Ux = y by backward solving 4. return x
+
+```{python}
+def PLU_solver(A, b):
+    """
+    Given a square matrix A (non-zero diag entries) and a solution b, solve for the unknowns using
+    PLU factorization (i.e. solve for x in Ax = b)
+    """
+    size = len(A)
+    P, L, U = PLU_factorization(A)
+    #find  Ly = Pb
+    Pb = P.dot(b)
+    y = [None]*size
+    y[0] = [(Pb[0]/L[0][0])[0]]
+    for row in range(1, size):
+        sum = 0
+        for col in range(row):
+            sum += (L[row][col])*(y[col][0])
+        y[row] = [((Pb[row] - sum) / L[row][row])[0]]
+    y = np.array(y)
+
+    #solve Ux = y
+    x = [None]*size
+    n = size - 1
+    x[n] = [(y[n] / U[n][n])[0]]
+    row = n - 1
+    while row >=0:
+        sum = 0
+        for col in range(row + 1, size):
+            sum += U[row][col]*(x[col][0])
+        x[row] = [((y[row] - sum) / U[row][row])[0]]
+        row -= 1
+    x = np.array(x)
+    return x
+
+```
+
+Now we will test this solver by comparing the x obtained through a np solver, and our solver.
+
+```{python}
+#PLU solver test1
+A = np.array([[2, 1, 0], [-2, 0, -1], [2, 3, -3]])
+b = np.array([[1], [0], [1]])
+x = PLU_solver(A, b)
+nps_x = np.linalg.solve(A, b)
+
+print("Numpy solver gives:", nps_x)
+print("Our solver gives:", x)
+print("Are these the same:", np.array_equal(x, nps_x))
+```
+
+```{python}
+#PLU solver test2
+A = np.array([[2, 1, 3], [-4, -2, -1], [2, 3, -3]])
+b = np.array([[4], [3], [5]])
+x = PLU_solver(A, b)
+nps_x = np.linalg.solve(A, b)
+
+print("Numpy solver gives:", nps_x)
+print("Our solver gives:", x)
+print("Are these the same:", np.array_equal(x, nps_x))
+```
+
+Now we will create the inverse solver algo that uses the PLU solver. Here is the pseudo-code that summerizes the following code block: 1. let $e_i$ be a standard basis vector (all zeros and a 1 in the i-th component). Solve for $x_i$ that satisfies $Ax_i = e_i$ 2. Arrange these $x_i$'s as columns in a matrix and return it
+
+```{python}
+#inverse Solver:
+def find_inverse(A):
+    size = len(A)
+    output = []
+    for i in range(size):
+        ei = np.zeros((size, 1))
+        ei[i] = [1]
+        xi = PLU_solver(A, ei)
+        output.append(xi)
+    return np.hstack(output)
+```
+
+Now we will show two tests that see that this works. We will have numpy compute the inverse, and then have the solver compute the inverse, and then use the numpy built in function array_equal to test if these two matrices are the same! We find that they both do indeed find the same matrices.
+
+Interestingly, we can note that for the second test, our two matrices differ by some trivial and small numerical value! If we use np.allclose function, a built-in numpy function that checks if two matrices are approximately equal within a certain tolerance, we get that our two matrices are the same. But, if we use array_equal, which checks for exact equality then we get false. This is due to some small numerical / roundoff error. See the code cell below where we will run both types of equality checkers, and print both matrices to see that they are essentially the same.
+
+And finally, for clarity of mind, we will check that $AA^{-1}$ equals the identity for our inverse.
+
+```{python}
+#test1
+A = np.array([[2, 1, 0], [-2, 0, -1], [2, 3, -3]])
+invA = find_inverse(A)
+num_inv = np.linalg.inv(A)
+print("Test #1: Numpy and PLU solver find the same inverse:", np.array_equal(invA, num_inv))
+print("Test #1: A and its inverse multiply to identity:", np.array_equal(invA.dot(A), np.eye(3)))
+
+print("\n")
+
+#test2
+A = np.array([[1, 2, 3], [0, 1, 4], [5, 6, 0]])
+num_inv = np.linalg.inv(A)
+invA = find_inverse(A)
+print("Test #2: Numpy and PLU solver are find exactly the same inverse:", np.array_equal(invA, num_inv))
+print("Test #2: Numpy and PLU solver are find reasonably close inverses:", np.allclose(invA, num_inv))
+print("Test #2: A and its inverse multiply to identity:", np.array_equal(invA.dot(A), np.eye(3)))
+print("My PLU solver returns: \n", invA)
+print("Numpy solver returns: \n", num_inv)
+```
+
+Finally, we will compare the run time of our functions compared to their numpy equivalents. We will do this for first the solver, and then the inverse calculator!
+
+While these will yield different results based on the computer, we can see in general that our PLU solver algorithm is not too much worse that numpy's, and occasionally better! But, the inverse solver is much less efficent than numpy's. However, as I keep rerunning these results, I tend to get drastically different results from time to time, and also wonder if the results will look much different on a different computer. If you want to play around with this, keep rerunning the below code block and have fun!
+
+```{python}
+import time
+#Test 1:
+A = np.array([[2, 1, 0], [-2, 0, -1], [2, 3, -3]])
+b = np.array([[1], [0], [1]])
+
+start_time = time.time()
+PLU_solver(A, b)
+elapsed_time = time.time() - start_time
+print(f"Test #1: PLU solver runs at {elapsed_time} seconds")
+
+start_time = time.time()
+np.linalg.solve(A, b)
+elapsed_time = time.time() - start_time
+print(f"Test#1: numpy solver takes {elapsed_time} seconds")
+
+print("\n")
+
+#Test 2:
+A = np.array([[2, 1, 3], [-4, -2, -1], [2, 3, -3]])
+b = np.array([[4], [3], [5]])
+
+start_time = time.time()
+PLU_solver(A, b)
+elapsed_time = time.time() - start_time
+print(f"Test #2: PLU solver runs at {elapsed_time} seconds")
+
+start_time = time.time()
+np.linalg.solve(A, b)
+elapsed_time = time.time() - start_time
+print(f"Test#2: numpy solver takes {elapsed_time} seconds")
+
+print("\n")
+
+#test 3
+A = np.array([[2, 1, 0], [-2, 0, -1], [2, 3, -3]])
+
+start_time = time.time()
+invA = find_inverse(A)
+elapsed_time = time.time() - start_time
+print(f"Test #3: PLU inverse finder runs at {elapsed_time} seconds")
+
+start_time = time.time()
+num_inv = np.linalg.inv(A)
+elapsed_time = time.time() - start_time
+print(f"Test#3: numpy inverse solver takes {elapsed_time} seconds")
+
+print("\n")
+
+#test 4
+A = np.array([[1, 2, 3], [0, 1, 4], [5, 6, 0]])
+
+start_time = time.time()
+invA = find_inverse(A)
+elapsed_time = time.time() - start_time
+print(f"Test #4: PLU inverse finder runs at {elapsed_time} seconds")
+
+start_time = time.time()
+num_inv = np.linalg.inv(A)
+elapsed_time = time.time() - start_time
+print(f"Test#4: numpy inverse solver takes {elapsed_time} seconds")
+```
+
+::: comments
+Interesting, when I run your code on my Macbook Air M2, I am getting very consistent times for the PLU solver. (And the Numpy solver always beats it by about a factor of 10...)
+
+You've done a great job coding this up, your tests are good, and your explanations are clear. Much improved!
+
+Grade: E
+:::

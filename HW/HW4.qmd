@@ -20,11 +20,12 @@ For the following matrices find the null space of $I-A$ and find state vectors w
 ::: solutions
 Exercise 3.6.7
 
- (a) $c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}+c_{4} \mathbf{v}_{4}=\mathbf{0}$, where $c_{1}=-2 c_{3}-2 c_{4}$, $c_{2}=-c_{3}$, and $c_{3}, c_{4}$ are free, dim $\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}, \mathbf{v}_{4}\right\}=2$ 
+ (a) $c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}+c_{4} \mathbf{v}_{4}=\mathbf{0}$, where $c_{1}=-2 c_{3}-2 c_{4}$, $c_{2}=-c_{3}$, and $c_{3}, c_{4}$ are free, dim span $\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}, \mathbf{v}_{4}\right\}=2$ 
  
  (b) $c_{1} x+$ $c_{2}\left(x^{2}+x\right)+c_{3}\left(x^{2}-x\right)=0$ where $c_{1}=2 c_{3}, c_{2}=-c_{3}$, and $c_{3}$ is free, dim span $\left\{x, x^{2}+x, x^{2}-x\right\}=2$ 
  
- (c) $c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}+c_{4} \mathbf{v}_{4}=\mathbf{0}$, where $c_{1}=-c_{3}, c_{2}=\frac{1}{2} c_{3}, c_{4}=0$ and $c_{3}$ is free, dim $\operatorname{span}\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}, \mathbf{v}_{4}\right\}=3$
+
+ (c) $c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}+c_{4} \mathbf{v}_{4}=\mathbf{0}$, where $c_{1}=-c_{3}, c_{2}=\frac{1}{2} c_{3}, c_{4}=0$ and $c_{3}$ is free, dim span $\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}, \mathbf{v}_{4}\right\}=3$
 
 :::
 
@@ -130,6 +131,7 @@ Exercise 4.2.10
 (a) $\left[\begin{array}{ll}1 & 3 \\ 1 & 0\end{array}\right],\left[\begin{array}{l}1 \\ 3\end{array}\right]$
 (b) $\left[\begin{array}{rr}2 & -2 \\ 1 & 1 \\ 3 & 1\end{array}\right],\left[\begin{array}{r}2 \\ -1 \\ 1\end{array}\right]$
 (c) $\left[\begin{array}{rrr}0 & 2 & 2 \\ 1 & 1 & 0 \\ -1 & 1 & 2 \\ 1 & -2 & -3\end{array}\right],\left[\begin{array}{l}3 \\ 1 \\ 0 \\ 0\end{array}\right]$
+
 ::: solutions
 Exercise 4.2.11
 

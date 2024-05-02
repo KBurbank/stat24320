@@ -27,7 +27,28 @@ Address the following points regarding $G$.
 
 (b) Exhibit the incidence matrix $A$ of this digraph and find a basis for $\mathcal{N}(A)$ using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element $\mathbf{c}_{1}$ might be replaced by directed $\mathbf{c}_{1}+\mathbf{c}_{2}$ ).
 
-Pick three of the following to complete:
+**Hints:**
+
+- A cycle is a group of nodes that connect around in a circle. (The term “loop” is usually reserved for cases where a node connects back to itself with a single edge, although our textbook author uses “loop” broadly to mean “cycle”.)
+
+- If a graph includes only a cycle, each node must have either a) one incoming and one outgoing edge or b) no edges at all
+- In incidence matrices, incoming edges are represented with -1 and outgoing edges with +1.
+- In an incidence matrix, each row corresponds to all the edges coming in and out of a particular node
+    - Therefore in an the incidence matrix of a digraph which is a cycle, every row must sum to zero
+- To find all of the cycles in a graph, we can look for combinations of edges within the graph which are cycles. This corresponds to combinations of columns in the incidence matrix for which all rows sum to zero.
+    - This is just the nullspace of the incidence graph
+      - the nullspace is the basis for all solutions to the equation  Ax=0
+      - each column in the nullspace tells us a set of coefficients which can multiply the columns of the incidence matrix so that the rows can sum to zero.
+      - Example: if our nullspace has a column vector [0,1,0,1]^T, this tells us that column 2 + column 4 of the incidence matrix will sum to zero.
+  - Of course, when we calculate a nullspace, we allow for columns to be added or subtracted. This corresponds to having negative numbers in the column vectors of the nullspace.
+  - If we subtract a column in the incidence matrix, this is like switching the directionality of an edge.
+  - We can decide if we are interested in allowing cycles formed in this manner!
+- Each column of the nullspace will be tell the indices of the columns in the incidence graph which represent edges making up a single cycle. Together, they make up a basis for forming all of the cycles present in the graph as a whole.
+
+- A reminder, an “algebraic loop” is a cycle where we don’t care about the directionality of the edges, while a “directed loop” is one where we do respect the directionality.
+
+
+**Pick three of the following to complete:**
 
 1. Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are $x_{1}, \ldots, x_{6}$. The potential difference across an edge is the potential value of head minus tail. Kirchhoff's second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p. 422) that $A \mathbf{x}=\mathbf{b}$ implies that for all $\mathbf{y} \in \mathcal{N}\left(A^{T}\right), \mathbf{y}^{T} \mathbf{b}=0$ to find conditions that a vector $\mathbf{b}$ must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.
 

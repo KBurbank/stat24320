@@ -111,14 +111,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chapter-3-projects" id="toc-chapter-3-projects" class="nav-link active" data-scroll-target="#chapter-3-projects"><em>Chapter 3 Projects</em></a>
+  <li><a href="#chapter-3-projects" id="toc-chapter-3-projects" class="nav-link active" data-scroll-target="#chapter-3-projects"><span class="header-section-number">1</span> <em>Chapter 3 Projects</em></a>
   <ul class="collapse">
-  <li><a href="#modeling-with-directed-graphs" id="toc-modeling-with-directed-graphs" class="nav-link" data-scroll-target="#modeling-with-directed-graphs"><em>1. Modeling with Directed Graphs</em></a></li>
+  <li><a href="#modeling-with-directed-graphs" id="toc-modeling-with-directed-graphs" class="nav-link" data-scroll-target="#modeling-with-directed-graphs"><span class="header-section-number">1.1</span> <em>1. Modeling with Directed Graphs</em></a></li>
   </ul></li>
-  <li><a href="#chapter-4-projects" id="toc-chapter-4-projects" class="nav-link" data-scroll-target="#chapter-4-projects"><em>Chapter 4 Projects</em></a>
+  <li><a href="#chapter-4-projects" id="toc-chapter-4-projects" class="nav-link" data-scroll-target="#chapter-4-projects"><span class="header-section-number">2</span> <em>Chapter 4 Projects</em></a>
   <ul class="collapse">
-  <li><a href="#image-compression-and-edge-detection" id="toc-image-compression-and-edge-detection" class="nav-link" data-scroll-target="#image-compression-and-edge-detection"><em>2. Image Compression and Edge Detection</em></a></li>
-  <li><a href="#least-squares" id="toc-least-squares" class="nav-link" data-scroll-target="#least-squares"><em>3. Least Squares</em></a></li>
+  <li><a href="#image-compression-and-edge-detection" id="toc-image-compression-and-edge-detection" class="nav-link" data-scroll-target="#image-compression-and-edge-detection"><span class="header-section-number">2.1</span> <em>2. Image Compression and Edge Detection</em></a></li>
+  <li><a href="#least-squares" id="toc-least-squares" class="nav-link" data-scroll-target="#least-squares"><span class="header-section-number">2.2</span> <em>3. Least Squares</em></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/projects_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -138,19 +138,32 @@ window.Quarto = {
     
   
     
+<div>
+    <div class="quarto-title-meta-heading">Due Date:</div>
+      <div class="quarto-title-meta-contents">
+      <p class="due-date">Friday, Week 7</p>
+    </div>
   </div>
-  
+
+<div>
+    <div class="quarto-title-meta-heading">Textbook Chapters:</div>
+      <div class="quarto-title-meta-contents">
+      <p class="due-date">3, 4</p>
+    </div>
+  </div>
 
 
-</header>
+
+
+</div></header>
 
 
 <p>Instructions:</p>
 <p>Please do all three projects. However, in the first project (Modeling with Directed Graphs), you can choose which three parts of the five you’d like to complete.</p>
-<section id="chapter-3-projects" class="level1">
-<h1><em>Chapter 3 Projects</em></h1>
-<section id="modeling-with-directed-graphs" class="level2">
-<h2 class="anchored" data-anchor-id="modeling-with-directed-graphs"><em>1. Modeling with Directed Graphs</em></h2>
+<section id="chapter-3-projects" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <em>Chapter 3 Projects</em></h1>
+<section id="modeling-with-directed-graphs" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="modeling-with-directed-graphs"><span class="header-section-number">1.1</span> <em>1. Modeling with Directed Graphs</em></h2>
 <p>Project Descriptions: This project introduces more applications of digraphs as mathematical modeling tools. You are given that the digraph <span class="math inline">\(G\)</span> has vertex set <span class="math inline">\(V=\{1,2,3,4,5,6\}\)</span> and edge set</p>
 <p><span class="math display">\[
 E=\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\}
@@ -160,7 +173,31 @@ E=\{(1,2),(2,3),(3,4),(4,2),(1,4),(3,1),(3,6),(6,3),(4,5),(5,6)\}
 <li><p>Draw a picture of this digraph. You may leave space in your report and draw this by hand, or if you prefer, you may use the computer drawing applications available to you on your system.</p></li>
 <li><p>Exhibit the incidence matrix <span class="math inline">\(A\)</span> of this digraph and find a basis for <span class="math inline">\(\mathcal{N}(A)\)</span> using its reduced row echelon form. Some of the basis elements may be algebraic but not directed loops. Use this basis to find a basis of directed loops (e.g., non-directed basis element <span class="math inline">\(\mathbf{c}_{1}\)</span> might be replaced by directed <span class="math inline">\(\mathbf{c}_{1}+\mathbf{c}_{2}\)</span> ).</p></li>
 </ol>
-<p>Pick three of the following to complete:</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><p>A cycle is a group of nodes that connect around in a circle. (The term “loop” is usually reserved for cases where a node connects back to itself with a single edge, although our textbook author uses “loop” broadly to mean “cycle”.)</p></li>
+<li><p>If a graph includes only a cycle, each node must have either a) one incoming and one outgoing edge or b) no edges at all</p></li>
+<li><p>In incidence matrices, incoming edges are represented with -1 and outgoing edges with +1.</p></li>
+<li><p>In an incidence matrix, each row corresponds to all the edges coming in and out of a particular node</p>
+<ul>
+<li>Therefore in an the incidence matrix of a digraph which is a cycle, every row must sum to zero</li>
+</ul></li>
+<li><p>To find all of the cycles in a graph, we can look for combinations of edges within the graph which are cycles. This corresponds to combinations of columns in the incidence matrix for which all rows sum to zero.</p>
+<ul>
+<li>This is just the nullspace of the incidence graph
+<ul>
+<li>the nullspace is the basis for all solutions to the equation Ax=0</li>
+<li>each column in the nullspace tells us a set of coefficients which can multiply the columns of the incidence matrix so that the rows can sum to zero.</li>
+<li>Example: if our nullspace has a column vector [0,1,0,1]^T, this tells us that column 2 + column 4 of the incidence matrix will sum to zero.</li>
+</ul></li>
+<li>Of course, when we calculate a nullspace, we allow for columns to be added or subtracted. This corresponds to having negative numbers in the column vectors of the nullspace.</li>
+<li>If we subtract a column in the incidence matrix, this is like switching the directionality of an edge.</li>
+<li>We can decide if we are interested in allowing cycles formed in this manner!</li>
+</ul></li>
+<li><p>Each column of the nullspace will be tell the indices of the columns in the incidence graph which represent edges making up a single cycle. Together, they make up a basis for forming all of the cycles present in the graph as a whole.</p></li>
+<li><p>A reminder, an “algebraic loop” is a cycle where we don’t care about the directionality of the edges, while a “directed loop” is one where we do respect the directionality.</p></li>
+</ul>
+<p><strong>Pick three of the following to complete:</strong></p>
 <ol type="1">
 <li><p>Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are <span class="math inline">\(x_{1}, \ldots, x_{6}\)</span>. The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p.&nbsp;422) that <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> implies that for all <span class="math inline">\(\mathbf{y} \in \mathcal{N}\left(A^{T}\right), \mathbf{y}^{T} \mathbf{b}=0\)</span> to find conditions that a vector <span class="math inline">\(\mathbf{b}\)</span> must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.</p></li>
 <li><p>Assume that across each edge of a circuit a current flows. Thus, we can assign to each edge a “weight,” namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.</p></li>
@@ -186,17 +223,17 @@ P=\{5,6,7,9,10,8,9,5,6,10\}
 </ol>
 </section>
 </section>
-<section id="chapter-4-projects" class="level1">
-<h1><em>Chapter 4 Projects</em></h1>
-<section id="image-compression-and-edge-detection" class="level2">
-<h2 class="anchored" data-anchor-id="image-compression-and-edge-detection"><em>2. Image Compression and Edge Detection</em></h2>
+<section id="chapter-4-projects" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <em>Chapter 4 Projects</em></h1>
+<section id="image-compression-and-edge-detection" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="image-compression-and-edge-detection"><span class="header-section-number">2.1</span> <em>2. Image Compression and Edge Detection</em></h2>
 <p>Problem Description: In this report you will test some limits of data compression by experimenting with an interesting image of your own choosing. It could be a photograph you have taken or some reasonably complex image from the internet that piqued your interest. You are to transform the image into suitable format and then see how much you can can compress that data storage requirements for that image while losing an acceptable amount of detail.</p>
 <p>Implementation Notes: First, you must convert the image to a grayscale format without layers with pixels stored as unsigned eight bit integers. (We are not going to deal with the additional details of color images.) For this you will need an image manipulation program such as the GNU program Gimp or commercial software such as Adobe Photoshop. Figure 4.7(a) is an example of the sort of file you with which you will start experimenting. Secondly, you will need a technology tool capable of importing standard flattened image grayscale images (such as .png, etc.) into matrices and vice versa. The freely available <span class="math inline">\(\mathrm{R}\)</span> programming language and Octave, as well as commercial Matlab and others are perfectly capable of these tasks. For the record, Figure 4.7 and its relatives in this chapter were converted from .pdf into grayscale .png images via Gimp and read, manipulated and written as matrices via Octave.</p>
 <p>Next, you must apply the Haar wavelet transform repeatedly to your initial image until you reach a blur that is unacceptably far from the initial image. These computations will require a mild bit of programming on your part with the technology tool of your choice. Each application of the transform will reduce storage requirements by a factor of four. How much are you able to save? Of course, “unacceptably far” is in the eye of the beholder, but here’s a pretty reasonable case: Start with a some text and compress it until you can no longer read the text.</p>
 <p>A picture is worth a thousand words, so be lavish with them in your write-up. Consider the amount of savings if, in addition to saving the blurs in all their detail, you were to to save a very good approximation to the edges portion of the transformed picture. For example, consider what you might achieve by first applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level to zero, then accounting for the large number of resulting zeros by some compression technique. You might even suggest a format for such a compression format.</p>
 </section>
-<section id="least-squares" class="level2">
-<h2 class="anchored" data-anchor-id="least-squares"><em>3. Least Squares</em></h2>
+<section id="least-squares" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="least-squares"><span class="header-section-number">2.2</span> <em>3. Least Squares</em></h2>
 <p>Pick a league in a sport that you like. For example, you could pick the WNBA for basketball, or a soccer league. Pick a point halfway through last year’s season. You will use the data from the games played up to that point to predict the outcome of the season.</p>
 <p>Start by making a table of scores from the games played thus far: The <span class="math inline">\((i, j)\)</span> th entry is team <span class="math inline">\(i\)</span> ’s score in the game with team <span class="math inline">\(j\)</span>. (See below for an example.)</p>
 <p>Then, you will want to use the ideas of least squares and graph theory to predict team ratings and point spreads for the remaining games. The idea is to set up a system of equations that will give you the best fit to the observed scores. You will need to use the ideas of least squares to solve this system of equations. (See below for more details.)</p>

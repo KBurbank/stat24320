@@ -4721,7 +4721,9 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="comments.css">
+<style type="text/css">.column-margin, .comments {
+color: red;
+}</style>
 </head>
 
 <body class="fullcontent">
@@ -4772,7 +4774,7 @@ window.Quarto = {
 \end{pmatrix}
 \]</span></p>
 <p>Since this matrix is stochastic, if we initalize it with a distribution vector, then we will have a Markov chain. Lets see what the market shares will be for the next three years if we start off with all three companies having equal market share (<span class="math inline">\(a_{0} = b_{0} = c_{0} = 1/3\)</span>). See the output of the code cell below for the distribution vector that contains the market distribution for each company after each year (first compnent represents share of company A, second component represents that of B, and the last component represents that of C).</p>
-<div id="1bf04276" class="cell" data-execution_count="1">
+<div id="1bf04276" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create our transition matrix</span></span>
@@ -4823,7 +4825,7 @@ Matrix([[0.339000000000000], [0.275333333333333], [0.385666666666667]])</code></
 <p>Recall that <span class="math inline">\(\mathbf{x^{(k)}} = A^k\cdot\mathbf{x^{(0)}}\)</span>.</p>
 <p>If we want company A to have the greatest market share after <span class="math inline">\(k\)</span> many years, then we want the sum of the top row of our matrix to be as large as possible.</p>
 <p>Lets look at the transition matrix for Campaign 1, Campaign 2, and no campaign after 5 years:</p>
-<div id="3c05f85f" class="cell" data-execution_count="2">
+<div id="3c05f85f" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>C1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span> , <span class="fl">.3</span> ],</span>
@@ -4850,7 +4852,7 @@ no campaign 1.02269000000000</code></pre>
 <p>Since the sum of the coefficents of the top row of a respective transition matrix is the highest in campaign 2, it seems that, on average, campaign 2 will yield the highest market share, at least after 5 years.</p>
 <p>Lets run a different type of test to measure how “good” each campaign is to see if we can corroborate this finding.</p>
 <p>For each test, we will generate 2000 random inital distribution vectors, and feed it into each of our transition matrices for a given amount of years. We will do this for 2 and 5 years, gauging both short and long term interests. We will assign each campaign/no campaign a score out of 2000: the transition matrix that yields the highest market share for a given inital state will win a ‘point’.</p>
-<div id="77edde97" class="cell" data-execution_count="3">
+<div id="77edde97" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>C1 <span class="op">=</span> sym.Matrix([[<span class="fl">.5</span>, <span class="fl">.32</span> , <span class="fl">.3</span> ],</span>
@@ -4946,7 +4948,7 @@ no campaign 1.02269000000000</code></pre>
 </tbody>
 </table>
 <p>Now, we can put their play data into a graph like structure. We can represent each game played as a tuple <span class="math inline">\((j, k)\)</span>, that represents a game where team <span class="math inline">\(j\)</span> beat team <span class="math inline">\(k\)</span>. This is what the graph looks like:</p>
-<div id="efc157df" class="cell" data-execution_count="4">
+<div id="efc157df" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -4992,7 +4994,7 @@ no campaign 1.02269000000000</code></pre>
 <p>Now that we have created an adjacency matrix, we can now calculate the vertex power for each team. The vertex power is defined formally as “number of directed walks of length 1 or 2 originating at the vertex” (Shores 95). Now, lets decode what this means in our context. A directed walk of length one from vertex j represents a win of team j over some team, say team k. A directe walk of length two, say from j to k to l, then we know that team j beat team k who beat team l. We care about this because if team k beat team l, then it means that team k is somewhat formidable, so thus it means more if team j was able to beat them out! Just any old win means less, because mean their opponent was not very good. But beating someoone who beat someone else indicates that team j is not to be messed with! So, when calculating vertex powers, we are taking into account the ‘quality’ of the wins and summing not only wins, but wins of people who won.</p>
 <p>To calculate the vertex power for team j, we will sum the j-th row of <span class="math inline">\(A^2 + A\)</span>, since the row of <span class="math inline">\(A\)</span> counts the numbers of walks length 1 from j and <span class="math inline">\(A^2\)</span> counts the number of walks length 2 from <span class="math inline">\(j\)</span>.</p>
 <p>This next code cell will contain the work used to express the ideas in the preceding text boxes, and then will compute the vertex powers.</p>
-<div id="81215f50" class="cell" data-execution_count="5">
+<div id="81215f50" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#convert to numpy</span></span>
@@ -5086,7 +5088,7 @@ Team 7&#39;s power: 16</code></pre>
 <p>Now we will do a reverse page rank methodology. This method is useful here because it is a way to measure the importance of a page based on how many outgoing links it has. Since an outgoing link in this context is a win, then this method is useful! To do this method, we will take the transpose of our adjacency matrix and apply the PageRank method.</p>
 <p>The next code block does the following: 1. Creates a diagonal matrix D where the diag. entry of row i is the inverse of the sum of row i of A^T 2. forms our transition matrix by A*D (A is our adjacency matrix) 3. Finds our stable distribution vector by using equation 2.5 from Shores (page 131)</p>
 <p>This will find our stationary distribution vector x that satisfies equation 2.4 from Shores (page 131). We will use this distribution vector as our rankings for each respective team / vector component.</p>
-<div id="7e6b4e30" class="cell" data-execution_count="6">
+<div id="7e6b4e30" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> eye</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Create Transition matrix for our reverse graph (A^T) ##</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -5160,7 +5162,7 @@ Team 7&#39;s power: 16</code></pre>
 <p>We can interrept these values as the amount of ‘influence’ each team has based on their outgoing links. Observe that these rankings are very close to the power ranks. This is likely because both are measuring the influence of outgoing links (wins), one in the form of runs of length one and two, and one in terms of PageRank.</p>
 <p>The major difference between the power rankings and the reverse PageRank rankings is team 4, who jumps from last place to third to last. This is likely because team 4 has beaten team 5! So, in the reverse graph, 1/2 of team 5’s influence is going to team 4! Since team 5 is such a high performer, then by extension, team 4 will receive a high number of influence. However, in the power ranking, there is only one path out of vertex 4, so there will be a relatively lower power ranking.</p>
 <p>Now, suppose that we have additional information: the margin by which a given team won. Using this information, we can create a weighted graph, where each directed edge from i to j represents the margin by which i won over j. We can visualize this graph below:</p>
-<div id="6ac3f96c" class="cell" data-execution_count="7">
+<div id="6ac3f96c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
@@ -5196,7 +5198,7 @@ Team 7&#39;s power: 16</code></pre>
 <p>Now, lets create an adjacency matrix for this weighted graph, where instead of an indicator of 0 and 1, we can use 0 to represent a lack of a edge, and an integer to represent that there is an edge and what the weight of that edge is (this works since none of our weights are 0).</p>
 <p>In the same way as before, we can use this adjacency matrix to construct a power matrix. Like before, we care about runs of length two, because a run from j to i to k means that j beat team i, who in turn beat k, therefore giving more credence to j for beating i.</p>
 <p>But, now that we have weights, this power matrix gives us even more information. We are not only counting how many runs of length 1 and 2 each team has, the margins of those wins. So, if team j beat team i by 5 points, and team i beat team k by 8 points, then team j will get all 13 points. This works because if team i beat team k by 8 points, and team j beat team i, then it is likely that team j would also beat team k by at least 8 points! By considering these weighted power rankings, we can more information how the ‘scale’ of each win and are able to account for that, giving more credit to big wins versus games won by a hair.</p>
-<div id="35c25c22" class="cell" data-execution_count="8">
+<div id="35c25c22" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#calculate weighted average:</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>weighted_adj <span class="op">=</span> nx.adjacency_matrix(F)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>weighted_adj <span class="op">=</span> weighted_adj.toarray()</span>
@@ -5274,7 +5276,7 @@ Team 7&#39;s power: 2089</code></pre>
 <h2 class="anchored" data-anchor-id="plu-factorization"><em>PLU Factorization</em></h2>
 <p>We will first create the PLU_factorization algo (assuming non-zero diag entries).</p>
 <p>The pseudo code that summerizes the following code block is as follows: 1. deepcopy A so we do not change our input as we modify it 2. index our rows in an index list (index_list) and call upon row i of matrix P as P[index_list[i]][j] rather than P[i][j] 3. For each column zero out everything below the diagonal and keep track of the multipliers for the places that are zeroed out 4. use our stored multiplier data to form a lower triangular matrix 5. use our index_list data to form permulation matrix and upper triangular matrix</p>
-<div id="cb491f92" class="cell" data-execution_count="9">
+<div id="cb491f92" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> copy</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PLU_factorization(A):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
@@ -5328,7 +5330,7 @@ Team 7&#39;s power: 2089</code></pre>
 <p>Let A be the original matrix. Then, we will decompose each into its (P)LU factorization.</p>
 <p>For each, we will use SymPy’s upper and lower triangular tester (is_upper, is_lower), and test if (P)LU = A by using numpy’s np.array_equal function. View the output of the following code cell:</p>
 <p>(the first two examples we check LU = A since P is the identity, but we check PA = LU for the third problem)</p>
-<div id="68a285b2" class="cell" data-execution_count="10">
+<div id="68a285b2" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Problem 11:</span></span>
@@ -5377,7 +5379,7 @@ Does LU = PA: True</code></pre>
 </div>
 <p>Now we will code the PLU solver algo. Given A and b, we want to find vector x such that Ax = b.</p>
 <p>The pseudo code that summerizes the following code block is the following: 1. decompose A into its P, L, U so we have PA = LU 2. solve y by solving Ly = Pb by forward solving 3. solve x by solving Ux = y by backward solving 4. return x</p>
-<div id="6d1d77a1" class="cell" data-execution_count="11">
+<div id="6d1d77a1" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PLU_solver(A, b):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Given a square matrix A (non-zero diag entries) and a solution b, solve for the unknowns using</span></span>
@@ -5411,7 +5413,7 @@ Does LU = PA: True</code></pre>
 <span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we will test this solver by comparing the x obtained through a np solver, and our solver.</p>
-<div id="d9d8516e" class="cell" data-execution_count="12">
+<div id="d9d8516e" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PLU solver test1</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">1</span>], [<span class="dv">0</span>], [<span class="dv">1</span>]])</span>
@@ -5431,7 +5433,7 @@ Our solver gives: [[-1.]
 Are these the same: True</code></pre>
 </div>
 </div>
-<div id="e7693974" class="cell" data-execution_count="13">
+<div id="e7693974" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#PLU solver test2</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>], [<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">4</span>], [<span class="dv">3</span>], [<span class="dv">5</span>]])</span>
@@ -5452,7 +5454,7 @@ Are these the same: True</code></pre>
 </div>
 </div>
 <p>Now we will create the inverse solver algo that uses the PLU solver. Here is the pseudo-code that summerizes the following code block: 1. let <span class="math inline">\(e_i\)</span> be a standard basis vector (all zeros and a 1 in the i-th component). Solve for <span class="math inline">\(x_i\)</span> that satisfies <span class="math inline">\(Ax_i = e_i\)</span> 2. Arrange these <span class="math inline">\(x_i\)</span>’s as columns in a matrix and return it</p>
-<div id="33191c43" class="cell" data-execution_count="14">
+<div id="33191c43" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#inverse Solver:</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_inverse(A):</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> <span class="bu">len</span>(A)</span>
@@ -5467,7 +5469,7 @@ Are these the same: True</code></pre>
 <p>Now we will show two tests that see that this works. We will have numpy compute the inverse, and then have the solver compute the inverse, and then use the numpy built in function array_equal to test if these two matrices are the same! We find that they both do indeed find the same matrices.</p>
 <p>Interestingly, we can note that for the second test, our two matrices differ by some trivial and small numerical value! If we use np.allclose function, a built-in numpy function that checks if two matrices are approximately equal within a certain tolerance, we get that our two matrices are the same. But, if we use array_equal, which checks for exact equality then we get false. This is due to some small numerical / roundoff error. See the code cell below where we will run both types of equality checkers, and print both matrices to see that they are essentially the same.</p>
 <p>And finally, for clarity of mind, we will check that <span class="math inline">\(AA^{-1}\)</span> equals the identity for our inverse.</p>
-<div id="a3b8c6b9" class="cell" data-execution_count="15">
+<div id="a3b8c6b9" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#test1</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>invA <span class="op">=</span> find_inverse(A)</span>
@@ -5506,7 +5508,7 @@ Numpy solver returns:
 </div>
 <p>Finally, we will compare the run time of our functions compared to their numpy equivalents. We will do this for first the solver, and then the inverse calculator!</p>
 <p>While these will yield different results based on the computer, we can see in general that our PLU solver algorithm is not too much worse that numpy’s, and occasionally better! But, the inverse solver is much less efficent than numpy’s. However, as I keep rerunning these results, I tend to get drastically different results from time to time, and also wonder if the results will look much different on a different computer. If you want to play around with this, keep rerunning the below code block and have fun!</p>
-<div id="c1dff427" class="cell" data-execution_count="16">
+<div id="c1dff427" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Test 1:</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>

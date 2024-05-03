@@ -171,6 +171,23 @@ def plan_max(company, plan):
 ```
 
 This one I believe should work. I'm going to test it...
+
+And, no, I got the error "def plan_max(company, plan):
+  result = np.max(plan[:, 3, company])
+  dis = np.argmax(plan[:, 3, company])
+  return result, dis. So now I'm going to ask CoPilot to fix that error...
+
+And it go snarky with me. "To fix the "TypeError: list indices must be integers or slices, not tuple" error, replace the code inside the selection with the correct indexing syntax using integers instead of tuples."
+
+```{python}
+def plan_max(company, plan):
+  plan = np.array(plan)  # convert list to numpy array
+  result = np.max(plan[:, 3, company])
+  dis = np.argmax(plan[:, 3, company])
+  return result, dis
+```
+
+Fine. I give up!
 :::
 
 ```{python}

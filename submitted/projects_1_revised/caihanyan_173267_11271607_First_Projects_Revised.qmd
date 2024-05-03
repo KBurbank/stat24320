@@ -1,5 +1,11 @@
 ---
+title: 'Project #1 Revisions - Hanyan Cai'
 jupyter: python3
+css: comments.css
+publish: true
+format:
+    html:
+        embed-resources: true
 ---
 
 ```{python}

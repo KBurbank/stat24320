@@ -1,7 +1,11 @@
 ---
-title: Markov Chains
+title: 'Project #1 Revisions - Alec Tandoc'
 jupyter: python3
 css: comments.css
+publish: true
+format:
+    html:
+        embed-resources: true
 ---
 
 ```{python}
@@ -179,7 +183,14 @@ And, no, I got the error "def plan_max(company, plan):
 
 And it go snarky with me. "To fix the "TypeError: list indices must be integers or slices, not tuple" error, replace the code inside the selection with the correct indexing syntax using integers instead of tuples."
 
+OK. I tried one more time, asking CoPilot to fix it. Finally, it even explained, and gave me code that actually worked:
+
+"The error message suggests that the plan variable is a list, not a NumPy array. The slicing operation plan[:, 3, company] is specific to NumPy arrays and doesn't work with Python lists.
+
+To fix this, you can convert the plan list to a NumPy array inside the function. Here's how you can do it:"
+
 ```{python}
+#| eval: false
 def plan_max(company, plan):
   plan = np.array(plan)  # convert list to numpy array
   result = np.max(plan[:, 3, company])
@@ -187,7 +198,7 @@ def plan_max(company, plan):
   return result, dis
 ```
 
-Fine. I give up!
+Anyways. I will leave it to you to decide how much you want to use these AI tools in your learning! As you can see, it can definitely be a frustrating exercise.
 :::
 
 ```{python}
@@ -358,6 +369,17 @@ As demonstrated, A performs consistently better under Plan 2 than the original p
 #| colab: {base_uri: 'https://localhost:8080/', height: 78}
 (plan2 ** 10) * sp.Matrix([0.0, 0.99, .01])
 ```
+
+::: comments
+This is much clearer now -- I can understand exactly what you are doing in each bit of code, and why. It definitely meets expectations, and is appropriate for projects in this class. Nice!
+
+The next level, now that you are clearly communicating what you've done, would be to think about how to separate your math and analytical reasoning from your explanations about implementation. This is important when you want to be able to communicate with readers who may be more interested in one part rather than the other. For example, you might start off explaining the problem you are trying to solve and giving a high-level overview of how you went about solving it: "I evaluated the predicted performance under the different marketing plans using a Markov Chain approach. Specifically, for each plan I calculated a transition matrix to determine year-over-year change in market share. I examined a number of possible startng distributions and found their long-term performance under each plan by exponentiating the transition matrix. For each scenario, I determined which of the three companies had the highest market share in the long term."
+
+One option would be to put text like this at the top of the document, and then use headers to match sections of code with parts of your high-level plan: "Determining the transition matrix", "Creating initial distributions", etc. Another option would be to break it apart and put this kind of text in different Markdown cells throughout the document, and then have the implementation details in comments within the code cells.
+
+Grade: M
+::
+
 
 # Sports Ranking
 In this problem, we are attempting to rank teams based on a win graph. We will iterate through the PowerRank, reverse PageRank, and weighted win techniques to determine the best team.
@@ -542,6 +564,14 @@ pr_rank
 
 We can see that weighting the edges have changed the order of our rankings. Although 7 and 5 both remained high up on their performance, we can see that 6 rose in rankings during the weighted Reverse PageRank. This is likely due to the fact that team 6 had a strong performance against team 3, who has had many strong performances against other teams.
 
+::: comments
+This is exactly what I was looking for! You've explained your thinking; it's nicely separated between reasoning (in Markdown) and implementation (in code with comments). Your analysis is also solid.
+
+Grade: E
+:::
+
+
+
 # Iso Rank
 In this problem, we attempt to imperfectly map graphs onto other graphs. Specifically, mappings that are not bijections, such that there is no perfect 1-1 mapping of the nodes.
 
@@ -578,6 +608,11 @@ G2
 
 We then create a surfing matrix which is represented as a multiplication of each element of G2 with the entire graph of G1 (e.g. M[0:2][0:2] = G2[0][0] * G1).
 
+::: comments
+It would be useful here to have a description of what a surfing matrix is, and why it's calculated this way, etc.
+:::
+
+
 ```{python}
 #| colab: {base_uri: 'https://localhost:8080/', height: 545}
 # Construct G2 x G1 (Outer x Inner) surfing matrix
@@ -592,6 +627,11 @@ M
 
 Using this surfing matrix, we then solve for x using the PageRank formula. From here, we are then giving a list of node pairings from G1 to G2. Every 5 values represents all the nodes from G1 (A, B, C, D, E) and how closely related they are to node i in G2 (e.g. values 6-10 are the closeness of nodes A, B, C, D, and E to node 2)
 
+::: comments
+What is x? What is the PageRank formula? Please include formulas if you are going to solve them! And, why should it work to show how closely related the nodes are?
+:::
+
+
 ```{python}
 #| colab: {base_uri: 'https://localhost:8080/', height: 525}
 # Calculate x given alpha = 0.85, v = 1/25 * e25
@@ -604,6 +644,10 @@ x
 ```
 
 We then tabulate this data, and attempt to match nodes by removing the element with the highest value. This corresponds to the nodes from G1 and G2 that have the highest correspondence. We then remove that elements respective row and column as to not match the next nodes with an already matched pair. While we could perform this as a function, we will notice in further examples that some matchings the exact same correspondence value, and thus the function may return arbitrary results. As such, we choose to do this by hand.
+
+::: comments
+I actually like that you've gone through this step by step by hand, because it makes it very easy to follow what you've done. If I were lecturing on this topic, I might try to create a graphic to illustrate this process in cartoon form.
+:::
 
 ```{python}
 #| colab: {base_uri: 'https://localhost:8080/', height: 119}
@@ -699,6 +743,10 @@ x
 
 As evident from this table, some matchings are equally likely as others. This is likely due to the fact that visually, we can see that P is a subset of, where the subset of Q and P represent triangles with the exact same amount of edges. Thus, flipping 1, 2, 3 with A, B, and C, can result in the exact same matchings, as we demonstrate below.
 
+::: comments
+I appreciate that you've explained the issue both in terms of the implementation and its *meaning* with respect to the graphs.
+:::
+
 ```{python}
 #| colab: {base_uri: 'https://localhost:8080/', height: 78}
 iso = sp.zeros(3,5)
@@ -785,3 +833,10 @@ The best matching is [(C:1 or C:2 or C:3), (A:3 or A:1 or A:2), (B:2 or B:3 or B
 
 We can see that our correspondence values in our digraph table are noticeably higher than the correspondence values in the previous example. This is likely due to the fact that we now have edge directions in our graph. Thus, we cannot arbitrarily place our nodes in our triangle now, they have a specific order they belong to. Thus, fixing a node now determines the position of the other two, instead of before. Therefore, there is more weight in the first node affixation and is thus why correspendonce values are higher.
 
+::: comments
+You've explained your steps clearly here, and I like how you thoughtfully explored the issue of equal correspondences.
+
+In future, I'd like to see a bit more explanation of the math & formulas; what is a surfing matrix? Why does it give us the result we want? etc.
+
+Grade: M
+:::

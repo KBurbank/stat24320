@@ -130,6 +130,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="comments.css">
 </head>
 
 <body class="fullcontent">
@@ -162,14 +163,14 @@ window.Quarto = {
 </header>
 
 
-<div id="76b33fe7" class="cell" data-execution_count="1">
+<div id="76b33fe7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this problem, we are calculating the effectivness of different marketing strategies on distribution vectors representing a companies market share. We will be trying to optimize the plan so that we provide Company A with the most market share.</p>
 <p>First, I will construct the original market conclusions as a Markov chain and demonstrate its effects after 3 years.</p>
-<div id="c3ef3a0a" class="cell" data-execution_count="2">
+<div id="c3ef3a0a" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Markov chain</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sp.Matrix([</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
@@ -177,7 +178,7 @@ window.Quarto = {
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.6</span>]</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fec098a8" class="cell" data-execution_count="3">
+<div id="fec098a8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>orig <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>)])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(M<span class="op">**</span><span class="dv">3</span>)<span class="op">*</span>orig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
@@ -187,7 +188,7 @@ window.Quarto = {
 <div class="comments">
 <p>If you find yourself using Sympy in the future, here is a trick I have learned: if you have a matrix, you can get it into exact rational form with the command <code>P=sp.nsimplify(P,rational=True)</code>.</p>
 <p>I was trying to understand why <code>(M**3)*orig</code> was returning a floating point form. This is because M itself wasn’t in rational form. Just for kicks, I have fixed this in the code below…</p>
-<div id="4f4cd1db" class="cell" data-execution_count="4">
+<div id="4f4cd1db" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Mr <span class="op">=</span> sp.nsimplify(M, rational<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(Mr<span class="op">**</span><span class="dv">3</span>)<span class="op">*</span>orig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
@@ -197,7 +198,7 @@ window.Quarto = {
 </div>
 <p>As demonstrated, after 3 years, the Markov chain slightly favors C, with B being the least favored</p>
 <p>Now, we consider Plan 1 and Plan 2, as denoted by variables plan1 and plan2 respectively.</p>
-<div id="8c890199" class="cell" data-execution_count="5">
+<div id="8c890199" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plan1 <span class="op">=</span> sp.Matrix([</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.5</span>, <span class="fl">0.2</span> <span class="op">+</span> <span class="fl">.6</span><span class="op">*</span><span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    [<span class="fl">0.2</span>, <span class="fl">0.6</span><span class="op">*</span><span class="fl">.8</span>, <span class="fl">0.1</span>],</span>
@@ -210,11 +211,11 @@ window.Quarto = {
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will create 4 vectors, representing 4 different distribution types. The first vector will have an equal distribution, with variable equal. The next three vectors will have 50% of the population weighted on company A, B, C respectively with the other two sharing an equal 25% population distribution.</p>
-<div id="1de10db0" class="cell" data-execution_count="6">
+<div id="1de10db0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>equal <span class="op">=</span> sp.Matrix([sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>), sp.Rational(<span class="dv">1</span>,<span class="dv">3</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function creates n vectors, where n is equal to the count of companies. For a given company i, i in [1,n], each (n-i)th item in the resulting list is the distribution that favors i and equally distributes the other n-1 companies.</p>
-<div id="c119939c" class="cell" data-execution_count="7">
+<div id="c119939c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> weight_distributor(distribution, company_count <span class="op">=</span> <span class="dv">3</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> []</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(company_count):</span>
@@ -226,12 +227,12 @@ window.Quarto = {
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result[::<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function returns the desired weight vectors. From now on, weights[0] represents the weighted distribution for Company A, weights[1] for Company B, and weights[2] for Company C.</p>
-<div id="40045368" class="cell" data-execution_count="8">
+<div id="40045368" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>distribution <span class="op">=</span> [sp.Rational(<span class="dv">25</span>, <span class="dv">100</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">50</span>,<span class="dv">100</span>)]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> [equal] <span class="op">+</span> weight_distributor([sp.Rational(<span class="dv">25</span>, <span class="dv">100</span>), sp.Rational(<span class="dv">25</span>,<span class="dv">100</span>), sp.Rational(<span class="dv">50</span>,<span class="dv">100</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function returns the states for all weights, with the ith component representing the ith weight under the given plan after 0 years, 1 year, 5 years, and 10 years.</p>
-<div id="dcf99476" class="cell" data-execution_count="9">
+<div id="dcf99476" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> state_calculator(weights, plan):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  states <span class="op">=</span> []</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> weight <span class="kw">in</span> weights:</span>
@@ -239,19 +240,19 @@ window.Quarto = {
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> states</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Calculating states for 0, 1, 5, and 10 years for equal distributions and then 50, 25, 25 distributions for all companies.</p>
-<div id="582a0abe" class="cell" data-execution_count="10">
+<div id="582a0abe" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying states for plan 1</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plan1_states <span class="op">=</span> state_calculator(weights, plan1)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying states for plan 2</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plan2_states <span class="op">=</span> state_calculator(weights, plan2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e41b8e67" class="cell" data-execution_count="11">
+<div id="e41b8e67" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">10</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>companies <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>companies_labels <span class="op">=</span> {<span class="st">'A'</span>: <span class="dv">0</span>, <span class="st">'B'</span>: <span class="dv">1</span>, <span class="st">'C'</span>: <span class="dv">3</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This function finds the maximum distribution of a given company under a given plan after 10 years and which distribution was best. The next one finds the minimum.</p>
-<div id="9810ddaf" class="cell" data-execution_count="12">
+<div id="9810ddaf" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find company max distribution</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_max(company, plan):</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> plan[<span class="dv">0</span>][<span class="dv">3</span>][company]</span>
@@ -269,7 +270,7 @@ window.Quarto = {
 </div>
 <div class="comments">
 <p>As you learn to code, this can be a useful trick. I selected the above code and asked CoPilot “simplify this”. Here is what it gave me:</p>
-<div id="78bdf95c" class="cell" data-execution_count="13">
+<div id="78bdf95c" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_max(company, plan):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> plan[<span class="dv">0</span>][<span class="dv">3</span>][company]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  dis <span class="op">=</span> <span class="dv">0</span></span>
@@ -281,7 +282,7 @@ window.Quarto = {
 </div>
 <p>This put the repeated code into a loop. I find it a little bit harder to understand, but it’s also harder to make a mistake when you write the code only once. But we can do better:</p>
 <p>I again asked CoPilot to simplify. This time I said “simplify this using np.min”. Here is what I got:</p>
-<div id="5dda76aa" class="cell" data-execution_count="14">
+<div id="5dda76aa" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_max(company, plan):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> np.<span class="bu">min</span>(plan[<span class="dv">0</span>][<span class="dv">3</span>][company])</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dis <span class="op">=</span> np.argmin(plan[<span class="dv">0</span>][<span class="dv">3</span>][company])</span>
@@ -289,7 +290,7 @@ window.Quarto = {
 </div>
 <p>Well, here is we need to be careful! This result looks good, but it won’t actually work. Can you see why? (One reason is that I asked it to use “min”, where “max” would have been better. I was confused by the “&lt;” signs in your code; I had to read it again to understand that you were indeed finding a max. But there’s even a much bigger problem..)</p>
 <p>I tried again. This time I said “simplify this using min instead of the loop”. I was given:</p>
-<div id="f6f13938" class="cell" data-execution_count="15">
+<div id="f6f13938" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_max(company, plan):</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> np.<span class="bu">max</span>(plan[:, <span class="dv">3</span>, company])</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  dis <span class="op">=</span> np.argmax(plan[:, <span class="dv">3</span>, company])</span>
@@ -297,7 +298,7 @@ window.Quarto = {
 </div>
 <p>This one I believe should work. I’m going to test it…</p>
 </div>
-<div id="e9a289b4" class="cell" data-execution_count="16">
+<div id="e9a289b4" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find company max distribution</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plan_min(company, plan):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  result <span class="op">=</span> plan[<span class="dv">0</span>][<span class="dv">3</span>][company]</span>
@@ -314,47 +315,47 @@ window.Quarto = {
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> result, dis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now calculate Company A’s performance under the original plan based on our 4 different distributions.</p>
-<div id="af3ad9d1" class="cell" data-execution_count="17">
+<div id="af3ad9d1" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> sp.Matrix([((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weights[<span class="dv">0</span>])[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weights[<span class="dv">1</span>])[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weights[<span class="dv">2</span>])[<span class="dv">0</span>], ((M<span class="op">**</span><span class="dv">10</span>)<span class="op">*</span>weights[<span class="dv">3</span>])[<span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="comments">
 <p>I’m guessing that calculating <code>M**10</code> is a bit slow for Sympy! I’d calculate it once and store it…</p>
 </div>
 <p>For comparison, we calculate the base states using the original plan.</p>
-<div id="5f02b43a" class="cell" data-execution_count="18">
+<div id="5f02b43a" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>base_states <span class="op">=</span> state_calculator(weights, M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now look at Company A’s distribution under different distributions after 10 years.</p>
-<div id="9743b5fa" class="cell" data-execution_count="19">
+<div id="9743b5fa" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plan1_dis <span class="op">=</span> sp.Matrix([plan1_states[<span class="dv">0</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan1_states[<span class="dv">1</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan1_states[<span class="dv">2</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan1_states[<span class="dv">3</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]]])</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plan2_dis <span class="op">=</span> sp.Matrix([plan2_states[<span class="dv">0</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan2_states[<span class="dv">1</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan2_states[<span class="dv">2</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]], plan2_states[<span class="dv">3</span>][<span class="dv">3</span>][companies_labels[<span class="st">'A'</span>]]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>These next two blocks compute the sum of the difference of plan 1 or plan 2’s distribution for A after 10 years compared to the A’s performance under the base plan.</p>
-<div id="568be72a" class="cell" data-execution_count="20">
+<div id="568be72a" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(plan1_dis <span class="op">-</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="17">
 <p><span class="math inline">\(\displaystyle 0.156465181152655\)</span></p>
 </div>
 </div>
-<div id="dd38acbb" class="cell" data-execution_count="21">
+<div id="dd38acbb" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plan1_dis <span class="op">-</span> base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="18">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.0391162952881637\\0.0391123655075863\\0.0391439122722667\\0.0390926080846383\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="fbbaf8e6" class="cell" data-execution_count="22">
+<div id="fbbaf8e6" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(plan2_dis <span class="op">-</span> base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="19">
 <p><span class="math inline">\(\displaystyle 0.194330292122828\)</span></p>
 </div>
 </div>
-<div id="93ab2189" class="cell" data-execution_count="23">
+<div id="93ab2189" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plan2_dis <span class="op">-</span> base</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="20">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.048582573030707\\0.0485857956136774\\0.0485811891277593\\0.0485807343506842\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="e5ff1469" class="cell" data-execution_count="24">
+<div id="e5ff1469" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plan2_dis <span class="op">-</span> plan1_dis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="21">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.00946627774254322\\0.00947343010609109\\0.00943727685549262\\0.00948812626604584\end{matrix}\right]\)</span></p>
@@ -362,26 +363,26 @@ window.Quarto = {
 </div>
 <p>As demonstrated, both plans provide positive results for A after 10 years. As a long term strategy both are optimal. However, as we can see, plan 2 provides slightly better performance than plan 1. Thus, we choose plan 2.</p>
 <p>We now find the max of each plan</p>
-<div id="fda982bc" class="cell" data-execution_count="25">
+<div id="fda982bc" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plan_max(<span class="dv">0</span>, plan2_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>(0.390054582225684, 3)</code></pre>
 </div>
 </div>
-<div id="0fded0d6" class="cell" data-execution_count="26">
+<div id="0fded0d6" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plan_min(<span class="dv">0</span>, plan2_states)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>(0.390005782377759, 2)</code></pre>
 </div>
 </div>
-<div id="0075f3b9" class="cell" data-execution_count="27">
+<div id="0075f3b9" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plan2_dis</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="24">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.390033780497374\\0.390040976888677\\0.390005782377759\\0.390054582225684\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>As demonstrated, we can see that overall, Plan 2 performs the best in terms of Company A’s long term market-share. This is based 4 distributions: equal distribution, and 50%, 25%, 25% market shares for each company. Interestingly, plan 2 performs. We will now overlay Plan 2’s best performance distribution compared to its worst performance distribution: Weight C v. Weight B</p>
-<div id="919953ca" class="cell" data-execution_count="28">
+<div id="919953ca" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plan 1: Equal distribution</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> plan2_states[<span class="dv">3</span>]</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
@@ -402,7 +403,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated, Company A’s performance evens out through all distributions. We will now overlay a few distributions comparing the original plan to Plan 2.</p>
-<div id="a5b34672" class="cell" data-execution_count="29">
+<div id="a5b34672" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> plan2_states[<span class="dv">0</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Equal 2"</span>)</span>
@@ -421,7 +422,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="39b9b96c" class="cell" data-execution_count="30">
+<div id="39b9b96c" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> plan2_states[<span class="dv">1</span>]</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight A 2"</span>)</span>
@@ -440,7 +441,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="44eb95ed" class="cell" data-execution_count="31">
+<div id="44eb95ed" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> plan2_states[<span class="dv">2</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight B 2"</span>)</span>
@@ -459,7 +460,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="26ba3e03" class="cell" data-execution_count="32">
+<div id="26ba3e03" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>market <span class="op">=</span> plan2_states[<span class="dv">3</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  plt.plot(time, [market[<span class="dv">0</span>][i], market[<span class="dv">1</span>][i], market[<span class="dv">2</span>][i], market[<span class="dv">3</span>][i]], label<span class="op">=</span><span class="ss">f"Company </span><span class="sc">{</span>companies[i]<span class="sc">}</span><span class="ss">: Weight C 2"</span>)</span>
@@ -479,7 +480,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated, A performs consistently better under Plan 2 than the original plan. Thus, we can see that it would be ideal for the company to undergo marketing strategies to implement plan 2. For exceptional circumstances, we consider a market in which we start with 0% of the user base. However, as displayed below, even if we start with 0 market share, our new marketing strategy will propel us to the largest market holder within a 10 year period.</p>
-<div id="76b320ed" class="cell" data-execution_count="33">
+<div id="76b320ed" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(plan2 <span class="op">**</span> <span class="dv">10</span>) <span class="op">*</span> sp.Matrix([<span class="fl">0.0</span>, <span class="fl">0.99</span>, <span class="fl">.01</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="30">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0.389923740012833\\0.278200270113832\\0.331875989873334\end{matrix}\right]\)</span></p>
@@ -488,7 +489,7 @@ window.Quarto = {
 <section id="sports-ranking" class="level1">
 <h1><em>Sports Ranking</em></h1>
 <p>In this problem, we are attempting to rank teams based on a win graph. We will iterate through the PowerRank, reverse PageRank, and weighted win techniques to determine the best team.</p>
-<div id="5438111a" class="cell" data-execution_count="34">
+<div id="5438111a" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do imports</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -496,7 +497,7 @@ window.Quarto = {
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we just set-up a graph using the given nodes and edges</p>
-<div id="c3efce92" class="cell" data-execution_count="35">
+<div id="c3efce92" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a directed graph</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -519,7 +520,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We calculate the adjacency matrix of this matrix. Rows represents where the edge originates. Columns represent where they end up</p>
-<div id="79fc5947" class="cell" data-execution_count="36">
+<div id="79fc5947" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>adj_matrix <span class="op">=</span> nx.adjacency_matrix(G).toarray()</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>adj_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
@@ -533,7 +534,7 @@ window.Quarto = {
 </div>
 </div>
 <p>The power matrix is one method of calculating the most “winning” team. An entry a_(ij) in the adjacency matrix indicates a win from team j on team i. An entry b_(ij) in the adjacency matrix squared represents how many teams that team j has beaten that have beaten another team. As we can see, when we take the sum of those two matrices, we are left with our power matrix. What we can infer from the power matrix is that the sum of each row represents how many teams a team has beaten plus how many “winning” teams they have beaten.</p>
-<div id="f6a13e02" class="cell" data-execution_count="37">
+<div id="f6a13e02" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Power Matrix</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>power_matrix <span class="op">=</span> adj_matrix <span class="op">+</span> adj_matrix <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>power_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -548,7 +549,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Thus, when we calculate the sum of each row of the power matrix, we can rank the teams, sorting by highest sum to lowest.</p>
-<div id="94bcf08c" class="cell" data-execution_count="38">
+<div id="94bcf08c" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with the power matrix</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>power_sum <span class="op">=</span> [<span class="bu">sum</span>(power_matrix[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>rrank <span class="op">=</span> np.argsort(power_sum)</span>
@@ -560,7 +561,7 @@ window.Quarto = {
 </div>
 <p>As can be seen, using the power matrix, team 7 seems to be the most “winning” team, which seems to be the case when analyzing the power matrix visually. Team 7 seems to have the most teams beaten + winning teams beaten</p>
 <p>To perform reverse pagerank, we must first find the adjacency matrix of the reverse graph, which is just the transpose of the adjacency matrix. We then want to multiply it by a diagonal matrix D which turns the columns of our reverse adjacency matrix into distribution vectors. This will allow us to perform the pagerank algorithm to solve for x. We know that PageRank allows us to determine the importance of a node. However, if we reverse PageRank, we are able to calculate the “sphere of influence” that a node has, i.e.&nbsp;how many other teams a single team has affected. In this case, “affecting” a team indicates beating them.</p>
-<div id="06b2f514" class="cell" data-execution_count="39">
+<div id="06b2f514" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with reverse pagerank: calculate diagonal matrix D</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>adjT <span class="op">=</span> adj_matrix.T</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.zeros((<span class="dv">7</span>, <span class="dv">7</span>))</span>
@@ -568,14 +569,14 @@ window.Quarto = {
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  D[i][i] <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="bu">sum</span>(adjT[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we follow the steps of the pagerank matrix, using the given alpha and teleporation vectors to ensure that our multiplication does not end prematurely due to a row/column of 0s.</p>
-<div id="0b6d22c2" class="cell" data-execution_count="40">
+<div id="0b6d22c2" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine P = ATD -&gt; (AT)TD = AD with alpha a = 0.85, teleporation vector 1/7 e_7)</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> sp.Matrix(sp.Matrix(adj_matrix) <span class="op">*</span> sp.Matrix(D))</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sp.Matrix(np.ones(<span class="dv">7</span>) <span class="op">*</span> <span class="dv">1</span><span class="op">/</span><span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We solve for x and are left with the influence of each team. We then sort by lowest to highest and flip to find the team with the most influence.</p>
-<div id="780776ab" class="cell" data-execution_count="41">
+<div id="780776ab" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for x</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> (sp.eye(<span class="dv">7</span>) <span class="op">-</span> a <span class="op">*</span> P)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> (<span class="dv">1</span> <span class="op">-</span> a) <span class="op">*</span> v</span>
@@ -587,7 +588,7 @@ window.Quarto = {
        0.13033224, 0.18418869])</code></pre>
 </div>
 </div>
-<div id="2474a7b3" class="cell" data-execution_count="42">
+<div id="2474a7b3" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find ranking</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>pr_rank <span class="op">=</span> np.flip(np.argsort(x))<span class="op">+</span><span class="dv">1</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>pr_rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -597,7 +598,7 @@ window.Quarto = {
 </div>
 <p>We see now that 5 is at top. This may be explained by the fact that 5 has beaten 7, such that 5 has beaten the team that has won the most. Therefore, it should exert the most “influence” amongst teams since has beaten the most winning team.</p>
 <p>We will now weight our graph so that we can perform a weighted power ranking.</p>
-<div id="016e8fab" class="cell" data-execution_count="43">
+<div id="016e8fab" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a weighted directed graph</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -635,7 +636,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We now find take adjacency matrix of the graph and then replace the edge indicators with the weight of the each edge.</p>
-<div id="d6457660" class="cell" data-execution_count="44">
+<div id="d6457660" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace adjacency booleans with weights</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>weight_adj <span class="op">=</span> adj_matrix</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(length):</span>
@@ -652,7 +653,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We now follow the same steps to rank the teams, first using the power matrix technique</p>
-<div id="6613c855" class="cell" data-execution_count="45">
+<div id="6613c855" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>weight_power <span class="op">=</span> weight_adj <span class="op">+</span> weight_adj<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>weight_power_sum <span class="op">=</span> [<span class="bu">sum</span>(weight_power[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>)]</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>rrank_weight <span class="op">=</span> np.argsort(weight_power_sum)</span>
@@ -664,7 +665,7 @@ window.Quarto = {
 </div>
 <p>Here we see that 7 is ranked at the top once again, most likely due to the fact that it has the most wins and the mots dominant win, with 45 points against team 1.</p>
 <p>Now, we use reverse pagerank again.</p>
-<div id="56060ef9" class="cell" data-execution_count="46">
+<div id="56060ef9" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating team ranking with reverse pagerank: calculate diagonal matrix D</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>adjT_weight <span class="op">=</span> weight_adj.T</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> np.zeros((<span class="dv">7</span>, <span class="dv">7</span>))</span>
@@ -692,7 +693,7 @@ window.Quarto = {
 <h1><em>Iso Rank</em></h1>
 <p>In this problem, we attempt to imperfectly map graphs onto other graphs. Specifically, mappings that are not bijections, such that there is no perfect 1-1 mapping of the nodes.</p>
 <p>We first create our graphs as adjaceny matrices.</p>
-<div id="5ea1e222" class="cell" data-execution_count="47">
+<div id="5ea1e222" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct adjacency matrices for A,B,C,D,E and 1,2,3,4,5</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># G1 = A,B,C,D,E</span></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co"># G2 = 1,2,3,4,5</span></span>
@@ -723,7 +724,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We then create a surfing matrix which is represented as a multiplication of each element of G2 with the entire graph of G1 (e.g.&nbsp;M[0:2][0:2] = G2[0][0] * G1).</p>
-<div id="234b3699" class="cell" data-execution_count="48">
+<div id="234b3699" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct G2 x G1 (Outer x Inner) surfing matrix</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sp.zeros(<span class="dv">25</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -737,7 +738,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Using this surfing matrix, we then solve for x using the PageRank formula. From here, we are then giving a list of node pairings from G1 to G2. Every 5 values represents all the nodes from G1 (A, B, C, D, E) and how closely related they are to node i in G2 (e.g.&nbsp;values 6-10 are the closeness of nodes A, B, C, D, and E to node 2)</p>
-<div id="8323f819" class="cell" data-execution_count="49">
+<div id="8323f819" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate x given alpha = 0.85, v = 1/25 * e25</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">25</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">25</span>))</span>
@@ -750,7 +751,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We then tabulate this data, and attempt to match nodes by removing the element with the highest value. This corresponds to the nodes from G1 and G2 that have the highest correspondence. We then remove that elements respective row and column as to not match the next nodes with an already matched pair. While we could perform this as a function, we will notice in further examples that some matchings the exact same correspondence value, and thus the function may return arbitrary results. As such, we choose to do this by hand.</p>
-<div id="03e28dbc" class="cell" data-execution_count="50">
+<div id="03e28dbc" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">5</span>,<span class="dv">5</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -763,7 +764,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Row Labels: A,B,C,D,E. Column Labels: 1,2,3,4,5. Thus, the best match is immediately A:3</p>
-<div id="25904502" class="cell" data-execution_count="51">
+<div id="25904502" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">0</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">2</span>)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -772,7 +773,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Next match is clearly B:4</p>
-<div id="f724b7f7" class="cell" data-execution_count="52">
+<div id="f724b7f7" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">0</span>)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">2</span>)</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -781,7 +782,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Next choice C:1, C:2, E:1, E:2. We choose E:1</p>
-<div id="1787fddd" class="cell" data-execution_count="53">
+<div id="1787fddd" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>temp.row_del(<span class="dv">2</span>)</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>temp.col_del(<span class="dv">0</span>)</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>temp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -791,7 +792,7 @@ window.Quarto = {
 </div>
 <p>We round-off with C:2, D:5. Thus, our final matching is A:3, B:4, C:2, D:5, E:1. This is 100% accurate with our original graph, thus we have found a bijective mapping.</p>
 <p>We now consider Figure 2.12 with e = {B,C} removed. We will perform the same steps of constructing a surfing matrix and matching.</p>
-<div id="92d69fcc" class="cell" data-execution_count="54">
+<div id="92d69fcc" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># G1 = P, G2 = Q</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>np_P <span class="op">=</span> np.matrix([</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>],</span>
@@ -818,7 +819,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 0.5 &amp; 0.5\\0.5 &amp; 0 &amp; 0.5\\0.5 &amp; 0.5 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="62d67971" class="cell" data-execution_count="55">
+<div id="62d67971" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contruct N = Q x P</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> sp.zeros(<span class="dv">15</span>)</span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -831,7 +832,7 @@ window.Quarto = {
 <p><span class="math inline">\(\displaystyle \left[\begin{array}{ccccccccccccccc}0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0.25 &amp; 0 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0.25 &amp; 0.25 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0.5\\0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.5 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0 &amp; 0.5\\0.25 &amp; 0.25 &amp; 0 &amp; 0.25 &amp; 0.25 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.5 &amp; 0.5 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.125 &amp; 0.125 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{array}\right]\)</span></p>
 </div>
 </div>
-<div id="af8e7cc4" class="cell" data-execution_count="56">
+<div id="af8e7cc4" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for X</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">15</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">15</span>))</span>
@@ -844,7 +845,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As evident from this table, some matchings are equally likely as others. This is likely due to the fact that visually, we can see that P is a subset of, where the subset of Q and P represent triangles with the exact same amount of edges. Thus, flipping 1, 2, 3 with A, B, and C, can result in the exact same matchings, as we demonstrate below.</p>
-<div id="a9fce648" class="cell" data-execution_count="57">
+<div id="a9fce648" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -857,7 +858,7 @@ window.Quarto = {
 </div>
 <p>Column (Top) Labels: A, B, C, D, E. Row (Side) Labels: 1, 2, 3. Best matchings: [(D:1 or D:2 or D:3), ((A:2 or A:3 or B:2 or B:3) or (A:1 or A:3 or B:1 or B:3) or (A:1 or A:2 or B:1 or B:2)), choose the remaining A or B)]</p>
 <p>We now will perform IsoRank on a directed graph. We start with the same steps, but adding a correction vector of {1} since the node D in G2 does not have any outgoing edges.</p>
-<div id="a872892f" class="cell" data-execution_count="58">
+<div id="a872892f" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for A, B</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>A_adj <span class="op">=</span> np.matrix([</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],</span>
@@ -881,7 +882,7 @@ window.Quarto = {
 <span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> B_adj.transpose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now construct the surfing matrix, following the same steps.</p>
-<div id="a494b5bc" class="cell" data-execution_count="59">
+<div id="a494b5bc" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct C = B x A</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Contruct N = Q x P</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> sp.zeros(<span class="dv">15</span>)</span>
@@ -896,7 +897,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We solve for x again and tabulate our data.</p>
-<div id="928b97c3" class="cell" data-execution_count="60">
+<div id="928b97c3" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve for X</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.85</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">15</span> <span class="op">*</span> sp.Matrix(np.ones(<span class="dv">15</span>))</span>
@@ -909,7 +910,7 @@ window.Quarto = {
 </div>
 </div>
 <p>As demonstrated by the previous problem, we can see that because we have a triangle in G1 and a triangle subset in G2, our best match will be fixing node 1, 2, or 3 to A, C, or B, and subsequently choosing the next two based off that.</p>
-<div id="28d05f44" class="cell" data-execution_count="61">
+<div id="28d05f44" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>iso <span class="op">=</span> sp.zeros(<span class="dv">3</span>,<span class="dv">5</span>)</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>

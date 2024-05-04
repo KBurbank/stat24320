@@ -1,0 +1,493 @@
+---
+title: 'Project #1 Revisions - Sally Yang'
+jupyter: python3
+css: comments.css
+publish: true
+format:
+    html:
+        embed-resources: true
+---
+
+```{python}
+import numpy as np
+```
+
+Part 1. Perform PLU Factorization on Matrices 
+
+```{python}
+def PLU_factorization(A):
+    n = len(A)
+    L = np.eye(n)  # Initialize L as identity matrix
+    U = np.copy(A)  # To derive U from A, begin with partial pivoting then Gaussian elimination...
+    indx = np.arange(1, n + 1)  # Initialize indx array with 1, 2, ..., n 
+    
+    for k in range(n - 1): 
+        # Partial pivoting
+        max_index = np.argmax(np.abs(U[k:, k])) + k # Search for the largest entry in the kth column
+        
+        if max_index != k: # Check if the (k,k)th entry is the largest entry or not
+            # If the (k,k)th entry is the largest entry in the column, can just select it as pivot
+            # If not, then exchange the kth row with the row with kth row's largest entry in both U and L
+            # So that the new (k,k)th entry, which is the largest in the column, is a more proper pivot 
+            U[[k, max_index]] = U[[max_index, k]]
+            L[[k, max_index], :k] = L[[max_index, k], :k]
+            
+            # Update indx array to reflect the row exchange 
+            indx[k], indx[max_index] = indx[max_index], indx[k] 
+        
+        for i in range(k + 1, n):
+            # Compute multipliers and perform Gaussian elimination
+            L[i, k] = U[i, k] / U[k, k]
+            U[i, k:] -= L[i, k] * U[k, k:]
+            
+    P = np.eye(n)[indx - 1] # Derive permutation matrix P from indx array
+    return L, U, indx, P
+```
+
+Now test this program with nonsingular matrices. Also, verify that L is indeed lower triangular with U being upper triangular, while PLU does equal the original matrix we inputted into the program. 
+
+```{python}
+A = np.array([[2, 1, -1],
+              [2, 3, 3],
+              [4, 1, -3]], dtype=float)
+L, U, indx, P = PLU_factorization(A)
+
+print("Lower triangular matrix L:")
+print(L)
+print("\nUpper triangular matrix U:")
+print(U)
+print("\nPermuted index array indx:")
+print(indx)
+print("\nPermutatation matrix P: ")
+print(P)
+
+upper_check = np.allclose(U, np.triu(U)) # Check if U is upper triangular
+def check_condition_upper(x):
+    if x:
+        print("U is indeed upper triangular")
+    else:
+        print("U is not upper triangular as desired")
+print(check_condition_upper(upper_check))
+
+lower_check = np.allclose(L, np.tril(L)) # Check if L is lower triangular
+def check_condition_lower(x):
+    if x:
+        print("L is indeed lower triangular")
+    else:
+        print("L is not lower triangular as desired")
+print(check_condition_lower(lower_check))
+
+import numpy as np
+
+def check_product_A(A, P, L, U):
+    product = np.dot(P, np.dot(L, U))
+    return np.array_equal(A, product)
+
+result = check_product_A(A, P, L, U)
+if result:
+    print("A = PLU verified")
+else:
+    print("A is not equal to PLU. Something's wrong with the program.")
+```
+
+```{python}
+B = np.array([[3, 2, 1],
+              [-4, 1, 1],
+              [0, 1, 1]], dtype=float)
+L, U, indx, P = PLU_factorization(B)
+
+print("Lower triangular matrix L:")
+print(L)
+print("\nUpper triangular matrix U:")
+print(U)
+print("\nPermuted index array indx:")
+print(indx)
+print("\nPermutatation matrix P: ")
+print(P)
+
+upper_check = np.allclose(U, np.triu(U)) # Check if U is upper triangular
+def check_condition_upper(x):
+    if x:
+        print("U is indeed upper triangular")
+    else:
+        print("U is not upper triangular as desired")
+print(check_condition_upper(upper_check))
+
+lower_check = np.allclose(L, np.tril(L)) # Check if L is lower triangular
+def check_condition_lower(x):
+    if x:
+        print("L is indeed lower triangular")
+    else:
+        print("L is not lower triangular as desired")
+print(check_condition_lower(lower_check))
+
+def check_product_B(B, P, L, U):
+    product = np.dot(P, np.dot(L, U))
+    return np.array_equal(B, product)
+
+result = check_product_B(B, P, L, U)
+if result:
+    print("B = PLU verified")
+else:
+    print("B is not equal to PLU. Something's wrong with the program.")
+
+```
+
+```{python}
+#| scrolled: true
+C = np.array([[2, 5, 1, 2],
+              [1, 4, 2, -1],
+              [2, -1, 7, 3],
+              [1, 4, -2, 1]], dtype=float)
+L, U, indx, P = PLU_factorization(C)
+
+print("Lower triangular matrix L:")
+print(L)
+print("\nUpper triangular matrix U:")
+print(U)
+print("\nPermuted index array indx:")
+print(indx)
+print("\nPermutatation matrix P: ")
+print(P)
+
+upper_check = np.allclose(U, np.triu(U)) # Check if U is upper triangular
+def check_condition_upper(x):
+    if x:
+        print("U is indeed upper triangular")
+    else:
+        print("U is not upper triangular as desired")
+print(check_condition_upper(upper_check))
+
+lower_check = np.allclose(L, np.tril(L)) # Check if L is lower triangular
+def check_condition_lower(x):
+    if x:
+        print("L is indeed lower triangular")
+    else:
+        print("L is not lower triangular as desired")
+print(check_condition_lower(lower_check))
+
+def check_product_C(C, P, L, U):
+    product = np.dot(P, np.dot(L, U))
+    return np.array_equal(C, product)
+
+result = check_product_C(C, P, L, U)
+if result:
+    print("C = PLU verified")
+else:
+    print("C is not equal to PLU. Something's wrong with the program.")
+```
+
+Now we test the PLU factorization program one last time to see what it produces for a singular matrix. As a matter of fact, LU factorization is literally meaningless and useless for singular matrices, since not all leading minors are nonzero. 
+
+::: comments
+This isn't quite true. There are some singular matrices which do have LU factorizations -- although they are not necessarily easy to find; your algorithm above fails to find the factorization for the matrix below, because there are steps which require division by zero.:
+
+```{python}
+def check_product_D(D, P, L, U):
+    product = np.dot(P, np.dot(L, U))
+    return np.array_equal(D, product)
+D2 = np.array([[1, 1, 1],
+              [1, 1, 2],
+              [1, 1, 3]], dtype=float)
+
+print("Rank: " + str(np.linalg.matrix_rank(D2)))
+print("Determinant: "+str(np.linalg.det(D2)))
+
+Ua = np.array([[1, 1, 1],
+              [0, 0, 1],
+              [0, 0, 1]], dtype=float)
+La = np.array([[1, 0, 0],
+              [1, 1, 0],
+              [1, 1, 1]], dtype=float)
+
+Pa = np.eye(3)
+
+check_condition_upper(np.allclose(Ua,np.triu(Ua)))
+check_condition_lower(np.allclose(La,np.tril(La)))
+check_product_D(D2, Pa, La, Ua)
+```
+
+This works because the matrix is rank 2 and two of the principal minors are nonzero. In general, a singular matrix will admit an LU factorization if it is of rank $k$ and the first $k$ principal minors are nonzero; in this example, we need to permute the matrix first to get it into this configuration.
+
+And indeed, if we do that permutation first, then even your algorithm works! Here D3 is a permuted version of D2 above:
+
+```{python}
+D3 = np.array([[1, 1, 1],
+              [2, 1, 1],
+              [3, 1, 1]], dtype=float).T
+
+print("Rank: " + str(np.linalg.matrix_rank(D3)))
+print("Determinant: "+str(np.linalg.det(D3)))
+
+La, Ua, indx, Pa = PLU_factorization(D3)
+
+check_condition_upper(np.allclose(Ua,np.triu(Ua)))
+check_condition_lower(np.allclose(La,np.tril(La)))
+
+check_product_D(D3, Pa, La, Ua)
+```
+
+
+:::
+
+```{python}
+# find the first two leading minors
+print(np.linalg.det(D2[2:,2:]))
+print(np.linalg.det(D2[1:,1:]))
+```
+
+
+```{python}
+D = np.array([[1, 2, 3],
+              [2, 4, 5],
+              [1, 3, 4]], dtype=float)
+L, U, indx, P = PLU_factorization(D)
+
+print("Lower triangular matrix L:")
+print(L)
+print("\nUpper triangular matrix U:")
+print(U)
+print("\nPermuted index array indx:")
+print(indx)
+print("\nPermutatation matrix P: ")
+print(P)
+
+upper_check = np.allclose(U, np.triu(U)) # Check if U is upper triangular
+def check_condition_upper(x):
+    if x:
+        print("U is indeed upper triangular")
+    else:
+        print("U is not upper triangular as desired")
+print(check_condition_upper(upper_check))
+
+lower_check = np.allclose(L, np.tril(L)) # Check if L is lower triangular
+def check_condition_lower(x):
+    if x:
+        print("L is indeed lower triangular")
+    else:
+        print("L is not lower triangular as desired")
+print(check_condition_lower(lower_check))
+
+def check_product_D(D, P, L, U):
+    product = np.dot(P, np.dot(L, U))
+    return np.array_equal(D, product)
+
+result = check_product_D(D, P, L, U)
+if result:
+    print("D = PLU verified")
+else:
+    print("D is not equal to PLU. Something's wrong with the program.")
+```
+
+::: comments
+I love that you've tested this on a singular matrix to see what happens! It's good thinking to test the limits of your code.
+
+One comment: you have redefined the `check_condition_upper` and `check_condition_lower` and other functions multiple times. It would be better to define them once at the beginning of the code and then reuse them as needed.
+:::
+
+
+
+
+Part 2. Solving Linear Systems Using LU Factorization
+
+```{python}
+def solve_linear_system(A, b):
+    n = A.shape[0]
+    
+    # First perform PLU factorization 
+    L, U, indx, P = PLU_factorization(A)
+    
+    # Permute vector b using P 
+    b_permuted = P.dot(b)
+    
+    # Solve Ly = Pb for y using forward substitution
+    y = np.zeros(n)
+    for i in range(n):
+        y[i] = b_permuted[i] - L[i, :i].dot(y[:i])
+    
+    # Solve Ux = y for x using backward substitution
+    x = np.zeros(n)
+    for i in range(n - 1, -1, -1):
+        x[i] = (y[i] - U[i, i+1:].dot(x[i+1:])) / U[i, i]
+    return x
+```
+
+Test this program using different nonsingular matrices with different b vectors. 
+
+```{python}
+A = np.array([[2, 1, -1],
+              [2, 3, 3],
+              [4, 1, -3]], dtype=float)
+b = np.array([1, 2, 3])
+x = solve_linear_system(A, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Ax - b, then we get")
+print(A@x - b)
+```
+
+As shown above, the difference/error is considerably small, which may arise from roundoff issues when this program is computing for the solution x. 
+
+```{python}
+A = np.array([[2, 1, -1],
+              [2, 3, 3],
+              [4, 1, -3]], dtype=float)
+b = np.array([8, 7, 0])
+x = solve_linear_system(A, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Ax - b, then we get")
+print(A@x - b)
+```
+
+```{python}
+A = np.array([[2, 1, -1],
+              [2, 3, 3],
+              [4, 1, -3]], dtype=float)
+b = np.array([0, 0, 1])
+x = solve_linear_system(A, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Ax - b, then we get")
+print(A@x - b)
+```
+
+```{python}
+B = np.array([[3, 2, 1],
+              [-4, 1, 1],
+              [0, 1, 1]], dtype=float)
+b = np.array([1, 2, 3])
+x = solve_linear_system(B, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Bx - b, then we get")
+print(B@x - b)
+```
+
+```{python}
+B = np.array([[3, 2, 1],
+              [-4, 1, 1],
+              [0, 1, 1]], dtype=float)
+b = np.array([-2, 0, 8])
+x = solve_linear_system(B, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Bx - b, then we get")
+print(B@x - b)
+```
+
+```{python}
+B = np.array([[3, 2, 1],
+              [-4, 1, 1],
+              [0, 1, 1]], dtype=float)
+b = np.array([0, 0, 1])
+x = solve_linear_system(B, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Bx - b, then we get")
+print(B@x - b)
+```
+
+```{python}
+C = np.array([[2, 5, 1, 2],
+              [1, 4, 2, -1],
+              [2, -1, 7, 3],
+              [1, 4, -2, 1]], dtype=float)
+b = np.array([1, 2, 3, 4])
+x = solve_linear_system(C, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Cx - b, then we get")
+print(C@x - b)
+```
+
+```{python}
+C = np.array([[2, 5, 1, 2],
+              [1, 4, 2, -1],
+              [2, -1, 7, 3],
+              [1, 4, -2, 1]], dtype=float)
+b = np.array([0, 0, 0, 1])
+x = solve_linear_system(C, b)
+
+print("Solution to the linear system is :")
+print(x)
+print("Plug this x into Cx - b, then we get")
+print(C@x - b)
+```
+
+Part 3. Using LU factorization to solve for inverse of (nonsingular) matrix
+
+```{python}
+def matrix_inverse(A): 
+    n = A.shape[0] 
+    
+    # Initialize the matrix inverse as empty to update with x_i's later 
+    A_inv = np.zeros_like(A, dtype=float)
+    
+    # Perform PLU factorization
+    L, U, indx, P = PLU_factorization(A)
+    
+    # Solve Ax_i = e_i for i =1, 2, ..., n just as described in the project description
+    for i in range(n):
+        e_i = np.eye(n)[:, i]  # e_i is the ith column of n by n identity matrix
+        
+        # Permute e_i according to the permutation matrix P
+        e_i_permuted = P.dot(e_i)
+        
+        # Solve linear system Ax_i = e_i for x_i
+        y = np.zeros(n)
+        for j in range(n):
+            y[j] = e_i_permuted[j] - L[j, :j].dot(y[:j])
+        
+        x_i = np.zeros(n)
+        for j in range(n - 1, -1, -1):
+            x_i[j] = (y[j] - U[j, j+1:].dot(x_i[j+1:])) / U[j, j]
+        
+        # Store x_i as the ith column vector (from left to right) of the matrix inverse
+        A_inv[:, i] = x_i 
+    
+    return A_inv # Now the matrix inverse is updated with x_i's obtained from the linear systems solver
+```
+
+Now we test for a few different choices of nonsingular matrix and verify if the result yielded equals the actual inverse (which we compute using the given matrix inverse function embedded in numpy) 
+
+```{python}
+A = np.array([[2, 1, -1],
+              [2, 3, 3],
+              [4, 1, -3]], dtype=float)
+A_inv = matrix_inverse(A)
+
+print("Inverse of matrix A:")
+print(A_inv)
+
+print("Subtracting the actual inverse of matrix from the inverse we get will then yield:")
+print(A_inv - np.linalg.inv(A))
+```
+
+```{python}
+B = np.array([[3, 2, 1],
+              [-4, 1, 1],
+              [0, 1, 1]], dtype=float)
+B_inv = matrix_inverse(B)
+
+print("Inverse of matrix B:")
+print(B_inv)
+
+print("Subtracting the actual inverse of matrix from the inverse we get will then yield:")
+print(B_inv - np.linalg.inv(B))
+```
+
+Still, casting aside the slight errors that most likely arise from roundoff issues, the resulted inverses we get from LU factorization match the actual inverses. 
+
+::: comments
+This is really nice now!
+
+Grade: E
+:::

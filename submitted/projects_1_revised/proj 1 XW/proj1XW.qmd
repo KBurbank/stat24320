@@ -375,3 +375,8 @@ pd.Series((adj_matw + adj_matw**2).sum(axis=1), index=range(1, 8)).sort_values(a
 ```
 
 
+::: comments
+This is fine. I would have liked to see a bit more explanation of the different ranking methods and how they differ from each other, with specific examples from the data...
+
+Grade: M
+:::

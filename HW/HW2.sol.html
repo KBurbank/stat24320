@@ -159,7 +159,7 @@ window.Quarto = {
   <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">11</span> <em></em></a></li>
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">12</span> <em></em></a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -176,11 +176,24 @@ window.Quarto = {
     
   
     
+<div>
+    <div class="quarto-title-meta-heading">Due Date:</div>
+      <div class="quarto-title-meta-contents">
+      <p class="due-date">Wednesday, Week 3</p>
+    </div>
   </div>
-  
+
+<div>
+    <div class="quarto-title-meta-heading">Textbook Chapters:</div>
+      <div class="quarto-title-meta-contents">
+      <p class="due-date">2</p>
+    </div>
+  </div>
 
 
-</header>
+
+
+</div></header>
 
 
 <section id="section" class="level1" data-number="1">
@@ -193,26 +206,26 @@ window.Quarto = {
 <p>We could also have written</p>
 <p><span class="math inline">\(R=\begin{bmatrix}1 &amp; -1 &amp; 0 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>, which has the same solutions.</p>
 <p>Just for kicks, checking in Sympy:</p>
-<div id="77e9e98a" class="cell" data-execution_count="2">
+<div id="08589a69" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> print_latex</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print(x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    print_latex(x, itex<span class="op">=</span><span class="va">False</span>, mode<span class="op">=</span><span class="st">'equation'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="806efcda" class="cell" data-execution_count="3">
+<div id="7001f4b6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>])</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>R.gauss_jordan_solve(rhs)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>my_print(R.gauss_jordan_solve(rhs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>\begin{equation}\left( \left[\begin{matrix}\tau_{0} + 3 \tau_{1} + 4\\\tau_{0}\\2 - \tau_{1}\\\tau_{1}\end{matrix}\right], \  \left[\begin{matrix}\tau_{0}\\\tau_{1}\end{matrix}\right]\right)\end{equation}</code></pre>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>display(R.gauss_jordan_solve(rhs)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}\tau_{0} + 3 \tau_{1} + 4\\\tau_{0}\\2 - \tau_{1}\\\tau_{1}\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, print_latex</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>my_print(R.gauss_jordan_solve(rhs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><span class="math display">\[\begin{equation}\left( \left[\begin{matrix}\tau_{0} + 3 \tau_{1} + 4\\\tau_{0}\\2 - \tau_{1}\\\tau_{1}\end{matrix}\right], \  \left[\begin{matrix}\tau_{0}\\\tau_{1}\end{matrix}\right]\right)\end{equation}\]</span></p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, print_latex</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>display(R.gauss_jordan_solve(rhs)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}\tau_{0} + 3 \tau_{1} + 4\\\tau_{0}\\2 - \tau_{1}\\\tau_{1}\end{matrix}\right]\)</span></p>
 </div>
 </section>
 <section id="section-1" class="level1" data-number="2">
@@ -255,11 +268,13 @@ x_{1}\left[\begin{array}{r}
 0 &amp; 0 &amp; 1 &amp; -\frac{8}{9}
 \end{array}\right]
 \]</span></p>
-<p>The smallest integer solution is <span class="math inline">\(x_{1}=2, x_{2}=23, x_{3}=16, x_{4}=18\)</span>.</p>
-<div id="ea067015" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-stdout">
-<pre><code>\begin{equation}\left[\begin{matrix}2 &amp; 25 &amp; 16 &amp; 18\end{matrix}\right]\end{equation}
-\begin{equation}\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; - \frac{1}{9}\\0 &amp; 1 &amp; 0 &amp; - \frac{25}{18}\\0 &amp; 0 &amp; 1 &amp; - \frac{8}{9}\end{matrix}\right]\end{equation}</code></pre>
+<p>The smallest integer solution is <span class="math inline">\(x_{1}=2, x_{2}=25, x_{3}=16, x_{4}=18\)</span>.</p>
+<div id="0562abcf" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}2 &amp; 25 &amp; 16 &amp; 18\end{matrix}\right]\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; - \frac{1}{9}\\0 &amp; 1 &amp; 0 &amp; - \frac{25}{18}\\0 &amp; 0 &amp; 1 &amp; - \frac{8}{9}\end{matrix}\right]\)</span></p>
 </div>
 </div>
 </div>
@@ -308,16 +323,16 @@ x_{1}\left[\begin{array}{r}
 \left[\begin{array}{rrr}-2 &amp; 1 &amp; 0 \\ 0 &amp; -1 &amp; 1 \\ 0 &amp; 1 &amp; 0\end{array}\right] \rightarrow\left[\begin{array}{rrr}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]
 \]</span></p>
 <p>This is the identity matrix, which means that the system of equations is nonsingular and has a unique solution. Moreover, the right-hand side of the equation is the zero vector, which means that the fixed point is the zero vector: <span class="math inline">\(\left(x_{1}, x_{2}, x_{3}\right)=\left(0,0,0\right)\)</span>.</p>
-<div id="cbfd58f7" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> eye</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: none</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>(A<span class="op">-</span>eye(<span class="dv">3</span>))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># append a zero vector to the right of the matrix</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> (A<span class="op">-</span>eye(<span class="dv">3</span>)).row_join(Matrix([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]))</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>R.rref()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1c2229ec" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> eye</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: none</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>(A<span class="op">-</span>eye(<span class="dv">3</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># append a zero vector to the right of the matrix</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> (A<span class="op">-</span>eye(<span class="dv">3</span>)).row_join(Matrix([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>R.rref()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>(Matrix([
  [1, 0, 0, 0],
@@ -472,10 +487,10 @@ S=\left[\begin{array}{ll}2 &amp; 0 \\ 0 &amp; 3\end{array}\right]
 H=\left[\begin{array}{ll}1 &amp; 2 \\ 0 &amp; 1\end{array}\right]
 \]</span></p>
 <p>Checking:</p>
-<div id="ed9815cd" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> Matrix([[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">3</span>]])</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]])</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">1</span>,<span class="dv">0</span>]), S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">0</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="32619080" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> Matrix([[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">3</span>]])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">1</span>,<span class="dv">0</span>]), S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">0</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(Matrix([
  [2],
@@ -496,7 +511,13 @@ H=\left[\begin{array}{ll}1 &amp; 2 \\ 0 &amp; 1\end{array}\right]
 <div class="solutions">
 <p>Exercise 2.3.11</p>
 <p>We know going in that (d) is not a stochastic matrix, because the neither the first or second column sums to 1. The others are stochastic.</p>
-<p>First and second states are (a) <span class="math inline">\((0.2,0.2,0.6)\)</span>, <span class="math inline">\((0.08,0.68,0.24)\)</span> (b) <span class="math inline">\(\frac{1}{2}(0,1,1), \frac{1}{2}(1,1,0)\)</span> (c) <span class="math inline">\((0.4,0.3,0.4),(0.26,0.08,0.66)\)</span> (d) <span class="math inline">\((0,0.25,0.25),(0.225,0,0.15)\)</span></p>
+<p>First and second states are</p>
+<ol type="a">
+<li><p><span class="math inline">\((0.2,0.2,0.6)\)</span>, <span class="math inline">\((0.08,0.68,0.24)\)</span></p></li>
+<li><p><span class="math inline">\(\frac{1}{2}(0,1,1), \frac{1}{2}(1,1,0)\)</span></p></li>
+<li><p><span class="math inline">\((0.4,0.2,0.4),(0.26,0.08,0.3)\)</span></p></li>
+<li><p><span class="math inline">\((0,0.25,0.25),(0.225,0,0.15)\)</span></p></li>
+</ol>
 <p>As expected, the states sum to 1 for a-c, but not for d.&nbsp;Therefore a-c are Markov chains.</p>
 </div>
 </section>
@@ -506,30 +527,30 @@ H=\left[\begin{array}{ll}1 &amp; 2 \\ 0 &amp; 1\end{array}\right]
 <div class="solutions">
 <p>Exercise 2.3.12</p>
 <p>We can do this in Python by multiplying the initial state vector by each matrix a large number of times and seeing if the result converges.</p>
-<div id="dbb601c0" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> Matrix([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.4</span>, <span class="dv">1</span>], [<span class="fl">0.9</span>, <span class="fl">0.3</span>, <span class="dv">0</span>]])</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>A3 <span class="op">=</span> Matrix([[<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.4</span>, <span class="dv">0</span>], [<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="dv">1</span>]])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>A4 <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.9</span>], [<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>]])</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>])</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> limit(A, x0, n):</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x0)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        x0 <span class="op">=</span> A<span class="op">*</span>x0</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># This was initially confusing -- printing only every 10 iterations, I missed the fact that the chain alternates between two states.</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(x0)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A1"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>limit(A1, x, <span class="dv">100</span>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A2"</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>limit(A2, x, <span class="dv">100</span>)</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A3"</span>)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>limit(A3, x, <span class="dv">100</span>)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A4"</span>)</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>limit(A4, x, <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="54e0ef52" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> Matrix([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.4</span>, <span class="dv">1</span>], [<span class="fl">0.9</span>, <span class="fl">0.3</span>, <span class="dv">0</span>]])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>A3 <span class="op">=</span> Matrix([[<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.4</span>, <span class="dv">0</span>], [<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="dv">1</span>]])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>A4 <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.9</span>], [<span class="fl">0.5</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>]])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix([<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>])</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> limit(A, x0, n):</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x0)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        x0 <span class="op">=</span> A<span class="op">*</span>x0</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># This was initially confusing -- printing only every 10 iterations, I missed the fact that the chain alternates between two states.</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(x0)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A1"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>limit(A1, x, <span class="dv">100</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A2"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>limit(A2, x, <span class="dv">100</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A3"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>limit(A3, x, <span class="dv">100</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"A4"</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>limit(A4, x, <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>A1
 Matrix([[0.500000000000000], [0.500000000000000], [0]])
@@ -638,14 +659,14 @@ Matrix([[8.67946690016671e-19], [6.74533016788995e-19], [6.20149316197677e-19]])
 <li>Starting with a population of <span class="math inline">\((30,100)\)</span>, does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?</li>
 </ol>
 <div class="solutions">
-<div id="de3ab6c4" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix([<span class="dv">30</span>, <span class="dv">100</span>])</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> A<span class="op">*</span>x</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a5dea8b1" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix([<span class="dv">30</span>, <span class="dv">100</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> A<span class="op">*</span>x</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Matrix([[115.000000000000], [15.0000000000000]])
 Matrix([[86.6943359375000], [43.3056640625000]])
@@ -1154,4 +1175,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

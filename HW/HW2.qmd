@@ -1,0 +1,559 @@
+---
+title: Homework 2
+number-sections: true
+section-divs: true
+publish: true
+due-date: Wednesday, Week 3
+textbook-chapters: 2
+keep-tex: false
+solutions: show
+publish-solutions-on: 2024-04-02
+format:
+    html: default
+    hw-solutions-html: default
+format-links: hw-solutions-html
+---
+
+
+#
+
+
+Given that a linear system in the unknowns $x_{1}, x_{2}, x_{3}, x_{4}$ has general solution $\left(x_{2}+3 x_{4}+4, x_{2}, 2-x_{4}, x_{4}\right)$ for free variables $x_{2}, x_{4}$, find a minimal reduced row echelon for this system.
+
+
+::: solutions
+
+
+Exercise 2.1.13
+
+We know that there are at least two equations in the system (since we have two constraints in the general solution.) We can write these two constraints as:
+
+$R=\begin{bmatrix}1 & -1 & 0 & -3 & 4 \\ 0 & 0 & 1 & 1 & 2\end{bmatrix}$
+
+
+We could also have written
+
+$R=\begin{bmatrix}1 & -1 & 0 & -3 & 4 \\ 0 & 0 & 1 & 1 & 2 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0\end{bmatrix}$, which has the same solutions.
+
+Just for kicks, checking in Sympy:
+```{python}
+
+from sympy import print_latex
+def my_print(x, *args, **kwargs):
+    print_latex(x, itex=False, mode='equation', *args, **kwargs)
+```
+
+```{python}
+from sympy import Matrix
+R=Matrix([[1, -1, 0, -3], [0, 0, 1, 1]])
+rhs = Matrix([4,2])
+R.gauss_jordan_solve(rhs)
+display(R.gauss_jordan_solve(rhs)[0])
+```
+
+```{python}
+#| echo: true
+#| output: asis
+from sympy import Matrix, print_latex
+R=Matrix([[1, -1, 0, -3], [0, 0, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0]])
+rhs = Matrix([4,2,0,0])
+display(R.gauss_jordan_solve(rhs)[0])
+```
+
+:::
+
+#
+
+
+Use the technique of Example 2.10 in your textbook to balance the following chemical equation:
+
+$$
+\mathrm{C}_{8} \mathrm{H}_{18}+\mathrm{O}_{2} \rightarrow \mathrm{CO}_{2}+\mathrm{H}_{2} \mathrm{O} .
+$$
+
+::: solutions
+Exercise 2.2.23
+
+ With vectors indicating amount of $\mathrm{C}, \mathrm{H}$ and $\mathrm{O}$, variables the number of molecules of each compound occurring, system represented is
+
+$$
+x_{1}\left[\begin{array}{r}
+8 \\
+18 \\
+0
+\end{array}\right]+x_{2}\left[\begin{array}{l}
+0 \\
+0 \\
+2
+\end{array}\right]=x_{3}\left[\begin{array}{l}
+1 \\
+0 \\
+2
+\end{array}\right]+x_{4}\left[\begin{array}{l}
+0 \\
+2 \\
+1
+\end{array}\right]
+$$
+
+resulting in coefficient matrix
+
+$$
+\left[\begin{array}{cccc}
+8 & 0 & -1 & 0 \\
+18 & 0 & 0 & -2 \\
+0 & 2 & -2 & -1
+\end{array}\right] \rightarrow\left[\begin{array}{cccc}
+1 & 0 & 0 & -\frac{1}{9} \\
+0 & 1 & 0 & -\frac{25}{18} \\
+0 & 0 & 1 & -\frac{8}{9}
+\end{array}\right]
+$$
+
+
+The smallest integer solution is $x_{1}=2, x_{2}=25, x_{3}=16, x_{4}=18$.
+
+```{python}
+#| echo: false
+#| output: none
+from sympy import Matrix
+R=Matrix([[8, 0, -1, 0], [18, 0, 0, -2], [0, 2, -2, -1]])
+rhs = Matrix([0,0,0])
+soln=R.gauss_jordan_solve(rhs)[0]
+display(soln.subs('tau0',18).T)
+display(R.rref()[0])
+```
+
+:::
+
+#
+
+
+ Express the following functions, if linear, as matrix operators. (If not linear, explain why.)
+
+(a) $T\left(\left(x_{1}, x_{2}\right)\right)=\left(x_{1}+x_{2}, 2 x_{1}, 4 x_{2}-x_{1}\right)$ 
+(b) $T\left(\left(x_{1}, x_{2}\right)\right)=\left(x_{1}+x_{2}, 2 x_{1} x_{2}\right)$
+
+(c) $T\left(\left(x_{1}, x_{2}, x_{3}\right)\right)=\left(2 x_{3},-x_{1}\right)$
+
+(d) $T\left(\left(x_{1}, x_{2}, x_{3}\right)\right)=\left(x_{2}-x_{1}, x_{3}, x_{2}+x_{3}\right)$
+
+
+::: solutions
+
+Exercise 2.3.3
+
+Operator is $T_{A}$ with:
+
+(a) $A=\left[\begin{array}{rr}1 & 1 \\ 2 & 0 \\ 4 & -1\end{array}\right]$
+(b) nonlinear
+(c) $\left[\begin{array}{rrr}0 & 0 & 2 \\ -1 & 0 & 0\end{array}\right]\left(\right.$ 
+d) $A=\left[\begin{array}{rrr}-1 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 1\end{array}\right]$
+:::
+
+#
+
+
+A *fixed-point* of a linear operator $T_{A}$ is a vector $\mathbf{x}$ such that $T_{A}(\mathbf{x})=\mathbf{x}$. Find all fixed points, if any, of the linear operators in the previous exercise.
+
+::: solutions
+Exercise 2.3.9
+
+We require our matrix to be square (i.e., have the same number of rows and columns) to have a fixed point. For the matrices in the previous exercise, only the matrix in part (d) is square. The fixed points are the solutions to the system of equations
+
+$$ 
+\left[\begin{array}{rrr}-1 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 1\end{array}\right]\left[\begin{array}{l}x_{1} \\ x_{2} \\ x_{3}\end{array}\right]=\left[\begin{array}{l}x_{1} \\ x_{2} \\ x_{3}\end{array}\right] 
+$$
+
+First, we subtract the right-hand side from the left-hand side to get
+
+$$
+\left[\begin{array}{rrr}-1 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 1\end{array}\right]\left[\begin{array}{l}x_{1} \\ x_{2} \\ x_{3}\end{array}\right]-\left[\begin{array}{l}x_{1} \\ x_{2} \\ x_{3}\end{array}\right]=\left[\begin{array}{l}0 \\ 0 \\ 0\end{array}\right]
+$$
+
+This simplifies to
+
+$$
+\left[\begin{array}{rrr}-2 & 1 & 0 \\ 0 & -1 & 1 \\ 0 & 1 & 0\end{array}\right]\left[\begin{array}{l}x_{1} \\ x_{2} \\ x_{3}\end{array}\right]=\left[\begin{array}{l}0 \\ 0 \\ 0\end{array}\right]
+$$
+
+Putting our matrix into reduced row echelon form, we have
+
+$$
+\left[\begin{array}{rrr}-2 & 1 & 0 \\ 0 & -1 & 1 \\ 0 & 1 & 0\end{array}\right] \rightarrow\left[\begin{array}{rrr}1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{array}\right]
+$$
+
+
+This is the identity matrix, which means that the system of equations is nonsingular and has a unique solution. Moreover, the right-hand side of the equation is the zero vector, which means that the fixed point is the zero vector: $\left(x_{1}, x_{2}, x_{3}\right)=\left(0,0,0\right)$.
+
+
+
+
+```{python}
+from sympy import eye
+#| echo: false
+#| output: none
+
+A = Matrix([[-1, 1, 0], [0, 0, 1], [0, 1, 1]])
+(A-eye(3))
+# append a zero vector to the right of the matrix
+R = (A-eye(3)).row_join(Matrix([0,0,0]))
+R.rref()
+```
+
+:::
+
+#
+
+
+A linear operator on $\mathbb{R}^{2}$ is defined by first applying a scaling operator with scale factors of 2 in the $x$-direction and 4 in the $y$-direction, followed by a counterclockwise rotation about the origin of $\pi / 6$ radians. Express this operator and the operator that results from reversing the order of the scaling and rotation as matrix operators.
+
+
+
+::: solutions
+Exercise 2.3.5
+The scaling operator is given by the matrix
+
+$$
+\left[\begin{array}{ll}
+2 & 0 \\
+0 & 4
+\end{array}\right]
+$$
+
+
+
+To create a counterclockwise rotation by $\theta$ radians, we use the matrix
+
+$$
+\left[\begin{array}{ll}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right]
+$$
+
+Here, we want to rotate by $\pi / 6$ radians, so we have
+
+$$
+\left[\begin{array}{ll}
+\cos \frac{\pi}{6} & -\sin \frac{\pi}{6} \\
+\sin \frac{\pi}{6} & \cos \frac{\pi}{6}
+\end{array}\right]=\left[\begin{array}{ll}
+\frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]
+$$
+
+The operator for the scaling followed by the rotation is the product of these two matrices:
+
+$$T_{A}, A=
+\left[\begin{array}{ll}
+\frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]\left[\begin{array}{ll}
+2 & 0 \\
+0 & 4
+\end{array}\right]=\left[\begin{array}{ll}
+\sqrt{3} & -2 \\
+1 & 2 \sqrt{3}
+\end{array}\right]
+$$
+
+The operator for the rotation followed by the scaling is the product of the matrices in reverse order:
+
+$$T_{B}, B=
+\left[\begin{array}{ll}
+2 & 0 \\
+0 & 4
+\end{array}\right]\left[\begin{array}{ll}
+\frac{\sqrt{3}}{2} & -\frac{1}{2} \\
+\frac{1}{2} & \frac{\sqrt{3}}{2}
+\end{array}\right]=\left[\begin{array}{ll}
+\sqrt{3} & -1 \\
+2 & 2 \sqrt{3}
+\end{array}\right]
+$$
+
+
+:::
+
+
+
+#
+
+
+Find a scaling operator $S$ and shearing operator $H$ such that the concatenation $S \circ H$ maps the points $(1,0)$ to $(2,0)$ and $(0,1)$ to $(4,3)$.
+
+::: solutions
+Exercise 2.3.7
+
+We know that the shearing operator must add a multiple of the $x_2$ component to the $x_1$ component. For now, we can write this as
+
+$$
+\left[\begin{array}{ll}
+1 & \alpha \\
+0 & 1
+\end{array}\right]
+$$
+
+Then we can apply the shearing operator to our two points to get
+
+$$
+\left[\begin{array}{ll}
+1 & \alpha \\
+0 & 1
+\end{array}\right]\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right]=\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right]
+$$
+
+and 
+
+$$
+\left[\begin{array}{ll}
+1 & \alpha \\
+0 & 1
+\end{array}\right]\left[\begin{array}{l}
+0 \\
+1
+\end{array}\right]=\left[\begin{array}{l}
+\alpha \\
+1
+\end{array}\right]
+$$
+
+We know our scaling operator will be of the form
+
+$$
+\left[\begin{array}{ll}
+s & 0 \\
+0 & t
+\end{array}\right]
+$$
+
+Applying this to our two points, we get
+
+$$
+\left[\begin{array}{ll}
+s & 0 \\
+0 & t
+\end{array}\right]\left[\begin{array}{l}
+1 \\
+0
+\end{array}\right]=\left[\begin{array}{l}
+s \\
+0
+\end{array}\right]
+$$
+
+and
+
+$$
+\left[\begin{array}{ll}
+s & 0 \\
+0 & t
+\end{array}\right]\left[\begin{array}{l}
+\alpha \\
+1
+\end{array}\right]=\left[\begin{array}{l}
+s \alpha \\
+t
+\end{array}\right]
+$$
+
+We can now set up the equations
+
+$$
+\begin{aligned}
+s &=2 , 0=0\\
+\alpha s &=4,
+t =3
+\end{aligned}
+$$
+
+It is clear that the solutions to these equations are $s=2, t=3, \alpha=2$. Thus, our scaling operator is
+
+$$
+S=\left[\begin{array}{ll}2 & 0 \\ 0 & 3\end{array}\right]
+$$
+
+and our shearing operator is
+
+$$
+H=\left[\begin{array}{ll}1 & 2 \\ 0 & 1\end{array}\right]
+$$
+
+
+
+Checking:
+
+```{python}
+S = Matrix([[2, 0], [0, 3]])
+H = Matrix([[1, 2], [0, 1]])
+S*H*Matrix([1,0]), S*H*Matrix([0,1])
+```
+
+:::
+
+#
+
+
+ Given transition matrices for discrete dynamical systems
+
+(a) $\left[\begin{array}{rrr}.1 & .3 & 0 \\ 0 & .4 & 1 \\ .9 & .3 & 0\end{array}\right] \quad$ (b) $\left[\begin{array}{lll}0 & 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 0\end{array}\right] \quad$ (c) $\left[\begin{array}{rrr}.5 & .3 & 0 \\ 0 & .4 & 0 \\ .5 & .3 & 1\end{array}\right] \quad$ (d) $\left[\begin{array}{rrr}0 & 0 & 0.9 \\ 0.5 & 0 & 0 \\ 0 & 0.5 & 0.1\end{array}\right]$ and initial state vector $\mathbf{x}^{(0)}=\frac{1}{2}(1,1,0)$, calculate the first and second state vector for each system and determine whether it is a Markov chain.
+
+::: solutions
+Exercise 2.3.11
+
+We know going in that (d) is not a stochastic matrix, because the neither the first or second column sums to 1. The others are stochastic.
+
+First and second states are 
+
+(a) $(0.2,0.2,0.6)$, $(0.08,0.68,0.24)$ 
+
+(b) $\frac{1}{2}(0,1,1), \frac{1}{2}(1,1,0)$ 
+
+(c) $(0.4,0.2,0.4),(0.26,0.08,0.3)$ 
+
+(d) $(0,0.25,0.25),(0.225,0,0.15)$
+
+As expected, the states sum to 1 for a-c, but not for d. Therefore a-c are Markov chains.
+:::
+
+
+#
+
+
+ For each of the dynamical systems of the previous exercise, determine by calculation whether the system tends to a limiting steady-state vector. If so, what is it?
+
+::: solutions
+Exercise 2.3.12
+
+We can do this in Python by multiplying the initial state vector by each matrix a large number of times and seeing if the result converges.
+
+```{python}
+from sympy import Matrix
+A1 = Matrix([[0.1, 0.3, 0], [0, 0.4, 1], [0.9, 0.3, 0]])
+A2 = Matrix([[0, 0, 1], [0, 1, 0], [1, 0, 0]])
+A3 = Matrix([[0.5, 0.3, 0], [0, 0.4, 0], [0.5, 0.3, 1]])
+A4 = Matrix([[0, 0, 0.9], [0.5, 0, 0], [0, 0.5, 0.1]])
+x = Matrix([1/2, 1/2, 0])
+
+def limit(A, x0, n):
+    print(x0)
+    for i in range(n):
+        x0 = A*x0
+        # This was initially confusing -- printing only every 10 iterations, I missed the fact that the chain alternates between two states.
+        if i % 10 == 0 or i % 10 == 1:
+            print(x0)
+
+print("A1")
+limit(A1, x, 100)
+print("A2")
+limit(A2, x, 100)
+print("A3")
+limit(A3, x, 100)
+print("A4")
+limit(A4, x, 100)
+```
+
+Answers:
+
+(a) Tends to steady state $(0.172414,0.517241,0.310345)$.
+(b) No steady state (alternates). 
+(c) Yes, steady state $(0,0,1)$. 
+(d) Yes, steady state $(0,0,0)$.
+:::
+
+
+
+#
+
+
+A population is modeled with two states, immature and mature, and the resulting structured population model transition matrix is $\left[\begin{array}{cc}\frac{1}{2} & 1 \\ \frac{1}{2} & 0\end{array}\right]$.
+
+(a) Explain what this matrix says about the two states.
+(b) Starting with a population of $(30,100)$, does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?
+
+::: solutions
+
+```{python}
+from sympy import Matrix
+A = Matrix([[1/2, 1], [1/2, 0]])
+x = Matrix([30, 100])
+for i in range(100):
+    x = A*x
+    if i % 10 == 0:
+        print(x)
+```
+
+
+Exercise 2.3.13
+
+Solution. (a) The first column says that $50 \%$ of the immature become mature and $50 \%$ of the immature remain immature in one time period. The second column says that none of the mature survive, but each mature individual produces one immature in one time period. (b) The total populations after $0,3,6,9,18$ time periods is a constant 130 , and populations tend to approximately $(86.667,43.333)$.
+:::
+
+
+#
+
+
+A digraph $G$ has vertex set $V=\{1,2,3,4,5\}$ and edge set $E=$ $\{(2,1),(1,5),(2,5),(5,4),(4,2),(4,3),(3,2)\}$. Sketch a picture of the graph $G$ and find its adjacency matrix. Use this to find the power of each vertex of the graph and determine whether this graph is dominance-directed.
+
+::: solutions
+Exercise 2.3.15
+
+Powers of vertices $1-5$ are $2,4,3,5,3$, respectively. Graph is dominance directed (there are no bi-directional edges between any pairs of vertices), adjacency matrix is $\left[\begin{array}{ccccc}0 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0\end{array}\right]$. Picture:
+
+
+![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-041.jpg?height=215&width=503&top_left_y=581&top_left_x=540)
+
+
+:::
+
+#
+
+
+
+Consider the linear difference $y_{k+2}-y_{k+1}-y_{k}=0$.
+
+(a) Express this difference in matrix form.
+
+(b) Find the first ten terms of the solution to this difference given the initial conditions $y_{0}=0, y_{1}=1$. (This is the well-known Fibonacci sequence.)
+
+::: solutions
+Exercise 2.3.19
+
+(a) $\left[\begin{array}{l}y_{k+1} \\ y_{k+2}\end{array}\right]=\left[\begin{array}{ll}0 & 1 \\ 1 & 1\end{array}\right]\left[\begin{array}{c}y_{k} \\ y_{k+1}\end{array}\right]$ 
+(b) The first ten terms are $0,1,1,2,3,5,8,13,21,34$.
+:::
+
+
+#
+
+
+Suppose that in Example 2.27 you invest $\$ 1,000$ initially (the zeroth year) and no further amounts. Make a table of the value of your investment for years 0 to 12. Also include a column that calculates the annual interest rate that your investment is earning each year, based on the current and previous year's values. What conclusions do you draw? You will need a technology tool for this exercise.
+
+::: solutions
+Problem 2.3.24
+Solution. 
+
+After a sizable third year earning of $24 \%$, the annual rate appears to settle down to $14.41 \%$. Partial table:
+
+
+
+| Year | Value | Interest Rate (%) |
+|------|-------|-------------------|
+| 0    | 1000  | -                 |
+| 1    | 1000  | 0                 |
+| 3    | 1240  | 24                |
+| 6    | 1859  | 14.1              |
+| 9    | 2785  | 14.41             |
+| 12   | 4171  | 14.41             |
+
+
+
+:::

@@ -4,6 +4,8 @@ author: "Vincent"
 date: "4/14/2024"
 latex-auto-mk: true
 output: pdf_document
+publish: true
+css: comments.css
 format:
   html:
     code-fold: show

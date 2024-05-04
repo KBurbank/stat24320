@@ -206,12 +206,12 @@ window.Quarto = {
 <p>We could also have written</p>
 <p><span class="math inline">\(R=\begin{bmatrix}1 &amp; -1 &amp; 0 &amp; -3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>, which has the same solutions.</p>
 <p>Just for kicks, checking in Sympy:</p>
-<div id="29dd7f27" class="cell" data-execution_count="2">
+<div id="742c9c0b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> print_latex</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_print(x, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    print_latex(x, itex<span class="op">=</span><span class="va">False</span>, mode<span class="op">=</span><span class="st">'equation'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="110f0f36" class="cell" data-execution_count="3">
+<div id="6b7aeea8" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>R<span class="op">=</span>Matrix([[<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>]])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rhs <span class="op">=</span> Matrix([<span class="dv">4</span>,<span class="dv">2</span>])</span>
@@ -269,7 +269,7 @@ x_{1}\left[\begin{array}{r}
 \end{array}\right]
 \]</span></p>
 <p>The smallest integer solution is <span class="math inline">\(x_{1}=2, x_{2}=25, x_{3}=16, x_{4}=18\)</span>.</p>
-<div id="0b91a6fb" class="cell" data-execution_count="5">
+<div id="40426eab" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}2 &amp; 25 &amp; 16 &amp; 18\end{matrix}\right]\)</span></p>
 </div>
@@ -323,7 +323,7 @@ x_{1}\left[\begin{array}{r}
 \left[\begin{array}{rrr}-2 &amp; 1 &amp; 0 \\ 0 &amp; -1 &amp; 1 \\ 0 &amp; 1 &amp; 0\end{array}\right] \rightarrow\left[\begin{array}{rrr}1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{array}\right]
 \]</span></p>
 <p>This is the identity matrix, which means that the system of equations is nonsingular and has a unique solution. Moreover, the right-hand side of the equation is the zero vector, which means that the fixed point is the zero vector: <span class="math inline">\(\left(x_{1}, x_{2}, x_{3}\right)=\left(0,0,0\right)\)</span>.</p>
-<div id="223e7208" class="cell" data-execution_count="6">
+<div id="8d1ad586" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> eye</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: none</span></span>
@@ -333,7 +333,7 @@ x_{1}\left[\begin{array}{r}
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># append a zero vector to the right of the matrix</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> (A<span class="op">-</span>eye(<span class="dv">3</span>)).row_join(Matrix([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]))</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>R.rref()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>(Matrix([
  [1, 0, 0, 0],
  [0, 1, 0, 0],
@@ -487,11 +487,11 @@ S=\left[\begin{array}{ll}2 &amp; 0 \\ 0 &amp; 3\end{array}\right]
 H=\left[\begin{array}{ll}1 &amp; 2 \\ 0 &amp; 1\end{array}\right]
 \]</span></p>
 <p>Checking:</p>
-<div id="cc507b91" class="cell" data-execution_count="7">
+<div id="bf6c93a8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>S <span class="op">=</span> Matrix([[<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">3</span>]])</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> Matrix([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">0</span>, <span class="dv">1</span>]])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">1</span>,<span class="dv">0</span>]), S<span class="op">*</span>H<span class="op">*</span>Matrix([<span class="dv">0</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>(Matrix([
  [2],
  [0]]),
@@ -527,7 +527,7 @@ H=\left[\begin{array}{ll}1 &amp; 2 \\ 0 &amp; 1\end{array}\right]
 <div class="solutions">
 <p>Exercise 2.3.12</p>
 <p>We can do this in Python by multiplying the initial state vector by each matrix a large number of times and seeing if the result converges.</p>
-<div id="549bbd9d" class="cell" data-execution_count="8">
+<div id="55c28c46" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="op">=</span> Matrix([[<span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="fl">0.4</span>, <span class="dv">1</span>], [<span class="fl">0.9</span>, <span class="fl">0.3</span>, <span class="dv">0</span>]])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>]])</span>
@@ -659,7 +659,7 @@ Matrix([[8.67946690016671e-19], [6.74533016788995e-19], [6.20149316197677e-19]])
 <li>Starting with a population of <span class="math inline">\((30,100)\)</span>, does the population stabilize, increase or decrease over time? If it stabilizes, to what distribution?</li>
 </ol>
 <div class="solutions">
-<div id="63ac3e30" class="cell" data-execution_count="9">
+<div id="35668215" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>], [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>]])</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix([<span class="dv">30</span>, <span class="dv">100</span>])</span>
@@ -692,7 +692,7 @@ Matrix([[86.6666666666667], [43.3333333333333]])</code></pre>
 <p>Picture:</p>
 <p><img src="https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-041.jpg?height=215&amp;width=503&amp;top_left_y=581&amp;top_left_x=540" class="img-fluid"></p>
 <p>We find the powers by taking the sum of <span class="math inline">\(A\)</span> + <span class="math inline">\(A^{2}\)</span>, and then finding the sum of the rows of the resulting matrix.</p>
-<div id="8bff6f51" class="cell" data-execution_count="10">
+<div id="db6586c8" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="op">=</span> A<span class="op">**</span><span class="dv">2</span></span>
@@ -771,6 +771,33 @@ Matrix([[86.6666666666667], [43.3333333333333]])</code></pre>
 </tr>
 </tbody>
 </table>
+<div id="d14609ac" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sym</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> sym.Matrix([[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>],[<span class="fl">0.12</span>,<span class="fl">0.06</span>,<span class="dv">1</span>]])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> sym.Matrix([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1000</span>])</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> sym.zeros(<span class="dv">13</span>,<span class="dv">1</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>total[<span class="dv">0</span>]<span class="op">=</span>x0[<span class="dv">2</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>total[<span class="dv">1</span>]<span class="op">=</span>x0[<span class="dv">2</span>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>sym.Matrix([<span class="dv">1000</span>,<span class="dv">1000</span>,<span class="dv">1000</span>])</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">13</span>):</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> M<span class="op">*</span>x</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    total[i]<span class="op">=</span>x[<span class="dv">2</span>]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">1</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, <span class="st">"Current:"</span>, <span class="bu">format</span>(x[<span class="dv">2</span>], <span class="st">".2f"</span>), <span class="st">"Interest: "</span>, <span class="bu">format</span>((x[<span class="dv">2</span>]<span class="op">-</span>total[i<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>total[i<span class="op">-</span><span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span>, <span class="st">".2f"</span>),<span class="st">"%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2 Current: 1180.00 Interest:  18.00 %
+3 Current: 1360.00 Interest:  15.25 %
+4 Current: 1550.80 Interest:  14.03 %
+5 Current: 1774.00 Interest:  14.39 %
+6 Current: 2030.25 Interest:  14.44 %
+7 Current: 2322.78 Interest:  14.41 %
+8 Current: 2657.48 Interest:  14.41 %
+9 Current: 3040.48 Interest:  14.41 %
+10 Current: 3478.66 Interest:  14.41 %
+11 Current: 3979.98 Interest:  14.41 %
+12 Current: 4553.56 Interest:  14.41 %</code></pre>
+</div>
+</div>
 </div>
 
 

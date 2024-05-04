@@ -212,6 +212,7 @@ The only solution whose coordinates sum to one is $\mathbf{x}=\left(0,0,0,0, \fr
 
 
 Solve the nonlinear system of equations of Example 2.48 by using nine iterations of the vector Newton formula (2.5), starting with the initial guess $\mathbf{x}^{(0)}=(0,1)$. Evaluate $F\left(\mathbf{x}^{(9)}\right)$.
+
 ::: solutions
 2.5.25
  $\quad \mathbf{x}=(x, y), \mathbf{x}^{(9)} \approx\left[\begin{array}{r}1.00001 \\ -0.99999\end{array}\right], \mathbf{F}\left(\mathbf{x}^{(9)}\right) \approx 10^{-6}\left[\begin{array}{r}-1.3422 \\ 2.0226\end{array}\right], \mathbf{F}(\mathbf{x})=$

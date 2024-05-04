@@ -557,15 +557,6 @@ After a sizable third year earning of $24 \%$, the annual rate appears to settle
 
 
 
-| Year | Value | Interest Rate (%) |
-|------|-------|-------------------|
-| 0    | 1000  | -                 |
-| 1    | 1000  | 0                 |
-| 3    | 1240  | 24                |
-| 6    | 1859  | 14.1              |
-| 9    | 2785  | 14.41             |
-| 12   | 4171  | 14.41             |
-
 ```{python}
 import sympy as sym
 M = sym.Matrix([[0,1,0],[0,0,1],[0.12,0.06,1]])

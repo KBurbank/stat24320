@@ -180,11 +180,13 @@ window.Quarto = {
 </header>
 
 
-<p>::: comments The gas in the tube is excellent now – I love that you included an animation. I’m still a little curious about why you were getting negative numbers.</p>
+<div class="comments">
+<p>The gas in the tube is excellent now – I love that you included an animation. I’m still a little curious about why you were getting negative numbers.</p>
 <p>I assume that what the <code>nsimplify</code> with the tolerance was doing, in your case, was to set to zero any values that were less than your threshold of 0.01, and any negative numbers you were getting were small enough to be rounded down to zero?</p>
 <p>Of course you are right that negative numbers don’t make physical sense. If you were modelling this system in a different context, you might want to try making either your timesteps or your spatial discritization smaller to see if you can get a more accurate result without having to round down to zero; if that didn’t work, you might have some issue with the code or with the model itself that you would need to address. However, in this assignment, you don’t really have the freedom to change the discretization or the timestep, since you are trying to match the given values. So, I think you did the best you could in this case.</p>
 <p>The sports ranking section is now well explained, thanks.</p>
-<p>Final grades: E E M. :::</p>
+<p>Final grades: E E M.</p>
+</div>
 <section id="markov-chains" class="level1">
 <h1><em>Markov Chains</em></h1>
 <section id="introduction" class="level2">
@@ -1207,14 +1209,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>::: comments</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>The gas in the tube is excellent now -- I love that you included an animation. I'm still a little curious about why you were getting negative numbers.</span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a> I assume that what the <span class="in">`nsimplify`</span> with the tolerance was doing, in your case, was to set to zero any values that were less than your threshold of 0.01, and any negative numbers you were getting were small enough to be rounded down to zero?</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>I assume that what the <span class="in">`nsimplify`</span> with the tolerance was doing, in your case, was to set to zero any values that were less than your threshold of 0.01, and any negative numbers you were getting were small enough to be rounded down to zero?</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a> Of course you are right that negative numbers don't make physical sense. If you were modelling this system in a different context, you might want to try making either your timesteps or your spatial discritization smaller to see if you can get a more accurate result without having to round down to zero; if that didn't work, you might have some issue with the code or with the model itself that you would need to address. However, in this assignment, you don't really have the freedom to change the discretization or the timestep, since you are trying to match the given values. So, I think you did the best you could in this case.</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>Of course you are right that negative numbers don't make physical sense. If you were modelling this system in a different context, you might want to try making either your timesteps or your spatial discritization smaller to see if you can get a more accurate result without having to round down to zero; if that didn't work, you might have some issue with the code or with the model itself that you would need to address. However, in this assignment, you don't really have the freedom to change the discretization or the timestep, since you are trying to match the given values. So, I think you did the best you could in this case.</span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a> The sports ranking section is now well explained, thanks.</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>The sports ranking section is now well explained, thanks.</span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a> Final grades: E E M.</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a> :::</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>Final grades: E E M.</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>

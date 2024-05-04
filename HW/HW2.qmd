@@ -506,13 +506,25 @@ A digraph $G$ has vertex set $V=\{1,2,3,4,5\}$ and edge set $E=$ $\{(2,1),(1,5),
 ::: solutions
 Exercise 2.3.15
 
-Powers of vertices $1-5$ are $2,4,3,5,3$, respectively. Graph is dominance directed (there are no bi-directional edges between any pairs of vertices), adjacency matrix is $\left[\begin{array}{ccccc}0 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0\end{array}\right]$. Picture:
+Powers of vertices $1-5$ are $2,4,3,5,3$, respectively (see Python code below). Graph is dominance directed (there are no bi-directional edges between any pairs of vertices), adjacency matrix is $\left[\begin{array}{ccccc}0 & 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 & 1 \\ 0 & 1 & 0 & 0 & 0 \\ 0 & 1 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0\end{array}\right]$. 
+
+Picture:
 
 
 ![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-041.jpg?height=215&width=503&top_left_y=581&top_left_x=540)
 
+We find the powers by taking the sum of $A$ + $A^{2}$, and then finding the sum of the rows of the resulting matrix.
 
-:::
+```{python}
+from sympy import Matrix
+A = Matrix([[0, 0, 0, 0, 1], [1, 0, 0, 0, 1], [0, 1, 0, 0, 0], [0, 1, 1, 0, 0], [0, 0, 0, 1, 0]])
+A2 = A**2
+Asum = A + A2
+display(Asum)
+# find the sum of the rows, save it as a sympy vector
+# Do this by multiplying by a column vector of all ones
+display(Asum*Matrix([1,1,1,1,1]))
+```
 
 #
 

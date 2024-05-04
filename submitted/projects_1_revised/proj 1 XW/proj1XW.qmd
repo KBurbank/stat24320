@@ -54,6 +54,13 @@ Ax = x
 
 A(x - I) = 0
 
+::: comments
+I've just spent a while playing around with this! The matrix is ill-conditioned, so the solver is having trouble. It ends up deciding that the matrix is singular and giving you the trivial solution. But it's not singular, it's just very close to it.
+
+In any case, you *do* get the right result just by finding the eigenvectors of Mc1; the eigenvector corresponding to the eigenvalue 1 is the steady state you found. So odd! But it's a good reminder that numerical linear algebra can be a bit of a minefield.
+:::
+
+
 ```{python}
 (sym.eye(3) - Mc1).gauss_jordan_solve(sym.zeros(3, 1))[0]
 ```
@@ -74,6 +81,13 @@ Mc2
 ```{python}
 Mc2**50 * sym.Matrix([0.33333, 0.33333, 0.33333])
 ```
+
+::: comments
+So you've shown here that the long-term behavior is the same for each of the two initial distributions you chose. To convince yourself that this is truly universal, though, you'd want to try a number of different initial distributions, not just two.
+
+(Of course, using the concepts of eigenvalues and eigenvectors, we can see that the steady state you found corresponds to the dominant eigenvector of the matrix. That means that you will tend to arrive there unless your initial distribution is orthogonal to that eigenvector, exactly equal to one of the other eigenvectors. You wouldn't have found one of these other eigenvectors anyways just trying initial distributions by chance...)
+:::
+
 
 ### Report
 
@@ -108,6 +122,10 @@ gains = gains.astype(float)
 ```{python}
 gains.plot(kind='line', xlabel='state iterations', ylabel="proportion from", title="Market Share from B or C")
 ```
+
+::: comments
+This meets expectations now! Grade: M
+:::
 
 
 # Diffusion
@@ -222,6 +240,11 @@ plot_df.plot(kind='line', xlabel="step", ylabel='concentration', title="concentr
 
 It is expected that the center curve looks like an logarithmic decay, the 1/3 curve looks like a logarithmic increase which I suppose will decrease at the point. Using Linear Algebra does seem like a much easier approach than the actual Physics of computing the diffusion constant as well as the intial concentration.
 
+::: comments
+This is a great solution! You've done a good job of explaining your reasoning and the steps you took to arrive at your solution. The plots are clear and easy to understand. 
+
+Grade: E
+:::
 
 
 

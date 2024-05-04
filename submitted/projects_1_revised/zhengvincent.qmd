@@ -14,6 +14,20 @@ format:
       toggle: true
 ---
 
+::: comments
+The gas in the tube is excellent now -- I love that you included an animation. I'm still a little curious about why you were getting negative numbers.
+
+ I assume that what the `nsimplify` with the tolerance was doing, in your case, was to set to zero any values that were less than your threshold of 0.01, and any negative numbers you were getting were small enough to be rounded down to zero?
+
+ Of course you are right that negative numbers don't make physical sense. If you were modelling this system in a different context, you might want to try making either your timesteps or your spatial discritization smaller to see if you can get a more accurate result without having to round down to zero; if that didn't work, you might have some issue with the code or with the model itself that you would need to address. However, in this assignment, you don't really have the freedom to change the discretization or the timestep, since you are trying to match the given values. So, I think you did the best you could in this case.
+
+ The sports ranking section is now well explained, thanks.
+
+ Final grades: E E M.
+ :::
+
+
+
 ```{python}
 #| echo: false
 

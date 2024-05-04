@@ -2,6 +2,7 @@
 title: Xiao Wei
 jupyter: python3
 css: comments.css
+publish: true
 ---
 
 # Markov Chains

@@ -37,7 +37,7 @@ print(latex(A,itex=True,mode='equation'))
 
 ```{python}
 def printvar(x):
-    Markdown(latex(x,itex=True,mode='inline'))
+    return(Markdown(latex(x,itex=True,mode='inline')))
 ```
 
 `{python} printvar(A)`

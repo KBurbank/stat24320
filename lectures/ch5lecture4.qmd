@@ -50,11 +50,13 @@ def pv(x):
     return(Markdown(latex(x,itex=True,mode='inline')))
 ```
 
-For $A^TA$ = `{python} pv(ata)`, the eigenvectors are:  
+For $A^TA$ = `{python} pv(ata)`, the eigenvectors are: 
+
 1. `{python} pv(e1)` with eigenvalue `{python} pv(ev1)`
 2. `{python} pv(e2)` with eigenvalues `{python} pv(ev2)`
 
 For $AA^T$ = `{python} pv(aat)`, the eigenvectors are:
+
 1. `{python} pv(d1)` with eigenvalue `{python} pv(dv1)`
 2. `{python} pv(d2)` with eigenvalues `{python} pv(dv2)`
 3. `{python} pv(d3)` with eigenvalues `{python} pv(dv3)`

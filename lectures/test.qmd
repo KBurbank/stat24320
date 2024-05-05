@@ -9,5 +9,6 @@ filters:
 ## A slide
 
 ```{python}
+#| results: 'asis'
 from IPython.display import display, Math
 display(Math(r'c = \sqrt{a^2 + b^2}'))

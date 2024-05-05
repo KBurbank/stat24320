@@ -1,0 +1,42 @@
+---
+title: Ch5 Lecture 4
+lecture_day: 14
+readings: ""
+publish: false
+execute: 
+  cache: false
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+Really cool demo of SVD image compression:
+https://timbaumann.info/svd-image-compression-demo/
+
+
+
+Remember the left singular values are the eigenvalues of $A^TA$ and the right singular values are the eigenvalues of $AA^T$.
+
+For an image, $A^TA$ is the covariance matrix of the columns of $A$ and $AA^T$ is the covariance matrix of the rows of $A$.
+
+```{python}
+import sympy as sp
+from sympy import latex,N
+from IPython.display import display, Math
+A = sp.Matrix([[1, 2], [3, 4], [5, 6]])
+display(A)
+display(Math(f'A^TA: {latex(A.T*A)}: {latex((A.T*A).eigenvects()[0][2][0])} {N((A.T*A).eigenvects()[0][0],2)}, {latex((A.T*A).eigenvects()[1][2][0])} {N((A.T*A).eigenvects()[1][0],2)}'))
+display(Math(f'AA^T{latex(A*A.T)}: {latex((A*A.T).eigenvects()[0][2][0])} {N((A*A.T).eigenvects()[0][0],2)}, {latex((A*A.T).eigenvects()[1][2][0])} {N((A*A.T).eigenvects()[1][0],2)}, {latex((A*A.T).eigenvects()[2][2][0])} {N((A*A.T).eigenvects()[2][0],2)}'))
+```
+
+`{python} A`
+
+What does the covariance of the columns mean? It captures when two columns are correlated. If two columns are correlated, then the corresponding singular value will be large. If two columns are not correlated, then the corresponding singular value will be small.
+
+So an eigenvector of the covariance matrix of the columns of $A$ is a vector that has a similar pattern to the actual columns of $A$.
+

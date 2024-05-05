@@ -32,7 +32,7 @@ listing:
   - id: homeworks
     template: "hw_listing.ejs"
     contents: 
-      - "HW/*.qmd"
+      - "HW"
     include:
       publish: true
     template-params:

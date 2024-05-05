@@ -34,7 +34,7 @@ display(Math(f'A^TA: {latex(A.T*A)}: {latex((A.T*A).eigenvects()[0][2][0])} {N((
 display(Math(f'AA^T{latex(A*A.T)}: {latex((A*A.T).eigenvects()[0][2][0])} {N((A*A.T).eigenvects()[0][0],2)}, {latex((A*A.T).eigenvects()[1][2][0])} {N((A*A.T).eigenvects()[1][0],2)}, {latex((A*A.T).eigenvects()[2][2][0])} {N((A*A.T).eigenvects()[2][0],2)}'))
 ```
 
-`{python} A`
+`{python} latex(A)`
 
 What does the covariance of the columns mean? It captures when two columns are correlated. If two columns are correlated, then the corresponding singular value will be large. If two columns are not correlated, then the corresponding singular value will be small.
 

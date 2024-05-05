@@ -5,6 +5,7 @@ listing:
   - id: lecture-notes
     contents: 
       "lectures"
+    template: colab_listing.ejs
     include:
       publish: true
     template-params:

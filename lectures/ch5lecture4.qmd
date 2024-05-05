@@ -36,11 +36,23 @@ print(latex(A,itex=True,mode='equation'))
 ```
 
 ```{python}
-def printvar(x):
+def pv(x):
     return(Markdown(latex(x,itex=True,mode='inline')))
 ```
 
-`{python} printvar(A)`
+For $A^TA$=`{python} pv(A.T*A)`, the eigenvectors are:
+1. `{python} pv((A.T*A).eigenvects()[0][2][0])` with eigenvalue `{python} pv(N((A.T*A).eigenvects()[0][0],2))`
+2. `{python} pv((A.T*A).eigenvects()[1][2][0])` with eigenvalues `{python} pv(N((A.T*A).eigenvects()[1][0],2))`
+
+For $AA^T$=`{python} pv(A*A.T)`, the eigenvectors are:
+1. `{python} pv((A*A.T).eigenvects()[0][2][0])` with eigenvalue `{python} pv(N((A*A.T).eigenvects()[0][0],2))`
+2. `{python} pv((A*A.T).eigenvects()[1][2][0])` with eigenvalues `{python} pv(N((A*A.T).eigenvects()[1][0],2))`
+3. `{python} pv((A*A.T).eigenvects()[2][2][0])` with eigenvalues `{python} pv(N((A*A.T).eigenvects()[2][0],2))`
+
+
+
+
+
 
 
 What does the covariance of the columns mean? It captures when two columns are correlated. If two columns are correlated, then the corresponding singular value will be large. If two columns are not correlated, then the corresponding singular value will be small.

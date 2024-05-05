@@ -557,7 +557,7 @@
     "href": "lectures/test.html#a-slide",
     "title": "a test",
     "section": "A slide",
-    "text": "A slide\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "A slide\nfrom IPython.display import display, Math display(Math(r’c = ’))"
   },
   {
     "objectID": "lectures/ch4lecture1.html#linear-systems-revisted",

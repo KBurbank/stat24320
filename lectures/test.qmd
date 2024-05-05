@@ -8,8 +8,6 @@ filters:
 
 ## A slide
 
-```{pyodide-python}
-import matplotlib.pyplot as plt
-plt.plot([1, 2, 3, 4])
-plt.show()
-```
+```{python}
+from IPython.display import display, Math
+display(Math(r'c = \sqrt{a^2 + b^2}'))

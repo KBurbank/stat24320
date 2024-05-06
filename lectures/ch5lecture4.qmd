@@ -620,6 +620,7 @@ plt.imshow(pca.inverse_transform(transformed))
 ```
 
 
+##
 
 Try adding noise...
 

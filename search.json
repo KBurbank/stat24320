@@ -3798,7 +3798,7 @@
     "href": "lectures/ch5lecture4.html#using-pca-from-sklearn",
     "title": "Ch5 Lecture 4",
     "section": "Using “PCA” from sklearn",
-    "text": "Using “PCA” from sklearn\nThis is just an easier way to implement taking these first few components…\n\n\nCode\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R) # fit the model -- compute the matrices\ntransformed = pca.transform(R) # transform the data\nprint(f'The shape of the image is {R.shape}, and the shape of the compressed image is {transformed.shape}')\nplt.imshow(transformed.T)\n\n\nThe shape of the image is (168, 299), and the shape of the compressed image is (168, 2)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.imshow(pca.inverse_transform(transformed))\n\n\n\n\n\n\n\n\n\nTry adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
+    "text": "Using “PCA” from sklearn\nThis is just an easier way to implement taking these first few components…\n\n\nCode\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R) # fit the model -- compute the matrices\ntransformed = pca.transform(R) # transform the data\nprint(f'The shape of the image is {R.shape}, and the shape of the compressed image is {transformed.shape}')\nplt.imshow(transformed.T)\n\n\nThe shape of the image is (168, 299), and the shape of the compressed image is (168, 2)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.imshow(pca.inverse_transform(transformed))"
   },
   {
     "objectID": "lectures/ch5lecture4.html#section-8",
@@ -3834,5 +3834,19 @@
     "title": "Ch5 Lecture 4",
     "section": "Now you",
     "text": "Now you\nCode up your own image compression using SVD and show the left and right singular vectors, the singular values, and the reconstructed images.\nShare with the class!"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-9",
+    "href": "lectures/ch5lecture4.html#section-9",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Try adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-11",
+    "href": "lectures/ch5lecture4.html#section-11",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Really cool demo of SVD image compression: https://timbaumann.info/svd-image-compression-demo/"
   }
 ]

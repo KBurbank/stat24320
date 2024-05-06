@@ -2,7 +2,7 @@
 title: Ch5 Lecture 4
 lecture_day: 14
 readings: ""
-publish: false
+publish: true
 execute: 
   cache: true
 lightbox: true
@@ -15,11 +15,8 @@ format:
       code-fold: show
 ---
 
-Really cool demo of SVD image compression:
-https://timbaumann.info/svd-image-compression-demo/
 
-
-# Matrices of data
+# SVD on matrices of data
 
 ## Example: Height and weight
 
@@ -239,6 +236,11 @@ ax4.set_title('1st + 2nd \n component')
 plt.show()
 
 ```
+
+How much of the variance is captured by the first two components?
+
+The variance captured by the each component is the sum of the squares of the singular values divided by the sum of the squares of all the singular values.
+
 
 ## Back to the cat
 
@@ -637,6 +639,7 @@ pca.fit(R_noisy)
 plt.imshow(pca.inverse_transform(pca.transform(R_noisy)))
 ```
 
+# SVD in higher dimensions
 
 ## Faces
 
@@ -730,3 +733,8 @@ ax[3, 0].set_ylabel('150-dim\nreconstruction');
 Really cool demo of SVD image compression:
 https://timbaumann.info/svd-image-compression-demo/
 
+## Now you
+
+Code up your own image compression using SVD and show the left and right singular vectors, the singular values, and the reconstructed images.
+
+Share with the class!

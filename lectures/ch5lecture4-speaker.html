@@ -415,18 +415,15 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/matrices-of-data" id="/toc-matrices-of-data"><em>Matrices of data</em></a></li>
+<li class="fragment"><a href="#/svd-on-matrices-of-data" id="/toc-svd-on-matrices-of-data"><em>SVD on matrices of data</em></a></li>
 <li class="fragment"><a href="#/svd-on-images" id="/toc-svd-on-images"><em>SVD on images</em></a></li>
+<li class="fragment"><a href="#/svd-in-higher-dimensions" id="/toc-svd-in-higher-dimensions"><em>SVD in higher dimensions</em></a></li>
 </ul>
 </nav>
 </section>
-<section class="slide level3 center">
-
-<p>Really cool demo of SVD image compression: https://timbaumann.info/svd-image-compression-demo/</p>
-</section>
 <section>
-<section id="matrices-of-data" class="title-slide slide level1 center">
-<h1><em>Matrices of data</em></h1>
+<section id="svd-on-matrices-of-data" class="title-slide slide level1 center">
+<h1><em>SVD on matrices of data</em></h1>
 
 </section>
 <section id="example-height-and-weight" class="title-slide slide level2 center">
@@ -444,7 +441,7 @@
 
 <section id="plotting" class="title-slide slide level2 center">
 <h2><em>Plotting</em></h2>
-<div id="4cd9ba04" class="cell" data-execution_count="1">
+<div id="4cd9ba04" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <pre><code>&lt;Figure size 960x480 with 0 Axes&gt;</code></pre>
 </div>
@@ -461,7 +458,7 @@
 <section id="section-1" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The columns of the U matrix, graphically:</p>
-<div id="97ba5d40" class="cell" data-execution_count="2">
+<div id="97ba5d40" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -481,7 +478,7 @@
 <section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The first two rows of the <span class="math inline">\(V^T\)</span> matrix</p>
-<div id="acbf5dac" class="cell" data-execution_count="3">
+<div id="acbf5dac" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -498,7 +495,7 @@
 <section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The data from these first two rows of the <span class="math inline">\(V^T\)</span> matrix, after multiplication by the singular values and rotated by the columns of the U matrix:</p>
-<div id="94271383" class="cell" data-execution_count="4">
+<div id="94271383" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -522,7 +519,7 @@
 </section>
 <section id="motivation-a-cat" class="title-slide slide level2 center">
 <h2><em>Motivation: a cat</em></h2>
-<div id="42a58d0f" class="cell" data-execution_count="5">
+<div id="42a58d0f" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -536,7 +533,7 @@
 <section id="dimensions-of-the-decomposition" class="title-slide slide level2 center">
 <h2><em>Dimensions of the decomposition</em></h2>
 <p>What are the dimensions of the decompositions for an image?</p>
-<div id="0f275bd8" class="cell" data-execution_count="6">
+<div id="0f275bd8" class="cell" data-execution_count="7">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>U, S, Vt <span class="op">=</span> np.linalg.svd(image, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
@@ -576,7 +573,7 @@
 
 <section id="simple-example" class="title-slide slide level2 center">
 <h2><em>Simple example</em></h2>
-<div id="7bd8178e" class="cell" data-execution_count="7">
+<div id="7bd8178e" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -602,7 +599,7 @@
 
 <section id="reconstructing-our-matrix" class="title-slide slide level2 center">
 <h2><em>Reconstructing our matrix</em></h2>
-<div id="6b582696" class="cell" data-execution_count="8">
+<div id="6b582696" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -611,11 +608,13 @@
 </div>
 </div>
 </div>
+<p>How much of the variance is captured by the first two components?</p>
+<p>The variance captured by the each component is the sum of the squares of the singular values divided by the sum of the squares of all the singular values.</p>
 </section>
 
 <section id="back-to-the-cat" class="title-slide slide level2 center">
 <h2><em>Back to the cat</em></h2>
-<div id="dcd1db5f" class="cell" data-execution_count="9">
+<div id="dcd1db5f" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -624,7 +623,7 @@
 </div>
 </div>
 </div>
-<div id="e4acc8e5" class="cell" data-execution_count="11">
+<div id="e4acc8e5" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -637,7 +636,7 @@
 
 <section id="first-singular-value" class="title-slide slide level2 center">
 <h2><em>First Singular Value</em></h2>
-<div id="bd4ca5f5" class="cell" data-execution_count="12">
+<div id="bd4ca5f5" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -650,7 +649,7 @@
 
 <section id="second-singular-value" class="title-slide slide level2 center">
 <h2><em>Second Singular Value</em></h2>
-<div id="75dc8d9a" class="cell" data-execution_count="13">
+<div id="75dc8d9a" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -663,7 +662,7 @@
 
 <section id="third-singular-value" class="title-slide slide level2 center">
 <h2><em>Third Singular Value</em></h2>
-<div id="785c7149" class="cell" data-execution_count="14">
+<div id="785c7149" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -676,7 +675,7 @@
 
 <section id="adding-them-up" class="title-slide slide level2 center">
 <h2><em>Adding them up</em></h2>
-<div id="6fcb77ba" class="cell" data-execution_count="15">
+<div id="6fcb77ba" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -686,7 +685,7 @@
 </div>
 </div>
 <div class="fragment">
-<div id="34923223" class="cell" data-execution_count="16">
+<div id="34923223" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -700,7 +699,7 @@
 
 <section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="56010e10" class="cell" data-execution_count="17">
+<div id="56010e10" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -713,7 +712,7 @@
 
 <section id="color-images" class="title-slide slide level2 center">
 <h2><em>Color images</em></h2>
-<div id="e59766be" class="cell" data-execution_count="18">
+<div id="e59766be" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -722,7 +721,7 @@
 </div>
 </div>
 </div>
-<div id="de3b3235" class="cell" data-execution_count="19">
+<div id="de3b3235" class="cell" data-execution_count="20">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># SVD for each channel</span></span>
@@ -770,7 +769,7 @@
 
 <section id="how-many-singular-values-to-keep" class="title-slide slide level2 center">
 <h2><em>How many singular values to keep?</em></h2>
-<div id="b34bf2ef" class="cell" data-execution_count="20">
+<div id="b34bf2ef" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -784,7 +783,7 @@
 <section id="different-sorts-of-images" class="title-slide slide level2 center">
 <h2><em>Different sorts of images</em></h2>
 <p>Just plain noise:</p>
-<div id="0b530c9a" class="cell" data-execution_count="21">
+<div id="0b530c9a" class="cell" data-execution_count="22">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>noise <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">2</span>,size<span class="op">=</span>(<span class="dv">200</span>,<span class="dv">200</span>))</span>
@@ -802,7 +801,7 @@
 
 <section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="867db05d" class="cell" data-execution_count="22">
+<div id="867db05d" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -829,7 +828,7 @@
 
 <section id="section-6" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="f3eea634" class="cell" data-execution_count="23">
+<div id="f3eea634" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -842,7 +841,7 @@
 
 <section id="plaid-shirt" class="title-slide slide level2 center">
 <h2><em>Plaid shirt</em></h2>
-<div id="eef67710" class="cell" data-execution_count="24">
+<div id="eef67710" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -876,7 +875,7 @@
 
 <section id="section-7" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="641364bc" class="cell" data-execution_count="25">
+<div id="641364bc" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -889,7 +888,7 @@
 
 <section id="singular-values" class="title-slide slide level2 center">
 <h2><em>Singular values</em></h2>
-<div id="91e32b79" class="cell" data-execution_count="26">
+<div id="91e32b79" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -903,7 +902,7 @@
 <section id="individual-components" class="title-slide slide level2 center">
 <h2><em>Individual components</em></h2>
 <p>First component:</p>
-<div id="e84eb7de" class="cell" data-execution_count="27">
+<div id="e84eb7de" class="cell" data-execution_count="28">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -917,7 +916,7 @@
 <section id="section-8" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Second component:</p>
-<div id="ecf20974" class="cell" data-execution_count="28">
+<div id="ecf20974" class="cell" data-execution_count="29">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -931,7 +930,7 @@
 <section id="using-pca-from-sklearn" class="title-slide slide level2 center">
 <h2><em>Using “PCA” from sklearn</em></h2>
 <p>This is just an easier way to implement taking these first few components…</p>
-<div id="a8ecb215" class="cell" data-execution_count="29">
+<div id="a8ecb215" class="cell" data-execution_count="30">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
@@ -953,7 +952,7 @@
 </div>
 </div>
 <div class="fragment">
-<div id="af00dee1" class="cell" data-execution_count="30">
+<div id="af00dee1" class="cell" data-execution_count="31">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>plt.imshow(pca.inverse_transform(transformed))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -967,7 +966,7 @@
 </div>
 </div>
 <p>Try adding noise…</p>
-<div id="2b94744c" class="cell" data-execution_count="31">
+<div id="2b94744c" class="cell" data-execution_count="32">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>alpha <span class="op">=</span> <span class="dv">10</span></span>
@@ -983,7 +982,7 @@
 </div>
 </div>
 <p>Now clean it up with PCA:</p>
-<div id="434ccd12" class="cell" data-execution_count="32">
+<div id="434ccd12" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1000,10 +999,15 @@
 </div>
 </div>
 </section>
+</section>
+<section>
+<section id="svd-in-higher-dimensions" class="title-slide slide level1 center">
+<h1><em>SVD in higher dimensions</em></h1>
 
+</section>
 <section id="faces" class="title-slide slide level2 center">
 <h2><em>Faces</em></h2>
-<div id="6af67e54" class="cell" data-execution_count="33">
+<div id="6af67e54" class="cell" data-execution_count="34">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_lfw_people</span>
@@ -1048,7 +1052,7 @@
 
 <section id="pca-on-faces" class="title-slide slide level2 center">
 <h2><em>PCA on faces</em></h2>
-<div id="3f7852ce" class="cell" data-execution_count="34">
+<div id="3f7852ce" class="cell" data-execution_count="35">
 <details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>pca <span class="op">=</span> PCA(<span class="dv">150</span>, svd_solver<span class="op">=</span><span class="st">'randomized'</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
@@ -1064,7 +1068,7 @@
 </div>
 
 <div class="fragment">
-<div id="5641a5b1" class="cell" data-execution_count="35">
+<div id="5641a5b1" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1085,7 +1089,7 @@
 
 <section id="section-9" class="title-slide slide level2 center">
 <h2><em></em></h2>
-<div id="52c7547e" class="cell" data-execution_count="37">
+<div id="52c7547e" class="cell" data-execution_count="38">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1099,6 +1103,12 @@
 <section id="section-10" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Really cool demo of SVD image compression: https://timbaumann.info/svd-image-compression-demo/</p>
+</section>
+
+<section id="now-you" class="title-slide slide level2 center">
+<h2><em>Now you</em></h2>
+<p>Code up your own image compression using SVD and show the left and right singular vectors, the singular values, and the reconstructed images.</p>
+<p>Share with the class!</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -1522,7 +1532,7 @@
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox"});
     window.onload = () => {
       lightboxQuarto.on('slide_before_load', (data) => {
         const { slideIndex, slideNode, slideConfig, player, trigger } = data;

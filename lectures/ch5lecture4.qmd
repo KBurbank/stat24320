@@ -146,12 +146,7 @@ $$
 # Image compression
 
 ##
-```{python}
-import sys
-print(sys.path)
-sys.stderr(sys.path[0]) 
-#!pip install opencv-python
-```
+
 
 ```{python}
 # display the path of the current python environment

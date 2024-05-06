@@ -13,7 +13,10 @@
 <script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.551">
 
   <title>Stat 24320 - Ch5 Lecture 4</title>
@@ -34,6 +37,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="theorem.css">
@@ -340,26 +408,478 @@
 <div class="quarto-title-authors">
 </div>
 
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Outline for today</h2>
+<ul>
+<li class="fragment"><a href="#/matrices-of-data" id="/toc-matrices-of-data"><em>Matrices of data</em></a></li>
+<li class="fragment"><a href="#/image-compression" id="/toc-image-compression"><em>Image compression</em></a></li>
+</ul>
+</nav>
 </section>
 <section class="slide level3 center">
 
 <p>Really cool demo of SVD image compression: https://timbaumann.info/svd-image-compression-demo/</p>
-<p>Remember the left singular values are the eigenvalues of <span class="math inline">\(A^TA\)</span> and the right singular values are the eigenvalues of <span class="math inline">\(AA^T\)</span>.</p>
-<p>For an image, <span class="math inline">\(A^TA\)</span> is the covariance matrix of the columns of <span class="math inline">\(A\)</span> and <span class="math inline">\(AA^T\)</span> is the covariance matrix of the rows of <span class="math inline">\(A\)</span>.</p>
-<p>Take a very simple matrix <span class="math inline">\(A =\)</span> <span class="math inline">\(\left[\begin{smallmatrix}1 &amp; 2\\3 &amp; 4\\5 &amp; 6\end{smallmatrix}\right]\)</span> and compute its eigensystem</p>
-<p>For <span class="math inline">\(A^TA\)</span> = <span class="math inline">\(\left[\begin{smallmatrix}35 &amp; 44\\44 &amp; 56\end{smallmatrix}\right]\)</span>, the eigenvectors are:</p>
-<ol type="1">
-<li class="fragment"><span class="math inline">\(\left[\begin{smallmatrix}- \sqrt{8185} / 88 - 21 / 88\\1\end{smallmatrix}\right]\)</span> with eigenvalue <span class="math inline">\(0.26\)</span></li>
-<li class="fragment"><span class="math inline">\(\left[\begin{smallmatrix}- 21 / 88 + \sqrt{8185} / 88\\1\end{smallmatrix}\right]\)</span> with eigenvalue <span class="math inline">\(91.0\)</span></li>
-</ol>
-<p>For <span class="math inline">\(AA^T\)</span> = <span class="math inline">\(\left[\begin{smallmatrix}5 &amp; 11 &amp; 17\\11 &amp; 25 &amp; 39\\17 &amp; 39 &amp; 61\end{smallmatrix}\right]\)</span>, the eigenvectors are:</p>
-<ol type="1">
-<li class="fragment"><span class="math inline">\(\left[\begin{smallmatrix}1\\-2\\1\end{smallmatrix}\right]\)</span> with eigenvalue <span class="math inline">\(0\)</span></li>
-<li class="fragment"><span class="math inline">\(\left[\begin{smallmatrix}- \sqrt{8185} / 73 - 70 / 73\\3 / 146 - \sqrt{8185} / 146\\1\end{smallmatrix}\right]\)</span> with eigenvalue <span class="math inline">\(0.26\)</span></li>
-<li class="fragment"><span class="math inline">\(\left[\begin{smallmatrix}- 70 / 73 + \sqrt{8185} / 73\\3 / 146 + \sqrt{8185} / 146\\1\end{smallmatrix}\right]\)</span> with eigenvalue <span class="math inline">\(91.0\)</span></li>
-</ol>
-<p>What does the covariance of the columns mean? It captures when two columns are correlated. If two columns are correlated, then the corresponding singular value will be large. If two columns are not correlated, then the corresponding singular value will be small.</p>
-<p>So an eigenvector of the covariance matrix of the columns of <span class="math inline">\(A\)</span> is a vector that has a similar pattern to the actual columns of <span class="math inline">\(A\)</span>.</p>
+</section>
+<section>
+<section id="matrices-of-data" class="title-slide slide level1 center">
+<h1><em>Matrices of data</em></h1>
+
+</section>
+<section id="example-height-and-weight" class="title-slide slide level2 center">
+<h2><em>Example: Height and weight</em></h2>
+<p><span class="math inline">\(A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 &amp; -1.5 &amp; 0.1 &amp; -1.0 &amp; 2.1 &amp; -4.0 &amp; -2.0 &amp; 2.2 &amp; 0.2 &amp; 2.0 &amp; 1.5 &amp; -2.5 \\ 4.0 &amp; -0.9 &amp; 0.0 &amp; -1.0 &amp; 3.0 &amp; -5.0 &amp; -3.5 &amp; 2.6 &amp; 1.0 &amp; 3.5 &amp; 1.0 &amp; -4.7\end{array}\right]\)</span></p>
+<div class="fragment">
+<p><a href="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&amp;width=1379&amp;top_left_y=49&amp;top_left_x=446" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&amp;width=1379&amp;top_left_y=49&amp;top_left_x=446"></a></p>
+</div>
+</section>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math inline">\(A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 &amp; -1.5 &amp; 0.1 &amp; -1.0 &amp; 2.1 &amp; -4.0 &amp; -2.0 &amp; 2.2 &amp; 0.2 &amp; 2.0 &amp; 1.5 &amp; -2.5 \\ 4.0 &amp; -0.9 &amp; 0.0 &amp; -1.0 &amp; 3.0 &amp; -5.0 &amp; -3.5 &amp; 2.6 &amp; 1.0 &amp; 3.5 &amp; 1.0 &amp; -4.7\end{array}\right]\)</span></p>
+</section>
+
+<section id="plotting" class="title-slide slide level2 center">
+<h2><em>Plotting</em></h2>
+<div id="c2041f24" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 960x480 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-2-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="ch5lecture4_files/figure-revealjs/cell-2-output-2.png" width="822" height="395"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The columns of the U matrix:</p>
+<div id="5718d4d6" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-3.92396143e-01  1.26860160e-01 -4.55115368e-03  1.10614708e-01
+  -2.90883742e-01  5.07562005e-01  3.18884174e-01 -2.69393627e-01
+  -7.42054789e-02 -3.18884174e-01 -1.33370477e-01  4.19763748e-01]
+ [-5.81906642e-02  4.88532334e-01 -5.60990483e-02  1.68820049e-01
+  -1.56871193e-03  2.83109761e-01 -2.50615553e-01 -2.14535934e-01
+   2.79972337e-01  2.50615553e-01 -4.49315290e-01 -4.40724833e-01]
+ [-5.75084418e-03  5.55082306e-02  9.97900077e-01  6.13720069e-03
+   4.87701140e-04  9.68677766e-03 -1.00186363e-02 -7.55703148e-03
+   1.06621799e-02  1.00186363e-02 -1.66368136e-02 -1.73534535e-02]
+ [ 1.15149805e-01 -1.66011809e-01  6.70166823e-03  9.73520214e-01
+   1.91243424e-02 -6.53822452e-02  7.84577421e-03  4.20407694e-02
+  -2.71335604e-02 -7.84577421e-03  5.99881267e-02  2.29817092e-02]
+ [-2.93691817e-01 -1.53864955e-03 -1.20570150e-03  2.42045504e-02
+   9.38237662e-01  1.08965737e-01  6.66304038e-02 -5.81090249e-02
+  -1.45589384e-02 -6.66304038e-02 -3.02330579e-02  8.72359537e-02]
+ [ 5.18240582e-01 -2.74976737e-01  1.25091154e-02 -7.10269207e-02
+   1.00498724e-01  7.69956550e-01 -6.09574916e-02  1.34633532e-01
+  -2.90460024e-02  6.09574916e-02  1.33572498e-01 -5.86259887e-02]
+ [ 3.16761654e-01  2.51582129e-01 -8.04299985e-03 -6.21238989e-04
+   7.42507156e-02 -8.35361935e-02  8.77180666e-01  3.37872208e-02
+   6.49652378e-02  1.22819334e-01 -3.95937603e-02 -1.79865820e-01]
+ [-2.76386116e-01  2.09597780e-01 -9.02464710e-03  4.42986396e-02
+  -5.16740949e-02  1.31246727e-01  1.96755321e-02  9.20922125e-01
+   2.78985372e-02 -1.96755321e-02 -8.94218751e-02  9.66136996e-03]
+ [-6.91430514e-02 -2.78054036e-01  1.00977124e-02 -2.26178200e-02
+  -2.30259516e-02 -1.21119760e-02  7.23033159e-02  1.84154824e-02
+   9.41836121e-01 -7.23033159e-02  7.31063819e-02  1.15845919e-01]
+ [-3.16761654e-01 -2.51582129e-01  8.04299985e-03  6.21238989e-04
+  -7.42507156e-02  8.35361935e-02  1.22819334e-01 -3.37872208e-02
+  -6.49652378e-02  8.77180666e-01  3.95937603e-02  1.79865820e-01]
+ [-1.43904026e-01  4.43552961e-01 -1.72012811e-02  5.71657890e-02
+  -1.66858367e-02  1.13816134e-01 -5.79389555e-02 -7.98259268e-02
+   8.04444600e-02  5.79389555e-02  8.56827805e-01 -1.09748977e-01]
+ [ 4.14685511e-01  4.40925573e-01 -1.47004560e-02  1.05634232e-02
+   1.00613835e-01 -9.41874442e-02 -1.83534859e-01  3.13369237e-02
+   1.07040225e-01  1.83534859e-01 -8.40657033e-02  7.26238057e-01]]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-3-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="ch5lecture4_files/figure-revealjs/cell-3-output-2.png" width="792" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>U captures relationships between the <strong>rows</strong> of the data matrix.</p>
+</div>
+<div class="fragment">
+<p>Since there are only two rows, only 2x2 matrix needed to capture all the relationships.</p>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The first two rows of the <span class="math inline">\(V^T\)</span> matrix</p>
+<div id="f61ddbdf" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="ch5lecture4_files/figure-revealjs/cell-4-output-1.png" width="805" height="171"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>V captures relationships between the <strong>columns</strong> of the data matrix. 12x12 possible values, but only 12x2 needed to capture all the relationships.</p>
+</div>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The data from these first two rows of the <span class="math inline">\(V^T\)</span> matrix, after multiplication by the singular values and rotated by the columns of the U matrix:</p>
+<div id="4c63ae93" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="ch5lecture4_files/figure-revealjs/cell-5-output-1.png" width="792" height="411"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>A reminder:</p>
+<p><span class="math display">\[
+    \mathbf A = \mathbf{USV^\mathsf{T}} = \sigma_1 u_1 v_1^\mathsf{T} + \dots + \sigma_r u_r v_r^\mathsf{T}
+\]</span></p>
+</div>
+</section>
+</section>
+<section>
+<section id="image-compression" class="title-slide slide level1 center">
+<h1><em>Image compression</em></h1>
+
+</section>
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<div id="a6894c44" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-6-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="ch5lecture4_files/figure-revealjs/cell-6-output-1.png" width="427" height="431"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>What does the singular value decomposition of an image look like?</p>
+<div id="426720cc" class="cell" data-execution_count="6">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>U, S, Vt <span class="op">=</span> np.linalg.svd(image, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-2"><a></a><span class="bu">print</span>(<span class="ss">f'The shape of U is </span><span class="sc">{</span>U<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, the shape of S is </span><span class="sc">{</span>S<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, the shape of V is </span><span class="sc">{</span>Vt<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The shape of U is (360, 360), the shape of S is (360,), the shape of V is (360, 360)</code></pre>
+</div>
+</div>
+<p><em>pause</em></p>
+<aside class="notes">
+<p>What’s going on here? Walk through the way the rows and columns of U and V are used to reconstruct the image.</p>
+<ul>
+<li>U is a matrix that captures the relationships between the rows of the image. It mimics the columns.</li>
+<li>V is a matrix that captures the relationships between the columns of the image. It mimics the rows.</li>
+<li>We can interpret the singular values as the strength of the relationships captured by U and V</li>
+<li>The first columns of U and V capture the strongest relationships</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p><strong>Left singular values</strong>, corresponding to U, are the eigenvalues of <span class="math inline">\(AA^T\)</span>. For an image, <span class="math inline">\(AA^T\)</span> is the covariance matrix of the rows of <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Right singular values</strong> are the eigenvalues of <span class="math inline">\(A^{T}A\)</span>. For an image, <span class="math inline">\(A^TA\)</span> is the covariance matrix of the columns of <span class="math inline">\(A\)</span>.</p>
+</div>
+</section>
+
+<section id="simpler-example" class="title-slide slide level2 center">
+<h2><em>Simpler example</em></h2>
+<div id="85b96ee5" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-8-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="ch5lecture4_files/figure-revealjs/cell-8-output-1.png" width="747" height="446"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="reconstructing-our-matrix" class="title-slide slide level2 center">
+<h2><em>Reconstructing our matrix</em></h2>
+<div id="ecdd5bb5" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-9-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="ch5lecture4_files/figure-revealjs/cell-9-output-1.png" width="763" height="300"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="back-to-the-cat" class="title-slide slide level2 center">
+<h2><em>Back to the cat</em></h2>
+<div id="5e856c33" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="ch5lecture4_files/figure-revealjs/cell-10-output-1.png" width="427" height="431"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="c3d0e689" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-12-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="ch5lecture4_files/figure-revealjs/cell-12-output-1.png" width="949" height="467"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="first-singular-value" class="title-slide slide level2 center">
+<h2><em>First Singular Value</em></h2>
+<div id="0ceef053" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-13-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="ch5lecture4_files/figure-revealjs/cell-13-output-1.png" width="578" height="566"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="second-singular-value" class="title-slide slide level2 center">
+<h2><em>Second Singular Value</em></h2>
+<div id="ef5f24b4" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="ch5lecture4_files/figure-revealjs/cell-14-output-1.png" width="578" height="566"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="third-singular-value" class="title-slide slide level2 center">
+<h2><em>Third Singular Value</em></h2>
+<div id="3823a87f" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-15-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="ch5lecture4_files/figure-revealjs/cell-15-output-1.png" width="578" height="566"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="adding-them-up" class="title-slide slide level2 center">
+<h2><em>Adding them up</em></h2>
+<div id="0cb8b363" class="cell" data-execution_count="15">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-16-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="ch5lecture4_files/figure-revealjs/cell-16-output-1.png" width="947" height="324"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div id="bf9557ea" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="ch5lecture4_files/figure-revealjs/cell-17-output-1.png" width="1222" height="316"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div id="c563b741" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-18-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="ch5lecture4_files/figure-revealjs/cell-18-output-1.png" width="1222" height="316"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="color-images" class="title-slide slide level2 center">
+<h2><em>Color images</em></h2>
+<div id="ee20f848" class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-19-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="ch5lecture4_files/figure-revealjs/cell-19-output-1.png" width="798" height="265"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e8e3ffd5" class="cell" data-execution_count="19">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># SVD for each channel</span></span>
+<span id="cb5-2"><a></a>U_R, S_R, Vt_R <span class="op">=</span> np.linalg.svd(R, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-3"><a></a>U_G, S_G, Vt_G <span class="op">=</span> np.linalg.svd(G, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-4"><a></a>U_B, S_B, Vt_B <span class="op">=</span> np.linalg.svd(B, full_matrices<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>n <span class="op">=</span> <span class="dv">50</span>  <span class="co"># rank approximation parameter</span></span>
+<span id="cb5-7"><a></a>R_compressed <span class="op">=</span> np.matrix(U_R[:, :n]) <span class="op">*</span> np.diag(S_R[:n]) <span class="op">*</span> np.matrix(Vt_R[:n, :])</span>
+<span id="cb5-8"><a></a>G_compressed <span class="op">=</span> np.matrix(U_G[:, :n]) <span class="op">*</span> np.diag(S_G[:n]) <span class="op">*</span> np.matrix(Vt_G[:n, :])</span>
+<span id="cb5-9"><a></a>B_compressed <span class="op">=</span> np.matrix(U_B[:, :n]) <span class="op">*</span> np.diag(S_B[:n]) <span class="op">*</span> np.matrix(Vt_B[:n, :])</span>
+<span id="cb5-10"><a></a></span>
+<span id="cb5-11"><a></a><span class="co"># Combining the compressed channels</span></span>
+<span id="cb5-12"><a></a>compressed_image <span class="op">=</span> cv2.merge([np.clip(R_compressed, <span class="dv">1</span>, <span class="dv">255</span>), np.clip(G_compressed, <span class="dv">1</span>, <span class="dv">255</span>), np.clip(B_compressed, <span class="dv">1</span>, <span class="dv">255</span>)])</span>
+<span id="cb5-13"><a></a>compressed_image <span class="op">=</span> compressed_image.astype(np.uint8)</span>
+<span id="cb5-14"><a></a>plt.imshow(compressed_image)</span>
+<span id="cb5-15"><a></a>plt.title(<span class="st">'n = </span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> n)</span>
+<span id="cb5-16"><a></a>plt.show()</span>
+<span id="cb5-17"><a></a></span>
+<span id="cb5-18"><a></a><span class="co"># Plotting the compressed RGB channels</span></span>
+<span id="cb5-19"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb5-20"><a></a>plt.imshow(R_compressed, cmap<span class="op">=</span><span class="st">'Reds_r'</span>)</span>
+<span id="cb5-21"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb5-22"><a></a>plt.imshow(B_compressed, cmap<span class="op">=</span><span class="st">'Blues_r'</span>)</span>
+<span id="cb5-23"><a></a>plt.subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb5-24"><a></a>plt.imshow(G_compressed, cmap<span class="op">=</span><span class="st">'Greens_r'</span>)</span>
+<span id="cb5-25"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-20-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="ch5lecture4_files/figure-revealjs/cell-20-output-1.png" width="427" height="431"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-20-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="ch5lecture4_files/figure-revealjs/cell-20-output-2.png" width="798" height="265"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="how-many-singular-values-to-keep" class="title-slide slide level2 center">
+<h2><em>How many singular values to keep?</em></h2>
+<div id="5daebe5e" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-21-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="ch5lecture4_files/figure-revealjs/cell-21-output-1.png" width="758" height="374"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="different-sorts-of-images" class="title-slide slide level2 center">
+<h2><em>Different sorts of images</em></h2>
+<p>Just plain noise:</p>
+<div id="aed07245" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-22-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img data-src="ch5lecture4_files/figure-revealjs/cell-22-output-1.png" width="1139" height="765"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="0ccc97e9" class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-23-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="ch5lecture4_files/figure-revealjs/cell-23-output-1.png" width="822" height="758"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="plaid-shirt" class="title-slide slide level2 center">
+<h2><em>Plaid shirt</em></h2>
+<div id="376246fa" class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-24-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img data-src="ch5lecture4_files/figure-revealjs/cell-24-output-1.png" width="712" height="431"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-24-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img data-src="ch5lecture4_files/figure-revealjs/cell-24-output-2.png" width="798" height="169"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-24-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img data-src="ch5lecture4_files/figure-revealjs/cell-24-output-3.png" width="1142" height="247"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="45d10971" class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-25-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img data-src="ch5lecture4_files/figure-revealjs/cell-25-output-1.png" width="1142" height="758"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="individual-components" class="title-slide slide level2 center">
+<h2><em>Individual components</em></h2>
+<p>First component:</p>
+<div id="84643a7c" class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-26-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img data-src="ch5lecture4_files/figure-revealjs/cell-26-output-1.png" width="578" height="566"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Second component:</p>
+<div id="7b921a35" class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="ch5lecture4_files/figure-revealjs/cell-27-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img data-src="ch5lecture4_files/figure-revealjs/cell-27-output-1.png" width="578" height="566"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="section-4" class="title-slide slide level2 center">
+<h2><em></em></h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -388,6 +908,7 @@
 <p> </p>
 </div>
 </div>
+</section>
 </section>
     </div>
   </div>
@@ -782,6 +1303,31 @@
       }
     });
     </script>
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","loop":false});
+    window.onload = () => {
+      lightboxQuarto.on('slide_before_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        const href = trigger.getAttribute('href');
+        if (href !== null) {
+          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+          if (imgEl !== null) {
+            const srcAttr = imgEl.getAttribute("src");
+            if (srcAttr && srcAttr.startsWith("data:")) {
+              slideConfig.href = srcAttr;
+            }
+          }
+        } 
+      });
+
+      lightboxQuarto.on('slide_after_load', (data) => {
+        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(slideNode);
+        }
+      });
+
+    };
+              </script>
     
 
 </body></html>

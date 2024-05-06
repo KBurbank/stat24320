@@ -664,3 +664,4 @@ ax[1, 0].set_ylabel('2-dim\nreconstruction');
 ax[2, 0].set_ylabel('10-dim\nreconstruction');
 ax[3, 0].set_ylabel('150-dim\nreconstruction');
 ```
+

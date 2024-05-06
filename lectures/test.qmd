@@ -1,8 +1,20 @@
 ---
-title: a test
+title: Ch5 Lecture 4
+lecture_day: 14
+readings: ""
+publish: false
+execute: 
+  cache: false
+lightbox: true
 filters:
     - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
 ---
+
 
 # A test
 
@@ -10,7 +22,6 @@ filters:
 
 ```{python}
 #| results: 'asis'
-from IPython.display import display, Math
-display(Math(r'c = \sqrt{a^2 + b^2}'))
-print('hello')
+import sys
+print(sys.path)
 ```

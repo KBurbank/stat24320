@@ -19,53 +19,557 @@ Really cool demo of SVD image compression:
 https://timbaumann.info/svd-image-compression-demo/
 
 
+# Matrices of data
 
-Remember the left singular values are the eigenvalues of $A^TA$ and the right singular values are the eigenvalues of $AA^T$.
+## Example: Height and weight
 
-For an image, $A^TA$ is the covariance matrix of the columns of $A$ and $AA^T$ is the covariance matrix of the rows of $A$.
+$A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 & -1.5 & 0.1 & -1.0 & 2.1 & -4.0 & -2.0 & 2.2 & 0.2 & 2.0 & 1.5 & -2.5 \\ 4.0 & -0.9 & 0.0 & -1.0 & 3.0 & -5.0 & -3.5 & 2.6 & 1.0 & 3.5 & 1.0 & -4.7\end{array}\right]$
+
+. . .
+
+
+![](https://cdn.mathpix.com/cropped/2024_05_01_1b1bef8a8bd39ab29098g-16.jpg?height=1285&width=1379&top_left_y=49&top_left_x=446)
+
+
+##
+
+
+
+$A^T=\left[\begin{array}{rrrrrrrrrrrr}2.9 & -1.5 & 0.1 & -1.0 & 2.1 & -4.0 & -2.0 & 2.2 & 0.2 & 2.0 & 1.5 & -2.5 \\ 4.0 & -0.9 & 0.0 & -1.0 & 3.0 & -5.0 & -3.5 & 2.6 & 1.0 & 3.5 & 1.0 & -4.7\end{array}\right]$
+
+. . .
+
+
+## Plotting
+
 
 ```{python}
-import sympy as sp
-from sympy import latex,N
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+data = np.array([[2.9, 4.0], [-1.5, -0.9], [0.1, 0.0], [-1.0, -1.0], [2.1, 3.0], [-4.0, -5.0], [-2.0, -3.5], [2.2, 2.6], [0.2, 1.0], [2.0, 3.5], [1.5, 1.0], [-2.5, -4.7]]).T
+Ud,Sd,Vd=np.linalg.svd(data,full_matrices=True)
+
+# form the full singular value matrix
+Sd = np.diag(Sd)
+# append zeros to the singular value matrix to make it the same size as the data matrix
+Sd = np.pad(Sd,((0,0),(0,10)),mode='constant')
+Sorig=Sd.copy()
+Sd[Sd == 0.0] = np.nan
+# when doing imshow, make elements with zero values white
+plt.set_cmap('viridis')
+fig = plt.figure(layout='constrained', figsize=(10, 4))
+subfigs = fig.subfigures(2, 1, wspace=0.07)
+subfigs[0].suptitle('Data matrix')
+subfigs[1].suptitle('SVD matrices')
+ax1 = subfigs[0].subplots()
+axes = subfigs[1].subplots(1, 3)
+ax2, ax3, ax4 = axes
+ax1.imshow(data, cmap='viridis')
+ax1.set_title("data")
+ax2.imshow(Ud, aspect='equal')
+ax2.set_title("U")
+ax3.imshow(Sd, aspect='equal', cmap='viridis')
+ax3.set_title("S")
+ax4.imshow(Vd.T, aspect='equal')
+ax4.set_title("$V^T$")
+plt.show()
+```
+
+The  columns of the U matrix:
+```{python}
+
+
+print(Vd)
+plt.clf()
+
+plt.scatter(data.T[:,0],data.T[:,1])
+plt.quiver(0,0,Ud[0,0]*Sd[0,0]/5,Ud[1,0]*Sd[0,0]/5,angles='xy',scale_units='xy',scale=1, color = 'red')
+plt.quiver(0,0,Ud[0,1]*Sd[1,1]/5,Ud[1,1]*Sd[1,1]/5,angles='xy',scale_units='xy',scale=1, color = 'blue')
+plt.axis('equal')
+plt.show()
+```
+
+. . .
+
+U captures relationships between the **rows** of the data matrix. 
+
+. . .
+
+Since there are only two rows, only 2x2 matrix needed to capture all the relationships.
+
+##
+
+The first two rows of the $V^T$ matrix
+
+```{python}
+#plt.scatter(data[:,0],data[:,1])
+plt.clf()
+plt.imshow(Vd.T[:2,:])
+
+plt.show()
+```
+
+. . .
+
+V captures relationships between the **columns** of the data matrix. 12x12 possible values, but only 12x2 needed to capture all the relationships.
+
+##
+
+
+The data from these first two rows of the $V^T$ matrix, after multiplication by the singular values and rotated by the columns of the U matrix:
+```{python}
+#plt.scatter(data[:,0],data[:,1])
+plt.clf()
+component1 = np.outer(Vd.T[:,0],Sd[0,0]*Ud[0])
+component2 = np.outer(Vd.T[:,1],Sd[1,1]*Ud[1])
+plt.scatter(component1[:,0],component1[:,1])
+plt.scatter(component2[:,0],component2[:,1])
+combined = component1 + component2
+plt.scatter(combined[:,0],combined[:,1])
+plt.axis('equal')
+# add a legend
+plt.legend(["component 1", "component 2", "component 1 + component 2"])
+plt.show()
+```
+
+. . .
+
+A reminder:
+
+$$
+    \mathbf A = \mathbf{USV^\mathsf{T}} = \sigma_1 u_1 v_1^\mathsf{T} + \dots + \sigma_r u_r v_r^\mathsf{T}
+$$
+
+
+
+# Image compression
+
+##
+```{python}
+import sys
+print(sys.path)
+sys.stderr(sys.path[0]) 
+#!pip install opencv-python
+```
+
+```{python}
+# display the path of the current python environment
+
+import cv2
+
+image = cv2.imread('test_cat.png', cv2.IMREAD_GRAYSCALE)
+
+plt.imshow(image, cmap='gray')
+plt.title('Cat Image')
+plt.show()
+```
+
+. . .
+
+What does the singular value decomposition of an image look like?
+
+
+```{python}
+#| echo: true
+U, S, Vt = np.linalg.svd(image, full_matrices=False)
+print(f'The shape of U is {U.shape}, the shape of S is {S.shape}, the shape of V is {Vt.shape}')
+```
+
+*pause*
+
+::: notes
+What's going on here? Walk through the way the rows and columns of U and V are used to reconstruct the image.
+
+- U is a matrix that captures the relationships between the rows of the image. It mimics the columns.
+- V is a matrix that captures the relationships between the columns of the image. It mimics the rows.
+- We can interpret the singular values as the strength of the relationships captured by U and V
+- The first columns of U and V capture the strongest relationships
+:::
+
+
+
+
+**Left singular values**, corresponding to U, are the eigenvalues of $AA^T$. For an image, $AA^T$ is the covariance matrix of the rows of $A$.
+
+. . .
+
+**Right singular values** are the eigenvalues of $A^{T}A$. For an image, $A^TA$ is the covariance matrix of the columns of $A$.
+
+## Simpler example
+
+```{python}
+#| echo: false
 from IPython.display import display, Math, Markdown
-A = sp.Matrix([[1, 2], [3, 4], [5, 6]])
+A = np.array([[1, 2], [3, 4], [5, 6]])
+ata = A.T@A
+aat = A@A.T
+e1, ev1 = np.linalg.eig(ata)
+e2, ev2 = np.linalg.eig(aat)
+ax1 = plt.subplot(131)
+ax2 = plt.subplot(132)
+ax3 = plt.subplot(133)
+ax1.imshow(A, cmap='gray')
+ax2.imshow(np.expand_dims(ev1[0,:], axis=0), cmap='gray')
+ax3.imshow(np.expand_dims(ev2[:,0], axis=1), cmap='gray')
+for ax in [ax1, ax2, ax3]:
+  ax.axes.xaxis.set_ticks([])
+  ax.axes.yaxis.set_ticks([])
+ax1.set_title('Data')
+ax2.set_title('1st Eigenvector \n of $A^TA$ \n 1st right singular vector ')
+ax3.set_title('1st Eigenvector \n of $AA^T$ \n 1st left singular vector')
+plt.show()
+```
 
-ata = A.T*A
-aat = A*A.T
-e1 = ata.eigenvects()[0][2][0]
-e2 = ata.eigenvects()[1][2][0]
-d1 = aat.eigenvects()[0][2][0]
-d2 = aat.eigenvects()[1][2][0]
-d3 = aat.eigenvects()[2][2][0]
-ev1 = N(ata.eigenvects()[0][0],2)
-ev2 = N(ata.eigenvects()[1][0],2)
-dv1 = N(aat.eigenvects()[0][0],2)
-dv2 = N(aat.eigenvects()[1][0],2)
-dv3 = N(aat.eigenvects()[2][0],2)
+## Reconstructing our matrix
 
+```{python}
+U, S, Vt = np.linalg.svd(A, full_matrices=False)
+ax1 = plt.subplot(141)
+ax2 = plt.subplot(142)
+ax3 = plt.subplot(143)
+ax4 = plt.subplot(144)
+ax1.imshow(A, cmap='gray')
+ax2.imshow(np.outer(U[:,0], Vt[0,:])*S[0], cmap='gray')
+ax3.imshow(np.outer(U[:,1], Vt[1,:])*S[1], cmap='gray')
+ax4.imshow(np.outer(U[:,0], Vt[0,:])*S[0]+np.outer(U[:,1], Vt[1,:])*S[1], cmap='gray')
+for ax in [ax1, ax2, ax3,ax4]:
+  ax.axes.xaxis.set_ticks([])
+  ax.axes.yaxis.set_ticks([])
+ax1.set_title('Data')
+ax2.set_title('1st component \n * $\sigma_1$')
+ax3.set_title('2nd component \n * $\sigma_2$')
+ax4.set_title('1st + 2nd \n component')
+plt.show()
+
+```
+
+## Back to the cat
+
+
+
+```{python}
+# !pip3 install opencv-python
+
+plt.imshow(image, cmap='gray')
+plt.title('Cat Image')
+plt.show()
 ```
 
 ```{python}
-def pv(x):
-    return(Markdown(latex(x,itex=True,mode='inline')))
+U, S, Vt = np.linalg.svd(image, full_matrices=False)
 ```
 
-Take a very simple matrix $A =$ `{python} pv(A)` and compute its eigensystem
 
-For $A^TA$ = `{python} pv(ata)`, the eigenvectors are: 
-
-1. `{python} pv(e1)` with eigenvalue `{python} pv(ev1)`
-2. `{python} pv(e2)` with eigenvalue `{python} pv(ev2)`
-
-For $AA^T$ = `{python} pv(aat)`, the eigenvectors are:
-
-1. `{python} pv(d1)` with eigenvalue `{python} pv(dv1)`
-2. `{python} pv(d2)` with eigenvalue `{python} pv(dv2)`
-3. `{python} pv(d3)` with eigenvalue `{python} pv(dv3)`
+```{python}
+fig = plt.figure(figsize=(12, 6))
+imsub = image-np.mean(image,axis=0)
+imsub = imsub - np.mean(imsub,axis=1)
+aat=imsub@imsub.T
+ata=imsub.T@imsub
+ax1=fig.add_subplot(121)
+ax1.imshow(ata)
 
 
+ax2=fig.add_subplot(122)
+ax2.imshow(aat)
+ax2.set_title("AA^T")
+ax1.set_title("A^TA")
+plt.show()
+```
 
-What does the covariance of the columns mean? It captures when two columns are correlated. If two columns are correlated, then the corresponding singular value will be large. If two columns are not correlated, then the corresponding singular value will be small.
+## First Singular Value
 
-So an eigenvector of the covariance matrix of the columns of $A$ is a vector that has a similar pattern to the actual columns of $A$.
+```{python}
+#| echo: false
+def plot_uv(i, U=U, S=S, Vt=Vt):
+    fig = plt.figure(figsize=(6, 6))
 
+    ax1 = fig.add_subplot(221)
+    np.expand_dims(ev1[0,:], axis=0)
+    
+    ax1.matshow(-np.ones_like(np.matrix(Vt[i:i+1,:])).T * np.matrix(Vt[i:i+1,:]))
+    ax1.set_title('V^T (row vector extended down)')
+
+    ax2 = fig.add_subplot(224)
+    ax2.matshow(-(np.ones_like(np.matrix(U[:,i:i+1])) * np.matrix(U[:,i:i+1]).T).T)
+    ax2.set_title('U (column vector extended right)')
+    reconstructed_image = np.matrix(U[:,i:i+1]) * np.diag(S[i:i+1]) * np.matrix(Vt[i:i+1,:])
+    ax3 = fig.add_subplot(223)
+    ax3.matshow(reconstructed_image,cmap='gray')
+    ax3.set_title('Outer Product')
+
+    plt.tight_layout()
+    plt.show()
+plot_uv(0)
+```
+
+## Second Singular Value
+
+```{python}
+plot_uv(1)
+```
+
+## Third Singular Value
+```{python}
+plot_uv(2)
+```
+
+## Adding them up
+```{python}
+fig = plt.figure(figsize=(12, 6))
+for i in range(3):
+    reconstructed_image = np.matrix(U[:,i:i+1]) * np.diag(S[i:i+1]) * np.matrix(Vt[i:i+1,:])
+    ax1 = fig.add_subplot(131+i)
+    ax1.imshow(reconstructed_image, cmap='gray')
+    ax1.set_title(f'Image from Singular Value {i+1}')
+plt.show()
+```
+
+. . .
+
+```{python}
+plt.figure(figsize=(16,4))
+
+# start, end, step = 5, 25, 5
+start, end, step = 1, 5, 1
+for i in range(start, end, step):
+    plt.subplot(1, (end - start) // step + 1, (i - start) // step + 1)
+    reconstructed = np.matrix(U[:, :i]) * np.diag(S[:i]) * np.matrix(Vt[:i, :])
+    plt.imshow(reconstructed, cmap='gray')
+    plt.title('n = %s' % i)
+
+plt.tight_layout()
+plt.show()
+```
+
+. . .
+
+```{python}
+plt.figure(figsize=(16,4))
+
+start, end, step = 5, 25, 5
+#start, end, step = 1, 5, 1
+for i in range(start, end, step):
+    plt.subplot(1, (end - start) // step + 1, (i - start) // step + 1)
+    reconstructed = np.matrix(U[:, :i]) * np.diag(S[:i]) * np.matrix(Vt[:i, :])
+    plt.imshow(reconstructed, cmap='gray')
+    plt.title('n = %s' % i)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Color images
+
+
+```{python}
+#| echo: false
+color_image = cv2.imread('test_cat.png')
+B, G, R = cv2.split(color_image)
+
+plt.subplot(1, 3, 1)
+plt.imshow(R, cmap='Reds_r')
+plt.subplot(1, 3, 2)
+plt.imshow(B, cmap='Blues_r')
+plt.subplot(1, 3, 3)
+plt.imshow(G, cmap='Greens_r')
+plt.show()
+```
+
+```{python}
+#| echo: true
+# SVD for each channel
+U_R, S_R, Vt_R = np.linalg.svd(R, full_matrices=False)
+U_G, S_G, Vt_G = np.linalg.svd(G, full_matrices=False)
+U_B, S_B, Vt_B = np.linalg.svd(B, full_matrices=False)
+
+n = 50  # rank approximation parameter
+R_compressed = np.matrix(U_R[:, :n]) * np.diag(S_R[:n]) * np.matrix(Vt_R[:n, :])
+G_compressed = np.matrix(U_G[:, :n]) * np.diag(S_G[:n]) * np.matrix(Vt_G[:n, :])
+B_compressed = np.matrix(U_B[:, :n]) * np.diag(S_B[:n]) * np.matrix(Vt_B[:n, :])
+
+# Combining the compressed channels
+compressed_image = cv2.merge([np.clip(R_compressed, 1, 255), np.clip(G_compressed, 1, 255), np.clip(B_compressed, 1, 255)])
+compressed_image = compressed_image.astype(np.uint8)
+plt.imshow(compressed_image)
+plt.title('n = %s' % n)
+plt.show()
+
+# Plotting the compressed RGB channels
+plt.subplot(1, 3, 1)
+plt.imshow(R_compressed, cmap='Reds_r')
+plt.subplot(1, 3, 2)
+plt.imshow(B_compressed, cmap='Blues_r')
+plt.subplot(1, 3, 3)
+plt.imshow(G_compressed, cmap='Greens_r')
+plt.show()
+```
+
+## How many singular values to keep?
+
+```{python}
+# Plotting the singular values
+plt.figure(figsize=(8,4))
+
+plt.subplot(1, 2, 1)
+plt.plot(range(1, len(S) + 1), S)
+plt.xlabel('Singular Value Index')
+plt.ylabel('Singular Value')
+plt.title('Singular Values')
+
+plt.subplot(1, 2, 2)
+plt.plot(range(1, len(S) + 1), S)
+plt.xlabel('Singular Value Index')
+plt.ylabel('Singular Value (log scale)')
+plt.title('Singular Values (log scale)')
+plt.yscale('log')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Different sorts of images
+
+Just plain noise:
+
+
+```{python}
+noise = np.random.randint(0,2,size=(200,200))
+U_N, S_N, Vt_N = np.linalg.svd(noise, full_matrices=False)
+
+# Plotting the compressed noise for different values of n
+components = [1, 5, 10, 50, 100, 200]
+
+fig = plt.figure(figsize=(12,8))
+
+for i in range(len(components)):
+    plt.subplot(2, 3, i+1)
+    noise_compressed = np.matrix(U_N[:, :components[i]]) * np.diag(S_N[:components[i]]) * np.matrix(Vt_N[:components[i], :])
+    plt.imshow(noise_compressed, cmap='gray')
+    plt.title('n = %s' % components[i])
+
+plt.tight_layout()
+plt.show()
+```
+
+
+```{python}
+def plot_singular_values(S, title):
+    plt.plot(range(1, len(S) + 1), S)
+    plt.xlabel('Singular Value Index')
+    plt.ylabel('Singular Value')
+    plt.title(title)
+
+plt.figure(figsize=(8, 8))
+
+plt.subplot(2, 2, 1)
+plot_singular_values(S_N, 'Singular Values')
+
+plt.subplot(2, 2, 2)
+plot_singular_values(S_N, 'Singular Values (log scale)')
+plt.yscale('log')
+
+plt.subplot(2, 2, 3)
+plot_singular_values(S_N[1:], 'Singular Values (without first singular value)')
+
+plt.subplot(2, 2, 4)
+plot_singular_values(S_N[1:], 'Singular Values (without first singular value, log scale)')
+plt.yscale('log')
+
+plt.tight_layout()
+plt.show()
+```
+
+
+## Plaid shirt
+
+
+```{python}
+# Show plaid pattern image
+plaid_image = cv2.imread('plaid_pattern.jpg')
+plt.imshow(plaid_image[:,:,::-1])
+plt.title('Plaid Pattern Image')
+plt.show()
+
+# Split the image into R, G, and B color channels
+B, G, R = cv2.split(plaid_image)
+plt.subplot(1, 3, 1)
+plt.imshow(R, cmap='Reds_r')
+plt.subplot(1, 3, 2)
+plt.imshow(B, cmap='Blues_r')
+plt.subplot(1, 3, 3)
+plt.imshow(G, cmap='Greens_r')
+plt.show()
+
+def rgb_approximation(R, G, B, n):
+    U_R, S_R, Vt_R = np.linalg.svd(R, full_matrices=False)
+    U_G, S_G, Vt_G = np.linalg.svd(G, full_matrices=False)
+    U_B, S_B, Vt_B = np.linalg.svd(B, full_matrices=False)
+
+    R_compressed = np.matrix(U_R[:, :n]) * np.diag(S_R[:n]) * np.matrix(Vt_R[:n, :])
+    G_compressed = np.matrix(U_G[:, :n]) * np.diag(S_G[:n]) * np.matrix(Vt_G[:n, :])
+    B_compressed = np.matrix(U_B[:, :n]) * np.diag(S_B[:n]) * np.matrix(Vt_B[:n, :])
+
+    compressed_image = cv2.merge([np.clip(R_compressed, 1, 255), np.clip(G_compressed, 1, 255), np.clip(B_compressed, 1, 255)])
+    compressed_image = compressed_image.astype(np.uint8)
+
+    return compressed_image
+
+n_values = [1, 5, 25]
+
+plt.figure(figsize=(12, 6))
+for i, n in enumerate(n_values):
+    plt.subplot(1, len(n_values), i+1)
+    plt.imshow(rgb_approximation(R, G, B, n))
+    plt.title('n = %s' % n)
+
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+plt.figure(figsize=(12, 8))
+
+plt.subplot(2, 3, 1)
+plot_singular_values(S_R, 'Singular Values (R)')
+
+plt.subplot(2, 3, 2)
+plot_singular_values(S_G, 'Singular Values (G)')
+
+plt.subplot(2, 3, 3)
+plot_singular_values(S_B, 'Singular Values (B)')
+
+plt.subplot(2, 3, 4)
+plot_singular_values(S_R, 'Singular Values (log scale) (R)')
+plt.yscale('log')
+
+plt.subplot(2, 3, 5)
+plot_singular_values(S_G, 'Singular Values (log scale) (G)')
+plt.yscale('log')
+
+plt.subplot(2, 3, 6)
+plot_singular_values(S_B, 'Singular Values (log scale) (B)')
+plt.yscale('log')
+
+plt.tight_layout()
+plt.show()
+```
+
+## Individual components
+
+First component:
+
+```{python}
+plot_uv(0, U=U_R, S=S_R, Vt=Vt_R)
+```
+
+.  .  .
+
+Second component:
+
+```{python}
+plot_uv(1, U=U_R, S=S_R, Vt=Vt_R)
+```
+
+##

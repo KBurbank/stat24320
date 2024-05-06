@@ -555,9 +555,9 @@
   {
     "objectID": "lectures/test.html#a-slide",
     "href": "lectures/test.html#a-slide",
-    "title": "a test",
+    "title": "Ch5 Lecture 4",
     "section": "A slide",
-    "text": "A slide\n\n\n\\(\\displaystyle c = \\sqrt{a^2 + b^2}\\)\n\n\nhello"
+    "text": "A slide\n\n\n['/Library/Frameworks/Python.framework/Versions/3.8/lib/python38.zip', '/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8', '/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/lib-dynload', '', '/Users/kendra/Library/Python/3.8/lib/python/site-packages', '/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages']"
   },
   {
     "objectID": "lectures/ch4lecture1.html#linear-systems-revisted",

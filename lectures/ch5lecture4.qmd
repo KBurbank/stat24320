@@ -50,6 +50,8 @@ def pv(x):
     return(Markdown(latex(x,itex=True,mode='inline')))
 ```
 
+Take a very simple matrix $A = $ `{python} pv(A)` and compute its eigensystem
+
 For $A^TA$ = `{python} pv(ata)`, the eigenvectors are: 
 
 1. `{python} pv(e1)` with eigenvalue `{python} pv(ev1)`
@@ -60,11 +62,6 @@ For $AA^T$ = `{python} pv(aat)`, the eigenvectors are:
 1. `{python} pv(d1)` with eigenvalue `{python} pv(dv1)`
 2. `{python} pv(d2)` with eigenvalue `{python} pv(dv2)`
 3. `{python} pv(d3)` with eigenvalue `{python} pv(dv3)`
-
-
-
-
-
 
 
 

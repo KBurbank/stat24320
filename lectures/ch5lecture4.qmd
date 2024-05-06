@@ -520,6 +520,7 @@ plt.tight_layout()
 plt.show()
 ```
 
+## Singular values
 ```{python}
 plt.figure(figsize=(12, 8))
 
@@ -556,7 +557,7 @@ First component:
 plot_uv(0, U=U_R, S=S_R, Vt=Vt_R)
 ```
 
-.  .  .
+##
 
 Second component:
 
@@ -565,3 +566,101 @@ plot_uv(1, U=U_R, S=S_R, Vt=Vt_R)
 ```
 
 ##
+
+```{python}
+#| echo: true
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(R)
+plt.imshow(pca.inverse_transform(pca.transform(R)))
+```
+
+Try adding noise...
+
+```{python}
+#| echo: true
+alpha = 10
+R_noisy = R + np.random.normal(0, 10, R.shape)*alpha
+plt.imshow(R_noisy)
+```
+
+Now clean it up with PCA:
+
+```{python}
+#| echo: true
+pca = PCA(n_components=2)
+pca.fit(R_noisy)
+plt.imshow(pca.inverse_transform(pca.transform(R_noisy)))
+```
+
+
+## Eigenfaces
+
+```{python}
+from sklearn.datasets import fetch_lfw_people
+faces = fetch_lfw_people(min_faces_per_person=60)
+print(faces.target_names)
+print(faces.images.shape)
+```
+
+```{python}
+#| echo: true
+pca = PCA(150, svd_solver='randomized', random_state=42)
+pca_small = PCA(10, svd_solver='randomized', random_state=42)
+pca_very_small = PCA(2, svd_solver='randomized', random_state=42)
+pca.fit(faces.data)
+pca_small.fit(faces.data)
+pca_very_small.fit(faces.data)
+```
+
+::: aside
+This treatment from [here](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.09-Principal-Component-Analysis.ipynb)
+:::
+
+
+```{python}
+fig, axes = plt.subplots(3, 8, figsize=(9, 4),
+                         subplot_kw={'xticks':[], 'yticks':[]},
+                         gridspec_kw=dict(hspace=0.1, wspace=0.1))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(pca.components_[i].reshape(62, 47), cmap='bone')
+```
+
+## Reconstructions
+
+
+
+```{python}
+
+# Compute the components and projected faces
+pca = pca.fit(faces.data)
+components = pca.transform(faces.data)
+projected = pca.inverse_transform(components)
+
+components_small = pca_small.transform(faces.data)
+projected_small = pca_small.inverse_transform(components_small)
+
+
+components_very_small = pca_very_small.transform(faces.data)
+projected_very_small = pca_very_small.inverse_transform(components_very_small)
+```
+
+##
+
+```{python}
+
+# Plot the results
+fig, ax = plt.subplots(4, 10, figsize=(10, 6.5),
+                       subplot_kw={'xticks':[], 'yticks':[]},
+                       gridspec_kw=dict(hspace=0.1, wspace=0.1))
+for i in range(10):
+    ax[0, i].imshow(faces.data[i].reshape(62, 47), cmap='binary_r')
+    ax[1, i].imshow(projected_very_small[i].reshape(62, 47), cmap='binary_r')
+    ax[2, i].imshow(projected_small[i].reshape(62, 47), cmap='binary_r')
+    ax[3, i].imshow(projected[i].reshape(62, 47), cmap='binary_r')
+    
+ax[0, 0].set_ylabel('full-dim\ninput')
+ax[1, 0].set_ylabel('2-dim\nreconstruction');
+ax[2, 0].set_ylabel('10-dim\nreconstruction');
+ax[3, 0].set_ylabel('150-dim\nreconstruction');
+```

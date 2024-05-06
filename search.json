@@ -3735,6 +3735,41 @@
     "href": "lectures/ch5lecture4.html#individual-components",
     "title": "Ch5 Lecture 4",
     "section": "Individual components",
-    "text": "Individual components\nFirst component:\n\n\n\n\n\n\n\n\n\n\nSecond component:"
+    "text": "Individual components\nFirst component:"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#singular-values",
+    "href": "lectures/ch5lecture4.html#singular-values",
+    "title": "Ch5 Lecture 4",
+    "section": "Singular values",
+    "text": "Singular values"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-4",
+    "href": "lectures/ch5lecture4.html#section-4",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Second component:"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-5",
+    "href": "lectures/ch5lecture4.html#section-5",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Code\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R)\nplt.imshow(pca.inverse_transform(pca.transform(R)))\n\n\n\n\n\n\n\n\n\nTry adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#eigenfaces",
+    "href": "lectures/ch5lecture4.html#eigenfaces",
+    "title": "Ch5 Lecture 4",
+    "section": "Eigenfaces",
+    "text": "Eigenfaces\n\n\n['Ariel Sharon' 'Colin Powell' 'Donald Rumsfeld' 'George W Bush'\n 'Gerhard Schroeder' 'Hugo Chavez' 'Junichiro Koizumi' 'Tony Blair']\n(1348, 62, 47)\n\n\n\n\nCode\npca = PCA(150, svd_solver='randomized', random_state=42)\npca_small = PCA(10, svd_solver='randomized', random_state=42)\npca_very_small = PCA(2, svd_solver='randomized', random_state=42)\npca.fit(faces.data)\npca_small.fit(faces.data)\npca_very_small.fit(faces.data)\n\n\nPCA(n_components=2, random_state=42, svd_solver='randomized')In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.PCAPCA(n_components=2, random_state=42, svd_solver='randomized')\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis treatment from here"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#reconstructions",
+    "href": "lectures/ch5lecture4.html#reconstructions",
+    "title": "Ch5 Lecture 4",
+    "section": "Reconstructions",
+    "text": "Reconstructions"
   }
 ]

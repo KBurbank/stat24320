@@ -76,7 +76,10 @@ ax4.set_title("$V^T$")
 plt.show()
 ```
 
-The  columns of the U matrix:
+##
+
+The  columns of the U matrix, graphically:
+
 ```{python}
 plt.clf()
 
@@ -140,9 +143,9 @@ $$
 
 
 
-# Image compression
+# SVD on images
 
-##
+## Motivation: a cat
 
 
 ```{python}
@@ -151,16 +154,14 @@ $$
 import cv2
 
 image = cv2.imread('test_cat.png', cv2.IMREAD_GRAYSCALE)
-
+plt.figure(figsize=(2, 2))
 plt.imshow(image, cmap='gray')
 plt.title('Cat Image')
 plt.show()
 ```
 
-. . .
-
-What does the singular value decomposition of an image look like?
-
+## Dimensions of the decomposition
+What are the dimensions of the decompositions for an image?
 
 ```{python}
 #| echo: true
@@ -179,8 +180,7 @@ What's going on here? Walk through the way the rows and columns of U and V are u
 - The first columns of U and V capture the strongest relationships
 :::
 
-
-
+. . .
 
 **Left singular values**, corresponding to U, are the eigenvalues of $AA^T$. For an image, $AA^T$ is the covariance matrix of the rows of $A$.
 
@@ -188,7 +188,7 @@ What's going on here? Walk through the way the rows and columns of U and V are u
 
 **Right singular values** are the eigenvalues of $A^{T}A$. For an image, $A^TA$ is the covariance matrix of the columns of $A$.
 
-## Simpler example
+## Simple example
 
 ```{python}
 #| echo: false
@@ -212,6 +212,10 @@ ax2.set_title('1st Eigenvector \n of $A^TA$ \n 1st right singular vector ')
 ax3.set_title('1st Eigenvector \n of $AA^T$ \n 1st left singular vector')
 plt.show()
 ```
+
+::: notes
+Walk through how the right singular vector looks a lot like the columns, and the left singular vector looks a lot like the rows.
+:::
 
 ## Reconstructing our matrix
 
@@ -494,6 +498,11 @@ plt.subplot(1, 3, 3)
 plt.imshow(G, cmap='Greens_r')
 plt.show()
 
+```
+
+##
+```{python}
+
 def rgb_approximation(R, G, B, n):
     U_R, S_R, Vt_R = np.linalg.svd(R, full_matrices=False)
     U_G, S_G, Vt_G = np.linalg.svd(G, full_matrices=False)
@@ -565,15 +574,28 @@ Second component:
 plot_uv(1, U=U_R, S=S_R, Vt=Vt_R)
 ```
 
-##
+## Using "PCA" from sklearn
+
+This is just an easier way to implement taking these first few components...
 
 ```{python}
 #| echo: true
 from sklearn.decomposition import PCA
 pca = PCA(n_components=2)
-pca.fit(R)
-plt.imshow(pca.inverse_transform(pca.transform(R)))
+pca.fit(R) # fit the model -- compute the matrices
+transformed = pca.transform(R) # transform the data
+print(f'The shape of the image is {R.shape}, and the shape of the compressed image is {transformed.shape}')
+plt.imshow(transformed.T)
 ```
+
+. . .
+
+```{python}
+#| echo: true
+plt.imshow(pca.inverse_transform(transformed))
+```
+
+
 
 Try adding noise...
 

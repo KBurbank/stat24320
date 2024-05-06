@@ -3630,28 +3630,28 @@
     "href": "lectures/ch5lecture4.html#plotting",
     "title": "Ch5 Lecture 4",
     "section": "Plotting",
-    "text": "Plotting\n\n\n&lt;Figure size 960x480 with 0 Axes&gt;\n\n\n\n\n\n\n\n\n\nThe columns of the U matrix:\n\n\n\n\n\n\n\n\n\n\nU captures relationships between the rows of the data matrix.\n\n\nSince there are only two rows, only 2x2 matrix needed to capture all the relationships."
+    "text": "Plotting\n\n\n&lt;Figure size 960x480 with 0 Axes&gt;"
   },
   {
     "objectID": "lectures/ch5lecture4.html#section-1",
     "href": "lectures/ch5lecture4.html#section-1",
     "title": "Ch5 Lecture 4",
     "section": "",
-    "text": "The first two rows of the \\(V^T\\) matrix\n\n\n\n\n\n\n\n\n\n\nV captures relationships between the columns of the data matrix. 12x12 possible values, but only 12x2 needed to capture all the relationships."
+    "text": "The columns of the U matrix, graphically:\n\n\n\n\n\n\n\n\n\n\nU captures relationships between the rows of the data matrix.\n\n\nSince there are only two rows, only 2x2 matrix needed to capture all the relationships."
   },
   {
     "objectID": "lectures/ch5lecture4.html#section-2",
     "href": "lectures/ch5lecture4.html#section-2",
     "title": "Ch5 Lecture 4",
     "section": "",
-    "text": "The data from these first two rows of the \\(V^T\\) matrix, after multiplication by the singular values and rotated by the columns of the U matrix:\n\n\n\n\n\n\n\n\n\n\nA reminder:\n\\[\n    \\mathbf A = \\mathbf{USV^\\mathsf{T}} = \\sigma_1 u_1 v_1^\\mathsf{T} + \\dots + \\sigma_r u_r v_r^\\mathsf{T}\n\\]"
+    "text": "The first two rows of the \\(V^T\\) matrix\n\n\n\n\n\n\n\n\n\n\nV captures relationships between the columns of the data matrix. 12x12 possible values, but only 12x2 needed to capture all the relationships."
   },
   {
     "objectID": "lectures/ch5lecture4.html#section-3",
     "href": "lectures/ch5lecture4.html#section-3",
     "title": "Ch5 Lecture 4",
     "section": "",
-    "text": "What does the singular value decomposition of an image look like?\n\n\nCode\nU, S, Vt = np.linalg.svd(image, full_matrices=False)\nprint(f'The shape of U is {U.shape}, the shape of S is {S.shape}, the shape of V is {Vt.shape}')\n\n\nThe shape of U is (360, 360), the shape of S is (360,), the shape of V is (360, 360)\n\n\npause\n\nWhat’s going on here? Walk through the way the rows and columns of U and V are used to reconstruct the image.\n\nU is a matrix that captures the relationships between the rows of the image. It mimics the columns.\nV is a matrix that captures the relationships between the columns of the image. It mimics the rows.\nWe can interpret the singular values as the strength of the relationships captured by U and V\nThe first columns of U and V capture the strongest relationships\n\n\nLeft singular values, corresponding to U, are the eigenvalues of \\(AA^T\\). For an image, \\(AA^T\\) is the covariance matrix of the rows of \\(A\\).\n\n\nRight singular values are the eigenvalues of \\(A^{T}A\\). For an image, \\(A^TA\\) is the covariance matrix of the columns of \\(A\\)."
+    "text": "The data from these first two rows of the \\(V^T\\) matrix, after multiplication by the singular values and rotated by the columns of the U matrix:\n\n\n\n\n\n\n\n\n\n\nA reminder:\n\\[\n    \\mathbf A = \\mathbf{USV^\\mathsf{T}} = \\sigma_1 u_1 v_1^\\mathsf{T} + \\dots + \\sigma_r u_r v_r^\\mathsf{T}\n\\]"
   },
   {
     "objectID": "lectures/ch5lecture4.html#simpler-example",
@@ -3756,7 +3756,7 @@
     "href": "lectures/ch5lecture4.html#section-5",
     "title": "Ch5 Lecture 4",
     "section": "",
-    "text": "Code\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R)\nplt.imshow(pca.inverse_transform(pca.transform(R)))\n\n\n\n\n\n\n\n\n\nTry adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
+    "text": "Second component:"
   },
   {
     "objectID": "lectures/ch5lecture4.html#eigenfaces",
@@ -3771,5 +3771,33 @@
     "title": "Ch5 Lecture 4",
     "section": "Reconstructions",
     "text": "Reconstructions"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#motivation-a-cat",
+    "href": "lectures/ch5lecture4.html#motivation-a-cat",
+    "title": "Ch5 Lecture 4",
+    "section": "Motivation: a cat",
+    "text": "Motivation: a cat"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#dimensions-of-the-decomposition",
+    "href": "lectures/ch5lecture4.html#dimensions-of-the-decomposition",
+    "title": "Ch5 Lecture 4",
+    "section": "Dimensions of the decomposition",
+    "text": "Dimensions of the decomposition\nWhat are the dimensions of the decompositions for an image?\n\n\nCode\nU, S, Vt = np.linalg.svd(image, full_matrices=False)\nprint(f'The shape of U is {U.shape}, the shape of S is {S.shape}, the shape of V is {Vt.shape}')\n\n\nThe shape of U is (360, 360), the shape of S is (360,), the shape of V is (360, 360)\n\n\npause\n\nWhat’s going on here? Walk through the way the rows and columns of U and V are used to reconstruct the image.\n\nU is a matrix that captures the relationships between the rows of the image. It mimics the columns.\nV is a matrix that captures the relationships between the columns of the image. It mimics the rows.\nWe can interpret the singular values as the strength of the relationships captured by U and V\nThe first columns of U and V capture the strongest relationships\n\n\n\nLeft singular values, corresponding to U, are the eigenvalues of \\(AA^T\\). For an image, \\(AA^T\\) is the covariance matrix of the rows of \\(A\\).\n\n\nRight singular values are the eigenvalues of \\(A^{T}A\\). For an image, \\(A^TA\\) is the covariance matrix of the columns of \\(A\\)."
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#simple-example",
+    "href": "lectures/ch5lecture4.html#simple-example",
+    "title": "Ch5 Lecture 4",
+    "section": "Simple example",
+    "text": "Simple example\n\n\n\n\n\n\n\n\n\n\nWalk through how the right singular vector looks a lot like the columns, and the left singular vector looks a lot like the rows."
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#using-pca-from-sklearn",
+    "href": "lectures/ch5lecture4.html#using-pca-from-sklearn",
+    "title": "Ch5 Lecture 4",
+    "section": "Using “PCA” from sklearn",
+    "text": "Using “PCA” from sklearn\nThis is just an easier way to implement taking these first few components…\n\n\nCode\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R) # fit the model -- compute the matrices\ntransformed = pca.transform(R) # transform the data\nprint(f'The shape of the image is {R.shape}, and the shape of the compressed image is {transformed.shape}')\nplt.imshow(transformed.T)\n\n\nThe shape of the image is (168, 299), and the shape of the compressed image is (168, 2)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.imshow(pca.inverse_transform(transformed))\n\n\n\n\n\n\n\n\n\nTry adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
   }
 ]

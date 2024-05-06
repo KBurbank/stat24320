@@ -4,7 +4,7 @@ lecture_day: 14
 readings: ""
 publish: false
 execute: 
-  cache: false
+  cache: true
 lightbox: true
 filters:
     - pyodide
@@ -78,9 +78,6 @@ plt.show()
 
 The  columns of the U matrix:
 ```{python}
-
-
-print(Vd)
 plt.clf()
 
 plt.scatter(data.T[:,0],data.T[:,1])

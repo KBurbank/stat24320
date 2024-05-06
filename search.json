@@ -3721,14 +3721,14 @@
     "href": "lectures/ch5lecture4.html#different-sorts-of-images",
     "title": "Ch5 Lecture 4",
     "section": "Different sorts of images",
-    "text": "Different sorts of images\nJust plain noise:"
+    "text": "Different sorts of images\nJust plain noise:\n\n\nCode\nnoise = np.random.randint(0,2,size=(200,200))\nplt.imshow(noise, cmap='gray')"
   },
   {
     "objectID": "lectures/ch5lecture4.html#plaid-shirt",
     "href": "lectures/ch5lecture4.html#plaid-shirt",
     "title": "Ch5 Lecture 4",
     "section": "Plaid shirt",
-    "text": "Plaid shirt"
+    "text": "Plaid shirt\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npause\n\nWhat do we predict for how well the SVD will work on this image?"
   },
   {
     "objectID": "lectures/ch5lecture4.html#individual-components",
@@ -3756,7 +3756,7 @@
     "href": "lectures/ch5lecture4.html#section-5",
     "title": "Ch5 Lecture 4",
     "section": "",
-    "text": "Second component:"
+    "text": "pause\n\nWhy doesn’t this work?"
   },
   {
     "objectID": "lectures/ch5lecture4.html#eigenfaces",
@@ -3799,5 +3799,33 @@
     "title": "Ch5 Lecture 4",
     "section": "Using “PCA” from sklearn",
     "text": "Using “PCA” from sklearn\nThis is just an easier way to implement taking these first few components…\n\n\nCode\nfrom sklearn.decomposition import PCA\npca = PCA(n_components=2)\npca.fit(R) # fit the model -- compute the matrices\ntransformed = pca.transform(R) # transform the data\nprint(f'The shape of the image is {R.shape}, and the shape of the compressed image is {transformed.shape}')\nplt.imshow(transformed.T)\n\n\nThe shape of the image is (168, 299), and the shape of the compressed image is (168, 2)\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nplt.imshow(pca.inverse_transform(transformed))\n\n\n\n\n\n\n\n\n\nTry adding noise…\n\n\nCode\nalpha = 10\nR_noisy = R + np.random.normal(0, 10, R.shape)*alpha\nplt.imshow(R_noisy)\n\n\n\n\n\n\n\n\n\nNow clean it up with PCA:\n\n\nCode\npca = PCA(n_components=2)\npca.fit(R_noisy)\nplt.imshow(pca.inverse_transform(pca.transform(R_noisy)))"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-8",
+    "href": "lectures/ch5lecture4.html#section-8",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Second component:"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#faces",
+    "href": "lectures/ch5lecture4.html#faces",
+    "title": "Ch5 Lecture 4",
+    "section": "Faces",
+    "text": "Faces\n\n\nCode\nfrom sklearn.datasets import fetch_lfw_people\nfaces = fetch_lfw_people(min_faces_per_person=60)\n\n\n# display a few of the faces, along with their names\nfig, ax = plt.subplots(3, 4)\nfor i, axi in enumerate(ax.flat):\n    axi.imshow(faces.images[i], cmap='bone')\n    axi.set(xticks=[], yticks=[],\n            xlabel=faces.target_names[faces.target[i]]) \n\nprint(f'The shape of the faces dataset is {faces.images.shape}')\n\n\nThe shape of the faces dataset is (1348, 62, 47)\n\n\n\n\n\n\n\n\n\npause\n\nHow is this dataset structured? What are the dimensions of the data? What do the rows and columns represent? Can we use our normal SVD, or do we need to extend it?"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#pca-on-faces",
+    "href": "lectures/ch5lecture4.html#pca-on-faces",
+    "title": "Ch5 Lecture 4",
+    "section": "PCA on faces",
+    "text": "PCA on faces\n\n\nCode\npca = PCA(150, svd_solver='randomized', random_state=42)\npca_small = PCA(10, svd_solver='randomized', random_state=42)\npca_very_small = PCA(2, svd_solver='randomized', random_state=42)\npca.fit(faces.data)\npca_small.fit(faces.data)\npca_very_small.fit(faces.data)\n\n\nPCA(n_components=2, random_state=42, svd_solver='randomized')In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.PCAPCA(n_components=2, random_state=42, svd_solver='randomized')\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis treatment from here"
+  },
+  {
+    "objectID": "lectures/ch5lecture4.html#section-10",
+    "href": "lectures/ch5lecture4.html#section-10",
+    "title": "Ch5 Lecture 4",
+    "section": "",
+    "text": "Really cool demo of SVD image compression: https://timbaumann.info/svd-image-compression-demo/"
   }
 ]

@@ -339,7 +339,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-. . .
+##
 
 ```{python}
 plt.figure(figsize=(16,4))
@@ -431,7 +431,15 @@ Just plain noise:
 
 
 ```{python}
+#| echo: true
 noise = np.random.randint(0,2,size=(200,200))
+plt.imshow(noise, cmap='gray')
+```
+
+##
+
+
+```{python}
 U_N, S_N, Vt_N = np.linalg.svd(noise, full_matrices=False)
 
 # Plotting the compressed noise for different values of n
@@ -449,7 +457,14 @@ plt.tight_layout()
 plt.show()
 ```
 
+*pause*
 
+::: notes
+Why doesn't this work?
+:::
+
+
+##
 ```{python}
 def plot_singular_values(S, title):
     plt.plot(range(1, len(S) + 1), S)
@@ -499,6 +514,12 @@ plt.imshow(G, cmap='Greens_r')
 plt.show()
 
 ```
+
+*pause*
+
+::: notes
+What do we predict for how well the SVD will work on this image?
+:::
 
 ##
 ```{python}
@@ -563,6 +584,7 @@ plt.show()
 First component:
 
 ```{python}
+ U_R, S_R, Vt_R = np.linalg.svd(R, full_matrices=False)
 plot_uv(0, U=U_R, S=S_R, Vt=Vt_R)
 ```
 
@@ -616,14 +638,31 @@ plt.imshow(pca.inverse_transform(pca.transform(R_noisy)))
 ```
 
 
-## Eigenfaces
+## Faces
 
 ```{python}
+#| echo: true
 from sklearn.datasets import fetch_lfw_people
 faces = fetch_lfw_people(min_faces_per_person=60)
-print(faces.target_names)
-print(faces.images.shape)
+
+
+# display a few of the faces, along with their names
+fig, ax = plt.subplots(3, 4)
+for i, axi in enumerate(ax.flat):
+    axi.imshow(faces.images[i], cmap='bone')
+    axi.set(xticks=[], yticks=[],
+            xlabel=faces.target_names[faces.target[i]]) 
+
+print(f'The shape of the faces dataset is {faces.images.shape}')
 ```
+
+*pause*
+
+::: notes
+How is this dataset structured? What are the dimensions of the data? What do the rows and columns represent? Can we use our normal SVD, or do we need to extend it?
+:::
+
+## PCA on faces
 
 ```{python}
 #| echo: true
@@ -639,6 +678,7 @@ pca_very_small.fit(faces.data)
 This treatment from [here](https://github.com/jakevdp/PythonDataScienceHandbook/blob/master/notebooks/05.09-Principal-Component-Analysis.ipynb)
 :::
 
+. . .
 
 ```{python}
 fig, axes = plt.subplots(3, 8, figsize=(9, 4),
@@ -649,8 +689,6 @@ for i, ax in enumerate(axes.flat):
 ```
 
 ## Reconstructions
-
-
 
 ```{python}
 
@@ -686,4 +724,9 @@ ax[1, 0].set_ylabel('2-dim\nreconstruction');
 ax[2, 0].set_ylabel('10-dim\nreconstruction');
 ax[3, 0].set_ylabel('150-dim\nreconstruction');
 ```
+
+
+## 
+Really cool demo of SVD image compression:
+https://timbaumann.info/svd-image-compression-demo/
 

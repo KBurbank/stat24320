@@ -1,0 +1,18 @@
+___
+title: Errata
+___
+
+# Exercise 2.2.23
+
+Numbers are wrong in the "resulting coefficient matrix".  Final answer is correct.
+
+
+# Page 285
+
+In equation (2), should be $\mathbf{w} = w_1 \mathbf{i} + \dots $, not $\mathbf{w} = u_1 \mathbf{i} + \dots $
+
+# Page 245
+
+"Hence, $\mathbf{w}_1$ and ... $\mathbf{w}_1$" should be "Hence, $\mathbf{w}_1$ and ... $\mathbf{w}_2$".
+
+

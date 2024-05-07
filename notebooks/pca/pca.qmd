@@ -7,7 +7,9 @@ execute:
   cache: true
 lightbox: true
 
-format: html
+format:
+     html:
+          include-in-header: "math-header2.html"
 ---
 
 

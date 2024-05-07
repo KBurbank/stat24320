@@ -1,0 +1,98 @@
+---
+jupyter: python3
+---
+
+```{python}
+from sympy import Matrix, Rational,N, nsimplify
+P = Matrix([
+    [0, 0, 1/3, 1/3, 0, 0],
+    [1/2, 0, 1/3, 1/3, 0, 0],
+    [1/2, 1, 0, 1/3, 0, 0],
+    [0, 0, 1/3, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 1, 0]
+])
+P=nsimplify(P,rational=True)
+v = Matrix([Rational(1,6)] * 6)
+alpha = Rational(8,10)
+```
+
+We start with our surfing matrix
+$$
+P=\left[\begin{array}{llllll}
+0 & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\
+\frac{1}{2} & 0 & \frac{1}{3} & \frac{1}{3} & 0 & 0 \\
+\frac{1}{2} & 1 & 0 & \frac{1}{3} & 0 & 0 \\
+0 & 0 & \frac{1}{3} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 & 0
+\end{array}\right]
+$$
+
+We want to solve this:
+
+
+$$
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x} =\mathbf{x}
+\end{equation*}
+$$
+
+
+One approach: find eigenvalues of value 1.
+
+```{python}
+M_sympy = alpha * P + (1 - alpha) * v * Matrix([1]*P.shape[0]).T
+eigenvalues_sympy = M_sympy.eigenvals()
+eigenvectors_sympy = M_sympy.eigenvects()
+```
+
+```{python}
+# Find the first eigenvector whose eigenvalue equals 1
+for eigenvalue, multiplicity, eigenvectors in eigenvectors_sympy:
+    if eigenvalue == 1:
+        ev = eigenvectors[0]
+        break
+# Normalize the eigenvector
+ev = ev / sum(ev)
+ev.T
+```
+
+Second approach: subtract x from both sides of the equation and solve it using sympy's solve function.
+
+Now we want to solve this:
+
+$$
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x}-\mathbf{x} =0
+\end{equation*}
+$$
+
+
+ Initially, sympy complains that the matrix is not invertible. This means that there will be infinitely many solutions. We can use gauss_jordan_solve to find the general form...
+
+ (Also note: if we don't define $\alpha$ using symbols, sympy will make everything numeric and only find the trivial solution.)
+
+```{python}
+from sympy import symbols, solve, Matrix, zeros, eye
+
+x = Matrix(symbols('x:6'))
+
+# Define the equation
+eqn = (alpha*P + (1-alpha)*v*Matrix([1]*P.shape[0]).T)-eye(6)
+soln=eqn.gauss_jordan_solve(zeros(6,1))[0]
+display(soln.T)
+```
+
+Next, we would need to pick a value for $\tau_0$ to find a specific solution. We want the sum of the elements of $\mathbf{x}$ to be 1; conveniently, if we simply divide by the sum of the elements of the general solution, the $\tau_0$ will cancel out. 
+
+```{python}
+from sympy import simplify, collect, together
+from IPython.display import Latex
+import sympy as sp
+from sympy.printing.latex import LatexPrinter
+sp.init_printing()
+
+display(Latex("$$\\frac{1}{738}"+sp.latex(simplify(soln/sum(soln)*738)[:,0])+"\\approx"+sp.latex(N(soln/sum(soln),4))+"$$"))
+```
+

@@ -205,6 +205,70 @@ $$
 $$
 
 The only solution whose coordinates sum to one is $\mathbf{x}=\left(0,0,0,0, \frac{1}{2}, \frac{1}{2}\right)$.
+
+If we want to do this numerically:
+
+$$
+Q=\left[\begin{array}{llllll}
+0 & 0 & \frac{1}{3} & 0 & 0 & 0 \\
+\frac{1}{2} & 0 & \frac{1}{3} & 0 & 0 & 0 \\
+\frac{1}{2} & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{1}{3} & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 & 1 & 0
+\end{array}\right], \mathbf{x}=\left(x_{1}, x_{2}, x_{3}, x_{4}, x_{5}\right)
+$$
+
+
+```{python}
+import sympy as sp
+from sympy import symbols, solve, Matrix, zeros, eye,nsimplify
+x = Matrix(symbols('x:6'))
+Q = nsimplify(Matrix([
+    [0, 0, 1/3, 1/6, 0, 0],
+    [1/2, 0, 1/3, 1/6, 0, 0],
+    [1/2, 1, 0, 1/6, 0, 0],
+    [0, 0, 1/3, 1/6, 0, 0],
+    [0, 0, 0, 1/6, 0, 1],
+    [0, 0, 0, 1/6, 1, 0]
+]), rational=True)
+
+display(Q)
+Qbig = Q**10000
+
+# make a random starting vector using sympys random number generator
+v = sp.randMatrix(6,1)
+v = N(v/sum(v))
+display(Qbig*v)
+```
+
+
+```{python}
+
+# make a random starting vector using sympys random number generator
+v = sp.randMatrix(6,1)
+v = N(v/sum(v))
+Qbig*Qbig*v
+
+# repeat the above step with many initial vectors and make a histogram of the 5th entries
+import matplotlib.pyplot as plt
+import numpy as np
+
+results = []
+for i in range(100):
+    v = sp.randMatrix(6,1)
+    v = N(v/sum(v))
+    results.append((Qbig*v)[4,0])
+
+```
+
+```{python}
+pr = np.array(results,dtype=float)
+plt.hist(pr, bins=20 )
+```
+
+We see that the solutions appear to converge, but very slowly!
+
 :::
 
 
@@ -217,19 +281,79 @@ Solve the nonlinear system of equations of Example 2.48 by using nine iterations
 2.5.25
  $\quad \mathbf{x}=(x, y), \mathbf{x}^{(9)} \approx\left[\begin{array}{r}1.00001 \\ -0.99999\end{array}\right], \mathbf{F}\left(\mathbf{x}^{(9)}\right) \approx 10^{-6}\left[\begin{array}{r}-1.3422 \\ 2.0226\end{array}\right], \mathbf{F}(\mathbf{x})=$
 
-$\left[\begin{array}{l}x^{2}+\sin (\pi x y)-1 \\ x+y^{2}+e^{x+y}-3\end{array}\right], J_{\mathbf{F}}(\mathbf{x})=\left[\begin{array}{cc}2 x+\cos (\pi x y), \pi y \cos (\pi x y) \pi x \\ 1+e^{x+y}, & 2 y+e^{x+y}\end{array}\right]$
+$\left[\begin{array}{l}x^{2}+\sin (\pi x y)-1 \\ x+y^{2}+e^{x+y}-3\end{array}\right], J_{\mathbf{F}}(\mathbf{x})=\left[\begin{array}{cc}2 x+\pi y \cos (\pi x y) &   \pi x\cos (\pi x y) \\ 1+e^{x+y} & 2 y+e^{x+y}\end{array}\right]$
+
+Set this up in Python and solve it:
+
+```{python}
+from IPython.display import display, Markdown
+from sympy import Matrix, I, latex
+
+def printmult(lst):
+    output = ""
+    for l in lst:
+        if isinstance(l, str):
+            output += f"{l}"
+        else:
+            output += f"${{{latex(l)}}}$ "
+
+    display(Markdown(output))
+```
+
+```{python}
+from sympy import symbols, sin, pi, exp, cos, Matrix, N,Eq,init_printing
+init_printing()
+x, y = symbols('x y')
+F = Matrix([x**2 + sin(pi*x*y) - 1, x + y**2 + exp(x + y) - 3])
+J = F.jacobian([x, y])
+display(J)
+x0=Matrix([0,1])
+for i in range(9):
+    x0 = N(x0 - J.subs({x: x0[0], y: x0[1]}).inv() * F.subs({x: x0[0], y: x0[1]}))
+printmult(["x=",N(x0,5)])
+printmult(["F(x)=",N(F.subs({x: x0[0], y: x0[1]}),5)])
+```
+
+
+```{python}
+printmult(["F(x)=",N(F.subs({x: x0[0], y: x0[1]}),5)])
+#print(F,N(F.subs({x: x0[0], y: x0[1]}),5))
+```
+
 :::
 
 #
 
 
-Find the minimum value of the function $F(x, y)=\left(x^{2}+y+1\right)^{2}+$ $x^{4}+y^{4}$ by using the Newton method to find critical points of the function $F(x, y)$, i.e., points where $f(x, y)=F_{x}(x, y)=0$ and $g(x, y)=F_{y}(x, y)=0$.
+Find the minimum value of the function $F(x, y)=\left(x^{2}+y+1\right)^{2}+x^{4}+y^{4}$ by using the Newton method to find critical points of the function $F(x, y)$, i.e., points where $f(x, y)=F_{x}(x, y)=0$ and $g(x, y)=F_{y}(x, y)=0$.
 
 ::: solutions
 2.5.26
 
-![](https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-057.jpg?height=89&width=1265&top_left_y=1208&top_left_x=457)
-and all initial choices converge to $(-0.96401,-0.82131)$, and $F(-0.96401,-0.82131)=$ 2.54632 .
+
+
+```{python}
+from sympy import symbols, sin, pi, exp, cos, Matrix, N,Eq,init_printing
+init_printing()
+x, y = symbols('x y')
+fxy = Matrix([(x**2 + y + 1)**2 + x**4 + y**4])
+# find the derivative of F with respect to x and y
+fx = fxy.jacobian([x])
+fy  = fxy.jacobian([y])
+F = Matrix([fx,fy])
+J = F.jacobian([x, y])
+printmult(["F(x,y)=",fxy])
+printmult(["F=",F])
+printmult(["J=",J])
+print("After 9 iterations, the solution is:")
+x0=Matrix([.1,.1])
+for i in range(9):
+    x0 = N(x0 - N(J.subs({x: x0[0], y: x0[1]})).inv() * F.subs({x: x0[0], y: x0[1]}))
+printmult(["x=",N(x0,5)])
+printmult(["f(x,y)=",N(fxy.subs({x: x0[0], y: x0[1]}),5)])
+```
+
+
 
 :::
 
@@ -277,7 +401,6 @@ Yes, definitely high pass. A graph is in Figure 3:
 #
 
 
-(I'll talk about LU factorization in class on the Wednesday that this homework is due; you may want to hold off on the next few problems until then.)
 
 Show that $L=\left[\begin{array}{lll}1 & 0 & 0 \\ 1 & 1 & 0 \\ 2 & 1 & 1\end{array}\right]$ and $U=\left[\begin{array}{rrr}2 & -1 & 1 \\ 0 & 4 & -3 \\ 0 & 0 & -1\end{array}\right]$ is an LU factorization of $A=\left[\begin{array}{rrr}2 & -1 & 1 \\ 2 & 3 & -2 \\ 4 & 2 & -2\end{array}\right]$.
 

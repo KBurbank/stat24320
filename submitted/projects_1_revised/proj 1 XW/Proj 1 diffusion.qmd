@@ -1,0 +1,116 @@
+---
+title: Xiao Wei
+jupyter: python3
+---
+
+
+
+For the diffusion project, we are given the problem of finding the concentration at each of the 7 segments of a tube at each time step. However, we are not given the initial amount of gas released into the middle of the tube and are only given two measurements at time step t240 and t270 as seen below. We must use linear algebra to approximate the diffusion equation using a transition matrix and guess the values of the intial concentration as well as the diffusion constant. 
+
+```{python}
+import sympy as sym
+import numpy as np
+import pandas as pd
+sb = sym.Symbol
+```
+
+![image.png](attachment:bd15908d-1d58-4c2a-9049-68fd84558378.png)
+
+In the below cell I create the transition matrix for each segment of the tube. The transition equation was part of equation 3.10
+
+There are a total of 7 segments measured which results in a 7x7 transition matrix, each segment is a function of itself and its adjoining segments and the constants D, h.
+
+```{python}
+N=7
+M = sym.zeros(N)
+for i in range(N):
+  if (i>0):
+      M[i-1,i]=1
+  M[i,i]=-2
+  if (i<N-1):
+      M[i+1,i]=1
+  # M[0, i] = 0
+  # M[6, i] = 0
+#   M[i, 0] = 0
+#   M[i, 6] = 0
+# M[5, 6] = 0
+M
+```
+
+Here are the starting states for T270 and T240 according to the textbook (see snippet above)
+
+```{python}
+t270 = sym.Matrix([0.0, 0.051, 1.21, 3.48, 1.21, 0.051, 0.0])
+t240 = sym.Matrix([0.0, 0.032, 1.23, 3.69, 1.23, 0.032, 0.0])
+```
+
+Going forward from 240 to 270, I tried various figures for D here and settled on the one below. Note the 36 is supposed to represent 1/h^2
+
+transition formula
+
+t_i+1 = t_i + M * t_i * D/h^2
+
+```{python}
+Dh2 = 0.00004 * 36
+
+current = t240
+for step in range(240, 271):
+    next_step = current + M*current * Dh2
+    if step % 10 == 0:
+        print(step, current)
+        print('\n')
+    current = next_step
+```
+
+Now that I have settled on a value for D. I will move backwards from 270 to 0. Output is every 30 steps and 0. As gone over in class, the transition matrix and multiplier needs to be taken with an inverse since we are now moving backwards instead of forwards as in the equation given by the text book.
+
+transition formula:
+
+t_i+1 = t_i + M * t_i * D/h^2
+
+t_i+1 = t_i
+
+t_i = (I + M*D/h^2)^-1 *t_i+1
+
+```{python}
+Dh2 = 0.00004 * 36
+
+current = t270
+for step in range(270, -1, -1):
+    prev_step = (sym.eye(current.shape[0]) + M* Dh2).inv()*current 
+    if step % 40 == 0:
+        print(step, current)
+        print('\n')
+    current = sym.Matrix(np.maximum(prev_step, 0))
+print(step, current)
+init_state = current
+```
+
+I assume the tube is empty except for the initial release in the middle at state 0. The initial amount "f", is the max of step 0 from above. I output the amounts for time 210 and 300 as per the assignment instructions.
+
+```{python}
+import warnings
+warnings.filterwarnings("ignore")
+current = sym.zeros(7, 1)
+current[3] = np.max(init_state)
+plot_df = pd.DataFrame([], columns=['0', '1/6', '1/3', '1/2'], dtype=np.float64)
+for step in range(0, 301):
+    plot_df.loc[step] = current[:4]
+    next_step = current + M*current * Dh2
+    if step==0 or step ==210 or step == 300:
+        print(step, current)
+        print('\n')
+    current = next_step
+plot_df.loc[step] = current[:4]
+```
+
+Since the readings are symmetrical across the middle I only plot half the tube including the middle. Each line below is a reading at each segment from 0 to 1/2.
+
+```{python}
+plot_df = plot_df.astype(np.float_)
+plot_df.plot(kind='line', xlabel="step", ylabel='concentration', title="concentration at each time step for segment measurements")
+```
+
+It is expected that the center curve looks like an logarithmic decay, the 1/3 curve looks like a logarithmic increase which I suppose will decrease at the point. Using Linear Algebra does seem like a much easier approach than the actual Physics of computing the diffusion constant as well as the intial concentration.
+
+

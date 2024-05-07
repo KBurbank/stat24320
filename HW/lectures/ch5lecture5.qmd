@@ -1,0 +1,405 @@
+---
+title: Ch5 Lecture 5
+lecture_day: 15
+readings: ""
+publish: false
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+
+
+# Principal Components Analysis {#pca}
+
+We now have the tools necessary to discuss one of the most important concepts in mathematical statistics: **Principal Components Analysis (PCA)**. Before we dive into the mathematical details, we'll first introduce an effective analogy to develop our intuition.
+
+## God's Flashlight
+
+Imagine your data as a multidimensional cloud of points in space. God (however you conceive that) has a flashlight and can project this data at a right angle down onto a flat surface - the flashlight just casts a point shadow, the shadows don’t get bigger like on Earth. The center of the flat surface is fixed at the center of the data, so it's more like 2 flashlights, one from below the surface, one from above, both at right angles. We could rotate this flashlight/flat surface setup around and get infinitely many projections of the data from different perspectives. The PCA projection is the _one_ with the most variance, which indicates that it _contains the most information from your original data_. It's also the projection that is _closest to the original data_ in the Euclidean or sum-of-squared-error sense (PCA gives the rank k approximation to your data with the lowest possible error). Once projected, the axes of the projection (drawn so that the “first” axis points in the direction of greatest variance) are your principal components, providing the orthogonal directions of maximal variance. 
+
+This projection we've just described is actually the projection of the data onto a _hyperplane_, which entails a rank reduction of 1, though you might have imagined it as a projection onto a 2-dimensional plane. The great thing about PCA is that both of those visuals are appropriate - we can project the data onto any dimensional subspace of the original from 1 to rank($\X$)-1. 
+
+With this analogy in mind, we bring back to the interactive plot from Chapter \@ref(orthog) to ponder what these different projections of a data cloud would look like, and to locate the maximum variance projection of _this_ data.
+
+```{r, fig=T, out.width="100%", echo=F,fig.align='center', warning=F, message=F}
+library(MASS)
+mu=c(0,0,0)
+Sigma=matrix(c(1,.5,.5,.5,1,.99,.5,.99,1),3)
+dat=mvrnorm(5000,mu=mu,Sigma=Sigma)
+# x= rnorm(500,0,1)
+# y=rnorm(500,0,1)
+# z=2*x+4*y
+# dat = cbind(x,y,z)
+# library(rgl)
+library(plotly)
+library(processx)
+graph = plot_ly(x=dat[,1],y=dat[,2],z=dat[,3],type='scatter3d')
+# plot3d(x=dat[,1],y=dat[,2],z=dat[,3], xlab='',ylab='',zlab='',xaxt='n',yaxt='n',zaxt='n', box=F)
+graph
+```
+
+## PCA Details
+
+PCA involves the analysis of eigenvalues and eigenvectors of the covariance or the correlation matrix. Its development relies on the following important facts:
+ 
+:::{.theorem name='Diagonalization of Symmetric Matrices' #eigsym}
+All $n\times n$ real valued symmetric matrices (like the covariance and correlation matrix) have two very important properties:
+
+1. They have a complete set of $n$ linearly independent eigenvectors, $\{\v_1,\dots,\v_n\}$, corresponding to eigenvalues $$\lambda_1 \geq \lambda_2 \geq\dots\geq \lambda_n.$$
+2. Furthermore, these eigenvectors can be always be chosen to be _orthonormal_ so that if $\V=[\v_1|\dots|\v_n]$ then
+$$\V^{T}\V=\bo{I}$$
+or equivalently, $\V^{-1}=\V^{T}$.
+
+Letting $\D$ be a diagonal matrix with $D_{ii}=\lambda_i$, by the definition of eigenvalues and eigenvectors we have for any symmetric matrix $\bo{S}$,
+$$\bo{S}\V=\V\D$$
+Thus, any symmetric matrix $\bo{S}$ can be diagonalized in the following way:
+$$\V^{T}\bo{S}\V=\D$$
+Covariance and Correlation matrices (when there is no perfect multicollinearity in variables) have the additional property that all of their eigenvalues are positive (nonzero). They are _positive definite_ matrices.
+:::
+
+Now that we know we have a complete set of eigenvectors, it is common to order them according to the magnitude of their corresponding eigenvalues. From here on out, we will use $(\lambda_1,\v_1)$ to represent the __largest__ eigenvalue of a matrix and its corresponding eigenvector. When working with a covariance or correlation matrix, this eigenvector associated with the largest eigenvalue is called the **first principal component** and points in the direction for which the variance of the data is maximal.  Example \@ref(exm:coveigs) illustrates this point.
+
+:::{.example name='Eigenvectors of the Covariance Matrix' #coveigs}
+Suppose we have a matrix of data for 10 individuals on 2 variables, $\x_1$ and $\x_2$. Plotted on a plane, the data appears as follows:
+
+```{r fig.align='center',  echo=F, out.width="50%"}
+# knitr::include_graphics("figs/pcpoints.png")
+```
+  
+Our data matrix for these points is:
+$$\X=\pm 1 & 1\\2&1\\2&4\\3&1\\4&4\\5&2\\6&4\\6&6\\7&6\\8&8 \mp$$
+the means of the variables in $\X$ are:
+$$\bar{\x}=\pm 4.4 \\ 3.7 \mp. $$
+When thinking about variance directions, our first step should be to center the data so that it has mean zero. Eigenvectors measure the spread of data around the origin. Variance measures spread of data around the mean. Thus, we need to equate the mean with the origin. To center the data, we simply compute 
+$$\X_c=\X-\e\bar{\x}^T = \pm 1 & 1\\2&1\\2&4\\3&1\\4&4\\5&2\\6&4\\6&6\\7&6\\8&8 \mp - \pm 4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7 \\4.4 & 3.7  \mp = \pm -3.4&-2.7\\-2.4&-2.7\\-2.4& 0.3\\-1.4&-2.7\\ -0.4&  0.3\\0.6&-1.7\\1.6& 0.3\\1.6& 2.3\\2.6& 2.3\\3.6&  4.3\mp.$$
+Examining the new centered data, we find that we've only translated our data in the plane - we haven't distorted it in any fashion.
+
+```{r fig.align='center',  echo=F, out.width="50%"}
+# knitr::include_graphics("figs/pcpointscenter.png")
+```
+
+Thus the covariance matrix is:
+$$\ssigma=\frac{1}{9}(\X_c^T\X_c)= \pm 5.6 & 4.8\\4.8&6.0111 \mp $$
+The eigenvalue and eigenvector pairs of $\ssigma$ are (rounded to 2 decimal places) as follows:
+$$(\lambda_1,\v_1)=\left( 10.6100 ,  \begin{bmatrix} 0.69 \\ 0.72 \end{bmatrix}\right) \mbox{  and  } (\lambda_2,\v_2)= \left( 1.0012,\begin{bmatrix}-0.72\\0.69 \end{bmatrix}\right)$$
+Let's plot the eigenvector directions on the same graph:
+
+```{r fig.align='center',  echo=F, out.width="50%"}
+# knitr::include_graphics("figs/pcpointspc.png")
+```
+
+The eigenvector $\v_1$ is called the **first principal component**. It is the direction along which the variance of the data is maximal. The eigenvector $\v_2$ is the **second principal component**.  In general, the second principal component is the direction, orthogonal to the first, along which the variance of the data is maximal (in two dimensions, there is only one direction possible.) 
+:::
+
+Why is this important? Let's consider what we've just done. We started with two variables, $\x_1$ and $\x_2$, which appeared to be correlated. We then derived *new variables*, $\v_1$ and $\v_2$, which are linear combinations of the original variables:
+\begin{eqnarray}
+\v_1 &=& 0.69\x_1 + 0.72\x_2 \\
+(\#eq:pcacomb)
+\v_2 &=& -0.72\x_1 + 0.69\x_2
+\end{eqnarray}
+ These new variables are completely uncorrelated. To see this, let's represent our data according to the new variables - i.e. let's change the basis from $\mathcal{B}_1=[\x_1,\x_2]$ to $\mathcal{B}_2=[\v_1,\v_2]$.  
+ 
+:::{.example name='The Principal Component Basis' #pcabasis}
+Let's express our data in the basis defined by the principal components. We want to find coordinates (in a $2\times 10$ matrix $\A$) such that our original (centered) data can be expressed in terms of principal components. This is done by solving for $\A$ in the following equation (see Chapter \@ref(basis) and note that the _rows_ of $\X$ define the points rather than the columns):
+\begin{eqnarray}
+ \X_c &=& \A \V^T \\
+ \pm -3.4&-2.7\\-2.4&-2.7\\-2.4& 0.3\\-1.4&-2.7\\ -0.4&  0.3\\0.6&-1.7\\1.6& 0.3\\1.6& 2.3\\2.6& 2.3\\3.6&  4.3 \mp &=&  \pm a_{11} & a_{12} \\ a_{21} & a_{22} \\ a_{31} & a_{32}\\ a_{41} & a_{42}\\ a_{51} & a_{52}\\ a_{61} & a_{62}\\ a_{71} & a_{72}\\ a_{81} & a_{82}\\ a_{91} & a_{92}\\ a_{10,1} & a_{10,2} \mp \pm \v_1^T \\ \v_2^T \mp
+\end{eqnarray}
+ 
+ Conveniently, our new basis is orthonormal meaning that $\V$ is an orthogonal matrix, so
+ $$\A=\X\V .$$
+ The new data coordinates reflect a simple rotation of the data around the origin:
+ 
+```{r fig.align='center',  echo=F, out.width="50%"}
+# knitr::include_graphics("figs/pcpointsrotate.jpg")
+```
+ 
+Visually, we can see that the new variables are uncorrelated. You may wish to confirm this by calculating the covariance. In fact, we can do this in a general sense. If $\A=\X_c\V$ is our new data, then the covariance matrix is diagonal:
+\begin{eqnarray*}
+\ssigma_A &=& \frac{1}{n-1}\A^T\A  \\ 
+	&=& \frac{1}{n-1}(\X_c\V)^T(\X_c\V) \\
+	&=& \frac{1}{n-1}\V^T((\X_c^T\X_c)\V\\
+	&=&\frac{1}{n-1}\V^T((n-1)\ssigma_X)\V\\
+	&=&\V^T(\ssigma_X)\V\\
+	&=&\V^T(\V\D\V^T)\V\\
+	&=& \D
+\end{eqnarray*}
+Where $\ssigma_X=\V\D\V^T$ comes from the diagonalization in Theorem \@ref(thm:eigsym).
+By changing our variables to principal components, we have managed to **"hide"** the correlation between $\x_1$ and $\x_2$ while keeping the spacial relationships between data points in tact. Transformation _back_ to variables $\x_1$ and $\x_2$ is easily done by using the linear relationships in from Equation \@ref(eq:pcacomb).
+:::
+ 
+## Geometrical comparison with Least Squares
+
+ In least squares regression, our objective is to maximize the amount of variance explained in our target variable. It may look as though the first principal component from Example \@ref(exm:coveigs) points in the direction of the regression line. This is not the case however. The first principal component points in the direction of a line which minimizes the sum of squared _orthogonal_ distances between the points and the line. Regressing $\x_2$ on $\x_1$, on the other hand, provides a line which minimizes the sum of squared _vertical_ distances between points and the line. This is illustrated in Figure \@ref(fig:pcvsreg).
+ 
+ ```{r fig=T,fig.align='center', fig.cap = 'Principal Components vs. Regression Lines', echo=F, out.width='60%', label='pcvsreg'}
+# knitr::include_graphics('figs/pcvsreg.jpg')
+```
+
+
+The first principal component about the mean of a set of points can be represented by that line which most closely approaches the data points. Let this not conjure up images of linear regression in your head, though.  In contrast, linear least squares tries to minimize the distance in a single direction only (the direction of your target variable axes). Thus, although the two use a similar error metric, linear least squares is a method that treats one dimension of the data preferentially, while PCA treats all dimensions equally.
+
+You might be tempted to conclude from Figure \@ref(fig:pcvsreg) that the first principal component and the regression line "ought to be similar." This is a terrible conclusion if you consider a large multivariate dataset and the various regression lines that would predict each variable in that dataset. In PCA, there is no target variable and thus no single regression line that we'd be comparing to. 
+
+
+## Covariance or Correlation Matrix?
+
+Principal components analysis can involve eigenvectors of either the covariance matrix or the correlation matrix. When we perform this analysis on the covariance matrix, the geometric interpretation is simply centering the data and then determining the direction of maximal variance. When we perform this analysis on the correlation matrix, the interpretation is _standardizing_ the data and then determining the direction of maximal variance. The correlation matrix is simply a scaled form of the covariance matrix. In general, these two methods give different results, especially when the scales of the variables are different.
+
+The covariance matrix is the default for (most) $\textsf{R}$ PCA functions. The correlation matrix is the default in SAS and the covariance matrix method is invoked by the option:
+
+```
+proc princomp data=X cov; 
+var x1--x10;
+run;
+```
+
+
+Choosing between the covariance and correlation matrix can sometimes pose problems. The rule of thumb is that the correlation matrix should be used when the scales of the variables vary greatly. In this case, the variables with the highest variance will dominate the first principal component.  The argument against automatically using correlation matrices is that it turns out to be quite a brutal way of standardizing your data - forcing all variables to contain the same amount of information (after all, don't we equate variance to information?) seems naive and counterintuitive when it is not absolutely necessary for differences in scale. We hope that the case studies outlined in Chapter \@ref(pcaapp) will give those who _always_ use the correlation option reason for pause, and we hope that, in the future, they will consider multiple presentations of the data and their corresponding low-rank representations of the data.  
+
+
+## PCA in R
+
+Let's find Principal Components using the iris dataset. This is a well-known dataset, often used to demonstrate the effect of clustering algorithms. It contains numeric measurements for 150 iris flowers along 4 dimensions. The fifth column in the dataset tells us what species of Iris the flower is. There are 3 species.
+
+1. Sepal.Length
+2. Sepal.Width
+3. Petal.Length
+4. Petal.Width
+5. Species
+ - Setosa
+ - Versicolor
+ - Virginica
+ 
+Let's first take a look at the scatterplot matrix:
+
+```{r fig.width=9, fig.height=8}
+pairs(~Sepal.Length+Sepal.Width+Petal.Length+Petal.Width,data=iris,col=c("red","green3","blue")[iris$Species])
+```
+
+It is apparent that some of our variables are correlated. We can confirm this by computing the correlation matrix with the `cor()` function. We can also check out the individual variances of the variables and the covariances between variables by examining the covariance matrix (`cov()` function). Remember - when looking at covariances, we can really only interpret the _sign_ of the number and not the magnitude as we can with the correlations.
+
+```{r}
+cor(iris[1:4])
+cov(iris[1:4])
+```
+
+We have relatively strong positive correlation between Petal Length, Petal Width and Sepal Length. It is also clear that Petal Length has more than 3 times the variance of the other 3 variables. How will this effect our analysis?
+
+The scatter plots and correlation matrix provide useful information, but they don't give us a true sense for how the data looks when all 4 attributes are considered simultaneously.
+
+In the next section we will compute the principal components directly from eigenvalues and eigenvectors of the covariance or correlation matrix. __It's important to note that this method of _computing_ principal components is not actually recommended - the answer provided is the same, but the numerical stability and efficiency of this method may be dubious for large datasets. The Singular Value Decomposition (SVD), which will be discussed in Chapter \@ref(svd), is generally a preferred route to computing principal components.__ Using both the covariance matrix and the correlation matrix, let's see what we can learn about the data. Let's start with the covariance matrix which is the default setting for the `prcomp()` function in R.
+
+### Covariance PCA
+
+ Let's start with the covariance matrix which is the default setting for the `prcomp` function in R. It's worth repeating that a dedicated principal component function like `prcomp()` is superior in numerical stability and efficiency to the lines of code in the next section. __The only reason for directly computing the covariance matrix and its eigenvalues and eigenvectors (as opposed to  `prcomp()`) is for edification. Computing a PCA in this manner, just this once, will help us grasp the exact mathematics of the situation and empower us to use built in functions with greater flexibility and understanding.__
+
+### Principal Components, Loadings, and Variance Explained 
+
+```{r}
+covM = cov(iris[1:4])
+eig=eigen(covM,symmetric=TRUE,only.values=FALSE)
+c=colnames(iris[1:4])
+eig$values
+# Label the loadings
+rownames(eig$vectors)=c(colnames(iris[1:4]))
+# eig$vectors
+```
+
+The eigenvalues tell us how much of the total variance in the data is directed along each eigenvector. Thus, the amount of variance along $\mathbf{v}_1$ is $\lambda_1$ and the _proportion_ of variance explained by the first principal component is
+$$\frac{\lambda_1}{\lambda_1+\lambda_2+\lambda_3+\lambda_4}$$
+
+```{r}
+eig$values[1]/sum(eig$values)
+```
+
+Thus 92\% of the variation in the Iris data is explained by the first component alone. What if we consider the first and second principal component directions? Using this two dimensional representation (approximation/projection) we can capture the following proportion of variance:
+$$\frac{\lambda_1+\lambda_2}{\lambda_1+\lambda_2+\lambda_3+\lambda_4}$$
+
+```{r}
+sum(eig$values[1:2])/sum(eig$values)
+```
+
+With two dimensions, we explain 97.8% of the variance in these 4 variables! The entries in each eigenvector are called the **loadings** of the variables on the component. The loadings give us an idea how important each variable is to each component. For example, it seems that the third variable in our dataset (Petal Length) is dominating the first principal component. This should not come as too much of a shock - that variable had (by far) the largest amount of variation of the four. In order to capture the most amount of variance in a single dimension, we should certainly be considering this variable strongly. The variable with the next largest variance, Sepal Length, dominates the second principal component.
+
+**Note:**  *Had Petal Length and Sepal Length been correlated, they would not have dominated separate principal components, they would have shared one. These two variables are not correlated and thus their variation cannot be captured along the same direction.*
+
+### Scores and PCA Projection 
+
+Lets plot the *projection* of the four-dimensional iris data onto the two dimensional space spanned by the first 2 principal components. To do this, we need coordinates. These coordinates are commonly called **scores** in statistical texts. We can find the coordinates of the data on the principal components by solving the system
+$$\mathbf{X}=\mathbf{A}\mathbf{V}^T$$
+where $\mathbf{X}$ is our original iris data **(centered to have mean = 0)** and $\mathbf{A}$ is a matrix of coordinates in the new principal component space, spanned by the eigenvectors in $\mathbf{V}$.
+
+Solving this system is simple enough - since $\mathbf{V}$ is an orthogonal matrix per Theorem \@ref(thm:eigsym). Let's confirm this:
+
+```{r}
+eig$vectors %*% t(eig$vectors)
+t(eig$vectors) %*% eig$vectors
+```
+
+We'll have to settle for precision at 15 decimal places. Close enough!
+
+To find the scores, we simply subtract the means from our original variables to create the data matrix $\mathbf{X}$ and compute
+$$\mathbf{A}=\mathbf{X}\mathbf{V}$$ 
+
+```{r }
+# The scale function centers and scales by default
+X=scale(iris[1:4],center=TRUE,scale=FALSE)
+# Create data.frame from matrix for plotting purposes.
+scores=data.frame(X %*% eig$vectors)
+# Change default variable names
+colnames(scores)=c("Prin1","Prin2","Prin3","Prin4")
+# Print coordinates/scores of first 10 observations
+scores[1:10, ]
+```
+ 
+To this point, we have simply computed coordinates (scores) on a new set of axis (formed by the principal components, i.e. the eigenvectors). These axes are orthogonal and are aligned with the directions of maximal variance in the data. When we consider only a subset of principal components (like 2 the two components here that account for 97.8% of the variance),  we are projecting the data onto a lower dimensional space. Generally, this is one of the primary goals of PCA: Project the data down into a lower dimensional space (_onto the span of the principal components_) while keeping the maximum amount of information (i.e. variance).
+
+Thus, we know that almost 98% of the data's variance can be seen in two-dimensions using the first two principal components. Let's go ahead and see what this looks like:
+
+```{r fig=T, fig.width=5,fig.height=6}
+plot(scores$Prin1, scores$Prin2, 
+     main="Data Projected on First 2 Principal Components",
+     xlab="First Principal Component", 
+     ylab="Second Principal Component", 
+     col=c("red","green3","blue")[iris$Species])
+```
+
+### PCA functions in R
+
+```{r}
+irispca=prcomp(iris[1:4])
+# Variance Explained
+summary(irispca)
+# Eigenvectors:
+irispca$rotation
+# Coordinates of first 10 observations along PCs:
+irispca$x[1:10, ]
+```
+
+All of the information we computed using eigenvectors aligns with what we see here, except that the coordinates/scores and the loadings of Principal Component 3 are of the opposite sign. In light of what we know about eigenvectors representing _directions_, this should be no cause for alarm. The `prcomp` function arrived at the unit basis vector pointing in the negative direction of the one we found directly from the `eig` function - which should negate all the coordinates and leave us with an equivalent mirror image in all of our projections.
+
+### The Biplot
+
+One additional feature that R users have created is the **biplot**. The PCA biplot allows us to see where our original variables fall in the space of the principal components. Highly correlated variables will fall along the same direction (or exactly opposite directions) as a change in one of these variables correlates to a change in the other. Uncorrelated variables will appear further apart. The length of the variable vectors on the biplot tell us the degree to which variability in variable is explained in that direction. Shorter vectors have less variability than longer vectors. So in the biplot below, petal width and petal length point in the same direction indicating that these variables share a relatively high degree of correlation. However, the vector for petal width is much shorter than that of petal length, which means you can expect a higher degree of change in petal length as you proceed to the right along PC1. PC1 explains more of the variance in petal length than it does petal width. If we were to imagine a third PC orthogonal to the plane shown, petal width is likely to exist at much larger angle off the plane - here, it is being projected down from that 3-dimensional picture.
+
+
+```{r fig=T,fig.width=10, fig.height=8}
+biplot(irispca, col = c("gray", "blue"))
+```
+
+We can examine some of the outlying observations to see how they align with these projected variable directions. It helps to compare them to the quartiles of the data. Also keep in mind the direction of the arrows in the plot. If the arrow points down then the positive direction is down - indicating observations which are greater than the mean. Let's pick out observations 42 and 132 and see what the actual data points look like in comparison to the rest of the sample population.
+```{r}
+summary(iris[1:4])
+# Consider orientation of outlying observations:
+iris[42, ]
+iris[132, ]
+```
+
+## Variable Clustering with PCA
+
+The direction arrows on the biplot are merely the coefficients of the original variables when combined to make principal components. Don't forget that principal components are simply linear combinations of the original variables.
+
+For example, here we have the first principal component (the first column of $\V$), $\mathbf{v}_1$ as:
+
+```{r}
+eig$vectors[,1]
+```
+
+This means that the __coordinates of the data along__ the first principal component, which we'll denote here as $PC_1$ are given by a simple linear combination of our original variables after centering (for covariance PCA) or standardization (for correlation PCA)
+
+$$PC_1 = 0.36Sepal.Length-0.08Sepal.Width+0.85Petal.Length +0.35Petal.Width$$
+the same equation could be written for each of the vectors of coordinates along principal components, $PC_1,\dots, PC_4$.
+
+Essentially, we have a system of equations telling us that the rows of $\V^T$ (i.e. the columns of $\V$) give us the weights of each variable for each principal component:
+\begin{equation}
+(\#eq:cpc1)
+\begin{bmatrix} PC_1\\PC_2\\PC_3\\PC_4\end{bmatrix} = \mathbf{V}^T\begin{bmatrix}Sepal.Length\\Sepal.Width\\Petal.Length\\Petal.Width\end{bmatrix}
+\end{equation}
+
+Thus, if want the coordinates of our original variables in terms of Principal Components (so that we can plot them as we do in the biplot) we need to look no further than the rows of the matrix $\mathbf{V}$ as
+\begin{equation}
+(\#eq:cpc2)
+\begin{bmatrix}Sepal.Length\\Sepal.Width\\Petal.Length\\Petal.Width\end{bmatrix} =\mathbf{V}\begin{bmatrix} PC_1\\PC_2\\PC_3\\PC_4\end{bmatrix}
+\end{equation}
+
+means that the rows of $\mathbf{V}$ give us the coordinates of our original variables in the PCA space. The transition from Equation \@ref(eq:cpc1) to Equation  \@ref(eq:cpc2) is provided by the orthogonality of the eigenvectors per Theorem \@ref(thm:eigsym).
+
+```{r}
+#First entry in each eigenvectors give coefficients for Variable 1:
+eig$vectors[1,]
+```
+
+$$Sepal.Length = 0.361 PC_1 - 0.657 PC_2 - 0.582 PC_3 + 0.315 PC_4$$
+You can see this on the biplot. The vector shown for Sepal.Length is (0.361, -0.656), which is the two dimensional projection formed by throwing out components 3 and 4.
+
+Variables which lie upon similar directions in the PCA space tend to change together in a similar fashion. We might consider Petal.Width and Petal.Length as a cluster of variables because they share a direction on the biplot, which means they represent much of the same information (the underlying construct being the "size of the petal" in this case).
+
+
+### Correlation PCA
+
+We can complete the same analysis using the correlation matrix. I'll leave it as an exercise to compute the Principal Component loadings and scores and variance explained directly from eigenvectors and eigenvalues. You should do this and compare your results to the R output. _(Beware: you must transform your data before solving for the scores. With the covariance version, this meant centering - for the correlation version, this means standardization as well)_
+
+```{r fig=T}
+irispca2=prcomp(iris[1:4], cor=TRUE)
+summary(irispca2)
+irispca2$rotation
+irispca2$x[1:10,]
+plot(irispca2$x[,1],irispca2$x[,2],
+     main="Data Projected on First 2  Principal Components",
+     xlab="First Principal Component",
+     ylab="Second Principal Component",
+     col=c("red","green3","blue")[iris$Species])
+```
+```{r fig=T}
+biplot(irispca2)
+```
+
+
+Here you can see the direction vectors of the original variables are relatively uniform in length in the PCA space. This is due to the standardization in the correlation matrix. However, the general message is the same: Petal.Width and Petal.Length Cluster together, and many of the same observations appear "on the fray" on the PCA space - although not all of them!
+
+### Which Projection is Better? 
+
+What do you think? It depends on the task, and it depends on the data. One flavor of PCA is not "better" than the other. Correlation PCA is appropriate when the scales of your attributes differ wildly, and covariance PCA would be inappropriate in that situation. But in all other scenarios, when the scales of our attributes are roughly the same, we should always consider both dimension reductions and make a decision based upon the resulting output (variance explained, projection plots, loadings). 
+
+For the iris data, The results in terms of variable clustering are pretty much the same. For clustering/classifying the 3 species of flowers, we can see better separation in the covariance version.
+
+### Beware of biplots 
+
+Be careful not to draw improper conclusions from biplots. Particularly, be careful about situations where the first two principal components do not summarize the majority of the variance. If a large amount of variance is captured by the 3rd or 4th (or higher) principal components, then we must keep in mind that the variable projections on the first two principal components are flattened out versions of a higher dimensional picture. If a variable vector appears short in the 2-dimensional projection, it means one of two things:
+
+- That variable has small variance
+- That variable appears to have small variance when depicted in the space of the first two principal components, but truly has a larger variance which is represented by 3rd or higher principal components.
+
+
+Let's take a look at an example of this. We'll generate 500 rows of data on 4 nearly independent normal random variables. Since these variables are uncorrelated, we might expect that the 4 orthogonal principal components will line up relatively close to the original variables. If this doesn't happen, then at the very least we can expect the biplot to show little to no correlation between the variables. We'll give variables $2$ and $3$ the largest variance. Multiple runs of this code will generate different results with similar implications.
+
+```{r fig=TRUE, fig.align ='center', fig.cap = 'BiPlot of Iris Data', id='irisbiplot'}
+means=c(2,4,1,3)
+sigmas=c(7,9,10,8)
+sample.size=500
+data=mapply(function(mu,sig){rnorm(mu,sig, n=sample.size)},mu=means,sig=sigmas)
+cor(data)
+
+pc=prcomp(data,scale=TRUE)
+summary(pc)
+pc$rotation
+
+biplot(pc)
+```
+
+Obviously, the wrong conclusion to make from this biplot is that Variables 1 and 4 are correlated. Variables 1 and 4 do not load highly on the first two principal components - in the _whole_ 4-dimensional principal component space they are nearly orthogonal to each other and to variables 1 and 2. Thus, their orthogonal projections appear near the origin of this 2-dimensional subspace.
+
+The morals of the story: 
+<ul>
+<li> Always corroborate your results using the variable loadings and the amount of variation explained by each variable.
+<li> When a variable shows up near the origin in a biplot, it is generally not well represented by your two-dimensional approximation of the data.
+</ul>

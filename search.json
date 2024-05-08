@@ -3994,14 +3994,14 @@
     "href": "lectures/ch5lecture5.html#direction-of-maximum-variance",
     "title": "Ch5 Lecture 5",
     "section": "Direction of maximum variance",
-    "text": "Direction of maximum variance\nTo find the direction of maximum variance, we need to find the unit vector \\(\\mathbf{u}\\) that maximizes \\(\\mathbf{u}^T C \\mathbf{u}\\).\n\nWe start by finding the eigendecomposition of the covariance matrix \\(C\\): \\(C = V \\Lambda V^T\\).\n\\(V\\) is a matrix whose columns are the eigenvectors of \\(C\\), and \\(\\Lambda\\) is a diagonal matrix whose diagonal elements are the eigenvalues of \\(C\\).\n(Note that these are simply the right singular vectors and singular values of the data matrix \\(X\\).)\nThen we can express \\(\\mathbf{u}\\) in terms of the eigenvectors of \\(C\\): \\(\\mathbf{u} = \\sum_{i=1}^p a_i \\mathbf{v}_i\\), where \\(\\mathbf{v}_i\\) are the eigenvectors of \\(C\\). Because \\(\\mathbf{u}\\) is a unit vector, the coefficients \\(a_i\\) must sum to 1.\nNow we have that \\(C \\mathbf{u = \\sum_{i=1}^p C v_i a_i =  \\sum_{i=1}^p a_i v_i\\), where \\(\\lambda_i\\) are the eigenvalues of \\(C\\).\nSo then \\(\\mathbf{u}^T C \\mathbf{u} = \\sum_{i,j=1}^p a_i a_j \\mathbf{v_j}\\mathbf{v_j} = \\sum_{i,j=1}^p a_i a_j \\delta_{i,j}||v_i||  \\lambda_i = \\sum_{i=1}^p a_i^2 \\lambda_i\\)."
+    "text": "Direction of maximum variance\nTo find the direction of maximum variance, we need to find the unit vector \\(\\mathbf{u}\\) that maximizes \\(\\mathbf{u}^T C \\mathbf{u}\\).\n. . . ::: notes We start by finding the eigendecomposition of the covariance matrix \\(C\\): \\(C = V \\Lambda V^T\\).\n\\(V\\) is a matrix whose columns are the eigenvectors of \\(C\\), and \\(\\Lambda\\) is a diagonal matrix whose diagonal elements are the eigenvalues of \\(C\\).\n(Note that these are simply the right singular vectors and singular values of the data matrix \\(X\\).)\nThen we can express \\(\\mathbf{u}\\) in terms of the eigenvectors of \\(C\\): \\(\\mathbf{u} = \\sum_{i=1}^p a_i \\mathbf{v}_i\\), where \\(\\mathbf{v}_i\\) are the eigenvectors of \\(C\\). Because \\(\\mathbf{u}\\) is a unit vector, the coefficients \\(a_i\\) must sum to 1.\nNow we have that \\(C \\mathbf{u} = \\sum_{i=1}^p C v_i a_i =  \\sum_{i=1}^p a_i v_i\\), where \\(\\lambda_i\\) are the eigenvalues of \\(C\\).\nSo then \\(\\mathbf{u}^T C \\mathbf{u} = \\sum_{i,j=1}^p a_i a_j \\mathbf{v_j}\\mathbf{v_j} = \\sum_{i,j=1}^p a_i a_j \\delta_{i,j}||v_i||  \\lambda_i = \\sum_{i=1}^p a_i^2 \\lambda_i\\). :::"
   },
   {
     "objectID": "lectures/ch5lecture5.html#which-direction-gives-the-maximum-variance",
     "href": "lectures/ch5lecture5.html#which-direction-gives-the-maximum-variance",
     "title": "Ch5 Lecture 5",
     "section": "Which direction gives the maximum variance?",
-    "text": "Which direction gives the maximum variance?\nTo find the direction that gives the maximum variance, we need to find the set of coefficients \\(a_i\\) that maximize \\(\\sum_{i=1}^p a_i^2 \\lambda_i\\) subject to the constraint that \\(\\sum_{i=1}^p a_i = 1\\). This will have its maximum value when \\(a_i = 1\\) for the eigenvector corresponding to the largest eigenvalue, and \\(a_i = 0\\) for all other eigenvectors.\nSo the direction of maximum variance is given by the eigenvector corresponding to the largest eigenvalue of the covariance matrix. This is the first singular vector of the data matrix, and it is also called the first principal component.\n\nThe first principal component of a data matrix \\(X\\) is the eigenvector corresponding to the largest eigenvalue of the covariance matrix of the data.\nIn terms of the singular value decomposition of \\(X\\), the first principal component is the first right singular vector of \\(X\\): \\(\\mathbf{v_1}\\).\n\nThe variance of the data along each principal component is given by the corresponding eigenvalue, or the square of the corresponding singular value."
+    "text": "Which direction gives the maximum variance?\n\nTo find the direction that gives the maximum variance, we need to find the set of coefficients \\(a_i\\) that maximize \\(\\sum_{i=1}^p a_i^2 \\lambda_i\\) subject to the constraint that \\(\\sum_{i=1}^p a_i = 1\\). This will have its maximum value when \\(a_i = 1\\) for the eigenvector corresponding to the largest eigenvalue, and \\(a_i = 0\\) for all other eigenvectors.\nSo the direction of maximum variance is given by the eigenvector corresponding to the largest eigenvalue of the covariance matrix. This is the first singular vector of the data matrix, and it is also called the first principal component.\n\npause\n\n\nThe first principal component of a data matrix \\(X\\) is the eigenvector corresponding to the largest eigenvalue of the covariance matrix of the data.\nIn terms of the singular value decomposition of \\(X\\), the first principal component is the first right singular vector of \\(X\\):\n\\(\\mathbf{v_1}\\).\n\nThe variance of the data along each principal component is given by the corresponding eigenvalue, or the square of the corresponding singular value."
   },
   {
     "objectID": "lectures/ch5lecture5.html#example-dataset",
@@ -4022,7 +4022,7 @@
     "href": "lectures/ch5lecture5.html#section",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.\nLet’s try visualizing the data in the original space.\n\n\n\n\n\n\n\n\n\n\n\n\nBut there’s a problem here. We know from looking at this that there are at least one of each of these combinations where there’s a dot, but how many?"
+    "text": "The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.\nLet’s try visualizing the data in a few of the dimensions of the original space.\n\n\n\n\n\n\n\n\n\n\n\nBut there’s a problem here. We know from looking at this that there are at least one of each of these combinations where there’s a dot, but how many?"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-1",
@@ -4036,14 +4036,14 @@
     "href": "lectures/ch5lecture5.html#section-2",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Maybe we can learn more from the correlations?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOK, it looks like there are some patterns here. But it’s hard to get a real sense for it."
+    "text": "We can look at many combinations…"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-3",
     "href": "lectures/ch5lecture5.html#section-3",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Now perform PCA on the data.\n\n\nCode\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first four principal components of the data\npca = PCA(n_components=4)\npca.fit(food_scaled);\nprint(f'Explained variance %: {pca.explained_variance_ratio_*100}')\n\n\nExplained variance %: [8.82557345 8.35536632 7.78271496 5.81231421]"
+    "text": "Maybe we can learn more from the correlations?"
   },
   {
     "objectID": "lectures/ch5lecture5.html#meaning-of-the-principal-components",
@@ -4057,7 +4057,7 @@
     "href": "lectures/ch5lecture5.html#section-4",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "pause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+    "text": "OK, it looks like there are some patterns here. But it’s hard to get a real sense for it."
   },
   {
     "objectID": "lectures/ch5lecture5.html#some-real-world-data",
@@ -4065,5 +4065,47 @@
     "title": "Ch5 Lecture 5",
     "section": "Some real-world data",
     "text": "Some real-world data"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#example-dataset-shopping-baskets",
+    "href": "lectures/ch5lecture5.html#example-dataset-shopping-baskets",
+    "title": "Ch5 Lecture 5",
+    "section": "Example dataset: shopping baskets",
+    "text": "Example dataset: shopping baskets\n\n\n\n\n\n\n\n\n\n\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n1990\n1991\n1992\n1993\n1994\n1995\n1996\n1997\n1998\n1999\n\n\nname\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n7up\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n...\n1\n1\n0\n0\n0\n0\n2\n0\n0\n1\n\n\nlasagna\n0\n0\n0\n0\n0\n0\n1\n0\n1\n0\n...\n0\n2\n1\n0\n0\n0\n0\n1\n1\n0\n\n\npepsi\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n...\n1\n0\n2\n0\n0\n2\n0\n0\n0\n0\n\n\nyop\n0\n0\n0\n2\n0\n0\n0\n0\n0\n0\n...\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n\n\nred.wine\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n...\n0\n0\n0\n0\n2\n2\n0\n0\n0\n0\n\n\n\n\n5 rows × 2000 columns"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-5",
+    "href": "lectures/ch5lecture5.html#section-5",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "Now perform PCA on the data.\n\n\nCode\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first four principal components of the data\npca = PCA(n_components=4)\npca.fit(food_scaled);\nprint(f'Explained variance %: {pca.explained_variance_ratio_*100}')\n\n\nExplained variance %: [8.82557344 8.35536634 7.78271494 5.81231143]"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-6",
+    "href": "lectures/ch5lecture5.html#section-6",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "pause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-10",
+    "href": "lectures/ch5lecture5.html#section-10",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n...\n10094\n10095\n10096\n10097\n10098\n10099\n10100\n10101\n10102\n10103\n\n\n\n\n0\nG\nG\nT\nT\nA\nA\nC\nA\nC\nC\n...\nT\nA\nT\nA\nA\nT\nT\nT\nG\nA\n\n\n1\nA\nA\nT\nT\nA\nG\nC\nA\nT\nT\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n2\nA\nA\nT\nT\nA\nA\nG\nA\nC\nC\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n3\nA\nA\nT\nC\nA\nA\nG\nA\nC\nC\n...\nG\nA\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n4\nG\nA\nT\nC\nG\nA\nC\nA\nC\nC\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n\n\n5 rows × 10101 columns"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-11",
+    "href": "lectures/ch5lecture5.html#section-11",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n10091\n10092\n10093\n10094\n10095\n10096\n10097\n10098\n10099\n10100\n\n\n\n\n0\n0\n1\n0\n1\n0\n1\n1\n0\n0\n0\n...\n0\n1\n1\n1\n0\n0\n1\n0\n0\n1\n\n\n1\n1\n0\n0\n1\n0\n0\n1\n0\n1\n1\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n1\n0\n0\n1\n0\n1\n0\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n...\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n4\n0\n0\n0\n0\n1\n1\n1\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n5 rows × 10101 columns"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-12",
+    "href": "lectures/ch5lecture5.html#section-12",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "Code\npca = PCA(n_components=6)\npca.fit(X);\n#Data points projected along the principal components\n\n\n\n\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\npopulation\ngender\n\n\n\n\n0\n4.787196\n-0.876661\n3.302748\n-0.923483\n-1.364570\n0.124643\nACB\n1\n\n\n1\n12.957651\n2.347112\n-0.539180\n-3.931867\n-2.965791\n-1.964023\nACB\n2\n\n\n2\n9.844431\n0.660383\n-1.115683\n-2.488712\n-1.357286\n-1.934453\nACB\n2\n\n\n3\n-0.341785\n-0.726250\n3.487373\n0.481947\n-0.397004\n-0.071552\nACB\n1\n\n\n4\n3.777861\n0.500120\n-2.797637\n-0.958772\n0.613936\n0.263541\nACB\n2"
   }
 ]

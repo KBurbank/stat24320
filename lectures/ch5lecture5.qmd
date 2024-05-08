@@ -15,15 +15,6 @@ format:
       code-fold: show
 ---
 
--   PCA why it works to get maximum variance
--   PCA as a dimensionality reduction technique
--   PCA as a data visualization technique
--   PCA as a noise reduction technique
--   PCA as a feature selection technique
--   PCA as a feature extraction technique
--   PCA as a data compression technique
--   PCA for clustering
--   PCA for classification
 
 ## How spread out is the data along a particular direction?
 
@@ -177,7 +168,7 @@ So the variance of the projected data is given by $\mathbf{u}^T C \mathbf{u}$, w
 To find the direction of maximum variance, we need to find the unit vector $\mathbf{u}$ that maximizes $\mathbf{u}^T C \mathbf{u}$.
 
 . . .
-
+::: notes
 We start by finding the eigendecomposition of the covariance matrix $C$: $C = V \Lambda V^T$.
 
 $V$ is a matrix whose columns are the eigenvectors of $C$, and $\Lambda$ is a diagonal matrix whose diagonal elements are the eigenvalues of $C$.
@@ -186,30 +177,36 @@ $V$ is a matrix whose columns are the eigenvectors of $C$, and $\Lambda$ is a di
 
 Then we can express $\mathbf{u}$ in terms of the eigenvectors of $C$: $\mathbf{u} = \sum_{i=1}^p a_i \mathbf{v}_i$, where $\mathbf{v}_i$ are the eigenvectors of $C$. Because $\mathbf{u}$ is a unit vector, the coefficients $a_i$ must sum to 1.
 
-Now we have that $C \mathbf{u = \sum_{i=1}^p C v_i a_i =  \sum_{i=1}^p a_i v_i$, where $\lambda_i$ are the eigenvalues of $C$.
+Now we have that $C \mathbf{u} = \sum_{i=1}^p C v_i a_i =  \sum_{i=1}^p a_i v_i$, where $\lambda_i$ are the eigenvalues of $C$.
 
 So then $\mathbf{u}^T C \mathbf{u} = \sum_{i,j=1}^p a_i a_j \mathbf{v_j}\mathbf{v_j} = \sum_{i,j=1}^p a_i a_j \delta_{i,j}||v_i||  \lambda_i = \sum_{i=1}^p a_i^2 \lambda_i$.
+:::
 
 ## Which direction gives the maximum variance?
 
+::: notes
 To find the direction that gives the maximum variance, we need to find the set of coefficients $a_i$ that maximize $\sum_{i=1}^p a_i^2 \lambda_i$ subject to the constraint that $\sum_{i=1}^p a_i = 1$. This will have its maximum value when $a_i = 1$ for the eigenvector corresponding to the largest eigenvalue, and $a_i = 0$ for all other eigenvectors.
 
 So the direction of maximum variance is given by the eigenvector corresponding to the largest eigenvalue of the covariance matrix. This is the first singular vector of the data matrix, and it is also called the first principal component.
+:::
+
+*pause*
+
+. . .
 
 ::: definition
 The first principal component of a data matrix $X$ is the eigenvector corresponding to the largest eigenvalue of the covariance matrix of the data.
 
-In terms of the singular value decomposition of $X$, the first principal component is the first right singular vector of $X$: $\mathbf{v_1}$.
+In terms of the singular value decomposition of $X$, the first principal component is the first right singular vector of $X$: 
+
+$\mathbf{v_1}$.
 :::
 
 The variance of the data along each principal component is given by the corresponding eigenvalue, or the square of the corresponding singular value.
 
-## Example dataset
-
-From [here](https://pca4ds.github.io/from-lanalyse-des-données-to-data-science.html)
 
 
-## Food
+## Example dataset: shopping baskets
 
 ```{python}
 # load in the data from the url, using pandas
@@ -228,7 +225,7 @@ food.head()
 
 The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.
 
-Let's try visualizing the data in the original space.
+Let's try visualizing the data in a few of the dimensions of the original space.
 
 . . .
 
@@ -247,11 +244,13 @@ plt.show()
 
 ```
 
-. . .
+::: notes
 
 But there's a problem here. We know from looking at this that there are at least one of each of these combinations where there's a dot, but how many?
 
-. . .
+:::
+
+##
 
 ```{python}
 # make a scatterplot of the first two columns in the original dataset
@@ -314,12 +313,13 @@ Maybe we can learn more from the correlations?
 # make a heatmap of the correlations between the columns in the original dataset
 plt.imshow(food.T.corr(), cmap='coolwarm', interpolation='none')
 plt.xticks(range(42), food.index, rotation=90)
+plt.yticks(range(42), food.index)
 plt.colorbar()
 plt.title('Correlations between foods')
 plt.show()
 ```
 
-. . .
+##
 
 ```{python}
 # take just the first 10 foods
@@ -429,10 +429,106 @@ def plot_by_pci(i):
 
 ```{python}
 plot_by_pci(1)
+```
+
+##
+
+```{python}
 plot_by_pci(2)
 ```
 
 
 
-## Some real-world data
+# Some real-world data
 
+::: aside
+From [here](https://github.com/sakshamg94/PCA-genome-data/blob/master/PCA_genomes.ipynb)
+:::
+
+
+```{python}
+#| echo: true
+def readAndProcessData():
+    """
+        Function to read the raw text file into a dataframe and keeping the population, gender separate from the genetic data
+        
+        We also calculate the population mode for each attribute or trait (columns)
+        Note that mode is just the most frequently occuring trait
+        
+        return: dataframe (df), modal traits (modes), population and gender for each individual row
+    """
+    
+    df = pd.read_csv('p4dataset2020.txt', header=None, delim_whitespace=True)
+    gender = df[1]
+    population = df[2]
+    print(np.unique(population))
+    
+    df.drop(df.columns[[0, 1, 2]],axis=1,inplace=True)
+    modes = np.array(df.mode().values[0,:])
+    return df, modes, population, gender
+    
+```
+
+```{python}
+df, modes, population, gender = readAndProcessData()
+```
+
+##
+
+```{python}
+df.head()
+```
+
+. . .
+```{python}
+def convertDfToMatrix(df, mode):
+    """
+        Create a binary matrix (binarized) representing mutations away from mode
+        Each row is for an individual, and each column is a trait
+        
+        binarized_{i,j}= 0 if the $i^{th}$ individual has column 
+        $j$’s mode nucleobase for his or her $j^{th}$ nucleobase, 
+        and binarized_{i,j}= 1 otherwise
+    """
+    
+    raw_np = df.to_numpy()
+    binarized = np.where(raw_np!=modes, 1, 0)
+    return binarized
+```
+
+##
+
+```{python}
+X = pd.DataFrame(convertDfToMatrix(df, modes))
+X.head()
+```
+
+##
+
+```{python}
+#| echo: true
+pca = PCA(n_components=6)
+pca.fit(X);
+#Data points projected along the principal components
+
+```
+
+```{python}
+projected = pca.transform(X)
+projected = pd.DataFrame(projected)
+projected.columns=map(lambda x: f'PC{x+1}', range(6))
+# append the population
+projected['population'] = population
+projected['gender'] = gender
+projected.head()
+```
+
+```{python}
+fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white')
+fig.show()
+```
+
+```{python}
+fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white',color='population')
+fig.show()
+```

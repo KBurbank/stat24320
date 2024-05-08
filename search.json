@@ -4043,7 +4043,7 @@
     "href": "lectures/ch5lecture5.html#section-3",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Now perform PCA on the data.\n\n\nCode\nfrom sklearn.decomposition import PCA\nfrom sklearn.preprocessing import StandardScaler\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first two principal components of the data\npca = PCA(n_components=2)\npca.fit(food_scaled)\n\n\nPCA(n_components=2)In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.PCAPCA(n_components=2)\n\n\n\n\n\n\n\n\n\n\n\npause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+    "text": "Now perform PCA on the data.\n\n\nCode\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first four principal components of the data\npca = PCA(n_components=4)\npca.fit(food_scaled);\nprint(f'Explained variance %: {pca.explained_variance_ratio_*100}')\n\n\nExplained variance %: [8.82557345 8.35536632 7.78271496 5.81231421]"
   },
   {
     "objectID": "lectures/ch5lecture5.html#meaning-of-the-principal-components",
@@ -4051,5 +4051,19 @@
     "title": "Ch5 Lecture 5",
     "section": "Meaning of the principal components",
     "text": "Meaning of the principal components"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-4",
+    "href": "lectures/ch5lecture5.html#section-4",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "pause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#some-real-world-data",
+    "href": "lectures/ch5lecture5.html#some-real-world-data",
+    "title": "Ch5 Lecture 5",
+    "section": "Some real-world data",
+    "text": "Some real-world data"
   }
 ]

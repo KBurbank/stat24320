@@ -31,6 +31,9 @@ Suppose we have n data points in p dimensions. We can represent the data as a ma
 
 ## Visualizing the high-dimensional data
 
+
+
+
 ```{python}
 # load in data from the cities91.csv file
 import pandas as pd
@@ -339,19 +342,30 @@ OK, it looks like there are some patterns here. But it's hard to get a real sens
 Now perform PCA on the data.
 
 ```{python}
-#| echo: true
+
+#| output: false
 
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+```
+
+```{python}
+#| echo: true
 # standardize the data
 scaler = StandardScaler()
 food_scaled = scaler.fit_transform(food)
-# find the first two principal components of the data
-pca = PCA(n_components=2)
-pca.fit(food_scaled)
+# find the first four principal components of the data
+pca = PCA(n_components=4)
+pca.fit(food_scaled);
+print(f'Explained variance %: {pca.explained_variance_ratio_*100}')
 ```
 
+```{python}
+import plotly.express as px
+import plotly.io as pio
+```
 
+##
 
 ```{python}
 plt.scatter(pca.components_[0], pca.components_[1])
@@ -369,55 +383,56 @@ First of all, clearly the data is artificial. It's way too neat! (This came from
 What this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the *amount*.
 :::
 
+##
+```{python}
+plt.scatter(pca.components_[2], pca.components_[3])
+plt.xlabel('Third principal component')
+plt.ylabel('Fourth principal component')
+plt.title('Individual food baskets')
+plt.show()
+```
+
+
+
 ## Meaning of the principal components
 
-```{python}
-plt.ion()
-food_pca = pca.transform(food_scaled)
-# plot the data in the new space
-plt.scatter(food_pca[:, 0], food_pca[:, 1])
-for i, food_name in enumerate(food.index):
-  # check if the food_pca value is within the x and y limits
 
-  plt.text(food_pca[i, 0], food_pca[i, 1], food_name)
-plt.xlabel('First principal component')
-plt.ylabel('Second principal component')
-# set the xlim of the plot to -3, 3
-# make the plot interactive
-plt.show()
+
+```{python}
+food_pca = pd.DataFrame(pca.transform(food_scaled))
+food_pca.columns=["Principal Component 1","Principal Component 2","Principal Component 3","Principal Component 4"]
+food_pca.index = food.index
 ```
 
 ```{python}
-food_pca = pca.transform(food_scaled)
-# plot the data in the new space
-plt.scatter(food_pca[:, 0], food_pca[:, 1])
-plt.xlim(-3, 3)
-plt.ylim(1, 3)
-for i, food_name in enumerate(food.index):
-  # check if the food_pca value is within the x and y limits
-  if food_pca[i, 0] < 3 and food_pca[i, 0] > -3 and food_pca[i, 1] < 3 and food_pca[i, 1] > 1:
-    plt.text(food_pca[i, 0], food_pca[i, 1], food_name)
-plt.xlabel('First principal component')
-plt.ylabel('Second principal component')
-# set the xlim of the plot to -3, 3
-
-plt.show()
+fig = px.scatter(food_pca, x="Principal Component 1", y="Principal Component 2" ,template="simple_white", text=food.index)
+fig.update_traces(textposition='top center')
+fig.show()
 ```
+
+##
+
 
 ```{python}
 # plot just the first principal component
-plt.bar(food.index, food_pca[:,0])
-plt.xticks(rotation=90)
-plt.ylabel('Projection on first principal component')
-plt.show()
+# sort by the first principal component
+def plot_by_pci(i):
+  food_sorted = food_pca.sort_values(by=f'Principal Component {i}')
+  fig=px.bar(food_sorted, x=f'Principal Component {i}', text=food_sorted.index, orientation='h',color=f'Principal Component {np.mod(i+2,2)+1}', template='simple_white')
+  #fig.xticks(rotation=90)
+  #fig.ylabel('Projection on first principal component')
+  fig.update_layout(yaxis={'visible': False, 'showticklabels': False}, xaxis={'visible': True, 'showticklabels': True})
+  fig.show()
+
 ```
+
 
 ```{python}
-# plot the second principal component
-plt.bar(food.index, food_pca[:,1])
-plt.xticks(rotation=90)
-plt.ylabel('Projection on second principal component')
-plt.show()
+plot_by_pci(1)
+plot_by_pci(2)
 ```
 
+
+
+## Some real-world data
 

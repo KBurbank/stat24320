@@ -1,451 +1,165 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Stat 24320 - Ch2 Lecture 4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
-<script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.551">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <title>Stat 24320 - Ch2 Lecture 4</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
     }
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <link rel="stylesheet" href="theorem.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/font-awesome.min.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
   }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Ch2 Lecture 4</h1>
+<body>
 
-<div class="quarto-title-authors">
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ch2_lecture4.html"><i class="bi bi-file-slides"></i>RevealJS (course-presentation)</a></li><li><a href="ch2_lecture4.out.ipynb" download="ch2_lecture4.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ch2 Lecture 4</h1>
 </div>
 
-</section><section id="TOC">
-<nav role="doc-toc"> 
-<h2 id="toc-title">Outline for today</h2>
-<ul>
-<li class="fragment"><a href="#/mcmc" id="/toc-mcmc"><em>MCMC</em></a></li>
-<li class="fragment"><a href="#/restricted-boltzmann-machine" id="/toc-restricted-boltzmann-machine"><em>Restricted Boltzmann Machine</em></a></li>
-<li class="fragment"><a href="#/lu-factorization" id="/toc-lu-factorization"><em>LU Factorization</em></a></li>
-</ul>
-</nav>
-</section>
-<section>
-<section id="mcmc" class="title-slide slide level1 center">
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mcmc" class="level1">
 <h1><em>MCMC</em></h1>
-
-</section>
-<section id="idea-of-mcmc" class="title-slide slide level2 center">
-<h2><em>Idea of MCMC</em></h2>
-<aside class="notes">
-<p>Suppose there’s something we want to calculate – say the average web revenue for pages every day.</p>
-<p>Start out simple: suppose we have a revenue amount for each page, per user. How do we calculate the average revenue per page?</p>
-<p>We can figure out how many users visit each page, and then multiply that by the revenue per user for that page.</p>
-<p>We can do this by calculating the stationary distribution of the Markov chain that describes the transitions between pages.</p>
-<p>Or, we can do it by <em>sampling</em>.</p>
-<p>Work through the notebook to see how this works in practice.</p>
-<p>OK, now make it more complicated.</p>
-<p>We have a formula for a given webpage that tells us how much revenue it generates given the user’s age, their gender, their location, etc.</p>
-<p>How can we find the average revenue per page now?</p>
-<p>We need to know the distribution of users and their characteristics. We can’t just use the stationary distribution of the Markov chain anymore.</p>
-<p>We could try to calculate the distribution of users, but that’s hard.</p>
-<p>Instead, we can use a Markov Chain Monte Carlo method to sample from the distribution of users. We can then use these samples to estimate the average revenue per page.</p>
-<p>To do Gibbs sampling, we will sample from the distribution of each variable given the other variables. This is easier than sampling from the joint distribution of all the variables.</p>
-<p>So for instance, we might suppose that a user is male, 25 years old, and on the webpage for the Chicago Cubs. We can specify a distribution of locations for the user’s location given this information. Sample from that distribution.</p>
-<p>Then, we can say ok, we’ve got a user who is 25 years old, on the webpage for the Cubs, and in Chicago. What’s the probability that the user is male?</p>
-<p>Go through all the variables in turn, sampling from the distribution of each given the others, including for the webpages.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="idea-of-mcmc" class="level2">
+<h2 class="anchored" data-anchor-id="idea-of-mcmc"><em>Idea of MCMC</em></h2>
 </section>
 </section>
-<section>
-<section id="restricted-boltzmann-machine" class="title-slide slide level1 center">
+<section id="restricted-boltzmann-machine" class="level1 page-columns page-full">
 <h1><em>Restricted Boltzmann Machine</em></h1>
-
+<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-the-idea-of-a-restricted-boltzmann-machine"><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
 </section>
-<section id="intro-to-the-idea-of-a-restricted-boltzmann-machine" class="title-slide slide level2 center">
-<h2><em>Intro to the idea of a Restricted Boltzmann Machine</em></h2>
-<aside class="notes">
-<p>You’d like to learn about what sort of objects exist in the world. You have a bunch of data, but you don’t know what the objects are. You’d like to learn about the objects and the features that describe them.</p>
-<p>One way to do this is to start trying to assign labels to the objects you are seeing. You can start with random labels, and then try to improve them.</p>
-<p>Your goal can be that if you imagine objects given the labels, you’ll end up with a distribution that looks like the data you have.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="rbm_eyes_images.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="RBM schematic"><img data-src="rbm_eyes_images.png" alt="RBM schematic"></a></p>
-<figcaption>RBM schematic</figcaption>
-</figure>
-</div>
-<p>Your dreams should look like the real world.</p>
-<p>OK, but how do you measure how well your dreams match the real world?</p>
-<p>You could calculate the probability of imagining each possible image… but that’s intractable.</p>
-<p>Instead, you can do a Markov Chain Monte Carlo method called Gibbs sampling. The basic idea of MCMC is that you can sample from a distribution by starting at some point and then moving around in a way that the distribution of your samples will eventually match the distribution you’re interested in.</p>
-<p>For Gibbs sampling, you start with a random sample, and then you update each variable in turn, <strong>given the other variables</strong>. This may be much easier to compute than needing to know the full transition matrix for every possible pair of states. (We are in high dimensions here, because every node in our network is a variable.)</p>
-<p>In the case of the RBM, you update each hidden node given the visible nodes, and then you update each visible node given the hidden nodes. You keep doing this for a while, and then you have a sample from the distribution you’re interested in.</p>
-<p>Now you compare this sample to your data, and you adjust the weights in your network to make the sample look more like the data.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
+<section id="math-of-the-rbm" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="math-of-the-rbm"><em>Math of the RBM</em></h2>
 
-<section id="math-of-the-rbm" class="title-slide slide level2 center">
-<h2><em>Math of the RBM</em></h2>
-
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434"></a></p>
-<div class="fragment">
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
+</div></div><p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-1.jpg?height=327&amp;width=612&amp;top_left_y=1105&amp;top_left_x=434" class="img-fluid"></a></p>
+<p>. . .</p>
 <p>States are determined by an <strong>energy function</strong> <span class="math inline">\(E(\mathbf{v}, \mathbf{h})\)</span>. <span class="math display">\[
 E(\mathbf{v}, \mathbf{h})=-\sum_{i} a_{i} v_{i}-\sum_{j} b_{j} h_{j}-\sum_{i j} v_{i} W_{i j} h_{j}
 \]</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Then the probability distribution is given by the Boltzmann distribution:</p>
 <p><span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v}, \mathbf{h})=\frac{1}{Z} e^{-E(\mathbf{v}, \mathbf{h})}\)</span> where <span class="math inline">\(Z=\sum_{\mathbf{v}, \mathbf{h}} e^{-E(\mathbf{v}, \mathbf{h})}\)</span></p>
-</div>
-<aside><div>
-<p>From https://ml-lectures.org/docs/unsupervised_learning/ml_unsupervised-1.html</p>
-</div></aside></section>
-
-<section id="section" class="title-slide slide level2 center">
-<h2><em></em></h2>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><em></em></h2>
 <p>The probability of a visible vector <span class="math inline">\(\mathbf{v}\)</span> is given by marginalizing over the hidden variables:</p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -457,9 +171,8 @@ P_{\mathrm{rbm}}(\mathbf{v})=\sum_{\mathbf{h}} P_{\mathrm{rbm}}(\mathbf{v}, \mat
 P_{\mathrm{rbm}}\left(v_{i}=1 | \mathbf{h}\right)=\sigma\left(a_{i}+\sum_{j} W_{i j} h_{j}\right), \quad i=1, \ldots, n_{\mathrm{v}}
 \]</span></p>
 </section>
-
-<section id="section-1" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
 <p>The same is true for hidden units, given the visible units:</p>
 <p><span class="math display">\[
 \begin{equation*}
@@ -467,40 +180,35 @@ P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right)=\sigma\left(b_{j}+\sum_{i} v_{
 \end{equation*}
 \]</span></p>
 </section>
-
-<section id="training" class="title-slide slide level2 center">
-<h2><em>Training</em></h2>
+<section id="training" class="level2">
+<h2 class="anchored" data-anchor-id="training"><em>Training</em></h2>
 <p>Consider a set of binary input data <span class="math inline">\(\mathbf{x}_{k}, k=1, \ldots, M\)</span>, drawn from a probability distribution <span class="math inline">\(P_{\text {data }}(\mathbf{x})\)</span>.</p>
 <p>Goal: tune the parameters <span class="math inline">\(\{\mathbf{a}, \mathbf{b}, W\}\)</span> such that after training <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{x}) \approx P_{\mathrm{data}}(\mathbf{x})\)</span>.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>To do this, we need to be able to estimate <span class="math inline">\(P_{\mathrm{rbm}}\)</span>!</p>
 <p>Unfortunately, this is often intractable, because it requires calculating the partition function <span class="math inline">\(Z\)</span>.</p>
-</div>
 </section>
-
-<section id="details-of-the-training" class="title-slide slide level2 center">
-<h2><em>Details of the training</em></h2>
+<section id="details-of-the-training" class="level2">
+<h2 class="anchored" data-anchor-id="details-of-the-training"><em>Details of the training</em></h2>
 <p>We want to maximize the log-likelihood of the data under the model: <span class="math display">\[
 L(\mathbf{a}, \mathbf{b}, W)=-\sum_{k=1}^{M} \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)
 \]</span></p>
-<div class="fragment">
+<p>. . .</p>
 <p>Take derivatives of this with respect to the parameters, and use gradient descent:</p>
 <p><span class="math display">\[
 \begin{equation*}
 \frac{\partial L(\mathbf{a}, \mathbf{b}, W)}{\partial W_{i j}}=-\sum_{k=1}^{M} \frac{\partial \log P_{\mathrm{rbm}}\left(\mathbf{x}_{k}\right)}{\partial W_{i j}}
 \end{equation*}
 \]</span></p>
-</div>
 </section>
-
-<section id="section-2" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
 <p>The derivative has two terms: <span class="math display">\[
 \begin{equation*}
 \frac{\partial \log P_{\mathrm{rbm}}(\mathbf{x})}{\partial W_{i j}}=x_{i} P_{\mathrm{rbm}}\left(h_{j}=1 |\mathbf{x}\right)-\sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
 \end{equation*}
 \]</span></p>
-<div class="fragment">
+<p>. . .</p>
 <p>Use this to update the weights:</p>
 <p><span class="math display">\[
 W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
@@ -510,11 +218,9 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
 \sum_{\mathbf{v}} v_{i} P_{\mathrm{rbm}}\left(h_{j}=1 | \mathbf{v}\right) P_{\mathrm{rbm}}(\mathbf{v})
 \]</span></p>
 <p>Instead, we will use <strong>Gibbs sampling</strong> to estimate <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v})\)</span>.</p>
-</div>
 </section>
-
-<section id="gibbs-sampling-to-the-rescue" class="title-slide slide level2 center">
-<h2><em>Gibbs sampling to the rescue</em></h2>
+<section id="gibbs-sampling-to-the-rescue" class="level2">
+<h2 class="anchored" data-anchor-id="gibbs-sampling-to-the-rescue"><em>Gibbs sampling to the rescue</em></h2>
 <div class="pseudo-code">
 <p>Input: Any visible vector <span class="math inline">\(\mathbf{v}(0)\)</span></p>
 <p>Output: Visible vector <span class="math inline">\(\mathbf{v}(r)\)</span></p>
@@ -523,126 +229,92 @@ W_{i j} \rightarrow W_{i j}-\eta \frac{\partial L(a, b, W)}{\partial W_{i j}}
 <p>sample <span class="math inline">\(\mathbf{v}(n)\)</span> from <span class="math inline">\(P_{\mathrm{rbm}}(\mathbf{v} \mathbf{h}=\mathbf{h}(n))\)</span> end</p>
 </div>
 </section>
-
-<section id="using-an-rbm" class="title-slide slide level2 center">
-<h2><em>Using an RBM</em></h2>
-<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146"></a></p>
+<section id="using-an-rbm" class="level2">
+<h2 class="anchored" data-anchor-id="using-an-rbm"><em>Using an RBM</em></h2>
+<p><a href="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://cdn.mathpix.com/cropped/2024_04_03_f85fd2de2d1ba12d877ag-5.jpg?height=645&amp;width=1285&amp;top_left_y=122&amp;top_left_x=146" class="img-fluid"></a></p>
 </section>
 </section>
-<section>
-<section id="lu-factorization" class="title-slide slide level1 center">
+<section id="lu-factorization" class="level1">
 <h1><em>LU Factorization</em></h1>
-
-</section>
-<section id="section-3" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
 <p>Suppose we want to solve a nonsingular linear system <span class="math inline">\(A x=b\)</span> repeatedly, with different choices of <span class="math inline">\(b\)</span>.</p>
-<div class="fragment">
-<aside class="notes">
-<p>E.g. Heat flow problem, where the right-hand side is determined by the heat source term <span class="math inline">\(f(x)\)</span>.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
+<p>. . .</p>
+<p><a href="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://cdn.mathpix.com/cropped/2024_02_16_adbe27593182d62240abg-017.jpg?height=411&amp;width=612&amp;top_left_y=508&amp;top_left_x=453" height="100"></a></p>
 <p><span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right), i=1,2, \ldots, n
 \end{equation*}
 \]</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Perhaps you want to experiment with different functions for the heat source term.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>What do we do? Each time, we create the augmented matrix <span class="math inline">\(\widetilde{A}=[A \mid b]\)</span>, then get it into reduced row echelon form.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Each time change <span class="math inline">\(b\)</span>, we have to redo all the work of Gaussian or Gauss-Jordan elimination !</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Especially frustrating because the main part of our work is the same: putting the part of <span class="math inline">\(\widetilde{A}\)</span> corresponding to the coefficient matrix <span class="math inline">\(A\)</span> into reduced row echelon form.</p>
-</div>
 </section>
-
-<section id="lu-factorization-saving-that-work" class="title-slide slide level2 center">
-<h2><em>LU Factorization: Saving that work</em></h2>
+<section id="lu-factorization-saving-that-work" class="level2">
+<h2 class="anchored" data-anchor-id="lu-factorization-saving-that-work"><em>LU Factorization: Saving that work</em></h2>
 <p>Goal: Find a way to record our work on <span class="math inline">\(A\)</span>, so that solving a new system involves very little additional work.</p>
 <div class="definition">
 <p>LU Factorization: Let <span class="math inline">\(A\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. An LU factorization of <span class="math inline">\(A\)</span> is a pair of <span class="math inline">\(n \times n\)</span> matrices <span class="math inline">\(L, U\)</span> such that</p>
 <ol type="1">
-<li class="fragment"><span class="math inline">\(L\)</span> is lower triangular.</li>
-<li class="fragment"><span class="math inline">\(U\)</span> is upper triangular.</li>
-<li class="fragment"><span class="math inline">\(A=L U\)</span>.</li>
+<li><span class="math inline">\(L\)</span> is lower triangular.</li>
+<li><span class="math inline">\(U\)</span> is upper triangular.</li>
+<li><span class="math inline">\(A=L U\)</span>.</li>
 </ol>
 </div>
-<div class="fragment">
+<p>. . .</p>
 <p>Why is this so wonderful? Triangular systems <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> are easy to solve.</p>
 <p>Remember: If <span class="math inline">\(A\)</span> is upper triangular, we can solve for the last variable, then the next-to-last variable, etc.</p>
-</div>
 </section>
-
-<section id="solving-an-upper-triangular-system" class="title-slide slide level2 center">
-<h2><em>Solving an upper triangular system</em></h2>
+<section id="solving-an-upper-triangular-system" class="level2">
+<h2 class="anchored" data-anchor-id="solving-an-upper-triangular-system"><em>Solving an upper triangular system</em></h2>
 <p>Let’s say we have the following system:</p>
 <p><span class="math inline">\(A x = b\)</span> where A is the upper-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 1 \\ -2 \end{bmatrix}\)</span>.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 2 &amp; 1 &amp; 0 &amp; | &amp; 1 \\ 0 &amp; 1 &amp; -1 &amp; | &amp; 1 \\ 0 &amp; 0 &amp; -1 &amp; | &amp; -2 \end{bmatrix}\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Back substitution:</p>
 <ol type="1">
-<li class="fragment">Last equation: <span class="math inline">\(-x_3 = -2\)</span>, so <span class="math inline">\(x_3 = 2\)</span>.</li>
-<li class="fragment">Substitute this value into the second equation, <span class="math inline">\(x_2 - x_3 = 1\)</span>, so <span class="math inline">\(x_2 = 3\)</span>.</li>
-<li class="fragment">Finally, we substitute <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> into the first equation, <span class="math inline">\(2x_1 + x_2 = 1\)</span>, so <span class="math inline">\(x_1 = -1\)</span>.</li>
+<li>Last equation: <span class="math inline">\(-x_3 = -2\)</span>, so <span class="math inline">\(x_3 = 2\)</span>.</li>
+<li>Substitute this value into the second equation, <span class="math inline">\(x_2 - x_3 = 1\)</span>, so <span class="math inline">\(x_2 = 3\)</span>.</li>
+<li>Finally, we substitute <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_3\)</span> into the first equation, <span class="math inline">\(2x_1 + x_2 = 1\)</span>, so <span class="math inline">\(x_1 = -1\)</span>.</li>
 </ol>
-</div>
 </section>
-
-<section id="solving-a-lower-triangular-system" class="title-slide slide level2 center">
-<h2><em>Solving a lower triangular system</em></h2>
+<section id="solving-a-lower-triangular-system" class="level2">
+<h2 class="anchored" data-anchor-id="solving-a-lower-triangular-system"><em>Solving a lower triangular system</em></h2>
 <p>If <span class="math inline">\(A\)</span> is lower triangular, we can solve for the first variable, then the second variable, etc.</p>
 <p>Let’s say we have the following system:</p>
 <p><span class="math inline">\(A y = b\)</span> where A is the lower-triangular matrix <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1 \end{bmatrix}\)</span>, and we want to solve for <span class="math inline">\(b = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>We form the augmented matrix <span class="math inline">\(\widetilde{A} = [A | b] = \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; | &amp; 1 \\ -1 &amp; 1 &amp; 0 &amp; | &amp; 0 \\ 1 &amp; 2 &amp; 1 &amp; | &amp; 1 \end{bmatrix}\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Forward substitution:</p>
 <ol type="1">
-<li class="fragment">First equation: <span class="math inline">\(y_1 = 1\)</span>.</li>
-<li class="fragment">Substitute this value into the second equation, <span class="math inline">\(-y_1 + y_2 = 0\)</span>, so <span class="math inline">\(y_2 = 1\)</span>.</li>
-<li class="fragment">Finally, we substitute <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into the third equation, <span class="math inline">\(y_1 + 2y_2 + y_3 = 1\)</span>, so <span class="math inline">\(y_3 = -2\)</span>.</li>
+<li>First equation: <span class="math inline">\(y_1 = 1\)</span>.</li>
+<li>Substitute this value into the second equation, <span class="math inline">\(-y_1 + y_2 = 0\)</span>, so <span class="math inline">\(y_2 = 1\)</span>.</li>
+<li>Finally, we substitute <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> into the third equation, <span class="math inline">\(y_1 + 2y_2 + y_3 = 1\)</span>, so <span class="math inline">\(y_3 = -2\)</span>.</li>
 </ol>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>This was just as easy as solving the upper triangular system!</p>
-</div>
 </section>
-
-<section id="solving-a-x-b-with-lu-factorization" class="title-slide slide level2 center">
-<h2><em>Solving <span class="math inline">\(A x = b\)</span> with LU factorization</em></h2>
+<section id="solving-a-x-b-with-lu-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="solving-a-x-b-with-lu-factorization"><em>Solving <span class="math inline">\(A x = b\)</span> with LU factorization</em></h2>
 <p>Now suppose we want to solve <span class="math inline">\(A x = b\)</span> and we know that <span class="math inline">\(A = L U\)</span>. The original system becomes <span class="math inline">\(L U x = b\)</span>.</p>
 <p>Introduce an intermediate variable <span class="math inline">\(y = U x\)</span>. Our system is now <span class="math inline">\(L y = b\)</span>. Now perform these steps:</p>
 <ol type="1">
-<li class="fragment"><strong>Forward solve</strong>: Solve lower triangular system <span class="math inline">\(L y = b\)</span> for the variable <span class="math inline">\(y\)</span>.</li>
-<li class="fragment"><strong>Back solve</strong>: Solve upper triangular system <span class="math inline">\(U x = y\)</span> for the variable <span class="math inline">\(x\)</span>.</li>
-<li class="fragment">This does it!</li>
+<li><strong>Forward solve</strong>: Solve lower triangular system <span class="math inline">\(L y = b\)</span> for the variable <span class="math inline">\(y\)</span>.</li>
+<li><strong>Back solve</strong>: Solve upper triangular system <span class="math inline">\(U x = y\)</span> for the variable <span class="math inline">\(x\)</span>.</li>
+<li>This does it!</li>
 </ol>
-<div class="fragment">
+<p>. . .</p>
 <p>Once we have the matrices <span class="math inline">\(L, U\)</span>, the right-hand sides only come when solving the two triangular systems. Easy!</p>
-</div>
 </section>
-
-<section id="example" class="title-slide slide level2 center">
-<h2><em>Example</em></h2>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example"><em>Example</em></h2>
 <p>You are given that</p>
 <p><span class="math display">\[
 A=\left[\begin{array}{rrr}
@@ -660,20 +332,7 @@ A=\left[\begin{array}{rrr}
 \end{array}\right] .
 \]</span></p>
 <p>Solve this system for <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
-<aside class="notes">
-<p>Say that y = Ux.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div class="fragment">
+<p>. . .</p>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="fragment">
@@ -716,61 +375,23 @@ x_{3}
 </div>
 </div>
 </div>
-</div>
 </section>
-
-<section id="when-we-can-do-lu-factorization" class="title-slide slide level2 center">
-<h2><em>When we can do LU factorization</em></h2>
+<section id="when-we-can-do-lu-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="when-we-can-do-lu-factorization"><em>When we can do LU factorization</em></h2>
 <ul>
-<li class="fragment">Not all square matrices have LU factorizations! This one doesn’t: <span class="math inline">\(\left[\begin{array}{ll}0 &amp; 1 \\ 1 &amp; 0\end{array}\right]\)</span></li>
-<li class="fragment">If Gaussian elimination can be performed on the matrix <span class="math inline">\(A\)</span> <strong>without row exchanges</strong>, then the factorization exists
+<li>Not all square matrices have LU factorizations! This one doesn’t: <span class="math inline">\(\left[\begin{array}{ll}0 &amp; 1 \\ 1 &amp; 0\end{array}\right]\)</span></li>
+<li>If Gaussian elimination can be performed on the matrix <span class="math inline">\(A\)</span> <strong>without row exchanges</strong>, then the factorization exists
 <ul>
-<li class="fragment">(it’s really a by-product of Gaussian elimination.)</li>
+<li>(it’s really a by-product of Gaussian elimination.)</li>
 </ul></li>
-<li class="fragment">If row exchanges are needed, there is still a factorization that will work, but it’s a bit more complicated.</li>
+<li>If row exchanges are needed, there is still a factorization that will work, but it’s a bit more complicated.</li>
 </ul>
 </section>
-
-<section id="intuition-behind-lu-factorization" class="title-slide slide level2 center">
-<h2><em>Intuition behind LU factorization</em></h2>
-<aside class="notes">
-<p>When we do Gaussian elimination, we are multiplying <span class="math inline">\(A\)</span> by a series of elementary matrices to get it into upper triangular form.</p>
-<p>Call the product of all those elementary matrices <span class="math inline">\(\tilde L\)</span>.</p>
-<p>So our original system <span class="math inline">\(A x = b\)</span> becomes <span class="math inline">\(\tilde L A x = \tilde L b\)</span>.</p>
-<p>We recognize that <span class="math inline">\(\tilde L A\)</span> will be an upper triangular matrix, because that’s what we get when we do Gaussian elimination. This is our <span class="math inline">\(U\)</span>.</p>
-<p>But what about the other part? We can multiply both sides by the inverse of <span class="math inline">\(\tilde L\)</span> to get</p>
-<p><span class="math display">\[
-\begin{aligned}
-\tilde{L}^{-1} \tilde{L} A x &amp;= \tilde{L}^{-1} \tilde L b \\
-\tilde{L}^{-1} U x &amp;= b
-\end{aligned}
-\]</span></p>
-<p>Now the challenge is simply to find the inverse of <span class="math inline">\(\tilde L\)</span>.</p>
-<p>Remember that <span class="math inline">\(\tilde L\)</span> is the product of the elementary matrices that we used when doing Gaussian elimination – call them <span class="math inline">\(E_1\)</span>, <span class="math inline">\(E_2\)</span>, etc.</p>
-<p>So <span class="math inline">\(\tilde L = E_n E_{n-1} \ldots E_1\)</span>.</p>
-<p>The inverse of a product of matrices is the product of the inverses in reverse order: $(E_n E_{n-1} E_1)^{-1} = E_1^{-1} E_2^{-1} E_n^{-1} $.</p>
-<p>Fortunately, the inverse of an elementary matrix is easy to find: it’s just the same matrix with the opposite sign on the entry that was used to eliminate. So if we have the matrix which will add twice the first row to the second row, its inverse will be the matrix which will <strong>subtract</strong> twice the first row from the second row.</p>
-<p><span class="math display">\[
-E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} \quad E^{-1} = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}
-\]</span></p>
-<p>As it happens, when we follow the steps of Gaussian elimination (with no row swaps), the product of all these inverse matrices is just a lower triangular matrix, with each entry equal to the negative of the multiplier we used in doing the associated elimination step.</p>
-<p>This is our <span class="math inline">\(L\)</span>!</p>
-<p>So all we need to do is keep track of these multipliers as we do Gaussian elimination, and we can use them to find the inverse of <span class="math inline">\(\tilde L\)</span>. If we are doing things by hand, we can even write them into the lower part of our matrix as we go, since that part will be zeroed out anyways.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="intuition-behind-lu-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="intuition-behind-lu-factorization"><em>Intuition behind LU factorization</em></h2>
 </section>
-
-<section id="example-1" class="title-slide slide level2 center">
-<h2><em>Example</em></h2>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1"><em>Example</em></h2>
 <p>Here we do Gaussian elimination on the matrix <span class="math inline">\(A = \begin{bmatrix} 2 &amp; 1 &amp; 0 \\ -2 &amp; 0 &amp; -1 \\ 2 &amp; 3 &amp; -3 \end{bmatrix}\)</span>:</p>
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\-2 &amp; 0 &amp; -1\\2 &amp; 3 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 2 &amp; -3\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0\\0 &amp; 1 &amp; -1\\0 &amp; 0 &amp; -1\end{smallmatrix}\right]\)</span></p>
 <div class="columns">
@@ -778,24 +399,23 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <div class="fragment">
 <p>Let’s put those elementary row operations into matrix form. There were three of them:</p>
 <ol type="1">
-<li class="fragment"><span class="math inline">\(E_{21}(1)\)</span> : <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
-<li class="fragment"><span class="math inline">\(E_{31}(-1)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
-<li class="fragment"><span class="math inline">\(E_{32}(-2)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(E_{21}(1)\)</span> : <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(E_{31}(-1)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -1 &amp; 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(E_{32}(-2)\)</span>: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{bmatrix}\)</span></li>
 </ol>
 </div>
 </div><div class="column" style="width:45%;">
 <div class="fragment">
 <p>The <strong>inverses</strong> of these matrices are</p>
 <ol type="1">
-<li class="fragment"><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
+<li><span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ -1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>, and <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 2 &amp; 1 \end{bmatrix}\)</span>.</li>
 </ol>
 </div>
 </div>
 </div>
 </section>
-
-<section id="section-4" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
 <p>The product of all these matrices is</p>
 <p><span class="math display">\[
 \left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\-1 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1\end{matrix}\right]\left[\begin{matrix}1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 0\\0 &amp; -2 &amp; 1\end{matrix}\right]=\left[\begin{matrix}1 &amp; 0 &amp; 0\\1 &amp; 1 &amp; 0\\-1 &amp; -2 &amp; 1\end{matrix}\right]
@@ -803,33 +423,26 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 <p>This is a lower triangular matrix, and it is the inverse of the matrix we used to do Gaussian elimination.</p>
 <p>We can also see that the entries below the diagonal are the negatives of the multipliers we used in the elimination steps.</p>
 </section>
-
-<section id="steps-to-lu-factorization" class="title-slide slide level2 center">
-<h2><em>Steps to LU factorization</em></h2>
+<section id="steps-to-lu-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="steps-to-lu-factorization"><em>Steps to LU factorization</em></h2>
 <p>Let <span class="math inline">\(\left[a_{i j}^{(k)}\right]\)</span> be the matrix obtained from <span class="math inline">\(A\)</span> after using the <span class="math inline">\(k\)</span> th pivot to clear out entries below it.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>(The original matrix is <span class="math inline">\(A=\left[a_{i j}^{(0)}\right]\)</span>)</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>All the row operations we will use include ratios <span class="math inline">\(\left(-a_{i j} / a_{j j}\right)\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>The row-adding elementary operations are of the form</p>
 <p><span class="math inline">\(E_{i j}\left(-a_{i j}^{(k)} / a_{j j}^{(k)}\right)\)</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>We can give these ratios a name: <strong>multipliers</strong>.</p>
 <p><span class="math inline">\(m_{i j}=-a_{i j}^{(k)} / a_{j j}^{(k)}\)</span>, where <span class="math inline">\(i&gt;j\)</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <div class="theorem">
 <p>If Gaussian elimination is used without row exchanges on the nonsingular matrix <span class="math inline">\(A\)</span>, resulting in the upper triangular matrix <span class="math inline">\(U\)</span>, and if <span class="math inline">\(L\)</span> is the unit lower triangular matrix whose entries below the diagonal are the negatives of the multipliers <span class="math inline">\(m_{i j}\)</span>, then <span class="math inline">\(A=L U\)</span>.</p>
 </div>
-</div>
 </section>
-
-<section id="storing-the-multipliers-as-we-go" class="title-slide slide level2 center">
-<h2><em>Storing the multipliers as we go</em></h2>
+<section id="storing-the-multipliers-as-we-go" class="level2">
+<h2 class="anchored" data-anchor-id="storing-the-multipliers-as-we-go"><em>Storing the multipliers as we go</em></h2>
 <p>For efficiency, we can just “store” the multipliers in the lower triangular part of the matrix on the left as we go along, since that will be zero anyways.</p>
 <p><span class="math display">\[
 \left[\begin{array}{rrr}
@@ -846,20 +459,7 @@ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 2 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 
 1 &amp; 2 &amp; -1
 \end{array}\right] .
 \]</span></p>
-<div class="fragment">
-<aside class="notes">
-<p>circle the multipliers as we go along</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>. . .</p>
 <p>Now we read off the results from the final matrix:</p>
 <p><span class="math display">\[
 L=\left[\begin{array}{rrr}
@@ -872,491 +472,477 @@ L=\left[\begin{array}{rrr}
 0 &amp; 0 &amp; -1
 \end{array}\right]
 \]</span></p>
-</div>
 </section>
-
-<section id="superaugmented-matrix" class="title-slide slide level2 center">
-<h2><em>Superaugmented matrix</em></h2>
+<section id="superaugmented-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="superaugmented-matrix"><em>Superaugmented matrix</em></h2>
 <p>Could we just keep track by using the superaugmented matrix, like we did last lecture? What would that look like?</p>
 <p><strong>pause</strong></p>
 <div class="fragment">
 <p><span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\-2 &amp; 0 &amp; -1 &amp; 0 &amp; 1 &amp; 0\\2 &amp; 3 &amp; -3 &amp; 0 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{31}(-1)]{E_{21}(1)}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 2 &amp; -3 &amp; -1 &amp; 0 &amp; 1\end{smallmatrix}\right]\)</span> <span class="math inline">\(\xrightarrow[E_{32}(-2)]{\longrightarrow}\)</span> <span class="math inline">\(\left[\begin{smallmatrix}2 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; -1 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; -1 &amp; -3 &amp; -2 &amp; 1\end{smallmatrix}\right]\)</span></p>
 </div>
-<div class="fragment">
+<p>. . .</p>
 <p>Our superaugmented matrix does become an upper triangular matrix on the left and a lower triangular matrix on the right.</p>
 <p>Unfortunately, the lower triangular matrix on the right is <span class="math inline">\(\tilde{L}^{-1}\)</span>, not <span class="math inline">\(\tilde{L}\)</span>.</p>
 <p>So we can’t just read off <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> from the superaugmented matrix.</p>
-</div>
 </section>
-
-<section id="plu-factorization" class="title-slide slide level2 center">
-<h2><em>PLU factorization</em></h2>
+<section id="plu-factorization" class="level2">
+<h2 class="anchored" data-anchor-id="plu-factorization"><em>PLU factorization</em></h2>
 <p>What if we need row exchanges?</p>
 <ul>
-<li class="fragment"><p>We could start off by doing all the row-exchanging elementary operations that we need, and store the product of these row-exchanging matrices as a matrix <span class="math inline">\(P\)</span>.</p></li>
-<li class="fragment"><p>This product is called a <strong>permutation matrix</strong></p></li>
-<li class="fragment"><p>Applying the correct permuatation matrix <span class="math inline">\(P\)</span> to <span class="math inline">\(A\)</span>, we get a matrix for which Gaussian elimination will succeed without further row exchanges.</p></li>
+<li><p>We could start off by doing all the row-exchanging elementary operations that we need, and store the product of these row-exchanging matrices as a matrix <span class="math inline">\(P\)</span>.</p></li>
+<li><p>This product is called a <strong>permutation matrix</strong></p></li>
+<li><p>Applying the correct permuatation matrix <span class="math inline">\(P\)</span> to <span class="math inline">\(A\)</span>, we get a matrix for which Gaussian elimination will succeed without further row exchanges.</p></li>
 </ul>
-<div class="fragment">
+<p>. . .</p>
 <p>Now we have a theorem that applies to all nonsingular matrices:</p>
 <div class="theorem">
 <p>If <span class="math inline">\(A\)</span> is a nonsingular matrix, then there exists a permutation matrix <span class="math inline">\(P\)</span>, upper triangular matrix <span class="math inline">\(U\)</span>, and unit lower triangular matrix <span class="math inline">\(L\)</span> such that <span class="math inline">\(P A=L U\)</span>.</p>
 </div>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>So, if you’ve got a nonsingular matrix <span class="math inline">\(A\)</span>, you can always find a permutation matrix <span class="math inline">\(P\)</span>, an upper triangular matrix <span class="math inline">\(U\)</span>, and a unit lower triangular matrix <span class="math inline">\(L\)</span> that satisfy <span class="math inline">\(P A=L U\)</span>. Pretty neat, huh?</p>
 
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
 
-</div>
-</div>
-<div class="reveal-header">
-<div class="header-logo">
-<img data-src="">
-</div>
-<div class="sc-title">
-<p> </p>
-</div>
-<div class="header-text">
-
-</div>
-<div class="sb-title">
-<p> </p>
-</div>
-<div id="reveal-subheader" class="sub-title">
-<p> </p>
-</div>
-</div>
-<div class="reveal-footer">
-<div class="footer-section">
-<p> </p>
-</div>
-</div>
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">RBM schematic</span>
-</div>
-</div>
 </section>
 </section>
-    </div>
-  </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
-  <script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/jquery-min.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/jquery.awesome-cursor.min.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': true,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"id":"088c3a9ce7c86f35","secret":null,"url":"https://reveal-multiplex.glitch.me/"},
-'chalkboard': {"buttons":true},
-'smaller': true,
- 
-        // Display controls in the bottom right corner
-        controls: false,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'c',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'linear',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: true,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealTabletChalkboard, QuartoSupport,
-
-          RevealMath,
-          
-          RevealSearch,
-          RevealZoom
-        ]
-      });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
       }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
-      });
-      clipboard.on('success', function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
       }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
           } else {
-            return "";
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
           }
         });
       }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
           }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
-          });
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/lectures/ch2_lecture4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
         }
       }
-    });
-    </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
-    window.onload = () => {
-      lightboxQuarto.on('slide_before_load', (data) => {
-        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-        const href = trigger.getAttribute('href');
-        if (href !== null) {
-          const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-          if (imgEl !== null) {
-            const srcAttr = imgEl.getAttribute("src");
-            if (srcAttr && srcAttr.startsWith("data:")) {
-              slideConfig.href = srcAttr;
-            }
-          }
-        } 
-      });
+    } 
+  });
 
-      lightboxQuarto.on('slide_after_load', (data) => {
-        const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(slideNode);
-        }
-      });
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
 
-    };
-              </script>
-    
+};
+          </script>
+
+
+
 
 </body></html>

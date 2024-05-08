@@ -1,0 +1,423 @@
+---
+title: Ch5 Lecture 5
+lecture_day: 15
+readings: "5.1,5.2,5.3"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+-   PCA why it works to get maximum variance
+-   PCA as a dimensionality reduction technique
+-   PCA as a data visualization technique
+-   PCA as a noise reduction technique
+-   PCA as a feature selection technique
+-   PCA as a feature extraction technique
+-   PCA as a data compression technique
+-   PCA for clustering
+-   PCA for classification
+
+## How spread out is the data along a particular direction?
+
+Suppose we have n data points in p dimensions. We can represent the data as a matrix $X$ of size $n \times p$. The data points are represented as rows in the matrix, and we have subtracted the mean along each dimension from the data.
+
+## Visualizing the high-dimensional data
+
+```{python}
+# load in data from the cities91.csv file
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+cities = pd.read_csv('cities91.csv')
+cities.head()
+```
+
+::: aside
+Dataset taken from [here](https://pca4ds.github.io/data-and-goals.html)
+:::
+
+We might choose to focus on only 12 (!) of the 41 variables in the dataset, corresponding to the average wages of workers in 12 specific occupations in each city.
+
+```{python}
+# select only second and then last 12 columns
+cities_small = cities.iloc[:, [1] + list(range(29, 41))]
+cities_small.head()
+```
+
+How can we think about the data in this 12-dimensional space?
+
+## Clouds of row-points
+
+![](images/paste-1.png)
+
+::: notes
+distances between points represent similarity between cities...
+:::
+
+## Clouds of column-points
+
+![](images/paste-2.png)
+
+::: notes
+each point represents one feature, plotted in one dimension for each city
+
+distances between points represent similarity between *features*, such as (in this case) salaries in specific occupations
+:::
+
+## Projection onto fewer dimensions
+
+To visualize data, we need to project it onto 2d (or 3d) subspaces. But which ones?
+
+These are all equivalent:
+
+-   maximize variance of projected data
+
+-   minimize squared distances between data points and their projections
+
+-   keep distances between points as similar as possible in original vs projected space
+
+## Example in the space of column points
+
+![](images/paste-3.png)
+
+## Example
+
+```{python}
+# define the first column of the data as name labels, so that sklearn doesn't use them in the fit
+cities_small = cities.iloc[:, [1] + list(range(29, 41))]
+# remove rows with NaN values
+
+cities_small.set_index('city', inplace=True)
+#names = cities_small['city']
+#cities_small = cities_small.drop('city', axis=1)
+# standardize the data
+cities_small = cities_small.dropna()
+cities_small = (cities_small - cities_small.mean(axis=0)) 
+cities_small = cities_small.dropna()
+
+# find the first two principal components of the data
+from sklearn.decomposition import PCA
+pca = PCA(n_components=2)
+pca.fit(cities_small)
+cities_small_pca = pca.transform(cities_small)
+# plot the data in the new space, labeling each point with the city name
+plt.scatter(cities_small_pca[:, 0], cities_small_pca[:, 1])
+for i, city in enumerate(cities_small.index):
+  plt.text(cities_small_pca[i, 0], cities_small_pca[i, 1], str(city))
+plt.xlabel('First principal component')
+plt.ylabel('Second principal component')
+plt.show()
+```
+
+```{python}
+# make a circle plot of the correlations between the original features in the direction of the two principal components
+plt.figure(figsize=(6,6))
+plt.gca().add_artist(plt.Circle((0, 0), 1, fill=False))
+# normalize the lengths of the arrows
+
+components = pca.components_[0:2,:]
+# normalize the lengths of the components along the second dimension
+
+
+components = components / np.linalg.norm(components,axis=0)
+
+for i, feature in enumerate(cities_small.columns):
+  plt.arrow(0, 0, components[0, i], components[1, i], head_width=0.05, head_length=0.1, length_includes_head=True)
+  plt.text(components[0, i], components[1, i], feature)
+plt.xlim(-1, 1)
+plt.ylim(-1, 1)
+plt.xlabel('First principal component')
+plt.ylabel('Second principal component')
+plt.show()
+```
+
+We'd like to know in which directions in $R^p$ the data has the highest variance.
+
+. . .
+
+First: understand how much the data is spread out along a particular direction, given by a unit vector $\mathbf{u}$.
+
+. . .
+
+Remember, for each point $\mathbf{x}_i$ in the data, we can project it onto the direction $\mathbf{u}$ by computing $\psi_i = \mathbf{x}_i \cdot \mathbf{u}$.
+
+![](images/figure-2-1.png)
+
+. . .
+
+We then define the vector of all the projected points as $\mathbf{\psi} = X \mathbf{u}$.
+
+. . .
+
+What is the variance of the projected data? Since the data has been centered, the variance is given by $\frac{1}{n} \sum_{i=1}^n v_i^2 = \frac{1}{n} \mathbf{v}^T \mathbf{v}$.
+
+. . .
+
+We can rewrite this in terms of the original data matrix as $\frac{1}{n} \mathbf{v}^T \mathbf{v} = \frac{1}{n} \mathbf{u}^T X^T X \mathbf{u}$.
+
+We recognize that $X^T X$ is the covariance matrix of the data.
+
+. . .
+
+So the variance of the projected data is given by $\mathbf{u}^T C \mathbf{u}$, where $C = \frac{1}{n} X^T X$ is the covariance matrix of the data.
+
+## Direction of maximum variance
+
+To find the direction of maximum variance, we need to find the unit vector $\mathbf{u}$ that maximizes $\mathbf{u}^T C \mathbf{u}$.
+
+. . .
+
+We start by finding the eigendecomposition of the covariance matrix $C$: $C = V \Lambda V^T$.
+
+$V$ is a matrix whose columns are the eigenvectors of $C$, and $\Lambda$ is a diagonal matrix whose diagonal elements are the eigenvalues of $C$.
+
+(Note that these are simply the right singular vectors and singular values of the data matrix $X$.)
+
+Then we can express $\mathbf{u}$ in terms of the eigenvectors of $C$: $\mathbf{u} = \sum_{i=1}^p a_i \mathbf{v}_i$, where $\mathbf{v}_i$ are the eigenvectors of $C$. Because $\mathbf{u}$ is a unit vector, the coefficients $a_i$ must sum to 1.
+
+Now we have that $C \mathbf{u = \sum_{i=1}^p C v_i a_i =  \sum_{i=1}^p a_i v_i$, where $\lambda_i$ are the eigenvalues of $C$.
+
+So then $\mathbf{u}^T C \mathbf{u} = \sum_{i,j=1}^p a_i a_j \mathbf{v_j}\mathbf{v_j} = \sum_{i,j=1}^p a_i a_j \delta_{i,j}||v_i||  \lambda_i = \sum_{i=1}^p a_i^2 \lambda_i$.
+
+## Which direction gives the maximum variance?
+
+To find the direction that gives the maximum variance, we need to find the set of coefficients $a_i$ that maximize $\sum_{i=1}^p a_i^2 \lambda_i$ subject to the constraint that $\sum_{i=1}^p a_i = 1$. This will have its maximum value when $a_i = 1$ for the eigenvector corresponding to the largest eigenvalue, and $a_i = 0$ for all other eigenvectors.
+
+So the direction of maximum variance is given by the eigenvector corresponding to the largest eigenvalue of the covariance matrix. This is the first singular vector of the data matrix, and it is also called the first principal component.
+
+::: definition
+The first principal component of a data matrix $X$ is the eigenvector corresponding to the largest eigenvalue of the covariance matrix of the data.
+
+In terms of the singular value decomposition of $X$, the first principal component is the first right singular vector of $X$: $\mathbf{v_1}$.
+:::
+
+The variance of the data along each principal component is given by the corresponding eigenvalue, or the square of the corresponding singular value.
+
+## Example dataset
+
+From [here](https://pca4ds.github.io/from-lanalyse-des-données-to-data-science.html)
+
+
+## Food
+
+```{python}
+# load in the data from the url, using pandas
+import pandas as pd
+url = 'my_basket.csv'
+food = pd.read_csv(url).T
+# name the first column 'name'
+
+food.index.names=['name ']
+#food.set_index('name', inplace=True)
+food.head()
+```
+
+
+##
+
+The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.
+
+Let's try visualizing the data in the original space.
+
+. . .
+
+```{python}
+# make a scatterplot of the first two columns in the original dataset
+plt.scatter(food.iloc[0,:], food.iloc[1,:])
+plt.xlabel(f'Number of {food.index[0]} in basket')
+plt.ylabel(f'Number of {food.index[1]} in basket')
+# calculate the number of observations where the first two coluimns both equal 2.0
+# increase the max x and max y by 0.5
+plt.xlim(-.5, 4.5)
+plt.ylim(-0.5, 4.5)
+plt.title('Baskets of food')
+plt.show()
+
+
+```
+
+. . .
+
+But there's a problem here. We know from looking at this that there are at least one of each of these combinations where there's a dot, but how many?
+
+. . .
+
+```{python}
+# make a scatterplot of the first two columns in the original dataset
+def plot_food_scatter(food, x_col, y_col, ax2=None):
+  if ax2 is None:
+    no_ax_in = True
+    fig = plt.figure(figsize=(10,5))
+    ax2 = fig.add_subplot(111, projection='3d')
+  else:
+    no_ax_in = False
+  
+  yval = np.zeros([10,10])
+  for i in range(4):
+    for j in range(5):
+      yval[i,j] = sum((food.iloc[x_col, :] == i) & (food.iloc[y_col, :] == j))
+  
+
+  xpos, ypos = np.meshgrid(range(4), range(5), indexing='ij')
+  xpos = xpos.flatten()
+  ypos = ypos.flatten()
+  zpos = np.zeros_like(xpos)
+  dz = yval[0:4, 0:5].flatten()
+  dx = dy = 0.5
+  ax2.bar3d(xpos, ypos, zpos, dx, dy, dz, shade=True)
+  plt.xlabel(f'# of {food.index[x_col]}')
+  plt.ylabel(f'# of {food.index[y_col]}')
+  # hide the ticks
+  ax2.set_xticks([])
+  ax2.set_yticks([])
+  # make the spacing tight
+
+  if no_ax_in:
+    plt.show()
+```
+
+```{python}
+plot_food_scatter(food, 0, 1)
+```
+
+##
+
+We can look at many combinations...
+
+```{python}
+fig = plt.figure(figsize=(12,12))
+for i in range(3):
+  for j in range(3):
+    ax = fig.add_subplot(3,3,3*i+j+1,projection='3d')
+    plot_food_scatter(food, i, j, ax)
+plt.tight_layout()
+plt.show()
+```
+
+##
+
+Maybe we can learn more from the correlations?
+
+. . .
+```{python}
+# make a heatmap of the correlations between the columns in the original dataset
+plt.imshow(food.T.corr(), cmap='coolwarm', interpolation='none')
+plt.xticks(range(42), food.index, rotation=90)
+plt.colorbar()
+plt.title('Correlations between foods')
+plt.show()
+```
+
+. . .
+
+```{python}
+# take just the first 10 foods
+food_small = food.iloc[0:10]
+# set the range of the colormap to be -0.05 to 0.4
+plt.imshow(food_small.T.corr(), cmap='coolwarm', interpolation='none', vmin=-0.05, vmax=0.4)
+plt.xticks(range(10), food_small.index, rotation=90)
+plt.yticks(range(10), food_small.index)
+plt.colorbar()
+plt.title('Correlations between foods')
+plt.show()
+```
+
+. . .
+
+OK, it looks like there are some patterns here. But it's hard to get a real sense for it.
+
+##
+
+Now perform PCA on the data.
+
+```{python}
+#| echo: true
+
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+# standardize the data
+scaler = StandardScaler()
+food_scaled = scaler.fit_transform(food)
+# find the first two principal components of the data
+pca = PCA(n_components=2)
+pca.fit(food_scaled)
+```
+
+
+
+```{python}
+plt.scatter(pca.components_[0], pca.components_[1])
+plt.xlabel('First principal component')
+plt.ylabel('Second principal component')
+plt.title('Individual food baskets')
+plt.show()
+```
+
+*pause*
+
+::: notes
+First of all, clearly the data is artificial. It's way too neat! (This came from a machine learning textbook.)
+
+What this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the *amount*.
+:::
+
+## Meaning of the principal components
+
+```{python}
+plt.ion()
+food_pca = pca.transform(food_scaled)
+# plot the data in the new space
+plt.scatter(food_pca[:, 0], food_pca[:, 1])
+for i, food_name in enumerate(food.index):
+  # check if the food_pca value is within the x and y limits
+
+  plt.text(food_pca[i, 0], food_pca[i, 1], food_name)
+plt.xlabel('First principal component')
+plt.ylabel('Second principal component')
+# set the xlim of the plot to -3, 3
+# make the plot interactive
+plt.show()
+```
+
+```{python}
+food_pca = pca.transform(food_scaled)
+# plot the data in the new space
+plt.scatter(food_pca[:, 0], food_pca[:, 1])
+plt.xlim(-3, 3)
+plt.ylim(1, 3)
+for i, food_name in enumerate(food.index):
+  # check if the food_pca value is within the x and y limits
+  if food_pca[i, 0] < 3 and food_pca[i, 0] > -3 and food_pca[i, 1] < 3 and food_pca[i, 1] > 1:
+    plt.text(food_pca[i, 0], food_pca[i, 1], food_name)
+plt.xlabel('First principal component')
+plt.ylabel('Second principal component')
+# set the xlim of the plot to -3, 3
+
+plt.show()
+```
+
+```{python}
+# plot just the first principal component
+plt.bar(food.index, food_pca[:,0])
+plt.xticks(rotation=90)
+plt.ylabel('Projection on first principal component')
+plt.show()
+```
+
+```{python}
+# plot the second principal component
+plt.bar(food.index, food_pca[:,1])
+plt.xticks(rotation=90)
+plt.ylabel('Projection on second principal component')
+plt.show()
+```
+
+

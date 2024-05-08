@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -96,37 +130,16 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">4</span> <em></em></a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">5</span> <em></em></a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6</span> <em></em></a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7</span> <em></em></a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8</span> <em></em></a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">9</span> <em></em></a></li>
-  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">10</span> <em></em></a></li>
-  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">11</span> <em></em></a></li>
-  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><span class="header-section-number">12</span> <em></em></a></li>
-  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><span class="header-section-number">13</span> <em></em></a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -142,37 +155,127 @@ window.Quarto = {
     
   
     
-<div>
-    <div class="quarto-title-meta-heading">Due Date:</div>
-      <div class="quarto-title-meta-contents">
-      <p class="due-date">Wednesday, Week 4</p>
-    </div>
   </div>
-
-<div>
-    <div class="quarto-title-meta-heading">Textbook Chapters:</div>
-      <div class="quarto-title-meta-contents">
-      <p class="due-date">2.4, 2.5, 2.8</p>
-    </div>
-  </div>
+  
 
 
-
-
-</div></header>
+</header>
 
 
 <section id="section" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
 <p>Show that if <span class="math inline">\(P\)</span> and <span class="math inline">\(Q\)</span> are stochastic matrices of the same size, then <span class="math inline">\(P Q\)</span> is also stochastic.</p>
+<div class="solutions">
+<p>2.4.29 Block <span class="math inline">\(Q\)</span> into columns <span class="math inline">\(\mathbf{q}_{i}\)</span>, each of which is a probability distribution vector, and obtain</p>
+<p><span class="math display">\[
+P Q=P\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \ldots, \mathbf{q}_{n}\right]=\left[P \mathbf{q}_{1}, P \mathbf{q}_{2}, \ldots, P \mathbf{q}_{n}\right]
+\]</span></p>
+<p>Since any product of a stochastic matrix and probability distribution vector is itself a probability distribution vector, the result follows.</p>
+</div>
 </section>
 <section id="section-1" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
 <p>The digraph <span class="math inline">\(H\)</span> that results from reversing all the arrows in a digraph <span class="math inline">\(G\)</span> is called reverse digraph of <span class="math inline">\(G\)</span>. Show that if <span class="math inline">\(A\)</span> is the adjacency matrix for <span class="math inline">\(G\)</span> then <span class="math inline">\(A^{T}\)</span> is the adjacency matrix for the reverse digraph <span class="math inline">\(H\)</span>.</p>
+<div class="solutions">
+<p>2.4.36</p>
+<p>In terms of the edge set <span class="math inline">\(E=\left\{\left(\left(v_{1}, w_{1}\right),\left(v_{2}, w_{2}\right), \ldots,\left(v_{m}, w_{m}\right)\right)\right\}\)</span> of the digraph <span class="math inline">\(G\)</span>, the edge set of its reverse digraph <span class="math inline">\(H\)</span> is</p>
+<p><span class="math display">\[
+F=\left\{\left(\left(w_{1}, v_{1}\right),\left(w_{2}, v_{2}\right), \ldots,\left(w_{m}, v_{m}\right)\right)\right\}
+\]</span></p>
+<p>which means that whenever the edge <span class="math inline">\(\left(v_{k}, w_{k}\right)\)</span> contributes 1 to the <span class="math inline">\((i, j)\)</span> th entry of the adjacency matrix <span class="math inline">\(A\)</span> of <span class="math inline">\(G\)</span>, the edge <span class="math inline">\(\left(w_{k}, v_{k}\right)\)</span> contributes 1 to the <span class="math inline">\((j, i)\)</span> th entry of the adjacence matrix <span class="math inline">\(B\)</span> of <span class="math inline">\(H\)</span>. Hence, <span class="math inline">\(B=A^{T}\)</span>.</p>
+</div>
 </section>
 <section id="section-2" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
 <p>Solve the PageRank problem with <span class="math inline">\(P\)</span> as in Example 2.46, teleportation vector <span class="math inline">\(\mathbf{v}=\frac{1}{6} \mathbf{e}\)</span> and teleportation parameter <span class="math inline">\(\alpha=0.8\)</span>. (In this example, the correction vector was <span class="math inline">\(\frac{1}{3}(1,1,1,0,0,0)\)</span>; that’s what you’ll use here.)</p>
+<div class="solutions">
+<p>2.5.21</p>
+<p>Solution vector is <span class="math inline">\(\mathbf{x}=(95,133,189,75,123,123) / 738\)</span> exactly, <span class="math inline">\(\mathbf{x}=\)</span> <span class="math inline">\((0.129,0.180,0.256,0.102,0.167,0.167)\)</span> approximately.</p>
+<div id="69855c10" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Rational,N, nsimplify</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> Matrix([</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>P<span class="op">=</span>nsimplify(P,rational<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> Matrix([Rational(<span class="dv">1</span>,<span class="dv">6</span>)] <span class="op">*</span> <span class="dv">6</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> Rational(<span class="dv">8</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We start with our surfing matrix <span class="math display">\[
+P=\left[\begin{array}{llllll}
+0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; 0 &amp; 0 \\
+\frac{1}{2} &amp; 0 &amp; \frac{1}{3} &amp; \frac{1}{3} &amp; 0 &amp; 0 \\
+\frac{1}{2} &amp; 1 &amp; 0 &amp; \frac{1}{3} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \frac{1}{3} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>We want to solve this:</p>
+<p><span class="math display">\[
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x} =\mathbf{x}
+\end{equation*}
+\]</span></p>
+<p>One approach: find eigenvalues of value 1.</p>
+<div id="7028399c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>M_sympy <span class="op">=</span> alpha <span class="op">*</span> P <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> alpha) <span class="op">*</span> v <span class="op">*</span> Matrix([<span class="dv">1</span>]<span class="op">*</span>P.shape[<span class="dv">0</span>]).T</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>eigenvalues_sympy <span class="op">=</span> M_sympy.eigenvals()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>eigenvectors_sympy <span class="op">=</span> M_sympy.eigenvects()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a998a725" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the first eigenvector whose eigenvalue equals 1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eigenvalue, multiplicity, eigenvectors <span class="kw">in</span> eigenvectors_sympy:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> eigenvalue <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        ev <span class="op">=</span> eigenvectors[<span class="dv">0</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the eigenvector</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ev <span class="op">=</span> ev <span class="op">/</span> <span class="bu">sum</span>(ev)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ev.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{95}{738} &amp; \frac{133}{738} &amp; \frac{21}{82} &amp; \frac{25}{246} &amp; \frac{1}{6} &amp; \frac{1}{6}\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<p>Second approach: subtract x from both sides of the equation and solve it using sympy’s solve function.</p>
+<p>Now we want to solve this:</p>
+<p><span class="math display">\[
+\begin{equation*}
+\left(\alpha P+(1-\alpha) \mathbf{v e}^{T}\right) \mathbf{x}-\mathbf{x} =0
+\end{equation*}
+\]</span></p>
+<p>Initially, sympy complains that the matrix is not invertible. This means that there will be infinitely many solutions. We can use gauss_jordan_solve to find the general form…</p>
+<p>(Also note: if we don’t define <span class="math inline">\(\alpha\)</span> using symbols, sympy will make everything numeric and only find the trivial solution.)</p>
+<div id="db74a38e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> symbols, solve, Matrix, zeros, eye</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix(symbols(<span class="st">'x:6'</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the equation</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>eqn <span class="op">=</span> (alpha<span class="op">*</span>P <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>alpha)<span class="op">*</span>v<span class="op">*</span>Matrix([<span class="dv">1</span>]<span class="op">*</span>P.shape[<span class="dv">0</span>]).T)<span class="op">-</span>eye(<span class="dv">6</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>soln<span class="op">=</span>eqn.gauss_jordan_solve(zeros(<span class="dv">6</span>,<span class="dv">1</span>))[<span class="dv">0</span>]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>display(soln.T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}\frac{95 \tau_{0}}{123} &amp; \frac{133 \tau_{0}}{123} &amp; \frac{63 \tau_{0}}{41} &amp; \frac{25 \tau_{0}}{41} &amp; \tau_{0} &amp; \tau_{0}\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<p>Next, we would need to pick a value for <span class="math inline">\(\tau_0\)</span> to find a specific solution. We want the sum of the elements of <span class="math inline">\(\mathbf{x}\)</span> to be 1; conveniently, if we simply divide by the sum of the elements of the general solution, the <span class="math inline">\(\tau_0\)</span> will cancel out.</p>
+<div id="2c1eec23" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> simplify, collect, together</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Latex</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy.printing.latex <span class="im">import</span> LatexPrinter</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sp.init_printing()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>display(Latex(<span class="st">"$$</span><span class="ch">\\</span><span class="st">frac</span><span class="sc">{1}{738}</span><span class="st">"</span><span class="op">+</span>sp.latex(simplify(soln<span class="op">/</span><span class="bu">sum</span>(soln)<span class="op">*</span><span class="dv">738</span>)[:,<span class="dv">0</span>])<span class="op">+</span><span class="st">"</span><span class="ch">\\</span><span class="st">approx"</span><span class="op">+</span>sp.latex(N(soln<span class="op">/</span><span class="bu">sum</span>(soln),<span class="dv">4</span>))<span class="op">+</span><span class="st">"$$"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math display">\[\frac{1}{738}\left[\begin{matrix}95\\133\\189\\75\\123\\123\end{matrix}\right]\approx\left[\begin{matrix}0.1287\\0.1802\\0.2561\\0.1016\\0.1667\\0.1667\end{matrix}\right]\]</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-3" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
@@ -185,19 +288,205 @@ window.Quarto = {
 <section id="section-4" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
 <p>Show that there is more than one stationary state for the Markov chain of Example 2.46.</p>
+<div class="solutions">
+<p>2.5.29</p>
+<p>Solution. The reduced row echelon form for <span class="math inline">\(I-P\)</span> is</p>
+<p><img src="https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-057.jpg?height=278&amp;width=300&amp;top_left_y=1951&amp;top_left_x=896" class="img-fluid"> Two solutions whose coordinates sum to one are <span class="math inline">\(\mathbf{x}=\left(0,0,0,0, \frac{1}{2}, \frac{1}{2}\right)\)</span> and <span class="math display">\[\mathbf{x}=\frac{1}{22}\begin{bmatrix}4\\6\\9\\3\\0\\0\end{bmatrix}\approx \left[\begin{matrix}0.182\\0.273\\0.409\\0.136\\0\\0\end{matrix}\right]'
+\]</span> .</p>
+</div>
 </section>
 <section id="section-5" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
 <p>Repair the dangling node problem of the graph of Figure 2.7 by creating a correction vector that makes transition to all nodes equally likely. (Note that this means <strong>all</strong> nodes, includes transitioning back to the dangling node.)</p>
 <p>Next, find all stationary states for the resulting Markov chain.</p>
+<div class="solutions">
+<p>2.5.30</p>
+<p>The matrix <span class="math inline">\(P\)</span> will be as in Example 2.46 except that the fourth column will have the value <span class="math inline">\(1 / 6\)</span> in each entry. The reduced row echelon form for <span class="math inline">\(I-P\)</span> is</p>
+<p><span class="math display">\[
+\left[\begin{array}{cccccc}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right] .
+\]</span></p>
+<p>The only solution whose coordinates sum to one is <span class="math inline">\(\mathbf{x}=\left(0,0,0,0, \frac{1}{2}, \frac{1}{2}\right)\)</span>.</p>
+<p>If we want to do this numerically:</p>
+<p><span class="math display">\[
+Q=\left[\begin{array}{llllll}
+0 &amp; 0 &amp; \frac{1}{3} &amp; 0 &amp; 0 &amp; 0 \\
+\frac{1}{2} &amp; 0 &amp; \frac{1}{3} &amp; 0 &amp; 0 &amp; 0 \\
+\frac{1}{2} &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; \frac{1}{3} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right], \mathbf{x}=\left(x_{1}, x_{2}, x_{3}, x_{4}, x_{5}\right)
+\]</span></p>
+<div id="a729c89a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> symbols, solve, Matrix, zeros, eye,nsimplify</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Matrix(symbols(<span class="st">'x:6'</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> nsimplify(Matrix([</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>]), rational<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>display(Q)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>Qbig <span class="op">=</span> Q<span class="op">**</span><span class="dv">10000</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># make a random starting vector using sympys random number generator</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sp.randMatrix(<span class="dv">6</span>,<span class="dv">1</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> N(v<span class="op">/</span><span class="bu">sum</span>(v))</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>display(Qbig<span class="op">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{1}{6} &amp; 0 &amp; 0\\\frac{1}{2} &amp; 0 &amp; \frac{1}{3} &amp; \frac{1}{6} &amp; 0 &amp; 0\\\frac{1}{2} &amp; 1 &amp; 0 &amp; \frac{1}{6} &amp; 0 &amp; 0\\0 &amp; 0 &amp; \frac{1}{3} &amp; \frac{1}{6} &amp; 0 &amp; 0\\0 &amp; 0 &amp; 0 &amp; \frac{1}{6} &amp; 0 &amp; 1\\0 &amp; 0 &amp; 0 &amp; \frac{1}{6} &amp; 1 &amp; 0\end{matrix}\right]\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}5.0738639483025 \cdot 10^{-256}\\7.76382144414418 \cdot 10^{-256}\\1.18187383695331 \cdot 10^{-255}\\5.0738639483025 \cdot 10^{-256}\\0.596428571428571\\0.403571428571429\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<div id="4da0a05e" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a random starting vector using sympys random number generator</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> sp.randMatrix(<span class="dv">6</span>,<span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> N(v<span class="op">/</span><span class="bu">sum</span>(v))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Qbig<span class="op">*</span>Qbig<span class="op">*</span>v</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># repeat the above step with many initial vectors and make a histogram of the 5th entries</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> sp.randMatrix(<span class="dv">6</span>,<span class="dv">1</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    v <span class="op">=</span> N(v<span class="op">/</span><span class="bu">sum</span>(v))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    results.append((Qbig<span class="op">*</span>v)[<span class="dv">4</span>,<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="7d6d1c31" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pr <span class="op">=</span> np.array(results,dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.hist(pr, bins<span class="op">=</span><span class="dv">20</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>(array([ 3.,  2.,  0.,  4.,  1.,  3.,  5.,  7.,  6., 10.,  7., 10.,  4.,
+         8.,  1., 10.,  6.,  6.,  3.,  4.]),
+ array([0.33221477, 0.34690403, 0.36159329, 0.37628255, 0.39097181,
+        0.40566107, 0.42035034, 0.4350396 , 0.44972886, 0.46441812,
+        0.47910738, 0.49379664, 0.50848591, 0.52317517, 0.53786443,
+        0.55255369, 0.56724295, 0.58193221, 0.59662148, 0.61131074,
+        0.626     ]),
+ &lt;BarContainer object of 20 artists&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HW3_files/figure-html/cell-9-output-2.png" width="566" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see that the solutions appear to converge, but very slowly!</p>
+</div>
 </section>
 <section id="section-6" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> <em></em></h1>
 <p>Solve the nonlinear system of equations of Example 2.48 by using nine iterations of the vector Newton formula (2.5), starting with the initial guess <span class="math inline">\(\mathbf{x}^{(0)}=(0,1)\)</span>. Evaluate <span class="math inline">\(F\left(\mathbf{x}^{(9)}\right)\)</span>.</p>
+<div class="solutions">
+<p>2.5.25 <span class="math inline">\(\quad \mathbf{x}=(x, y), \mathbf{x}^{(9)} \approx\left[\begin{array}{r}1.00001 \\ -0.99999\end{array}\right], \mathbf{F}\left(\mathbf{x}^{(9)}\right) \approx 10^{-6}\left[\begin{array}{r}-1.3422 \\ 2.0226\end{array}\right], \mathbf{F}(\mathbf{x})=\)</span></p>
+<p><span class="math inline">\(\left[\begin{array}{l}x^{2}+\sin (\pi x y)-1 \\ x+y^{2}+e^{x+y}-3\end{array}\right], J_{\mathbf{F}}(\mathbf{x})=\left[\begin{array}{cc}2 x+\pi y \cos (\pi x y) &amp;   \pi x\cos (\pi x y) \\ 1+e^{x+y} &amp; 2 y+e^{x+y}\end{array}\right]\)</span></p>
+<p>Set this up in Python and solve it:</p>
+<div id="3a586c55" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, I, latex</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> printmult(lst):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> l <span class="kw">in</span> lst:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(l, <span class="bu">str</span>):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            output <span class="op">+=</span> <span class="ss">f"</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            output <span class="op">+=</span> <span class="ss">f"$</span><span class="ch">{{</span><span class="sc">{</span>latex(l)<span class="sc">}</span><span class="ch">}}</span><span class="ss">$ "</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    display(Markdown(output))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="86acb505" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> symbols, sin, pi, exp, cos, Matrix, N,Eq,init_printing</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> symbols(<span class="st">'x y'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> Matrix([x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> sin(pi<span class="op">*</span>x<span class="op">*</span>y) <span class="op">-</span> <span class="dv">1</span>, x <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> exp(x <span class="op">+</span> y) <span class="op">-</span> <span class="dv">3</span>])</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> F.jacobian([x, y])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>display(J)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>Matrix([<span class="dv">0</span>,<span class="dv">1</span>])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    x0 <span class="op">=</span> N(x0 <span class="op">-</span> J.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}).inv() <span class="op">*</span> F.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}))</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"x="</span>,N(x0,<span class="dv">5</span>)])</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"F(x)="</span>,N(F.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}),<span class="dv">5</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}2 x + \pi y \cos{\left(\pi x y \right)} &amp; \pi x \cos{\left(\pi x y \right)}\\e^{x + y} + 1 &amp; 2 y + e^{x + y}\end{matrix}\right]\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>x=<span class="math inline">\({\left[\begin{matrix}1.0\\-0.99999\end{matrix}\right]}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>F(x)=<span class="math inline">\({\left[\begin{matrix}-1.3422 \cdot 10^{-6}\\2.0226 \cdot 10^{-6}\end{matrix}\right]}\)</span></p>
+</div>
+</div>
+<div id="360bcfcf" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"F(x)="</span>,N(F.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}),<span class="dv">5</span>)])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#print(F,N(F.subs({x: x0[0], y: x0[1]}),5))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>F(x)=<span class="math inline">\({\left[\begin{matrix}-1.3422 \cdot 10^{-6}\\2.0226 \cdot 10^{-6}\end{matrix}\right]}\)</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-7" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> <em></em></h1>
-<p>Find the minimum value of the function <span class="math inline">\(F(x, y)=\left(x^{2}+y+1\right)^{2}+\)</span> <span class="math inline">\(x^{4}+y^{4}\)</span> by using the Newton method to find critical points of the function <span class="math inline">\(F(x, y)\)</span>, i.e., points where <span class="math inline">\(f(x, y)=F_{x}(x, y)=0\)</span> and <span class="math inline">\(g(x, y)=F_{y}(x, y)=0\)</span>.</p>
+<p>Find the minimum value of the function <span class="math inline">\(F(x, y)=\left(x^{2}+y+1\right)^{2}+x^{4}+y^{4}\)</span> by using the Newton method to find critical points of the function <span class="math inline">\(F(x, y)\)</span>, i.e., points where <span class="math inline">\(f(x, y)=F_{x}(x, y)=0\)</span> and <span class="math inline">\(g(x, y)=F_{y}(x, y)=0\)</span>.</p>
+<div class="solutions">
+<p>2.5.26</p>
+<div id="6fb2aa85" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> symbols, sin, pi, exp, cos, Matrix, N,Eq,init_printing</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>init_printing()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>x, y <span class="op">=</span> symbols(<span class="st">'x y'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>fxy <span class="op">=</span> Matrix([(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y <span class="op">+</span> <span class="dv">1</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">4</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">4</span>])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># find the derivative of F with respect to x and y</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> fxy.jacobian([x])</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fy  <span class="op">=</span> fxy.jacobian([y])</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> Matrix([fx,fy])</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> F.jacobian([x, y])</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"F(x,y)="</span>,fxy])</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"F="</span>,F])</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"J="</span>,J])</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After 9 iterations, the solution is:"</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>x0<span class="op">=</span>Matrix([<span class="fl">.1</span>,<span class="fl">.1</span>])</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    x0 <span class="op">=</span> N(x0 <span class="op">-</span> N(J.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]})).inv() <span class="op">*</span> F.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}))</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"x="</span>,N(x0,<span class="dv">5</span>)])</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>printmult([<span class="st">"f(x,y)="</span>,N(fxy.subs({x: x0[<span class="dv">0</span>], y: x0[<span class="dv">1</span>]}),<span class="dv">5</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>F(x,y)=<span class="math inline">\({\left[\begin{matrix}x^{4} + y^{4} + \left(x^{2} + y + 1\right)^{2}\end{matrix}\right]}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>F=<span class="math inline">\({\left[\begin{matrix}4 x^{3} + 4 x \left(x^{2} + y + 1\right)\\2 x^{2} + 4 y^{3} + 2 y + 2\end{matrix}\right]}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>J=<span class="math inline">\({\left[\begin{matrix}24 x^{2} + 4 y + 4 &amp; 4 x\\4 x &amp; 12 y^{2} + 2\end{matrix}\right]}\)</span></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>After 9 iterations, the solution is:</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>x=<span class="math inline">\({\left[\begin{matrix}0\\-0.58975\end{matrix}\right]}\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>f(x,y)=<span class="math inline">\({\left[\begin{matrix}0.28927\end{matrix}\right]}\)</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-8" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> <em></em></h1>
@@ -205,6 +494,11 @@ window.Quarto = {
 <p><span class="math display">\[
 y_{k}=\frac{1}{2} x_{k}+\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
 \]</span></p>
+<div class="solutions">
+<p>2.8.9</p>
+<p>Yes, but rather mediocrely. A graph is in Figure 1 and comparison of exact and filtered in Figure 2: <img src="https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-071.jpg?height=718&amp;width=1539&amp;top_left_y=340&amp;top_left_x=453" class="img-fluid"></p>
+<p><img src="https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-072.jpg?height=1054&amp;width=1507&amp;top_left_y=644&amp;top_left_x=472" class="img-fluid"></p>
+</div>
 </section>
 <section id="section-9" class="level1" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> <em></em></h1>
@@ -212,21 +506,37 @@ y_{k}=\frac{1}{2} x_{k}+\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
 <p><span class="math display">\[
 y_{k}=\frac{1}{2} x_{k}-\frac{1}{2} x_{k-1}, \quad k=1,2, \ldots, 33
 \]</span></p>
+<div class="solutions">
+<p>2.8.10</p>
+<p>Yes, definitely high pass. A graph is in Figure 3:</p>
+<p><img src="https://cdn.mathpix.com/cropped/2024_04_02_e902102d4132f56407c5g-073.jpg?height=713&amp;width=1526&amp;top_left_y=340&amp;top_left_x=465" class="img-fluid"></p>
+</div>
 </section>
 <section id="section-10" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> <em></em></h1>
-<p>(I’ll talk about LU factorization in class on the Wednesday that this homework is due; you may want to hold off on the next few problems until then.)</p>
 <p>Show that <span class="math inline">\(L=\left[\begin{array}{lll}1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; 1\end{array}\right]\)</span> and <span class="math inline">\(U=\left[\begin{array}{rrr}2 &amp; -1 &amp; 1 \\ 0 &amp; 4 &amp; -3 \\ 0 &amp; 0 &amp; -1\end{array}\right]\)</span> is an LU factorization of <span class="math inline">\(A=\left[\begin{array}{rrr}2 &amp; -1 &amp; 1 \\ 2 &amp; 3 &amp; -2 \\ 4 &amp; 2 &amp; -2\end{array}\right]\)</span>.</p>
+<div class="solutions">
+<p>2.8.1</p>
+<p><span class="math inline">\(L U=\left[\begin{array}{lll}1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ 2 &amp; 1 &amp; 1\end{array}\right]\left[\begin{array}{rrr}2 &amp; -1 &amp; 1 \\ 0 &amp; 4 &amp; -3 \\ 0 &amp; 0 &amp; -1\end{array}\right]=A=\left[\begin{array}{rrr}2 &amp; -1 &amp; 1 \\ 2 &amp; 3 &amp; -2 \\ 4 &amp; 2 &amp; -2\end{array}\right]\)</span>.</p>
+</div>
 </section>
 <section id="section-11" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> <em></em></h1>
 <p>By hand:</p>
 <p>Find an LU factorization of the matrix <span class="math inline">\(A=\left[\begin{array}{rrr}2 &amp; 1 &amp; 0 \\ -4 &amp; -1 &amp; -1 \\ 2 &amp; 3 &amp; -3\end{array}\right]\)</span>.</p>
+<div class="solutions">
+<p>2.8.5</p>
+<p><span class="math inline">\(L=\left[\begin{array}{rrr}1 &amp; 0 &amp; 0 \\ -2 &amp; 1 &amp; 0 \\ 1 &amp; 2 &amp; 1\end{array}\right]\)</span> and <span class="math inline">\(U=\left[\begin{array}{rrr}2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; -1\end{array}\right]\)</span>.</p>
+</div>
 </section>
 <section id="section-12" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> <em></em></h1>
 <p>By hand:</p>
 <p>Find a PLU factorization of the matrix <span class="math inline">\(A=\left[\begin{array}{rrr}2 &amp; 1 &amp; 3 \\ -4 &amp; -2 &amp; -1 \\ 2 &amp; 3 &amp; -3\end{array}\right]\)</span>.</p>
+<div class="solutions">
+<p>2.8.6</p>
+<p><span class="math inline">\(P=\left[\begin{array}{lll}1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0\end{array}\right], L=\left[\begin{array}{rrr}1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 0 \\ -2 &amp; 0 &amp; 1\end{array}\right]\)</span> and <span class="math inline">\(U=\left[\begin{array}{rrr}2 &amp; 1 &amp; 3 \\ 0 &amp; 2 &amp; -6 \\ 0 &amp; 0 &amp; 5\end{array}\right]\)</span>.</p>
+</div>
 
 
 </section>
@@ -646,4 +956,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -3952,7 +3952,7 @@
     "href": "lectures/ch5lecture5.html#visualizing-the-high-dimensional-data",
     "title": "Ch5 Lecture 5",
     "section": "Visualizing the high-dimensional data",
-    "text": "Visualizing the high-dimensional data\n\n\n\n\n\n\n\n\n\n\nKIDEN\ncity\nregion\nprice_index_no_rent\nprice_index_with_rent\ngross_salaries\nnet_salaries\nwork_hours_year\npaid_vacations_year\ngross_buying_power\n...\nmechanic\nconstruction_worker\nmetalworker\ncook_chef\nfactory_manager\nengineer\nbank_clerk\nexecutive_secretary\nsalesperson\ntextile_worker\n\n\n\n\n0\nAmsterdam91\nAmsterdam\nCentral Europe\n65.6\n65.7\n56.9\n49.0\n1714.0\n31.9\n86.7\n...\n11924.0\n12661.0\n14536.0\n14402.0\n25924.0\n24786.0\n14871.0\n14871.0\n11857.0\n10852.0\n\n\n1\nAthenes91\nAthens\nSouthern Europe\n53.8\n55.6\n30.2\n30.4\n1792.0\n23.5\n56.1\n...\n8574.0\n9847.0\n14402.0\n14068.0\n13800.0\n14804.0\n9914.0\n6900.0\n4555.0\n5761.0\n\n\n2\nBogota91\nBogota\nSouth America\n37.9\n39.3\n10.1\n11.5\n2152.0\n17.4\n26.6\n...\n4354.0\n1206.0\n4823.0\n13934.0\n12192.0\n12259.0\n2345.0\n5024.0\n2278.0\n2814.0\n\n\n3\nBombay91\nMumbai\nSouth Asia and Australia\n30.3\n39.9\n6.0\n5.3\n2052.0\n30.6\n19.9\n...\n1809.0\n737.0\n2479.0\n2412.0\n3751.0\n2880.0\n2345.0\n1809.0\n1072.0\n1206.0\n\n\n4\nBruxelles91\nBrussels\nCentral Europe\n73.8\n72.2\n68.2\n50.5\n1708.0\n24.6\n92.4\n...\n10450.0\n12192.0\n17350.0\n19159.0\n31016.0\n24518.0\n19293.0\n13800.0\n10718.0\n10182.0\n\n\n\n\n5 rows × 41 columns\n\n\n\n\n\nWe might choose to focus on only 12 (!) of the 41 variables in the dataset, corresponding to the average wages of workers in 12 specific occupations in each city.\n\n\n\n\n\n\n\n\n\n\ncity\nteacher\nbus_driver\nmechanic\nconstruction_worker\nmetalworker\ncook_chef\nfactory_manager\nengineer\nbank_clerk\nexecutive_secretary\nsalesperson\ntextile_worker\n\n\n\n\n0\nAmsterdam\n15608.0\n17819.0\n11924.0\n12661.0\n14536.0\n14402.0\n25924.0\n24786.0\n14871.0\n14871.0\n11857.0\n10852.0\n\n\n1\nAthens\n7972.0\n9445.0\n8574.0\n9847.0\n14402.0\n14068.0\n13800.0\n14804.0\n9914.0\n6900.0\n4555.0\n5761.0\n\n\n2\nBogota\n2144.0\n2412.0\n4354.0\n1206.0\n4823.0\n13934.0\n12192.0\n12259.0\n2345.0\n5024.0\n2278.0\n2814.0\n\n\n3\nMumbai\n1005.0\n1340.0\n1809.0\n737.0\n2479.0\n2412.0\n3751.0\n2880.0\n2345.0\n1809.0\n1072.0\n1206.0\n\n\n4\nBrussels\n14001.0\n14068.0\n10450.0\n12192.0\n17350.0\n19159.0\n31016.0\n24518.0\n19293.0\n13800.0\n10718.0\n10182.0\n\n\n\n\n\n\n\n\nHow can we think about the data in this 12-dimensional space?\n\nDataset taken from here"
+    "text": "Visualizing the high-dimensional data\n\n\n\n\n\n\n\n\n\n\nKIDEN\ncity\nregion\nprice_index_no_rent\nprice_index_with_rent\ngross_salaries\nnet_salaries\nwork_hours_year\npaid_vacations_year\ngross_buying_power\n...\nmechanic\nconstruction_worker\nmetalworker\ncook_chef\nfactory_manager\nengineer\nbank_clerk\nexecutive_secretary\nsalesperson\ntextile_worker\n\n\n\n\n0\nAmsterdam91\nAmsterdam\nCentral Europe\n65.6\n65.7\n56.9\n49.0\n1714.0\n31.9\n86.7\n...\n11924.0\n12661.0\n14536.0\n14402.0\n25924.0\n24786.0\n14871.0\n14871.0\n11857.0\n10852.0\n\n\n1\nAthenes91\nAthens\nSouthern Europe\n53.8\n55.6\n30.2\n30.4\n1792.0\n23.5\n56.1\n...\n8574.0\n9847.0\n14402.0\n14068.0\n13800.0\n14804.0\n9914.0\n6900.0\n4555.0\n5761.0\n\n\n2\nBogota91\nBogota\nSouth America\n37.9\n39.3\n10.1\n11.5\n2152.0\n17.4\n26.6\n...\n4354.0\n1206.0\n4823.0\n13934.0\n12192.0\n12259.0\n2345.0\n5024.0\n2278.0\n2814.0\n\n\n3\nBombay91\nMumbai\nSouth Asia and Australia\n30.3\n39.9\n6.0\n5.3\n2052.0\n30.6\n19.9\n...\n1809.0\n737.0\n2479.0\n2412.0\n3751.0\n2880.0\n2345.0\n1809.0\n1072.0\n1206.0\n\n\n4\nBruxelles91\nBrussels\nCentral Europe\n73.8\n72.2\n68.2\n50.5\n1708.0\n24.6\n92.4\n...\n10450.0\n12192.0\n17350.0\n19159.0\n31016.0\n24518.0\n19293.0\n13800.0\n10718.0\n10182.0\n\n\n\n\n5 rows × 41 columns\n\n\n\n\n\n\nDataset taken from here"
   },
   {
     "objectID": "lectures/ch5lecture5.html#clouds-of-row-points",
@@ -3987,7 +3987,7 @@
     "href": "lectures/ch5lecture5.html#example",
     "title": "Ch5 Lecture 5",
     "section": "Example",
-    "text": "Example\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe’d like to know in which directions in \\(R^p\\) the data has the highest variance.\n\nFirst: understand how much the data is spread out along a particular direction, given by a unit vector \\(\\mathbf{u}\\).\n\n\nRemember, for each point \\(\\mathbf{x}_i\\) in the data, we can project it onto the direction \\(\\mathbf{u}\\) by computing \\(\\psi_i = \\mathbf{x}_i \\cdot \\mathbf{u}\\).\n\n\n\nWe then define the vector of all the projected points as \\(\\mathbf{\\psi} = X \\mathbf{u}\\).\n\n\nWhat is the variance of the projected data? Since the data has been centered, the variance is given by \\(\\frac{1}{n} \\sum_{i=1}^n v_i^2 = \\frac{1}{n} \\mathbf{v}^T \\mathbf{v}\\).\n\n\nWe can rewrite this in terms of the original data matrix as \\(\\frac{1}{n} \\mathbf{v}^T \\mathbf{v} = \\frac{1}{n} \\mathbf{u}^T X^T X \\mathbf{u}\\).\nWe recognize that \\(X^T X\\) is the covariance matrix of the data.\n\n\nSo the variance of the projected data is given by \\(\\mathbf{u}^T C \\mathbf{u}\\), where \\(C = \\frac{1}{n} X^T X\\) is the covariance matrix of the data."
+    "text": "Example"
   },
   {
     "objectID": "lectures/ch5lecture5.html#direction-of-maximum-variance",
@@ -4022,14 +4022,14 @@
     "href": "lectures/ch5lecture5.html#section",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.\nLet’s try visualizing the data in a few of the dimensions of the original space.\n\n\n\n\n\n\n\n\n\n\n\nBut there’s a problem here. We know from looking at this that there are at least one of each of these combinations where there’s a dot, but how many?"
+    "text": "We might choose to focus on only 12 (!) of the 41 variables in the dataset, corresponding to the average wages of workers in 12 specific occupations in each city.\n\n\n\n\n\n\n\n\n\n\ncity\nteacher\nbus_driver\nmechanic\nconstruction_worker\nmetalworker\ncook_chef\nfactory_manager\nengineer\nbank_clerk\nexecutive_secretary\nsalesperson\ntextile_worker\n\n\n\n\n0\nAmsterdam\n15608.0\n17819.0\n11924.0\n12661.0\n14536.0\n14402.0\n25924.0\n24786.0\n14871.0\n14871.0\n11857.0\n10852.0\n\n\n1\nAthens\n7972.0\n9445.0\n8574.0\n9847.0\n14402.0\n14068.0\n13800.0\n14804.0\n9914.0\n6900.0\n4555.0\n5761.0\n\n\n2\nBogota\n2144.0\n2412.0\n4354.0\n1206.0\n4823.0\n13934.0\n12192.0\n12259.0\n2345.0\n5024.0\n2278.0\n2814.0\n\n\n3\nMumbai\n1005.0\n1340.0\n1809.0\n737.0\n2479.0\n2412.0\n3751.0\n2880.0\n2345.0\n1809.0\n1072.0\n1206.0\n\n\n4\nBrussels\n14001.0\n14068.0\n10450.0\n12192.0\n17350.0\n19159.0\n31016.0\n24518.0\n19293.0\n13800.0\n10718.0\n10182.0\n\n\n\n\n\n\n\n\nHow can we think about the data in this 12-dimensional space?"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-1",
     "href": "lectures/ch5lecture5.html#section-1",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "We can look at many combinations…"
+    "text": "The data consist of 2000 observations of 42 variables each! The variables are the number of times each of 42 different food items was purchased in a particular shopping trip.\nLet’s try visualizing the data in a few of the dimensions of the original space.\n\n\n\n\n\n\n\n\n\n\n\nBut there’s a problem here. We know from looking at this that there are at least one of each of these combinations where there’s a dot, but how many?"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-2",
@@ -4043,7 +4043,7 @@
     "href": "lectures/ch5lecture5.html#section-3",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Maybe we can learn more from the correlations?"
+    "text": "We can look at many combinations…"
   },
   {
     "objectID": "lectures/ch5lecture5.html#meaning-of-the-principal-components",
@@ -4057,7 +4057,7 @@
     "href": "lectures/ch5lecture5.html#section-4",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "OK, it looks like there are some patterns here. But it’s hard to get a real sense for it."
+    "text": "Maybe we can learn more from the correlations?"
   },
   {
     "objectID": "lectures/ch5lecture5.html#some-real-world-data",
@@ -4078,14 +4078,14 @@
     "href": "lectures/ch5lecture5.html#section-5",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Now perform PCA on the data.\n\n\nCode\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first four principal components of the data\npca = PCA(n_components=4)\npca.fit(food_scaled);\nprint(f'Explained variance %: {pca.explained_variance_ratio_*100}')\n\n\nExplained variance %: [8.82557344 8.35536634 7.78271494 5.81231143]"
+    "text": "OK, it looks like there are some patterns here. But it’s hard to get a real sense for it."
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-6",
     "href": "lectures/ch5lecture5.html#section-6",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "pause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+    "text": "Now perform PCA on the data.\n\n\nCode\n# standardize the data\nscaler = StandardScaler()\nfood_scaled = scaler.fit_transform(food)\n# find the first four principal components of the data\npca = PCA(n_components=4)\npca.fit(food_scaled);\nprint(f'Explained variance %: {pca.explained_variance_ratio_*100}')\n\n\nExplained variance %: [8.82557338 8.3553662  7.78271493 5.81230637]"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-10",
@@ -4099,13 +4099,34 @@
     "href": "lectures/ch5lecture5.html#section-11",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n10091\n10092\n10093\n10094\n10095\n10096\n10097\n10098\n10099\n10100\n\n\n\n\n0\n0\n1\n0\n1\n0\n1\n1\n0\n0\n0\n...\n0\n1\n1\n1\n0\n0\n1\n0\n0\n1\n\n\n1\n1\n0\n0\n1\n0\n0\n1\n0\n1\n1\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n1\n0\n0\n1\n0\n1\n0\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n...\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n4\n0\n0\n0\n0\n1\n1\n1\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n5 rows × 10101 columns"
+    "text": "3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n...\n10094\n10095\n10096\n10097\n10098\n10099\n10100\n10101\n10102\n10103\n\n\n\n\n0\nG\nG\nT\nT\nA\nA\nC\nA\nC\nC\n...\nT\nA\nT\nA\nA\nT\nT\nT\nG\nA\n\n\n1\nA\nA\nT\nT\nA\nG\nC\nA\nT\nT\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n2\nA\nA\nT\nT\nA\nA\nG\nA\nC\nC\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n3\nA\nA\nT\nC\nA\nA\nG\nA\nC\nC\n...\nG\nA\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n4\nG\nA\nT\nC\nG\nA\nC\nA\nC\nC\n...\nG\nC\nT\nG\nA\nT\nC\nT\nG\nG\n\n\n\n\n5 rows × 10101 columns"
   },
   {
     "objectID": "lectures/ch5lecture5.html#section-12",
     "href": "lectures/ch5lecture5.html#section-12",
     "title": "Ch5 Lecture 5",
     "section": "",
-    "text": "Code\npca = PCA(n_components=6)\npca.fit(X);\n#Data points projected along the principal components\n\n\n\n\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\npopulation\ngender\n\n\n\n\n0\n4.787196\n-0.876661\n3.302748\n-0.923483\n-1.364570\n0.124643\nACB\n1\n\n\n1\n12.957651\n2.347112\n-0.539180\n-3.931867\n-2.965791\n-1.964023\nACB\n2\n\n\n2\n9.844431\n0.660383\n-1.115683\n-2.488712\n-1.357286\n-1.934453\nACB\n2\n\n\n3\n-0.341785\n-0.726250\n3.487373\n0.481947\n-0.397004\n-0.071552\nACB\n1\n\n\n4\n3.777861\n0.500120\n-2.797637\n-0.958772\n0.613936\n0.263541\nACB\n2"
+    "text": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n...\n10091\n10092\n10093\n10094\n10095\n10096\n10097\n10098\n10099\n10100\n\n\n\n\n0\n0\n1\n0\n1\n0\n1\n1\n0\n0\n0\n...\n0\n1\n1\n1\n0\n0\n1\n0\n0\n1\n\n\n1\n1\n0\n0\n1\n0\n0\n1\n0\n1\n1\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n2\n1\n0\n0\n1\n0\n1\n0\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n3\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n...\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n4\n0\n0\n0\n0\n1\n1\n1\n0\n0\n0\n...\n1\n0\n1\n0\n0\n0\n0\n0\n0\n0\n\n\n\n\n5 rows × 10101 columns"
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#goal",
+    "href": "lectures/ch5lecture5.html#goal",
+    "title": "Ch5 Lecture 5",
+    "section": "Goal",
+    "text": "Goal\nWe’d like to know in which directions in \\(R^p\\) the data has the highest variance.\n\n. . .\nFirst: understand how much the data is spread out along a particular direction, given by a unit vector \\(\\mathbf{u}\\).\n. . .\nRemember, for each point \\(\\mathbf{x}_i\\) in the data, we can project it onto the direction \\(\\mathbf{u}\\) by computing \\(\\psi_i = \\mathbf{x}_i \\cdot \\mathbf{u}\\).\n\n. . .\nWe then define the vector of all the projected points as \\(\\mathbf{\\psi} = X \\mathbf{u}\\).\n. . .\nWhat is the variance of the projected data? Since the data has been centered, the variance is given by \\(\\frac{1}{n} \\sum_{i=1}^n v_i^2 = \\frac{1}{n} \\mathbf{v}^T \\mathbf{v}\\).\n. . .\nWe can rewrite this in terms of the original data matrix as \\(\\frac{1}{n} \\mathbf{v}^T \\mathbf{v} = \\frac{1}{n} \\mathbf{u}^T X^T X \\mathbf{u}\\).\nWe recognize that \\(X^T X\\) is the covariance matrix of the data.\n. . .\nSo the variance of the projected data is given by \\(\\mathbf{u}^T C \\mathbf{u}\\), where \\(C = \\frac{1}{n} X^T X\\) is the covariance matrix of the data."
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-7",
+    "href": "lectures/ch5lecture5.html#section-7",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "pause\n\nFirst of all, clearly the data is artificial. It’s way too neat! (This came from a machine learning textbook.)\nWhat this is saying is that there seem to be roughly three groups of people who buy food in a similar way, and only differ in the amount."
+  },
+  {
+    "objectID": "lectures/ch5lecture5.html#section-13",
+    "href": "lectures/ch5lecture5.html#section-13",
+    "title": "Ch5 Lecture 5",
+    "section": "",
+    "text": "Code\npca = PCA(n_components=6)\npca.fit(X);\n#Data points projected along the principal components\n\n\n\n\n\n\n\n\n\n\n\n\nPC1\nPC2\nPC3\nPC4\nPC5\nPC6\npopulation\ngender\n\n\n\n\n0\n4.786586\n-0.877840\n3.265087\n-0.743684\n-2.809567\n1.820446\nACB\n1\n\n\n1\n12.951468\n2.355097\n-0.677190\n-3.943423\n-2.863389\n-0.260862\nACB\n2\n\n\n2\n9.841647\n0.674617\n-1.285491\n-2.410303\n-2.508126\n0.389504\nACB\n2\n\n\n3\n-0.340635\n-0.725657\n3.516283\n0.537464\n-0.717723\n-1.025561\nACB\n1\n\n\n4\n3.782420\n0.508652\n-2.742794\n-1.065664\n1.119973\n-1.237596\nACB\n2"
   }
 ]

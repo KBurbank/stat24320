@@ -37,6 +37,7 @@ cities.head()
 ::: aside
 Dataset taken from [here](https://pca4ds.github.io/data-and-goals.html)
 :::
+##
 
 We might choose to focus on only 12 (!) of the 41 variables in the dataset, corresponding to the average wages of workers in 12 specific occupations in each city.
 
@@ -110,31 +111,11 @@ plt.xlabel('First principal component')
 plt.ylabel('Second principal component')
 plt.show()
 ```
-
-```{python}
-# make a circle plot of the correlations between the original features in the direction of the two principal components
-plt.figure(figsize=(6,6))
-plt.gca().add_artist(plt.Circle((0, 0), 1, fill=False))
-# normalize the lengths of the arrows
-
-components = pca.components_[0:2,:]
-# normalize the lengths of the components along the second dimension
-
-
-components = components / np.linalg.norm(components,axis=0)
-
-for i, feature in enumerate(cities_small.columns):
-  plt.arrow(0, 0, components[0, i], components[1, i], head_width=0.05, head_length=0.1, length_includes_head=True)
-  plt.text(components[0, i], components[1, i], feature)
-plt.xlim(-1, 1)
-plt.ylim(-1, 1)
-plt.xlabel('First principal component')
-plt.ylabel('Second principal component')
-plt.show()
-```
+## Goal
 
 We'd like to know in which directions in $R^p$ the data has the highest variance.
 
+::: notes
 . . .
 
 First: understand how much the data is spread out along a particular direction, given by a unit vector $\mathbf{u}$.
@@ -163,6 +144,7 @@ We recognize that $X^T X$ is the covariance matrix of the data.
 
 So the variance of the projected data is given by $\mathbf{u}^T C \mathbf{u}$, where $C = \frac{1}{n} X^T X$ is the covariance matrix of the data.
 
+:::
 ## Direction of maximum variance
 
 To find the direction of maximum variance, we need to find the unit vector $\mathbf{u}$ that maximizes $\mathbf{u}^T C \mathbf{u}$.
@@ -523,10 +505,15 @@ projected['gender'] = gender
 projected.head()
 ```
 
+
+##
+
 ```{python}
 fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white')
 fig.show()
 ```
+
+##
 
 ```{python}
 fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white',color='population')

@@ -1,0 +1,42 @@
+---
+author: Kendra Burbank
+jupyter: python3
+title: Projects 2
+format:
+  html:
+    code-fold: show
+    code-tools: 
+      source: true
+      toggle: true
+---
+
+Vincent:
+
+Project 1, part 1: The proof works, but it is not very clear. It would be better to start by stating what $b$ and $y$ represent ($b$ is a possible vector of potential differences, $y$ is a vector of potentials). Then you'll want to say what Kirchoff's law says in terms of $b$, $A$, and $y$, and then you'll go in and do the proof.
+
+Also, use latex for the math expressions! Just put dollar signs around them...
+
+
+part 2: you've correctly noted that the condition is that the sums of the columns and the sums of the rows on a weighted incidence matrix all need to be zero. Can you put this requirement in matrix form, given a weight vector w and your original incidence matrix A?
+
+(But I really like the graph!!)
+
+Grade: R
+
+
+Project 2: This is really nice! Only improvement I'd suggest is to find some way of displaying the edge quadrants better -- maybe plotting each quadrant separately with its own cmap, because right now it's very hard to see the pixels since they're so close to black.
+
+Grade: E
+
+Project 3: 
+
+Oof, that's a lot of hand-entered data! As a challenge, I just tried to reproduce this using some built-in nx functions. Althought I burned dinner in the process, I eventually succeeded, using these two functions:
+` nx.from_numpy_array(spreadn, create_using=nx.DiGraph)` and `nx.incidence_matrix(G,oriented=True,weight=None).todense()` .
+
+(I also found the matrix of point spreads from the game scores that you loaded in -- that's just a one-liner, see if you can figure it out! But then I needed to take the lower-triangular portion of it, to feed into `nx.from_numpy_array`, which I did using `np.tril`)
+
+Anyways. You can optimize your code if you like, but regardless of that, I have some questions about the final results. First, I'm confused about the missing games. Why were these the ones that were played twice? I'm not getting something.
+
+Second, I like that you've computed the error, but I wonder if percentage is the best way to measure it. When I look at the predictions and I see that they are at least predicting the correct team to win, that seems like a good start to me... something to think about. 
+
+Grade: M

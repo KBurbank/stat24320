@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Stat 24320 - Project 2 - Stat 243</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Project 2 - Stat 243</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="bobby-buyalos" class="level3">
+<h3 class="anchored" data-anchor-id="bobby-buyalos"><em>Bobby Buyalos</em></h3>
+<p>Project 1 was completed with Hanyan Cai. Our joint-write up is on his submission. We worked together for every part of this problem, devising our solutions together on a whiteboard and then writing them up.</p>
+<p>Project 2 and 3 were completed and written up independently, although with lots of discussion between us and using the same dataset for project 3.</p>
+</section>
+<section id="project-2" class="level2">
+<h2 class="anchored" data-anchor-id="project-2"><em>Project 2</em></h2>
+<p>Lets begin by choosing a photo! Of course the only reasonable choice is that of a cat…</p>
+<p>(if you wish to follow along and need the specific image I’m using, on a uchicago email you can download it here: https://drive.google.com/file/d/1Kl3gDaQGHWJVXOLnf35M2FOf_LuUJKe6/view?usp=sharing )</p>
+<div id="4ac4898a" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load image</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"catimage.png"</span>).convert(<span class="st">"L"</span>)  <span class="co"># Convert to grayscale</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert image to numpy array</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>image_array <span class="op">=</span> np.array(image)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The first thing we will do in program in the Harr Wavelet transform for a given n.&nbsp;We will show with n=6 what this looks like. See comments for summary of code.</p>
+<div id="c45ddce5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> harr(n: <span class="bu">int</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Ensure that we have an even size</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"n must be even!"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> []</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Create upper block by iterating over even indicies</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n, <span class="dv">2</span>):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span>n</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        row[i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        row[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        output.append(row)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Create lower block by iterating over even indicies</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, n, <span class="dv">2</span>):</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span>n</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        row[i] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        row[i<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        output.append(row)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">#use nested list comprehensions to apply our scalar sqrt(2)/2, and then cast our list a numpy array.</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array([[(math.sqrt(<span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span>)<span class="op">*</span>i <span class="cf">for</span> i <span class="kw">in</span> row] <span class="cf">for</span> row <span class="kw">in</span> output])</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Example with n = 6</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>harr(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>array([[ 0.70710678,  0.70710678,  0.        ,  0.        ,  0.        ,
+         0.        ],
+       [ 0.        ,  0.        ,  0.70710678,  0.70710678,  0.        ,
+         0.        ],
+       [ 0.        ,  0.        ,  0.        ,  0.        ,  0.70710678,
+         0.70710678],
+       [-0.70710678,  0.70710678,  0.        ,  0.        ,  0.        ,
+         0.        ],
+       [ 0.        ,  0.        , -0.70710678,  0.70710678,  0.        ,
+         0.        ],
+       [ 0.        ,  0.        ,  0.        ,  0.        , -0.70710678,
+         0.70710678]])</code></pre>
+</div>
+</div>
+<p>Now, since we have our image as an mxn matrix, lets get the dimensions of this matrix. Observe that these are both even numbers so we do not need to cut anything and can make our Harr matrices for both of these even numbers.</p>
+<div id="e50b17b5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Image shape:"</span>, image_array.shape)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>m, n <span class="op">=</span> image_array.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Image shape: (2912, 5000)</code></pre>
+</div>
+</div>
+<p>Now, we know that the Haar Wavelet Transform equation is <span class="math inline">\(W_mAW_n^T\)</span>. So, we have everything we need to represent this:</p>
+<div id="cf4d9b34" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>transform <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span> (harr(m) <span class="op">@</span> image_array <span class="op">@</span> harr(n).transpose())</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert numpy array back to image</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>image_from_array <span class="op">=</span> Image.fromarray(transform).convert(<span class="st">"L"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>image_from_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Let’s now view just the blurred version:</p>
+<div id="e497ad4f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>blurred_array <span class="op">=</span> transform[:<span class="bu">int</span>((m<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>), :<span class="bu">int</span>((n<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert numpy array back to image</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>blurred_image_from_array <span class="op">=</span> Image.fromarray(blurred_array).convert(<span class="st">"L"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>blurred_image_from_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This is cool! But is this still a very nice and clear image of a cat. I predict that we will need to compress it a bunch until it is unrecognizable, so lets write a function that will compress it n times.</p>
+<div id="6da64b05" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compress(k, image_array: <span class="bu">int</span>, edge_mats <span class="op">=</span> []):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> k<span class="op">&gt;</span><span class="dv">0</span>, <span class="st">"must compress atleast n=1 times!"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    m, n <span class="op">=</span> image_array.shape</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> m<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> m<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        image_array <span class="op">=</span> image_array[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        n <span class="op">=</span> n<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        image_array <span class="op">=</span> image_array[:, :<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    transform <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="dv">2</span> <span class="op">*</span> (harr(m) <span class="op">@</span> image_array <span class="op">@</span> harr(n).transpose())</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    edge_mats.append(transform)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    transform_cut <span class="op">=</span> transform[:<span class="bu">int</span>((m<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>), :<span class="bu">int</span>((n<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> k<span class="op">-</span><span class="dv">1</span> <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> compress(k<span class="op">-</span><span class="dv">1</span>, transform_cut, edge_mats)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    image_from_array <span class="op">=</span> Image.fromarray(transform_cut).convert(<span class="st">"L"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (image_from_array, edge_mats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Lets test this! First lets reload in our cat image and run for n = 2, 3, 4, 5, 6 compressions (may take up to 30 seconds; if you need to return this cell, rerun the one above it first!)</p>
+<div id="3326c5be" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>catimage <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"catimage.png"</span>).convert(<span class="st">"L"</span>)  <span class="co"># Convert to grayscale</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cat_image_array <span class="op">=</span> np.array(image)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>_, edge_mats <span class="op">=</span> compress(<span class="dv">6</span>, cat_image_array, [])</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, mat <span class="kw">in</span> <span class="bu">enumerate</span>(edge_mats):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (<span class="ss">f"Image after </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> compressions:"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    m, n <span class="op">=</span> mat.shape</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    transform_cut <span class="op">=</span> mat[:<span class="bu">int</span>((m<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>), :<span class="bu">int</span>((n<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    image_from_array <span class="op">=</span> Image.fromarray(transform_cut).convert(<span class="st">"L"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    display(image_from_array.resize((<span class="dv">5000</span>,<span class="dv">2912</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Image after 1 compressions:
+Image after 2 compressions:
+Image after 3 compressions:
+Image after 4 compressions:
+Image after 5 compressions:
+Image after 6 compressions:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-8-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Great! I would subjectively say that the image that has been compresed three times is the lowest quality I would go before it becomes unreasonable. However, would if we could store this image using less storage? One key thing to observe is that we can actual reconstruct the image using just the edge matrices (lossless compression):</p>
+<p>We have after a compression our transformation <span class="math inline">\(C = \frac{1}{2}W_mAW_n^T\)</span>, where W_n, W_m are the Haar transformations, A is our original image, and C is the block matrix produced after applying our compression. Since <span class="math inline">\(W_n\)</span>, <span class="math inline">\(W_m\)</span> are orthogonal then we can rearrange this to have <span class="math inline">\(A = 2W_m^TCW_n\)</span>. Therefore, we only need to store <span class="math inline">\(C\)</span> in order to recreate <span class="math inline">\(A\)</span>!</p>
+<p>This is very as <span class="math inline">\(C\)</span> contains much less data than <span class="math inline">\(A\)</span>. For example, let’s see their relative sizes after compression 0, 1, 2, and 3 times (I saved these images to my computer and have written out their storage units here):</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"># Compressions</th>
+<th style="text-align: center;">Storage space</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0 Compressions</td>
+<td style="text-align: center;">662 KB</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1 Compression</td>
+<td style="text-align: center;">206 KB</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2 Compressions</td>
+<td style="text-align: center;">61 KB</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3 Compressions</td>
+<td style="text-align: center;">20 KB</td>
+</tr>
+</tbody>
+</table>
+<p>Amazing! So, since we have reasonable image quality after 3 compressions, we can store our image with 20KB, which is about 33x smaller than 662KB!</p>
+<p>But, I think we can do even better by creating a threshold condition. Let us look distribution of the coefficents in our matrix C:</p>
+<div id="5a8f4676" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> edge_mats[<span class="dv">2</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>coefficients, bins <span class="op">=</span> np.histogram(C, bins<span class="op">=</span><span class="dv">50</span>)  <span class="co"># Adjust the number of bins as needed</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the distribution</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.bar(bins[:<span class="op">-</span><span class="dv">1</span>], coefficients, width<span class="op">=</span>np.diff(bins), edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Value'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Coefficients'</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>thirty_percentile <span class="op">=</span> np.percentile(C, <span class="dv">30</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Thirty-th Percentile:"</span>, thirty_percentile)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>forty_percentile <span class="op">=</span> np.percentile(C, <span class="dv">40</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Forty-th Percentile:"</span>, forty_percentile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-9-output-1.png" width="618" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Thirty-th Percentile: 0.0
+Forty-th Percentile: 0.0</code></pre>
+</div>
+</div>
+<p>So, we see that the value 0 is between our 30th and 40th percentile, This makes since looking at our histogram because the clustering right below 0. So, it would us space if we set all the values below a certain threshold to 0. Lets make our threshold 0 itself! So, for all negative numbers, we can just store them as 0. Lets do this and view it! Recall that <span class="math inline">\(A = 2W_m^TCW_n\)</span> where <span class="math inline">\(A\)</span> is the array of our image and <span class="math inline">\(C\)</span> is the image after applying the Haar Wavelet transform</p>
+<div id="55cf230c" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> copy</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>C_copy <span class="op">=</span> copy.deepcopy(C)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, row <span class="kw">in</span> <span class="bu">enumerate</span>(C):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j, coeff <span class="kw">in</span> <span class="bu">enumerate</span>(row):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> coeff <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            C_copy[i][j] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>m, n <span class="op">=</span> C_copy.shape</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> m<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    C_copy <span class="op">=</span> C_copy[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> n<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    C_copy <span class="op">=</span> C_copy[:, :<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(harr(m).transpose()) <span class="op">@</span>  C_copy <span class="op">@</span> harr(n)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>A_image <span class="op">=</span> Image.fromarray(A).convert(<span class="st">"L"</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>A_image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Lets compare this to what the third compression looks like without the threshold applied:</p>
+<div id="c08ee7de" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mat <span class="op">=</span> C</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>m, n <span class="op">=</span> mat.shape</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>transform_cut <span class="op">=</span> mat[:<span class="bu">int</span>((m<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>), :<span class="bu">int</span>((n<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>image_from_array <span class="op">=</span> Image.fromarray(transform_cut).convert(<span class="st">"L"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>display(image_from_array.resize((<span class="dv">5000</span>,<span class="dv">2912</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that the third compression with the threshold is more pixelated. You can see this clearly looking at the cat’s eyes. However, overall it is not bad! Saving the matrix C is more efficent than saving the image <span class="math inline">\(A\)</span> of the third compression because the space taken up by the edge images take up less space than the storage the image. And, once we apply this threshold compression, we can make store this matrix C even more efficently, as we now have more 0 (we are not storing very time negative values like -2.0 x 10^8). Making a class of values 0 also make create more ‘blocks’ of 0’s in the matrix, allowing the computer to store it with less space.</p>
+<div class="comments">
+<p>This is just excellent. Two comments: first, using the threshold alone shouldn’t result in much savings, because you are still storing all the 0s. You allude to this when you talk about the “blocks” that the computer can use – that’s correct, but it won’t happen automatically, it needs to be implemented somehow. There are many algorithms designed to efficiently store sparse matrices, and you could look into those.</p>
+<p>Second, when you say “we only need to store C in order to recreate A”, I’m not sure how to interpret this. Yes, you can recreate A from the entire block matrix – but what you are storing when you’re doing the iterative compressions is just the one quadrant of C, from which you can’t entirely recreate A. I think you know what you meant here, it’s just a little confusing to read.</p>
+<p>Lastly: looping over the pixels to apply your threshold isn’t efficient. (In general, loops are the slowest way to do anything.) Here is a bit of code that will do it much more quickly:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>C_copy <span class="op">=</span> np.where(C <span class="op">&lt;</span> <span class="dv">0</span>, <span class="dv">0</span>, C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Grade: E</p>
+</div>
+</section>
+<section id="project-3" class="level2">
+<h2 class="anchored" data-anchor-id="project-3"><em>Project 3:</em></h2>
+<p>Data Source: https://github.com/devstopfix/nfl_results/blob/master/nfl%202014.csv</p>
+<p>The team that we will choose to investigate is the 2014 season of the NFL! We will begin by important the raw data and investigating it. I reccomend downloading the raw file from the link above so that you can run the code as you read. We will begin by inspecting the code:</p>
+<div id="23cccf57" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'nfl 2014.csv'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">season</th>
+<th data-quarto-table-cell-role="th">week</th>
+<th data-quarto-table-cell-role="th">kickoff</th>
+<th data-quarto-table-cell-role="th">home_team</th>
+<th data-quarto-table-cell-role="th">home_score</th>
+<th data-quarto-table-cell-role="th">visitors_score</th>
+<th data-quarto-table-cell-role="th">visiting_team</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2014</td>
+<td>1</td>
+<td>2014-09-04T19:30:00-05:00</td>
+<td>Seahawks</td>
+<td>36</td>
+<td>16</td>
+<td>Packers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2014</td>
+<td>1</td>
+<td>2014-09-07T12:00:00-05:00</td>
+<td>Bears</td>
+<td>20</td>
+<td>23</td>
+<td>Bills</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2014</td>
+<td>1</td>
+<td>2014-09-07T12:00:00-05:00</td>
+<td>Chiefs</td>
+<td>10</td>
+<td>26</td>
+<td>Titans</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2014</td>
+<td>1</td>
+<td>2014-09-07T12:00:00-05:00</td>
+<td>Dolphins</td>
+<td>33</td>
+<td>20</td>
+<td>Patriots</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2014</td>
+<td>1</td>
+<td>2014-09-07T12:00:00-05:00</td>
+<td>Eagles</td>
+<td>34</td>
+<td>17</td>
+<td>Jaguars</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">262</td>
+<td>2014</td>
+<td>19</td>
+<td>2015-01-11T13:05:00-05:00</td>
+<td>Packers</td>
+<td>26</td>
+<td>21</td>
+<td>Cowboys</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">263</td>
+<td>2014</td>
+<td>19</td>
+<td>2015-01-11T16:40:00-05:00</td>
+<td>Broncos</td>
+<td>13</td>
+<td>24</td>
+<td>Colts</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">264</td>
+<td>2014</td>
+<td>20</td>
+<td>2015-01-18T15:00:00-05:00</td>
+<td>Seahawks</td>
+<td>28</td>
+<td>22</td>
+<td>Packers</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">265</td>
+<td>2014</td>
+<td>20</td>
+<td>2015-01-18T18:30:00-05:00</td>
+<td>Patriots</td>
+<td>45</td>
+<td>7</td>
+<td>Colts</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">266</td>
+<td>2014</td>
+<td>21</td>
+<td>2015-02-01T18:30:00-05:00</td>
+<td>Seahawks</td>
+<td>24</td>
+<td>28</td>
+<td>Patriots</td>
+</tr>
+</tbody>
+</table>
+
+<p>267 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</div>
+<p>Now we will clean this up this data! We will perform the following: 1. remove columns so that we are only left with the home team, home score, visiting team, visiting score. 2. We will split our dataset in half, only looking at the first 133 rows. That way we can ‘train’ on the first half and then test how effective this is on the second half of the data. 3. From our 133 rows, we need to ensure that there is at most 1 game between any two teams (so that we do not have multiple edges between two nodes). We will do this and remove such duplicates (keeping the first instance of a game between two teams)</p>
+<p>Once we have done this cleaning, we can put out data into a graph system! To do this, we will create an edge from home_team –&gt; visitng team. To calculate the weight of this edge, we will use home team score - visiting team score.</p>
+<div id="6210b615" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. and 2. Only Keep Relevany Columns and the top 133 rows</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [<span class="st">'home_team'</span>, <span class="st">'home_score'</span>, <span class="st">'visitors_score'</span>, <span class="st">'visiting_team'</span>] </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[columns_to_keep].head(<span class="dv">133</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Remove duplicate games between teams</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>storage <span class="op">=</span> []</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>Edges <span class="op">=</span> []</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> df_filtered.iterrows():</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>.add(row[<span class="st">'home_team'</span>])</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>.add(row[<span class="st">'visiting_team'</span>])</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">id</span> <span class="kw">not</span> <span class="kw">in</span> storage:</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        Edges.append((row[<span class="st">'home_team'</span>], row[<span class="st">'home_score'</span>], row[<span class="st">'visitors_score'</span>], row[<span class="st">'visiting_team'</span>]))</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        storage.append(<span class="bu">id</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Create list of all the teams in our database -- used to create verticies when constructing the graph (add_nodes_from function below)</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>vertex_set <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, team <span class="kw">in</span> <span class="bu">enumerate</span>(df_filtered[<span class="st">'home_team'</span>]):</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    vertex_set.add(team)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>vertex_set <span class="op">=</span> <span class="bu">list</span>(vertex_set)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct graph such that edges go from home team --&gt; visitng team and weights are home score - visitng score; meanwhile construct weights list</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>G.add_nodes_from(vertex_set)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tup <span class="kw">in</span> Edges:</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    score_difference <span class="op">=</span> (tup[<span class="dv">1</span>] <span class="op">-</span> tup[<span class="dv">2</span>])</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    G.add_edge(tup[<span class="dv">0</span>], tup[<span class="dv">3</span>], weight <span class="op">=</span> score_difference)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the graph</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(G, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_edge_labels(G, pos<span class="op">=</span> nx.spring_layout(G))</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="buyalosbob_files/figure-html/cell-13-output-1.png" width="691" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="comments">
+<p>Wow, that’s a busy graph! For fun, I just made it even busier for you, by labelling the edges…</p>
+</div>
+<p>Now, observe what the incidence matrix of this graph will look like. Each columns will represent an edge. Each edge represents a game, so there will be one 1 and one -1 in each column. Now, observe what happens if we take the transpose of this matrix, call it A. Any row of A will have one 1, one -1, and the rest 0. Say our 1 is in column i and our -1 is in row j. Then, the equation that corresponds to this row is x(i) - x(j). So, if let y = x(i) - x(j), and do this for every row, and put it in a vector of the respective row order, then we have the observed potential differences vector! Thus, we have crated a system Ax = b and we can use least squares to find the best fit for our vector x of potentials.</p>
+<p>So, lets begin by forming the incidence matrix transpose and our observed potential differences vector b: 1. to get incidence matrix transpose we can directly get this from our graph G using built in functions of networkx 2. to get the observed potential differnces vector, we just have to take home score - column score, and make sure that it is in the correct row.</p>
+<div id="63e1de3d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> networkx.linalg.graphmatrix <span class="im">import</span> incidence_matrix</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Create incidence matrix</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>inc_matrix <span class="op">=</span> incidence_matrix(G, oriented<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>inc_matrix <span class="op">=</span> inc_matrix.toarray()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>inc_transpose <span class="op">=</span> inc_matrix.transpose()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"incidence transpose:"</span>, inc_transpose)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Create observed potential differences vector b through three steps:</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#a) Get edge weights as a dictionary</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>edge_weights_dict <span class="op">=</span> <span class="bu">dict</span>(nx.get_edge_attributes(G, <span class="st">'weight'</span>))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#b) Get a list of edge weights in the same order as the incidence matrix</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>edge_weights_list <span class="op">=</span> [edge_weights_dict[edge] <span class="cf">for</span> edge <span class="kw">in</span> G.edges]</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co">#c) Convert the list to a NumPy array</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>edge_weights_array <span class="op">=</span> np.array(edge_weights_list)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> edge_weights_array</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>incidence transpose: [[-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ...  0.  0. -1.]
+ [ 0.  0.  0. ...  1.  0. -1.]
+ [ 0.  0.  0. ...  0.  0. -1.]]</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>array([  7,   7,  21,  25,  14,  11,   6,  -5, -10,  21,  12,  -3,   1,
+       -16,  27,  27,  14,   1,   9,  10,   4,   7,  26,   2,  28,  22,
+        -6,  -2, -31,  -6, -11,  13,  10, -16,  -1,   2, -14,   7,  32,
+        21, -23,  13, -14,   3,  11,   6,  21,  17, -18,   7,  -4, -18,
+       -11,  21,   3,  10,  -3, -11,   3,  42, -14,  -1, -28,  -3, -14,
+         2,  19, -12, -15,   1,  -8,   5,   5,  -7,  20,  28,  22,  -3,
+       -21, -13,   2,  -2,  10,   5, -27,  -8,  18, -14,  13, -19,  -3,
+        37,   9,  19,  31,  -3,  14,  26,   0,  10,   5,  -8,  -7, -14,
+       -20,   3,  -3,   7,  17,  -3,  24,   7,  27, -16, -24,  -3, -11,
+        20,   6,  -7,   6,  17,   3,   6,  27,  31, -31, -10,   2])</code></pre>
+</div>
+</div>
+<div class="comments">
+<p>That’s a nice and elegent way of getting the weighted incidence matrix!</p>
+</div>
+<p>Let’s do some testing to amake sure that our incidence transpose matrix and vector b are what we expect them to be. To do this, let’s create a dictionary that maps vertex numbers (as indicies in vertex_set), and the name of the vertex (the team name). This is important because this index number of each vertex corresponds to the column of our incidence transpose matrix represents, by the way we iterately defined our graph through the vertex_set list.</p>
+<p>Once we have created this dictionary, vert_to_team, let’s check a few rows to make sure that the game that row represents has the correct spread in the vector b.</p>
+<p>(I will put many of these outputs onto the markdown - because early on we cast a set to a list, then our rows may be in shuffled order–the rows that the reader runs will almost surely be in a different order than when I am writing this on my computer–but long as we check for the correct correspondence between the rows of our matrix and the vector b, then it does not matter if the rows are shuffled when you run it)</p>
+<p>My first row is: [[-1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0.]</p>
+<p>Using code below, I see that my first team is the Ravens, and the 24th team is the Bengals. Going back to my original data source, in this game the Ravens scored 16 and were at home, and the Bengals scored 23 and were visiting. So, we expect our vector b to have -7 in the first row. And it does!</p>
+<p>Let’s test row 101. This is [ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. -1. 0. 0. 0. 0. 0. 0.]</p>
+<p>So, the 17th team is the Browns, and our 26th team are the Steelers. Going back to our data source, we see that the Browns were at home and scored 30, and the Steelers were visiting and scored 27. So, we expect our vector b to have 3 in the 101-th row, And it does!</p>
+<p>So, we can say that our matrix and our vector be have the correct row correspondence.</p>
+<div class="comments">
+<p>I love these checks. Getting the row indices right is a common source of error, and it’s great to see you’re being careful about it.</p>
+</div>
+<div id="a54473fe" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>vert_to_team <span class="op">=</span> {}</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, team <span class="kw">in</span> <span class="bu">enumerate</span>(vertex_set):</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    vert_to_team[i] <span class="op">=</span> team</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#test row 1</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"test row 1:"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vert_to_team[<span class="dv">0</span>])</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vert_to_team[<span class="dv">23</span>])</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b[<span class="dv">0</span>])</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co">#test row 101</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"test row 101:"</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inc_transpose[<span class="dv">100</span>])</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vert_to_team[<span class="dv">16</span>])</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vert_to_team[<span class="dv">25</span>])</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b[<span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>test row 1:
+Broncos
+Chargers
+7
+
+
+test row 101:
+[ 0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.  0.
+  0.  0.  0.  0.  0.  0.  0. -1.  0.  0.  1.  0.  0.  0.]
+Bills
+Jets
+5</code></pre>
+</div>
+</div>
+<p>Now, we will perform least squares using the normal equations!</p>
+<p>The matrix defined as B can be thought of as the <span class="math inline">\(AA^T\)</span>, and so we have that <span class="math inline">\(x = B^{-1}A^Tb\)</span>. Note that this may be slightly confusing because our <span class="math inline">\(A\)</span> is “inc_transpose” and so our <span class="math inline">\(A^T\)</span> is “inc_transpose.transpose()”</p>
+<div id="48db8314" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>b_column_vector <span class="op">=</span> b.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)  <span class="co"># Assuming b is a 1D array with 129 elements</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> inc_transpose.transpose() <span class="op">@</span> inc_transpose</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>Binv <span class="op">=</span> np.linalg.inv(B)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Binv <span class="op">@</span> inc_transpose.transpose() <span class="op">@</span> b_column_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, we have found our potentials vector x! Let’s test it on some testing data!</p>
+<p>We will essentially do all of the same things, but this time restricting our raw data to only the last 133 entires before filtering. We will do all of the same work we did earlier to arrive at the vector b, so feel free to not read this next code block since we are essentially copying and pasting everything we have done up to now. Let’s print vector b of our spreads of our testing data:</p>
+<div class="comments">
+<p>A more elegant way to do this would have been to put all your code into a function, and then call it twice – once with the first half of the data, and once with the second half. However, then you wouldn’t have been able to show your work step by step with the markdown, so this way was probably better!</p>
+</div>
+<div id="1c83d1d7" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. and 2. Only Keep Relevany Columns and the bottom 133 rows</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>columns_to_keep <span class="op">=</span> [<span class="st">'home_team'</span>, <span class="st">'home_score'</span>, <span class="st">'visitors_score'</span>, <span class="st">'visiting_team'</span>] </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df[columns_to_keep].tail(<span class="dv">133</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Remove duplicate games between teams</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>storage <span class="op">=</span> []</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>Edges <span class="op">=</span> []</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> df_filtered.iterrows():</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>.add(row[<span class="st">'home_team'</span>])</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>.add(row[<span class="st">'visiting_team'</span>])</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">id</span> <span class="kw">not</span> <span class="kw">in</span> storage:</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        Edges.append((row[<span class="st">'home_team'</span>], row[<span class="st">'home_score'</span>], row[<span class="st">'visitors_score'</span>], row[<span class="st">'visiting_team'</span>]))</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        storage.append(<span class="bu">id</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Create list of all the teams in our database -- used to create verticies when constructing the graph (add_nodes_from function below)</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>vertex_set <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, team <span class="kw">in</span> <span class="bu">enumerate</span>(df_filtered[<span class="st">'home_team'</span>]):</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    vertex_set.add(team)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>vertex_set <span class="op">=</span> <span class="bu">list</span>(vertex_set)</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct graph such that edges go from home team --&gt; visitng team and weights are home score - visitng score; meanwhile construct weights list</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>G.add_nodes_from(vertex_set)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tup <span class="kw">in</span> Edges:</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    score_difference <span class="op">=</span> (tup[<span class="dv">1</span>] <span class="op">-</span> tup[<span class="dv">2</span>])</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    G.add_edge(tup[<span class="dv">0</span>], tup[<span class="dv">3</span>], weight <span class="op">=</span> score_difference)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>inc_matrix <span class="op">=</span> incidence_matrix(G, oriented<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>inc_matrix <span class="op">=</span> inc_matrix.toarray()</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>inc_transpose <span class="op">=</span> inc_matrix.transpose()</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a><span class="co">#Create observed potential differences vector b through three steps:</span></span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a><span class="co">#a) Get edge weights as a dictionary</span></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>edge_weights_dict <span class="op">=</span> <span class="bu">dict</span>(nx.get_edge_attributes(G, <span class="st">'weight'</span>))</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a><span class="co">#b) Get a list of edge weights in the same order as the incidence matrix</span></span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>edge_weights_list <span class="op">=</span> [edge_weights_dict[edge] <span class="cf">for</span> edge <span class="kw">in</span> G.edges]</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a><span class="co">#c) Convert the list to a NumPy array</span></span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>edge_weights_array <span class="op">=</span> np.array(edge_weights_list)</span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> edge_weights_array</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>b_column_vector <span class="op">=</span> b.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b_column_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[  3]
+ [  7]
+ [-11]
+ [ -9]
+ [ 24]
+ [ 12]
+ [  4]
+ [ 17]
+ [ 17]
+ [  2]
+ [  4]
+ [-13]
+ [ 12]
+ [ 17]
+ [  8]
+ [  3]
+ [ 25]
+ [ 28]
+ [ -8]
+ [  4]
+ [-10]
+ [ -1]
+ [-17]
+ [ -3]
+ [ -6]
+ [ -3]
+ [ 11]
+ [ -8]
+ [ 41]
+ [ 33]
+ [  5]
+ [  6]
+ [ 10]
+ [  5]
+ [ -3]
+ [-29]
+ [ -5]
+ [-17]
+ [ -3]
+ [ 18]
+ [  6]
+ [ -3]
+ [-17]
+ [ -7]
+ [-31]
+ [-16]
+ [ -2]
+ [  2]
+ [  4]
+ [ 11]
+ [-23]
+ [ 35]
+ [  4]
+ [ -2]
+ [ 11]
+ [ -7]
+ [ 15]
+ [ 52]
+ [-10]
+ [ -4]
+ [ 35]
+ [ 16]
+ [  8]
+ [  4]
+ [-16]
+ [ -3]
+ [  3]
+ [ 14]
+ [ -1]
+ [  8]
+ [ 10]
+ [  8]
+ [  8]
+ [-13]
+ [-16]
+ [-14]
+ [  1]
+ [-14]
+ [  8]
+ [-16]
+ [ -1]
+ [ 13]
+ [-15]
+ [  2]
+ [  7]
+ [  3]
+ [ -9]
+ [-12]
+ [-21]
+ [-21]
+ [  9]
+ [  7]
+ [ -3]
+ [ -1]
+ [ -3]
+ [  8]
+ [-13]
+ [-22]
+ [ 20]
+ [ 22]
+ [  7]
+ [ 16]
+ [-24]
+ [  4]
+ [ 11]
+ [  2]
+ [ 21]
+ [ 16]
+ [ 14]
+ [ 14]
+ [  6]
+ [ -4]
+ [ 24]
+ [ 19]
+ [-10]
+ [-20]
+ [-24]
+ [  3]
+ [-27]]</code></pre>
+</div>
+</div>
+<p>Now, above we created an “inc_transpose” matrix, (i.e.&nbsp;matrix A) for the testing data in the same way we created an “inc_transpose” matrix for our training data. Now, using the least squares vector x we got on our earlier matrix, we want to compare how Ax compares to b, where A is the matrix obtained from the testing data, x is the least squares matrix from the training data, and b is the observed potential differences vector of our testing data.</p>
+<p>To compare, we will take the absolute value of their difference and their percent differences:</p>
+<p><span class="math inline">\(|y_i - b_i|\)</span> and <span class="math inline">\(\frac{b_i - y_i}{y_i}\)</span> where <span class="math inline">\(y_i\)</span> is the i-th component of <span class="math inline">\(Ax\)</span> for the <span class="math inline">\(x\)</span> we got from least squares and the <span class="math inline">\(A\)</span> of the testing data, and <span class="math inline">\(b_i\)</span> is the i-th component of the b vector. So, if for a given row, Ax has 4 and b has 6, then its absolute value ‘score’ would be <span class="math inline">\(2\)</span> and its percent change would be <span class="math inline">\(.5\)</span>. We will compute these two metrics for every component and take the average value. This will give us a sense of how ‘good’ our vector <span class="math inline">\(x\)</span> is at testing <span class="math inline">\(b\)</span>:</p>
+<div id="f348a6cd" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>output_abs <span class="op">=</span> []</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>output_perc <span class="op">=</span> []</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> inc_transpose <span class="op">@</span> x</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(b_column_vector)):</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    output_abs.append(<span class="bu">abs</span>(<span class="bu">float</span>(ax[i]) <span class="op">-</span> <span class="bu">float</span>(b_column_vector[i])))</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    output_perc.append((<span class="bu">float</span>(b_column_vector[i]) <span class="op">-</span> <span class="bu">float</span>(ax[i]))<span class="op">/</span><span class="bu">float</span>(ax[i]))</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Value of absolute value 'score':"</span>, <span class="bu">sum</span>(output_abs)<span class="op">/</span><span class="bu">len</span>(output_abs))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average Value of percent change 'score':"</span>, <span class="bu">sum</span>(output_perc)<span class="op">/</span><span class="bu">len</span>(output_perc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average Value of absolute value 'score': 15.592436974789916
+Average Value of percent change 'score': -4.835796049014146</code></pre>
+</div>
+</div>
+<p>After doing this analysis, we see that our potentials vector x from the training data does a largely bad job of predicting the observed potential differences of the testing dataset. The average difference between the predicted spread and the actual spread is about 22 points! And the percent change between the predicted spread and the observed spread was a decrease of 56% This is quite bad. There could be a few reasons for this: 1. a ‘potential difference’ does not give much information about the magnitude of a win or a loss. If one game is 2-4 and another is 200-202, we will have the same potential differencce. This may create issues when extracting it to other teams. For example, a 2 potential diference of one game and a 2 potential difference of another game might not reflect the differences in magnitude between these two games and thus will not be helpful in predicting the potential differences when you match off these teams against others.</p>
+<div class="comments">
+<p>This is a very good point.</p>
+</div>
+<ol start="2" type="1">
+<li>Our data set only includes one game for any two given teams, and many teams only appear in the dataset a handful of times. Therefore, our data is very suspetible to outliers, or even to random chance where a good team is only playing bad teams, and vice versa. Also, due to the structure of the NFL, most of the games are played wtihin divisions, and so we may have worse predictions when two teams from different divisons play off. Thus, we need a larger sample size, and every team to play each other, in order to really create a more accurate x vector.</li>
+</ol>
+<div class="comments">
+<p>Excellent. Grade: E</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/submitted/projects_2/buyalosbob.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

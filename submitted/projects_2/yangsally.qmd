@@ -1,0 +1,874 @@
+
+
+Modelling with Directed Graphs
+
+Comment: I think the hints really helped a lot with the intuition. I couldn't really understand what the basis vectors for the null space of an incidence matrix represent intuitively until the hints are given, especially when I was trying to compute a basis of directed loops. 
+
+::: comments
+Great, I'm glad they helped!
+:::
+
+a. Plot the Digraph
+
+```{python}
+!pip3 install pywt
+```
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
+import gravis as gv
+from collections import defaultdict
+
+G = nx.DiGraph()
+G.add_node("1")
+G.add_node("2")
+G.add_node("3")
+G.add_node("4")
+G.add_node("5")
+G.add_node("6")
+G.add_edge("1","2")
+G.add_edge("2","3")
+G.add_edge("3","4")
+G.add_edge("4","2")
+G.add_edge("1","4")
+G.add_edge("3","1")
+G.add_edge("3","6")
+G.add_edge("6","3")
+G.add_edge("4","5")
+G.add_edge("5","6")
+pos = nx.spring_layout(G)
+nx.draw_networkx_nodes(G, pos)
+nx.draw_networkx_labels(G, pos)
+nx.draw_networkx_edges(G, pos, edge_color='r', arrows = True)
+plt.show()
+```
+
+b. Exhibit the incidence matrix A of this digraph and find a basis for N(A) using its reduced row echelon form. 
+
+```{python}
+import numpy as np
+from sympy import Matrix
+
+# Define the vertices and edges
+V = [1, 2, 3, 4, 5, 6]
+E = [(1, 2), (2, 3), (3, 4), (4, 2), (1, 4), (3, 1), (3, 6), (6, 3), (4, 5), (5, 6)]
+num_vertices = len(V)
+num_edges = len(E)
+
+# Initialize the incidence matrix 
+incidence = np.zeros((num_vertices, num_edges))
+
+# Fill in the matrix with entries corresponding to each vertex and incoming & outgoing edges
+for col, edge in enumerate(E):
+    from_vertex, to_vertex = edge
+    from_index = V.index(from_vertex)
+    to_index = V.index(to_vertex)
+    incidence[from_index, col] = 1  # Outgoing edge
+    incidence[to_index, col] = -1  # Incoming edge
+print("The incidence matrix is:")
+print(incidence)
+
+# Then we find the RREF of A to find a basis for N(A) by hand (details in attached pictures)
+x1 = np.array([0,1,1,1,0,0,0,0,0,0])
+x2 = np.array([-1,-1,-1,0,1,0,0,0,0,0])
+x3 = np.array([1,1,0,0,0,1,0,0,0,0])
+x4 = np.array([0,0,0,0,0,0,1,1,0,0])
+x5 = np.array([0,0,1,0,0,0,-1,0,1,1])
+print("The basis for null space of A is:")
+print(x1.T)
+print(x2.T)
+print(x3.T)
+print(x4.T)
+print(x5.T)
+```
+
+::: comments
+Nx has a built-in function for finding the incidence matrix, but I appreciate that you've done it by hand here.
+
+(For that matter, sympy has a function for finding the rref and the nullspace of a matrix... these let me double-check your work):
+
+```{python}
+
+from sympy import Matrix, nsimplify
+# E but map all the numbers to strings
+E_str = [(str(e[0]), str(e[1])) for e in E]
+inc_matrix = nsimplify(Matrix(nx.incidence_matrix(G,edgelist=E_str, oriented=True).toarray()),rational=True)
+print("Incidence matrix:")
+display(inc_matrix)
+(np.equal(np.array(incidence),-np.array(inc_matrix))).all() # Check if #the two matrices are the same
+nullspace = nsimplify(Matrix.hstack(*inc_matrix.nullspace()),rational=True)
+print("Nullspace basis:")
+display(nullspace)
+
+
+```
+:::
+
+
+These five vectors together span the null space of A. 
+
+Just as given by the hint "each column in the nullspace tells us a set of coefficients which can multiply the columns of the incidence matrix so that the rows can sum to zero. Example: if our nullspace has a column vector [0,1,0,1]^T, this tells us that column 2 + column 4 of the incidence matrix will sum to zero," we can verify this with the basis vectors we get.
+
+For instance, x1 is [0,1,1,1,0,0,0,0,0,0]^T, which means column 2 + column 3 + column 4 of the incidence matrix A will sum to zero, which is true. 
+
+Now we use the computed basis to find a basis of directed loops
+For x1, we may see that it is a directed loop : column 2, 3, and 4 together is a loop from vertex 2 to 3, and then 3 to 4, and 4 back to 2. Direction does matter in this loop since if we switch the direction it would become 2 to 4, 4 to 3, and 3 back to 2, which is different.
+
+::: comments
+That's not what this is asking about. The difficulty is when a loop in the basis is something like 1 to 2, and 3 to 2, and 1 to 3. You can't actually follow that loop if you are going in the directions of the edges.
+
+Some of the loops in the basis are actually directed loops, but some are not. You need to figure out which are which, then see if you can add a directed loop to some of the undirected loops to make a new basis of directed loops.
+:::
+
+For x2, direction also matters. This loop is slightly more complicated but the idea is similar - if we switch the direction the loop would be different.
+For x3, direction matters as well just as for x1. 
+For x4, we shall see this is actually a non-directed loop consisted of only two vertices 3 and 6. Switching the direction, we still get the same loop as before. 
+For x5, direction matters so it's a directed loop.
+
+Therefore, considering adding a directed basis element to the non-directed basis element x4 just like what's given in the hint, we may replace x4 by x4 + x5, which is [0,0,1,0,0,0,0,1,1,1]^T and this loop is directed as expected. 
+
+```{python}
+# Now the "corrected" basis of directed loops is:
+x1 = np.array([0,1,1,1,0,0,0,0,0,0])
+x2 = np.array([-1,-1,-1,0,1,0,0,0,0,0])
+x3 = np.array([1,1,0,0,0,1,0,0,0,0])
+x4 = np.array([0,0,1,0,0,0,0,1,1,1])
+x5 = np.array([0,0,1,0,0,0,-1,0,1,1])
+print("The (directed-loop) basis for null space of incidence matrix is:")
+print(x1.T)
+print(x2.T)
+print(x3.T)
+print(x4.T)
+print(x5.T)
+```
+
+Now we move on to solve 3 problems selected from the 5 problems given. 
+
+1. Think of the digraph as representing an electrical circuit where an edge represents some electrical object like a resistor or capacitor. Each node represents the circuit space between these objects. and we can attach a potential value to each node, say the potentials are x1, ...., x6. The potential difference across an edge is the potential value of head minus tail. Kirchhoff’s second law of electrical circuits says that the sum of potential differences around a circuit loop must be zero. Assume and use the fact (p. 422) that Ax = b implies that for all y in N(A^T), y^Tb = 0, to find conditions that a vector b must satisfy in order for it to be a vector of potential differences for some potential distribution on the vertices.
+
+```{python}
+# We should obtain the basis for null space of A^T, which is simpler than that of A
+# In fact, as N(A) has 5 basis elements, it's easy to see that N（A^T) has 6-5 = 1 basis element
+e = np.array([1,1,1,1,1,1]) 
+# Now we want to find conditions on b to make y^Tb = 0 to hold for y in null space of A^T
+# Which means for any y that is a scalar multiple of [1,1,1,1,1,1]^T, y^Tb = 0 should hold.
+
+
+# Start with any vector b we want to test
+b = np.array([1, 2, 3, 0, -4, -2])  
+
+# Check if the condition holds for any scalar multiple of [1,1,1,1,1,1]
+condition_met = True
+for scalar in range(-10, 11):  # Check scalar multiples from -10 to 10
+    y = scalar * np.ones(6)  # Create a scalar multiple of [1,1,1,1,1,1]
+    inner_product = np.dot(y, b)
+    if inner_product != 0:
+        condition_met = False
+        break
+
+if condition_met:
+    print("The condition holds.")
+else:
+    print("The condition does not hold for the inputted vector b.")
+```
+
+Intuitively speaking, the yTb = 0 condition essentially means the entries of b should sum to 0, so the inner product of any scalar multiple ( let it be a ) of [1,1,1,1,1,1] and b would be 
+a*b1 + a*b2 +...+ a*b6 = a* (b1 +...+b6) = 0. 
+I think this makes intuitive sense —— b has entries summing up to 0 means the "distribution" of potential differences between the 6 nodes must be cancelled out after being added up, otherwise it wouldn't make sense. 
+
+::: comments
+Very nice!
+:::
+
+2. Assume that across each edge of a circuit a current flows. Thus, we can assign to each edge a “weight,” namely the current flow along the edge. This is an example of a weighted digraph. However, not just any set of current weights will do, since Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0 . Use this law to find a matrix condition that must be satisfied by the currents and solve it to exhibit some current flows.
+
+Let Iij denote the current flowing from node i to node j. Iij essentially represents the amount of current flowing in the (i,j) edge (if exists). As Kirchhoff’s first law of circuits says that the total flow of current in and out of any node should be 0, this means for any node i that has edges connected to it, the currents should sum to zero. Let I be the vector of currents, so it should be a 10 by 1 vector since the number of currents should exactly match the number of edges. 
+A matrix condition that the current vector I must satisfy, as required by Kirchoff's first law, should be AI = 0. 
+
+::: comments
+You can write the math using LaTeX in the markdown cells. For example, you can write the "Iij" as \$I_{ij}$, which becomes $I_{ij}$
+:::
+
+```{python}
+import numpy as np
+
+# Use the singular value decomposition (SVD) to solve Ax = 0
+U, S, Vt = np.linalg.svd(incidence)
+
+# The solution vector x is the last column of Vt (corresponding to the smallest singular value)
+I = Vt[-1]
+
+print("Solution I:")
+print(I)
+```
+
+::: comments
+The solution space for Ax = 0 is the nullspace of A, which you've already found.
+
+Now, your solution works in this case because the last singular value is zero; this will be the case in general if A isn't square or full rank. However, using the nullspace of A is a more direct way to find the solution, and it happens to give a much more clean basis in this case.
+:::
+
+
+The solution we get is indeed a 10 by 1 vector (A is a 6 by 10 matrix, so I should be 10 by 1)
+
+1. Think of the digraph as representing a directed communications network. Here loops determine which nodes have bidirectional communication since any two nodes of a loop can only communicate with each other by way of a loop. By examining only a basis of directed loops how could you determine which nodes in the network can communicate with each other?
+
+From only the basis of directed loops, which is consisted of 
+x1 = [0,1,1,1,0,0,0,0,0,0]
+x2 = [-1,-1,-1,0,1,0,0,0,0,0]
+x3 = [1,1,0,0,0,1,0,0,0,0]
+x4 = [0,0,1,0,0,0,0,1,1,1]
+x5 = [0,0,1,0,0,0,-1,0,1,1],
+we want to determine which nodes among {1,2,3,4,5,6} communicate with each other. 
+
+Nodes 1 and 2: There is a nonzero entry in position 2 of x1 and x2, so nodes 1 and 2 communicate.
+Nodes 1 and 3: There is a nonzero entry in position 1 of x1 and x3, so nodes 1 and 3 communicate.
+Nodes 1 and 4: There is a nonzero entry in position 3 of x1 and x4, so nodes 1 and 4 communicate.
+Nodes 1 and 5: No nonzero entries in the positions corresponding to nodes 1 and 5 in any basis vectors, so nodes 1 and 5 do not communicate.
+Nodes 1 and 6: No nonzero entries in the positions corresponding to nodes 1 and 6 in any basis vectors, so nodes 1 and 6 do not communicate.
+Nodes 2 and 3: There is a nonzero entry in position 2 of x2 and x3, so nodes 2 and 3 communicate.
+Nodes 2 and 4: There is a nonzero entry in position 4 of x2 and x4, so nodes 2 and 4 communicate.
+.....
+
+Therefore, the pairs of nodes that communicate with each other are:
+
+Nodes 1 and 2, 
+Nodes 1 and 3, 
+Nodes 1 and 4
+Nodes 2 and 3, 
+Nodes 2 and 4, 
+Nodes 3 and 4, 
+Nodes 3 and 6,
+Nodes 4 and 5, 
+Nodes 5 and 6
+
+::: comments
+The question is asking you to figure out which nodes can communicate even with potential intermediate nodes that may not be part of the same basis elements in your basis of directed loops. So you will have to figure out what happens if you have combinations of the loops in your basis.
+:::
+
+::: comments
+There were some conceptual issues I'd like to see fixed here!
+
+Grade: R
+:::
+
+
+Image Conpression and Edge Detection
+
+1. Selected image in grayscale with 8-bit precision (using Gimp)
+
+```{python}
+from IPython.display import Image
+Image(filename='catimage.png')
+```
+
+2. Matrix generated by the Grayscale Image & Haar Wavelet Transform
+
+Comment : Honestly I really tried writing a program to perform the Haar Wavelet Transform but I kept failing to get the representation of the Haar Wavelet Transform matrix right. I ended up using a package called Pywavelets to perform the transformation on the matrix. This package is really simple to use in practice but it doesn't help with understanding the algorithm. 
+
+
+::: comments
+That sounds frustrating! I would have liked to see your attempts, so I could help you debug.
+
+The library you found can actually be of help here. It does implement the Haar transform, although you need to specify it by putting "haar" as the wavelet name (instead of "bior1.3" as you did in the code below).
+
+
+Example:
+
+```{python}
+import numpy as np
+import pywt
+# generate a simple 5x5 matrix
+wt = pywt.Wavelet('haar')
+wt.filter_bank
+plt.show()
+```
+
+It doesn't seem like there is any way to get the matrix representation of the Haar wavelet transform from this package, but you can still use the package to perform the transform and visualize the results.
+:::
+
+
+```{python}
+import matplotlib.image as img
+import pywt
+file_name = 'catimage.png'
+image_matrix = img.imread(file_name)
+image_matrix = np.sum(image_matrix, axis=2) / 3
+print(image_matrix.shape)
+# We shall see that the generated matrix is a 1170 by 1492 matrix
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pywt
+import pywt.data
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+```
+
+Since each application of the transform will reduce storage requirements by a factor of four, applying the transform to the image 7 times will reduce storage requirements by a factor of 4^7. To make sure that this is indeed "unacceptably far" from the original image, we try applying the transform to an image with text 7 times to check if we could still read the text. 
+
+```{python}
+from IPython.display import Image
+Image(filename='text.png')
+
+import matplotlib.image as img
+file_name = 'text.png'
+text_matrix = img.imread(file_name)
+print(text_matrix.shape)
+# We can see that this is a 563 by 1000 matrix
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pywt
+import pywt.data
+
+# Load image
+original = text_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+original = LL
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+```
+
+After applying the transform for 7 times, the text is truly unrecognizable. In fact, after 6 times of transformation, one can no longer read the text. Given the larger size of the matrix generated by the cartoon image, I would believe applying the transform 7 times results in enough blur in the image so that it is basically unrecognizable. 
+
+::: comments
+You definitely shouldn't be pasting and repasting code here like this -- it makes it hard to read and easy to make mistakes! If you will be reusing a bit of code, it needs to be in a function.
+:::
+
+
+"Consider the amount of savings if, in addition to saving the blurs in all their detail, you were to to save a very good approximation to the edges portion of the transformed picture. For example, consider what you might achieve by first applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level to zero, then accounting for the large number of resulting zeros by some compression technique. You might even suggest a format for such a compression format."
+
+Now as suggested, we shall try applying some thresholding condition to edge portions of the picture that sets all pixels below a certain level, then accounting for the large number of resulting zeros by some compression technique. To figure out what threshold we should use, we can try using 0 (same as the no-condition case), 0.1, 0.2, 0.3, and 0.4. I first try imposing this condition on the whole picture and then only on the edge portions. 
+
+```{python}
+import matplotlib.image as img
+file_name = 'grayscaleimage.png'
+image_matrix = img.imread(file_name)
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pywt
+import pywt.data
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+# Now impose the condition that sets entries with values < 0.1 to zero
+image_matrix[image_matrix < 0.1] = 0
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+image_matrix[image_matrix < 0.2] = 0
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+image_matrix[image_matrix < 0.3] = 0
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+image_matrix[image_matrix < 0.4] = 0
+
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+```
+
+::: comments
+
+It looks like you are thresholding the image matrix directly here, not the edges -- that's not what you want!
+
+After you do the thresholding of the edges, there's an additional step, which is to save the matrix in a way that takes advantage of the large number of zeros. You could, for example, save the matrix as a sparse matrix, which only stores the non-zero entries. This would be a good way to compress the data.
+:::
+
+
+I'm also curious about what happens when we set entries with values larger than a certain threshold value to 1. This is accounted for in the following:
+
+```{python}
+import matplotlib.image as img
+file_name = 'grayscaleimage.png'
+image_matrix = img.imread(file_name)
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pywt
+import pywt.data
+
+# Now impose the condition that sets entries with values > 0.9 to one
+image_matrix[image_matrix > 0.9] = 1
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+
+
+image_matrix[image_matrix > 0.7] = 1
+# Load image
+original = image_matrix
+
+# Wavelet transform of image, and plot approximation and details
+titles = ['Approximation', ' Horizontal detail',
+          'Vertical detail', 'Diagonal detail']
+coeffs2 = pywt.dwt2(original, 'bior1.3')
+LL, (LH, HL, HH) = coeffs2
+fig = plt.figure(figsize=(12, 3))
+for i, a in enumerate([LL, LH, HL, HH]):
+    ax = fig.add_subplot(1, 4, i + 1)
+    ax.imshow(a, interpolation="nearest", cmap=plt.cm.gray)
+    ax.set_title(titles[i], fontsize=10)
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+fig.tight_layout()
+plt.show()
+```
+
+::: comments
+A number of issues here. If you will use the PyWavelets library, you should try examining the filter banks or using it on some simple toy images (or 1d data) to understand exactly what it's doing. And of course use 'haar'!
+
+Grade: R
+:::
+
+
+# Least Squares
+
+From WNBA's 2023 first half stats, we get the following table just as in the given example.
+
+```{python}
+from IPython.display import Image
+Image(filename='table.png')
+```
+
+We shall first obtain the matrix from the table and transform it by setting the (i,j)th entry to the score difference x(i) - x(j). 
+For each team, it could potentially play against the other 11 teams.
+So the total number of games score differences (potential differences) we wish to predict is 11*12/2 = 66.  
+
+```{python}
+import numpy as np
+wnba_stats = np.array([[0, 74.5, 71, 75, 66, 69, 72, 80, 77.5, 88, 0, 0],
+                      [76, 0, 70, 89, 69, 81, 104, 0, 84, 77, 91, 73],
+                      [69, 79.5, 0, 82, 94.5, 75, 0, 81, 72, 65, 62, 80],
+                      [74, 94, 81.5, 0, 83, 87, 95, 93, 74, 85, 61, 0],
+                      [87, 71, 79.5, 90, 0, 63, 80, 0, 61, 90, 0, 80],
+                      [69, 90, 69, 78, 85, 0, 73, 69.5, 0, 0, 78.3, 79],
+                      [65.5, 93, 0, 91, 68, 77, 0, 78, 79, 0, 75.5, 64],
+                      [64, 0, 79.5, 102, 90, 0, 86, 0, 69, 89.5, 0, 77],
+                      [84, 89, 96, 80, 75.5, 0, 85, 64, 0, 87, 83, 89],
+                      [76, 83, 83, 78, 87, 0, 0, 84.5, 72.5, 0, 0, 87],
+                      [0, 86, 77, 79, 0, 94.3, 77.5, 0, 74, 0, 0, 75],
+                      [0, 94, 93, 0, 84, 99, 105, 84, 83.5, 92, 93.5, 0]])
+```
+
+As given in the problem, we need to set up the actual matrix A using the information x(i) - x(j) = bij, where bij is the actual observed score differences. An intuitive explanation of how A should be formed is in an attached picture on canvas. 
+
+```{python}
+import numpy as np
+
+# Given matrix
+matrix = np.array([[0, 74.5, 71, 75, 66, 69, 72, 80, 77.5, 88, 0, 0],
+                   [76, 0, 70, 89, 69, 81, 104, 0, 84, 77, 91, 73],
+                   [69, 79.5, 0, 82, 94.5, 75, 0, 81, 72, 65, 62, 80],
+                   [74, 94, 81.5, 0, 83, 87, 95, 93, 74, 85, 61, 0],
+                   [87, 71, 79.5, 90, 0, 63, 80, 0, 61, 90, 0, 80],
+                   [69, 90, 69, 78, 85, 0, 73, 69.5, 0, 0, 78.3, 79],
+                   [65.5, 93, 0, 91, 68, 77, 0, 78, 79, 0, 75.5, 64],
+                   [64, 0, 79.5, 102, 90, 0, 86, 0, 69, 89.5, 0, 77],
+                   [84, 89, 96, 80, 75.5, 0, 85, 64, 0, 87, 83, 89],
+                   [76, 83, 83, 78, 87, 0, 0, 84.5, 72.5, 0, 0, 87],
+                   [0, 86, 77, 79, 0, 94.3, 77.5, 0, 74, 0, 0, 75],
+                   [0, 94, 93, 0, 84, 99, 105, 84, 83.5, 92, 93.5, 0]])
+
+# Initialize result matrix
+result_matrix = np.zeros((132, 12))
+
+# Construct the matrix
+game_count = 0
+for i in range(12):
+    for j in range(i + 1, 12):
+        result_matrix[game_count * 2, i] = 1
+        result_matrix[game_count * 2, j] = -1
+        result_matrix[game_count * 2 + 1, i] = -1
+        result_matrix[game_count * 2 + 1, j] = 1
+        game_count += 1
+
+# Print the result matrix
+print(result_matrix)
+
+
+# Initialize b vector
+b = np.zeros((132, 1))
+
+# Construct the b vector
+game_count = 0
+for i in range(12):
+    for j in range(i + 1, 12):
+        b[game_count] = matrix[i, j] - matrix[j, i]
+        game_count += 1
+
+# Print the b vector
+print(b)
+```
+
+Now we want to solve for Ax = b using the normal equation ATAx = ATb
+
+```{python}
+import numpy as np
+x = np.linalg.solve(result_matrix.T@result_matrix, result_matrix.T@b)
+print(x)
+```
+
+I think I need more efforts on refining the programming part, particularly when trying to define the matrix and the vector b, but I think the idea could work somehow???
+
+::: comments
+OK, I get your approach here. But there's no exact solution, which is why your last cell isn't working.  You'll want to use least squares instead, using `np.linalg.lstsq` instead of `np.linalg.solve`. Then you'll need to continue the problem, using the vector x that you found to predict the results of some new games.
+
+Grade: R
+:::
+
+```
+
+

@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../comments.css">
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div id="4cf57220" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Note: Project 1 was a joint effor by me (Hanyan Cai) AND Bobby Buyalos. We worked extensively on the discussions of the theories behind Project 1: Prologue and its three parts. Project 2 and 3 was completed independently by me with discussions with Bobby</strong></p>
+<section id="modeling-with-directed-graphs" class="level1">
+<h1><em>Modeling with Directed Graphs</em></h1>
+<p>We are given that the digraph <span class="math inline">\(G\)</span> has vertex set <span class="math inline">\(V = \{1, 2,3, 4,5,6\}\)</span> and an edge set <span class="math inline">\(E\)</span>. Let us first implement this information with networkx.</p>
+<div id="75d89109" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Coding in edge and node information for the digraph G</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>graph.add_nodes_from([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>edges <span class="op">=</span> [(<span class="dv">1</span>,<span class="dv">2</span>), (<span class="dv">2</span>,<span class="dv">3</span>), (<span class="dv">3</span>,<span class="dv">4</span>), (<span class="dv">4</span>,<span class="dv">2</span>), (<span class="dv">1</span>,<span class="dv">4</span>), (<span class="dv">3</span>,<span class="dv">1</span>),(<span class="dv">3</span>,<span class="dv">6</span>), (<span class="dv">6</span>,<span class="dv">3</span>), (<span class="dv">4</span>,<span class="dv">5</span>), (<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>graph.add_edges_from(edges)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting G</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(graph, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the incidence matrix</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The incidence matrix: "</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>incidence <span class="op">=</span> nx.incidence_matrix(graph, oriented<span class="op">=</span><span class="va">True</span>).todense(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-3-output-1.png" width="691" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The incidence matrix: </code></pre>
+</div>
+</div>
+<p>Great, we have the matrix <span class="math inline">\(\begin{bmatrix}
+-1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00\\
+  1.00 &amp;  0.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00 &amp; -1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00\\
+  0.00 &amp;  1.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp; -1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00
+\end{bmatrix}\)</span> as our incidence matrix.</p>
+<p>Once we put this into reduced echelon form and solve it as a homogenous system of equations, we get: <span class="math inline">\(\begin{align*}
+x_1 &amp;= x_4 + x_5 - x_7 - x_9 \\
+x_2 &amp;= -x_4 + x_7 + x_9 \\
+x_3 &amp;= x_4 + x_5 - x_9 \\
+x_6 &amp;= -x_9 + x_{10} \\
+x_8 &amp;= x_9
+\end{align*}\)</span>.</p>
+<p>The basis of the nullspace is then <span class="math inline">\(x_4\begin{bmatrix}
+1 \\ -1 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\0 \\0
+\end{bmatrix}  + x_5\begin{bmatrix}
+1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 0 \\0\\0\\0\end{bmatrix} + x_7\begin{bmatrix}
+-1 \\ 1\\0\\0\\0\\0\\1\\0\\0\\0 \end{bmatrix} + x_9\begin{bmatrix} -1\\1\\-1\\0\\0\\-1\\0\\1\\1\\0\end{bmatrix} + x_{10}\begin{bmatrix} 0\\0\\0\\0\\0\\1\\0\\0\\0\\1\end{bmatrix}\)</span>. These vectors form the basis of directed loops.</p>
+<p>This means that any vector within the span of these column vectors will be in the kernel. So when applied to the incidence matrix, the resulting vector will be 0. However, we have to careful because in our graph language, having -1 components in the basis of the nullspace means trouble. For example, suppose <span class="math inline">\(x_4 = 1\)</span> and the rest of the coefficients are 0. Then, even though the incidence matrix times the resulting linear combination vector is 0, the meaning of the operation is that we have a subtraction of an edge, which may interpretted as a reversal of the edge direction. Therefore, we can restrict ourselves to only the elements in this nullspace such that all components are positive.</p>
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1"><em>Part 1</em></h2>
+<p>For nodes <span class="math inline">\(1, \ldots, 6\)</span>, let <span class="math inline">\(x_1, \ldots, x_6\)</span> represent the potentials for these nodes. Then, for an edge between node <span class="math inline">\(i\)</span> and node <span class="math inline">\(j,\)</span> we have that <span class="math inline">\(x_j - x_i\)</span> represents the potential of that edge.</p>
+<p>Let’s do this for each edge in our graph:</p>
+<p><span class="math display">\[\begin{align*}
+    &amp;x_2 - x_1 \\
+    &amp;x_3 - x_2 \\
+    &amp;x_4 - x_3\\
+    &amp;x_2 - x_4\\
+    &amp;x_4 - x_1\\
+    &amp;x_1 - x_3\\
+    &amp;x_6 - x_3\\
+    &amp;x_3 - x_6 \\
+    &amp;x_5 - x_4 \\
+    &amp;x_6 - x_5
+\end{align*}\]</span></p>
+<p>We can then put this in a matrix <span class="math inline">\(A\)</span>, and have that</p>
+A =
+<span class="math display">\[\begin{bmatrix}
+-1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; -1 &amp; 0 &amp; 0 \\
+-1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 \\
+\end{bmatrix}\]</span>
+x =
+<span class="math display">\[\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4 \\
+x_5 \\
+x_6 \\
+\end{bmatrix}\]</span>
+b =
+<span class="math display">\[\begin{bmatrix}
+x_2 - x_1 \\
+x_3 - x_2 \\
+x_4 - x_3 \\
+x_2 - x_4 \\
+x_4 - x_1 \\
+x_1 - x_3 \\
+x_6 - x_3 \\
+x_3 - x_6 \\
+x_5 - x_4 \\
+x_6 - x_5 \\
+\end{bmatrix}\]</span>
+<p>Call this system <span class="math inline">\(Ax = b\)</span>.</p>
+<p>Now, here is the crucial observation: <span class="math inline">\(A^T\)</span> is the incidence matrix of our graph! The transpose is</p>
+[
+<span class="math display">\[\begin{bmatrix}
+-1 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; -1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1 &amp; 0 &amp; 0 &amp; -1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+\end{bmatrix}\]</span>
+<p>]</p>
+<p>Here, every column represents an edge, and every row represents a node!</p>
+<p>Let <span class="math inline">\(b = b_1, \ldots, b_{10}\)</span>. Our condition for b is that it is consistent with <span class="math inline">\(Ax = b,\)</span> with our <span class="math inline">\(A, x, b\)</span> defined above. If this is the case, then we know that there exists a <span class="math inline">\(y\in \mathcal{N}(A^T)\)</span> such that <span class="math inline">\(y\cdot b = 0\)</span>.</p>
+<p>Since <span class="math inline">\(A^T\)</span> is the incidence matrix of our graph, then we have that <span class="math inline">\(y\)</span> is a loop of our graph! And, the <span class="math inline">\(i-th\)</span> edge of our graph is represented by the <span class="math inline">\(i-th\)</span> column of <span class="math inline">\(A^T\)</span> and the <span class="math inline">\(i-th\)</span> row of <span class="math inline">\(A\)</span>.</p>
+<p>Observe that <span class="math inline">\(y\cdot b = y_1b_1 + \ldots + y_{10}b_{10} = y_1(x_2 - x_1) + \ldots + y_{10}(x_6 - x_5) = 0\)</span>. But, we can think of this as <span class="math inline">\(y_i\)</span> as the coefficient applied to the <span class="math inline">\(i-th\)</span> edge, <span class="math inline">\(b_i\)</span>. So, we know we have a loop (since <span class="math inline">\(y\)</span> is a loop) and the sums of our potentials on the loop y are zero (since <span class="math inline">\(y \cdot b = 0)\)</span>, thus <span class="math inline">\(b\)</span> is a vector of potential differences!</p>
+<div class="comments">
+<p>Very nicely put!</p>
+</div>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2"><em>Part 2</em></h2>
+<p>How should we characterize Kirchoff’s Loop Rule for Currents constraint? Let us first find a way to characterize the summation of each nodes. Recall our incidence matrix: <span class="math inline">\(\begin{bmatrix}
+-1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00\\
+  1.00 &amp;  0.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00 &amp; -1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00\\
+  0.00 &amp;  1.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp; -1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00 &amp;  0.00\\
+  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp; -1.00
+\end{bmatrix}\)</span>.</p>
+<p>A given row corresponds to a given node. This node could be a resistor or some set junction of the circuit. For this row representing the node, <span class="math inline">\(-1\)</span> represents an outgoing wire connection and <span class="math inline">\(1\)</span> represents an ingoing wire connection. For example, consider row 1 which corresponds to node 1. We can see that there are two outgoing wire connections from node 1 to node 2 and node 4, while we have one incoming wire connection to node 1 from node 3.</p>
+<div id="47efafcc" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pip._internal <span class="im">import</span> main <span class="im">as</span> pipmain</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pipmain([<span class="st">'install'</span>, <span class="st">'google.colab'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING: pip is being invoked by an old script wrapper. This will fail in a future version of pip.
+Please see https://github.com/pypa/pip/issues/5599 for advice on fixing the underlying issue.
+To avoid this problem you can invoke Python with '-m pip' instead of running pip directly.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Defaulting to user installation because normal site-packages is not writeable
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting google.colab
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached google-colab-1.0.0.tar.gz (72 kB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing build dependencies: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing build dependencies: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Getting requirements to build wheel: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Getting requirements to build wheel: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing backend dependencies: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing backend dependencies: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Preparing metadata (pyproject.toml): started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Preparing metadata (pyproject.toml): finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting google-auth~=1.4.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached google_auth-1.4.2-py2.py3-none-any.whl.metadata (3.0 kB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting ipykernel~=4.6.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached ipykernel-4.6.1-py3-none-any.whl.metadata (981 bytes)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting ipython~=5.5.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached ipython-5.5.0-py3-none-any.whl.metadata (4.3 kB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting notebook~=5.2.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached notebook-5.2.2-py2.py3-none-any.whl.metadata (1.8 kB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting six~=1.12.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached six-1.12.0-py2.py3-none-any.whl.metadata (1.9 kB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Collecting pandas~=0.24.0 (from google.colab)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Using cached pandas-0.24.2.tar.gz (11.8 MB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing build dependencies: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing build dependencies: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Getting requirements to build wheel: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Getting requirements to build wheel: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing backend dependencies: started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Installing backend dependencies: finished with status 'done'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Preparing metadata (pyproject.toml): started
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  Preparing metadata (pyproject.toml): finished with status 'error'
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">  <span style="color: #800000; text-decoration-color: #800000; font-weight: bold">error</span>: <span style="font-weight: bold">subprocess-exited-with-error</span>
+  
+  <span style="color: #800000; text-decoration-color: #800000">×</span> <span style="color: #008000; text-decoration-color: #008000">Preparing metadata </span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">(</span><span style="color: #008000; text-decoration-color: #008000">pyproject.toml</span><span style="color: #008000; text-decoration-color: #008000; font-weight: bold">)</span> did not run successfully.
+  <span style="color: #800000; text-decoration-color: #800000">│</span> exit code: <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1</span>
+  <span style="color: #800000; text-decoration-color: #800000">╰─&gt;</span> <span style="color: #800000; text-decoration-color: #800000">[6 lines of output]</span>
+  <span style="color: #800000; text-decoration-color: #800000">   </span> &lt;string&gt;:12: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  <span style="color: #800000; text-decoration-color: #800000">   </span> &lt;string&gt;:435: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  <span style="color: #800000; text-decoration-color: #800000">   </span> &lt;string&gt;:436: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+  <span style="color: #800000; text-decoration-color: #800000">   </span> error in pandas setup command: 'install_requires' must be a string or list of strings containing valid project/version requirement specifiers; Expected end or semicolon (after version specifier)
+  <span style="color: #800000; text-decoration-color: #800000">   </span>     pytz &gt;= 2011k
+  <span style="color: #800000; text-decoration-color: #800000">   </span>          ~~~~~~~^
+  <span style="color: #800000; text-decoration-color: #800000">   </span> <span style="color: #800000; text-decoration-color: #800000">[end of output]</span>
+  
+  <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">note</span>: This error originates from a subprocess, and is likely not a problem with pip.
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #800000; text-decoration-color: #800000; font-weight: bold">error</span>: <span style="font-weight: bold">metadata-generation-failed</span>
+
+<span style="color: #800000; text-decoration-color: #800000">×</span> Encountered error while generating package metadata.
+<span style="color: #800000; text-decoration-color: #800000">╰─&gt;</span> See above for output.
+
+<span style="color: #800080; text-decoration-color: #800080; font-weight: bold">note</span>: This is an issue with the package mentioned above, not pip.
+<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">hint</span>: See above for details.
+</pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>1</code></pre>
+</div>
+</div>
+<p>Now, consider the vector <span class="math inline">\(d = \begin{bmatrix} d_1 \\ \vdots \\ d_i \\ \vdots \\ d_n\end{bmatrix}\)</span>, where $d_i = $ weight of edge <span class="math inline">\(i\)</span>, $n = $ number of edges.</p>
+<p>The matrix product of row 1 with <span class="math inline">\(d\)</span> gives us the sum of all weighted incoming and outgoing edges. So in our example, we consider: <span class="math inline">\(\begin{bmatrix} -1.00 &amp; -1.00 &amp;  0.00 &amp;  0.00 &amp;  1.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 &amp;  0.00 \end{bmatrix} \begin{bmatrix} d_1 \\ \vdots \\ d_i \\ \vdots \\ d_n\end{bmatrix} = -d_1 -d_2 + d_4\)</span>. Since we are viewing the weights for the edges as the current that corresponds to the edge (wire), this product gives us the total change in current through node 1! Kirchoff’s Loop Rule for Current states that the total flow of current through any node has to be 0, which is equivalent to the condition that the incidence matrix <span class="math inline">\(A^T\)</span> times <span class="math inline">\(d\)</span>: <span class="math inline">\(A^Td = 0\)</span>! Therefore, any weight vector <span class="math inline">\(d\)</span> constructed from the definition above must be in the nullspace of <span class="math inline">\(A^T\)</span>. Wow! Therefore, let us recall that $N(A^T) = $ Span<span class="math inline">\(\left\{\begin{bmatrix}
+1 \\ -1 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\0 \\0
+\end{bmatrix}, \begin{bmatrix}
+1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 0 \\0\\0\\0\end{bmatrix}, \begin{bmatrix}
+-1 \\ 1\\0\\0\\0\\0\\1\\0\\0\\0 \end{bmatrix}, \begin{bmatrix} -1\\1\\-1\\0\\0\\-1\\0\\1\\1\\0\end{bmatrix}, \begin{bmatrix} 0\\0\\0\\0\\0\\1\\0\\0\\0\\1\end{bmatrix}\right\}\)</span>.</p>
+<p>So the weight vector must be an element in this span in order for the Kirchoff’s Law to be satisfied. For example, using this requirement, any basis vector in the above span and their scalar products are valid weights. The vector <span class="math inline">\(\begin{bmatrix}
+1 \\ -1 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\0 \\0
+\end{bmatrix} + \begin{bmatrix}
+1 \\ 0 \\ 1 \\ 0 \\ 1 \\ 0 \\ 0 \\0\\0\\0\end{bmatrix} + \begin{bmatrix}
+-1 \\ 1\\0\\0\\0\\0\\1\\0\\0\\0 \end{bmatrix} + \begin{bmatrix} -1\\1\\-1\\0\\0\\-1\\0\\1\\1\\0\end{bmatrix} + \begin{bmatrix} 0\\0\\0\\0\\0\\1\\0\\0\\0\\1\end{bmatrix}\)</span></p>
+</section>
+<section id="part-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-3"><em>Part 3</em></h2>
+<p>We need to first clarify what we mean when we talk about a basis of directed loops. Since the problem does not expand in detail about the definition, we will find a clever way to characterize this basis without breaking the rules. Suppose we have a digraph and we have <span class="math inline">\(n\)</span> directed loops that form a basis. Let us denote this basis by <span class="math inline">\(\{b_1, \dots, b_n\}\)</span>, where each <span class="math inline">\(b_i\)</span> will be the directed loop vector that is linearly independent from <span class="math inline">\(b_j\)</span>, where <span class="math inline">\(i,j \in \{1, \dots, n\}\)</span>.</p>
+<p>Now, we aren’t given any more information about this, so we think it is fair to have some leeway in expanding on the definition of any <span class="math inline">\(b_i\)</span>. Since <span class="math inline">\(b_i\)</span> is a directed loop, we claim that it is fair for us to know what edges this directed loop contains. For any <span class="math inline">\(i \in \{1, \dots, n\}\)</span>, <span class="math inline">\(b_i = \{ e_{i_1}, \dots, e_{i_k}\}\)</span> for some finite index sequence <span class="math inline">\(i_1, \dots, i_k\)</span>, where <span class="math inline">\(e_{i_l}\)</span> is some edge vector for the graph (Remember, an arbitrary edge vector for the graph is simply an arbitrary column vector in the incidence matrix of the graph). This is a fair expansion to the assumption that was given because we require no information other than the actual edges that compose the directed loop. It is also clear that the linear independence of the directed loops within the basis is preserved by our expansion of definition.</p>
+<p>Now, let node <span class="math inline">\(a\)</span> and node <span class="math inline">\(b\)</span> of the graph be given. We want to know whether these two nodes can communicate with each other, i.e, whether these two nodes are in a loop.</p>
+<p>Consider the set <span class="math inline">\(D = \{e \text{ a column vector of the graph incidence matrix :} e \in  b_i = \{ e_{i_1}, \dots, e_{i_k}\} \text{for some } i \in \{1, \dots, n\} \}\)</span>. The <span class="math inline">\(Span(D)\)</span> is defined because these column vectors have to be linearly independent by zero-nonzero observations.</p>
+<p>Define $e^* $ as the edge vector from node <span class="math inline">\(a\)</span> to node <span class="math inline">\(b\)</span>. For example, if we have a graph with node <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span> as row <span class="math inline">\(1, 2, 3\)</span> of the incidence matrix respectively, <span class="math inline">\(e^* = \begin{bmatrix} -1 \\ 1 \\ 0  \end{bmatrix}\)</span>.</p>
+<p><strong>Theorem: If <span class="math inline">\(e^* \in Span(D)\)</span> if and only if node <span class="math inline">\(a\)</span> and node <span class="math inline">\(b\)</span> is in a loop of the graph.</strong></p>
+<p>A formal proof will not be given. A sketch is as follows:</p>
+<p>The edge vector <span class="math inline">\(e^*\)</span> denotes a path from node <span class="math inline">\(a\)</span> to node <span class="math inline">\(b\)</span>. If <span class="math inline">\(e^* \in Span(D)\)</span>, then the path from node <span class="math inline">\(a\)</span> to node <span class="math inline">\(b\)</span> exists by a combination of paths that lie in arbitrary number of loops in the graph. The path from node <span class="math inline">\(b\)</span> to node <span class="math inline">\(a\)</span> also has to exists as we simply multiply the linear combination of the paths in <span class="math inline">\(D\)</span> that make up <span class="math inline">\(e^*\)</span> by <span class="math inline">\(-1\)</span>, which gives us the edge vector from node <span class="math inline">\(b\)</span> to node <span class="math inline">\(a\)</span>. Therefore, we have found a loop that connects node <span class="math inline">\(a\)</span> and node <span class="math inline">\(b\)</span>.</p>
+<p>Now, suppose node <span class="math inline">\(a\)</span> and node <span class="math inline">\(b\)</span> is in a loop of the graph. Then there exists a linear combination of directed loop basis elements that equals the loop that makes up node <span class="math inline">\(a\)</span> and node <span class="math inline">\(b\)</span>. It quickly follows that there is a linear combination of elements in <span class="math inline">\(D\)</span> that equals both the path from node <span class="math inline">\(a\)</span> to node <span class="math inline">\(b\)</span> and the path from node <span class="math inline">\(b\)</span> to node <span class="math inline">\(a\)</span>.</p>
+<p>Therefore, we have found a way to determine whether two nodes can communicate with each other. That is, they can talk with each other as long as a path between the two nodes is in the column space of <span class="math inline">\(D\)</span>. To determine this, we simply build <span class="math inline">\(D\)</span> matrix and solve for the system <span class="math inline">\(Dx = b\)</span>, where <span class="math inline">\(b\)</span> denotes the incidence column vector/edge vector that denotes a path between the two nodes. If there is a solution, then the two nodes can talk with each other. If not, then they cannot.</p>
+<p>Let us test this theorem with a real example.</p>
+<div id="ea4773ea" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> [(<span class="dv">1</span>, <span class="dv">2</span>), (<span class="dv">2</span>, <span class="dv">3</span>), (<span class="dv">3</span>,<span class="dv">1</span>), (<span class="dv">1</span>,<span class="dv">4</span>), (<span class="dv">4</span>,<span class="dv">5</span>), (<span class="dv">5</span>,<span class="dv">1</span>), (<span class="dv">6</span>,<span class="dv">7</span>)]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#construct graph</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>G.add_nodes_from(V)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>G.add_edges_from(E)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the graph</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(G, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-5-output-1.png" width="691" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now, we can create a basis of directed loops for this graph in the following way:</p>
+<p><span class="math display">\[
+\left\{
+\left\{
+\begin{pmatrix}
+-1 \\
+1 \\
+0 \\
+0 \\
+0 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+0 \\
+-1 \\
+1 \\
+0 \\
+0 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+1 \\
+0 \\
+-1 \\
+0 \\
+0 \\
+0 \\
+0
+\end{pmatrix}
+\right\},
+\left\{
+\begin{pmatrix}
+-1 \\
+0 \\
+0 \\
+1 \\
+0 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+-1 \\
+1 \\
+0 \\
+0
+\end{pmatrix},
+\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+0 \\
+-1 \\
+0 \\
+0  
+\end{pmatrix}
+\right\}
+\right\}
+\]</span></p>
+<p>This will produce the vector enclosed in curly braces.</p>
+<p>Now, we want to see if this works! Lets first test if our method will work. Lets see if it can detect if node 5 and 2 are connected.</p>
+<p>So, our first step is to consider the column space of all of the vectors within our sets in our basis of directed loops. We can visualize this with a matrix:</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+-1 &amp; 0 &amp; 1 &amp; -1 &amp; 0 &amp; 1 \\
+1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; -1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+\end{pmatrix}
+\]</span></p>
+<p>Lets put this as a numpy array. We want to consider the vector from 2 to 5, which looks like <span class="math display">\[\begin{pmatrix}
+0 \\
+-1 \\
+0 \\
+0 \\
+1 \\
+0 \\
+0  
+\end{pmatrix} \]</span>.</p>
+<p>We want to test if this is in the column space of our matrix! We can check this by solving Ax = b.</p>
+<p>To do this, we will use a least squares solver and show that this produces a geniune solution to Ax = b, so we know that b is in the column space of A.</p>
+<div id="19adff24" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span> np.array([</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>],</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>]</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>x, residuals, _, _ <span class="op">=</span> np.linalg.lstsq(A, b, rcond<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Does Ax = b:"</span>, np.allclose(A<span class="op">@</span>x, b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Does Ax = b: True</code></pre>
+</div>
+</div>
+<p>Now lets make sure that is doesn’t work when it should not! Lets show that it will not detect a connection between node 7 and 1. Lets see if the following vector is in the column space of the matrix from above. <span class="math display">\[\begin{pmatrix}
+1 \\
+0 \\
+0 \\
+0 \\
+0 \\
+0 \\
+-1  
+\end{pmatrix} \]</span></p>
+<p>To do this, we will use a least squares solver and show that this will produce a non-genuine solution, i.e.&nbsp;Ax = b is not consistent:</p>
+<div id="eb9973b5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>],</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>],</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>],</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>x, residuals, _, _ <span class="op">=</span> np.linalg.lstsq(A, b, rcond<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Does Ax = b:"</span>, np.allclose(A<span class="op">@</span>x, b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Does Ax = b: False</code></pre>
+</div>
+</div>
+<p>Therefore, we see that our method is working! In this way, give a basis of directed loops, our theorem gives us an algorithms that we can use to know if any two nodes are connected in a loop!</p>
+<p>A question for future exploration may be: how can one efficiently obtain such a basis, especially for graphs with a large number of nodes (can</p>
+</section>
+</section>
+<section id="image-compression-and-text-detection" class="level1">
+<h1><em>Image Compression and Text Detection</em></h1>
+<p>See Quarto Document</p>
+</section>
+<section id="least-squares" class="level1">
+<h1><em>Least Squares</em></h1>
+<p>We will use the sports NFL data from <a href="https://github.com/devstopfix/nfl_results/blob/master/nfl%201978.csv">GitHub</a>.</p>
+<div id="3e17a346" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#from google.colab import drive</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#drive.mount('/content/drive')</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#df = pd.read_csv('/content/drive/My Drive/Colab Notebooks/nfl 1978.csv')</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'nfl 2014.csv'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us cut this data in half. We will get an estimate with this data and compare our estimated potential to the other half later.</p>
+<div id="6ea23a4a" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.head(<span class="dv">133</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let us put everything into a graph. We have very good motivation for this. Let us discuss this in detail. Our goal for this project is to find a way to estimate the score spreads of unknown games from existing data regarding the score spreads of the teams that play each other. To do this, we will consider a linear system of equations and fit this system of equations by the normal equations method.</p>
+<p>Now, why do we want to use the graph formalism? The system of equations we will define will be very close to the incidence matrix of a graph. How? Let us check out a simplified example first. Suppose we have three teams A, B, C. Using the same formalism as the problem, the table will be given as follows, the first column and row will be A, second will be B, and third will be C: <span class="math inline">\(\begin{bmatrix} &amp; 2 &amp; 3 \\ 3 &amp;  &amp; 1 \\ 8 &amp; 2 &amp;   \end{bmatrix}\)</span>. For example, from this matrix we know that team A played against team B and team A had a score of 2, team B had a score of 3. (This table representation is not important for us here, because we will analyze the data straight from the imported csv) Then, the absolute value of the score difference will be 1. One linear equation we have is then going to be <span class="math inline">\(x(A) - x(B) = 1\)</span>, where the X will be the three dimension vector <span class="math inline">\(\begin{bmatrix} x(A) \\ x(B) \\ x(C) \end{bmatrix}\)</span> and 1 is the absolute value of the score difference. Hopefully you can already see the resemblance! From this one system of equation we can get the matrix <span class="math inline">\(\begin{bmatrix}  1 &amp; -1 &amp; 0 \end{bmatrix}\begin{bmatrix}  x(A) \\ x(B) \\ x(C) \end{bmatrix} = 1\)</span>. If we take the transpose of <span class="math inline">\(\begin{bmatrix}  1 &amp; -1 &amp; 0 \end{bmatrix}\)</span>, it looks like a column of the incidence matrix of a graph! Note that I intentionally made the equation <span class="math inline">\(x(A) - x(B) = 1\)</span>, which represents the edge B goes to A, representing that B wins over A. Then we can put this into a graph, the incidence matrix of this graph will have that transpose as a column vector! Therefore, the graph formalism will provide us with an easy way to construct our systeam of linear equations.</p>
+<p>Ok. First let us define a dictionary to include all of the teams. We will introduce some code to delete extra games that two teams play. This is because if we don’t, we will get different data for the same paramters (same teams). If that happens, for our incidence matrix we will get more than one row with -1 and 1 in the same columns, leading to two linearly dependent row vectors! Then, the transpose of the incidence matrix will not have full column rank, which results in the normal equation matrix <span class="math inline">\(A^TA\)</span>, where <span class="math inline">\(A\)</span> is the tranpose to the incidence matrix, becoming uninvertible.</p>
+<div id="2e7a8c57" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get team names</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>teamNames <span class="op">=</span> pd.concat([df[<span class="st">"home_team"</span>], df[<span class="st">"visiting_team"</span>]]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>uniqueTeamNames <span class="op">=</span> teamNames.unique()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>teamIndex <span class="op">=</span> {team: index <span class="cf">for</span> index, team <span class="kw">in</span> <span class="bu">enumerate</span>(uniqueTeamNames)}</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>numberOfTeams <span class="op">=</span> <span class="bu">len</span>(teamIndex)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct the vertices for the graph. The vertice will correspond to the sports</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># team in the teamIndex dictionary.</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>teamGraph <span class="op">=</span> nx.DiGraph()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>teamGraph.add_nodes_from(<span class="bu">range</span>(numberOfTeams))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Cut the graph into the columns we need</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>teamTable <span class="op">=</span> df[[<span class="st">"home_team"</span>, <span class="st">"home_score"</span>, <span class="st">"visitors_score"</span>, <span class="st">"visiting_team"</span>]]</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate and look at the wins and score differences</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>edges <span class="op">=</span> []</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>repeatChecker <span class="op">=</span> [[<span class="st">"null"</span>,<span class="st">"null"</span>]]</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> []</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> teamTable.iterrows():</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  ticker <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Checking for repeating games. We will skip if two teams already played a game.</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> teamPair <span class="kw">in</span> repeatChecker:</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (row[<span class="st">"home_team"</span>] <span class="op">==</span> teamPair[<span class="dv">0</span>]) <span class="op">&amp;</span> (row[<span class="st">"visiting_team"</span>] <span class="op">==</span> teamPair[<span class="dv">1</span>]):</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>      ticker <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> (row[<span class="st">"home_team"</span>] <span class="op">==</span> teamPair[<span class="dv">1</span>]) <span class="op">&amp;</span> (row[<span class="st">"visiting_team"</span>] <span class="op">==</span> teamPair[<span class="dv">0</span>]):</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>      ticker <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ticker <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>  scoreDiff <span class="op">=</span> row[<span class="st">"home_score"</span>] <span class="op">-</span> row[<span class="st">"visitors_score"</span>]</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  weight <span class="op">=</span> <span class="bu">abs</span>(scoreDiff)</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  weights.append(weight)</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> scoreDiff <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The home team won or tied against the visiting team. We count that as wins.</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the edge will be from the home team to the losing team</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>    edge <span class="op">=</span> (teamIndex[row[<span class="st">"home_team"</span>]], teamIndex[row[<span class="st">"visiting_team"</span>]], weight)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>    edges.append(edge)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> scoreDiff <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The home team lost against the visiting team.</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>    edge <span class="op">=</span> (teamIndex[row[<span class="st">"visiting_team"</span>]], teamIndex[row[<span class="st">"home_team"</span>]], weight)</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>    edges.append(edge)</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Appending the pair of teams to the repeatChecker</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>  repeatChecker.append([row[<span class="st">"visiting_team"</span>], row[<span class="st">"home_team"</span>]])</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>teamGraph.add_weighted_edges_from(edges)</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(teamGraph, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(edges))</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The incidence matrix: "</span>)</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>incidence <span class="op">=</span> nx.incidence_matrix(teamGraph, oriented<span class="op">=</span><span class="va">True</span>).todense(</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(incidence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-10-output-1.png" width="691" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>129
+The incidence matrix: 
+[[-1. -1. -1. ...  0.  0.  0.]
+ [ 0.  0.  0. ...  0.  0.  0.]
+ [ 0.  0.  0. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ...  0.  0.  0.]
+ [ 0.  0.  0. ...  0.  0.  0.]
+ [ 0.  0.  0. ... -1. -1. -1.]]</code></pre>
+</div>
+</div>
+<p>We have placed every team into distinct indices. Now, we should construct the normal equations. The b is going to be the weights vector. The A will have to be the transpose of the incidence matrix.</p>
+<div id="8a3a1501" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.transpose(incidence)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array(weights)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>ATA <span class="op">=</span> incidence <span class="op">@</span> A</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> np.linalg.det(ATA) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"A transpose times A is noninvertible!"</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"A tranpose times A is invertible!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ...  0.  0. -1.]
+ [ 0.  0.  0. ...  0.  0. -1.]
+ [ 0.  0.  0. ...  0.  0. -1.]]
+A tranpose times A is invertible!</code></pre>
+</div>
+</div>
+<p>Great, we have determined that A transpose times A is invertible. This result is not surprising considering we only consider one game per pair of teams. This allows us to solve the normal equations very easily. We will simply find the inverse to ATA. The inverse ATA applied to b will give us the best estimate for the x potential vector.</p>
+<p><span class="math inline">\(A^T A x = A^T b\\ \Rightarrow x = (A^TA)^{-1} A^Tx\)</span></p>
+<div id="0b5ab7df" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>inverseATA <span class="op">=</span> np.linalg.inv(ATA)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(A))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(incidence))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(inverseATA))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(b))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>xEstimate <span class="op">=</span> inverseATA <span class="op">@</span> incidence <span class="op">@</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(129, 32)
+(32, 129)
+(32, 32)
+(129,)</code></pre>
+</div>
+</div>
+<p>The xEstimate will then give us the best linear estimate for the potential value for every team. Let us put the results in a nicer format.</p>
+<div id="e75a62dc" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_key_from_value(dictionary, value):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, val <span class="kw">in</span> dictionary.items():</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> val <span class="op">==</span> value:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> key</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Key not found"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(np.size(xEstimate)):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"Potential for the </span><span class="sc">{</span>get_key_from_value(teamIndex, index)<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(xEstimate[index], decimals<span class="op">=</span><span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Potential for the Seahawks: -37.88
+Potential for the Bears: -27.62
+Potential for the Chiefs: -19.88
+Potential for the Dolphins: -45.12
+Potential for the Eagles: -35.25
+Potential for the Falcons: -11.19
+Potential for the Jets: -40.56
+Potential for the Rams: -41.0
+Potential for the Ravens: -48.06
+Potential for the Steelers: -33.88
+Potential for the Texans: -35.94
+Potential for the Buccaneers: -37.19
+Potential for the Cowboys: -48.25
+Potential for the Broncos: -30.62
+Potential for the Lions: -57.19
+Potential for the Cardinals: -27.12
+Potential for the Bengals: -45.75
+Potential for the Bills: -62.75
+Potential for the Browns: -33.19
+Potential for the Giants: -0.38
+Potential for the Panthers: -55.81
+Potential for the Redskins: -22.25
+Potential for the Titans: -35.0
+Potential for the Vikings: -55.0
+Potential for the Chargers: -18.81
+Potential for the Packers: -45.88
+Potential for the Raiders: -18.5
+Potential for the 49ers: -47.75
+Potential for the Colts: -49.75
+Potential for the Jaguars: -25.06
+Potential for the Patriots: -52.88
+Potential for the Saints: -20.31</code></pre>
+</div>
+</div>
+<p>Nice, now we have a general estimate for the potentials of each team. Let us see how well this potential estimate does against our actual data. We need to first reconstruct our graph by adding the new data.</p>
+<div id="42d1054a" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>teamTable <span class="op">=</span> data[[<span class="st">"home_team"</span>, <span class="st">"home_score"</span>, <span class="st">"visitors_score"</span>, <span class="st">"visiting_team"</span>]]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> teamTable.iterrows():</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  ticker <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adding a condition to skip the previous rows</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> index <span class="op">&lt;</span> <span class="dv">133</span>:</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Checking for repeating games. We will skip if two teams already played a game.</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> teamPair <span class="kw">in</span> repeatChecker:</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (row[<span class="st">"home_team"</span>] <span class="op">==</span> teamPair[<span class="dv">0</span>]) <span class="op">&amp;</span> (row[<span class="st">"visiting_team"</span>] <span class="op">==</span> teamPair[<span class="dv">1</span>]):</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>      ticker <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> (row[<span class="st">"home_team"</span>] <span class="op">==</span> teamPair[<span class="dv">1</span>]) <span class="op">&amp;</span> (row[<span class="st">"visiting_team"</span>] <span class="op">==</span> teamPair[<span class="dv">0</span>]):</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>      ticker <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> ticker <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  scoreDiff <span class="op">=</span> row[<span class="st">"home_score"</span>] <span class="op">-</span> row[<span class="st">"visitors_score"</span>]</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  weight <span class="op">=</span> <span class="bu">abs</span>(scoreDiff)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  weights.append(weight)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> scoreDiff <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The home team won or tied against the visiting team. We count that as wins.</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the edge will be from the home team to the losing team</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    edge <span class="op">=</span> (teamIndex[row[<span class="st">"home_team"</span>]], teamIndex[row[<span class="st">"visiting_team"</span>]], weight)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    edges.append(edge)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">elif</span> scoreDiff <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The home team lost against the visiting team.</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    edge <span class="op">=</span> (teamIndex[row[<span class="st">"visiting_team"</span>]], teamIndex[row[<span class="st">"home_team"</span>]], weight)</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    edges.append(edge)</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Appending the pair of teams to the repeatChecker</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  repeatChecker.append([row[<span class="st">"visiting_team"</span>], row[<span class="st">"home_team"</span>]])</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>teamGraph.add_weighted_edges_from(edges)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>nx.draw_circular(teamGraph, with_labels<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(edges))</span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The incidence matrix: "</span>)</span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>incidence <span class="op">=</span> nx.incidence_matrix(teamGraph, oriented<span class="op">=</span><span class="va">True</span>).todense(</span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(incidence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-14-output-1.png" width="691" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>213
+The incidence matrix: 
+[[-1. -1. -1. ...  0.  0.  0.]
+ [ 0.  0.  0. ...  0.  0.  1.]
+ [ 0.  0.  0. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ...  0.  0.  0.]
+ [ 0.  0.  0. ...  0.  0.  0.]
+ [ 0.  0.  0. ... -1. -1. -1.]]</code></pre>
+</div>
+</div>
+<p>Now let us get the estimated score spreads. We will multiply ATA by our xEstimate.</p>
+<div id="de24ca7e" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.transpose(incidence)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array(weights)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>estimatedScoreSpreads <span class="op">=</span> A <span class="op">@</span> xEstimate</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.shape(estimatedScoreSpreads))</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percent difference between the estimate and the actual score spread for the game between:"</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>deviationDistribution <span class="op">=</span> []</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(np.size(estimatedScoreSpreads)):</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  difference <span class="op">=</span> np.<span class="bu">abs</span>(np.<span class="bu">abs</span>(estimatedScoreSpreads[index]) <span class="op">-</span> np.<span class="bu">abs</span>(b[index])) <span class="op">/</span> np.<span class="bu">abs</span>(b[index])</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>get_key_from_value(teamIndex, edges[index][<span class="dv">0</span>])<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>get_key_from_value(teamIndex, edges[index][<span class="dv">1</span>])<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(difference, decimals<span class="op">=</span><span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  deviationDistribution.append(difference)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ [-1.  0.  0. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ...  0.  0. -1.]
+ [ 0.  0.  0. ...  0.  0. -1.]
+ [ 0.  1.  0. ...  0.  0. -1.]]
+(213,)
+Percent difference between the estimate and the actual score spread for the game between:
+Seahawks and Packers: 0.6
+Bills and Bears: 1.42
+Titans and Chiefs: 0.02
+Dolphins and Patriots: 0.38
+Eagles and Jaguars: 0.14
+Falcons and Saints: 11.5
+Jets and Raiders: 1.15
+Vikings and Rams: 0.65
+Bengals and Ravens: 0.62
+Steelers and Browns: 5.71
+Texans and Redskins: 0.18
+Panthers and Buccaneers: 1.74
+49ers and Cowboys: 1.49
+Broncos and Colts: 0.37
+Lions and Giants: 0.2
+Cardinals and Chargers: 32.0
+Ravens and Steelers: 0.95
+Bengals and Falcons: 0.51
+Bills and Dolphins: 0.09
+Browns and Saints: 20.44
+Cardinals and Giants: 0.64
+Panthers and Lions: 0.54
+Redskins and Jaguars: 0.14
+Cowboys and Titans: 0.09
+Patriots and Vikings: 0.13
+Rams and Buccaneers: 12.16
+Chargers and Seahawks: 0.49
+Broncos and Chiefs: 0.41
+Packers and Jets: 0.46
+Texans and Raiders: 0.09
+Bears and 49ers: 0.62
+Eagles and Colts: 0.92
+Falcons and Buccaneers: 0.17
+Bengals and Titans: 0.97
+Chargers and Bills: 0.71
+Ravens and Browns: 0.88
+Eagles and Redskins: 3.33
+Giants and Texans: 0.3
+Colts and Jaguars: 0.04
+Lions and Packers: 2.72
+Patriots and Raiders: 1.28
+Cowboys and Rams: 6.35
+Saints and Vikings: 0.39
+Cardinals and 49ers: 0.38
+Chiefs and Dolphins: 0.8
+Seahawks and Broncos: 0.48
+Steelers and Panthers: 0.42
+Bears and Jets: 1.81
+Giants and Redskins: 0.4
+Packers and Bears: 0.32
+Colts and Titans: 0.38
+Lions and Jets: 0.11
+Dolphins and Raiders: 0.55
+Ravens and Panthers: 0.32
+Buccaneers and Steelers: 3.35
+Texans and Bills: 3.62
+Chargers and Jaguars: 0.85
+49ers and Eagles: 3.6
+Vikings and Falcons: 0.95
+Cowboys and Saints: 0.04
+Chiefs and Patriots: 0.67
+Packers and Vikings: 0.94
+Colts and Ravens: 1.27
+Cowboys and Texans: 0.62
+Eagles and Rams: 0.98
+Giants and Falcons: 1.27
+Steelers and Jaguars: 0.75
+Bills and Lions: 3.56
+Panthers and Bears: 1.49
+Saints and Buccaneers: 3.47
+Browns and Titans: 0.06
+Broncos and Cardinals: 0.87
+49ers and Chiefs: 1.18
+Chargers and Jets: 0.61
+Patriots and Bengals: 0.87
+Seahawks and Redskins: 0.49
+Colts and Texans: 1.65
+Bengals and Panthers: inf
+Patriots and Bills: 0.86
+Ravens and Buccaneers: 0.6
+Packers and Dolphins: 2.46
+Bears and Falcons: 2.42
+Broncos and Jets: 0.66
+Titans and Jaguars: 9.31
+Lions and Vikings: 0.89
+Chargers and Raiders: 1.98
+Cardinals and Redskins: 0.91
+Cowboys and Seahawks: 0.54
+Eagles and Giants: 0.87
+49ers and Rams: 0.29
+Patriots and Jets: 7.56
+Dolphins and Bears: 0.09
+Bills and Vikings: 11.12
+Colts and Bengals: 0.46
+Jaguars and Browns: 0.78
+Lions and Saints: 55.81
+Packers and Panthers: 0.46
+Rams and Seahawks: 7.31
+Ravens and Falcons: 0.9
+Redskins and Titans: 17.44
+Chiefs and Chargers: 14.33
+Cowboys and Giants: 0.21
+Cardinals and Raiders: 1.69
+Broncos and 49ers: 0.2
+Steelers and Texans: 0.19
+Broncos and Chargers: 0.91
+Vikings and Buccaneers: 2.44
+Chiefs and Rams: 0.82
+Lions and Falcons: 7.62
+Dolphins and Jaguars: 0.42
+Bills and Jets: 0.06
+Seahawks and Panthers: 2.47
+Patriots and Bears: 0.07
+Texans and Titans: 0.48
+Cardinals and Eagles: 0.42
+Browns and Raiders: 2.46
+Steelers and Colts: 0.37
+Saints and Packers: 0.52
+Redskins and Cowboys: 5.9
+Saints and Panthers: 0.41
+Bengals and Jaguars: 0.02
+Browns and Buccaneers: 0.71
+Chiefs and Jets: 0.08
+Cardinals and Cowboys: 2.19
+Dolphins and Chargers: 0.52
+Eagles and Texans: 0.44
+Vikings and Redskins: 1.58
+Patriots and Broncos: 0.01
+Seahawks and Raiders: 3.93
+Colts and Giants: 0.05
+Browns and Bengals: 0.39
+Chiefs and Bills: 0.55
+Cowboys and Jaguars: 0.05
+Jets and Steelers: 0.43
+Lions and Dolphins: 2.14
+Ravens and Titans: 0.57
+49ers and Saints: 10.85
+Broncos and Raiders: 0.09
+Cardinals and Rams: 0.36
+Seahawks and Giants: 0.65
+Eagles and Panthers: 0.69
+Bears and Vikings: 1.33
+Texans and Browns: 0.91
+Chiefs and Seahawks: 6.05
+49ers and Giants: 2.77
+Packers and Eagles: 0.13
+Falcons and Panthers: 0.41
+Rams and Broncos: 0.15
+Buccaneers and Redskins: 0.3
+Bengals and Saints: 0.11
+Cardinals and Lions: 0.24
+Patriots and Colts: 0.36
+Steelers and Titans: 13.6
+Raiders and Chiefs: 3.45
+Bears and Buccaneers: 3.09
+Eagles and Titans: 0.96
+Browns and Falcons: 6.22
+Patriots and Lions: 0.24
+Bengals and Texans: 3.88
+Chargers and Rams: 1.08
+Seahawks and Cardinals: 0.36
+49ers and Redskins: 0.92
+Broncos and Dolphins: 6.4
+Ravens and Saints: 3.18
+Eagles and Cowboys: 0.26
+Seahawks and 49ers: 0.67
+Lions and Bears: 0.07
+Bills and Browns: 0.43
+Bengals and Buccaneers: 0.25
+Colts and Redskins: 0.55
+Jaguars and Giants: 9.62
+Rams and Raiders: 0.87
+Chargers and Ravens: 33.69
+Saints and Steelers: 1.9
+Vikings and Panthers: 0.87
+Falcons and Cardinals: 0.88
+Packers and Patriots: 4.85
+Dolphins and Jets: 13.75
+Cowboys and Bears: 0.96
+Steelers and Bengals: 0.4
+Colts and Browns: 26.88
+Ravens and Dolphins: 0.55
+Texans and Jaguars: 0.96
+Lions and Buccaneers: 1.79
+Rams and Redskins: 0.06
+Giants and Titans: 0.15
+Vikings and Jets: 1.46
+Broncos and Bills: 0.76
+Cardinals and Chiefs: 3.6
+Seahawks and Eagles: 0.6
+Raiders and 49ers: 3.49
+Patriots and Chargers: 2.06
+Packers and Falcons: 1.76
+Bills and Packers: 0.02
+Steelers and Falcons: 2.53
+Ravens and Jaguars: 0.73
+Jets and Titans: 5.88
+Saints and Bears: 0.55
+Chargers and 49ers: 2.29
+Packers and Buccaneers: 0.28
+Dolphins and Vikings: 11.62
+Panthers and Browns: 4.56
+Steelers and Chiefs: 0.61
+Texans and Ravens: 0.64
+Giants and Rams: 2.41
+Cowboys and Colts: 0.86
+Raiders and Bills: 6.5
+Bengals and Broncos: 2.85
+Panthers and Cardinals: 0.53
+Cowboys and Lions: 5.39
+Patriots and Ravens: 7.88
+Packers and Cowboys: 1.71
+Patriots and Seahawks: 0.83</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/nw/bgfbrcp92xxbt0l2nkylhyqm0000gq/T/ipykernel_49839/2412539675.py:14: RuntimeWarning:
+
+divide by zero encountered in scalar divide
+</code></pre>
+</div>
+</div>
+<div id="c1d664ac" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>np.array(deviationDistribution)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>dd[np.isfinite(dd)]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram of the data</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>plt.hist(dd, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Data Histogram'</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of all percent differences for 173 games'</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Absolute percent Difference between estimated score spread and actual score spread'</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of occurences'</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-16-output-1.png" width="816" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I define the absolute percent difference for each game as <span class="math inline">\(\frac{|\text{Estimated Score Spread}| - |\text{Actual Score Spread}|}{|\text{Actual Score Spread}|}\)</span>. We used 117 games to construct our normal equations fit and tested it with 173 games. From the histogram plot, we can see that our normal equation estimate works surprisingly well in estimating the score spreads of these games, with a small percentage of the games deviating more from the percent difference estimate. Now, let us try a different metric because this percent difference equation gives us a lot of leeway. If the estimate is -1 and the actual is 1, then we will get 0 for the percent difference, which is not right! So let us try again, but this time define the percent difference equation as <span class="math inline">\(\frac{\text{Estimated Score Spread} - \text{Actual Score Spread}}{\text{Actual Score Spread}}\)</span>.</p>
+<div id="92affc16" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>deviationDistribution <span class="op">=</span> []</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Percent difference between the estimate and the actual score spread for the game between:"</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index <span class="kw">in</span> <span class="bu">range</span>(np.size(estimatedScoreSpreads)):</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  difference <span class="op">=</span> ((estimatedScoreSpreads[index]) <span class="op">-</span> b[index]) <span class="op">/</span> b[index]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>get_key_from_value(teamIndex, edges[index][<span class="dv">0</span>])<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>get_key_from_value(teamIndex, edges[index][<span class="dv">1</span>])<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(difference, decimals<span class="op">=</span><span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  deviationDistribution.append(difference)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram of the data</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>np.array(deviationDistribution)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>dd[np.isfinite(dd)]</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>plt.hist(dd, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">False</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Data Histogram'</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Histogram of all percent differences for 173 games'</span>)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Percent Difference between estimated score spread and actual score spread'</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Number of occurences'</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Percent difference between the estimate and the actual score spread for the game between:
+Seahawks and Packers: -1.4
+Bills and Bears: 1.42
+Titans and Chiefs: -0.02
+Dolphins and Patriots: -2.38
+Eagles and Jaguars: 0.14
+Falcons and Saints: 11.5
+Jets and Raiders: 1.15
+Vikings and Rams: -1.35
+Bengals and Ravens: -0.62
+Steelers and Browns: -7.71
+Texans and Redskins: -2.18
+Panthers and Buccaneers: 1.74
+49ers and Cowboys: -3.49
+Broncos and Colts: -2.37
+Lions and Giants: -2.2
+Cardinals and Chargers: -34.0
+Ravens and Steelers: -0.95
+Bengals and Falcons: -2.51
+Bills and Dolphins: -2.09
+Browns and Saints: -22.44
+Cardinals and Giants: -2.64
+Panthers and Lions: -1.46
+Redskins and Jaguars: -0.14
+Cowboys and Titans: 0.09
+Patriots and Vikings: -0.13
+Rams and Buccaneers: 12.16
+Chargers and Seahawks: -0.49
+Broncos and Chiefs: -2.41
+Packers and Jets: 0.46
+Texans and Raiders: -1.91
+Bears and 49ers: 0.62
+Eagles and Colts: -2.92
+Falcons and Buccaneers: -0.17
+Bengals and Titans: -1.03
+Chargers and Bills: -2.71
+Ravens and Browns: -0.88
+Eagles and Redskins: -5.33
+Giants and Texans: -1.7
+Colts and Jaguars: -1.96
+Lions and Packers: -4.72
+Patriots and Raiders: -3.28
+Cowboys and Rams: 6.35
+Saints and Vikings: -0.39
+Cardinals and 49ers: -0.38
+Chiefs and Dolphins: -0.8
+Seahawks and Broncos: -0.48
+Steelers and Panthers: -0.42
+Bears and Jets: 1.81
+Giants and Redskins: -0.4
+Packers and Bears: -0.32
+Colts and Titans: -0.38
+Lions and Jets: -2.11
+Dolphins and Raiders: -0.55
+Ravens and Panthers: 0.32
+Buccaneers and Steelers: 3.35
+Texans and Bills: 3.62
+Chargers and Jaguars: -0.85
+49ers and Eagles: 3.6
+Vikings and Falcons: -0.95
+Cowboys and Saints: -2.04
+Chiefs and Patriots: -0.67
+Packers and Vikings: -1.06
+Colts and Ravens: -3.27
+Cowboys and Texans: -1.38
+Eagles and Rams: -2.98
+Giants and Falcons: 1.27
+Steelers and Jaguars: 0.75
+Bills and Lions: 3.56
+Panthers and Bears: 1.49
+Saints and Buccaneers: -5.47
+Browns and Titans: -0.06
+Broncos and Cardinals: -0.87
+49ers and Chiefs: 1.18
+Chargers and Jets: -1.39
+Patriots and Bengals: -0.87
+Seahawks and Redskins: 0.49
+Colts and Texans: 1.65
+Bengals and Panthers: inf
+Patriots and Bills: 0.86
+Ravens and Buccaneers: -0.6
+Packers and Dolphins: 2.46
+Bears and Falcons: 2.42
+Broncos and Jets: 0.66
+Titans and Jaguars: 9.31
+Lions and Vikings: -1.11
+Chargers and Raiders: -3.98
+Cardinals and Redskins: -2.91
+Cowboys and Seahawks: 0.54
+Eagles and Giants: -0.87
+49ers and Rams: -1.71
+Patriots and Jets: -9.56
+Dolphins and Bears: -0.09
+Bills and Vikings: 11.12
+Colts and Bengals: -1.54
+Jaguars and Browns: -2.78
+Lions and Saints: 55.81
+Packers and Panthers: -0.46
+Rams and Seahawks: 7.31
+Ravens and Falcons: -0.9
+Redskins and Titans: 17.44
+Chiefs and Chargers: 14.33
+Cowboys and Giants: 0.21
+Cardinals and Raiders: 1.69
+Broncos and 49ers: -0.2
+Steelers and Texans: 0.19
+Broncos and Chargers: 0.91
+Vikings and Buccaneers: -4.44
+Chiefs and Rams: -0.82
+Lions and Falcons: 7.62
+Dolphins and Jaguars: -1.58
+Bills and Jets: -2.06
+Seahawks and Panthers: -4.47
+Patriots and Bears: -2.07
+Texans and Titans: -0.48
+Cardinals and Eagles: -1.58
+Browns and Raiders: 2.46
+Steelers and Colts: -0.37
+Saints and Packers: -1.48
+Redskins and Cowboys: 5.9
+Saints and Panthers: 0.41
+Bengals and Jaguars: -0.02
+Browns and Buccaneers: 0.71
+Chiefs and Jets: 0.08
+Cardinals and Cowboys: 2.19
+Dolphins and Chargers: -0.52
+Eagles and Texans: -0.44
+Vikings and Redskins: 1.58
+Patriots and Broncos: 0.01
+Seahawks and Raiders: 3.93
+Colts and Giants: 0.05
+Browns and Bengals: -0.39
+Chiefs and Bills: -1.45
+Cowboys and Jaguars: 0.05
+Jets and Steelers: -1.57
+Lions and Dolphins: -4.14
+Ravens and Titans: 0.57
+49ers and Saints: -12.85
+Broncos and Raiders: -1.91
+Cardinals and Rams: -1.64
+Seahawks and Giants: -2.65
+Eagles and Panthers: -2.69
+Bears and Vikings: 1.33
+Texans and Browns: -1.09
+Chiefs and Seahawks: 6.05
+49ers and Giants: 2.77
+Packers and Eagles: -0.13
+Falcons and Panthers: -2.41
+Rams and Broncos: -1.85
+Buccaneers and Redskins: -2.3
+Bengals and Saints: -0.11
+Cardinals and Lions: 0.24
+Patriots and Colts: -0.36
+Steelers and Titans: 13.6
+Raiders and Chiefs: 3.45
+Bears and Buccaneers: 3.09
+Eagles and Titans: -1.04
+Browns and Falcons: 6.22
+Patriots and Lions: -1.76
+Bengals and Texans: -5.88
+Chargers and Rams: -3.08
+Seahawks and Cardinals: -2.36
+49ers and Redskins: -0.92
+Broncos and Dolphins: -8.4
+Ravens and Saints: -5.18
+Eagles and Cowboys: -2.26
+Seahawks and 49ers: -0.67
+Lions and Bears: 0.07
+Bills and Browns: -1.57
+Bengals and Buccaneers: -0.25
+Colts and Redskins: -1.45
+Jaguars and Giants: 9.62
+Rams and Raiders: -1.13
+Chargers and Ravens: 33.69
+Saints and Steelers: 1.9
+Vikings and Panthers: -1.13
+Falcons and Cardinals: -1.12
+Packers and Patriots: -6.85
+Dolphins and Jets: -15.75
+Cowboys and Bears: -1.04
+Steelers and Bengals: -0.4
+Colts and Browns: 26.88
+Ravens and Dolphins: -0.55
+Texans and Jaguars: 0.96
+Lions and Buccaneers: 1.79
+Rams and Redskins: 0.06
+Giants and Titans: -0.15
+Vikings and Jets: 1.46
+Broncos and Bills: -0.76
+Cardinals and Chiefs: 3.6
+Seahawks and Eagles: -0.6
+Raiders and 49ers: 3.49
+Patriots and Chargers: 2.06
+Packers and Falcons: 1.76
+Bills and Packers: -2.02
+Steelers and Falcons: 2.53
+Ravens and Jaguars: -1.27
+Jets and Titans: 5.88
+Saints and Bears: -0.55
+Chargers and 49ers: -4.29
+Packers and Buccaneers: -0.28
+Dolphins and Vikings: 11.62
+Panthers and Browns: 4.56
+Steelers and Chiefs: -0.61
+Texans and Ravens: -1.36
+Giants and Rams: 2.41
+Cowboys and Colts: -0.86
+Raiders and Bills: 6.5
+Bengals and Broncos: -4.85
+Panthers and Cardinals: -2.53
+Cowboys and Lions: -7.39
+Patriots and Ravens: -9.88
+Packers and Cowboys: -3.71
+Patriots and Seahawks: -2.83</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/nw/bgfbrcp92xxbt0l2nkylhyqm0000gq/T/ipykernel_49839/3877782087.py:5: RuntimeWarning:
+
+divide by zero encountered in scalar divide
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-17-output-3.png" width="814" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see a more reasonable distribution. But it is still cool to see that our seems to not deviate much from the actual score difference, as the majority of the score percent differences lay between 0 and 2 percent. Also, how does the histogram look? Let us try a guassian fit! It will probably not be a perfect fit.</p>
+<div id="903aef8d" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> deviationDistribution</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>mean <span class="op">=</span> np.mean(data) <span class="op">-</span> <span class="fl">0.4</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>std <span class="op">=</span> <span class="dv">1</span><span class="op">/</span><span class="fl">2.95</span> <span class="op">*</span> np.std(data)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate points on the x axis:</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="bu">min</span>(data), <span class="bu">max</span>(data), <span class="dv">1000</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the PDF of the normal distribution</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>pdf <span class="op">=</span> norm.pdf(x, mean, std)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram of the data</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>np.array(data)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>dd<span class="op">=</span>dd[np.isfinite(dd)]</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>plt.hist(dd, bins<span class="op">=</span><span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Data Histogram'</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the Gaussian PDF</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>plt.plot(x, pdf, <span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Gaussian PDF'</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title and labels</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Histogram and Gaussian Fit of the Percent Difference Distribution </span><span class="ch">\n</span><span class="ss"> mean = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(mean, decimals<span class="op">=</span><span class="dv">2</span>)<span class="sc">}</span><span class="ss">, standard deviation = </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(std, decimals<span class="op">=</span><span class="dv">2</span>)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Percent Difference Between Actual and Estimate'</span>)</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Normalized Probability'</span>)</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/kendra/Library/Python/3.8/lib/python/site-packages/numpy/core/_methods.py:236: RuntimeWarning:
+
+invalid value encountered in subtract
+
+/Users/kendra/Library/Python/3.8/lib/python/site-packages/numpy/core/function_base.py:157: RuntimeWarning:
+
+invalid value encountered in multiply
+
+/Users/kendra/Library/Python/3.8/lib/python/site-packages/scipy/stats/_distn_infrastructure.py:2093: RuntimeWarning:
+
+invalid value encountered in subtract
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="caihanyan_files/figure-html/cell-18-output-2.png" width="827" height="467" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I artifically decreased the calculated standard deviation to make the fit correspond more to the data. We can see that this Guassian fit further supports the efficacy of the model. Most of the game prediction compared to the actual score spreads seems to have a percent change of -1 percent, which is quite small. However, we cannot say that this model is perfect as there are many limitations to our normal equations approach. First, we ground our fit in the assumption that the potentials that we define for each team accurately reflect the properties of each team. Specifically, we assume that knowing the potential of each team will give us enough information to determine all of their possible wins and losses. We also assume that the potentials for each team are independent of one another. These two assumptions are very likely to be false. External factors like how well each team member play in different games, luck, weather, and the conditions of each team member may very well make this “potential”, if it even exists, a very complicated function with many variables. However, there is still merit to this technique. It makes sense for powerful teams to have higher potentials, less skilled teams to have lower potentials. Therefore, the score spreads should in theory be similar to the difference of the potentials. This normal equations technique provides a very simple, easy to understand way of getting a quick prediction as opposed to machine learning and other techniques which may require more time or more data.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/submitted/projects_2/caihanyan.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

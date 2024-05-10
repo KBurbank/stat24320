@@ -1,3 +1,5 @@
 .column-margin, .comments {
     color: red;
+    border: solid red;
+    padding: 1em;
 }

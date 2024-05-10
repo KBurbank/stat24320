@@ -11,6 +11,8 @@ format:
 ---
 
 ```{python}
-import sys
-print(sys.executable)
+from pip._internal import main as pipmain
+pipmain(['install', 'lightning'])
+
+import lightning
 ```

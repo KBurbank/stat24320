@@ -1,3 +1,15 @@
+---
+author: Kendra Burbank
+jupyter: python3
+title: Projects 2
+format:
+  html:
+    code-fold: show
+    code-tools: 
+      source: true
+      toggle: true
+---
+
 ```{python}
 import sys
 print(sys.executable)

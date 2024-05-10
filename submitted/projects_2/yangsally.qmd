@@ -1,4 +1,14 @@
-
+---
+author: Kendra Burbank
+jupyter: python3
+title: Projects 2
+format:
+  html:
+    code-fold: show
+    code-tools: 
+      source: true
+      toggle: true
+---
 
 Modelling with Directed Graphs
 
@@ -10,9 +20,8 @@ Great, I'm glad they helped!
 
 a. Plot the Digraph
 
-```{python}
-!pip3 install pywt
-```
+# print the path of the python executable
+
 
 ```{python}
 import numpy as np
@@ -275,10 +284,15 @@ That sounds frustrating! I would have liked to see your attempts, so I could hel
 The library you found can actually be of help here. It does implement the Haar transform, although you need to specify it by putting "haar" as the wavelet name (instead of "bior1.3" as you did in the code below).
 
 
+```{python}
+!pip install PyWavelets
+```
+
 Example:
 
 ```{python}
 import numpy as np
+
 import pywt
 # generate a simple 5x5 matrix
 wt = pywt.Wavelet('haar')

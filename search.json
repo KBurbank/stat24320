@@ -4160,8 +4160,8 @@
   {
     "objectID": "submitted/projects_2/test.html",
     "href": "submitted/projects_2/test.html",
-    "title": "Stat 24320",
+    "title": "Projects 2",
     "section": "",
-    "text": "import sys\nprint(sys.executable)\n\n/usr/local/bin/python3"
+    "text": "Code\nimport sys\nprint(sys.executable)\n\n\n/usr/local/bin/python3"
   }
 ]

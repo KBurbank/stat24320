@@ -1,0 +1,155 @@
+---
+title: Projects 3
+publish: false
+due-date: Friday, exam week
+textbook-chapters: 5,
+---
+
+#
+## Revisiting a previous project
+
+Revisit one of the previous projects using new concepts which we have learned since you first did the project. (The "Image Compression" project on page 389 of your textbook would be one example of this, but you may take this in any direction you like.)
+
+
+# 
+## Quadratic Forms
+
+In order to classify quadratic equations in $x$ and $y$ one goes through roughly three steps. First, perform a rotation transformation of coordinates to get rid of mixed terms such as $2 x y$ in the quadratic equation $x^{2}+2 x y-y^{2}+x-3 y=4$. Second, do a translation of coordinates to put the equation in a "standard form." Third, identify the curve by your knowledge of the shape of a curve in that standard form. Standard forms are equations like $x^{2} / 4+y^{2} / 2=1$, an ellipse with its axes along the $x$ - and $y$-axes. It is the second-degree terms $\left(x^{2}, 2 x y\right.$, and $\left.y^{2}\right)$ alone that determine the nature of a quadratic.
+
+Now you're ready for the rest of the story. Just as with curves in $x$ and $y$, the basic shape of the surface of a quadric equation in $x, y$, and $z$ is determined by the second-degree terms. So we will focus on an example with no first-degree terms, namely,
+
+$$
+Q(x, y, z)=2 x^{2}+4 y^{2}+6 z^{2}-4 x y-2 x z+2 y z=1 .
+$$
+
+The problem is this: find a change of coordinates that will make it clear what standard forms is represented by this surface -- is it a sphere, a spheroid, or a tri-axial ellipsoid? 
+
+First you must express the so-called quadratic form $Q(x, y, z)$ in matrix form as $Q(x, y, z)=$ $[x, y, z] A[x, y, z]^{T}$.
+
+Next, replace $A$ by the equivalent matrix $\left(A+A^{T}\right) / 2$. (Check that if $A$ specifies the quadratic form $Q$, then so will $A^\prime = \left(A+A^{T}\right) / 2$.)
+
+Next, diagonalize your symmetric matrix. You can use the command `diagonalize` in `sympy` to do this, but check that the results are what you'd expect given the eigenvalues and eigenvectors of your symmetric matrix. The result is a diagonal matrix $D$ and an orthogonal matrix $P$ such that $P^{T} A^\prime P=D$.
+
+ Next, make the linear change of variables $[x, y, z]^{T}=P\left[x^{\prime}, y^{\prime}, z^{\prime}\right]^{T}$ and deduce that $Q(x, y, z)=$ $\left[x^{\prime}, y^{\prime}, z^{\prime}\right] P^{T} A^\prime P\left[x^{\prime}, y^{\prime}, z^{\prime}\right]^{T}$. If $P^{T} A^\prime P$ is diagonal, we end up with squares of $x^{\prime}, y^{\prime}$ and $z^{\prime}$, and no mixed terms.
+
+From this data alone you should be able to classify the surface represented by the above equation. 
+
+Confirm your results by plotting the surface in the new coordinates.
+
+An outstanding reference on this topic and many others relating to matrix analysis is the recently republished textbook [3] by Richard Bellman, widely considered to be a classic in the field.
+
+(Hint: when I did this problem, I encountered very small imagainary part at certain points. I used the `sp.nsimplify(sp.N(f),rational=True)` function to get rid of these.)
+
+::: solutions
+
+
+First write the quadratic form in matrix form
+
+```{python}
+import sympy as sp
+from sympy.abc import a, b, c, d, e, f, g, h, i, x, y, z
+
+M = sp.Matrix([[2, 0, 0], [-4, 4, 0], [-2, 2, 6]])
+xx = sp.Matrix([x, y, z])
+quadratic_form = xx.T*M*xx
+# simply pulling all quadratic terms together
+quadratic_form = quadratic_form[0].expand()
+display(quadratic_form)
+```
+
+Now find a symmetric matric
+
+```{python}
+# find a symmetric matrix
+A = sp.nsimplify(1/2*(M + M.T),rational=True)
+display(A)
+# check that the quadratic form is the same
+display((xx.T*A*xx)[0].expand())
+```
+
+Now find the eigenvalues and eigenvectors of the symmetric matrix:
+
+```{python}
+eigvals, eigvecs = A.eigenvals(), A.eigenvects()
+```
+
+
+Diagonalize:
+
+
+```{python}
+P, D = A.diagonalize()
+```
+
+# simplify, and get rid of very small nonzero imaginary parts
+
+
+```{python}
+dd= sp.N(sp.nsimplify(sp.N(D),rational=True))
+display(dd)
+```
+
+
+```{python}
+
+# define xp, yp and zp as symbol
+xp,yp,zp=sp.symbols('xp, yp, zp')
+
+
+xxprime = sp.Matrix([xp,yp,zp])
+new_quadratic_form=sp.simplify(xxprime.T*dd*xxprime)
+```
+
+Make a plot:
+
+```{python}
+from sympy.solvers import solve
+zeqn = solve(new_quadratic_form-sp.Matrix([1]),zp)
+limit = 0.5
+from sympy.plotting import plot3d as plot3d
+plot3d(zeqn[1],(xp,-limit, limit),(yp,-limit, limit))
+plot3d(zeqn[0],(xp,-limit, limit),(yp,-limit, limit))
+```
+
+In the original coordinates:
+
+```{python}
+orig_z_eqn = solve(quadratic_form-1,z)
+limit=2
+plot3d(orig_z_eqn[1],(x,-limit, limit),(y,-limit, limit))
+plot3d(orig_z_eqn[0],(x,-limit,limit),(y,-limit, limit))
+```
+
+:::
+
+
+#
+## Management of Sheep Populations
+
+Description of the problem: You are working for the New Zealand Department of Agriculture on a project for sheep farmers. The species of sheep that these shepherds raise have a life span of 12 years. Of course, some live longer, but they are sufficiently few in number and their reproductive rate is so low that they may be ignored in your population study. Accordingly, you divide sheep into 12 age classes, namely those in the first year of life, etc. An extensive survey of the demographics of this species of sheep results in the following approximations for the demographic parameters $f_{i}$ and $s_{i}$, where $f_{i}$ is the percapita reproductive rate for sheep in the $i$ th age class and $s_{i}$ is the survival rate for sheep in that age class, i.e., the fraction of sheep in that age class that survive to the $(i+1)$ th class. (As a matter of fact, this table is related to real data. The interested reader might consult the article [7] in the bibliography.)
+
+| $i$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| $f_{i}$ | .000 | .023 | .145 | .236 | .242 | .273 | .271 | .251 | .234 | .229 | .216 | .210 |
+| $s_{i}$ | .845 | .975 | .965 | .950 | .926 | .895 | .850 | .786 | .691 | .561 | .370 | - |
+
+The problem is as follows: in order to maintain a constant population of sheep, shepherds will harvest a certain number of sheep each year. Harvesting need not mean slaughter; it simply means removing sheep from the population (e.g., selling animals to other shepherds). Denote the fraction of sheep that are removed from the $i$ th age group at the end of each growth period
+(a year in our case) by $h_{i}$. If these numbers are constant from year to year, they constitute a harvesting policy. If, moreover, the yield of each harvest, i.e., total number of animals harvested each year, is a constant and the age distribution of the remaining populace is essentially constant after each harvest, then the harvesting policy is called sustainable. If all the $h_{i}$ 's are the same, say $h$, then the harvesting policy is called uniform. Uniform policies are simple to implement: One selects the sheep to be harvested at random.
+
+Your problem: Find a uniform sustainable harvesting policy to recommend to shepherds, and find the resulting distribution of sheep that they can expect with this policy. Shepherds who raise sheep for sale to markets are also interested in a sustainable policy that gives a maximum yield. If you can find such a policy that has a larger annual yield than the uniform policy, then recommend it. On the other hand, shepherds who raise sheep for their wool may prefer to minimize the annual yield. If you can find a sustainable policy whose yield is smaller than that of the uniform policy, make a recommendation accordingly. In each case find the expected distribution of your harvesting policies. Do you think that there might be other economic factors that should be taken into account in this model? Organize your results for a report to be read by your supervisor and an informed public.
+
+Procedure: Express this problem as a discrete linear dynamical system $\mathbf{x}^{(k+1)}=L \mathbf{x}^{(k)}$, where $L$ is a so-called Leslie matrix of the form
+
+$$
+L=\left[\begin{array}{cccccc}
+f_{1} & f_{2} & f_{3} & \cdots & f_{n-1} & f_{n} \\
+s_{1} & 0 & 0 & \cdots & 0 & 0 \\
+0 & s_{2} & 0 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & s_{n-1} & 0
+\end{array}\right]
+$$
+
+It is understood that $0<s_{i} \leq 1,0 \leq f_{i}$, and at least one $f_{i}$ is nonzero.
+
+In regard to harvesting, let $H$ be a diagonal matrix with the harvest fractions $h_{i}$ down the diagonal. (Here $0 \leq h_{i} \leq 1$.) Then the population that results from this harvesting at the end of each period is given by $\mathbf{x}^{k+1}=L \mathbf{x}^{k}-H L \mathbf{x}^{k}=(I-H) L \mathbf{x}^{k}$. There are other theoretical tools, but all you need to do is to find a matrix $H$ such that 1 is the dominant eigenvalue of $(I-H) L$. You can do this by trial and error, a method that is applicable to any harvesting policy, uniform or not. However, in the case of uniform policies it's simpler to note that $(I-H) L=(1-h) L$, where $h$ is the diagonal entry of $H$. Find an eigenvector corresponding to this eigenvalue and scale this vector by dividing it by the sum of its components to obtains a probability distribution vector that could be used for any population.

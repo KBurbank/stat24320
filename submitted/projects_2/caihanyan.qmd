@@ -152,10 +152,7 @@ How should we characterize Kirchoff's Loop Rule for Currents constraint? Let us 
 
 A given row corresponds to a given node. This node could be a resistor or some set junction of the circuit. For this row representing the node, $-1$ represents an outgoing wire connection and $1$ represents an ingoing wire connection. For example, consider row 1 which corresponds to node 1. We can see that there are two outgoing wire connections from node 1 to node 2 and node 4, while we have one incoming wire connection to node 1 from node 3.
 
-```{python}
-from pip._internal import main as pipmain
-pipmain(['install', 'google.colab'])
-```
+
 
 Now, consider the vector $d = \begin{bmatrix} d_1 \\ \vdots \\ d_i \\ \vdots \\ d_n\end{bmatrix}$, where $d_i = $ weight of edge $i$, $n = $ number of edges.
 
@@ -304,9 +301,19 @@ Lets put this as a numpy array. We want to consider the vector from 2 to 5, whic
 0  
 \end{pmatrix} $$.
 
+
+::: comments
+It took me a while to understand what you were doing here. You were making a basis not of directed loops, but of *edges* which are *part* of directed loops. Nice.
+:::
+
+
 We want to test if this is in the column space of our matrix! We can check this by solving Ax = b.
 
 To do this, we will use a least squares solver and show that this produces a geniune solution to Ax = b, so we know that b is in the column space of A.
+
+::: comments
+I reproduced your A as `inc*sp.diagonalize_vector(inc.nullspace()[1]+inc.nullspace()[0])` where inc is the incidence matrix (in sympy)
+```
 
 ```{python}
 #| colab: {base_uri: 'https://localhost:8080/'}
@@ -389,6 +396,15 @@ print("Does Ax = b:", np.allclose(A@x, b))
 Therefore, we see that our method is working! In this way, give a basis of directed loops, our theorem gives us an algorithms that we can use to know if any two nodes are connected in a loop!
 
 A question for future exploration may be: how can one efficiently obtain such a basis, especially for graphs with a large number of nodes (can
+
+::: comments
+Very well done. I hadn't thought of using the least squares method.
+
+Here is a way to do this a bit more systematically: once you have your incidence matrix corresponding only to edges which are in directed loops, square it to find an adjacency matrix. Then remove the diagonal elements (so you don't have self-loops. Finally, you can see which nodes are connected by taking powers of this adjacency matrix -- if you go up to like the matrix ^ 10 and there is a nonzero value in {i,j}, that means that eventually you can get from i to j via directed loops.)
+
+Grade: E
+:::
+
 
 # Image Compression and Text Detection
 
@@ -694,3 +710,10 @@ plt.show()
 
 I artifically decreased the calculated standard deviation to make the fit correspond more to the data. We can see that this Guassian fit further supports the efficacy of the model. Most of the game prediction compared to the actual score spreads seems to have a percent change of -1 percent, which is quite small. However, we cannot say that this model is perfect as there are many limitations to our normal equations approach. First, we ground our fit in the assumption that the potentials that we define for each team accurately reflect the properties of each team. Specifically, we assume that knowing the potential of each team will give us enough information to determine all of their possible wins and losses. We also assume that the potentials for each team are independent of one another. These two assumptions are very likely to be false. External factors like how well each team member play in different games, luck, weather, and the conditions of each team member may very well make this "potential", if it even exists, a very complicated function with many variables. However, there is still merit to this technique. It makes sense for powerful teams to have higher potentials, less skilled teams to have lower potentials. Therefore, the score spreads should in theory be similar to the difference of the potentials. This normal equations technique provides a very simple, easy to understand way of getting a quick prediction as opposed to machine learning and other techniques which may require more time or more data.  
 
+::: comments
+I didn't have your data, so I put in a different student's NFL data from a different year. Everything seemed to carry through, and it still behaved well!
+
+Your explanation about how the model works is excellent. It was a good choice to start with just teams A, B, and C. I will probably use that in the future...
+
+Grade: E
+:::

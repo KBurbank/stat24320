@@ -6,8 +6,9 @@ textbook-chapters: 5.1,5.2,5.3
 publish-solutions-on: 2024-05-06
 ---
 
-#
- By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.
+# 
+
+By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.
 
 (a) $\left[\begin{array}{rr}7 & -10 \\ 5 & -8\end{array}\right]$
 
@@ -22,50 +23,48 @@ publish-solutions-on: 2024-05-06
 ::: solutions
 5.1.1 and 5.1.3
 
-
-
 Eigenvalue, algebraic multiplicity, geometric multiplicity, bases:
 
- (a) $\lambda=-3,1,1,\{(2,1)\}, \lambda=2,1,1,\{(1,1)\}$ 
- 
- (b) $\lambda=-1,3,1,\{(0,0,1)\}$, 
- 
- (c) $\lambda=2,2,2,\{(1,0,0),(0,-1,1)\}, \lambda=3,1,1,\{(1,1,0)\}$ 
- 
- (d) $\lambda=-2,1,1$, $\{(-1,1)\}, \lambda=2,1,1,\{(1,1)\}(\mathrm{e}) \lambda=-2 \mathrm{i}, 1,1,\{(\mathrm{i},-1)\}, \lambda=2 \mathrm{i}, 1,1,\{(\mathrm{i}, 1)\}$
+(a) $\lambda=-3,1,1,\{(2,1)\}, \lambda=2,1,1,\{(1,1)\}$
+
+(b) $\lambda=-1,3,1,\{(0,0,1)\}$,
+
+(c) $\lambda=2,2,2,\{(1,0,0),(0,-1,1)\}, \lambda=3,1,1,\{(1,1,0)\}$
+
+(d) $\lambda=-2,1,1$, $\{(-1,1)\}, \lambda=2,1,1,\{(1,1)\}(\mathrm{e}) \lambda=-2 \mathrm{i}, 1,1,\{(\mathrm{i},-1)\}, \lambda=2 \mathrm{i}, 1,1,\{(\mathrm{i}, 1)\}$
 :::
 
-#
+# 
+
 Compute the eigensystems of these matrices, and identify any defective matrices. (You can do this by hand or on the computer.)
 
-(a) $\left[\begin{array}{lll}2 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 2\end{array}\right]$ 
+(a) $\left[\begin{array}{lll}2 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 2\end{array}\right]$
 
-(b) $\left[\begin{array}{lll}2 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 6 & 2\end{array}\right]$ 
+(b) $\left[\begin{array}{lll}2 & 0 & 0 \\ 0 & 3 & 1 \\ 0 & 6 & 2\end{array}\right]$
 
-(c) $\left[\begin{array}{rr}1+\mathrm{i} & 3 \\ 0 & \mathrm{i}\end{array}\right]$ 
+(c) $\left[\begin{array}{rr}1+\mathrm{i} & 3 \\ 0 & \mathrm{i}\end{array}\right]$
 
-(d) $\left[\begin{array}{rrr}1 & -2 & 1 \\ -2 & 4 & -2 \\ 0 & 0 & 1\end{array}\right]$ 
+(d) $\left[\begin{array}{rrr}1 & -2 & 1 \\ -2 & 4 & -2 \\ 0 & 0 & 1\end{array}\right]$
 
 (e) $\left[\begin{array}{rrrr}2 & 1 & -1 & -2 \\ 0 & 1 & -1 & -2 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0\end{array}\right]$
 
 ::: solutions
 5.1.2 and 5.1.4
 
- Eigenvalue, basis, defective (yes/no)
- 
-  (a) $0,\{(-1,0,1)\}, 1,\{(0,1,0)\}$, $3,\{(1,0,1)\}$, no 
-  
-  (b) $0,\{(1,0,0)\}, 2,\{(0,1,2)\}, 5,\{(0,-1,3)\}$ no 
-  
-  (c) $1+\mathrm{i}$, $\{(1,0)\}$, i, $\{(-3,1)\}$, no 
-  
-  (d) $0,\{(2,1,0)\}, 1,\{(-1,2,4)\}, 5,\{(-1,2,0)\}$, no (e) $-1,\{(1,3,-6,6)\}, 1,\{(-1,1,0,0)\}, 2,\{(1,0,0,0)\}$, yes
+Eigenvalue, basis, defective (yes/no)
 
+(a) $0,\{(-1,0,1)\}, 1,\{(0,1,0)\}$, $3,\{(1,0,1)\}$, no
+
+(b) $0,\{(1,0,0)\}, 2,\{(0,1,2)\}, 5,\{(0,-1,3)\}$ no
+
+(c) $1+\mathrm{i}$, $\{(1,0)\}$, i, $\{(-3,1)\}$, no
+
+(d) $0,\{(2,1,0)\}, 1,\{(-1,2,4)\}, 5,\{(-1,2,0)\}$, no (e) $-1,\{(1,3,-6,6)\}, 1,\{(-1,1,0,0)\}, 2,\{(1,0,0,0)\}$, yes
 :::
 
 # 
 
-By hand,  find a matrix $P$ such that $P^{-1} A P$ is diagonal for each of the following matrices. Then use $P$ to find a formula for $A^{k}, k$ a positive integer.
+By hand, find a matrix $P$ such that $P^{-1} A P$ is diagonal for each of the following matrices. Then use $P$ to find a formula for $A^{k}, k$ a positive integer.
 
 (a) $\left[\begin{array}{lll}2 & 0 & 1 \\ 0 & 1 & 0 \\ 0 & 0 & 3\end{array}\right]$
 
@@ -82,27 +81,27 @@ By hand,  find a matrix $P$ such that $P^{-1} A P$ is diagonal for each of the f
 
 Matrices P:
 
-(a) $\left[\begin{array}{lll}0 & 1 & 1 \\ 1 & 0 & 0 \\ 0 & 0 & 1\end{array}\right]$ 
-(b) $\left[\begin{array}{rll}0 & 1 & 2 \\ -1 & 0 & 0 \\ 1 & 0 & 1\end{array}\right]$ 
-(c) $\left[\begin{array}{rl}-1 & 2 \\ 1 & 3\end{array}\right]$ 
-(d) $\left[\begin{array}{rr}-1 & 1 \\ 1 & 1\end{array}\right]$ 
+(a) $\left[\begin{array}{lll}0 & 1 & 1 \\ 1 & 0 & 0 \\ 0 & 0 & 1\end{array}\right]$
+(b) $\left[\begin{array}{rll}0 & 1 & 2 \\ -1 & 0 & 0 \\ 1 & 0 & 1\end{array}\right]$
+(c) $\left[\begin{array}{rl}-1 & 2 \\ 1 & 3\end{array}\right]$
+(d) $\left[\begin{array}{rr}-1 & 1 \\ 1 & 1\end{array}\right]$
 (e) $\left[\begin{array}{cccc}1 & -1 & 1 & -1 \\ -2 & 1 & 0 & -1 \\ 0 & -1 & 0 & 3 \\ 0 & 2 & 0 & 0\end{array}\right]$
 
 $A^k$:
 
-(a) $\left[\begin{array}{rrr}2^{k} & 0 & -2^{k}+3^{k} \\ 0 & 2 & 0 \\ 0 & 0 & 3^{k}\end{array}\right]$ 
+(a) $\left[\begin{array}{rrr}2^{k} & 0 & -2^{k}+3^{k} \\ 0 & 2 & 0 \\ 0 & 0 & 3^{k}\end{array}\right]$
 
 (b) $\left[\begin{array}{ccr}1 & -2+2^{k+1} & -2 * 2^{k+1} \\ 0 & 0 & 0 \\ 0 & 2^{k} & 2^{k}\end{array}\right]$
 
-(c) $\frac{1}{5}\left[\begin{array}{rr}3(-1)^{k}+2 \cdot 4^{k} & -2(-1)^{k}+2 \cdot 4^{k} \\ -3(-1)^{k}+3 \cdot 4^{k} & 2(-1)^{k}+3 \cdot 4^{k}\end{array}\right]$ 
+(c) $\frac{1}{5}\left[\begin{array}{rr}3(-1)^{k}+2 \cdot 4^{k} & -2(-1)^{k}+2 \cdot 4^{k} \\ -3(-1)^{k}+3 \cdot 4^{k} & 2(-1)^{k}+3 \cdot 4^{k}\end{array}\right]$
 
 (d) $\frac{1}{2}\left[\begin{array}{rr}(-2)^{k}+2^{k} & -(-2)^{k}+2^{k} \\ -(-2)^{k}+2^{k} & (-2)^{k}+2^{k}\end{array}\right]$
 
 (e) $\left[\begin{array}{rrrr}2^{k} & 2^{k-1} & 2^{k-1}-3^{k-1}-\frac{1}{2}+2^{k-1}-\frac{1}{2} 3^{k-1} \\ 0 & 0 & -3^{k-1} & \frac{1}{2}-\frac{1}{2} 3^{k-1} \\ 0 & 0 & 3^{k} & -\frac{1}{2}+\frac{1}{2} 3^{k} \\ 0 & 0 & 0 & 1\end{array}\right]$
-
 :::
 
-#
+# 
+
 Compute $\sin \left(\frac{\pi}{6} A\right)$ and $\cos \left(\frac{\pi}{6} A\right)$, where $A=\left[\begin{array}{rr}2 & 4 \\ 0 & -3\end{array}\right]$.
 
 ::: solutions
@@ -111,8 +110,9 @@ Compute $\sin \left(\frac{\pi}{6} A\right)$ and $\cos \left(\frac{\pi}{6} A\righ
 $\sin \left(\frac{\pi}{6} A\right)=\left[\begin{array}{cc}\frac{1}{2} \sqrt{3} & \frac{4}{5}+\frac{2}{5} \sqrt{3} \\ 0 & -1\end{array}\right], \cos \left(\frac{\pi}{6} A\right)=\left[\begin{array}{cc}\frac{1}{2} & \frac{2}{5} \\ 0 & 0\end{array}\right]$
 :::
 
-#
-By hand,  find the spectral radius and dominant eigenvalue, if any, for each of these matrices:
+# 
+
+By hand, find the spectral radius and dominant eigenvalue, if any, for each of these matrices:
 
 (a) $\left[\begin{array}{rr}-7 & -6 \\ 9 & 8\end{array}\right]$
 
@@ -127,14 +127,15 @@ By hand,  find the spectral radius and dominant eigenvalue, if any, for each of 
 ::: solutions
 5.3.2
 
-(a) 2 , dominant eigenvalue 2 
-(b) 1 , dominant eigenvalue 1 
-(c) 1 , no dominant eigenvalue 
-(d) 1 , dominant eígenvalue 1 
+(a) 2 , dominant eigenvalue 2
+(b) 1 , dominant eigenvalue 1
+(c) 1 , no dominant eigenvalue
+(d) 1 , dominant eígenvalue 1
 (e) 0 , no dominant eigenvalue
 :::
 
 # 
+
 If the matrices of the previous exercise are transition matrices, for which do all $\mathbf{x}^{(k)}$ remain bounded as $k \rightarrow \infty$ ? Are any of these matrices stable?
 
 ::: solutions
@@ -143,7 +144,8 @@ If the matrices of the previous exercise are transition matrices, for which do a
 (e) gives a matrix for which $\mathbf{x}^{(k)} \rightarrow \mathbf{0}$ as $k \rightarrow \infty$. (b) and (d) give stable matrices.
 :::
 
-#
+# 
+
 The three-stage insect model of Example 2.21 yields a transition matrix
 
 $$
@@ -160,11 +162,9 @@ Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $
 Exercise 5.3.11
 
 Eigenvalues are $\lambda \approx 0.1636 \pm 0.3393 \mathrm{i}, 0.973$ with absolute values 0.3766 and 0.973 . So population will decline at rate of approximately $2.7 \%$ per time period.
-
-
 :::
 
-#
+# 
 
 The financial model of Example 2.27 gives rise to a discrete dynamical system $x^{(k+1)}=A x^{(k)}$, where the transition matrix is
 
@@ -176,8 +176,7 @@ A=\left[\begin{array}{rrr}
 \end{array}\right]
 $$
 
-Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $A$ is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector. 
-
+Use a technology tool to calculate the eigenvalues of this matrix. Deduce that $A$ is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector.
 
 Find a starting vector $x^{(0)}$ such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.
 
@@ -192,10 +191,9 @@ from sympy import Matrix, Rational
 A = Matrix([[1, Rational(6, 100), Rational(12, 100)], [1, 0, 0], [0, 1, 0]])
 ```
 
-
 ::: solutions
-
 Doing it with numpy:
+
 ```{python}
 import numpy as np
 A = np.array([[1, 0.06, 0.12], [1, 0, 0], [0, 1, 0]])
@@ -204,7 +202,6 @@ eigenvalues, eigenvectors = np.linalg.eig(A)
 print(eigenvalues)
 print(eigenvectors)
 ```
-
 
 ```{python}
 x = eigenvectors[2]
@@ -251,24 +248,22 @@ for i in range(100):
     print(f"Growth rate at iteration {i}: {growth_rate}")
     x = xnew
 ```
-
 :::
 
-#
+# 
 
 On this problem,you may use a computer to find eigensystems etc, but don't solve it using simulations and trial and error.
 
-A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are $50 \%$ and 75\%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years). 
+A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are $50 \%$ and 75%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years).
 
 (a) Model this bird population as a discrete dynamical system and analyze the long-term change in the population -- give a percentage by which the population of group 1 changes from year to year.
 
-
-(b) Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50\% and 75\%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?
+(b) Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50% and 75%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?
 
 ::: solutions
 5.3.20
 
 If $\mathbf{x}^{(k)}=\left(x_{1}^{(k)}, x_{2}^{(k)}, x_{3}^{(k)}\right)$ is the vector of birds in each age group at the $k$ th biennium, then the model is $\mathbf{x}^{(k+1)}=\left[\begin{array}{rrr}0 & 2 & 3 \\ 0.5 & 0 \\ 0 & 0 \\ 0 & 0.75 & 0\end{array}\right] \mathbf{x}^{(k)}$. Eigenvalues of $A$ are $\lambda \approx 1.35326,-0.67663 \pm 0.61114 i$. Hence, the population will grow at a rate of $\% 35$ per year in the long run.
 
- If survival rates are equal, say $s$, then transition matrix is $\left[\begin{array}{lll}0 & 2 & 3 \\ s & 0 & 0 \\ 0 & s & 0\end{array}\right]$, which has a dominant eigenvalue of $\lambda=1$ when $s=\frac{1}{3}$.
+If survival rates are equal, say $s$, then transition matrix is $\left[\begin{array}{lll}0 & 2 & 3 \\ s & 0 & 0 \\ 0 & s & 0\end{array}\right]$, which has a dominant eigenvalue of $\lambda=1$ when $s=\frac{1}{3}$.
 :::

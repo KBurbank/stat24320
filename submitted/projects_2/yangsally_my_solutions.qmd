@@ -1,0 +1,164 @@
+---
+jupyter: python3
+---
+
+```{python}
+#| vscode: {languageId: quarto}
+import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
+import gravis as gv
+from sympy import Matrix
+import sympy as sym
+from collections import defaultdict
+
+G = nx.DiGraph()
+G.add_node("1")
+G.add_node("2")
+G.add_node("3")
+G.add_node("4")
+G.add_node("5")
+G.add_node("6")
+G.add_edge("1","2")
+#G.add_edge("2","3")
+G.add_edge("3","4")
+#G.add_edge("4","2")
+G.add_edge("4","1")
+G.add_edge("3","1")
+G.add_edge("3","6")
+#G.add_edge("6","3")
+G.add_edge("4","5")
+G.add_edge("5","6")
+G.add_edge("6","5")
+pos = nx.spring_layout(G)
+nx.draw_networkx_nodes(G, pos)
+nx.draw_networkx_labels(G, pos)
+nx.draw_networkx_edges(G, pos, edge_color='r', arrows = True)
+plt.show()
+```
+
+
+```{python}
+inc=Matrix(nx.incidence_matrix(G,oriented=True).toarray())
+```
+
+
+```{python}
+ns=inc.nullspace()
+```
+
+
+```{python}
+nullspace_matrix=sym.nsimplify(Matrix(Matrix.hstack(*ns)),rational=True)
+```
+
+```{python}
+nullspace_matrix
+```
+
+
+```{python}
+newbasis=Matrix.hstack(*ns)
+```
+
+```{python}
+newbasis=sym.nsimplify(newbasis,rational=True)
+```
+
+
+```{python}
+newbasis.rank()
+```
+
+
+
+Make a new adjacency matrix for each of the new basis vectors. We do this by creating a new incidence matrix for each of the new basis vectors, and then multiplying the incidence matrix by its transpose. This will give us a new adjacency matrix. We can then subtract the diagonal of the adjacency matrix to remove self-loops. We can then sum all of these new adjacency matrices to get a new adjacency matrix that represents all of the adjacencies that you get that are just part of the subgraph of edges which are parts of loops.
+
+```{python}
+out=list()
+outsum = np.zeros((inc.shape[0],inc.shape[0]))
+for i in range(newbasis.shape[1]):
+    thisinc = (inc*sym.diagonalize_vector((newbasis[:,i])))
+    thisadj = thisinc*thisinc.T
+    out.append(-(thisadj-sym.diag(*thisadj.diagonal())))
+    outsum += out[-1]
+os=np.array(outsum)
+os[os!=0]=1
+os=Matrix(os)
+```
+
+Now all the things we can do are given by the sums of the new adjacency matrices, as well as their multiples. We can find this by taking exponents of the summed adjacency matrix.
+
+Trying a different way...
+```{python}
+# find the sum of all the adjacency matrices in the list
+nbsum = newbasis*sym.ones(newbasis.shape[1],1)
+thisinc=inc*sym.diagonalize_vector(nbsum)
+summedadj=thisinc*thisinc.T
+summedadj = -(summedadj-sym.diag(*summedadj.diagonal()))
+summedadj=np.array(summedadj)
+summedadj[summedadj!=0]=1
+summedadj=Matrix(summedadj)
+
+```
+
+Check if these two approaches give the same answer...
+
+
+```{python}
+summedadj==os
+```
+
+They do not. I think this is because I never made a version of the basis vectors which are all positive, and then some of them get cancelled when I sum them together. I think I need to do that. 
+
+```{python}
+#newbasispos = np.array(newbasis).copy()
+#newbasispos[:,0:1]=np.array(newbasis[:,2]+newbasis[:,1])
+#newbasispos[:,2:3]=np.array(newbasis[:,0]+newbasis[:,2])
+#newbas=Matrix(newbasispos)
+```
+
+```{python}
+# find the sum of all the adjacency matrices in the list
+#nbsum = (newbas)*sym.ones(newbas.shape[1],1)
+#thisinc=inc*sym.diagonalize_vector(nbsum)
+#summedadj=thisinc*thisinc.T
+#summedadj = -(summedadj-sym.diag(*summedadj.diagonal()))
+#summedadj=np.array(summedadj)
+#summedadj[summedadj!=0]=1
+#summedadj=Matrix(summedadj)
+#summedadj==os
+```
+
+Yes, now the two approach give matching answers. It also works if I simply take the absolute value of the newbasis.
+
+```{python}
+# find the sum of all the adjacency matrices in the list
+nbsum = abs(newbasis)*sym.ones(newbasis.shape[1],1)
+thisinc=inc*sym.diagonalize_vector(nbsum)
+summedadj=thisinc*thisinc.T
+summedadj = -(summedadj-sym.diag(*summedadj.diagonal()))
+summedadj=np.array(summedadj)
+summedadj[summedadj!=0]=1
+summedadj=Matrix(summedadj)
+summedadj==os
+```
+
+Finally, we can see which nodes can eventually become connected by multiplying the os matrix by itself a few times. Each time, we will set all nonzero elements to 1. If there is no change, we stop.
+
+```{python}
+osn=os*os
+# stop if we have done more than 100 iterations
+for i in range(100):
+    oldosn = osn.copy()
+    osn = osn * os
+    osn=osn-sym.diag(*osn.diagonal())
+    osn = np.array(osn)
+    osn[osn!=0]=1
+    osn=Matrix(osn)
+
+    if osn==oldosn:
+        print(f'Converged after {i+1} iterations')
+        display(osn)
+        break
+

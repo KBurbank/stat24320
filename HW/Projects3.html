@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -145,17 +111,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a></li>
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">4</span> <em></em></a></li>
-  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">5</span> <em></em></a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6</span> <em></em></a></li>
-  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7</span> <em></em></a></li>
-  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8</span> <em></em></a></li>
-  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">9</span> <em></em></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a>
+  <ul class="collapse">
+  <li><a href="#revisiting-a-previous-project" id="toc-revisiting-a-previous-project" class="nav-link" data-scroll-target="#revisiting-a-previous-project"><span class="header-section-number">1.1</span> <em>Revisiting a previous project</em></a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a>
+  <ul class="collapse">
+  <li><a href="#quadratic-forms" id="toc-quadratic-forms" class="nav-link" data-scroll-target="#quadratic-forms"><span class="header-section-number">2.1</span> <em>Quadratic Forms</em></a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a>
+  <ul class="collapse">
+  <li><a href="#management-of-sheep-populations" id="toc-management-of-sheep-populations" class="nav-link" data-scroll-target="#management-of-sheep-populations"><span class="header-section-number">3.1</span> <em>Management of Sheep Populations</em></a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/Projects3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -182,7 +151,7 @@ window.Quarto = {
 <div>
     <div class="quarto-title-meta-heading">Textbook Chapters:</div>
       <div class="quarto-title-meta-contents">
-      <p class="due-date">5.1,5.2,5.3</p>
+      <p class="due-date">5.1,</p>
     </div>
   </div>
 
@@ -194,98 +163,119 @@ window.Quarto = {
 
 <section id="section" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
-<p>By hand, find eigensystems for each of these matrices. Then specify the algebraic and geometric multiplicity of each eigenvalue.</p>
-<ol type="a">
-<li><p><span class="math inline">\(\left[\begin{array}{rr}7 &amp; -10 \\ 5 &amp; -8\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rrr}-1 &amp; 0 &amp; 0 \\ 1 &amp; -1 &amp; 0 \\ 0 &amp; 1 &amp; -1\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 1 &amp; 1 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 2\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rr}0 &amp; -2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
-</ol>
+<section id="revisiting-a-previous-project" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="revisiting-a-previous-project"><span class="header-section-number">1.1</span> <em>Revisiting a previous project</em></h2>
+<p>Revisit one of the previous projects using new concepts which we have learned since you first did the project. (The “Image Compression” project on page 389 of your textbook would be one example of this, but you may take this in any direction you like.)</p>
+</section>
 </section>
 <section id="section-1" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
-<p>Compute the eigensystems of these matrices, and identify any defective matrices. (You can do this by hand or on the computer.)</p>
-<ol type="a">
-<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 2\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 1 \\ 0 &amp; 6 &amp; 2\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rr}1+\mathrm{i} &amp; 3 \\ 0 &amp; \mathrm{i}\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rrr}1 &amp; -2 &amp; 1 \\ -2 &amp; 4 &amp; -2 \\ 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 1 &amp; -1 &amp; -2 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0\end{array}\right]\)</span></p></li>
-</ol>
+<section id="quadratic-forms" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quadratic-forms"><span class="header-section-number">2.1</span> <em>Quadratic Forms</em></h2>
+<p>In order to classify quadratic equations in <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> one goes through roughly three steps. First, perform a rotation transformation of coordinates to get rid of mixed terms such as <span class="math inline">\(2 x y\)</span> in the quadratic equation <span class="math inline">\(x^{2}+2 x y-y^{2}+x-3 y=4\)</span>. Second, do a translation of coordinates to put the equation in a “standard form.” Third, identify the curve by your knowledge of the shape of a curve in that standard form. Standard forms are equations like <span class="math inline">\(x^{2} / 4+y^{2} / 2=1\)</span>, an ellipse with its axes along the <span class="math inline">\(x\)</span> - and <span class="math inline">\(y\)</span>-axes. It is the second-degree terms <span class="math inline">\(\left(x^{2}, 2 x y\right.\)</span>, and <span class="math inline">\(\left.y^{2}\right)\)</span> alone that determine the nature of a quadratic.</p>
+<p>Now you’re ready for the rest of the story. Just as with curves in <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, the basic shape of the surface of a quadric equation in <span class="math inline">\(x, y\)</span>, and <span class="math inline">\(z\)</span> is determined by the second-degree terms. So we will focus on an example with no first-degree terms, namely,</p>
+<p><span class="math display">\[
+Q(x, y, z)=2 x^{2}+4 y^{2}+6 z^{2}-4 x y-2 x z+2 y z=1 .
+\]</span></p>
+<p>The problem is this: find a change of coordinates that will make it clear what standard forms is represented by this surface – is it a sphere, a spheroid, or a tri-axial ellipsoid?</p>
+<p>First you must express the so-called quadratic form <span class="math inline">\(Q(x, y, z)\)</span> in matrix form as <span class="math inline">\(Q(x, y, z)=\)</span> <span class="math inline">\([x, y, z] A[x, y, z]^{T}\)</span>.</p>
+<p>Next, replace <span class="math inline">\(A\)</span> by the equivalent matrix <span class="math inline">\(\left(A+A^{T}\right) / 2\)</span>. (Check that if <span class="math inline">\(A\)</span> specifies the quadratic form <span class="math inline">\(Q\)</span>, then so will <span class="math inline">\(A^\prime = \left(A+A^{T}\right) / 2\)</span>.)</p>
+<p>Next, diagonalize your symmetric matrix. You can use the command <code>diagonalize</code> in <code>sympy</code> to do this, but check that the results are what you’d expect given the eigenvalues and eigenvectors of your symmetric matrix. The result is a diagonal matrix <span class="math inline">\(D\)</span> and an orthogonal matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{T} A^\prime P=D\)</span>.</p>
+<p>Next, make the linear change of variables <span class="math inline">\([x, y, z]^{T}=P\left[x^{\prime}, y^{\prime}, z^{\prime}\right]^{T}\)</span> and deduce that <span class="math inline">\(Q(x, y, z)=\)</span> <span class="math inline">\(\left[x^{\prime}, y^{\prime}, z^{\prime}\right] P^{T} A^\prime P\left[x^{\prime}, y^{\prime}, z^{\prime}\right]^{T}\)</span>. If <span class="math inline">\(P^{T} A^\prime P\)</span> is diagonal, we end up with squares of <span class="math inline">\(x^{\prime}, y^{\prime}\)</span> and <span class="math inline">\(z^{\prime}\)</span>, and no mixed terms.</p>
+<p>From this data alone you should be able to classify the surface represented by the above equation.</p>
+<p>Confirm your results by plotting the surface in the new coordinates.</p>
+<p>An outstanding reference on this topic and many others relating to matrix analysis is the recently republished textbook [3] by Richard Bellman, widely considered to be a classic in the field.</p>
+<p>(Hint: when I did this problem, I encountered very small imagainary part at certain points. I used the <code>sp.nsimplify(sp.N(f),rational=True)</code> function to get rid of these.)</p>
+</section>
 </section>
 <section id="section-2" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
-<p>By hand, find a matrix <span class="math inline">\(P\)</span> such that <span class="math inline">\(P^{-1} A P\)</span> is diagonal for each of the following matrices. Then use <span class="math inline">\(P\)</span> to find a formula for <span class="math inline">\(A^{k}, k\)</span> a positive integer.</p>
-<ol type="a">
-<li><p><span class="math inline">\(\left[\begin{array}{lll}2 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 3\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{lll}1 &amp; 2 &amp; 2 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 2\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{ll}1 &amp; 2 \\ 3 &amp; 2\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{ll}0 &amp; 2 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rrrr}2 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; -1 &amp; 0 \\ 0 &amp; 0 &amp; 3 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p></li>
-</ol>
-</section>
-<section id="section-3" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
-<p>Compute <span class="math inline">\(\sin \left(\frac{\pi}{6} A\right)\)</span> and <span class="math inline">\(\cos \left(\frac{\pi}{6} A\right)\)</span>, where <span class="math inline">\(A=\left[\begin{array}{rr}2 &amp; 4 \\ 0 &amp; -3\end{array}\right]\)</span>.</p>
-</section>
-<section id="section-4" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
-<p>By hand, find the spectral radius and dominant eigenvalue, if any, for each of these matrices:</p>
-<ol type="a">
-<li><p><span class="math inline">\(\left[\begin{array}{rr}-7 &amp; -6 \\ 9 &amp; 8\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\frac{1}{3}\left[\begin{array}{ll}1 &amp; 3 \\ 2 &amp; 0\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{lll}0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\frac{1}{2}\left[\begin{array}{lll}1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 1\end{array}\right]\)</span></p></li>
-<li><p><span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1 \\ -1 &amp; -1\end{array}\right]\)</span></p></li>
-</ol>
-</section>
-<section id="section-5" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
-<p>If the matrices of the previous exercise are transition matrices, for which do all <span class="math inline">\(\mathbf{x}^{(k)}\)</span> remain bounded as <span class="math inline">\(k \rightarrow \infty\)</span> ? Are any of these matrices stable?</p>
-</section>
-<section id="section-6" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <em></em></h1>
-<p>The three-stage insect model of Example 2.21 yields a transition matrix</p>
+<section id="management-of-sheep-populations" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="management-of-sheep-populations"><span class="header-section-number">3.1</span> <em>Management of Sheep Populations</em></h2>
+<p>Description of the problem: You are working for the New Zealand Department of Agriculture on a project for sheep farmers. The species of sheep that these shepherds raise have a life span of 12 years. Of course, some live longer, but they are sufficiently few in number and their reproductive rate is so low that they may be ignored in your population study. Accordingly, you divide sheep into 12 age classes, namely those in the first year of life, etc. An extensive survey of the demographics of this species of sheep results in the following approximations for the demographic parameters <span class="math inline">\(f_{i}\)</span> and <span class="math inline">\(s_{i}\)</span>, where <span class="math inline">\(f_{i}\)</span> is the percapita reproductive rate for sheep in the <span class="math inline">\(i\)</span> th age class and <span class="math inline">\(s_{i}\)</span> is the survival rate for sheep in that age class, i.e., the fraction of sheep in that age class that survive to the <span class="math inline">\((i+1)\)</span> th class. (As a matter of fact, this table is related to real data. The interested reader might consult the article [7] in the bibliography.)</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(i\)</span></th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+<th style="text-align: center;">8</th>
+<th style="text-align: center;">9</th>
+<th style="text-align: center;">10</th>
+<th style="text-align: center;">11</th>
+<th style="text-align: center;">12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(f_{i}\)</span></td>
+<td style="text-align: center;">.000</td>
+<td style="text-align: center;">.023</td>
+<td style="text-align: center;">.145</td>
+<td style="text-align: center;">.236</td>
+<td style="text-align: center;">.242</td>
+<td style="text-align: center;">.273</td>
+<td style="text-align: center;">.271</td>
+<td style="text-align: center;">.251</td>
+<td style="text-align: center;">.234</td>
+<td style="text-align: center;">.229</td>
+<td style="text-align: center;">.216</td>
+<td style="text-align: center;">.210</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(s_{i}\)</span></td>
+<td style="text-align: center;">.845</td>
+<td style="text-align: center;">.975</td>
+<td style="text-align: center;">.965</td>
+<td style="text-align: center;">.950</td>
+<td style="text-align: center;">.926</td>
+<td style="text-align: center;">.895</td>
+<td style="text-align: center;">.850</td>
+<td style="text-align: center;">.786</td>
+<td style="text-align: center;">.691</td>
+<td style="text-align: center;">.561</td>
+<td style="text-align: center;">.370</td>
+<td style="text-align: center;">-</td>
+</tr>
+</tbody>
+</table>
+<p>The problem is as follows: in order to maintain a constant population of sheep, shepherds will harvest a certain number of sheep each year. Harvesting need not mean slaughter; it simply means removing sheep from the population (e.g., selling animals to other shepherds). Denote the fraction of sheep that are removed from the <span class="math inline">\(i\)</span> th age group at the end of each growth period (a year in our case) by <span class="math inline">\(h_{i}\)</span>. If these numbers are constant from year to year, they constitute a harvesting policy. If, moreover, the yield of each harvest, i.e., total number of animals harvested each year, is a constant and the age distribution of the remaining populace is essentially constant after each harvest, then the harvesting policy is called sustainable. If all the <span class="math inline">\(h_{i}\)</span> ’s are the same, say <span class="math inline">\(h\)</span>, then the harvesting policy is called uniform. Uniform policies are simple to implement: One selects the sheep to be harvested at random.</p>
+<p>Your problem: Find a uniform sustainable harvesting policy to recommend to shepherds, and find the resulting distribution of sheep that they can expect with this policy. Shepherds who raise sheep for sale to markets are also interested in a sustainable policy that gives a maximum yield. If you can find such a policy that has a larger annual yield than the uniform policy, then recommend it. On the other hand, shepherds who raise sheep for their wool may prefer to minimize the annual yield. If you can find a sustainable policy whose yield is smaller than that of the uniform policy, make a recommendation accordingly. In each case find the expected distribution of your harvesting policies. Do you think that there might be other economic factors that should be taken into account in this model? Organize your results for a report to be read by your supervisor and an informed public.</p>
+<p>Procedure: Express this problem as a discrete linear dynamical system <span class="math inline">\(\mathbf{x}^{(k+1)}=L \mathbf{x}^{(k)}\)</span>, where <span class="math inline">\(L\)</span> is a so-called Leslie matrix of the form</p>
 <p><span class="math display">\[
-A=\left[\begin{array}{ccc}
-0.2 &amp; 0 &amp; 0.25 \\
-0.6 &amp; 0.3 &amp; 0 \\
-0 &amp; 0.6 &amp; 0.8
+L=\left[\begin{array}{cccccc}
+f_{1} &amp; f_{2} &amp; f_{3} &amp; \cdots &amp; f_{n-1} &amp; f_{n} \\
+s_{1} &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+0 &amp; s_{2} &amp; 0 &amp; \cdots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; s_{n-1} &amp; 0
 \end{array}\right]
 \]</span></p>
-<p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next (after much time has passed), given a random initial vector.</p>
-</section>
-<section id="section-7" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> <em></em></h1>
-<p>The financial model of Example 2.27 gives rise to a discrete dynamical system <span class="math inline">\(x^{(k+1)}=A x^{(k)}\)</span>, where the transition matrix is</p>
-<p><span class="math display">\[
-A=\left[\begin{array}{rrr}
-1 &amp; 0.06 &amp; 0.12 \\
-1 &amp; 0 &amp; 0 \\
-0 &amp; 1 &amp; 0
-\end{array}\right]
-\]</span></p>
-<p>Use a technology tool to calculate the eigenvalues of this matrix. Deduce that <span class="math inline">\(A\)</span> is diagonalizable and determine the approximate growth rate from one state to the next, given a random initial vector.</p>
-<p>Find a starting vector <span class="math inline">\(x^{(0)}\)</span> such that growth rate for the first few iterations is quite different from this approximate growth rate, and demonstrate this using a technology tool.</p>
-<p>(If you do this using Sympy, and you set up the matrix A using rational numbers, you can get exact results and find a starting vector which will <em>never</em> reach your approximate growth rage. You can see how this result changes if you use floating point numbers at some point in the calculation, e.g.&nbsp;<code>x = N(x)</code>.)</p>
-<div id="124c1970" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix, Rational</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the matrix A in symbolic form</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> Matrix([[<span class="dv">1</span>, Rational(<span class="dv">6</span>, <span class="dv">100</span>), Rational(<span class="dv">12</span>, <span class="dv">100</span>)], [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="section-8" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> <em></em></h1>
-<p>On this problem,you may use a computer to find eigensystems etc, but don’t solve it using simulations and trial and error.</p>
-<p>A species of bird can be divided into three age groups: age less than 2 years for group 1, age between 2 and 4 years for group 2, and age between 4 and 6 years for the third group. Assume that these birds have at most a 6-year life span. It is estimated that the survival rates for birds in groups 1 and 2 are <span class="math inline">\(50 \%\)</span> and 75%, respectively. Also, birds in groups 1, 2, and 3 produce 0,1 , and 3 offspring on average in any biennium (period of 2 years).</p>
-<ol type="a">
-<li><p>Model this bird population as a discrete dynamical system and analyze the long-term change in the population – give a percentage by which the population of group 1 changes from year to year.</p></li>
-<li><p>Now suppose that the survival rates for group 1 and 2 are not known (so are no longer assumed to be 50% and 75%), but are assumed to be equal to one another. What value for this survival rate would make the population stable in the long run?</p></li>
-</ol>
+<p>It is understood that <span class="math inline">\(0&lt;s_{i} \leq 1,0 \leq f_{i}\)</span>, and at least one <span class="math inline">\(f_{i}\)</span> is nonzero.</p>
+<p>In regard to harvesting, let <span class="math inline">\(H\)</span> be a diagonal matrix with the harvest fractions <span class="math inline">\(h_{i}\)</span> down the diagonal. (Here <span class="math inline">\(0 \leq h_{i} \leq 1\)</span>.) Then the population that results from this harvesting at the end of each period is given by <span class="math inline">\(\mathbf{x}^{k+1}=L \mathbf{x}^{k}-H L \mathbf{x}^{k}=(I-H) L \mathbf{x}^{k}\)</span>. There are other theoretical tools, but all you need to do is to find a matrix <span class="math inline">\(H\)</span> such that 1 is the dominant eigenvalue of <span class="math inline">\((I-H) L\)</span>. You can do this by trial and error, a method that is applicable to any harvesting policy, uniform or not. However, in the case of uniform policies it’s simpler to note that <span class="math inline">\((I-H) L=(1-h) L\)</span>, where <span class="math inline">\(h\)</span> is the diagonal entry of <span class="math inline">\(H\)</span>. Find an eigenvector corresponding to this eigenvalue and scale this vector by dividing it by the sum of its components to obtains a probability distribution vector that could be used for any population.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -703,4 +693,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/HW5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/KBurbank/stat24320/edit/main/HW/Projects3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/KBurbank/stat24320/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

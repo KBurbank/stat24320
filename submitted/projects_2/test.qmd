@@ -9,10 +9,3 @@ format:
       source: true
       toggle: true
 ---
-
-```{python}
-from pip._internal import main as pipmain
-pipmain(['install', 'lightning'])
-
-import lightning
-```

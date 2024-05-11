@@ -1,9 +1,15 @@
 ---
 title: Projects 3
-publish: false
+publish: true
 due-date: Friday, exam week
-textbook-chapters: 5,
+textbook-chapters: 5
 ---
+
+## Instructions
+
+Choose **two** of the following projects to complete.
+
+Please submit a zip file containing your code (in .ipynb or .qmd format), any data files you load in, and if possible a pdf of your notebook. (A link to a GitHub repository or Google CoLab notebook would also work, so long as they are publically accessible.)
 
 #
 ## Revisiting a previous project

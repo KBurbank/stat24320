@@ -5,14 +5,13 @@ due-date: Friday, exam week
 textbook-chapters: 5
 ---
 
-**Instructions**
+**Instructions:**
 
 Choose **two** of the following projects to complete.
 
 Please submit a zip file containing your code (in .ipynb or .qmd format), any data files you load in, and if possible a pdf of your notebook. (A link to a GitHub repository or Google CoLab notebook would also work, so long as they are publically accessible.)
 
-#
-## Revisiting a previous project
+# Revisiting a previous project
 
 Revisit one of the previous projects using new concepts which we have learned since you first did the project. (The "Image Compression" project on page 389 of your textbook would be one example of this, but you may take this in any direction you like.)
 

@@ -1,6 +1,6 @@
 ---
 title: Homework 6
-publish: false
+publish: true
 due-date: Friday, Week 9
 textbook-chapters: 5.3, 5.4, 5.6, 6.6
 publish-solutions-on: 2024-06-10

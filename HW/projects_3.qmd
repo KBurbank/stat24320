@@ -5,7 +5,7 @@ due-date: Friday, exam week
 textbook-chapters: 5
 ---
 
-## Instructions
+**Instructions**
 
 Choose **two** of the following projects to complete.
 

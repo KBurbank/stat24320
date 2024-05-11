@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -97,6 +131,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../site_libs/quarto-contrib/quarto-project/hw-solutions/solutions.css">
 </head>
 
 <body>
@@ -127,7 +162,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 6</h1>
+<h1 class="title">Homework 6 Solutions</h1>
 </div>
 
 
@@ -160,9 +195,15 @@ window.Quarto = {
 <section id="section" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> <em></em></h1>
 <p>Show that if the real matrix <span class="math inline">\(A\)</span> is orthogonally diagonalizable, then <span class="math inline">\(A\)</span> is symmetric.</p>
+<div class="solutions">
+<p>5.4.13</p>
+</div>
 </section>
 <section id="section-1" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> <em></em></h1>
+<div class="solutions">
+<p>5.6.3</p>
+</div>
 <p>Use a technology tool to compute an orthonormal basis for the null space and column space of the following matrices with the SVD and Corollary 5.7. You will have to decide which nearly-zero terms are really zero. (a) <span class="math inline">\(\left[\begin{array}{rrr}1 &amp; 1 &amp; 3 \\ 0 &amp; -1 &amp; 0 \\ 1 &amp; -2 &amp; 2 \\ 3 &amp; 0 &amp; 2\end{array}\right]\)</span></p>
 <ol start="2" type="a">
 <li><p><span class="math inline">\(\left[\begin{array}{rrr}3 &amp; 1 &amp; 2 \\ 4 &amp; 0 &amp; 1 \\ -1 &amp; 1 &amp; 1\end{array}\right]\)</span></p></li>
@@ -171,6 +212,9 @@ window.Quarto = {
 </section>
 <section id="section-2" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> <em></em></h1>
+<div class="solutions">
+<p>5.6.4</p>
+</div>
 <p>Use the pseudoinverse to find a least squares solution <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>, where <span class="math inline">\(A\)</span> is a matrix from Exercise 3 with corresponding right-hand side below.</p>
 <ol type="a">
 <li><p><span class="math inline">\((2,2,6,5)\)</span></p></li>
@@ -181,22 +225,57 @@ window.Quarto = {
 <section id="section-3" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> <em></em></h1>
 <p>Use a technology tool to construct a <span class="math inline">\(3 \times 10\)</span> table whose <span class="math inline">\(j\)</span> th column is <span class="math inline">\(A^{j} \mathbf{x}\)</span>, where <span class="math inline">\(\mathbf{x}=(1,1,1)\)</span> and <span class="math inline">\(A=\left[\begin{array}{rrr}10 &amp; 17 &amp; 8 \\ -8 &amp; -13 &amp; -6 \\ 4 &amp; 7 &amp; 4\end{array}\right]\)</span>. What can you deduce about the eigenvalues of <span class="math inline">\(A\)</span> based on inspection of this table? Give reasons. Check your claims by finding the eigenvalues of <span class="math inline">\(A\)</span>.</p>
+<div class="solutions">
+<p>5.3.14</p>
+<div id="051e2429" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> sp.Matrix([[<span class="dv">10</span>, <span class="dv">17</span>, <span class="dv">8</span>], [<span class="op">-</span><span class="dv">8</span>, <span class="op">-</span><span class="dv">13</span>, <span class="op">-</span><span class="dv">6</span>], [<span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">4</span>]])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>display(A)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> sp.Matrix([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ev1 <span class="op">=</span> A.eigenvects()[<span class="dv">0</span>][<span class="dv">2</span>][<span class="dv">0</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ev2 <span class="op">=</span> A.eigenvects()[<span class="dv">1</span>][<span class="dv">2</span>][<span class="dv">0</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ev3 <span class="op">=</span> A.eigenvects()[<span class="dv">2</span>][<span class="dv">2</span>][<span class="dv">0</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ev1, ev2, ev3</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>mytable <span class="op">=</span> sp.Matrix([(A<span class="op">**</span>j <span class="op">*</span> x).T <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]).T</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>mytable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}10 &amp; 17 &amp; 8\\-8 &amp; -13 &amp; -6\\4 &amp; 7 &amp; 4\end{matrix}\right]\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}35 &amp; 11 &amp; -125 &amp; -29 &amp; 515 &amp; 131 &amp; -2045 &amp; -509 &amp; 8195 &amp; 2051\\-27 &amp; -19 &amp; 93 &amp; 61 &amp; -387 &amp; -259 &amp; 1533 &amp; 1021 &amp; -6147 &amp; -4099\\15 &amp; 11 &amp; -45 &amp; -29 &amp; 195 &amp; 131 &amp; -765 &amp; -509 &amp; 3075 &amp; 2051\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<p>Largest eigenvalue must be greater than one because the numbers grow, and complex because they take two iterations to change sign. But the complex part probably comes in pairs which cancel each other.</p>
+</div>
 </section>
 <section id="section-4" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> <em></em></h1>
 <p>Compute the DTFT for the FIR filter <span class="math inline">\(\mathbf{h}=\left\{\frac{1}{2}, \frac{1}{2}\right\}\)</span> and confirm that <span class="math inline">\(\mathbf{h}\)</span> is a lowpass filter.</p>
+<div class="solutions">
+<p>6.6.1</p>
+</div>
 </section>
 <section id="section-5" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> <em></em></h1>
 <p>Compute the DTFT for the FIR filter <span class="math inline">\(\mathbf{h}=\left\{-\frac{1}{2}, \frac{1}{2}\right\}\)</span> and confirm that <span class="math inline">\(\mathbf{h}\)</span> is a highpass filter.</p>
+<div class="solutions">
+<p>6.6.2</p>
+</div>
 </section>
 <section id="section-6" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> <em></em></h1>
 <p>Compute the Fourier series for <span class="math inline">\(x(t) \in C_{P W}^{1}[-\pi, \pi]\)</span>, where <span class="math inline">\(x(t)=\)</span> <span class="math inline">\(t^{2} / \pi,-\pi \leq t \leq \pi\)</span> and graph <span class="math inline">\(x(t)\)</span> and the partial Fourier sums with <span class="math inline">\(N=3,6\)</span>.</p>
+<div class="solutions">
+<p>6.6.3</p>
+</div>
 </section>
 <section id="section-7" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> <em></em></h1>
 <p>Compute the Fourier series for <span class="math inline">\(x(t) \in C_{P W}^{1}[0,2 \pi]\)</span>, where <span class="math inline">\(x(t)=\)</span> <span class="math inline">\(t^{3} / 6-1,0 \leq t&lt;2 \pi\)</span>, and <span class="math inline">\(x(2 \pi)=-1\)</span> and graph results as in Exercise 3.</p>
+<div class="solutions">
+<p>6.6.4</p>
+</div>
 
 
 </section>

@@ -88,7 +88,7 @@ Compute the DTFT for the FIR filter $\mathbf{h}=\left\{-\frac{1}{2}, \frac{1}{2}
 
  Apply the filters of the previous two exercises to the sampling problem of Example 6.24 and graph the results as in Figure 2.
 
- ::: solutions
+::: solutions
 6.6.5
 6.6.6
 :::

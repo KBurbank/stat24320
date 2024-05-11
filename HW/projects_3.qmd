@@ -16,8 +16,7 @@ Please submit a zip file containing your code (in .ipynb or .qmd format), any da
 Revisit one of the previous projects using new concepts which we have learned since you first did the project. (The "Image Compression" project on page 389 of your textbook would be one example of this, but you may take this in any direction you like.)
 
 
-# 
-## Quadratic Forms
+# Quadratic Forms
 
 In order to classify quadratic equations in $x$ and $y$ one goes through roughly three steps. First, perform a rotation transformation of coordinates to get rid of mixed terms such as $2 x y$ in the quadratic equation $x^{2}+2 x y-y^{2}+x-3 y=4$. Second, do a translation of coordinates to put the equation in a "standard form." Third, identify the curve by your knowledge of the shape of a curve in that standard form. Standard forms are equations like $x^{2} / 4+y^{2} / 2=1$, an ellipse with its axes along the $x$ - and $y$-axes. It is the second-degree terms $\left(x^{2}, 2 x y\right.$, and $\left.y^{2}\right)$ alone that determine the nature of a quadratic.
 
@@ -128,8 +127,7 @@ plot3d(orig_z_eqn[0],(x,-limit,limit),(y,-limit, limit))
 :::
 
 
-#
-## Management of Sheep Populations
+# Management of Sheep Populations
 
 Description of the problem: You are working for the New Zealand Department of Agriculture on a project for sheep farmers. The species of sheep that these shepherds raise have a life span of 12 years. Of course, some live longer, but they are sufficiently few in number and their reproductive rate is so low that they may be ignored in your population study. Accordingly, you divide sheep into 12 age classes, namely those in the first year of life, etc. An extensive survey of the demographics of this species of sheep results in the following approximations for the demographic parameters $f_{i}$ and $s_{i}$, where $f_{i}$ is the percapita reproductive rate for sheep in the $i$ th age class and $s_{i}$ is the survival rate for sheep in that age class, i.e., the fraction of sheep in that age class that survive to the $(i+1)$ th class. (As a matter of fact, this table is related to real data. The interested reader might consult the article [7] in the bibliography.)
 

@@ -4440,177 +4440,177 @@
   {
     "objectID": "lectures/ChNone.html#section",
     "href": "lectures/ChNone.html#section",
-    "title": "Stat 24320",
-    "section": "",
-    "text": "The Fourier series of a function is an expansion into sines and cosines:\n\\[\nf(x)=a_{0}+a_{1} \\cos x+b_{1} \\sin x+a_{2} \\cos 2 x+b_{2} \\sin 2 x+\\cdots\n\\]\n\nHow do we find the coefficients \\(a_{0}, a_{1}, b_{1}, a_{2}, b_{2}, \\ldots\\)?\n\n\nWe use orthogonality. The functions \\(\\cos x, \\cos 2 x, \\cos 3 x, \\ldots\\) are orthogonal on \\([0,2 \\pi]\\)… Same is true for the sines.\n\n\nTo compute a coefficient like \\(b_{1}\\), multiply both sides by the corresponding function \\(\\sin x\\) and integrate from 0 to \\(2 \\pi\\). In other words, take the inner product of both sides with \\(\\sin x\\) :"
-  },
-  {
-    "objectID": "lectures/ChNone.html#section-1",
-    "href": "lectures/ChNone.html#section-1",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
     "text": "\\[\n\\int_{0}^{2 \\pi} f(x) \\sin x d x=a_{0} \\int_{0}^{2 \\pi} \\sin x d x+a_{1} \\int_{0}^{2 \\pi} \\cos x \\sin x d x+b_{1} \\int_{0}^{2 \\pi}(\\sin x)^{2} d x+\\cdots\n\\]\n\\[\nb_{1}=\\frac{\\int_{0}^{2 \\pi} f(x) \\sin x d x}{\\int_{0}^{2 \\pi}(\\sin x)^{2} d x}=\\frac{(f, \\sin x)}{(\\sin x, \\sin x)}\n\\]"
   },
   {
+    "objectID": "lectures/ChNone.html#section-1",
+    "href": "lectures/ChNone.html#section-1",
+    "title": "The Fourier Series",
+    "section": "",
+    "text": "Make a table. Note that \\(i^2 = i^6 = -1\\), \\(i^3 = i^7 = -i\\), and \\(i^4 = 1\\).\nFor n = 0:\n\n\n\nk\n\\(i 2\\pi k \\times 0\\)\n\\(e^{i 2\\pi k \\times 0}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n0\n1\n\n\n2\n0\n1\n\n\n3\n0\n1\n\n\n\n\nFor n = 1:\n\n\n\nk\n\\(i 2\\pi k  \\frac{1}{4}\\)\n\\(e^{i 2\\pi k \\frac{1}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(i\\pi/2\\)\n\\(i\\)\n\n\n2\n\\(i\\pi\\)\n\\(-1=i^2\\)\n\n\n3\n\\(3i\\pi/2\\)\n\\(-i=i^3\\)"
+  },
+  {
     "objectID": "lectures/ChNone.html#analogy-with-projections",
     "href": "lectures/ChNone.html#analogy-with-projections",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Analogy with projections",
     "text": "Analogy with projections\nThe component of the vector \\(b\\) along the line spanned by \\(a\\) is \\(b^{\\mathrm{T}} a / a^{\\mathrm{T}} a\\).\n\nA Fourier series is projecting \\(f(x)\\) onto \\(\\sin x\\). Its component \\(p\\) in this direction is exactly \\(b_{1} \\sin x\\)."
   },
   {
     "objectID": "lectures/ChNone.html#eulers-formula",
     "href": "lectures/ChNone.html#eulers-formula",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Euler’s formula",
-    "text": "Euler’s formula\nThe complex exponential \\(e^{i x}\\) is a combination of \\(\\cos x\\) and \\(\\sin x\\):\n\\[\ne^{i x}=\\cos x+i \\sin x\n\\]\n\nSo we can rewrite the Fourier series using complex exponentials:\n\\[\nf(x)=c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+\\cdots = \\sum_k c_k\\cdot e^{i k x}\n\\]\n. . . The coefficients \\(c_{0}, c_{1}, c_{2}, \\ldots\\) are related to the \\(a\\)’s and \\(b\\)’s.\nFor example, \\(c_{1}=a_{1}-i b_{1}\\).\n\n\nThe formula for finding the coefficients \\(c_{k}\\) is the same as before, but now we use the complex exponential functions \\(e^{i k x}\\) instead of the sines and cosines:\n\\[\nc_{k}=\\int_{0}^{2 \\pi} f(x) e^{-i k x} d x\n\\]"
+    "text": "Euler’s formula\nThe complex exponential \\(e^{i x}\\) is a combination of \\(\\cos x\\) and \\(\\sin x\\):\n\\[\ne^{i x}=\\cos x+i \\sin x\n\\]\n\nSo we can rewrite the Fourier series using complex exponentials:\n\\[\nf(x)=c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+\\cdots = \\sum_k c_k\\cdot e^{i k x}\n\\]\npause\n\nThe coefficients \\(c_{0}, c_{1}, c_{2}, \\ldots\\) are related to the \\(a\\)’s and \\(b\\)’s.\nFor example, \\(c_{1}=a_{1}-i b_{1}\\).\n\n\n\nThe formula for finding the coefficients \\(c_{k}\\) is the same as before, but now we use the complex exponential functions \\(e^{i k x}\\) instead of the sines and cosines:\n\\[\nc_{k}=\\int_{0}^{2 \\pi} f(x) e^{-i k x} d x\n\\]"
   },
   {
     "objectID": "lectures/ChNone.html#discrete-fourier-series",
     "href": "lectures/ChNone.html#discrete-fourier-series",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Discrete Fourier Series",
-    "text": "Discrete Fourier Series\nWhat if we have only a series of N discrete values \\(y_{0}, y_{1}, y_{2}, \\ldots\\), instead of a continuous function \\(f(x)\\)?\n\nFirst, we imagine that the values are periodic, with period N. So it’s as if they are repeating beyond the N values we have.\n\n\nThen we can identify a natural period \\(N\\), and rewrite \\(x=2 \\pi n / N\\), so the discrete Fourier series becomes\n\\[\n\\begin{align}\ny[n] = \\sum_k c[k]\\cdot e^{i 2\\pi k \\frac{n}{N}}\n\\end{align}\n\\]\n\n\nIn matrix form, \\(\\mathbf{y} = F \\mathbf{c}\\)\nwhere\n\\[\n\\begin{align}\n\\begin{bmatrix} y_0 \\\\ y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_{N-1} \\end{bmatrix}\n= F c = \\begin{bmatrix}\n1 & 1 & 1 & \\ldots & 1 \\\\\n1 & e^{-i 2\\pi/N} & e^{-i 4\\pi/N} & \\ldots & e^{-i 2\\pi (N-1)/N} \\\\\n1 & e^{-i 4\\pi/N} & e^{-i 8\\pi/N} & \\ldots & e^{-i 4\\pi (N-1)/N} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & e^{-i 2\\pi(N-1)/N} & e^{-i 4\\pi(N-1)/N} & \\ldots & e^{-i 2\\pi(N-1)(N-1)/N}\n\\end{bmatrix} \\begin{bmatrix}c_0 \\\\ c_1 \\\\ c_2 \\\\ \\vdots \\\\ c_{N-1}\\end{bmatrix}\n\\end{align}\n\\]"
+    "text": "Discrete Fourier Series\n\nWhat if we have only a series of N discrete values \\(y_{0}, y_{1}, y_{2}, \\ldots\\), instead of a continuous function \\(f(x)\\)?\n. . .\nFirst, we imagine that the values are periodic, with period N. So it’s as if they are repeating beyond the N values we have.\n. . .\nThen we can identify a natural period \\(N\\), and rewrite \\(x=2 \\pi n / N\\), so the discrete Fourier series becomes\n\\[\n\\begin{align}\ny[n] = \\sum_k c[k]\\cdot e^{i 2\\pi k \\frac{n}{N}}\n\\end{align}\n\\]\n. . .\nIn matrix form, \\(\\mathbf{y} = F \\mathbf{c}\\)\nwhere\n\\[\n\\begin{align}\n\\begin{bmatrix} y_0 \\\\ y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_{N-1} \\end{bmatrix}\n= F c = \\begin{bmatrix}\n1 & 1 & 1 & \\ldots & 1 \\\\\n1 & e^{-i 2\\pi/N} & e^{-i 4\\pi/N} & \\ldots & e^{-i 2\\pi (N-1)/N} \\\\\n1 & e^{-i 4\\pi/N} & e^{-i 8\\pi/N} & \\ldots & e^{-i 4\\pi (N-1)/N} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & e^{-i 2\\pi(N-1)/N} & e^{-i 4\\pi(N-1)/N} & \\ldots & e^{-i 2\\pi(N-1)(N-1)/N}\n\\end{bmatrix} \\begin{bmatrix}c_0 \\\\ c_1 \\\\ c_2 \\\\ \\vdots \\\\ c_{N-1}\\end{bmatrix}\n\\end{align}\n\\]"
   },
   {
     "objectID": "lectures/ChNone.html#section-2",
     "href": "lectures/ChNone.html#section-2",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "From Wikipedia, Original upload by en:User:Glogger, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
+    "text": "For n = 2:\n\n\n\nk\n\\(i 2\\pi k  \\frac{2}{4}\\)\n\\(e^{i 2\\pi k \\frac{2}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(i\\pi\\)\n\\(-1=i^2\\)\n\n\n2\n\\(2i\\pi\\)\n\\(1=i^4\\)\n\n\n3\n\\(3i\\pi\\)\n\\(-1=i^6\\)\n\n\n\n\nFor n = 3:\n\n\n\nk\n\\(i 2\\pi k  \\frac{3}{4}\\)\n\\(e^{i 2\\pi k \\frac{3}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(3i\\pi/2\\)\n\\(-i=i^3\\)\n\n\n2\n\\(3i\\pi\\)\n\\(-1 = i^6\\)\n\n\n3\n\\(9i\\pi/2\\)\n\\(i = i^9\\)"
   },
   {
     "objectID": "lectures/ChNone.html#finding-the-fourier-coefficients",
     "href": "lectures/ChNone.html#finding-the-fourier-coefficients",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Finding the Fourier coefficients",
-    "text": "Finding the Fourier coefficients\nHow can we find the Fourier coefficients?\nThese are a sequence of complex numbers \\(c_{0}, \\ldots, c_{n-1}\\), with the same length \\(N\\).\nTwo approaches:\n\nBy analogy with the continuous case,\n\\[\nc_{k}=\\int_{0}^{2 \\pi} f(x) e^{-i k x} d x\n\\]\nWe will replace the integral by a sum over the discrete values \\(y_{0}, y_{1}, y_{2}, \\ldots\\).\n\\[\nc[k]= \\frac{1}{N} \\sum_{n=0}^{N-1} y[n] e^{-i 2 \\pi k n / N}, \\quad \\text{for } k=0,1,2, \\ldots, N-1\n\\]\nThis defines a matrix \\(F^\\prime\\) given as\n\\[\nF^\\prime = \\frac{1}{N}\\begin{bmatrix}\n1 & 1 & 1 & \\ldots & 1 \\\\\n1 & e^{i 2\\pi/N} & e^{i 4\\pi/N} & \\ldots & e^{i 2\\pi (N-1)/N} \\\\\n1 & e^{i 4\\pi/N} & e^{i 8\\pi/N} & \\ldots & e^{i 4\\pi (N-1)/N} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & e^{i 2\\pi(N-1)/N} & e^{i 4\\pi(N-1)/N} & \\ldots & e^{i 2\\pi(N-1)(N-1)/N}\n\\end{bmatrix}\n\\]\nNote: this is \\(\\frac{1}{N}\\) times the complex conjugate of the matrix \\(F\\): \\(F^\\prime = \\frac{1}{N} F^*\\)."
+    "text": "Finding the Fourier coefficients\n\nHow can we find the Fourier coefficients? . . .\nBy analogy with the continuous case,\n\\[\nc_{k}=\\int_{0}^{2 \\pi} f(x) e^{-i k x} d x\n\\]\nWe will replace the integral by a sum over the discrete values \\(y_{0}, y_{1}, y_{2}, \\ldots\\).\n\\[\nc[k]= \\frac{1}{N} \\sum_{n=0}^{N-1} y[n] e^{-i 2 \\pi k n / N}, \\quad \\text{for } k=0,1,2, \\ldots, N-1\n\\]\nThis defines a matrix \\(F^\\prime\\) given as\n\\[\nF^\\prime = \\frac{1}{N}\\begin{bmatrix}\n1 & 1 & 1 & \\ldots & 1 \\\\\n1 & e^{i 2\\pi/N} & e^{i 4\\pi/N} & \\ldots & e^{i 2\\pi (N-1)/N} \\\\\n1 & e^{i 4\\pi/N} & e^{i 8\\pi/N} & \\ldots & e^{i 4\\pi (N-1)/N} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & e^{i 2\\pi(N-1)/N} & e^{i 4\\pi(N-1)/N} & \\ldots & e^{i 2\\pi(N-1)(N-1)/N}\n\\end{bmatrix}\n\\]\nNote: this is \\(\\frac{1}{N}\\) times the complex conjugate of the matrix \\(F\\): \\(F^\\prime = \\frac{1}{N} F^*\\)."
   },
   {
     "objectID": "lectures/ChNone.html#inverse-dft",
     "href": "lectures/ChNone.html#inverse-dft",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Inverse DFT",
     "text": "Inverse DFT\nWe have just shown two things:\n\nThe DFT can be written as a matrix-vector product \\(\\mathbf{y} = F \\mathbf{c}\\).\nThe coefficients \\(\\mathbf{c}\\) can be found by \\(\\mathbf{c} = F^\\prime \\mathbf{y}\\).\nBut of course it is also true from 1 that if \\(F\\) is invertible, that \\(\\mathbf{c} = F^{-1} \\mathbf{y}\\). Therefore, \\(F^{-1} = F^\\prime=\\frac{1}{N} F^*\\).\nThis means that \\(F\\) is unitary. Its rows and columns are orthogonal."
   },
   {
     "objectID": "lectures/ChNone.html#a-concrete-example",
     "href": "lectures/ChNone.html#a-concrete-example",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "A concrete example",
-    "text": "A concrete example\nLet’s take an example with \\(N=4\\) and \\(y=(2, 4, 6, 8)\\).\n\nWe want to find coefficients \\(c_0, c_1, c_2, c_3\\) such that our Fourier series correctly reproduces the input values at each of the four points.\n\n\n(We can’t find more than 4 coefficients because we only have 4 points of data.)\n\n\n\\[\n\\begin{align}\ny[n] = \\sum_k c[k]\\cdot e^{i 2\\pi k \\frac{n}{N}}\n\\end{align}\n\\]\n\n\n\\[\n\\begin{aligned}\nc_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\\left\\{\\begin{array}{lll}\n2 & \\text { at } & x=0 \\\\\n4 & \\text { at } & x=\\pi / 2 \\\\\n6 & \\text { at } & x=\\pi \\\\\n8 & \\text { at } & x=3 \\pi / 2\n\\end{array}\\right)\n\\end{aligned}\n\\]\n\n\nMake a table. Note that \\(i^2 = i^6 = -1\\), \\(i^3 = i^7 = -i\\), and \\(i^4 = 1\\).\nFor n = 0:\n\n\n\nk\n\\(i 2\\pi k \\times 0\\)\n\\(e^{i 2\\pi k \\times 0}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n0\n1\n\n\n2\n0\n1\n\n\n3\n0\n1\n\n\n\n\n\nFor n = 1:\n\n\n\nk\n\\(i 2\\pi k  \\frac{1}{4}\\)\n\\(e^{i 2\\pi k \\frac{1}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(i\\pi/2\\)\n\\(i\\)\n\n\n2\n\\(i\\pi\\)\n\\(-1=i^2\\)\n\n\n3\n\\(3i\\pi/2\\)\n\\(-i=i^3\\)"
+    "text": "A concrete example\nLet’s take an example with \\(N=4\\) and \\(y=(2, 4, 6, 8)\\).\n\n. . .\nWe want to find coefficients \\(c_0, c_1, c_2, c_3\\) such that our Fourier series correctly reproduces the input values at each of the four points.\n. . .\n(We can’t find more than 4 coefficients because we only have 4 points of data.)\n. . .\n\\[\n\\begin{align}\ny[n] = \\sum_k c[k]\\cdot e^{i 2\\pi k \\frac{n}{N}}\n\\end{align}\n\\]\n. . .\n\\[\n\\begin{aligned}\nc_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\\left\\{\\begin{array}{lll}\n2 & \\text { at } & x=0 \\\\\n4 & \\text { at } & x=\\pi / 2 \\\\\n6 & \\text { at } & x=\\pi \\\\\n8 & \\text { at } & x=3 \\pi / 2\n\\end{array}\\right)\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "lectures/ChNone.html#section-3",
     "href": "lectures/ChNone.html#section-3",
-    "title": "Stat 24320",
-    "section": "",
-    "text": "For n = 2:\n\n\n\nk\n\\(i 2\\pi k  \\frac{2}{4}\\)\n\\(e^{i 2\\pi k \\frac{2}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(i\\pi\\)\n\\(-1=i^2\\)\n\n\n2\n\\(2i\\pi\\)\n\\(1=i^4\\)\n\n\n3\n\\(3i\\pi\\)\n\\(-1=i^6\\)\n\n\n\n\nFor n = 3:\n\n\n\nk\n\\(i 2\\pi k  \\frac{3}{4}\\)\n\\(e^{i 2\\pi k \\frac{3}{4}}\\)\n\n\n\n\n0\n0\n1\n\n\n1\n\\(3i\\pi/2\\)\n\\(-i=i^3\\)\n\n\n2\n\\(3i\\pi\\)\n\\(-1 = i^6\\)\n\n\n3\n\\(9i\\pi/2\\)\n\\(i = i^9\\)"
-  },
-  {
-    "objectID": "lectures/ChNone.html#solving-for-the-coefficients",
-    "href": "lectures/ChNone.html#solving-for-the-coefficients",
-    "title": "Stat 24320",
-    "section": "Solving for the coefficients",
-    "text": "Solving for the coefficients\nPutting those all together,\n\\[\n\\begin{align*}\n& c_{0}+c_{1}+c_{2}+c_{3}=2 \\\\\n& c_{0}+i c_{1}+i^{2} c_{2}+i^{3} c_{3}=4 \\\\\n& c_{0}+i^{2} c_{1}+i^{4} c_{2}+i^{6} c_{3}=6  \\\\\n& c_{0}+i^{3} c_{1}+i^{6} c_{2}+i^{9} c_{3}=8\n\\end{align*}\n\\]\n\nIn other words, \\(F c = y\\) for\n\\[\nF=\\left[\\begin{array}{cccc}\n1 & 1 & 1 & 1 \\\\\n1 & i & i^{2} & i^{3} \\\\\n1 & i^{2} & i^{4} & i^{6} \\\\\n1 & i^{3} & i^{6} & i^{9}\n\\end{array}\\right]\n\\]"
-  },
-  {
-    "objectID": "lectures/ChNone.html#section-4",
-    "href": "lectures/ChNone.html#section-4",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
     "text": "Check that \\(F F^\\prime = I\\):\n\\[\\begin{aligned}\nF F^\\prime =\\frac{1}{4}\\left[\\begin{array}{cccc}\n1 & 1 & 1 & 1  \\\\\n1 & i & i^{2} & i^{3} \\\\\n1 & i^{2} & i^{4} & i^{6} \\\\\n1 & i^{3} & i^{6} & i^{9}\n\\end{array}\\right]\\left[\\begin{array}{cccc}\n1 & 1 & 1 & 1 \\\\\n1 & (-i) & (-i)^{2} & (-i)^{3} \\\\\n1 & (-i)^{2} & (-i)^{4} & (-i)^{6} \\\\\n1 & (-i)^{3} & (-i)^{6} & (-i)^{9}\n\\end{array}\\right]=I\n\\end{aligned}\n\\]"
   },
   {
-    "objectID": "lectures/ChNone.html#section-5",
-    "href": "lectures/ChNone.html#section-5",
-    "title": "Stat 24320",
+    "objectID": "lectures/ChNone.html#solving-for-the-coefficients",
+    "href": "lectures/ChNone.html#solving-for-the-coefficients",
+    "title": "The Fourier Series",
+    "section": "Solving for the coefficients",
+    "text": "Solving for the coefficients\n\\[\n\\begin{align*}\n& c_{0}+c_{1}+c_{2}+c_{3}=2 \\\\\n& c_{0}+i c_{1}+i^{2} c_{2}+i^{3} c_{3}=4 \\\\\n& c_{0}+i^{2} c_{1}+i^{4} c_{2}+i^{6} c_{3}=6  \\\\\n& c_{0}+i^{3} c_{1}+i^{6} c_{2}+i^{9} c_{3}=8\n\\end{align*}\n\\]\n\nIn other words, \\(F c = y\\) for\n\\[\nF=\\left[\\begin{array}{cccc}\n1 & 1 & 1 & 1 \\\\\n1 & i & i^{2} & i^{3} \\\\\n1 & i^{2} & i^{4} & i^{6} \\\\\n1 & i^{3} & i^{6} & i^{9}\n\\end{array}\\right]\n\\]"
+  },
+  {
+    "objectID": "lectures/ChNone.html#section-4",
+    "href": "lectures/ChNone.html#section-4",
+    "title": "The Fourier Series",
     "section": "",
     "text": "Check in Sympy:\n\n\nF:\nF prime:\nF F prime:\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 1 & 1 & 1\\\\1 & i & -1 & - i\\\\1 & -1 & 1 & -1\\\\1 & - i & -1 & i\\end{matrix}\\right]\\)\n\n\n\\(\\displaystyle \\left[\\begin{matrix}0.25 & 0.25 & 0.25 & 0.25\\\\0.25 & - 0.25 i & -0.25 & 0.25 i\\\\0.25 & -0.25 & 0.25 & -0.25\\\\0.25 & 0.25 i & -0.25 & - 0.25 i\\end{matrix}\\right]\\)\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1.0 & 0 & 0 & 0\\\\0 & 1.0 & 0 & 0\\\\0 & 0 & 1.0 & 0\\\\0 & 0 & 0 & 1.0\\end{matrix}\\right]\\)"
   },
   {
+    "objectID": "lectures/ChNone.html#section-5",
+    "href": "lectures/ChNone.html#section-5",
+    "title": "The Fourier Series",
+    "section": "",
+    "text": "What’s the DFT of this signal?\n\nfrom scipy.fft import fft, fftshift\nyf = fft(y)\nyfalone = fft(yalone)\n# make a non connected plot of yf\n\nplt.plot(np.fft.fftfreq(200),np.abs(yf), color='red')\nplt.plot(np.fft.fftfreq(200),np.abs(yfalone), color='blue')\nplt.xlim(-0.25, 0.25)\nplt.legend(['Full signal', 'low frequency only'])\nplt.show()"
+  },
+  {
     "objectID": "lectures/ChNone.html#a-simplification",
     "href": "lectures/ChNone.html#a-simplification",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "A simplification",
-    "text": "A simplification\nNotice that our matrix F had many terms which were exponents of \\(i\\).\nIn general, we can simplify the matrix \\(F\\) by defining \\(w = e^{i 2\\pi/N}\\). This is the \\(N\\)th “primitive root of unity”, so that \\(w^N = 1\\).\n\nFor N = 4, \\(w = e^{i \\pi/2} = i\\).\n\n\nThen we can write the Fourier equation as\n\\[\n\\left[\\begin{array}{ccccc}\n1 & 1 & 1 & \\cdot & 1  \\\\\n1 & w & w^{2} & \\cdot & w^{n-1} \\\\\n1 & w^{2} & w^{4} & \\cdot & w^{2(n-1)} \\\\\n\\cdot & \\cdot & \\cdot & \\cdot & \\cdot \\\\\n1 & w^{n-1} & w^{2(n-1)} & \\cdot & w^{(n-1)^{2}}\n\\end{array}\\right]\\left[\\begin{array}{c}\nc_{0} \\\\\nc_{1} \\\\\nc_{2} \\\\\n\\cdot \\\\\nc_{n-1}\n\\end{array}\\right]=\\left[\\begin{array}{c}\ny_{0} \\\\\ny_{1} \\\\\ny_{2} \\\\\n\\cdot \\\\\ny_{n-1}\n\\end{array}\\right], \\quad w = e^{i 2\\pi/n}\n\\]"
+    "text": "A simplification\n\nNotice that our matrix F had many terms which were exponents of \\(i\\).\nIn general, we can simplify the matrix \\(F\\) by defining \\(w = e^{i 2\\pi/N}\\). This is the \\(N\\)th “primitive root of unity”, so that \\(w^N = 1\\).\n. . .\nFor N = 4, \\(w = e^{i \\pi/2} = i\\).\n. . .\nWrite the first few terms of this: \\[\n\\left[\\begin{array}{ccccc}\n1 & 1 & 1 & \\cdot & 1  \\\\\n1 & w & w^{2} & \\cdot & w^{n-1} \\\\\n1 & w^{2} & w^{4} & \\cdot & w^{2(n-1)} \\\\\n\\cdot & \\cdot & \\cdot & \\cdot & \\cdot \\\\\n1 & w^{n-1} & w^{2(n-1)} & \\cdot & w^{(n-1)^{2}}\n\\end{array}\\right]\\left[\\begin{array}{c}\nc_{0} \\\\\nc_{1} \\\\\nc_{2} \\\\\n\\cdot \\\\\nc_{n-1}\n\\end{array}\\right]=\\left[\\begin{array}{c}\ny_{0} \\\\\ny_{1} \\\\\ny_{2} \\\\\n\\cdot \\\\\ny_{n-1}\n\\end{array}\\right], \\quad w = e^{i 2\\pi/n}\n\\]"
   },
   {
     "objectID": "lectures/ChNone.html#terminology",
     "href": "lectures/ChNone.html#terminology",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Terminology",
     "text": "Terminology\nWe call the matrix \\(F\\) the DFT (Discrete Fourier Transform) matrix. It is a square unitary matrix of size \\(N \\times N\\).\n\nThe matrix \\(F^\\prime\\) is the inverse DFT matrix. It is the complex conjugate of \\(F\\) divided by \\(N\\)."
   },
   {
     "objectID": "lectures/ChNone.html#summary",
     "href": "lectures/ChNone.html#summary",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Summary",
     "text": "Summary\n\nThe DFT can be written as a matrix-vector product \\(\\mathbf{y} = F \\mathbf{c}\\).\nThe coefficients \\(\\mathbf{c}\\) can be found by \\(\\mathbf{c} = F^\\prime \\mathbf{y}\\).\nF is easy to compute, with a simple formula for each entry.\n(There’s actually a really really fast way to compute the DFT using the FFT algorithm.)"
   },
   {
     "objectID": "lectures/ChNone.html#filtering",
     "href": "lectures/ChNone.html#filtering",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Filtering",
-    "text": "Filtering\nThe DFT is used in many applications, but one of the most common is filtering.\n\nThe idea is that we can modify the Fourier coefficients of a signal to remove certain frequencies."
+    "text": "Filtering\nThe DFT is used in many applications, but one of the most common is filtering.\n\nFor example, suppose we have a signal that is a sum of two sinusoids:\n\\[\nf(x) = \\sin(2\\pi x) + 0.5 \\sin(20\\pi x)\n\\]"
   },
   {
     "objectID": "lectures/ChNone.html#section-6",
     "href": "lectures/ChNone.html#section-6",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "For example, suppose we have a signal that is a sum of two sinusoids:\n\\[\nf(x) = \\sin(2\\pi x) + 0.5 \\sin(20\\pi x)\n\\]"
+    "text": "What’s with the double peaks?"
   },
   {
     "objectID": "lectures/ChNone.html#section-7",
     "href": "lectures/ChNone.html#section-7",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "What’s the DFT of this signal?\n\nfrom scipy.fft import fft, fftshift\nyf = fft(y)\nyfalone = fft(yalone)\n# make a non connected plot of yf\n\nplt.plot(np.fft.fftfreq(200),np.abs(yf), color='red')\nplt.plot(np.fft.fftfreq(200),np.abs(yfalone), color='blue')\nplt.xlim(-0.25, 0.25)\nplt.legend(['Full signal', 'low frequency only'])\nplt.show()"
+    "text": "Compute the inverse DFT:"
   },
   {
     "objectID": "lectures/ChNone.html#section-8",
     "href": "lectures/ChNone.html#section-8",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "What’s with the double peaks?\n\n\n\n\n\n\n\n\n\ndisplay(Math(f’’))"
+    "text": "It’s pretty good!"
   },
   {
     "objectID": "lectures/ChNone.html#reconstruct-the-signal",
     "href": "lectures/ChNone.html#reconstruct-the-signal",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Reconstruct the signal",
     "text": "Reconstruct the signal\nWe can reconstruct the signal by taking the inverse DFT."
   },
   {
     "objectID": "lectures/ChNone.html#section-9",
     "href": "lectures/ChNone.html#section-9",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "Zero out the coefficient corresponding to the second sinusoid:\n\nyf_new = yf.copy()\nyf_new[190] = 0\nyf_new[10] = 0\nplt.plot(np.abs(fftshift(yf_new)))\nplt.title('Filtered DFT')\nplt.show()"
+    "text": "Try one more thing. Can we describe the change in the DFT as a multiplicative vector? We sure can.\n\n\n\n\n\n\n\n\n\nSo we can describe the new DVD as the old DFT multiplied by a vector of 1s and 0s."
   },
   {
     "objectID": "lectures/ChNone.html#section-10",
     "href": "lectures/ChNone.html#section-10",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "Compute the inverse DFT:"
+    "text": "The total process went like this:\n\nTake the DFT of the signal.\nMultiply the DFT by a vector of 1s and 0s to filter out the high frequency.\nTake the inverse DFT to get the filtered signal."
   },
   {
     "objectID": "lectures/ChNone.html#section-11",
     "href": "lectures/ChNone.html#section-11",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "It’s pretty good!"
+    "text": "Now try it again using the convolution theorem.\nSteps:\n\nTake the DFT of the signal.\nPad the filter with zeros to make it the same length as the signal.\nTake the DFT of the filter.\nMultiply the two DFTs.\nTake the inverse DFT to get the filtered signal.\nDone!"
   },
   {
     "objectID": "lectures/ChNone.html#section-12",
     "href": "lectures/ChNone.html#section-12",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "Try one more thing. Can we describe the change in the DFT as a multiplicative vector? We sure can.\n\n\n\n\n\n\n\n\n\nSo we can describe the new DVD as the old DFT multiplied by a vector of 1s and 0s."
+    "text": "yf = fft(y)\nhf = fft(h, N) # pad h with zeros\ny_filtered = ifft(yf*hf)\nplt.plot(x, y, label='original')\nplt.plot(x, y_filtered, label='filtered')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\nThen we can take the inverse DFT to get the filtered signal."
   },
   {
     "objectID": "lectures/ChNone.html#section-13",
@@ -4622,28 +4622,28 @@
   {
     "objectID": "lectures/ChNone.html#filtering-as-convolution",
     "href": "lectures/ChNone.html#filtering-as-convolution",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Filtering as convolution",
     "text": "Filtering as convolution\nSuppose we have a signal and we’d like to try to filter out the high frequencies, but we don’t know which ones they are.\nWe could try with a simple filter like \\([1, 1, 1, 1, 1]/5\\). This is a simple moving average filter.\nThat means that we replace each point in the signal with the average of the 5 points before it.\nMathematically, this is:\n\\[\nf_{\\text{filtered}}[n] = \\sum_{m=0}^{4} f[n-m]/5\n\\]\nOK. We note that this can also be written as a convolution, between the signal and the vector \\(h = [1, 1, 1, 1, 1, 0, 0, 0, ...]/5\\)., where we have padded the vector with zeros so that it is the same length as the signal vector.\nThat is, \\(h_0 = 1/5\\), \\(h_1 = 1/5\\), \\(h_2 = 1/5\\), \\(h_3 = 1/5\\), \\(h_4 = 1/5\\), and \\(h_5 = 0\\), all the way to \\(h_n=0\\).\nThen we can write this as:\n\\[\nf_{\\text{filtered}}[n] = \\sum_{m=0}^{n} f[n-m] h[m]\n\\]\nThis operation is called convolution.\n\nIt’s messy to compute the convolution directly. But we can do it in the Fourier domain…"
   },
   {
     "objectID": "lectures/ChNone.html#the-convolution-theorem",
     "href": "lectures/ChNone.html#the-convolution-theorem",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "The convolution theorem",
     "text": "The convolution theorem\n\nThe convolution of two signals \\(f\\) and \\(h\\) is the inverse DFT of the product of the DFTs of \\(f\\) and \\(h\\).\n\n\nIn other words, if \\(f = \\text{ifft}(F)\\) and \\(h = \\text{ifft}(H)\\), then the convolution of \\(f\\) and \\(h\\) is \\(\\text{ifft}(F \\cdot H)\\).\n\n\nThat’s much easier to calculate – only a dot product!"
   },
   {
     "objectID": "lectures/ChNone.html#proof",
     "href": "lectures/ChNone.html#proof",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Proof",
     "text": "Proof\n(fill in if I have time)"
   },
   {
     "objectID": "lectures/ChNone.html#example",
     "href": "lectures/ChNone.html#example",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Example",
     "text": "Example\nLet’s take the signal from before, \\(f(x) = \\sin(2\\pi x) + 0.5 \\sin(20\\pi x)\\), and filter it with the moving average filter \\(h = [1, 1, 1, 1, 1]/5\\).\n\nfrom scipy.signal import convolve\nN = 200\nx = np.linspace(0, 1, N)\ny = np.sin(2*np.pi*x) + 10*np.sin(3.3*np.pi*x+.2)+ 10*np.random.normal(0, 0.1, N)\nh = np.array([1, 1,1,1,1])/5\ny_filtered = convolve(y, h, mode='same')\nplt.plot(x, y, label='original')\nplt.plot(x, y_filtered, label='filtered')\nplt.legend()\nplt.show()"
   },
@@ -4657,8 +4657,43 @@
   {
     "objectID": "lectures/ChNone.html#convolution",
     "href": "lectures/ChNone.html#convolution",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "Convolution",
     "text": "Convolution\n\nIntroduce the DFT per Strang with plot from Wiki page on DFT\nIntroduce the idea of filtering as convolution – https://www.cs.uoi.gr/~cnikou/Courses/Digital_Image_Processing/\nCircular convolution\nCircular convolution as matrix multiplication by a circulant matrix\nDiagonalization of circulant matrices as the DFT\nConvolution theorem\nExample for a simple discrete filter\nMoving to continuous frequency per Shores"
+  },
+  {
+    "objectID": "lectures/ChNone.html#the-fourier-series",
+    "href": "lectures/ChNone.html#the-fourier-series",
+    "title": "The Fourier Series",
+    "section": "The Fourier series",
+    "text": "The Fourier series"
+  },
+  {
+    "objectID": "lectures/ChNone.html#dft-matrix",
+    "href": "lectures/ChNone.html#dft-matrix",
+    "title": "The Fourier Series",
+    "section": "DFT matrix",
+    "text": "DFT matrix\n\\[\n\\begin{align}\n\\begin{bmatrix} y_0 \\\\ y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_{N-1} \\end{bmatrix}\n= F c = \\begin{bmatrix}\n1 & 1 & 1 & \\ldots & 1 \\\\\n1 & e^{-i 2\\pi/N} & e^{-i 4\\pi/N} & \\ldots & e^{-i 2\\pi (N-1)/N} \\\\\n1 & e^{-i 4\\pi/N} & e^{-i 8\\pi/N} & \\ldots & e^{-i 4\\pi (N-1)/N} \\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\\n1 & e^{-i 2\\pi(N-1)/N} & e^{-i 4\\pi(N-1)/N} & \\ldots & e^{-i 2\\pi(N-1)(N-1)/N}\n\\end{bmatrix} \\begin{bmatrix}c_0 \\\\ c_1 \\\\ c_2 \\\\ \\vdots \\\\ c_{N-1}\\end{bmatrix}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "lectures/ChNone.html#visualization",
+    "href": "lectures/ChNone.html#visualization",
+    "title": "The Fourier Series",
+    "section": "Visualization",
+    "text": "Visualization\n\n\n\nFrom Wikipedia, Original upload by en:User:Glogger, CC BY-SA 3.0 http://creativecommons.org/licenses/by-sa/3.0/, via Wikimedia Commons"
+  },
+  {
+    "objectID": "lectures/ChNone.html#simplest-form-of-fourier-matrix",
+    "href": "lectures/ChNone.html#simplest-form-of-fourier-matrix",
+    "title": "The Fourier Series",
+    "section": "Simplest form of Fourier matrix",
+    "text": "Simplest form of Fourier matrix\nThen we can write the Fourier equation as\n\\[\n\\left[\\begin{array}{ccccc}\n1 & 1 & 1 & \\cdot & 1  \\\\\n1 & w & w^{2} & \\cdot & w^{n-1} \\\\\n1 & w^{2} & w^{4} & \\cdot & w^{2(n-1)} \\\\\n\\cdot & \\cdot & \\cdot & \\cdot & \\cdot \\\\\n1 & w^{n-1} & w^{2(n-1)} & \\cdot & w^{(n-1)^{2}}\n\\end{array}\\right]\\left[\\begin{array}{c}\nc_{0} \\\\\nc_{1} \\\\\nc_{2} \\\\\n\\cdot \\\\\nc_{n-1}\n\\end{array}\\right]=\\left[\\begin{array}{c}\ny_{0} \\\\\ny_{1} \\\\\ny_{2} \\\\\n\\cdot \\\\\ny_{n-1}\n\\end{array}\\right], \\quad w = e^{i 2\\pi/n}\n\\]"
+  },
+  {
+    "objectID": "lectures/ChNone.html#low-pass-filtering",
+    "href": "lectures/ChNone.html#low-pass-filtering",
+    "title": "The Fourier Series",
+    "section": "Low-pass filtering",
+    "text": "Low-pass filtering\nWhat if we just zero out the coefficient corresponding to the second sinusoid:\n\n\nyf_new = yf.copy()\nyf_new[190] = 0\nyf_new[10] = 0\nplt.plot(np.abs(fftshift(yf_new)))\nplt.title('Filtered DFT')\nplt.show()"
   }
 ]

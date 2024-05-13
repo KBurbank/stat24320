@@ -398,57 +398,38 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="TOC">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">The Fourier Series</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section><section id="TOC">
 <nav role="doc-toc"> 
 <h2 id="toc-title">Outline for today</h2>
 <ul>
-<li class="fragment"><a href="#/the-fourier-series" id="/toc-the-fourier-series"><em>The Fourier Series</em></a></li>
 <li class="fragment"><a href="#/discrete-fourier-transform" id="/toc-discrete-fourier-transform"><em>Discrete Fourier Transform</em></a></li>
 <li class="fragment"><a href="#/applications-of-the-dft" id="/toc-applications-of-the-dft"><em>Applications of the DFT</em></a></li>
 </ul>
 </nav>
 </section>
-<section class="slide level3 center">
-
-<p>eix = cos x + isin x,</p>
-<p><span class="math inline">\(e^{ix} = \cos x + i\sin x\)</span>.</p>
-<p>So that means that <span class="math inline">\(sin x = \frac{e^{ix} - e^{-ix}}{2i}\)</span> and <span class="math inline">\(cos x = \frac{e^{ix} + e^{-ix}}{2}\)</span>.</p>
-<p>Of course <span class="math inline">\(\frac{1}{i} = -i\)</span>, because <span class="math inline">\(\frac{1}{i} \times \frac{i}{i} = \frac{i}{i^2} = \frac{i}{-1} = -i\)</span>.</p>
-<p>So that means that <span class="math inline">\(sin x = \frac{e^{ix} - e^{-ix}}{2i} = \frac{i}{2}\left(e^{ix} - e^{-ix}\right)\)</span>. And <span class="math inline">\(cos x = \frac{e^{ix} + e^{-ix}}{2} = \frac{1}{2}\left(e^{ix} + e^{-ix}\right)\)</span>.</p>
-<p>We can retrieve the sin and cos functions by measuring <span class="math inline">\(e^{ix}\)</span> and <span class="math inline">\(e^{-ix}/2\)</span>.</p>
-<p>Now, if we are doing the DFT, we only need to evaluate the <span class="math inline">\(e^{ix}\)</span> and <span class="math inline">\(e^{-ix}\)</span> terms at specific values of <span class="math inline">\(x\)</span>. Specifically we want to evaluate <span class="math inline">\(e^{i2\pi k n/N}\)</span> and <span class="math inline">\(e^{-i2\pi k n/N}\)</span> for <span class="math inline">\(k = 0, 1, 2, \ldots, N-1\)</span> and <span class="math inline">\(n = 0, 1, 2, \ldots, N-1\)</span>. For example, for N = 3, n=3, this would be <span class="math inline">\(e^{i2\pi 0 n/3}=e^0=1\)</span>, <span class="math inline">\(e^{i2\pi}=0\)</span>, and <span class="math inline">\(e^{i2\pi 2}=1\)</span>. For N = 3, n = 2, this becomes <span class="math inline">\(e^{i2\pi 0 n/3}=e^0=1\)</span>, <span class="math inline">\(e^{i2\pi n/3}=e^{i2\pi/3}=-1/2 + i\sqrt{3}/2\)</span>, and <span class="math inline">\(e^{i2\pi 2n/3}=e^{i4\pi/3}=-1/2 - i\sqrt{3}/2\)</span>.</p>
-<p>For N = 4, this would be <span class="math inline">\(e^{i2\pi 0 n/4}=e^0=1\)</span>, <span class="math inline">\(e^{i2\pi n/4}=i\)</span>, <span class="math inline">\(e^{i2\pi 2n/4}=-1\)</span>, and <span class="math inline">\(e^{i2\pi 3n/4}=-i\)</span>.</p>
-</section>
-<section id="steps" class="title-slide slide level2 center">
-<h2><em>Steps</em></h2>
-<ol type="1">
-<li class="fragment">Recap of the Fourier series per Strang</li>
-</ol>
-</section>
-
 <section>
-<section id="the-fourier-series" class="title-slide slide level1 center">
-<h1><em>The Fourier Series</em></h1>
+<section id="the-fourier-series" class="title-slide slide level2 center">
+<h2><em>The Fourier series</em></h2>
 
 </section>
-<section id="section" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<aside class="notes">
 <p>The Fourier series of a function is an expansion into sines and cosines:</p>
 <p><span class="math display">\[
 f(x)=a_{0}+a_{1} \cos x+b_{1} \sin x+a_{2} \cos 2 x+b_{2} \sin 2 x+\cdots
 \]</span></p>
-<div class="fragment">
+<p>. . .</p>
 <p>How do we find the coefficients <span class="math inline">\(a_{0}, a_{1}, b_{1}, a_{2}, b_{2}, \ldots\)</span>?</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>We use <strong>orthogonality</strong>. The functions <span class="math inline">\(\cos x, \cos 2 x, \cos 3 x, \ldots\)</span> are orthogonal on <span class="math inline">\([0,2 \pi]\)</span>… Same is true for the sines.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>To compute a coefficient like <span class="math inline">\(b_{1}\)</span>, multiply both sides by the corresponding function <span class="math inline">\(\sin x\)</span> and integrate from 0 to <span class="math inline">\(2 \pi\)</span>. In other words, <em>take the inner product</em> of both sides with <span class="math inline">\(\sin x\)</span> :</p>
-</div>
-</section>
-
-<section id="section-1" class="title-slide slide level2 center">
+<section id="section" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p><span class="math display">\[
 \int_{0}^{2 \pi} f(x) \sin x d x=a_{0} \int_{0}^{2 \pi} \sin x d x+a_{1} \int_{0}^{2 \pi} \cos x \sin x d x+b_{1} \int_{0}^{2 \pi}(\sin x)^{2} d x+\cdots
@@ -458,6 +439,17 @@ b_{1}=\frac{\int_{0}^{2 \pi} f(x) \sin x d x}{\int_{0}^{2 \pi}(\sin x)^{2} d x}=
 \]</span></p>
 </section>
 
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside></section>
 <section id="analogy-with-projections" class="title-slide slide level2 center">
 <h2><em>Analogy with projections</em></h2>
 <p>The component of the vector <span class="math inline">\(b\)</span> along the line spanned by <span class="math inline">\(a\)</span> is <span class="math inline">\(b^{\mathrm{T}} a / a^{\mathrm{T}} a\)</span>.</p>
@@ -477,8 +469,21 @@ e^{i x}=\cos x+i \sin x
 <p><span class="math display">\[
 f(x)=c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+\cdots = \sum_k c_k\cdot e^{i k x}
 \]</span></p>
-<p>. . . The coefficients <span class="math inline">\(c_{0}, c_{1}, c_{2}, \ldots\)</span> are related to the <span class="math inline">\(a\)</span>’s and <span class="math inline">\(b\)</span>’s.</p>
+<p><em>pause</em></p>
+<aside class="notes">
+<p>The coefficients <span class="math inline">\(c_{0}, c_{1}, c_{2}, \ldots\)</span> are related to the <span class="math inline">\(a\)</span>’s and <span class="math inline">\(b\)</span>’s.</p>
 <p>For example, <span class="math inline">\(c_{1}=a_{1}-i b_{1}\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </div>
 <div class="fragment">
 <p>The formula for finding the coefficients <span class="math inline">\(c_{k}\)</span> is the same as before, but now we use the complex exponential functions <span class="math inline">\(e^{i k x}\)</span> instead of the sines and cosines:</p>
@@ -487,7 +492,7 @@ c_{k}=\int_{0}^{2 \pi} f(x) e^{-i k x} d x
 \]</span></p>
 </div>
 </section>
-</section>
+
 <section>
 <section id="discrete-fourier-transform" class="title-slide slide level1 center">
 <h1><em>Discrete Fourier Transform</em></h1>
@@ -495,19 +500,18 @@ c_{k}=\int_{0}^{2 \pi} f(x) e^{-i k x} d x
 </section>
 <section id="discrete-fourier-series" class="title-slide slide level2 center">
 <h2><em>Discrete Fourier Series</em></h2>
+<aside class="notes">
 <p>What if we have only a series of N discrete values <span class="math inline">\(y_{0}, y_{1}, y_{2}, \ldots\)</span>, instead of a continuous function <span class="math inline">\(f(x)\)</span>?</p>
-<div class="fragment">
+<p>. . .</p>
 <p>First, we imagine that the values are periodic, with period N. So it’s as if they are repeating beyond the N values we have.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Then we can identify a natural period <span class="math inline">\(N\)</span>, and rewrite <span class="math inline">\(x=2 \pi n / N\)</span>, so the discrete Fourier series becomes</p>
 <p><span class="math display">\[
 \begin{align}
 y[n] = \sum_k c[k]\cdot e^{i 2\pi k \frac{n}{N}}
 \end{align}
 \]</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>In matrix form, <span class="math inline">\(\mathbf{y} = F \mathbf{c}\)</span></p>
 <p>where</p>
 <p><span class="math display">\[
@@ -522,11 +526,37 @@ y[n] = \sum_k c[k]\cdot e^{i 2\pi k \frac{n}{N}}
 \end{bmatrix} \begin{bmatrix}c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_{N-1}\end{bmatrix}
 \end{align}
 \]</span></p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
-<section id="section-2" class="title-slide slide level2 center">
-<h2><em></em></h2>
+<section id="dft-matrix" class="title-slide slide level2 center">
+<h2><em>DFT matrix</em></h2>
+<p><span class="math display">\[
+\begin{align}
+\begin{bmatrix} y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_{N-1} \end{bmatrix}
+= F c = \begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; \ldots &amp; 1 \\
+1 &amp; e^{-i 2\pi/N} &amp; e^{-i 4\pi/N} &amp; \ldots &amp; e^{-i 2\pi (N-1)/N} \\
+1 &amp; e^{-i 4\pi/N} &amp; e^{-i 8\pi/N} &amp; \ldots &amp; e^{-i 4\pi (N-1)/N} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; e^{-i 2\pi(N-1)/N} &amp; e^{-i 4\pi(N-1)/N} &amp; \ldots &amp; e^{-i 2\pi(N-1)(N-1)/N}
+\end{bmatrix} \begin{bmatrix}c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_{N-1}\end{bmatrix}
+\end{align}
+\]</span></p>
+</section>
+
+<section id="visualization" class="title-slide slide level2 center">
+<h2><em>Visualization</em></h2>
 
 <p><img data-src="Fourierop_rows_only.png"></p>
 <aside><div>
@@ -535,10 +565,8 @@ y[n] = \sum_k c[k]\cdot e^{i 2\pi k \frac{n}{N}}
 
 <section id="finding-the-fourier-coefficients" class="title-slide slide level2 center">
 <h2><em>Finding the Fourier coefficients</em></h2>
-<p>How can we find the Fourier coefficients?</p>
-<p>These are a sequence of complex numbers <span class="math inline">\(c_{0}, \ldots, c_{n-1}\)</span>, with the same length <span class="math inline">\(N\)</span>.</p>
-<p>Two approaches:</p>
-<div class="fragment">
+<aside class="notes">
+<p>How can we find the Fourier coefficients? . . .</p>
 <p>By analogy with the continuous case,</p>
 <p><span class="math display">\[
 c_{k}=\int_{0}^{2 \pi} f(x) e^{-i k x} d x
@@ -558,7 +586,17 @@ F^\prime = \frac{1}{N}\begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>Note: this is <span class="math inline">\(\frac{1}{N}\)</span> times the complex conjugate of the matrix <span class="math inline">\(F\)</span>: <span class="math inline">\(F^\prime = \frac{1}{N} F^*\)</span>.</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="inverse-dft" class="title-slide slide level2 center">
@@ -575,20 +613,18 @@ F^\prime = \frac{1}{N}\begin{bmatrix}
 <section id="a-concrete-example" class="title-slide slide level2 center">
 <h2><em>A concrete example</em></h2>
 <p>Let’s take an example with <span class="math inline">\(N=4\)</span> and <span class="math inline">\(y=(2, 4, 6, 8)\)</span>.</p>
-<div class="fragment">
+<aside class="notes">
+<p>. . .</p>
 <p>We want to find coefficients <span class="math inline">\(c_0, c_1, c_2, c_3\)</span> such that our Fourier series correctly reproduces the input values at each of the four points.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>(We can’t find more than 4 coefficients because we only have 4 points of data.)</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p><span class="math display">\[
 \begin{align}
 y[n] = \sum_k c[k]\cdot e^{i 2\pi k \frac{n}{N}}
 \end{align}
 \]</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p><span class="math display">\[
 \begin{aligned}
 c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
@@ -599,8 +635,21 @@ c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
 \end{array}\right)
 \end{aligned}
 \]</span></p>
-</div>
-<div class="fragment">
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>Make a table. Note that <span class="math inline">\(i^2 = i^6 = -1\)</span>, <span class="math inline">\(i^3 = i^7 = -i\)</span>, and <span class="math inline">\(i^4 = 1\)</span>.</p>
 <p>For n = 0:</p>
 <table>
@@ -634,7 +683,6 @@ c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
 </tr>
 </tbody>
 </table>
-</div>
 <div class="fragment">
 <p>For n = 1:</p>
 <table>
@@ -671,7 +719,7 @@ c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
 </div>
 </section>
 
-<section id="section-3" class="title-slide slide level2 center">
+<section id="section-2" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>For n = 2:</p>
 <table>
@@ -743,7 +791,6 @@ c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
 
 <section id="solving-for-the-coefficients" class="title-slide slide level2 center">
 <h2><em>Solving for the coefficients</em></h2>
-<p>Putting those all together,</p>
 <p><span class="math display">\[
 \begin{align*}
 &amp; c_{0}+c_{1}+c_{2}+c_{3}=2 \\
@@ -765,7 +812,7 @@ F=\left[\begin{array}{cccc}
 </div>
 </section>
 
-<section id="section-4" class="title-slide slide level2 center">
+<section id="section-3" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Check that <span class="math inline">\(F F^\prime = I\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -784,10 +831,10 @@ F F^\prime =\frac{1}{4}\left[\begin{array}{cccc}
 \]</span></p>
 </section>
 
-<section id="section-5" class="title-slide slide level2 center">
+<section id="section-4" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Check in Sympy:</p>
-<div id="cc07fa9c" class="cell" data-execution_count="1">
+<div id="cc07fa9c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>F:
 F prime:
@@ -807,12 +854,48 @@ F F prime:</code></pre>
 
 <section id="a-simplification" class="title-slide slide level2 center">
 <h2><em>A simplification</em></h2>
+<aside class="notes">
 <p>Notice that our matrix F had many terms which were exponents of <span class="math inline">\(i\)</span>.</p>
 <p>In general, we can simplify the matrix <span class="math inline">\(F\)</span> by defining <span class="math inline">\(w = e^{i 2\pi/N}\)</span>. This is the <span class="math inline">\(N\)</span>th “primitive root of unity”, so that <span class="math inline">\(w^N = 1\)</span>.</p>
-<div class="fragment">
+<p>. . .</p>
 <p>For N = 4, <span class="math inline">\(w = e^{i \pi/2} = i\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
+<p>Write the first few terms of this: <span class="math display">\[
+\left[\begin{array}{ccccc}
+1 &amp; 1 &amp; 1 &amp; \cdot &amp; 1  \\
+1 &amp; w &amp; w^{2} &amp; \cdot &amp; w^{n-1} \\
+1 &amp; w^{2} &amp; w^{4} &amp; \cdot &amp; w^{2(n-1)} \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot \\
+1 &amp; w^{n-1} &amp; w^{2(n-1)} &amp; \cdot &amp; w^{(n-1)^{2}}
+\end{array}\right]\left[\begin{array}{c}
+c_{0} \\
+c_{1} \\
+c_{2} \\
+\cdot \\
+c_{n-1}
+\end{array}\right]=\left[\begin{array}{c}
+y_{0} \\
+y_{1} \\
+y_{2} \\
+\cdot \\
+y_{n-1}
+\end{array}\right], \quad w = e^{i 2\pi/n}
+\]</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="simplest-form-of-fourier-matrix" class="title-slide slide level2 center">
+<h2><em>Simplest form of Fourier matrix</em></h2>
 <p>Then we can write the Fourier equation as</p>
 <p><span class="math display">\[
 \left[\begin{array}{ccccc}
@@ -835,7 +918,6 @@ y_{2} \\
 y_{n-1}
 \end{array}\right], \quad w = e^{i 2\pi/n}
 \]</span></p>
-</div>
 </section>
 
 <section id="terminology" class="title-slide slide level2 center">
@@ -865,17 +947,11 @@ y_{n-1}
 <h2><em>Filtering</em></h2>
 <p>The DFT is used in many applications, but one of the most common is <strong>filtering</strong>.</p>
 <div class="fragment">
-<p>The idea is that we can modify the Fourier coefficients of a signal to remove certain frequencies.</p>
-</div>
-</section>
-
-<section id="section-6" class="title-slide slide level2 center">
-<h2><em></em></h2>
 <p>For example, suppose we have a signal that is a sum of two sinusoids:</p>
 <p><span class="math display">\[
 f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 \]</span></p>
-<div id="aa088ba0" class="cell" data-execution_count="2">
+<div id="aa088ba0" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -884,12 +960,13 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </div>
 </div>
+</div>
 </section>
 
-<section id="section-7" class="title-slide slide level2 center">
+<section id="section-5" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What’s the DFT of this signal?</p>
-<div id="6d91b358" class="cell" data-execution_count="3">
+<div id="6d91b358" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">from</span> scipy.fft <span class="im">import</span> fft, fftshift</span>
 <span id="cb2-2"><a></a>yf <span class="op">=</span> fft(y)</span>
 <span id="cb2-3"><a></a>yfalone <span class="op">=</span> fft(yalone)</span>
@@ -910,10 +987,10 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </section>
 
-<section id="section-8" class="title-slide slide level2 center">
+<section id="section-6" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>What’s with the double peaks?</p>
-<div id="71c2820e" class="cell" data-execution_count="4">
+<div id="71c2820e" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -922,13 +999,12 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </div>
 </div>
-<p>display(Math(f’’))</p>
 </section>
 
 <section id="reconstruct-the-signal" class="title-slide slide level2 center">
 <h2><em>Reconstruct the signal</em></h2>
 <p>We can reconstruct the signal by taking the inverse DFT.</p>
-<div id="bdc1ca77" class="cell" data-execution_count="5">
+<div id="bdc1ca77" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -939,10 +1015,11 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </section>
 
-<section id="section-9" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>Zero out the coefficient corresponding to the second sinusoid:</p>
-<div id="b29fe2ff" class="cell" data-execution_count="6">
+<section id="low-pass-filtering" class="title-slide slide level2 center">
+<h2><em>Low-pass filtering</em></h2>
+<p>What if we just zero out the coefficient corresponding to the second sinusoid:</p>
+<div class="fragment">
+<div id="b29fe2ff" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>yf_new <span class="op">=</span> yf.copy()</span>
 <span id="cb3-2"><a></a>yf_new[<span class="dv">190</span>] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb3-3"><a></a>yf_new[<span class="dv">10</span>] <span class="op">=</span> <span class="dv">0</span></span>
@@ -957,12 +1034,13 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </div>
 </div>
+</div>
 </section>
 
-<section id="section-10" class="title-slide slide level2 center">
+<section id="section-7" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Compute the inverse DFT:</p>
-<div id="0744fcef" class="cell" data-execution_count="7">
+<div id="0744fcef" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -973,10 +1051,10 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </section>
 
-<section id="section-11" class="title-slide slide level2 center">
+<section id="section-8" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>It’s pretty good!</p>
-<div id="648210be" class="cell" data-execution_count="8">
+<div id="648210be" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -987,10 +1065,10 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 </div>
 </section>
 
-<section id="section-12" class="title-slide slide level2 center">
+<section id="section-9" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Try one more thing. Can we describe the change in the DFT as a multiplicative vector? We sure can.</p>
-<div id="5faaf131" class="cell" data-execution_count="9">
+<div id="5faaf131" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1002,7 +1080,7 @@ f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)
 <p>So we can describe the new DVD as the old DFT multiplied by a vector of 1s and 0s.</p>
 </section>
 
-<section id="section-13" class="title-slide slide level2 center">
+<section id="section-10" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>The total process went like this:</p>
 <ol type="1">
@@ -1054,7 +1132,7 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 <section id="example" class="title-slide slide level2 center">
 <h2><em>Example</em></h2>
 <p>Let’s take the signal from before, <span class="math inline">\(f(x) = \sin(2\pi x) + 0.5 \sin(20\pi x)\)</span>, and filter it with the moving average filter <span class="math inline">\(h = [1, 1, 1, 1, 1]/5\)</span>.</p>
-<div id="49c9f64a" class="cell" data-execution_count="10">
+<div id="49c9f64a" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">from</span> scipy.signal <span class="im">import</span> convolve</span>
 <span id="cb4-2"><a></a>N <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb4-3"><a></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, N)</span>
@@ -1075,7 +1153,7 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 </div>
 </section>
 
-<section id="section-14" class="title-slide slide level2 center">
+<section id="section-11" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Now try it again using the convolution theorem.</p>
 <p>Steps:</p>
@@ -1087,8 +1165,11 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 <li class="fragment">Take the inverse DFT to get the filtered signal.</li>
 <li class="fragment">Done!</li>
 </ol>
-<div class="fragment">
-<div id="05e60f27" class="cell" data-execution_count="11">
+</section>
+
+<section id="section-12" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<div id="05e60f27" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>yf <span class="op">=</span> fft(y)</span>
 <span id="cb5-2"><a></a>hf <span class="op">=</span> fft(h, N) <span class="co"># pad h with zeros</span></span>
 <span id="cb5-3"><a></a>y_filtered <span class="op">=</span> ifft(yf<span class="op">*</span>hf)</span>
@@ -1105,7 +1186,6 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 </div>
 </div>
 <p>Then we can take the inverse DFT to get the filtered signal.</p>
-</div>
 </section>
 
 <section id="convolution" class="title-slide slide level2 center">

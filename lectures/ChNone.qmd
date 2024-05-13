@@ -1,30 +1,10 @@
 
 
-eix = cos x + isin x,
-
-$e^{ix} = \cos x + i\sin x$.
-
-So that means that $sin x = \frac{e^{ix} - e^{-ix}}{2i}$ and $cos x = \frac{e^{ix} + e^{-ix}}{2}$.
-
-Of course $\frac{1}{i} = -i$, because $\frac{1}{i} \times \frac{i}{i} = \frac{i}{i^2} = \frac{i}{-1} = -i$.
-
-So that means that $sin x = \frac{e^{ix} - e^{-ix}}{2i} = \frac{i}{2}\left(e^{ix} - e^{-ix}\right)$. And $cos x = \frac{e^{ix} + e^{-ix}}{2} = \frac{1}{2}\left(e^{ix} + e^{-ix}\right)$.
-
-We can retrieve the sin and cos functions by measuring $e^{ix}$ and $e^{-ix}/2$. 
-
-Now, if we are doing the DFT, we only need to evaluate the $e^{ix}$ and $e^{-ix}$ terms at specific values of $x$. Specifically we want to evaluate $e^{i2\pi k n/N}$ and $e^{-i2\pi k n/N}$ for $k = 0, 1, 2, \ldots, N-1$ and $n = 0, 1, 2, \ldots, N-1$. For example, for N = 3, n=3, this would be $e^{i2\pi 0 n/3}=e^0=1$, $e^{i2\pi}=0$, and $e^{i2\pi 2}=1$.  For N = 3, n = 2, this becomes $e^{i2\pi 0 n/3}=e^0=1$, $e^{i2\pi n/3}=e^{i2\pi/3}=-1/2 + i\sqrt{3}/2$, and $e^{i2\pi 2n/3}=e^{i4\pi/3}=-1/2 - i\sqrt{3}/2$.
-
-For N = 4, this would be $e^{i2\pi 0 n/4}=e^0=1$, $e^{i2\pi n/4}=i$, $e^{i2\pi 2n/4}=-1$, and $e^{i2\pi 3n/4}=-i$.
-
-
-
-## Steps
-
-1. Recap of the Fourier series per Strang
-
 # The Fourier Series
 
-##
+## The Fourier series
+
+::: notes
 
 The Fourier series of a function is an expansion into sines and cosines:
 
@@ -53,6 +33,7 @@ $$
 b_{1}=\frac{\int_{0}^{2 \pi} f(x) \sin x d x}{\int_{0}^{2 \pi}(\sin x)^{2} d x}=\frac{(f, \sin x)}{(\sin x, \sin x)}
 $$
 
+:::
 ## Analogy with projections
 
 The component of the vector $b$ along the line spanned by $a$ is $b^{\mathrm{T}} a / a^{\mathrm{T}} a$. 
@@ -78,12 +59,15 @@ $$
 f(x)=c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+\cdots = \sum_k c_k\cdot e^{i k x}
 $$
 
+*pause*
 
-. . .
+::: notes
+
 The coefficients $c_{0}, c_{1}, c_{2}, \ldots$ are related to the $a$'s and $b$'s. 
 
 For example, $c_{1}=a_{1}-i b_{1}$.
 
+:::
 . . .
 
 The formula for finding the coefficients $c_{k}$ is the same as before, but now we use the complex exponential functions $e^{i k x}$ instead of the sines and cosines:
@@ -98,6 +82,7 @@ $$
 
 ## Discrete Fourier Series
 
+::: notes
 What if we have only a series of N discrete values $y_{0}, y_{1}, y_{2}, \ldots$, instead of a continuous function $f(x)$?
 
 . . .
@@ -134,8 +119,24 @@ $$
 \end{bmatrix} \begin{bmatrix}c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_{N-1}\end{bmatrix}
 \end{align}
 $$
+:::
 
-##
+## DFT matrix
+
+$$
+\begin{align}
+\begin{bmatrix} y_0 \\ y_1 \\ y_2 \\ \vdots \\ y_{N-1} \end{bmatrix}
+ = F c = \begin{bmatrix}
+1 & 1 & 1 & \ldots & 1 \\
+1 & e^{-i 2\pi/N} & e^{-i 4\pi/N} & \ldots & e^{-i 2\pi (N-1)/N} \\
+1 & e^{-i 4\pi/N} & e^{-i 8\pi/N} & \ldots & e^{-i 4\pi (N-1)/N} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & e^{-i 2\pi(N-1)/N} & e^{-i 4\pi(N-1)/N} & \ldots & e^{-i 2\pi(N-1)(N-1)/N}
+\end{bmatrix} \begin{bmatrix}c_0 \\ c_1 \\ c_2 \\ \vdots \\ c_{N-1}\end{bmatrix}
+\end{align}
+$$
+
+## Visualization
 
 ::: aside
 
@@ -151,12 +152,8 @@ Original upload by en:User:Glogger, CC BY-SA 3.0 <http://creativecommons.org/lic
 
 ## Finding the Fourier coefficients
 
+::: notes
 How can we find the Fourier coefficients? 
-
-These are a sequence of complex numbers $c_{0}, \ldots, c_{n-1}$, with the same length $N$.
-
-Two approaches:
-
 . . .
 
 By analogy with the continuous case, 
@@ -185,6 +182,8 @@ $$
 
 Note: this is $\frac{1}{N}$ times the complex conjugate of the matrix $F$: $F^\prime = \frac{1}{N} F^*$.
 
+:::
+
 ## Inverse DFT
 
 We have just shown two things:
@@ -201,6 +200,7 @@ We have just shown two things:
 
 Let's take an example with $N=4$ and $y=(2, 4, 6, 8)$.
 
+::: notes
 . . .
 
 We want to find coefficients $c_0, c_1, c_2, c_3$ such that our Fourier series correctly reproduces the input values at each of the four points.
@@ -229,8 +229,9 @@ c_{0}+c_{1} e^{i x}+c_{2} e^{2 i x}+c_{3} e^{3 i x}=\left\{\begin{array}{lll}
 \end{array}\right)
 \end{aligned}
 $$
+:::
 
-. . .
+##
 
 Make a table. Note that $i^2 = i^6 = -1$, $i^3 = i^7 = -i$, and $i^4 = 1$.
 
@@ -278,11 +279,6 @@ For n = 3:
 
 
 ## Solving for the coefficients
-
-
-
-
-Putting those all together,
 
 
 $$
@@ -352,6 +348,7 @@ display(F * Fp)
 
 ## A simplification
 
+::: notes
 Notice that our matrix F had many terms which were exponents of $i$.
 
 In general, we can simplify the matrix $F$ by defining $w = e^{i 2\pi/N}$. This is the $N$th "primitive root of unity", so that $w^N = 1$.
@@ -361,6 +358,32 @@ In general, we can simplify the matrix $F$ by defining $w = e^{i 2\pi/N}$. This 
 For N = 4, $w = e^{i \pi/2} = i$.
 
 . . .
+
+Write the first few terms of this:
+$$
+\left[\begin{array}{ccccc}
+1 & 1 & 1 & \cdot & 1  \\
+1 & w & w^{2} & \cdot & w^{n-1} \\
+1 & w^{2} & w^{4} & \cdot & w^{2(n-1)} \\
+\cdot & \cdot & \cdot & \cdot & \cdot \\
+1 & w^{n-1} & w^{2(n-1)} & \cdot & w^{(n-1)^{2}}
+\end{array}\right]\left[\begin{array}{c}
+c_{0} \\
+c_{1} \\
+c_{2} \\
+\cdot \\
+c_{n-1}
+\end{array}\right]=\left[\begin{array}{c}
+y_{0} \\
+y_{1} \\
+y_{2} \\
+\cdot \\
+y_{n-1}
+\end{array}\right], \quad w = e^{i 2\pi/n}
+$$
+:::
+
+## Simplest form of Fourier matrix
 
 Then we can write the Fourier equation as
 
@@ -412,10 +435,6 @@ The matrix $F^\prime$ is the **inverse DFT matrix**. It is the complex conjugate
 The DFT is used in many applications, but one of the most common is **filtering**.
 
 . . .
-
-The idea is that we can modify the Fourier coefficients of a signal to remove certain frequencies.
-
-##
 
 For example, suppose we have a signal that is a sum of two sinusoids:
 
@@ -481,7 +500,8 @@ ax2.set_title("Imaginary part")
 plt.xlim(80, 120)
 plt.legend(['Full signal', 'low frequency only'])
 ```
-display(Math(f''))
+
+
 
 ## Reconstruct the signal
 
@@ -499,11 +519,11 @@ plt.legend()
 plt.show()
 ```
 
-## 
+## Low-pass filtering
 
-Zero out the coefficient corresponding to the second sinusoid:
+What if we just zero out the coefficient corresponding to the second sinusoid:
 
-
+. . . 
 
 ```{python}
 #| echo: True
@@ -655,7 +675,7 @@ Steps:
 5. Take the inverse DFT to get the filtered signal.
 6. Done!
 
-. . .
+##
 
 ```{python}
 #| echo: true

@@ -613,6 +613,8 @@ OK. We note that this can also be written as a convolution, between the signal a
 
 That is, $h_0 = 1/5$, $h_1 = 1/5$, $h_2 = 1/5$, $h_3 = 1/5$, $h_4 = 1/5$, and $h_5 = 0$, all the way to $h_n=0$.
 
+##
+
 Then we can write this as:
 
 $$
@@ -696,7 +698,7 @@ Then we can take the inverse DFT to get the filtered signal.
 ## Discrete-time filters in continuous frequency space
 
 Back to your textbook, in Chapter 6:
-
+::: notes
 Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their **continuous** frequency representations.
 
 . . .
@@ -729,8 +731,12 @@ Then we can take its **discrete time Fourier transform** (DTFT) as the Fourier s
 
 Suppose we have a discrete signal $x(t)$ in sampling periods $T_{s}$, i.e., at $t_{n}=n T_{s}$.  Define $x_{n}=x\left(t_{n}\right)$
 
+:::
+
 ##
 
+
+::: notes
 If we use our filter on our signal, we get:
 
 $$
@@ -749,6 +755,7 @@ At individual points in time, this gives
 
 $x_{m, n}=c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}$
 
+:::
 ##
 
 Thus for fixed $m$ and arbitrary $n$, we have
@@ -771,7 +778,7 @@ $H(\zeta)=h_{0}+h_{1} e^{i \zeta}+\cdots+h_{L} e^{i L \zeta}, \quad \zeta \in \m
 
 ## Gain
 
- $\left|y_{m, n}\right| \leq\left|H\left(-m \omega T_{s}\right)\right|\left|x_{m, n}\right|$
+$\left|y_{m, n}\right| \leq\left|H\left(-m \omega T_{s}\right)\right|\left|x_{m, n}\right|$
  
  
 So we define **gain** or **attenuation** of this transformation as $G(\zeta)=|H(\zeta)|$
@@ -786,17 +793,6 @@ The filter $h$ will **attenuate** the signal at frequencies where $|H(\zeta)|<1$
 
 ## High-pass and low-pass filters
 
- The FIR filter $\mathbf{h}=\left\{h_{k}\right\}_{k=0}^{L}$ with discrete time Fourier transform $H(\zeta)$ is a **lowpass filter** if $|H(0)|=1$ and $|H(\pi)|=0$; $\mathbf{h}$ is a **highpass filter** if $|H(0)|=0$ and $|H(\pi)|=1$.
+The FIR filter $\mathbf{h}=\left\{h_{k}\right\}_{k=0}^{L}$ with discrete time Fourier transform $H(\zeta)$ is a **lowpass filter** if $|H(0)|=1$ and $|H(\pi)|=0$; $\mathbf{h}$ is a **highpass filter** if $|H(0)|=0$ and $|H(\pi)|=1$.
 
 
-
-
-
-1. Introduce the DFT per Strang with plot from Wiki page on DFT
-2. Introduce the idea of filtering as convolution -- https://www.cs.uoi.gr/~cnikou/Courses/Digital_Image_Processing/
-3. Circular convolution
-4. Circular convolution as matrix multiplication by a circulant matrix
-5. Diagonalization of circulant matrices as the DFT
-6.  Convolution theorem
-7.  Example for a simple discrete filter
-8.  Moving to continuous frequency per Shores

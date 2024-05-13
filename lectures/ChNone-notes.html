@@ -1101,6 +1101,10 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{4} f[n-m]/5
 \]</span></p>
 <p>OK. We note that this can also be written as a convolution, between the signal and the vector <span class="math inline">\(h = [1, 1, 1, 1, 1, 0, 0, 0, ...]/5\)</span>., where we have padded the vector with zeros so that it is the same length as the signal vector.</p>
 <p>That is, <span class="math inline">\(h_0 = 1/5\)</span>, <span class="math inline">\(h_1 = 1/5\)</span>, <span class="math inline">\(h_2 = 1/5\)</span>, <span class="math inline">\(h_3 = 1/5\)</span>, <span class="math inline">\(h_4 = 1/5\)</span>, and <span class="math inline">\(h_5 = 0\)</span>, all the way to <span class="math inline">\(h_n=0\)</span>.</p>
+</section>
+
+<section id="section-11" class="title-slide slide level2 center">
+<h2><em></em></h2>
 <p>Then we can write this as:</p>
 <p><span class="math display">\[
 f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
@@ -1153,7 +1157,7 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 </div>
 </section>
 
-<section id="section-11" class="title-slide slide level2 center">
+<section id="section-12" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Now try it again using the convolution theorem.</p>
 <p>Steps:</p>
@@ -1167,7 +1171,7 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 </ol>
 </section>
 
-<section id="section-12" class="title-slide slide level2 center">
+<section id="section-13" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <div id="05e60f27" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>yf <span class="op">=</span> fft(y)</span>
@@ -1190,8 +1194,7 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 
 <section id="discrete-time-filters-in-continuous-frequency-space" class="title-slide slide level2 center">
 <h2><em>Discrete-time filters in continuous frequency space</em></h2>
-<p>Back to your textbook, in Chapter 6:</p>
-<p>Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their <strong>continuous</strong> frequency representations.</p>
+<p>Back to your textbook, in Chapter 6: ::: notes Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their <strong>continuous</strong> frequency representations.</p>
 <div class="fragment">
 <p>Imagine we have a signal <span class="math inline">\(x(t)\)</span> which is defined for <span class="math inline">\(t\)</span> is the interval <span class="math inline">\([0, T]\)</span></p>
 </div>
@@ -1210,26 +1213,37 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 </div>
 <div class="fragment">
 <p>Suppose we have a discrete signal <span class="math inline">\(x(t)\)</span> in sampling periods <span class="math inline">\(T_{s}\)</span>, i.e., at <span class="math inline">\(t_{n}=n T_{s}\)</span>. Define <span class="math inline">\(x_{n}=x\left(t_{n}\right)\)</span></p>
-</div>
-</section>
-
-<section id="section-13" class="title-slide slide level2 center">
-<h2><em></em></h2>
-<p>If we use our filter on our signal, we get:</p>
-<p><span class="math display">\[
-y_{n}=h_{0} x_{n}+h_{1} x_{n-1}+\cdots+h_{L} x_{n-L}, \quad n \in \mathbb{Z}
-\]</span></p>
-<div class="fragment">
-<p>To understand the effect of the filter, examine its action on a single Fourier mode of the signal, with a possible phase shift <span class="math inline">\(\phi\)</span>:</p>
-<p><span class="math inline">\(x_{m}(t)=c_{m} e^{i m(\omega t+\phi)}\)</span></p>
-</div>
-<div class="fragment">
-<p>At individual points in time, this gives</p>
-<p><span class="math inline">\(x_{m, n}=c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}\)</span></p>
+<p>:::</p>
 </div>
 </section>
 
 <section id="section-14" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<aside class="notes">
+<p>If we use our filter on our signal, we get:</p>
+<p><span class="math display">\[
+y_{n}=h_{0} x_{n}+h_{1} x_{n-1}+\cdots+h_{L} x_{n-L}, \quad n \in \mathbb{Z}
+\]</span></p>
+<p>. . .</p>
+<p>To understand the effect of the filter, examine its action on a single Fourier mode of the signal, with a possible phase shift <span class="math inline">\(\phi\)</span>:</p>
+<p><span class="math inline">\(x_{m}(t)=c_{m} e^{i m(\omega t+\phi)}\)</span></p>
+<p>. . .</p>
+<p>At individual points in time, this gives</p>
+<p><span class="math inline">\(x_{m, n}=c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}\)</span></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="section-15" class="title-slide slide level2 center">
 <h2><em></em></h2>
 <p>Thus for fixed <span class="math inline">\(m\)</span> and arbitrary <span class="math inline">\(n\)</span>, we have</p>
 <aside class="notes">
@@ -1270,16 +1284,6 @@ y_{m, n} &amp; =h_{0} c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}+h_{1} c_{m} 
 <section id="high-pass-and-low-pass-filters" class="title-slide slide level2 center">
 <h2><em>High-pass and low-pass filters</em></h2>
 <p>The FIR filter <span class="math inline">\(\mathbf{h}=\left\{h_{k}\right\}_{k=0}^{L}\)</span> with discrete time Fourier transform <span class="math inline">\(H(\zeta)\)</span> is a <strong>lowpass filter</strong> if <span class="math inline">\(|H(0)|=1\)</span> and <span class="math inline">\(|H(\pi)|=0\)</span>; <span class="math inline">\(\mathbf{h}\)</span> is a <strong>highpass filter</strong> if <span class="math inline">\(|H(0)|=0\)</span> and <span class="math inline">\(|H(\pi)|=1\)</span>.</p>
-<ol type="1">
-<li class="fragment">Introduce the DFT per Strang with plot from Wiki page on DFT</li>
-<li class="fragment">Introduce the idea of filtering as convolution – https://www.cs.uoi.gr/~cnikou/Courses/Digital_Image_Processing/</li>
-<li class="fragment">Circular convolution</li>
-<li class="fragment">Circular convolution as matrix multiplication by a circulant matrix</li>
-<li class="fragment">Diagonalization of circulant matrices as the DFT</li>
-<li class="fragment">Convolution theorem</li>
-<li class="fragment">Example for a simple discrete filter</li>
-<li class="fragment">Moving to continuous frequency per Shores</li>
-</ol>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

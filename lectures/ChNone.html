@@ -1188,8 +1188,88 @@ f_{\text{filtered}}[n] = \sum_{m=0}^{n} f[n-m] h[m]
 <p>Then we can take the inverse DFT to get the filtered signal.</p>
 </section>
 
-<section id="convolution" class="title-slide slide level2 center">
-<h2><em>Convolution</em></h2>
+<section id="discrete-time-filters-in-continuous-frequency-space" class="title-slide slide level2 center">
+<h2><em>Discrete-time filters in continuous frequency space</em></h2>
+<p>Back to your textbook, in Chapter 6:</p>
+<p>Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their <strong>continuous</strong> frequency representations.</p>
+<div class="fragment">
+<p>Imagine we have a signal <span class="math inline">\(x(t)\)</span> which is defined for <span class="math inline">\(t\)</span> is the interval <span class="math inline">\([0, T]\)</span></p>
+</div>
+<div class="fragment">
+<p>We will imagine that <span class="math inline">\(x(t)\)</span> which is defined over all <span class="math inline">\(t\)</span> but periodic of period <span class="math inline">\(T\)</span>. So the function has frequency <span class="math inline">\(f=1 / T\)</span> and angular frequency <span class="math inline">\(\omega=2 \pi / T\)</span></p>
+</div>
+<div class="fragment">
+<p>A <strong>discrete filter</strong> is a sequence of complex numbers <span class="math inline">\(\mathbf{h}=\left\{h_{n}\right\}_{n=-\infty}^{\infty}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>This will be a <strong>finite impulse response</strong> (FIR) filter if <span class="math inline">\(h_n\)</span> is 0 for <span class="math inline">\(n&lt;0\)</span> or <span class="math inline">\(n&gt;L\)</span> for some L.</p>
+<p>In this case we say <span class="math inline">\(\mathbf{h}\)</span> has length <span class="math inline">\(L\)</span> and express it in the form <span class="math inline">\(\mathbf{h}=\left\{h_{n}\right\}_{n=0}^{L}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Then we can take its <strong>discrete time Fourier transform</strong> (DTFT) as the Fourier series <span class="math inline">\(X(\mathbf{h})(\zeta)=\sum_{n=-\infty}^{\infty} h_{n} e^{i \zeta}, \zeta \in \mathbb{R}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Suppose we have a discrete signal <span class="math inline">\(x(t)\)</span> in sampling periods <span class="math inline">\(T_{s}\)</span>, i.e., at <span class="math inline">\(t_{n}=n T_{s}\)</span>. Define <span class="math inline">\(x_{n}=x\left(t_{n}\right)\)</span></p>
+</div>
+</section>
+
+<section id="section-13" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>If we use our filter on our signal, we get:</p>
+<p><span class="math display">\[
+y_{n}=h_{0} x_{n}+h_{1} x_{n-1}+\cdots+h_{L} x_{n-L}, \quad n \in \mathbb{Z}
+\]</span></p>
+<div class="fragment">
+<p>To understand the effect of the filter, examine its action on a single Fourier mode of the signal, with a possible phase shift <span class="math inline">\(\phi\)</span>:</p>
+<p><span class="math inline">\(x_{m}(t)=c_{m} e^{i m(\omega t+\phi)}\)</span></p>
+</div>
+<div class="fragment">
+<p>At individual points in time, this gives</p>
+<p><span class="math inline">\(x_{m, n}=c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}\)</span></p>
+</div>
+</section>
+
+<section id="section-14" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Thus for fixed <span class="math inline">\(m\)</span> and arbitrary <span class="math inline">\(n\)</span>, we have</p>
+<aside class="notes">
+<p><span class="math display">\[
+\begin{aligned}
+y_{m, n} &amp; =h_{0} c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}+h_{1} c_{m} e^{i m \omega\left((n-1) T_{s}+\phi\right)}+\cdots+h_{L} c_{m} e^{i m \omega\left((n-L) T_{s}+\phi\right)} \\
+&amp; =\left(h_{0} \cdot 1+h_{1} e^{-i m \omega T_{s}}+\cdots+h_{L} e^{-i L m \omega T_{s}}\right) c_{m} e^{i m \omega\left(n T_{s}+\phi\right)} \\
+&amp; =H\left(-m \omega T_{s}\right) x_{m, n}
+\end{aligned}
+\]</span></p>
+<p>where</p>
+<p><span class="math inline">\(H(\zeta)=h_{0}+h_{1} e^{i \zeta}+\cdots+h_{L} e^{i L \zeta}, \quad \zeta \in \mathbb{R}\)</span> is the DTFT of <span class="math inline">\(\mathbf{h}\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+
+<section id="gain" class="title-slide slide level2 center">
+<h2><em>Gain</em></h2>
+<p><span class="math inline">\(\left|y_{m, n}\right| \leq\left|H\left(-m \omega T_{s}\right)\right|\left|x_{m, n}\right|\)</span></p>
+<p>So we define <strong>gain</strong> or <strong>attenuation</strong> of this transformation as <span class="math inline">\(G(\zeta)=|H(\zeta)|\)</span></p>
+<div class="fragment">
+<p>We define <strong>phase rotation</strong> as <span class="math inline">\(\Theta(\zeta)=\theta\)</span>, where <span class="math inline">\(H(\zeta)=|H(\zeta)| e^{i \theta}\)</span></p>
+</div>
+<div class="fragment">
+<p>The filter <span class="math inline">\(h\)</span> will <strong>attenuate</strong> the signal at frequencies where <span class="math inline">\(|H(\zeta)|&lt;1\)</span> and <strong>amplify</strong> the signal at frequencies where <span class="math inline">\(|H(\zeta)|&gt;1\)</span>. It will phase shift the signal by <span class="math inline">\(\Theta(\zeta)\)</span>.</p>
+</div>
+</section>
+
+<section id="high-pass-and-low-pass-filters" class="title-slide slide level2 center">
+<h2><em>High-pass and low-pass filters</em></h2>
+<p>The FIR filter <span class="math inline">\(\mathbf{h}=\left\{h_{k}\right\}_{k=0}^{L}\)</span> with discrete time Fourier transform <span class="math inline">\(H(\zeta)\)</span> is a <strong>lowpass filter</strong> if <span class="math inline">\(|H(0)|=1\)</span> and <span class="math inline">\(|H(\pi)|=0\)</span>; <span class="math inline">\(\mathbf{h}\)</span> is a <strong>highpass filter</strong> if <span class="math inline">\(|H(0)|=0\)</span> and <span class="math inline">\(|H(\pi)|=1\)</span>.</p>
 <ol type="1">
 <li class="fragment">Introduce the DFT per Strang with plot from Wiki page on DFT</li>
 <li class="fragment">Introduce the idea of filtering as convolution – https://www.cs.uoi.gr/~cnikou/Courses/Digital_Image_Processing/</li>

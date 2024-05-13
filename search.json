@@ -4615,9 +4615,9 @@
   {
     "objectID": "lectures/ChNone.html#section-13",
     "href": "lectures/ChNone.html#section-13",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "The total process went like this:\n\nTake the DFT of the signal.\nMultiply the DFT by a vector of 1s and 0s to filter out the high frequency.\nTake the inverse DFT to get the filtered signal."
+    "text": "If we use our filter on our signal, we get:\n\\[\ny_{n}=h_{0} x_{n}+h_{1} x_{n-1}+\\cdots+h_{L} x_{n-L}, \\quad n \\in \\mathbb{Z}\n\\]\n\nTo understand the effect of the filter, examine its action on a single Fourier mode of the signal, with a possible phase shift \\(\\phi\\):\n\\(x_{m}(t)=c_{m} e^{i m(\\omega t+\\phi)}\\)\n\n\nAt individual points in time, this gives\n\\(x_{m, n}=c_{m} e^{i m \\omega\\left(n T_{s}+\\phi\\right)}\\)"
   },
   {
     "objectID": "lectures/ChNone.html#filtering-as-convolution",
@@ -4650,9 +4650,9 @@
   {
     "objectID": "lectures/ChNone.html#section-14",
     "href": "lectures/ChNone.html#section-14",
-    "title": "Stat 24320",
+    "title": "The Fourier Series",
     "section": "",
-    "text": "Now try it again using the convolution theorem.\nSteps:\n\nTake the DFT of the signal.\nPad the filter with zeros to make it the same length as the signal.\nTake the DFT of the filter.\nMultiply the two DFTs.\nTake the inverse DFT to get the filtered signal.\nDone!\n\n\n\nyf = fft(y)\nhf = fft(h, N) # pad h with zeros\ny_filtered = ifft(yf*hf)\nplt.plot(x, y, label='original')\nplt.plot(x, y_filtered, label='filtered')\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\nThen we can take the inverse DFT to get the filtered signal."
+    "text": "Thus for fixed \\(m\\) and arbitrary \\(n\\), we have\n\n\\[\n\\begin{aligned}\ny_{m, n} & =h_{0} c_{m} e^{i m \\omega\\left(n T_{s}+\\phi\\right)}+h_{1} c_{m} e^{i m \\omega\\left((n-1) T_{s}+\\phi\\right)}+\\cdots+h_{L} c_{m} e^{i m \\omega\\left((n-L) T_{s}+\\phi\\right)} \\\\\n& =\\left(h_{0} \\cdot 1+h_{1} e^{-i m \\omega T_{s}}+\\cdots+h_{L} e^{-i L m \\omega T_{s}}\\right) c_{m} e^{i m \\omega\\left(n T_{s}+\\phi\\right)} \\\\\n& =H\\left(-m \\omega T_{s}\\right) x_{m, n}\n\\end{aligned}\n\\]\nwhere\n\\(H(\\zeta)=h_{0}+h_{1} e^{i \\zeta}+\\cdots+h_{L} e^{i L \\zeta}, \\quad \\zeta \\in \\mathbb{R}\\) is the DTFT of \\(\\mathbf{h}\\)."
   },
   {
     "objectID": "lectures/ChNone.html#convolution",
@@ -4695,5 +4695,26 @@
     "title": "The Fourier Series",
     "section": "Low-pass filtering",
     "text": "Low-pass filtering\nWhat if we just zero out the coefficient corresponding to the second sinusoid:\n\n\nyf_new = yf.copy()\nyf_new[190] = 0\nyf_new[10] = 0\nplt.plot(np.abs(fftshift(yf_new)))\nplt.title('Filtered DFT')\nplt.show()"
+  },
+  {
+    "objectID": "lectures/ChNone.html#discrete-time-filters-in-continuous-frequency-space",
+    "href": "lectures/ChNone.html#discrete-time-filters-in-continuous-frequency-space",
+    "title": "The Fourier Series",
+    "section": "Discrete-time filters in continuous frequency space",
+    "text": "Discrete-time filters in continuous frequency space\nBack to your textbook, in Chapter 6:\nHere we will work with discrete signals (using time as the index) and discrete filters, but be interested in their continuous frequency representations.\n\nImagine we have a signal \\(x(t)\\) which is defined for \\(t\\) is the interval \\([0, T]\\)\n\n\nWe will imagine that \\(x(t)\\) which is defined over all \\(t\\) but periodic of period \\(T\\). So the function has frequency \\(f=1 / T\\) and angular frequency \\(\\omega=2 \\pi / T\\)\n\n\nA discrete filter is a sequence of complex numbers \\(\\mathbf{h}=\\left\\{h_{n}\\right\\}_{n=-\\infty}^{\\infty}\\).\n\n\nThis will be a finite impulse response (FIR) filter if \\(h_n\\) is 0 for \\(n&lt;0\\) or \\(n&gt;L\\) for some L.\nIn this case we say \\(\\mathbf{h}\\) has length \\(L\\) and express it in the form \\(\\mathbf{h}=\\left\\{h_{n}\\right\\}_{n=0}^{L}\\).\n\n\nThen we can take its discrete time Fourier transform (DTFT) as the Fourier series \\(X(\\mathbf{h})(\\zeta)=\\sum_{n=-\\infty}^{\\infty} h_{n} e^{i \\zeta}, \\zeta \\in \\mathbb{R}\\).\n\n\nSuppose we have a discrete signal \\(x(t)\\) in sampling periods \\(T_{s}\\), i.e., at \\(t_{n}=n T_{s}\\). Define \\(x_{n}=x\\left(t_{n}\\right)\\)"
+  },
+  {
+    "objectID": "lectures/ChNone.html#gain",
+    "href": "lectures/ChNone.html#gain",
+    "title": "The Fourier Series",
+    "section": "Gain",
+    "text": "Gain\n\\(\\left|y_{m, n}\\right| \\leq\\left|H\\left(-m \\omega T_{s}\\right)\\right|\\left|x_{m, n}\\right|\\)\nSo we define gain or attenuation of this transformation as \\(G(\\zeta)=|H(\\zeta)|\\)\n\nWe define phase rotation as \\(\\Theta(\\zeta)=\\theta\\), where \\(H(\\zeta)=|H(\\zeta)| e^{i \\theta}\\)\n\n\nThe filter \\(h\\) will attenuate the signal at frequencies where \\(|H(\\zeta)|&lt;1\\) and amplify the signal at frequencies where \\(|H(\\zeta)|&gt;1\\). It will phase shift the signal by \\(\\Theta(\\zeta)\\)."
+  },
+  {
+    "objectID": "lectures/ChNone.html#high-pass-and-low-pass-filters",
+    "href": "lectures/ChNone.html#high-pass-and-low-pass-filters",
+    "title": "The Fourier Series",
+    "section": "High-pass and low-pass filters",
+    "text": "High-pass and low-pass filters\nThe FIR filter \\(\\mathbf{h}=\\left\\{h_{k}\\right\\}_{k=0}^{L}\\) with discrete time Fourier transform \\(H(\\zeta)\\) is a lowpass filter if \\(|H(0)|=1\\) and \\(|H(\\pi)|=0\\); \\(\\mathbf{h}\\) is a highpass filter if \\(|H(0)|=0\\) and \\(|H(\\pi)|=1\\).\n\nIntroduce the DFT per Strang with plot from Wiki page on DFT\nIntroduce the idea of filtering as convolution – https://www.cs.uoi.gr/~cnikou/Courses/Digital_Image_Processing/\nCircular convolution\nCircular convolution as matrix multiplication by a circulant matrix\nDiagonalization of circulant matrices as the DFT\nConvolution theorem\nExample for a simple discrete filter\nMoving to continuous frequency per Shores"
   }
 ]

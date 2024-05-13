@@ -499,6 +499,9 @@ pca.fit(X);
 projected = pca.transform(X)
 projected = pd.DataFrame(projected)
 projected.columns=map(lambda x: f'PC{x+1}', range(6))
+
+
+
 # append the population
 projected['population'] = population
 projected['gender'] = gender
@@ -516,6 +519,11 @@ fig.show()
 ##
 
 ```{python}
-fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white',color='population')
+fig = px.scatter(projected, x='PC3', y='PC4', template='simple_white',color='gender')
 fig.show()
 ```
+
+##
+
+![PCA geography](images/pca-geography.png)
+

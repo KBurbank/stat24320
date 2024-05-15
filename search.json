@@ -4827,14 +4827,14 @@
     "href": "lectures/Ch6Lecture1.html#inverses-and-determinants",
     "title": "Ch6 Lecture 1",
     "section": "Inverses and determinants",
-    "text": "Inverses and determinants\n(Ch2 lecture 5) - Inverse of a matrix - *Determinants - Singularity - LU factorization (Ch2 lecture 4)"
+    "text": "Inverses and determinants\n(Ch2 lecture 5)\n\nInverse of a matrix\n*Determinants\nSingularity\nLU factorization (Ch2 lecture 4)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#spaces-of-matrices",
     "href": "lectures/Ch6Lecture1.html#spaces-of-matrices",
     "title": "Ch6 Lecture 1",
     "section": "Spaces of matrices",
-    "text": "Spaces of matrices\n(ch3 lecture 1) - Basis - Fundamental subspaces: - Column space - Null space - Row space - Rank - Consistency"
+    "text": "Spaces of matrices\n(ch3 lecture 1)\n\nBasis\nFundamental subspaces:\n\nColumn space\nNull space\nRow space\n\nRank\nConsistency"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#orthogonality",
@@ -4869,7 +4869,7 @@
     "href": "lectures/Ch6Lecture1.html#symmetric-matrices",
     "title": "Ch6 Lecture 1",
     "section": "Symmetric matrices",
-    "text": "Symmetric matrices\n(ch5 lecture 2) - Properties of symmetric matrices - Quadratic forms"
+    "text": "Symmetric matrices\n(ch5 lecture 2)\n\nProperties of symmetric matrices\nQuadratic forms"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#svd",

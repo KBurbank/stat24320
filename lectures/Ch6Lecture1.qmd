@@ -252,6 +252,7 @@ $$
 ## Inverses and determinants
 
 (Ch2 lecture 5)
+
 - Inverse of a matrix
 - *Determinants
 - Singularity
@@ -304,6 +305,7 @@ $$
 
 ## Spaces of matrices
 (ch3 lecture 1)
+
 - Basis
 - Fundamental subspaces:
   - Column space
@@ -448,10 +450,12 @@ For each scalar $\lambda$ in (1), use the null space algorithm to find a basis o
 ## Symmetric matrices
 
 (ch5 lecture 2)
+
 - Properties of symmetric matrices
 - Quadratic forms
 
 ## SVD
+
 (ch5 lecture 3, 4)
 
 - Definition

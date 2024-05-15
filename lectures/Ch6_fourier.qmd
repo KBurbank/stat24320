@@ -1,0 +1,121 @@
+---
+title: Ch6 Fourier
+lecture_day: 18
+readings: "5.1,5.2,5.3"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+
+## Discrete-time filters in continuous frequency space
+
+Back to your textbook, in Chapter 6:
+::: notes
+Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their **continuous** frequency representations.
+
+. . .
+
+Imagine we have a signal $x(t)$ which is defined for $t$ is the interval $[0, T]$
+
+. . .
+
+We will imagine that $x(t)$ which is defined over all $t$ but periodic of period $T$. So the function has frequency $f=1 / T$ and angular frequency $\omega=2 \pi / T$
+
+. . .
+
+
+
+. . .
+
+A **discrete filter** is a sequence of complex numbers $\mathbf{h}=\left\{h_{n}\right\}_{n=-\infty}^{\infty}$. 
+
+. . .
+
+This will be a **finite impulse response** (FIR) filter if $h_n$ is 0 for $n<0$ or $n>L$ for some L.
+
+In this case we say $\mathbf{h}$ has length $L$ and express it in the form $\mathbf{h}=\left\{h_{n}\right\}_{n=0}^{L}$.
+
+. . .
+
+Then we can take its **discrete time Fourier transform** (DTFT) as the Fourier series $X(\mathbf{h})(\zeta)=\sum_{n=-\infty}^{\infty} h_{n} e^{i \zeta}, \zeta \in \mathbb{R}$.
+
+. . .
+
+Suppose we have a discrete signal $x(t)$ in sampling periods $T_{s}$, i.e., at $t_{n}=n T_{s}$.  Define $x_{n}=x\left(t_{n}\right)$
+
+:::
+
+##
+
+
+::: notes
+If we use our filter on our signal, we get:
+
+$$
+y_{n}=h_{0} x_{n}+h_{1} x_{n-1}+\cdots+h_{L} x_{n-L}, \quad n \in \mathbb{Z}
+$$
+
+. . .
+
+To understand the effect of the filter, examine its action on a single Fourier mode of the signal, with a possible phase shift $\phi$:
+
+$x_{m}(t)=c_{m} e^{i m(\omega t+\phi)}$
+
+. . .
+
+At individual points in time, this gives
+
+$x_{m, n}=c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}$
+
+:::
+##
+
+Thus for fixed $m$ and arbitrary $n$, we have
+
+::: notes
+$$
+\begin{aligned}
+y_{m, n} & =h_{0} c_{m} e^{i m \omega\left(n T_{s}+\phi\right)}+h_{1} c_{m} e^{i m \omega\left((n-1) T_{s}+\phi\right)}+\cdots+h_{L} c_{m} e^{i m \omega\left((n-L) T_{s}+\phi\right)} \\
+& =\left(h_{0} \cdot 1+h_{1} e^{-i m \omega T_{s}}+\cdots+h_{L} e^{-i L m \omega T_{s}}\right) c_{m} e^{i m \omega\left(n T_{s}+\phi\right)} \\
+& =H\left(-m \omega T_{s}\right) x_{m, n}
+\end{aligned}
+$$
+
+where
+
+$H(\zeta)=h_{0}+h_{1} e^{i \zeta}+\cdots+h_{L} e^{i L \zeta}, \quad \zeta \in \mathbb{R}$ is the DTFT of $\mathbf{h}$.
+
+The units of $\zeta$ are radians per sampling period. So when $\zeta=1$, our filter goes through half a cycle in one sampling period.
+
+:::
+
+
+## Gain
+
+$\left|y_{m, n}\right| \leq\left|H\left(-m \omega T_{s}\right)\right|\left|x_{m, n}\right|$
+ 
+ 
+So we define **gain** or **attenuation** of this transformation as $G(\zeta)=|H(\zeta)|$
+
+. . .
+
+We define **phase rotation** as $\Theta(\zeta)=\theta$, where $H(\zeta)=|H(\zeta)| e^{i \theta}$
+
+. . .
+
+The filter $h$ will **attenuate** the signal at frequencies where $|H(\zeta)|<1$ and **amplify** the signal at frequencies where $|H(\zeta)|>1$. It will phase shift the signal by $\Theta(\zeta)$.
+
+## High-pass and low-pass filters
+
+The FIR filter $\mathbf{h}=\left\{h_{k}\right\}_{k=0}^{L}$ with discrete time Fourier transform $H(\zeta)$ is a **lowpass filter** if $|H(0)|=1$ and $|H(\pi)|=0$; $\mathbf{h}$ is a **highpass filter** if $|H(0)|=0$ and $|H(\pi)|=1$.
+
+

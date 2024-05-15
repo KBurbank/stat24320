@@ -4961,5 +4961,40 @@
     "title": "Ch6 Lecture 1",
     "section": "Linear Systems (ch1Lecture1b, ch1Lecture2)",
     "text": "Linear Systems (ch1Lecture1b, ch1Lecture2)\n\nApplications of linear systems\nPutting linear systems in matrix form\n*Gauss-Jordan to get to row echelon form\n*Solving linear systems with augmented matrices\nFree vs bound variables\nIll-conditioned systems & rounding errors"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#matrix-multiplication-ch2lecture1",
+    "href": "lectures/Ch6Lecture1.html#matrix-multiplication-ch2lecture1",
+    "title": "Ch6 Lecture 1",
+    "section": "Matrix multiplication (ch2Lecture1)",
+    "text": "Matrix multiplication (ch2Lecture1)\n\nMatrix-vector multiplication as a linear combination of columns\nMatrix multiplication as an operation\n*Scaling, rotation, shear"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#graphs-and-directed-graphs-ch2lecture2",
+    "href": "lectures/Ch6Lecture1.html#graphs-and-directed-graphs-ch2lecture2",
+    "title": "Ch6 Lecture 1",
+    "section": "Graphs and Directed Graphs (ch2Lecture2)",
+    "text": "Graphs and Directed Graphs (ch2Lecture2)\n\n*Adjacency and incidence matrices\nDegree of a vertex\n*Paths and cycles\nPageRank"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#discrete-dynamical-systems-ch2lecture2",
+    "href": "lectures/Ch6Lecture1.html#discrete-dynamical-systems-ch2lecture2",
+    "title": "Ch6 Lecture 1",
+    "section": "Discrete Dynamical Systems (Ch2Lecture2)",
+    "text": "Discrete Dynamical Systems (Ch2Lecture2)\n\nTransition matrices\n*Markov chains"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#difference-equations-ch2lecture3",
+    "href": "lectures/Ch6Lecture1.html#difference-equations-ch2lecture3",
+    "title": "Ch6 Lecture 1",
+    "section": "Difference Equations (Ch2Lecture3)",
+    "text": "Difference Equations (Ch2Lecture3)\n\n*Difference equations in matrix form\n*Examples"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#inverses-and-determinants-ch2-lecture-4-5",
+    "href": "lectures/Ch6Lecture1.html#inverses-and-determinants-ch2-lecture-4-5",
+    "title": "Ch6 Lecture 1",
+    "section": "Inverses and determinants (Ch2 lecture 4 & 5)",
+    "text": "Inverses and determinants (Ch2 lecture 4 & 5)\n\nInverse of a matrix\n*Determinants\nSingularity\nLU factorization"
   }
 ]

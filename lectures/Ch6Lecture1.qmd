@@ -124,9 +124,9 @@ $$
 
 # Chapter 2: Matrices
 
-## Matrix multiplication
+## Matrix multiplication (ch2Lecture1)
 
-ch2Lecture1
+
 
 - Matrix-vector multiplication as a linear combination of columns
 - Matrix multiplication as an operation
@@ -164,9 +164,9 @@ $$
 A = \left[\begin{array}{ll} 1 & s_2 \\ s_1 & 1 \end{array}\right]
 $$
 
-## Graphs and Directed Graphs
+## Graphs and Directed Graphs (ch2Lecture2)
 
-ch2Lecture2
+
 
 - *Adjacency and incidence matrices
 - Degree of a vertex
@@ -186,9 +186,9 @@ ch2Lecture2
 - In an the incidence matrix of a digraph which is a cycle, every row must sum to zero.
 
 
-## Discrete Dynamical Systems
+## Discrete Dynamical Systems (Ch2Lecture2)
 
-Ch2Lecture2
+
 
 - Transition matrices
 - *Markov chains
@@ -201,9 +201,9 @@ A **stochastic matrix** is a square matrix whose columns are distribution vector
 
 A **Markov chain** is a discrete dynamical system whose initial state $\mathbf{x}^{(0)}$ is a distribution vector and whose transition matrix $A$ is stochastic, i.e., each column of $A$ is a distribution vector.
 
-## Difference Equations
+## Difference Equations (Ch2Lecture3)
 
-Ch2Lecture3
+
 
 - *Difference equations in matrix form
 - *Examples
@@ -252,14 +252,14 @@ $$
 - Restricted Boltzmann Machines
 
 
-## Inverses and determinants (Ch2 lecture 5)
+## Inverses and determinants (Ch2 lecture 4 & 5)
 
 
 
 - Inverse of a matrix
 - *Determinants
 - Singularity
-- LU factorization (Ch2 lecture 4)
+- LU factorization
 
 
 

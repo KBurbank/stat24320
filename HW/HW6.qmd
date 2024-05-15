@@ -70,6 +70,7 @@ Largest eigenvalue must be greater than one because the numbers grow, and comple
 
 Compute the DTFT for the FIR filter $\mathbf{h}=\left\{\frac{1}{2}, \frac{1}{2}\right\}$ and confirm that $\mathbf{h}$ is a lowpass filter.
 
+Please note that in definition 6.20 in your book, there is an apparent error. The formula should be $H(\zeta)=\sum_{n=-\infty}^{\infty} h_n e^{-i \zeta n}$. Note the $n$ in the exponent! The sequence in the first paragraph of page 438 makes this clear, where it says "Here $H(\zeta) = h_0 + h_1 e^{i \zeta} + \dots + h_L e^{i L \zeta}$."
 
 ::: solutions
 6.6.1

@@ -246,20 +246,22 @@ $$
 
 ## MCMC
 
-- MCMC (Ch2 lecture 4)
+- MCMC 
   - Simulate a distribution using a Markov chain
   - Sample from the simulated distribution
-- Restricted Boltzmann Machines (Ch2 lecture 4)
+- Restricted Boltzmann Machines
 
-
+(Ch2 lecture 4)
 ## Inverses and determinants
 
-(Ch2 lecture 5)
+
 
 - Inverse of a matrix
 - *Determinants
 - Singularity
 - LU factorization (Ch2 lecture 4)
+
+(Ch2 lecture 5)
 
 ### Determinants
 
@@ -307,7 +309,7 @@ $$
 # Chapter 3: Vector Spaces
 
 ## Spaces of matrices
-(ch3 lecture 1)
+
 
 - Basis
 - Fundamental subspaces:
@@ -317,6 +319,7 @@ $$
 - Rank
 - Consistency
 
+(ch3 lecture 1)
 ### Column and Row Spaces
 
 ::: definition
@@ -391,10 +394,11 @@ where $x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}$ are the free variables.
 
 ## Orthogonality
 
-- Geometrical intuitions (ch4 lecture 1)
-- *Least Squares & Normal equations (ch4 lecture 2)
-- Finding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)
+- Geometrical intuitions 
+- *Least Squares & Normal equations 
+- Finding orthogonal bases (Gram-Schmidt) 
 
+(ch4 lecture 1 and 2)
 ### Least Squares and Normal Equations
 
 To find the least squares solution to $A \mathbf{x}=\mathbf{b}$, we minimize the squared error $\left\|A \mathbf{x}-\mathbf{b}\right\|^{2}$ by solving the Normal Equations for $\mathbf{x}$:
@@ -403,10 +407,6 @@ $$
 \mathbf{A}^{T} \mathbf{A} \mathbf{x} &=\mathbf{A}^{T} \mathbf{b} 
 \end{aligned}
 $$
-
-## Factorizations
-- *QR Factorization (Ch4 lecture 2)
-- *Singular Value Decomposition (Ch5 lecture 2)
 
 ### QR Factorization
 
@@ -427,19 +427,20 @@ A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{
 \end{array}\right]
 $$
 
-## Haar Wavelets
-(ch4 lecture 2)
 
 # Chapter 5: Eigenvalues and Eigenvectors
 
 ## Eigenvalues and Eigenvectors
-(ch5 lecture 1)
+
+
+
 - Definition
 - *How to find them
 - Similarity and Diagonalization
 - Applications to dynamical systems
 - Spectral radius
 
+(ch5 lecture 1)
 ### Finding Eigenvalues and Eigenvectors
 
 ::: definition
@@ -452,19 +453,22 @@ For each scalar $\lambda$ in (1), use the null space algorithm to find a basis o
 
 ## Symmetric matrices
 
-(ch5 lecture 2)
+
 
 - Properties of symmetric matrices
 - Quadratic forms
 
+(ch5 lecture 2)
 ## SVD
 
-(ch5 lecture 3, 4)
+
 
 - Definition
 - *Psuedoinverse
 - Applications to least squares
 - Image compression
+
+(ch5 lecture 3, 4)
 
 ### Pseudoinverse
 
@@ -484,10 +488,12 @@ x & \approx A^{+} b
 $$
 
 ## PCA
-(ch5 lecture 5)
+
 
 - Definition
 - Applications to data analysis
+
+(ch5 lecture 5)
 
 # Chapter 6: Fourier Transform
 

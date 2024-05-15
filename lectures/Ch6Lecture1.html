@@ -588,24 +588,21 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <section id="mcmc" class="title-slide slide level2 center">
 <h2><em>MCMC</em></h2>
 <ul>
-<li class="fragment">MCMC (Ch2 lecture 4)
+<li class="fragment">MCMC
 <ul>
 <li class="fragment">Simulate a distribution using a Markov chain</li>
 <li class="fragment">Sample from the simulated distribution</li>
 </ul></li>
-<li class="fragment">Restricted Boltzmann Machines (Ch2 lecture 4)</li>
+<li class="fragment">Restricted Boltzmann Machines</li>
 </ul>
-</section>
-
-<section id="inverses-and-determinants" class="title-slide slide level2 center">
-<h2><em>Inverses and determinants</em></h2>
-<p>(Ch2 lecture 5)</p>
+<p>(Ch2 lecture 4) ## Inverses and determinants</p>
 <ul>
 <li class="fragment">Inverse of a matrix</li>
 <li class="fragment">*Determinants</li>
 <li class="fragment">Singularity</li>
 <li class="fragment">LU factorization (Ch2 lecture 4)</li>
 </ul>
+<p>(Ch2 lecture 5)</p>
 </section>
 <section id="determinants" class="slide level3 center">
 <h3><em>Determinants</em></h3>
@@ -650,7 +647,6 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </section>
 <section id="spaces-of-matrices" class="title-slide slide level2 center">
 <h2><em>Spaces of matrices</em></h2>
-<p>(ch3 lecture 1)</p>
 <ul>
 <li class="fragment">Basis</li>
 <li class="fragment">Fundamental subspaces:
@@ -662,9 +658,7 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <li class="fragment">Rank</li>
 <li class="fragment">Consistency</li>
 </ul>
-</section>
-<section id="column-and-row-spaces" class="slide level3 center">
-<h3><em>Column and Row Spaces</em></h3>
+<p>(ch3 lecture 1) ### Column and Row Spaces</p>
 <div class="definition">
 <p>The <strong>column space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{C}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span> spanned by the columns of <span class="math inline">\(A\)</span>.</p>
 </div>
@@ -736,26 +730,16 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <section id="orthogonality" class="title-slide slide level2 center">
 <h2><em>Orthogonality</em></h2>
 <ul>
-<li class="fragment">Geometrical intuitions (ch4 lecture 1)</li>
-<li class="fragment">*Least Squares &amp; Normal equations (ch4 lecture 2)</li>
-<li class="fragment">Finding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)</li>
+<li class="fragment">Geometrical intuitions</li>
+<li class="fragment">*Least Squares &amp; Normal equations</li>
+<li class="fragment">Finding orthogonal bases (Gram-Schmidt)</li>
 </ul>
-</section>
-<section id="least-squares-and-normal-equations" class="slide level3 center">
-<h3><em>Least Squares and Normal Equations</em></h3>
+<p>(ch4 lecture 1 and 2) ### Least Squares and Normal Equations</p>
 <p>To find the least squares solution to <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>, we minimize the squared error <span class="math inline">\(\left\|A \mathbf{x}-\mathbf{b}\right\|^{2}\)</span> by solving the Normal Equations for <span class="math inline">\(\mathbf{x}\)</span>: <span class="math display">\[
 \begin{aligned}
 \mathbf{A}^{T} \mathbf{A} \mathbf{x} &amp;=\mathbf{A}^{T} \mathbf{b}
 \end{aligned}
 \]</span></p>
-</section>
-
-<section id="factorizations" class="title-slide slide level2 center">
-<h2><em>Factorizations</em></h2>
-<ul>
-<li class="fragment">*QR Factorization (Ch4 lecture 2)</li>
-<li class="fragment">*Singular Value Decomposition (Ch5 lecture 2)</li>
-</ul>
 </section>
 <section id="qr-factorization" class="slide level3 center">
 <h3><em>QR Factorization</em></h3>
@@ -776,11 +760,6 @@ A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{
 \]</span></p>
 </div>
 </section>
-
-<section id="haar-wavelets" class="title-slide slide level2 center">
-<h2><em>Haar Wavelets</em></h2>
-<p>(ch4 lecture 2)</p>
-</section>
 </section>
 <section>
 <section id="chapter-5-eigenvalues-and-eigenvectors" class="title-slide slide level1 center">
@@ -789,10 +768,14 @@ A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{
 </section>
 <section id="eigenvalues-and-eigenvectors" class="title-slide slide level2 center">
 <h2><em>Eigenvalues and Eigenvectors</em></h2>
-<p>(ch5 lecture 1) - Definition - *How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius</p>
-</section>
-<section id="finding-eigenvalues-and-eigenvectors" class="slide level3 center">
-<h3><em>Finding Eigenvalues and Eigenvectors</em></h3>
+<ul>
+<li class="fragment">Definition</li>
+<li class="fragment">*How to find them</li>
+<li class="fragment">Similarity and Diagonalization</li>
+<li class="fragment">Applications to dynamical systems</li>
+<li class="fragment">Spectral radius</li>
+</ul>
+<p>(ch5 lecture 1) ### Finding Eigenvalues and Eigenvectors</p>
 <div class="definition">
 <p>If <span class="math inline">\(A\)</span> is a square <span class="math inline">\(n \times n\)</span> matrix, the equation <span class="math inline">\(\operatorname{det}(\lambda I-A)=0\)</span> is called the <strong>characteristic equation</strong> of <span class="math inline">\(A\)</span></p>
 </div>
@@ -802,22 +785,18 @@ A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{
 
 <section id="symmetric-matrices" class="title-slide slide level2 center">
 <h2><em>Symmetric matrices</em></h2>
-<p>(ch5 lecture 2)</p>
 <ul>
 <li class="fragment">Properties of symmetric matrices</li>
 <li class="fragment">Quadratic forms</li>
 </ul>
-</section>
-
-<section id="svd" class="title-slide slide level2 center">
-<h2><em>SVD</em></h2>
-<p>(ch5 lecture 3, 4)</p>
+<p>(ch5 lecture 2) ## SVD</p>
 <ul>
 <li class="fragment">Definition</li>
 <li class="fragment">*Psuedoinverse</li>
 <li class="fragment">Applications to least squares</li>
 <li class="fragment">Image compression</li>
 </ul>
+<p>(ch5 lecture 3, 4)</p>
 </section>
 <section id="pseudoinverse" class="slide level3 center">
 <h3><em>Pseudoinverse</em></h3>
@@ -836,11 +815,11 @@ x &amp; \approx A^{+} b
 
 <section id="pca" class="title-slide slide level2 center">
 <h2><em>PCA</em></h2>
-<p>(ch5 lecture 5)</p>
 <ul>
 <li class="fragment">Definition</li>
 <li class="fragment">Applications to data analysis</li>
 </ul>
+<p>(ch5 lecture 5)</p>
 </section>
 </section>
 <section>

@@ -4820,7 +4820,7 @@
     "href": "lectures/Ch6Lecture1.html#mcmc",
     "title": "Ch6 Lecture 1",
     "section": "MCMC",
-    "text": "MCMC\n\nMCMC (Ch2 lecture 4)\n\nSimulate a distribution using a Markov chain\nSample from the simulated distribution\n\nRestricted Boltzmann Machines (Ch2 lecture 4)"
+    "text": "MCMC\n\nMCMC\n\nSimulate a distribution using a Markov chain\nSample from the simulated distribution\n\nRestricted Boltzmann Machines\n\n(Ch2 lecture 4) ## Inverses and determinants\n\nInverse of a matrix\n*Determinants\nSingularity\nLU factorization (Ch2 lecture 4)\n\n(Ch2 lecture 5)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#inverses-and-determinants",
@@ -4834,14 +4834,14 @@
     "href": "lectures/Ch6Lecture1.html#spaces-of-matrices",
     "title": "Ch6 Lecture 1",
     "section": "Spaces of matrices",
-    "text": "Spaces of matrices\n(ch3 lecture 1)\n\nBasis\nFundamental subspaces:\n\nColumn space\nNull space\nRow space\n\nRank\nConsistency"
+    "text": "Spaces of matrices\n\nBasis\nFundamental subspaces:\n\nColumn space\nNull space\nRow space\n\nRank\nConsistency\n\n(ch3 lecture 1) ### Column and Row Spaces\n\nThe column space of the \\(m \\times n\\) matrix \\(A\\) is the subspace \\(\\mathcal{C}(A)\\) of \\(\\mathbb{R}^{m}\\) spanned by the columns of \\(A\\).\n\n\nThe row space of the \\(m \\times n\\) matrix \\(A\\) is the subspace \\(\\mathcal{R}(A)\\) of \\(\\mathbb{R}^{n}\\) spanned by the transposes of the rows of \\(A\\)\n\n\nA basis for the column space of \\(A\\) is the set of pivot columns of \\(A\\). (Find these by row reducing \\(A\\) and choosing the columns with leading 1s)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#orthogonality",
     "href": "lectures/Ch6Lecture1.html#orthogonality",
     "title": "Ch6 Lecture 1",
     "section": "Orthogonality",
-    "text": "Orthogonality\n\nGeometrical intuitions (ch4 lecture 1)\n*Least Squares & Normal equations (ch4 lecture 2)\nFinding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)"
+    "text": "Orthogonality\n\nGeometrical intuitions\n*Least Squares & Normal equations\nFinding orthogonal bases (Gram-Schmidt)\n\n(ch4 lecture 1 and 2) ### Least Squares and Normal Equations\nTo find the least squares solution to \\(A \\mathbf{x}=\\mathbf{b}\\), we minimize the squared error \\(\\left\\|A \\mathbf{x}-\\mathbf{b}\\right\\|^{2}\\) by solving the Normal Equations for \\(\\mathbf{x}\\): \\[\n\\begin{aligned}\n\\mathbf{A}^{T} \\mathbf{A} \\mathbf{x} &=\\mathbf{A}^{T} \\mathbf{b}\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#factorizations",
@@ -4862,14 +4862,14 @@
     "href": "lectures/Ch6Lecture1.html#eigenvalues-and-eigenvectors",
     "title": "Ch6 Lecture 1",
     "section": "Eigenvalues and Eigenvectors",
-    "text": "Eigenvalues and Eigenvectors\n(ch5 lecture 1) - Definition - *How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius"
+    "text": "Eigenvalues and Eigenvectors\n\nDefinition\n*How to find them\nSimilarity and Diagonalization\nApplications to dynamical systems\nSpectral radius\n\n(ch5 lecture 1) ### Finding Eigenvalues and Eigenvectors\n\nIf \\(A\\) is a square \\(n \\times n\\) matrix, the equation \\(\\operatorname{det}(\\lambda I-A)=0\\) is called the characteristic equation of \\(A\\)\n\nThe eigenvalues of \\(A\\) are the roots of the characteristic equation.\nFor each scalar \\(\\lambda\\) in (1), use the null space algorithm to find a basis of the eigenspace \\(\\mathcal{N}(\\lambda I-A)\\)."
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#symmetric-matrices",
     "href": "lectures/Ch6Lecture1.html#symmetric-matrices",
     "title": "Ch6 Lecture 1",
     "section": "Symmetric matrices",
-    "text": "Symmetric matrices\n(ch5 lecture 2)\n\nProperties of symmetric matrices\nQuadratic forms"
+    "text": "Symmetric matrices\n\nProperties of symmetric matrices\nQuadratic forms\n\n(ch5 lecture 2) ## SVD\n\nDefinition\n*Psuedoinverse\nApplications to least squares\nImage compression\n\n(ch5 lecture 3, 4)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#svd",
@@ -4883,7 +4883,7 @@
     "href": "lectures/Ch6Lecture1.html#pca",
     "title": "Ch6 Lecture 1",
     "section": "PCA",
-    "text": "PCA\n(ch5 lecture 5)\n\nDefinition\nApplications to data analysis"
+    "text": "PCA\n\nDefinition\nApplications to data analysis\n\n(ch5 lecture 5)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#fourier-transform",

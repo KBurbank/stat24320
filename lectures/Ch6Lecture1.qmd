@@ -1,0 +1,294 @@
+---
+title: Ch6 Lecture 1
+lecture_day: 11
+readings: "6"
+publish: false
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+
+---
+
+# Review
+
+# Chapter 1: Linear Systems
+
+## Linear Systems
+
+ch1Lecture1b, ch1Lecture2
+- Applications of linear systems
+- Putting linear systems in matrix form
+- *Gauss-Jordan to get to row echelon form
+- *Solving linear systems with augmented matrices
+- Free vs bound variables
+- Ill-conditioned systems & rounding errors
+
+##
+
+Getting to row echelon form:
+$$
+\left[\begin{array}{rrr}
+1 & 1 & 5 \\
+0 & -3 & -9
+\end{array}\right] \overrightarrow{E_{2}(-1 / 3)}\left[\begin{array}{lll}
+1 & 1 & 5 \\
+0 & 1 & 3
+\end{array}\right] \overrightarrow{E_{12}(-1)}\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 3
+\end{array}\right] .
+$$
+
+## Augmented matrix to solve linear system:
+
+$$
+\begin{aligned}
+z & =2 \\
+x+y+z & =2 \\
+2 x+2 y+4 z & =8
+\end{aligned}
+$$
+
+. . .
+
+Augmented matrix:
+
+$$
+\left[\begin{array}{llll}
+0 & 0 & 1 & 2 \\
+1 & 1 & 1 & 2 \\
+2 & 2 & 4 & 8
+\end{array}\right] \stackrel{E_{12}}{\longrightarrow}\left[\begin{array}{llll}
+(1 & 1 & 1 & 2 \\
+0 & 0 & 1 & 2 \\
+2 & 2 & 4 & 8
+\end{array}\right] \xrightarrow[E_{31}(-2)]{\longrightarrow}\left[\begin{array}{rlll}
+1 & 1 & 1 & 2 \\
+0 & 0 & 2 & 4 \\
+0 & 0 & 1 & 2
+\end{array}\right]
+$$
+
+##
+
+
+
+::: notes
+Now we are stuck! The first row we are going to use to solve for x. Neither the second or third row tell us anything about y...
+:::
+
+
+##
+
+We keep on going...
+$$
+\begin{aligned}
+& {\left[\begin{array}{rrrr}
+(1) & 1 & 1 & 2 \\
+0 & 0 & 2 & 4 \\
+0 & 0 & 1 & 2
+\end{array}\right] \xrightarrow[E_{2}(1 / 2)]{\longrightarrow}\left[\begin{array}{rrrr}
+1 & 1 & 1 & 2 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 1 & 2
+\end{array}\right]} \\
+& \overrightarrow{E_{32}(-1)}\left[\begin{array}{rrrr}
+(1) & 1 & 1 & 2 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0
+\end{array}\right] \xrightarrow[E_{12}(-1)]{\longrightarrow}\left[\begin{array}{rrrr}
+(1) & 1 & 0 & 0 \\
+0 & 0 & 1 & 2 \\
+0 & 0 & 0 & 0
+\end{array}\right] .
+\end{aligned}
+$$
+
+There's still no information on $y$.
+
+$$
+\begin{aligned}
+& x=-y \\
+& z=2 \\
+& y \text { is free. }
+\end{aligned}
+$$
+
+# Chapter 2: Matrices
+
+## Matrix multiplication
+
+ch2Lecture1
+
+- Matrix-vector multiplication as a linear combination of columns
+- Matrix multiplication as an operation
+  - *Scaling, rotation, shear
+  
+## Scaling and rotation
+
+To rotate a vector by $\theta$:
+
+$$
+ =\left[\begin{array}{rr}
+\cos \theta &-\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right]\left[\begin{array}{l}
+r \cos \phi \\
+r \sin \phi
+\end{array}\right]=\left[\begin{array}{rr}
+\cos \theta&-\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right]\left[\begin{array}{l}
+x \\
+y
+\end{array}\right]
+$$
+
+. . .
+Scaling:
+
+$$ A = \left[\begin{array}{ll} z_1 & 0 \\ 0 & z_2 \end{array}\right] $$
+
+
+Shearing: adding a constant shear factor times one coordinate to another coordinate of the point.
+$$
+A = \left[\begin{array}{ll} 1 & s_2 \\ s_1 & 1 \end{array}\right]
+$$
+
+## Graphs and Directed Graphs
+
+ch2Lecture2
+
+- *Adjacency and incidence matrices
+- Degree of a vertex
+- *Paths and cycles
+- PageRank
+
+## Adjacency and incidence matrices
+
+**Adjacency matrix**: A square matrix whose $(i, j)$ th entry is the number of edges going from vertex $i$ to vertex $j$
+
+**Incidence matrix**: A matrix whose rows correspond to vertices and columns correspond to edges. The $(i, j)$ th entry is 1 if vertex $i$ is the tail of edge $j$, -1 if it is the head, and 0 otherwise.
+
+### Paths and cycles
+
+- Number of paths of length $n$ from vertex $i$ to vertex $j$ is the $(i, j)$ th entry of the matrix $A^{n}$.
+
+- Vertex power is the sum of the entries in the $ith$ row of $A+A^{2}$.
+
+- In an the incidence matrix of a digraph which is a cycle, every row must sum to zero.
+
+
+## Discrete Dynamical Systems
+
+Ch2Lecture2
+
+- Transition matrices
+- Markov chains
+
+
+## Difference Equations
+
+Ch2Lecture3
+
+- Finite difference equations
+- 
+Reaction-diffusion:
+$$
+a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
+$$
+
+Heat in a rod:
+$$
+\begin{equation*}
+-y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right) 
+\end{equation*}
+$$
+
+
+
+## MCMC
+- MCMC (Ch2 lecture 4)
+- Restricted Boltzmann Machines (Ch2 lecture 4)
+
+
+## Inverses and determinants
+
+(Ch2 lecture 5)
+- Inverse of a matrix
+- Determinants
+- Singularity
+- LU factorization (Ch2 lecture 4)
+- 
+# Chapter 3: Vector Spaces
+
+## Spaces of matrices
+(ch3 lecture 1)
+- Basis
+- Column space
+- Null space
+- Row space
+- Rank
+- Consistency
+
+
+# Chapter 4: Geometrical Aspects of Standard Spaces
+
+## Orthogonality
+
+- Geometrical intuitions (ch4 lecture 1)
+- Least Squares & Normal equations (ch4 lecture 2)
+- Finding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)
+
+
+## Factorizations
+- QR Factorization (Ch4 lecture 2)
+- Singular Value Decomposition (Ch5 lecture 2)
+
+
+## Haar Wavelets
+(ch4 lecture 2)
+
+# Chapter 5: Eigenvalues and Eigenvectors
+
+## Eigenvalues and Eigenvectors
+(ch5 lecture 1)
+- Definition
+- How to find them
+- Similarity and Diagonalization
+- Applications to dynamical systems
+- Spectral radius
+
+## Symmetric matrices
+
+(ch5 lecture 2)
+- Properties of symmetric matrices
+- Quadratic forms
+
+## SVD
+(ch5 lecture 3, 4)
+
+- Definition
+- Psuedoinverse
+- Applications to least squares
+- Image compression
+
+## PCA
+(ch5 lecture 5)
+
+- Definition
+- Applications to data analysis
+
+# Chapter 6: Fourier Transform
+
+## Fourier Transform
+
+(ChNone, Ch6 lecture 1)
+

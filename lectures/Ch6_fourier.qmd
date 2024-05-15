@@ -19,6 +19,7 @@ format:
 ## Discrete-time filters in continuous frequency space
 
 Back to your textbook, in Chapter 6:
+
 ::: notes
 Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their **continuous** frequency representations.
 

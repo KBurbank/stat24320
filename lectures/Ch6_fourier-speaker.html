@@ -343,27 +343,34 @@
 </section>
 <section id="discrete-time-filters-in-continuous-frequency-space" class="title-slide slide level2 center">
 <h2><em>Discrete-time filters in continuous frequency space</em></h2>
-<p>Back to your textbook, in Chapter 6: ::: notes Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their <strong>continuous</strong> frequency representations.</p>
-<div class="fragment">
+<p>Back to your textbook, in Chapter 6:</p>
+<aside class="notes">
+<p>Here we will work with discrete signals (using time as the index) and discrete filters, but be interested in their <strong>continuous</strong> frequency representations.</p>
+<p>. . .</p>
 <p>Imagine we have a signal <span class="math inline">\(x(t)\)</span> which is defined for <span class="math inline">\(t\)</span> is the interval <span class="math inline">\([0, T]\)</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>We will imagine that <span class="math inline">\(x(t)\)</span> which is defined over all <span class="math inline">\(t\)</span> but periodic of period <span class="math inline">\(T\)</span>. So the function has frequency <span class="math inline">\(f=1 / T\)</span> and angular frequency <span class="math inline">\(\omega=2 \pi / T\)</span></p>
-</div>
-<div class="fragment">
+<p>. . .</p>
+<p>. . .</p>
 <p>A <strong>discrete filter</strong> is a sequence of complex numbers <span class="math inline">\(\mathbf{h}=\left\{h_{n}\right\}_{n=-\infty}^{\infty}\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>This will be a <strong>finite impulse response</strong> (FIR) filter if <span class="math inline">\(h_n\)</span> is 0 for <span class="math inline">\(n&lt;0\)</span> or <span class="math inline">\(n&gt;L\)</span> for some L.</p>
 <p>In this case we say <span class="math inline">\(\mathbf{h}\)</span> has length <span class="math inline">\(L\)</span> and express it in the form <span class="math inline">\(\mathbf{h}=\left\{h_{n}\right\}_{n=0}^{L}\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Then we can take its <strong>discrete time Fourier transform</strong> (DTFT) as the Fourier series <span class="math inline">\(X(\mathbf{h})(\zeta)=\sum_{n=-\infty}^{\infty} h_{n} e^{i \zeta}, \zeta \in \mathbb{R}\)</span>.</p>
-</div>
-<div class="fragment">
+<p>. . .</p>
 <p>Suppose we have a discrete signal <span class="math inline">\(x(t)\)</span> in sampling periods <span class="math inline">\(T_{s}\)</span>, i.e., at <span class="math inline">\(t_{n}=n T_{s}\)</span>. Define <span class="math inline">\(x_{n}=x\left(t_{n}\right)\)</span></p>
-<p>:::</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 
 <section id="section" class="title-slide slide level2 center">

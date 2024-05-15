@@ -20,9 +20,9 @@ format:
 
 # Chapter 1: Linear Systems
 
-## Linear Systems
+## Linear Systems (ch1Lecture1b, ch1Lecture2)
 
-ch1Lecture1b, ch1Lecture2
+
 
 - Applications of linear systems
 - Putting linear systems in matrix form

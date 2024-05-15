@@ -4954,5 +4954,12 @@
     "title": "Ch6 Lecture 1",
     "section": "Fourier Transform (ChNone, Ch6 lecture 1)",
     "text": "Fourier Transform (ChNone, Ch6 lecture 1)"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#linear-systems-ch1lecture1b-ch1lecture2",
+    "href": "lectures/Ch6Lecture1.html#linear-systems-ch1lecture1b-ch1lecture2",
+    "title": "Ch6 Lecture 1",
+    "section": "Linear Systems (ch1Lecture1b, ch1Lecture2)",
+    "text": "Linear Systems (ch1Lecture1b, ch1Lecture2)\n\nApplications of linear systems\nPutting linear systems in matrix form\n*Gauss-Jordan to get to row echelon form\n*Solving linear systems with augmented matrices\nFree vs bound variables\nIll-conditioned systems & rounding errors"
   }
 ]

@@ -4806,49 +4806,49 @@
     "href": "lectures/Ch6Lecture1.html#discrete-dynamical-systems",
     "title": "Ch6 Lecture 1",
     "section": "Discrete Dynamical Systems",
-    "text": "Discrete Dynamical Systems\nCh2Lecture2\n\nTransition matrices\nMarkov chains"
+    "text": "Discrete Dynamical Systems\nCh2Lecture2\n\nTransition matrices\n*Markov chains"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#difference-equations",
     "href": "lectures/Ch6Lecture1.html#difference-equations",
     "title": "Ch6 Lecture 1",
     "section": "Difference Equations",
-    "text": "Difference Equations\nCh2Lecture3\n\nFinite difference equations\nReaction-diffusion: \\[\na_{x,t+1} = a_{x,t} + dt\\left(  \\frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \\right)\n\\]\n\nHeat in a rod: \\[\n\\begin{equation*}\n-y_{i-1}+2 y_{i}-y_{i+1}=\\frac{h^{2}}{K} f\\left(x_{i}\\right)\n\\end{equation*}\n\\]"
+    "text": "Difference Equations\nCh2Lecture3\n\n*Difference equations in matrix form\n*Examples"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#mcmc",
     "href": "lectures/Ch6Lecture1.html#mcmc",
     "title": "Ch6 Lecture 1",
     "section": "MCMC",
-    "text": "MCMC\n\nMCMC (Ch2 lecture 4)\nRestricted Boltzmann Machines (Ch2 lecture 4)"
+    "text": "MCMC\n\nMCMC (Ch2 lecture 4)\n\nSimulate a distribution using a Markov chain\nSample from the simulated distribution\n\nRestricted Boltzmann Machines (Ch2 lecture 4)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#inverses-and-determinants",
     "href": "lectures/Ch6Lecture1.html#inverses-and-determinants",
     "title": "Ch6 Lecture 1",
     "section": "Inverses and determinants",
-    "text": "Inverses and determinants\n(Ch2 lecture 5) - Inverse of a matrix - Determinants - Singularity - LU factorization (Ch2 lecture 4) - # Chapter 3: Vector Spaces"
+    "text": "Inverses and determinants\n(Ch2 lecture 5) - Inverse of a matrix - *Determinants - Singularity - LU factorization (Ch2 lecture 4)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#spaces-of-matrices",
     "href": "lectures/Ch6Lecture1.html#spaces-of-matrices",
     "title": "Ch6 Lecture 1",
     "section": "Spaces of matrices",
-    "text": "Spaces of matrices\n(ch3 lecture 1) - Basis - Column space - Null space - Row space - Rank - Consistency"
+    "text": "Spaces of matrices\n(ch3 lecture 1) - Basis - Fundamental subspaces: - Column space - Null space - Row space - Rank - Consistency"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#orthogonality",
     "href": "lectures/Ch6Lecture1.html#orthogonality",
     "title": "Ch6 Lecture 1",
     "section": "Orthogonality",
-    "text": "Orthogonality\n\nGeometrical intuitions (ch4 lecture 1)\nLeast Squares & Normal equations (ch4 lecture 2)\nFinding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)"
+    "text": "Orthogonality\n\nGeometrical intuitions (ch4 lecture 1)\n*Least Squares & Normal equations (ch4 lecture 2)\nFinding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#factorizations",
     "href": "lectures/Ch6Lecture1.html#factorizations",
     "title": "Ch6 Lecture 1",
     "section": "Factorizations",
-    "text": "Factorizations\n\nQR Factorization (Ch4 lecture 2)\nSingular Value Decomposition (Ch5 lecture 2)"
+    "text": "Factorizations\n\n*QR Factorization (Ch4 lecture 2)\n*Singular Value Decomposition (Ch5 lecture 2)"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#haar-wavelets",
@@ -4862,7 +4862,7 @@
     "href": "lectures/Ch6Lecture1.html#eigenvalues-and-eigenvectors",
     "title": "Ch6 Lecture 1",
     "section": "Eigenvalues and Eigenvectors",
-    "text": "Eigenvalues and Eigenvectors\n(ch5 lecture 1) - Definition - How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius"
+    "text": "Eigenvalues and Eigenvectors\n(ch5 lecture 1) - Definition - *How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#symmetric-matrices",
@@ -4876,7 +4876,7 @@
     "href": "lectures/Ch6Lecture1.html#svd",
     "title": "Ch6 Lecture 1",
     "section": "SVD",
-    "text": "SVD\n(ch5 lecture 3, 4)\n\nDefinition\nPsuedoinverse\nApplications to least squares\nImage compression"
+    "text": "SVD\n(ch5 lecture 3, 4)\n\nDefinition\n*Psuedoinverse\nApplications to least squares\nImage compression"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#pca",

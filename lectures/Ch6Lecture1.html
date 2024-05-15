@@ -347,6 +347,7 @@
 <li class="fragment"><a href="#/review" id="/toc-review"><em>Review</em></a></li>
 <li class="fragment"><a href="#/chapter-1-linear-systems" id="/toc-chapter-1-linear-systems"><em>Chapter 1: Linear Systems</em></a></li>
 <li class="fragment"><a href="#/chapter-2-matrices" id="/toc-chapter-2-matrices"><em>Chapter 2: Matrices</em></a></li>
+<li class="fragment"><a href="#/chapter-3-vector-spaces" id="/toc-chapter-3-vector-spaces"><em>Chapter 3: Vector Spaces</em></a></li>
 <li class="fragment"><a href="#/chapter-4-geometrical-aspects-of-standard-spaces" id="/toc-chapter-4-geometrical-aspects-of-standard-spaces"><em>Chapter 4: Geometrical Aspects of Standard Spaces</em></a></li>
 <li class="fragment"><a href="#/chapter-5-eigenvalues-and-eigenvectors" id="/toc-chapter-5-eigenvalues-and-eigenvectors"><em>Chapter 5: Eigenvalues and Eigenvectors</em></a></li>
 <li class="fragment"><a href="#/chapter-6-fourier-transform" id="/toc-chapter-6-fourier-transform"><em>Chapter 6: Fourier Transform</em></a></li>
@@ -532,19 +533,40 @@ A = \left[\begin{array}{ll} 1 &amp; s_2 \\ s_1 &amp; 1 \end{array}\right]
 <p>Ch2Lecture2</p>
 <ul>
 <li class="fragment">Transition matrices</li>
-<li class="fragment">Markov chains</li>
+<li class="fragment">*Markov chains</li>
 </ul>
+</section>
+<section id="markov-chains" class="slide level3 center">
+<h3><em>Markov Chains</em></h3>
+<p>A <strong>distribution vector</strong> is a vector whose entries are nonnegative and sum to 1.</p>
+<p>A <strong>stochastic matrix</strong> is a square matrix whose columns are distribution vectors.</p>
+<p>A <strong>Markov chain</strong> is a discrete dynamical system whose initial state <span class="math inline">\(\mathbf{x}^{(0)}\)</span> is a distribution vector and whose transition matrix <span class="math inline">\(A\)</span> is stochastic, i.e., each column of <span class="math inline">\(A\)</span> is a distribution vector.</p>
 </section>
 
 <section id="difference-equations" class="title-slide slide level2 center">
 <h2><em>Difference Equations</em></h2>
 <p>Ch2Lecture3</p>
 <ul>
-<li class="fragment">Finite difference equations</li>
-<li class="fragment">Reaction-diffusion: <span class="math display">\[
-a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
-\]</span></li>
+<li class="fragment">*Difference equations in matrix form</li>
+<li class="fragment">*Examples</li>
 </ul>
+</section>
+<section id="difference-equation-in-matrix-form" class="slide level3 center">
+<h3><em>Difference Equation in Matrix Form</em></h3>
+<p>From HW2: put ths difference equation in matrix form:</p>
+<p><span class="math display">\[
+y_{k+2}-y_{k+1}-y_{k}=0
+\]</span></p>
+<div class="fragment">
+<p>Steps: 1. Make two equations. Solve for <span class="math inline">\(y_{k+2}\)</span>: <span class="math inline">\(y_{k+2}=y_{k+1}+y_{k}\)</span>. Also of course <span class="math inline">\(y_{k+1}=y_{k+1}\)</span>. 2. Define the vector <span class="math inline">\(\mathbf{y}^{(k)}=\left[\begin{array}{l} y_{k} \\ y_{k+1} \end{array}\right]\)</span> 3. Put the two equations in matrix form: . . .</p>
+<p><span class="math inline">\(\left[\begin{array}{l}y_{k+1} \\ y_{k+2}\end{array}\right]=\left[\begin{array}{ll}0 &amp; 1 \\ 1 &amp; 1\end{array}\right]\left[\begin{array}{c}y_{k} \\ y_{k+1}\end{array}\right]\)</span></p>
+</div>
+</section>
+<section id="examples-of-difference-equations" class="slide level3 center">
+<h3><em>Examples of difference equations</em></h3>
+<p>Reaction-diffusion: <span class="math display">\[
+a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
+\]</span></p>
 <p>Heat in a rod: <span class="math display">\[
 \begin{equation*}
 -y_{i-1}+2 y_{i}-y_{i+1}=\frac{h^{2}}{K} f\left(x_{i}\right)
@@ -555,19 +577,127 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <section id="mcmc" class="title-slide slide level2 center">
 <h2><em>MCMC</em></h2>
 <ul>
-<li class="fragment">MCMC (Ch2 lecture 4)</li>
+<li class="fragment">MCMC (Ch2 lecture 4)
+<ul>
+<li class="fragment">Simulate a distribution using a Markov chain</li>
+<li class="fragment">Sample from the simulated distribution</li>
+</ul></li>
 <li class="fragment">Restricted Boltzmann Machines (Ch2 lecture 4)</li>
 </ul>
 </section>
 
 <section id="inverses-and-determinants" class="title-slide slide level2 center">
 <h2><em>Inverses and determinants</em></h2>
-<p>(Ch2 lecture 5) - Inverse of a matrix - Determinants - Singularity - LU factorization (Ch2 lecture 4) - # Chapter 3: Vector Spaces</p>
+<p>(Ch2 lecture 5) - Inverse of a matrix - *Determinants - Singularity - LU factorization (Ch2 lecture 4)</p>
 </section>
+<section id="determinants" class="slide level3 center">
+<h3><em>Determinants</em></h3>
+<div class="definition">
+<p>The <strong>determinant</strong> of a square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A=\left[a_{i j}\right]\)</span>, <span class="math inline">\(\operatorname{det} A\)</span>, is defined recursively:</p>
+<p>If <span class="math inline">\(n=1\)</span> then <span class="math inline">\(\operatorname{det} A=a_{11}\)</span>;</p>
+<div class="fragment">
+<p>otherwise,</p>
+<ul>
+<li class="fragment">suppose we have determinents for all square matrices of size less than <span class="math inline">\(n\)</span></li>
+<li class="fragment">Define <span class="math inline">\(M_{i j}(A)\)</span> as the determinant of the <span class="math inline">\((n-1) \times(n-1)\)</span> matrix obtained from <span class="math inline">\(A\)</span> by deleting the <span class="math inline">\(i\)</span> th row and <span class="math inline">\(j\)</span> th column of <span class="math inline">\(A\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p>then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{det} A &amp; =\sum_{k=1}^{n} a_{k 1}(-1)^{k+1} M_{k 1}(A) \\
+&amp; =a_{11} M_{11}(A)-a_{21} M_{21}(A)+\cdots+(-1)^{n+1} a_{n 1} M_{n 1}(A)
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="laws-of-determinants" class="slide level3 center">
+<h3><em>Laws of Determinants</em></h3>
+<ul>
+<li class="fragment">D1: If <span class="math inline">\(A\)</span> is an upper triangular matrix, then the determinant of <span class="math inline">\(A\)</span> is the product of all the diagonal elements of <span class="math inline">\(A\)</span>.</li>
+<li class="fragment">D2: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by multiplying one row of <span class="math inline">\(A\)</span> by the scalar <span class="math inline">\(c\)</span>, then <span class="math inline">\(\operatorname{det} B=c \cdot \operatorname{det} A\)</span>.</li>
+<li class="fragment">D3: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by interchanging two rows of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\operatorname{det} B=\)</span> <span class="math inline">\(-\operatorname{det} A\)</span>.</li>
+<li class="fragment">D4: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by adding a multiple of one row of <span class="math inline">\(A\)</span> to another row of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\operatorname{det} B=\operatorname{det} A\)</span>.</li>
+<li class="fragment">D5: The matrix <span class="math inline">\(A\)</span> is invertible if and only if <span class="math inline">\(\operatorname{det} A \neq 0\)</span>.</li>
+<li class="fragment">D6: Given matrices <span class="math inline">\(A, B\)</span> of the same size, <span class="math inline">\(\operatorname{det} A B=\operatorname{det} A \operatorname{det} B \text {. }\)</span></li>
+<li class="fragment">D7: For all square matrices <span class="math inline">\(A\)</span>, <span class="math inline">\(\operatorname{det} A^{T}=\operatorname{det} A\)</span></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="chapter-3-vector-spaces" class="title-slide slide level1 center">
+<h1><em>Chapter 3: Vector Spaces</em></h1>
 
+</section>
 <section id="spaces-of-matrices" class="title-slide slide level2 center">
 <h2><em>Spaces of matrices</em></h2>
-<p>(ch3 lecture 1) - Basis - Column space - Null space - Row space - Rank - Consistency</p>
+<p>(ch3 lecture 1) - Basis - Fundamental subspaces: - Column space - Null space - Row space - Rank - Consistency</p>
+</section>
+<section id="column-and-row-spaces" class="slide level3 center">
+<h3><em>Column and Row Spaces</em></h3>
+<div class="definition">
+<p>The <strong>column space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{C}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span> spanned by the columns of <span class="math inline">\(A\)</span>.</p>
+</div>
+<div class="definition">
+<p>The <strong>row space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{R}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span> spanned by the transposes of the rows of <span class="math inline">\(A\)</span></p>
+</div>
+<div class="fragment">
+<p>A basis for the column space of <span class="math inline">\(A\)</span> is the set of pivot columns of <span class="math inline">\(A\)</span>. (Find these by row reducing <span class="math inline">\(A\)</span> and choosing the columns with leading 1s)</p>
+</div>
+</section>
+<section id="null-space" class="slide level3 center">
+<h3><em>Null Space</em></h3>
+<div class="definition">
+<p>The <strong>null space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subset <span class="math inline">\(\mathcal{N}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span></p>
+<p><span class="math display">\[
+\mathcal{N}(A)=\left\{\mathbf{x} \in \mathbb{R}^{n} \mid A \mathbf{x}=\mathbf{0}\right\}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\mathcal{N}(A)\)</span> is just the solution set to <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span></p>
+</div>
+<div class="fragment">
+<p>For example, if <span class="math inline">\(A\)</span> is invertible, <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span> has only the trivial solution <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span></p>
+</div>
+<div class="fragment">
+<p>so <span class="math inline">\(\mathcal{N}(A)\)</span> is just <span class="math inline">\(\left\{\mathbf{0}\right\}\)</span>.</p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(A\)</span> is invertible exactly if <span class="math inline">\(\mathcal{N}(A)=\{\mathbf{0}\}\)</span></p>
+</div>
+</section>
+<section id="finding-a-basis-for-the-null-space" class="slide level3 center">
+<h3><em>Finding a basis for the null space</em></h3>
+<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>.</p>
+<ol type="1">
+<li class="fragment"><p>Compute the reduced row echelon form <span class="math inline">\(R\)</span> of <span class="math inline">\(A\)</span>.</p></li>
+<li class="fragment"><p>Use <span class="math inline">\(R\)</span> to find the general solution to the homogeneous system <span class="math inline">\(A \mathbf{x}=0\)</span>.</p></li>
+</ol>
+<div class="fragment">
+<ol start="3" type="1">
+<li class="fragment">Write the general solution <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\)</span> to the homogeneous system in the form</li>
+</ol>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+\]</span></p>
+<p>where <span class="math inline">\(x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}\)</span> are the free variables.</p>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li class="fragment">List the vectors <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}\)</span>. These form a basis of <span class="math inline">\(\mathcal{N}(A)\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="using-the-null-space" class="slide level3 center">
+<h3><em>Using the Null Space</em></h3>
+<ul>
+<li class="fragment">The general solution to <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> is <span class="math inline">\(\mathbf{x}=\mathbf{x}_{p}+\mathbf{x}_{h}\)</span> where <span class="math inline">\(\mathbf{x}_{p}\)</span> is a particular solution and <span class="math inline">\(\mathbf{x}_{h}\)</span> is in the null space of <span class="math inline">\(A\)</span>.</li>
+<li class="fragment">The null space of <span class="math inline">\(A\)</span> is orthogonal to the row space of <span class="math inline">\(A\)</span> (or the column space of <span class="math inline">\(A^{T}\)</span>. The dot product of any vector in the null space of <span class="math inline">\(A\)</span> with any vector in the row space of <span class="math inline">\(A\)</span> is 0.)</li>
+</ul>
 </section>
 </section>
 <section>
@@ -579,17 +709,44 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <h2><em>Orthogonality</em></h2>
 <ul>
 <li class="fragment">Geometrical intuitions (ch4 lecture 1)</li>
-<li class="fragment">Least Squares &amp; Normal equations (ch4 lecture 2)</li>
+<li class="fragment">*Least Squares &amp; Normal equations (ch4 lecture 2)</li>
 <li class="fragment">Finding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)</li>
 </ul>
+</section>
+<section id="least-squares-and-normal-equations" class="slide level3 center">
+<h3><em>Least Squares and Normal Equations</em></h3>
+<p>To find the least squares solution to <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>, we minimize the squared error <span class="math inline">\(\left\|A \mathbf{x}-\mathbf{b}\right\|^{2}\)</span> by solving the Normal Equations for <span class="math inline">\(\mathbf{x}\)</span>: <span class="math display">\[
+\begin{aligned}
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &amp;=\mathbf{A}^{T} \mathbf{b}
+\end{aligned}
+\]</span></p>
 </section>
 
 <section id="factorizations" class="title-slide slide level2 center">
 <h2><em>Factorizations</em></h2>
 <ul>
-<li class="fragment">QR Factorization (Ch4 lecture 2)</li>
-<li class="fragment">Singular Value Decomposition (Ch5 lecture 2)</li>
+<li class="fragment">*QR Factorization (Ch4 lecture 2)</li>
+<li class="fragment">*Singular Value Decomposition (Ch5 lecture 2)</li>
 </ul>
+</section>
+<section id="qr-factorization" class="slide level3 center">
+<h3><em>QR Factorization</em></h3>
+<div class="theorem">
+<p>If <span class="math inline">\(A\)</span> is an <span class="math inline">\(m \times n\)</span> full-column-rank matrix, then <span class="math inline">\(A=Q R\)</span>, where the columns of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(Q\)</span> are orthonormal vectors and the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(R\)</span> is upper triangular with nonzero diagonal entries.</p>
+</div>
+<ol type="1">
+<li class="fragment">Start with the columns of A, <span class="math inline">\(A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]\)</span>. (For now assume they are linearly independent.)</li>
+<li class="fragment">Do Gram-Schmidt on the columns of <span class="math inline">\(A\)</span> to get orthonormal vectors <span class="math inline">\(\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\)</span>.</li>
+</ol>
+<div class="fragment">
+<p><span class="math display">\[
+A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+1 &amp; \frac{\mathbf{q}_{1} \cdot \mathbf{w}_{2}}{\mathbf{q}_{1} \cdot \mathbf{q}_{1}} &amp; \frac{\mathbf{q}_{1} \cdot \mathbf{w}_{3}}{\mathbf{q}_{1} \cdot \mathbf{q}_{1}} \\
+0 &amp; 1 &amp; \frac{\mathbf{q}_{2} \cdot \mathbf{w}_{3}}{\mathbf{q}_{2} \cdot \mathbf{q}_{2}} \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\]</span></p>
+</div>
 </section>
 
 <section id="haar-wavelets" class="title-slide slide level2 center">
@@ -604,7 +761,15 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 </section>
 <section id="eigenvalues-and-eigenvectors" class="title-slide slide level2 center">
 <h2><em>Eigenvalues and Eigenvectors</em></h2>
-<p>(ch5 lecture 1) - Definition - How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius</p>
+<p>(ch5 lecture 1) - Definition - *How to find them - Similarity and Diagonalization - Applications to dynamical systems - Spectral radius</p>
+</section>
+<section id="finding-eigenvalues-and-eigenvectors" class="slide level3 center">
+<h3><em>Finding Eigenvalues and Eigenvectors</em></h3>
+<div class="definition">
+<p>If <span class="math inline">\(A\)</span> is a square <span class="math inline">\(n \times n\)</span> matrix, the equation <span class="math inline">\(\operatorname{det}(\lambda I-A)=0\)</span> is called the <strong>characteristic equation</strong> of <span class="math inline">\(A\)</span></p>
+</div>
+<p>The eigenvalues of <span class="math inline">\(A\)</span> are the roots of the characteristic equation.</p>
+<p>For each scalar <span class="math inline">\(\lambda\)</span> in (1), use the null space algorithm to find a basis of the eigenspace <span class="math inline">\(\mathcal{N}(\lambda I-A)\)</span>.</p>
 </section>
 
 <section id="symmetric-matrices" class="title-slide slide level2 center">
@@ -617,10 +782,24 @@ a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_
 <p>(ch5 lecture 3, 4)</p>
 <ul>
 <li class="fragment">Definition</li>
-<li class="fragment">Psuedoinverse</li>
+<li class="fragment">*Psuedoinverse</li>
 <li class="fragment">Applications to least squares</li>
 <li class="fragment">Image compression</li>
 </ul>
+</section>
+<section id="pseudoinverse" class="slide level3 center">
+<h3><em>Pseudoinverse</em></h3>
+<p>The <strong>pseudoinverse</strong> of <span class="math inline">\(A\)</span> is <span class="math inline">\(A^{+}=V S^+ U^{T}\)</span></p>
+<p><span class="math inline">\(S^{+}\)</span> is the matrix with the reciprocals of the non-zero singular values on the diagonal, and zeros elsewhere.</p>
+<div class="fragment">
+<p>Can find least squares solutions:</p>
+<p><span class="math display">\[
+\begin{aligned}
+A x &amp; =b \\
+x &amp; \approx A^{+} b
+\end{aligned}
+\]</span></p>
+</div>
 </section>
 
 <section id="pca" class="title-slide slide level2 center">

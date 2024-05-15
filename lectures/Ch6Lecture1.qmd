@@ -191,15 +191,43 @@ ch2Lecture2
 Ch2Lecture2
 
 - Transition matrices
-- Markov chains
+- *Markov chains
 
+### Markov Chains
+
+A **distribution vector** is a vector whose entries are nonnegative and sum to 1.
+
+A **stochastic matrix** is a square matrix whose columns are distribution vectors.
+
+A **Markov chain** is a discrete dynamical system whose initial state $\mathbf{x}^{(0)}$ is a distribution vector and whose transition matrix $A$ is stochastic, i.e., each column of $A$ is a distribution vector.
 
 ## Difference Equations
 
 Ch2Lecture3
 
-- Finite difference equations
-- 
+- *Difference equations in matrix form
+- *Examples
+
+### Difference Equation in Matrix Form
+
+From HW2: put ths difference equation in matrix form:
+
+$$
+y_{k+2}-y_{k+1}-y_{k}=0
+$$
+
+. . .
+
+Steps:
+1. Make two equations. Solve for $y_{k+2}$: $y_{k+2}=y_{k+1}+y_{k}$. Also of course $y_{k+1}=y_{k+1}$.
+2. Define the vector $\mathbf{y}^{(k)}=\left[\begin{array}{l} y_{k} \\ y_{k+1} \end{array}\right]$
+3. Put the two equations in matrix form:
+. . .
+
+ $\left[\begin{array}{l}y_{k+1} \\ y_{k+2}\end{array}\right]=\left[\begin{array}{ll}0 & 1 \\ 1 & 1\end{array}\right]\left[\begin{array}{c}y_{k} \\ y_{k+1}\end{array}\right]$ 
+
+
+### Examples of difference equations
 Reaction-diffusion:
 $$
 a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
@@ -216,6 +244,8 @@ $$
 
 ## MCMC
 - MCMC (Ch2 lecture 4)
+  - Simulate a distribution using a Markov chain
+  - Sample from the simulated distribution
 - Restricted Boltzmann Machines (Ch2 lecture 4)
 
 
@@ -223,35 +253,174 @@ $$
 
 (Ch2 lecture 5)
 - Inverse of a matrix
-- Determinants
+- *Determinants
 - Singularity
 - LU factorization (Ch2 lecture 4)
-- 
+
+### Determinants
+
+
+::: definition
+
+The **determinant** of a square $n \times n$ matrix $A=\left[a_{i j}\right]$, $\operatorname{det} A$, is 
+defined recursively:
+
+If $n=1$ then $\operatorname{det} A=a_{11}$;
+
+:::: {.fragment}
+
+otherwise, 
+
+- suppose we have determinents for all square matrices of size less than $n$
+- Define $M_{i j}(A)$ as the determinant of the $(n-1) \times(n-1)$ matrix obtained from $A$ by deleting the $i$ th row and $j$ th column of $A$
+
+::::
+
+:::: {.fragment}
+
+then
+
+$$
+\begin{aligned}
+\operatorname{det} A & =\sum_{k=1}^{n} a_{k 1}(-1)^{k+1} M_{k 1}(A) \\
+& =a_{11} M_{11}(A)-a_{21} M_{21}(A)+\cdots+(-1)^{n+1} a_{n 1} M_{n 1}(A)
+\end{aligned}
+$$
+::::
+
+:::
+
+### Laws of Determinants
+- D1: If $A$ is an upper triangular matrix, then the determinant of $A$ is the product of all the diagonal elements of $A$.
+- D2: If $B$ is obtained from $A$ by multiplying one row of $A$ by the scalar $c$, then $\operatorname{det} B=c \cdot \operatorname{det} A$.
+-  D3: If $B$ is obtained from $A$ by interchanging two rows of $A$, then $\operatorname{det} B=$ $-\operatorname{det} A$.
+-  D4: If $B$ is obtained from $A$ by adding a multiple of one row of $A$ to another row of $A$, then $\operatorname{det} B=\operatorname{det} A$.
+- D5: The matrix $A$ is invertible if and only if $\operatorname{det} A \neq 0$.
+- D6: Given matrices $A, B$ of the same size, $\operatorname{det} A B=\operatorname{det} A \operatorname{det} B \text {. }$
+- D7: For all square matrices $A$, $\operatorname{det} A^{T}=\operatorname{det} A$
+
+
 # Chapter 3: Vector Spaces
 
 ## Spaces of matrices
 (ch3 lecture 1)
 - Basis
-- Column space
-- Null space
-- Row space
+- Fundamental subspaces:
+  - Column space
+  - Null space
+  - Row space
 - Rank
 - Consistency
 
+### Column and Row Spaces
+
+::: definition
+The **column space** of the $m \times n$ matrix $A$ is the subspace $\mathcal{C}(A)$ of $\mathbb{R}^{m}$ spanned by the columns of $A$.
+:::
+
+::: definition
+The **row space** of the $m \times n$ matrix $A$ is the subspace $\mathcal{R}(A)$ of $\mathbb{R}^{n}$ spanned by the transposes of the rows of $A$
+:::
+
+. . .
+
+A basis for the column space of $A$ is the set of pivot columns of $A$. (Find these by row reducing $A$ and choosing the columns with leading 1s)
+
+### Null Space
+
+::: definition
+The **null space** of the $m \times n$ matrix $A$ is the subset $\mathcal{N}(A)$ of $\mathbb{R}^{n}$
+
+$$
+\mathcal{N}(A)=\left\{\mathbf{x} \in \mathbb{R}^{n} \mid A \mathbf{x}=\mathbf{0}\right\}
+$$
+
+:::
+
+. . .
+
+$\mathcal{N}(A)$ is just the solution set to  $A \mathbf{x}=\mathbf{0}$
+
+. . .
+
+For example, if $A$ is invertible, $A \mathbf{x}=\mathbf{0}$ has only the trivial solution $\mathbf{x}=\mathbf{0}$
+
+. . .
+
+so $\mathcal{N}(A)$ is just $\left\{\mathbf{0}\right\}$.
+
+. . .
+
+$A$ is invertible exactly if $\mathcal{N}(A)=\{\mathbf{0}\}$
+
+### Finding a basis for the null space
+
+Given an $m \times n$ matrix $A$.
+
+1. Compute the reduced row echelon form $R$ of $A$.
+
+2. Use $R$ to find the general solution to the homogeneous system $A \mathbf{x}=0$.
+
+. . .
+
+3. Write the general solution $\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)$ to the homogeneous system in the form
+
+. . .
+
+$$
+\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+$$
+
+where $x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}$ are the free variables.
+
+. . .
+
+4. List the vectors $\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}$. These form a basis of $\mathcal{N}(A)$.
+
+### Using the Null Space
+
+- The general solution to $A \mathbf{x}=\mathbf{b}$ is $\mathbf{x}=\mathbf{x}_{p}+\mathbf{x}_{h}$ where $\mathbf{x}_{p}$ is a particular solution and $\mathbf{x}_{h}$ is in the null space of $A$.
+- The null space of $A$ is orthogonal to the row space of $A$ (or the column space of $A^{T}$. The dot product of any vector in the null space of $A$ with any vector in the row space of $A$ is 0.)
 
 # Chapter 4: Geometrical Aspects of Standard Spaces
 
 ## Orthogonality
 
 - Geometrical intuitions (ch4 lecture 1)
-- Least Squares & Normal equations (ch4 lecture 2)
+- *Least Squares & Normal equations (ch4 lecture 2)
 - Finding orthogonal bases (Gram-Schmidt) (ch4 lecture 2)
 
+### Least Squares and Normal Equations
+
+To find the least squares solution to $A \mathbf{x}=\mathbf{b}$, we minimize the squared error $\left\|A \mathbf{x}-\mathbf{b}\right\|^{2}$ by solving the Normal Equations for $\mathbf{x}$:
+$$
+\begin{aligned}
+\mathbf{A}^{T} \mathbf{A} \mathbf{x} &=\mathbf{A}^{T} \mathbf{b} 
+\end{aligned}
+$$
 
 ## Factorizations
-- QR Factorization (Ch4 lecture 2)
-- Singular Value Decomposition (Ch5 lecture 2)
+- *QR Factorization (Ch4 lecture 2)
+- *Singular Value Decomposition (Ch5 lecture 2)
 
+### QR Factorization
+
+::: theorem
+If $A$ is an $m \times n$ full-column-rank matrix, then $A=Q R$, where the columns of the $m \times n$ matrix $Q$ are orthonormal vectors and the $n \times n$ matrix $R$ is upper triangular with nonzero diagonal entries.
+:::
+
+1. Start with the columns of A, $A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]$. (For now assume they are linearly independent.)
+2. Do Gram-Schmidt on the columns of $A$ to get orthonormal vectors $\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}$.
+
+. . .
+
+$$
+A=\left[\mathbf{w}_{1}, \mathbf{w}_{2}, \mathbf{w}_{3}\right]=\left[\mathbf{q}_{1}, \mathbf{q}_{2}, \mathbf{q}_{3}\right]\left[\begin{array}{ccc}
+1 & \frac{\mathbf{q}_{1} \cdot \mathbf{w}_{2}}{\mathbf{q}_{1} \cdot \mathbf{q}_{1}} & \frac{\mathbf{q}_{1} \cdot \mathbf{w}_{3}}{\mathbf{q}_{1} \cdot \mathbf{q}_{1}} \\
+0 & 1 & \frac{\mathbf{q}_{2} \cdot \mathbf{w}_{3}}{\mathbf{q}_{2} \cdot \mathbf{q}_{2}} \\
+0 & 0 & 1
+\end{array}\right]
+$$
 
 ## Haar Wavelets
 (ch4 lecture 2)
@@ -261,10 +430,20 @@ $$
 ## Eigenvalues and Eigenvectors
 (ch5 lecture 1)
 - Definition
-- How to find them
+- *How to find them
 - Similarity and Diagonalization
 - Applications to dynamical systems
 - Spectral radius
+
+### Finding Eigenvalues and Eigenvectors
+
+::: definition
+If $A$ is a square $n \times n$ matrix, the equation $\operatorname{det}(\lambda I-A)=0$ is called the **characteristic equation** of $A$
+:::
+
+The eigenvalues of $A$ are the roots of the characteristic equation.
+
+For each scalar $\lambda$ in (1), use the null space algorithm to find a basis of the eigenspace $\mathcal{N}(\lambda I-A)$.
 
 ## Symmetric matrices
 
@@ -276,9 +455,26 @@ $$
 (ch5 lecture 3, 4)
 
 - Definition
-- Psuedoinverse
+- *Psuedoinverse
 - Applications to least squares
 - Image compression
+
+### Pseudoinverse
+
+The **pseudoinverse** of $A$ is $A^{+}=V S^+ U^{T}$
+
+$S^{+}$ is the matrix with the reciprocals of the non-zero singular values on the diagonal, and zeros elsewhere.
+
+. . .
+
+Can find least squares solutions:
+
+$$
+\begin{aligned}
+A x & =b \\
+x & \approx A^{+} b
+\end{aligned}
+$$
 
 ## PCA
 (ch5 lecture 5)

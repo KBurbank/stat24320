@@ -4743,7 +4743,7 @@
     "href": "lectures/Ch6Lecture1.html#linear-systems",
     "title": "Ch6 Lecture 1",
     "section": "Linear Systems",
-    "text": "Linear Systems\nch1Lecture1b, ch1Lecture2 - Applications of linear systems - Putting linear systems in matrix form - Gauss-Jordan to get to row echelon form - Solving linear systems with augmented matrices - Free vs bound variables - Ill-conditioned systems & rounding errors"
+    "text": "Linear Systems\nch1Lecture1b, ch1Lecture2\n\nApplications of linear systems\nPutting linear systems in matrix form\n*Gauss-Jordan to get to row echelon form\n*Solving linear systems with augmented matrices\nFree vs bound variables\nIll-conditioned systems & rounding errors"
   },
   {
     "objectID": "lectures/Ch6Lecture1.html#section",

@@ -366,7 +366,15 @@
 </section>
 <section id="linear-systems" class="title-slide slide level2 center">
 <h2><em>Linear Systems</em></h2>
-<p>ch1Lecture1b, ch1Lecture2 - Applications of linear systems - Putting linear systems in matrix form - <em>Gauss-Jordan to get to row echelon form - </em>Solving linear systems with augmented matrices - Free vs bound variables - Ill-conditioned systems &amp; rounding errors</p>
+<p>ch1Lecture1b, ch1Lecture2</p>
+<ul>
+<li class="fragment">Applications of linear systems</li>
+<li class="fragment">Putting linear systems in matrix form</li>
+<li class="fragment">*Gauss-Jordan to get to row echelon form</li>
+<li class="fragment">*Solving linear systems with augmented matrices</li>
+<li class="fragment">Free vs bound variables</li>
+<li class="fragment">Ill-conditioned systems &amp; rounding errors</li>
+</ul>
 </section>
 
 <section id="section" class="title-slide slide level2 center">
@@ -497,11 +505,13 @@ x \\
 y
 \end{array}\right]
 \]</span></p>
-<p>. . . Scaling:</p>
+<div class="fragment">
+<p>Scaling:</p>
 <p><span class="math display">\[ A = \left[\begin{array}{ll} z_1 &amp; 0 \\ 0 &amp; z_2 \end{array}\right] \]</span></p>
 <p>Shearing: adding a constant shear factor times one coordinate to another coordinate of the point. <span class="math display">\[
 A = \left[\begin{array}{ll} 1 &amp; s_2 \\ s_1 &amp; 1 \end{array}\right]
 \]</span></p>
+</div>
 </section>
 
 <section id="graphs-and-directed-graphs" class="title-slide slide level2 center">
@@ -522,9 +532,9 @@ A = \left[\begin{array}{ll} 1 &amp; s_2 \\ s_1 &amp; 1 \end{array}\right]
 <section id="paths-and-cycles" class="slide level3 center">
 <h3><em>Paths and cycles</em></h3>
 <ul>
-<li class="fragment"><p>Number of paths of length <span class="math inline">\(n\)</span> from vertex <span class="math inline">\(i\)</span> to vertex <span class="math inline">\(j\)</span> is the <span class="math inline">\((i, j)\)</span> th entry of the matrix <span class="math inline">\(A^{n}\)</span>.</p></li>
-<li class="fragment"><p>Vertex power is the sum of the entries in the <span class="math inline">\(ith\)</span> row of <span class="math inline">\(A+A^{2}\)</span>.</p></li>
-<li class="fragment"><p>In an the incidence matrix of a digraph which is a cycle, every row must sum to zero.</p></li>
+<li class="fragment">Number of paths of length <span class="math inline">\(n\)</span> from vertex <span class="math inline">\(i\)</span> to vertex <span class="math inline">\(j\)</span> is the <span class="math inline">\((i, j)\)</span> th entry of the matrix <span class="math inline">\(A^{n}\)</span>.</li>
+<li class="fragment">Vertex power is the sum of the entries in the <span class="math inline">\(ith\)</span> row of <span class="math inline">\(A+A^{2}\)</span>.</li>
+<li class="fragment">In an the incidence matrix of a digraph which is a cycle, every row must sum to zero.</li>
 </ul>
 </section>
 
@@ -564,7 +574,8 @@ y_{k+2}-y_{k+1}-y_{k}=0
 </section>
 <section id="examples-of-difference-equations" class="slide level3 center">
 <h3><em>Examples of difference equations</em></h3>
-<p>Reaction-diffusion: <span class="math display">\[
+<p>Reaction-diffusion:</p>
+<p><span class="math display">\[
 a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
 \]</span></p>
 <p>Heat in a rod: <span class="math display">\[

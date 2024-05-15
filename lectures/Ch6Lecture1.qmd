@@ -23,6 +23,7 @@ format:
 ## Linear Systems
 
 ch1Lecture1b, ch1Lecture2
+
 - Applications of linear systems
 - Putting linear systems in matrix form
 - *Gauss-Jordan to get to row echelon form
@@ -152,6 +153,7 @@ y
 $$
 
 . . .
+
 Scaling:
 
 $$ A = \left[\begin{array}{ll} z_1 & 0 \\ 0 & z_2 \end{array}\right] $$
@@ -180,9 +182,7 @@ ch2Lecture2
 ### Paths and cycles
 
 - Number of paths of length $n$ from vertex $i$ to vertex $j$ is the $(i, j)$ th entry of the matrix $A^{n}$.
-
 - Vertex power is the sum of the entries in the $ith$ row of $A+A^{2}$.
-
 - In an the incidence matrix of a digraph which is a cycle, every row must sum to zero.
 
 
@@ -228,7 +228,9 @@ Steps:
 
 
 ### Examples of difference equations
+
 Reaction-diffusion:
+
 $$
 a_{x,t+1} = a_{x,t} + dt\left(  \frac{D_{a}}{dx^{2}}(a_{x+1,t} + a_{x-1,t} - 2a_{x,t})  \right)
 $$
@@ -243,6 +245,7 @@ $$
 
 
 ## MCMC
+
 - MCMC (Ch2 lecture 4)
   - Simulate a distribution using a Markov chain
   - Sample from the simulated distribution

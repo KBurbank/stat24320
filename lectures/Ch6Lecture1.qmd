@@ -129,9 +129,9 @@ ch2Lecture1
 
 - Matrix-vector multiplication as a linear combination of columns
 - Matrix multiplication as an operation
-  - *Scaling, rotation, shear
+- *Scaling, rotation, shear
   
-## Scaling and rotation
+### Scaling and rotation
 
 To rotate a vector by $\theta$:
 
@@ -171,7 +171,7 @@ ch2Lecture2
 - *Paths and cycles
 - PageRank
 
-## Adjacency and incidence matrices
+### Adjacency and incidence matrices
 
 **Adjacency matrix**: A square matrix whose $(i, j)$ th entry is the number of edges going from vertex $i$ to vertex $j$
 

@@ -4891,5 +4891,68 @@
     "title": "Ch6 Lecture 1",
     "section": "Fourier Transform",
     "text": "Fourier Transform\n(ChNone, Ch6 lecture 1)"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#mcmc-ch2-lecture-4",
+    "href": "lectures/Ch6Lecture1.html#mcmc-ch2-lecture-4",
+    "title": "Ch6 Lecture 1",
+    "section": "MCMC (Ch2 lecture 4)",
+    "text": "MCMC (Ch2 lecture 4)\n\nMCMC\n\nSimulate a distribution using a Markov chain\nSample from the simulated distribution\n\nRestricted Boltzmann Machines"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#inverses-and-determinants-ch2-lecture-5",
+    "href": "lectures/Ch6Lecture1.html#inverses-and-determinants-ch2-lecture-5",
+    "title": "Ch6 Lecture 1",
+    "section": "Inverses and determinants (Ch2 lecture 5)",
+    "text": "Inverses and determinants (Ch2 lecture 5)\n\nInverse of a matrix\n*Determinants\nSingularity\nLU factorization (Ch2 lecture 4)"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#spaces-of-matrices-ch3-lecture-1",
+    "href": "lectures/Ch6Lecture1.html#spaces-of-matrices-ch3-lecture-1",
+    "title": "Ch6 Lecture 1",
+    "section": "Spaces of matrices (ch3 lecture 1)",
+    "text": "Spaces of matrices (ch3 lecture 1)\n\nBasis\nFundamental subspaces:\n\nColumn space\nNull space\nRow space\n\nRank\nConsistency"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#orthogonality-ch4-lecture-1-and-2",
+    "href": "lectures/Ch6Lecture1.html#orthogonality-ch4-lecture-1-and-2",
+    "title": "Ch6 Lecture 1",
+    "section": "Orthogonality (ch4 lecture 1 and 2)",
+    "text": "Orthogonality (ch4 lecture 1 and 2)\n\nGeometrical intuitions\n*Least Squares & Normal equations\nFinding orthogonal bases (Gram-Schmidt)"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#eigenvalues-and-eigenvectors-ch5-lecture-1",
+    "href": "lectures/Ch6Lecture1.html#eigenvalues-and-eigenvectors-ch5-lecture-1",
+    "title": "Ch6 Lecture 1",
+    "section": "Eigenvalues and Eigenvectors (ch5 lecture 1)",
+    "text": "Eigenvalues and Eigenvectors (ch5 lecture 1)\n\nDefinition\n*How to find them\nSimilarity and Diagonalization\nApplications to dynamical systems\nSpectral radius"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#symmetric-matrices-ch5-lecture-2",
+    "href": "lectures/Ch6Lecture1.html#symmetric-matrices-ch5-lecture-2",
+    "title": "Ch6 Lecture 1",
+    "section": "Symmetric matrices (ch5 lecture 2)",
+    "text": "Symmetric matrices (ch5 lecture 2)\n\nProperties of symmetric matrices\nQuadratic forms"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#svd-ch5-lecture-3-4",
+    "href": "lectures/Ch6Lecture1.html#svd-ch5-lecture-3-4",
+    "title": "Ch6 Lecture 1",
+    "section": "SVD (ch5 lecture 3, 4)",
+    "text": "SVD (ch5 lecture 3, 4)\n\nDefinition\n*Psuedoinverse\nApplications to least squares\nImage compression"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#pca-ch5-lecture-5",
+    "href": "lectures/Ch6Lecture1.html#pca-ch5-lecture-5",
+    "title": "Ch6 Lecture 1",
+    "section": "PCA (ch5 lecture 5)",
+    "text": "PCA (ch5 lecture 5)\n\nDefinition\nApplications to data analysis"
+  },
+  {
+    "objectID": "lectures/Ch6Lecture1.html#fourier-transform-chnone-ch6-lecture-1",
+    "href": "lectures/Ch6Lecture1.html#fourier-transform-chnone-ch6-lecture-1",
+    "title": "Ch6 Lecture 1",
+    "section": "Fourier Transform (ChNone, Ch6 lecture 1)",
+    "text": "Fourier Transform (ChNone, Ch6 lecture 1)"
   }
 ]

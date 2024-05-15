@@ -1,5 +1,5 @@
 /* css styles */
-.header-section-number .header-section-number::before {
+.header-section-number::before {
     content: "Problem ";
   }
 

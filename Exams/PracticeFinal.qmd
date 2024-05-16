@@ -216,9 +216,7 @@ Use this information to answer the following:
 
 (b) Find the form of a general solution of the system $A \mathbf{x}=\mathbf{b}$.
 
-(c) Find the rank of $A$.
-
-(d) No matter what the right hand side of $\mathbf{b}$ is, this system has solutions. In terms of rank, why do we know this?
+(c) Find the rank of $A$. Discuss the meaning of the rank in terms of the independence of the columns of $A$.
 
 ::: solutions
 
@@ -253,7 +251,7 @@ The general solution is then given by $\begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bma
 
 (c) The rank of $A$ is the number of pivot columns in the row-reduced echelon form of $A$. In this case, the rank of $A$ is 3.
 
-(d) The rank of $A$ is less than the number of columns in $A$. Therefore, the system will always have solutions.
+(d) The rank of $A$ is less than the number of columns in $A$. This means that one of the columns of $A$ is a linear combination of the other columns. In this case, the fourth column of $A$ is a linear combination of the first three columns.
 
 :::
 
@@ -271,7 +269,7 @@ The eigenvalues of $AA^T$ are $\lambda_1 = 3, \lambda_2 = 1, \lambda_3 = 0$.
 
 (a)  Find the eigenvalues of $AA^T$.
 
-(b) Find the eigenvectors of $A^TA$ and $AA^T$. Use the facts below and explain your reasoning.
+(b) Using the facts below, find the eigenvectors of $A^TA$ and $AA^T$, and explain your reasoning.
 
 (c) Find the singular value decomposition of $A$.
 

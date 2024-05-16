@@ -160,9 +160,9 @@ display(Math(f'B = {sp.latex(B)}'))
 (d) If you calculate the matrix $A$ + $A^2$, what does the sum of the entries in the corresponding row tell you about the graph?
 
 (e) Let $\mathbf{v}$ be a row vector representing a subset of the edges in the graph. For example, the subset of edges given by the vector $\mathbf{v} = [1, 0, 1, 0, 0, 1]$ would correspond to the first, third, and sixth edges.
-
+    
  Write an equation which will be satisfied whenever the subset of edges represented by $\mathbf{v}$ forms a loop in the graph.
-
+ 
 (f) Describe two algorithms for ranking the importance of the vertices in a graph. (One or more of these algorithms may be based on prior parts of this problem.)
 
 ::: solutions

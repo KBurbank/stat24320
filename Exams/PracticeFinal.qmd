@@ -251,7 +251,7 @@ The general solution is then given by $\begin{bmatrix} 1 \\ 1 \\ 1 \\ 0 \end{bma
 
 (d) The rank of $A$ is less than the number of columns in $A$. Therefore, the system will always have solutions.
 
-
+:::
 
 ##
 

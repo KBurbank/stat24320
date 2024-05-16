@@ -353,7 +353,7 @@ display(u2)
 import sympy as sp
 A = sp.Matrix([[9, 8], [-6, -5]])
 A.eigenvals()
-A.eigenvects()
+display(A.eigenvects())
 P,D = A.diagonalize()
 print('P = ')
 display(P)

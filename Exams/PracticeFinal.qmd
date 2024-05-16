@@ -64,10 +64,14 @@ A number plus its complex conjugate is always real. Therefore, $x_k[1]$ is real.
 
 
 ##
-Convert this difference equation into matrix–vector form. Then, using the matrix, from a starting point of $y_[0]=y_[1]=2$, compute $y_2$ and $y_3$.
+
+(a)
+Convert this difference equation into matrix–vector form.
 
 $y_{k+2} + y_{k+1} - 2y_{k} = 3$
 
+
+(b) Using the matrix, find $y_2$ if it is given that $y_0 = 2$ and $y_1 = 2$.
 
 ::: solutions
 

@@ -221,15 +221,15 @@ A = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>Check using sympy:</p>
-<div id="220f229f" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="26">
+<div id="1b46bf69" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="40">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0\\2 x_{k0} - x_{k1} - x_{k2} + 3\\0\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>It works!</p>
 <p>Now set up the initial conditions:</p>
-<div id="6462047f" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="27">
+<div id="48b5695c" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="41">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}2\\5\\1\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -240,7 +240,7 @@ A = \begin{bmatrix}
 <section id="section-2" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">3</span> <em></em></h2>
 <p>A directed graph has vertices labeled <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, and <span class="math inline">\(D\)</span>. The edges are given by the following incidence matrix B:</p>
-<div id="410d29a0" class="cell" data-execution_count="4">
+<div id="cd9ca35c" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle B = \left[\begin{matrix}-1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\1 &amp; 0 &amp; -1 &amp; -1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 1 &amp; 0 &amp; -1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; -1\end{matrix}\right]\)</span></p>
 </div>
@@ -257,22 +257,16 @@ A = \begin{bmatrix}
 <li>Describe two algorithms for ranking the importance of the vertices in a graph. (One or more of these algorithms may be based on prior parts of this problem.)</li>
 </ol>
 <div class="solutions">
-<div id="26014fb9" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="29">
+<div id="f468f579" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="43">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 1 &amp; 1 &amp; 0\\0 &amp; 0 &amp; 1 &amp; 1\\0 &amp; 0 &amp; 0 &amp; 1\\1 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right]\)</span></p>
 </div>
 </div>
-<div id="109a94e0" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-stderr">
-<pre><code>/Users/kendra/Library/Python/3.8/lib/python/site-packages/networkx/drawing/nx_pylab.py:433: UserWarning:
-
-No data for colormapping provided via 'c'. Parameters 'cmap' will be ignored
-</code></pre>
-</div>
+<div id="4c3c40f8" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="PracticeFinal_files/figure-html/cell-6-output-2.png" width="540" height="389" class="figure-img"></p>
+<p><img src="PracticeFinal_files/figure-html/cell-6-output-1.png" width="540" height="389" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -335,8 +329,8 @@ x_4 &amp;= x_4
 <section id="section-4" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">5</span> <em></em></h2>
 <p>You are given a matrix <span class="math inline">\(A\)</span>:</p>
-<div id="83b4ae43" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="32">
+<div id="c09e7918" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="46">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 1\\1 &amp; 0\\1 &amp; 1\end{matrix}\right]\)</span></p>
 </div>
 </div>
@@ -349,7 +343,7 @@ x_4 &amp;= x_4
 <li><p>Using the SVD, calculate <span class="math inline">\(A^k \mathbf{x}\)</span> for <span class="math inline">\(k=3\)</span> and <span class="math inline">\(\mathbf{x} = [-2, 2, 0]^T\)</span>.</p></li>
 </ol>
 <p>Here are some facts which may be helpful:</p>
-<div id="92db3110" class="cell" data-execution_count="9">
+<div id="b4cb9bbb" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 1\\1 &amp; 1 &amp; 2\end{matrix}\right]\left[\begin{matrix}-1\\-1\\1\end{matrix}\right]=\left[\begin{matrix}0\\0\\0\end{matrix}\right]\)</span></p>
 </div>
@@ -370,7 +364,7 @@ x_4 &amp;= x_4
 <ol type="a">
 <li>We first find the characteristic polynomial of <span class="math inline">\(AA^T\)</span>: we find <span class="math inline">\(\text{det}(AA^T - \lambda I)\)</span> and set it equal to zero.</li>
 </ol>
-<div id="af94944b" class="cell" data-execution_count="10">
+<div id="034c2700" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \lambda^{2} - 4 \lambda + 3=0\)</span></p>
 </div>
@@ -379,7 +373,7 @@ x_4 &amp;= x_4
 <ol start="2" type="a">
 <li>The eigenvectors of <span class="math inline">\(AA^T\)</span> are given by the nullspace of <span class="math inline">\(AA^T - \lambda I\)</span>. We can find the eigenvectors by solving the equation <span class="math inline">\((AA^T - \lambda I)v = 0\)</span>. These are what are given to us in the question, so the eigenvectors are</li>
 </ol>
-<div id="0f402a14" class="cell" data-execution_count="11">
+<div id="b025d8d6" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}-1\\-1\\1\end{matrix}\right]\)</span></p>
 </div>
@@ -391,7 +385,7 @@ x_4 &amp;= x_4
 </div>
 </div>
 <p>The eigenvectors of <span class="math inline">\(A^TA\)</span> are given by the nullspace of <span class="math inline">\(A^TA - \lambda I\)</span>. We can find the eigenvectors by solving the equation <span class="math inline">\((A^TA - \lambda I)u = 0\)</span>. These are what are given to us in the question, so the eigenvectors are</p>
-<div id="ee747edd" class="cell" data-execution_count="12">
+<div id="78f23236" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}-1\\1\end{matrix}\right]\)</span></p>
 </div>
@@ -417,11 +411,23 @@ x_4 &amp;= x_4
 <li><p>Find the nullspace of the matrix <span class="math inline">\(A^4+2A^2-3I\)</span>.</p></li>
 </ol>
 <div class="solutions">
+<div id="bce72542" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-stdout">
+<pre><code>P = 
+D = </code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}-1 &amp; -4\\1 &amp; 3\end{matrix}\right]\)</span></p>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 0\\0 &amp; 3\end{matrix}\right]\)</span></p>
+</div>
+</div>
 <p>We can diagonalize <span class="math inline">\(A^4+2A^2-3I\)</span> by noting that we find <span class="math inline">\(A^4\)</span> by taking the 4th power of the diagonal terms in <span class="math inline">\(D\)</span>, and similarly for <span class="math inline">\(A^2\)</span>.</p>
 <p>We also need to write <span class="math inline">\(I\)</span> in terms of <span class="math inline">\(P\)</span> and <span class="math inline">\(D\)</span>. Note that <span class="math inline">\(P I P^{-1} = I\)</span>. So we can write the entire sum as <span class="math inline">\(P \left( D^4 + 2D^2 - 3I \right) P^{-1}\)</span>.</p>
 <p>Checking in sympy:</p>
-<div id="0de88dad" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div id="5ee326d0" class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>True</code></pre>
 </div>
 </div>
@@ -438,7 +444,7 @@ x_4 &amp;= x_4
 <ol start="3" type="a">
 <li>From the plots below, match the signals to the correct DFTs. (Curve y3 is actually a quadratic. I have plotted only the absolute value of the DFTs. The complete DFT also includes negative frequencies, not shown here, which are the complex conjugates of the positive frequencies.)</li>
 </ol>
-<div id="3463cddb" class="cell" data-execution_count="15">
+<div id="b5bfbbda" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

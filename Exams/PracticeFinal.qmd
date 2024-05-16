@@ -207,7 +207,7 @@ $$
 has coefficient matrix $A$ and right hand side $\mathbf{b}$ such that the row-reduced echelon form of $[A \mid \mathbf{b}]$ is 
 
 $$
-\left[\begin{array}{ccccc:c}1 & 0 & 0 & -1 & \mid & 1 \\ 0 & 1 & 0 & 1 & | & 1 \\ 0 & 0 & 1 & 1 & | & 1\end{array}\right]
+\left[\begin{array}{ccccc|c}1 & 0 & 0 & -1 & \mid & 1 \\ 0 & 1 & 0 & 1 & | & 1 \\ 0 & 0 & 1 & 1 & | & 1\end{array}\right]
 $$
 
 Use this information to answer the following:

@@ -1,5 +1,9 @@
 /* css styles */
-.header-section-number .header-section-number::before {
+.header-section-number::before {
     content: "Problem ";
   }
+
+.header-section-number {
+  margin-top: 2in;
+}
 

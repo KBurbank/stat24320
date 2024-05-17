@@ -5429,14 +5429,14 @@
     "href": "Exams/FinalExam.html",
     "title": "Final Exam",
     "section": "",
-    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)"
+    "text": "Instructions:\nPlease give yourselves two hours to complete this exam. Write the exam answers on paper or on your tablet or word processor, then scan and submit them to Canvas as you would a homework.\nYou may use a calculator, but no notes or computer.\nIf you have any questions, please let me know. You can send me a message on WhatsApp +617-872-6632; if it’s before 3pm Chicago time, I’ll likely be able to respond quickly. If I don’t respond and you are unable to proceed, please make note of the time and put the exam aside until I am able to respond.\nPlease submit the exam by 11:59pm Chicago time on Friday, May 24."
   },
   {
     "objectID": "Exams/FinalExam.html#section",
     "href": "Exams/FinalExam.html#section",
     "title": "Final Exam",
-    "section": "",
-    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)"
+    "section": "1 ",
+    "text": "1 \nConvert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)"
   },
   {
     "objectID": "Exams/FinalExam.html#section-1",
@@ -5485,14 +5485,14 @@
     "href": "Exams/FinalExam.sol.html",
     "title": "Final Exam Solutions",
     "section": "",
-    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)\n\nWe solve the equation above for \\(y_{k+3}\\) to get \\(y_{k+3} = \\frac{3y_{k} - 2y_{k+1}}{2}\\).\nMake a vector of the unknowns: \\(x_k = [y_{k}, y_{k+1}, y_{k+2}]^T\\). Then we have that \\(x_{k+1}=[y_{k+1},y_{k+2},y_{k+3}]^T\\).\nWe can now write three equations in terms of the vector \\(x_k\\) and \\(x_{k+1}\\):\n\\[\n\\begin{aligned}\nx_{k+1}[1] &= x_{k}[2] \\\\\nx_{k+1}[2] &= x_{k}[3] \\\\\nx_{k+1}[3] &= \\frac{3x_{k}[1] - 2x_{k}[2]}{2}\n\\end{aligned}\n\\]\nThen the equation can be written as in the form \\(Ax_{k} = x_{k+1}\\) where \\(A\\) is a matrix given by\n\\[\nA = \\begin{bmatrix}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n\\frac{-3}{2} & -1 & 0\n\\end{bmatrix}\n\\]"
+    "text": "Instructions:\nPlease give yourselves two hours to complete this exam. Write the exam answers on paper or on your tablet or word processor, then scan and submit them to Canvas as you would a homework.\nYou may use a calculator, but no notes or computer.\nIf you have any questions, please let me know. You can send me a message on WhatsApp +617-872-6632; if it’s before 3pm Chicago time, I’ll likely be able to respond quickly. If I don’t respond and you are unable to proceed, please make note of the time and put the exam aside until I am able to respond.\nPlease submit the exam by 11:59pm Chicago time on Friday, May 24."
   },
   {
     "objectID": "Exams/FinalExam.sol.html#section",
     "href": "Exams/FinalExam.sol.html#section",
     "title": "Final Exam Solutions",
-    "section": "",
-    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)\n\nWe solve the equation above for \\(y_{k+3}\\) to get \\(y_{k+3} = \\frac{3y_{k} - 2y_{k+1}}{2}\\).\nMake a vector of the unknowns: \\(x_k = [y_{k}, y_{k+1}, y_{k+2}]^T\\). Then we have that \\(x_{k+1}=[y_{k+1},y_{k+2},y_{k+3}]^T\\).\nWe can now write three equations in terms of the vector \\(x_k\\) and \\(x_{k+1}\\):\n\\[\n\\begin{aligned}\nx_{k+1}[1] &= x_{k}[2] \\\\\nx_{k+1}[2] &= x_{k}[3] \\\\\nx_{k+1}[3] &= \\frac{3x_{k}[1] - 2x_{k}[2]}{2}\n\\end{aligned}\n\\]\nThen the equation can be written as in the form \\(Ax_{k} = x_{k+1}\\) where \\(A\\) is a matrix given by\n\\[\nA = \\begin{bmatrix}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n\\frac{-3}{2} & -1 & 0\n\\end{bmatrix}\n\\]"
+    "section": "1 ",
+    "text": "1 \nConvert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)\n\nWe solve the equation above for \\(y_{k+3}\\) to get \\(y_{k+3} = \\frac{3y_{k} - 2y_{k+1}}{2}\\).\nMake a vector of the unknowns: \\(x_k = [y_{k}, y_{k+1}, y_{k+2}]^T\\). Then we have that \\(x_{k+1}=[y_{k+1},y_{k+2},y_{k+3}]^T\\).\nWe can now write three equations in terms of the vector \\(x_k\\) and \\(x_{k+1}\\):\n\\[\n\\begin{aligned}\nx_{k+1}[1] &= x_{k}[2] \\\\\nx_{k+1}[2] &= x_{k}[3] \\\\\nx_{k+1}[3] &= \\frac{3x_{k}[1] - 2x_{k}[2]}{2}\n\\end{aligned}\n\\]\nThen the equation can be written as in the form \\(Ax_{k} = x_{k+1}\\) where \\(A\\) is a matrix given by\n\\[\nA = \\begin{bmatrix}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n\\frac{-3}{2} & -1 & 0\n\\end{bmatrix}\n\\]"
   },
   {
     "objectID": "Exams/FinalExam.sol.html#section-1",

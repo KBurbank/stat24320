@@ -8,7 +8,9 @@ execute:
     echo: false
 ---
 
-Instructions: You'll have two hours to do the real exam. You'll be asked to do it without notes or the computer, but you may use a calculator.
+Instructions: 
+
+You'll have two hours to do the real exam. You'll be asked to do it without notes or the computer, but you may use a calculator.
 
 If you have any questions, or if you think there is a mistake in the question, please let me know.
 

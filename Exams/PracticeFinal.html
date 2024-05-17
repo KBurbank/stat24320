@@ -156,6 +156,8 @@ window.Quarto = {
 </div></header>
 
 
+<p>Instructions: You’ll have two hours to do the real exam. You’ll be asked to do it without notes or the computer, but you may use a calculator.</p>
+<p>If you have any questions, or if you think there is a mistake in the question, please let me know.</p>
 <section id="section" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="section"><span class="header-section-number">1</span> <em></em></h2>
 <p>A transition matrix A consists of only real entries. It has one real eigenvalue <span class="math inline">\(\lambda_1 = a_1\)</span> and two complex eigenvalues <span class="math inline">\(\lambda_2 = a_2 + b_2 \text{i}, \lambda_3 = a_2 - b_2 \text{i}\)</span>, so that <span class="math inline">\(\lambda_2\)</span> is the complex conjugate of <span class="math inline">\(\lambda_3\)</span>: <span class="math inline">\(\lambda_2=\overline{\lambda_3}\)</span>. It has corresponding eigenvectors <span class="math inline">\(\mathbf{v_1}, \mathbf{v_2}, \mathbf{v_3}\)</span>, where the entries in <span class="math inline">\(\mathbf{v_1}\)</span> are real and the entries in <span class="math inline">\(\mathbf{v_2}\)</span> are the complex conjugates of the entries of <span class="math inline">\(\mathbf{v_3}\)</span>.</p>
@@ -187,7 +189,7 @@ window.Quarto = {
 <section id="section-2" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">3</span> <em></em></h2>
 <p>A directed graph has vertices labeled <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, and <span class="math inline">\(D\)</span>. The edges are given by the following incidence matrix B:</p>
-<div id="64324203" class="cell" data-execution_count="4">
+<div id="b66c0f6f" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle B = \left[\begin{matrix}-1 &amp; -1 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\1 &amp; 0 &amp; -1 &amp; -1 &amp; 0 &amp; 0\\0 &amp; 1 &amp; 1 &amp; 0 &amp; -1 &amp; 0\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 &amp; -1\end{matrix}\right]\)</span></p>
 </div>
@@ -218,7 +220,7 @@ x_{3}+x_{4} &amp; =1 \\
 \]</span></p>
 <p>Use this information to answer the following:</p>
 <ol type="a">
-<li><p>Find a basis for the null space of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Find a basis for the null space of <span class="math inline">\(A\)</span> (not <span class="math inline">\(A|b\)</span>!).</p></li>
 <li><p>Find the form of a general solution of the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span>.</p></li>
 <li><p>Find the rank of <span class="math inline">\(A\)</span>. Discuss the meaning of the rank in terms of the independence of the columns of <span class="math inline">\(A\)</span>.</p></li>
 </ol>
@@ -226,21 +228,21 @@ x_{3}+x_{4} &amp; =1 \\
 <section id="section-4" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">5</span> <em></em></h2>
 <p>You are given a matrix <span class="math inline">\(A\)</span>:</p>
-<div id="d5615df0" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="60">
+<div id="0352d20e" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="7">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}0 &amp; 1\\1 &amp; 0\\1 &amp; 1\end{matrix}\right]\)</span></p>
 </div>
 </div>
 <p>The eigenvalues of <span class="math inline">\(AA^T\)</span> are <span class="math inline">\(\lambda_1 = 3, \lambda_2 = 1, \lambda_3 = 0\)</span>.</p>
 <ol type="a">
-<li><p>Find the eigenvalues of <span class="math inline">\(AA^T\)</span>.</p></li>
+<li><p>Find the eigenvalues of <span class="math inline">\(A^TA\)</span>.</p></li>
 <li><p>Using the facts below, find the eigenvectors of <span class="math inline">\(A^TA\)</span> and <span class="math inline">\(AA^T\)</span>, and explain your reasoning.</p></li>
 <li><p>Find the singular value decomposition of <span class="math inline">\(A\)</span>.</p></li>
 <li><p>Using the SVD, calculate <span class="math inline">\(A^+\)</span>, the pseudoinverse of <span class="math inline">\(A\)</span>. Use this to solve the least squares problem <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span>, where <span class="math inline">\(\mathbf{b} = [1, 4,2]^T\)</span>.</p></li>
 <li><p>Using the SVD, calculate <span class="math inline">\(A^k \mathbf{x}\)</span> for <span class="math inline">\(k=3\)</span> and <span class="math inline">\(\mathbf{x} = [-2, 2, 0]^T\)</span>.</p></li>
 </ol>
 <p>Here are some facts which may be helpful:</p>
-<div id="e5449433" class="cell" data-execution_count="9">
+<div id="aa33e989" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display cell-output-markdown">
 <p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 1\\1 &amp; 1 &amp; 2\end{matrix}\right]\left[\begin{matrix}-1\\-1\\1\end{matrix}\right]=\left[\begin{matrix}0\\0\\0\end{matrix}\right]\)</span></p>
 </div>
@@ -281,7 +283,7 @@ x_{3}+x_{4} &amp; =1 \\
 <ol start="3" type="a">
 <li>From the plots below, match the signals to the correct DFTs. (Curve y3 is actually a quadratic. I have plotted only the absolute value of the DFTs. The complete DFT also includes negative frequencies, not shown here, which are the complex conjugates of the positive frequencies.)</li>
 </ol>
-<div id="46917f11" class="cell" data-execution_count="15">
+<div id="2e510b38" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

@@ -1,6 +1,6 @@
 ---
 title: Practice Final Exam
-publish: false
+publish: true
 due-date: N/A
 textbook-chapters: N/A
 publish-solutions-on: 2024-05-10
@@ -8,6 +8,9 @@ execute:
     echo: false
 ---
 
+Instructions: You'll have two hours to do the real exam. You'll be asked to do it without notes or the computer, but you may use a calculator.
+
+If you have any questions, or if you think there is a mistake in the question, please let me know.
 
 ##
 
@@ -212,7 +215,7 @@ $$
 
 Use this information to answer the following:
 
-(a) Find a basis for the null space of $A$.
+(a) Find a basis for the null space of $A$ (not $A|b$!).
 
 (b) Find the form of a general solution of the system $A \mathbf{x}=\mathbf{b}$.
 
@@ -238,6 +241,7 @@ So the basis for the nullspace of $A$ is simply the vector $\begin{bmatrix} 1 \\
 Checking using sympy:
 
 ```{python}
+#| echo: True
 A = sp.Matrix([[1,0,0,-1],[0,1,0,1],[0,0,1,1]])
 A.nullspace()
 b=sp.Matrix([1,1,1])
@@ -267,7 +271,7 @@ A
 
 The eigenvalues of $AA^T$ are $\lambda_1 = 3, \lambda_2 = 1, \lambda_3 = 0$.
 
-(a)  Find the eigenvalues of $AA^T$.
+(a)  Find the eigenvalues of $A^TA$.
 
 (b) Using the facts below, find the eigenvectors of $A^TA$ and $AA^T$, and explain your reasoning.
 

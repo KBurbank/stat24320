@@ -5423,5 +5423,117 @@
     "title": "Practice Final Exam Solutions",
     "section": "7 ",
     "text": "7 \nThe Discrete Fourier Transform (DFT) of a sequence \\(x[n]\\) is given by \\(X[k] = \\sum_{n=0}^{N-1} x[n] e^{-i2\\pi kn/N}\\), where \\(N\\) is the length of the sequence, and where \\(k\\) runs from \\(0\\) to \\(N-1\\). The inverse DFT is given by \\(x[n] = \\frac{1}{N} \\sum_{k=0}^{N-1} X[k] e^{i2\\pi kn/N}\\).\n\nFind the DFT of the filter \\(h[n] = [\\frac{1}{3},-\\frac{1}{3},\\frac{1}{3},0]\\).\nUsing this DFT, find the circular convolution of the sequences \\(x[n] = [1,2,3,4]\\) and \\(h[n]\\). Note: the DFT of \\(x\\) is \\(X=[10,-2+2i,-2,-2-2i]\\).\n\n(Circular convolution is convolution where we assume the sequences are periodic, so that \\(x[n] = x[n+N]\\). It’s as if we had the long sequence \\(x[n] = [\\color{blue}1,2,3,4,\\color{black}1,2,3,4,\\color{blue}1,2,3,4,\\ldots]\\) to use when calculating the convolution. When we discussed convolution using the DFT in class, we were actually doing circular convolution. This matters if you want to check your results doing the convolution by hand without using the DFT.)\n\nFrom the plots below, match the signals to the correct DFTs. (Curve y3 is actually a quadratic. I have plotted only the absolute value of the DFTs. The complete DFT also includes negative frequencies, not shown here, which are the complex conjugates of the positive frequencies.)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe DFT of the filter \\(h[n] = [\\frac{1}{3},-\\frac{1}{3},\\frac{1}{3},0]\\) is given by \\(H[k] = \\sum_{n=0}^{3} h[n] e^{-i2\\pi kn/4}\\) This equals \\(H=[1/3, i/3, 1, -i/3]\\).\nThe circular convolution of the sequences \\(x[n] = [1,2,3,4]\\) and \\(h[n]\\) is given by the inverse Fourier transform of the element-wise product \\(X[k]H[k]\\). This equals\n\n\\([10,-2+2i,-2,-2-2i]\\times[1/3, i/3, 1, -i/3]=[10/3, -2/3-2/3i, -2, -2/3+2/3i]\\).\nThe inverse transform is \\([0,5,2,3]/3\\).\n\nThe DFT of signal \\(y\\) is \\(b\\), the DFT of signal \\(y2\\) is \\(c\\), and the DFT of signal \\(y3\\) is \\(a\\). We can tell because \\(y2\\) is a simple sin curve, so its DFT is a single peak. \\(y\\) appears to be a sum of two sin curves, so its DFT has two peaks. \\(y3\\) has many frequency components, but they are low frequency, so the DFT has a peak near 0."
+  },
+  {
+    "objectID": "Exams/FinalExam.html",
+    "href": "Exams/FinalExam.html",
+    "title": "Final Exam",
+    "section": "",
+    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)"
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section",
+    "href": "Exams/FinalExam.html#section",
+    "title": "Final Exam",
+    "section": "",
+    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)"
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-1",
+    "href": "Exams/FinalExam.html#section-1",
+    "title": "Final Exam",
+    "section": "2 ",
+    "text": "2 \nA population is modeled with three stages: larva, pupa and adult, and the resulting structured population model transition matrix is\n\\[\nA = \\begin{bmatrix}\n0 & 0 & 0.6 \\\\\n0.5 & 0 & 0 \\\\\n0 & 0.9 & 0\n\\end{bmatrix}\n\\]\n\n\n[(0.646330407009565 + 9.57696933338458e-33*I,\n  1,\n  [Matrix([\n   [-0.211957169909255 - 0.563510300230596*I],\n   [-0.163969672175827 - 0.435930519529353*I],\n   [ -0.22832393982674 - 0.607023069503539*I]])]),\n (-0.323165203504783 - 0.559738551708619*I,\n  1,\n  [Matrix([\n   [-0.446848502976125 + 0.418540422762337*I],\n   [-0.107562931920626 - 0.461259721138817*I],\n   [ 0.631131829114318 + 0.191434388320088*I]])]),\n (-0.323165203504783 + 0.559738551708619*I,\n  1,\n  [Matrix([\n   [-0.277204808242613 - 0.561858355489268*I],\n   [-0.269197612619668 + 0.403041213970164*I],\n   [0.673461217391963 + 0.0440180865002761*I]])])]\n\n\n\nExplain what this model says about the three states.\nStarting with a population of (0, 30, 100), calculate the population in the next two time steps.\nThe eigenvalues of the matrix are \\(\\lambda_1 = 0.646, \\lambda_2 = -0.323 - 0.560i, \\lambda_3 = -0.323 + 0.560i\\). What do these eigenvalues tell you about the long-term behavior of the population?"
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-2",
+    "href": "Exams/FinalExam.html#section-2",
+    "title": "Final Exam",
+    "section": "3 ",
+    "text": "3 \nThe graph G is given below.\n\n\n/Users/kendra/Library/Python/3.8/lib/python/site-packages/networkx/drawing/nx_pylab.py:433: UserWarning:\n\nNo data for colormapping provided via 'c'. Parameters 'cmap' will be ignored\n\n\n\n\n\n\n\n\n\n\n\nFind the adjacency matrix \\(A\\) and the incidence matrix \\(B\\) for the graph G.\nFrom \\(A\\) and \\(B\\), match the following descriptions to the corresponding quantities:\n\nthe number of outgoing edges from each vertex,\nthe power of each vertex (the number of paths of length 1 or 2 originating at each vertex)\nthe number of paths of length \\(k\\) between each pair of vertices\na basis for loops in the graph (don’t worry about the direction of the edges)\n\n\n\n(a) Sum of the entries in the corresponding row of $A$,\n(c) Entries in the matrix $A^k$,\n(d) Nullspace of the matrix $B^T$.\n(e) Entries in the matrix $B^k$.\n(b) Sum of the entries in the corresponding row of $A + A^2$,\n(f) Nullspace of the matrix $A^T$."
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-3",
+    "href": "Exams/FinalExam.html#section-3",
+    "title": "Final Exam",
+    "section": "4 ",
+    "text": "4 \nFind a least squares solution to the following system:\n\\[\n\\begin{bmatrix}\n1 & 1 \\\\\n1 & 1 \\\\\n1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\n\\]\nIs the solution a genuine solution?"
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-4",
+    "href": "Exams/FinalExam.html#section-4",
+    "title": "Final Exam",
+    "section": "5 ",
+    "text": "5 \nLet \\(A=\\left[\\begin{array}{ccc}1 & 0 & 1 \\\\ -1 & 1 & 1 \\\\ 2 & 1 & 4\\end{array}\\right]\\).\n\nFind the reduced row-echelon form and rank of \\(A\\).\nFind a basis for the column space of \\(A\\).\nDetermine which of the following vectors is in the column space of \\(A\\) and, if so, express the vector as a linear combination of the columns of \\(A\\) :\n\n\\(b_{1}=[2,1,0]^{T}\\), in \\(b_{2}=[2,-3,3]^{T}\\).\nYou may find it helpful to use the following outputs from sympy:\nA.gauss_jordan_solve(b1): ValueError: Linear system has no solution\nA.gauss_jordan_solve(b2): \\(\\begin{bmatrix} 2 - \\tau_0 \\\\ -2 \\tau_0 -1 \\\\ \\tau_0 \\end{bmatrix}\\)"
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-5",
+    "href": "Exams/FinalExam.html#section-5",
+    "title": "Final Exam",
+    "section": "6 ",
+    "text": "6 \nYou have found the singular value decomposition of the real \\(m\\times n\\) matrix \\(A\\) to be \\(A = U\\Sigma V^T\\), where the nonzero elements of \\(\\Sigma\\) are \\(\\sigma_1, \\sigma_2, \\ldots  \\sigma_r\\). Let \\(\\mathbf{v_1}\\) be the first column of \\(V\\), \\(\\mathbf{u_1}\\) be the first column of \\(U\\), and so on.\n\nFind \\(A^T A \\mathbf{v_1}\\)\nFind \\(A \\mathbf{v_1}\\)\nFind \\(\\mathbf{v_1}^T \\mathbf{v_2}\\)\nFind \\(\\mathbf{u_1}^T A \\mathbf{v_2}\\)\nSuppose that \\(r = n \\le m\\); that is, the number of nonzero singular values is equal to the number of columns of \\(A\\), which is less or equal to the number of rows. Describe the solution set to the problem \\(A\\mathbf{x} = 0\\).\nFind the least-squares solution to the system \\(A\\mathbf{x} = \\mathbf{b}\\)."
+  },
+  {
+    "objectID": "Exams/FinalExam.html#section-6",
+    "href": "Exams/FinalExam.html#section-6",
+    "title": "Final Exam",
+    "section": "7 ",
+    "text": "7 \nThe Discrete Fourier Transform (DFT) of a sequence \\(x[n]\\) is given by \\(X[k] = \\sum_{n=0}^{N-1} x[n] e^{-i2\\pi kn/N}\\), where \\(N\\) is the length of the sequence, and where \\(k\\) runs from \\(0\\) to \\(N-1\\).\n\nFind the DFT of the sequence \\(x[n] = [1,-1,1,-1]\\).\nAssume that \\(x[n]\\) is a sample from a continuous signal \\(x(t)\\), where samples were taken at times \\(t=[0,1,2,3]\\) seconds. Make a sketch which includes a plausible continuous signal \\(x(t)\\), including the values of \\(x(t)\\) at the points \\(t=0,1,2,3\\). Argue from this sketch why the DFT of \\(x[n]\\) has the form it does."
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html",
+    "href": "Exams/FinalExam.sol.html",
+    "title": "Final Exam Solutions",
+    "section": "",
+    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)\n\nWe solve the equation above for \\(y_{k+3}\\) to get \\(y_{k+3} = \\frac{3y_{k} - 2y_{k+1}}{2}\\).\nMake a vector of the unknowns: \\(x_k = [y_{k}, y_{k+1}, y_{k+2}]^T\\). Then we have that \\(x_{k+1}=[y_{k+1},y_{k+2},y_{k+3}]^T\\).\nWe can now write three equations in terms of the vector \\(x_k\\) and \\(x_{k+1}\\):\n\\[\n\\begin{aligned}\nx_{k+1}[1] &= x_{k}[2] \\\\\nx_{k+1}[2] &= x_{k}[3] \\\\\nx_{k+1}[3] &= \\frac{3x_{k}[1] - 2x_{k}[2]}{2}\n\\end{aligned}\n\\]\nThen the equation can be written as in the form \\(Ax_{k} = x_{k+1}\\) where \\(A\\) is a matrix given by\n\\[\nA = \\begin{bmatrix}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n\\frac{-3}{2} & -1 & 0\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section",
+    "href": "Exams/FinalExam.sol.html#section",
+    "title": "Final Exam Solutions",
+    "section": "",
+    "text": "Convert this difference equation into matrix–vector form.\n\\(2y_{k+3} + 2y_{k+1} - 3y_{k} = 0\\)\n\nWe solve the equation above for \\(y_{k+3}\\) to get \\(y_{k+3} = \\frac{3y_{k} - 2y_{k+1}}{2}\\).\nMake a vector of the unknowns: \\(x_k = [y_{k}, y_{k+1}, y_{k+2}]^T\\). Then we have that \\(x_{k+1}=[y_{k+1},y_{k+2},y_{k+3}]^T\\).\nWe can now write three equations in terms of the vector \\(x_k\\) and \\(x_{k+1}\\):\n\\[\n\\begin{aligned}\nx_{k+1}[1] &= x_{k}[2] \\\\\nx_{k+1}[2] &= x_{k}[3] \\\\\nx_{k+1}[3] &= \\frac{3x_{k}[1] - 2x_{k}[2]}{2}\n\\end{aligned}\n\\]\nThen the equation can be written as in the form \\(Ax_{k} = x_{k+1}\\) where \\(A\\) is a matrix given by\n\\[\nA = \\begin{bmatrix}\n0 & 1 & 0 \\\\\n0 & 0 & 1 \\\\\n\\frac{-3}{2} & -1 & 0\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-1",
+    "href": "Exams/FinalExam.sol.html#section-1",
+    "title": "Final Exam Solutions",
+    "section": "2 ",
+    "text": "2 \nA population is modeled with three stages: larva, pupa and adult, and the resulting structured population model transition matrix is\n\\[\nA = \\begin{bmatrix}\n0 & 0 & 0.6 \\\\\n0.5 & 0 & 0 \\\\\n0 & 0.9 & 0\n\\end{bmatrix}\n\\]\n\n\n[(0.646330407009565 + 9.57696933338458e-33*I,\n  1,\n  [Matrix([\n   [-0.211957169909255 - 0.563510300230596*I],\n   [-0.163969672175827 - 0.435930519529353*I],\n   [ -0.22832393982674 - 0.607023069503539*I]])]),\n (-0.323165203504783 - 0.559738551708619*I,\n  1,\n  [Matrix([\n   [-0.446848502976125 + 0.418540422762337*I],\n   [-0.107562931920626 - 0.461259721138817*I],\n   [ 0.631131829114318 + 0.191434388320088*I]])]),\n (-0.323165203504783 + 0.559738551708619*I,\n  1,\n  [Matrix([\n   [-0.277204808242613 - 0.561858355489268*I],\n   [-0.269197612619668 + 0.403041213970164*I],\n   [0.673461217391963 + 0.0440180865002761*I]])])]\n\n\n\nExplain what this model says about the three states.\nStarting with a population of (0, 30, 100), calculate the population in the next two time steps.\nThe eigenvalues of the matrix are \\(\\lambda_1 = 0.646, \\lambda_2 = -0.323 - 0.560i, \\lambda_3 = -0.323 + 0.560i\\). What do these eigenvalues tell you about the long-term behavior of the population?\n\n\n\nThe model says that the adult has a 60% chance of creating a larva (but will die every cycle), the larva has a 50% chance of becoming a pupa, and the pupa has a 90% chance of becoming an adult.\nWe can calculate the population in the next two time steps by multiplying the matrix \\(A\\) with the vector \\(x_k = [0, 30, 100]^T\\).\n\n\n\n(array([60.,  0., 27.]), array([16.2, 30. ,  0. ]))\n\n\n\nThe largest eigenvalue is less than one. This matrix will not have a stable equilibrium point."
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-2",
+    "href": "Exams/FinalExam.sol.html#section-2",
+    "title": "Final Exam Solutions",
+    "section": "3 ",
+    "text": "3 \nThe graph G is given below.\n\n\n/Users/kendra/Library/Python/3.8/lib/python/site-packages/networkx/drawing/nx_pylab.py:433: UserWarning:\n\nNo data for colormapping provided via 'c'. Parameters 'cmap' will be ignored\n\n\n\n\n\n\n\n\n\n\n\nFind the adjacency matrix \\(A\\) and the incidence matrix \\(B\\) for the graph G.\nFrom \\(A\\) and \\(B\\), match the following descriptions to the corresponding quantities:\n\nthe number of outgoing edges from each vertex,\nthe power of each vertex (the number of paths of length 1 or 2 originating at each vertex)\nthe number of paths of length \\(k\\) between each pair of vertices\na basis for loops in the graph (don’t worry about the direction of the edges)\n\n\n\n(a) Sum of the entries in the corresponding row of $A$,\n(c) Entries in the matrix $A^k$,\n(d) Nullspace of the matrix $B^T$.\n(e) Entries in the matrix $B^k$.\n(b) Sum of the entries in the corresponding row of $A + A^2$,\n(f) Nullspace of the matrix $A^T$.\n\n\nThe adjacency matrix \\(A\\) is given by\n\n\n\n\\(\\displaystyle \\left[\\begin{matrix}0 & 1 & 1 & 0\\\\0 & 0 & 1 & 1\\\\0 & 0 & 0 & 1\\\\0 & 0 & 0 & 0\\end{matrix}\\right]\\)\n\n\nThe incidence matrix \\(B\\) is given by\n\n\n\\(\\displaystyle \\left[\\begin{matrix}-1 & -1 & 0 & 0 & 0\\\\1 & 0 & -1 & -1 & 0\\\\0 & 1 & 1 & 0 & -1\\\\0 & 0 & 0 & 1 & 1\\end{matrix}\\right]\\)\n\n\n\n\nThe degree of each vertex is given by the sum of the entries in the corresponding row of the adjacency matrix \\(A\\).\n\n\nThe power of each vertex is given by the sum of the entries in the corresponding row of the matrix \\(A + A^2\\).\nThe number of paths of length \\(k\\) between each pair of vertices is given by the entries in the matrix \\(A^k\\).\nA basis for loops in the graph is given by the nullspace of the matrix \\(B^T\\)."
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-3",
+    "href": "Exams/FinalExam.sol.html#section-3",
+    "title": "Final Exam Solutions",
+    "section": "4 ",
+    "text": "4 \nFind a least squares solution to the following system:\n\\[\n\\begin{bmatrix}\n1 & 1 \\\\\n1 & 1 \\\\\n1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\n\\]\nIs the solution a genuine solution?\n\nFirst we find the least squares solution by solving the normal equations \\(A^TAx = A^Tb\\).\n\n\n\\(\\displaystyle \\left[\\begin{matrix}0\\\\\\frac{3}{2}\\end{matrix}\\right]\\)\n\n\nThe solution is \\(x = \\begin{bmatrix} 1.5 \\\\ 0.5 \\end{bmatrix}\\).\nTo check if this is a genuine solution, we substitute the values of \\(x\\) back into the original equation.\n\n\n\\(\\displaystyle \\left[\\begin{matrix}\\frac{3}{2}\\\\\\frac{3}{2}\\\\3\\end{matrix}\\right]\\)\n\n\nThe result is \\(\\begin{bmatrix} 1.5 \\\\ 1.5 \\\\ 3.0 \\end{bmatrix}\\), which is not equal to \\(\\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}\\). Therefore, the solution is not a genuine solution."
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-4",
+    "href": "Exams/FinalExam.sol.html#section-4",
+    "title": "Final Exam Solutions",
+    "section": "5 ",
+    "text": "5 \nLet \\(A=\\left[\\begin{array}{ccc}1 & 0 & 1 \\\\ -1 & 1 & 1 \\\\ 2 & 1 & 4\\end{array}\\right]\\).\n\nFind the reduced row-echelon form and rank of \\(A\\).\nFind a basis for the column space of \\(A\\).\nDetermine which of the following vectors is in the column space of \\(A\\) and, if so, express the vector as a linear combination of the columns of \\(A\\) :\n\n\\(b_{1}=[2,1,0]^{T}\\), in \\(b_{2}=[2,-3,3]^{T}\\).\nYou may find it helpful to use the following outputs from sympy:\nA.gauss_jordan_solve(b1): ValueError: Linear system has no solution\nA.gauss_jordan_solve(b2): \\(\\begin{bmatrix} 2 - \\tau_0 \\\\ -2 \\tau_0 -1 \\\\ \\tau_0 \\end{bmatrix}\\)\n\n\nThe reduced row-echelon form of \\(A\\) is:\n\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1 & 0 & 1\\\\0 & 1 & 2\\\\0 & 0 & 0\\end{matrix}\\right]\\)\n\n\n\nThe basis for the column space of A is given by the pivot columns of the row-reduced echelon form of A. In this case, the basis is given by the first two columns of A.\n\n\n\n\\(\\displaystyle \\left[\\begin{matrix}1\\\\-1\\\\2\\end{matrix}\\right]\\)\n\n\n\\(\\displaystyle \\left[\\begin{matrix}0\\\\1\\\\1\\end{matrix}\\right]\\)\n\n\n\nTo determine if \\(b_1\\) is in the column space of A, we solve the equation \\(A\\mathbf{x} = b_1\\). and \\(b_2\\). The first has no solution, so it’s not in the column space. The second has a solution, so it is in the column space. The solution is \\(\\begin{bmatrix} 2 - \\tau_0 \\\\ -2 \\tau_0 -1 \\\\ \\tau_0 \\end{bmatrix}\\).\n\nWe pick \\(\\tau_0 = 0\\) to get that we can combine twice the first column and -1 times the second column to get \\(b_2\\).\n\n\n(Matrix([\n [   2 - tau0],\n [-2*tau0 - 1],\n [       tau0]]),\n Matrix([[tau0]]))"
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-5",
+    "href": "Exams/FinalExam.sol.html#section-5",
+    "title": "Final Exam Solutions",
+    "section": "6 ",
+    "text": "6 \nYou have found the singular value decomposition of the real \\(m\\times n\\) matrix \\(A\\) to be \\(A = U\\Sigma V^T\\), where the nonzero elements of \\(\\Sigma\\) are \\(\\sigma_1, \\sigma_2, \\ldots  \\sigma_r\\). Let \\(\\mathbf{v_1}\\) be the first column of \\(V\\), \\(\\mathbf{u_1}\\) be the first column of \\(U\\), and so on.\n\nFind \\(A^T A \\mathbf{v_1}\\)\nFind \\(A \\mathbf{v_1}\\)\nFind \\(\\mathbf{v_1}^T \\mathbf{v_2}\\)\nFind \\(\\mathbf{u_1}^T A \\mathbf{v_2}\\)\nSuppose that \\(r = n \\le m\\); that is, the number of nonzero singular values is equal to the number of columns of \\(A\\), which is less or equal to the number of rows. Describe the solution set to the problem \\(A\\mathbf{x} = 0\\).\nFind the least-squares solution to the system \\(A\\mathbf{x} = \\mathbf{b}\\).\n\n\nBecause the rank of \\(A\\) is \\(r\\), the nullspace of \\(A\\) is spanned by the vectors \\(\\mathbf{v_{r+1}}, \\ldots, \\mathbf{v_n}\\). But since \\(r = n\\), the nullspace of \\(A\\) is spanned by the zero vector. Therefore, the solution set to the problem \\(A\\mathbf{x} = 0\\) is the zero vector."
+  },
+  {
+    "objectID": "Exams/FinalExam.sol.html#section-6",
+    "href": "Exams/FinalExam.sol.html#section-6",
+    "title": "Final Exam Solutions",
+    "section": "7 ",
+    "text": "7 \nThe Discrete Fourier Transform (DFT) of a sequence \\(x[n]\\) is given by \\(X[k] = \\sum_{n=0}^{N-1} x[n] e^{-i2\\pi kn/N}\\), where \\(N\\) is the length of the sequence, and where \\(k\\) runs from \\(0\\) to \\(N-1\\).\n\nFind the DFT of the sequence \\(x[n] = [1,-1,1,-1]\\).\nAssume that \\(x[n]\\) is a sample from a continuous signal \\(x(t)\\), where samples were taken at times \\(t=[0,1,2,3]\\) seconds. Make a sketch which includes a plausible continuous signal \\(x(t)\\), including the values of \\(x(t)\\) at the points \\(t=0,1,2,3\\). Argue from this sketch why the DFT of \\(x[n]\\) has the form it does.\n\n\n\nThe DFT of the sequence \\(x[n] = [1,-1,1,-1]\\) is given by \\(X[k] = \\sum_{n=0}^{3} x[n] e^{-i2\\pi kn/4}\\).\n\nFor \\(k\\)=0, this becomes \\(X[0]=1-1+1-1=0\\).\nFor \\(k\\)=1, this becomes \\(X[1]=1-e^{-2i\\pi/4}+e^{-4i\\pi/4}-e^{-6i\\pi/4}=1+0-1+0=0\\).\nFor \\(k\\)=2, this becomes \\(X[2]=1-e^{-4i\\pi/4}+e^{-8i\\pi/4}-e^{-12i\\pi/4}=1+1+1-1=4\\).\nFor \\(k\\)=3, this becomes \\(X[3]=1-e^{-6i\\pi/4}+e^{-12i\\pi}-e^{-18i\\pi}=1+0-1+0=0\\).\n\n\n\n\n\n\n\n\n\n\n\n\nThe sampled signal matches a cosine curve with a frequency of 0.5 Hz.\nThe DFT measures frequencies that are 0, 1, 2, and 3 times the frequency which would correspond to a complete cycle in the entire sampled period of 4s. One cycle in 4s is 0.25 Hz.\nTherefore, the DFT measures frequencies at 0 Hz, 0.25 Hz, 0.5 Hz, and 0.75 Hz.\nThe peak at 0.5 Hz is the largest because the signal is a cosine curve with a frequency of 0.5 Hz."
   }
 ]

@@ -3,6 +3,7 @@ _extensions
 .Rproj.user
 .Rhistory
 *.code-workspace
+*FinalExam*
 
 /.quarto/
 

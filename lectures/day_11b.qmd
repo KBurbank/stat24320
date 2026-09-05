@@ -1,0 +1,81 @@
+---
+title: Ch5 Lecture 2
+lecture_day: 11
+readings: "5.1,5.2,5.3"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+
+
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import imageio
+
+def sincurve(omega):
+    x = np.linspace(0, 4*np.pi, 200)
+    y = np.sin(omega*x)
+    return x, y
+
+def sincurve_with_phase(omega, phase):
+    x = np.linspace(0, 4*np.pi, 200)
+    y = np.sin(omega*x + phase)
+    return x, y
+
+def plot_two_sincurves(omega1, omega2,phase1, phase2):
+    x1, y1 = sincurve_with_phase(omega1, phase1)
+    x2, y2 = sincurve_with_phase(omega2, phase2)
+    plt.plot(x1, y1, label=f'$\omega={omega1}$')
+    plt.plot(x2, y2, label=f'$\omega={omega2}$')
+    plt.legend()
+    plt.show()
+
+# make an animation showing the phase of curve 2 changing from 0 to pi, while the phase of curve 1 is fixed at 0
+
+import matplotlib.animation as animation
+
+```
+
+```{python}
+def animate_phase_change(omega1, omega2):
+  x1, y1 = sincurve_with_phase(omega1, 0)
+  x2, y2 = sincurve_with_phase(omega2, 0)
+  fig, ax = plt.subplots()
+  line1, = ax.plot(x1, y1, label=f'$\omega={omega1}$')
+  line2, = ax.plot(x2, y2, label=f'$\omega={omega2}$')
+  collection1 = ax.fill_between(x1, y1, y2, where=(y1*y2>0), color='red', alpha=0.5)
+  collection2 = ax.fill_between(x1, y1, y2, where=(y1*y2<0), color='blue', alpha=0.5)
+  plt.legend()
+  
+  def update(phase):
+    y2 = np.sin(omega2*x2 + phase)
+    line2.set_ydata(y2)
+    p1=ax.fill_between(x1, y1, y2, where=(y1*y2>0), color='red', alpha=0.5)
+    p2=ax.fill_between(x1, y1, y2, where=(y1*y2<=0), color='blue', alpha=0.5)
+ 
+    return line2,p1,p2
+  
+  anim = animation.FuncAnimation(fig, update, frames=np.linspace(0, np.pi, 100), interval=100)
+  plt.show()
+  
+  return anim
+```
+
+```{python}
+anim = animate_phase_change(1, 1)
+
+from IPython.display import HTML
+HTML(anim.to_jshtml())
+#plot_two_sincurves(1, 1, np.pi, 0)
+```

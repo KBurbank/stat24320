@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ch2 Lecture 5 – Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#today-rewriting-matrix-expressions" id="toc-today-rewriting-matrix-expressions" class="nav-link active" data-scroll-target="#today-rewriting-matrix-expressions"><em>Today: Rewriting Matrix Expressions</em></a></li>
+  <li><a href="#block-multiplication" id="toc-block-multiplication" class="nav-link" data-scroll-target="#block-multiplication"><em>Block multiplication</em></a>
+  <ul class="collapse">
+  <li><a href="#block-multiplication-1" id="toc-block-multiplication-1" class="nav-link" data-scroll-target="#block-multiplication-1"><em>Block Multiplication</em></a></li>
+  <li><a href="#difficulty-large-multiplications-are-painful" id="toc-difficulty-large-multiplications-are-painful" class="nav-link" data-scroll-target="#difficulty-large-multiplications-are-painful"><em>Difficulty: Large multiplications are painful</em></a></li>
+  <li><a href="#concept-what-is-block-multiplication" id="toc-concept-what-is-block-multiplication" class="nav-link" data-scroll-target="#concept-what-is-block-multiplication"><em>Concept: What is Block Multiplication?</em></a></li>
+  <li><a href="#method-block-multiplication" id="toc-method-block-multiplication" class="nav-link" data-scroll-target="#method-block-multiplication"><em>Method: Block Multiplication</em></a>
+  <ul class="collapse">
+  <li><a href="#steps-to-perform-block-multiplication" id="toc-steps-to-perform-block-multiplication" class="nav-link" data-scroll-target="#steps-to-perform-block-multiplication"><em>Steps to perform block multiplication</em></a></li>
+  </ul></li>
+  <li><a href="#worked-example-block-multiply-the-matrices-from-before" id="toc-worked-example-block-multiply-the-matrices-from-before" class="nav-link" data-scroll-target="#worked-example-block-multiply-the-matrices-from-before"><em>Worked example: block-multiply the matrices from before</em></a>
+  <ul class="collapse">
+  <li><a href="#name-the-blocks" id="toc-name-the-blocks" class="nav-link" data-scroll-target="#name-the-blocks"><em>Name the blocks</em></a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><em></em></a>
+  <ul class="collapse">
+  <li><a href="#multiply-block-by-block-like-row-times-column" id="toc-multiply-block-by-block-like-row-times-column" class="nav-link" data-scroll-target="#multiply-block-by-block-like-row-times-column"><em>Multiply block-by-block (like “row times column”)</em></a></li>
+  </ul></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><em></em></a></li>
+  <li><a href="#column-vectors-as-blocks" id="toc-column-vectors-as-blocks" class="nav-link" data-scroll-target="#column-vectors-as-blocks"><em>Column Vectors as Blocks</em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><em></em></a></li>
+  <li><a href="#skills-what-you-should-be-able-to-do" id="toc-skills-what-you-should-be-able-to-do" class="nav-link" data-scroll-target="#skills-what-you-should-be-able-to-do"><em>Skills: what you should be able to do</em></a></li>
+  </ul></li>
+  <li><a href="#transpose-and-conjugate-transpose" id="toc-transpose-and-conjugate-transpose" class="nav-link" data-scroll-target="#transpose-and-conjugate-transpose"><em>Transpose and Conjugate Transpose</em></a>
+  <ul class="collapse">
+  <li><a href="#concept-why-transpose-matters" id="toc-concept-why-transpose-matters" class="nav-link" data-scroll-target="#concept-why-transpose-matters"><em>Concept: Why Transpose Matters</em></a></li>
+  <li><a href="#transpose-and-conjugate-transpose-1" id="toc-transpose-and-conjugate-transpose-1" class="nav-link" data-scroll-target="#transpose-and-conjugate-transpose-1"><em>Transpose and Conjugate Transpose</em></a>
+  <ul class="collapse">
+  <li><a href="#definition-transpose-and-conjugate-transpose" id="toc-definition-transpose-and-conjugate-transpose" class="nav-link" data-scroll-target="#definition-transpose-and-conjugate-transpose"><em>Definition: Transpose and Conjugate Transpose</em></a></li>
+  </ul></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><em>Example 1</em></a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><em>Example 2</em></a></li>
+  <li><a href="#method-transpose-laws" id="toc-method-transpose-laws" class="nav-link" data-scroll-target="#method-transpose-laws"><em>Method: Transpose Laws</em></a></li>
+  <li><a href="#symmetric-and-hermitian-matrices" id="toc-symmetric-and-hermitian-matrices" class="nav-link" data-scroll-target="#symmetric-and-hermitian-matrices"><em>Symmetric and Hermitian Matrices</em></a></li>
+  <li><a href="#examples-of-symmetric-hermitian-and-neither" id="toc-examples-of-symmetric-hermitian-and-neither" class="nav-link" data-scroll-target="#examples-of-symmetric-hermitian-and-neither"><em>Examples of Symmetric, Hermitian, and Neither</em></a>
+  <ul class="collapse">
+  <li><a href="#symmetric-real-entries-at-a" id="toc-symmetric-real-entries-at-a" class="nav-link" data-scroll-target="#symmetric-real-entries-at-a"><em>1. Symmetric (real entries, <span class="math inline">\(A^T = A\)</span>):</em></a></li>
+  <li><a href="#hermitian-complex-entries-a-a-but-not-symmetric" id="toc-hermitian-complex-entries-a-a-but-not-symmetric" class="nav-link" data-scroll-target="#hermitian-complex-entries-a-a-but-not-symmetric"><em>2. Hermitian (complex entries, <span class="math inline">\(A^* = A\)</span>, but not symmetric):</em></a></li>
+  <li><a href="#neither-symmetric-nor-hermitian" id="toc-neither-symmetric-nor-hermitian" class="nav-link" data-scroll-target="#neither-symmetric-nor-hermitian"><em>3. Neither symmetric nor Hermitian:</em></a></li>
+  </ul></li>
+  <li><a href="#check-symmetric-vs-hermitian" id="toc-check-symmetric-vs-hermitian" class="nav-link" data-scroll-target="#check-symmetric-vs-hermitian"><em>Check: Symmetric vs Hermitian</em></a></li>
+  <li><a href="#skills-what-you-should-be-able-to-do-1" id="toc-skills-what-you-should-be-able-to-do-1" class="nav-link" data-scroll-target="#skills-what-you-should-be-able-to-do-1"><em>Skills: what you should be able to do</em></a></li>
+  </ul></li>
+  <li><a href="#inner-and-outer-products" id="toc-inner-and-outer-products" class="nav-link" data-scroll-target="#inner-and-outer-products"><em>Inner and outer products</em></a>
+  <ul class="collapse">
+  <li><a href="#concept-inner-product" id="toc-concept-inner-product" class="nav-link" data-scroll-target="#concept-inner-product"><em>Concept: Inner product</em></a></li>
+  <li><a href="#concept-outer-product" id="toc-concept-outer-product" class="nav-link" data-scroll-target="#concept-outer-product"><em>Concept: Outer product</em></a></li>
+  <li><a href="#applications-of-inner-and-outer-products" id="toc-applications-of-inner-and-outer-products" class="nav-link" data-scroll-target="#applications-of-inner-and-outer-products"><em>Applications of Inner and Outer Products</em></a></li>
+  <li><a href="#example-inner-products-in-our-running-example" id="toc-example-inner-products-in-our-running-example" class="nav-link" data-scroll-target="#example-inner-products-in-our-running-example"><em>Example: Inner products in our running example</em></a></li>
+  <li><a href="#from-products-to-quadratic-forms" id="toc-from-products-to-quadratic-forms" class="nav-link" data-scroll-target="#from-products-to-quadratic-forms"><em>From Products to Quadratic Forms</em></a></li>
+  </ul></li>
+  <li><a href="#concept-quadratic-forms" id="toc-concept-quadratic-forms" class="nav-link" data-scroll-target="#concept-quadratic-forms"><em>Concept: Quadratic Forms</em></a>
+  <ul class="collapse">
+  <li><a href="#example-rewrite-as-mathbfxt-a-mathbfx" id="toc-example-rewrite-as-mathbfxt-a-mathbfx" class="nav-link" data-scroll-target="#example-rewrite-as-mathbfxt-a-mathbfx"><em>Example: Rewrite as <span class="math inline">\(\mathbf{x}^T A \mathbf{x}\)</span></em></a>
+  <ul class="collapse">
+  <li><a href="#physics-example-kinetic-energy" id="toc-physics-example-kinetic-energy" class="nav-link" data-scroll-target="#physics-example-kinetic-energy"><em>Physics example: kinetic energy</em></a></li>
+  </ul></li>
+  <li><a href="#what-does-the-quadratic-form-buy-us" id="toc-what-does-the-quadratic-form-buy-us" class="nav-link" data-scroll-target="#what-does-the-quadratic-form-buy-us"><em>What does the quadratic form buy us?</em></a></li>
+  <li><a href="#skills-what-you-should-be-able-to-do-2" id="toc-skills-what-you-should-be-able-to-do-2" class="nav-link" data-scroll-target="#skills-what-you-should-be-able-to-do-2"><em>Skills: what you should be able to do</em></a></li>
+  </ul></li>
+  <li><a href="#determinants" id="toc-determinants" class="nav-link" data-scroll-target="#determinants"><em>Determinants</em></a>
+  <ul class="collapse">
+  <li><a href="#difficulty-invertible-or-not" id="toc-difficulty-invertible-or-not" class="nav-link" data-scroll-target="#difficulty-invertible-or-not"><em>Difficulty: Invertible or not?</em></a></li>
+  <li><a href="#concept-why-determinants" id="toc-concept-why-determinants" class="nav-link" data-scroll-target="#concept-why-determinants"><em>Concept: Why Determinants?</em></a>
+  <ul class="collapse">
+  <li><a href="#invertibility" id="toc-invertibility" class="nav-link" data-scroll-target="#invertibility"><em>Invertibility</em></a></li>
+  <li><a href="#why-determinants-matter-beyond-invertibility" id="toc-why-determinants-matter-beyond-invertibility" class="nav-link" data-scroll-target="#why-determinants-matter-beyond-invertibility"><em>Why determinants matter beyond invertibility</em></a></li>
+  </ul></li>
+  <li><a href="#definition-of-the-determinant" id="toc-definition-of-the-determinant" class="nav-link" data-scroll-target="#definition-of-the-determinant"><em>Definition of the determinant</em></a></li>
+  <li><a href="#laws-of-the-determinant" id="toc-laws-of-the-determinant" class="nav-link" data-scroll-target="#laws-of-the-determinant"><em>Laws of the determinant</em></a></li>
+  <li><a href="#more-laws-of-determinants" id="toc-more-laws-of-determinants" class="nav-link" data-scroll-target="#more-laws-of-determinants"><em>More Laws of Determinants</em></a></li>
+  <li><a href="#determinant-laws-in-terms-of-elementary-matrices" id="toc-determinant-laws-in-terms-of-elementary-matrices" class="nav-link" data-scroll-target="#determinant-laws-in-terms-of-elementary-matrices"><em>Determinant Laws in terms of Elementary Matrices</em></a></li>
+  <li><a href="#determinant-of-row-echelon-form" id="toc-determinant-of-row-echelon-form" class="nav-link" data-scroll-target="#determinant-of-row-echelon-form"><em>Determinant of Row Echelon Form</em></a></li>
+  <li><a href="#two-more-determinant-laws" id="toc-two-more-determinant-laws" class="nav-link" data-scroll-target="#two-more-determinant-laws"><em>Two more Determinant Laws</em></a></li>
+  <li><a href="#method-compute-determinant-in-practice" id="toc-method-compute-determinant-in-practice" class="nav-link" data-scroll-target="#method-compute-determinant-in-practice"><em>Method: Compute determinant in practice</em></a>
+  <ul class="collapse">
+  <li><a href="#steps-to-compute-the-determinant" id="toc-steps-to-compute-the-determinant" class="nav-link" data-scroll-target="#steps-to-compute-the-determinant"><em>Steps to compute the determinant</em></a></li>
+  <li><a href="#key-rules" id="toc-key-rules" class="nav-link" data-scroll-target="#key-rules"><em>Key rules</em></a></li>
+  </ul></li>
+  <li><a href="#explicit-formulas-for-inverses-and-solving-linear-systems-with-22-matrices" id="toc-explicit-formulas-for-inverses-and-solving-linear-systems-with-22-matrices" class="nav-link" data-scroll-target="#explicit-formulas-for-inverses-and-solving-linear-systems-with-22-matrices"><em>Explicit Formulas for inverses and solving linear systems with 2×2 Matrices</em></a></li>
+  <li><a href="#cramers-rule-22" id="toc-cramers-rule-22" class="nav-link" data-scroll-target="#cramers-rule-22"><em>Cramer’s Rule (2×2)</em></a></li>
+  <li><a href="#example-using-cramers-rule" id="toc-example-using-cramers-rule" class="nav-link" data-scroll-target="#example-using-cramers-rule"><em>Example: Using Cramer’s Rule</em></a></li>
+  <li><a href="#summary-of-laws-of-determinants" id="toc-summary-of-laws-of-determinants" class="nav-link" data-scroll-target="#summary-of-laws-of-determinants"><em>Summary of Laws of Determinants</em></a></li>
+  <li><a href="#skills-what-you-should-be-able-to-do-3" id="toc-skills-what-you-should-be-able-to-do-3" class="nav-link" data-scroll-target="#skills-what-you-should-be-able-to-do-3"><em>Skills: what you should be able to do</em></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="day_7.html"><i class="bi bi-file-slides"></i>RevealJS (course-presentation)</a></li><li><a href="day_7.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="day_7.out.ipynb" download="day_7.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ch2 Lecture 5</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="today-rewriting-matrix-expressions" class="level1">
+<h1><em>Today: Rewriting Matrix Expressions</em></h1>
+<ol type="1">
+<li><strong>Blocking</strong>: Group entries to simplify multiplication</li>
+<li><strong>Transpose</strong>: Switch row/column viewpoints<br>
+</li>
+<li><strong>Determinants</strong>: Extract a single number that answers “invertible?”</li>
+</ol>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Running Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ll use the system <span class="math inline">\(2x_1 - x_2 = 1\)</span>, <span class="math inline">\(4x_1 + 4x_2 = 20\)</span> throughout to see how each tool helps us understand and solve it.</p>
+<p>Matrix: <span class="math inline">\(A = \begin{bmatrix} 2 &amp; -1 \\ 4 &amp; 4 \end{bmatrix}\)</span>, <span class="math inline">\(\mathbf{b} = \begin{bmatrix} 1 \\ 20 \end{bmatrix}\)</span></p>
+</div>
+</div>
+</section>
+<section id="block-multiplication" class="level1">
+<h1><em>Block multiplication</em></h1>
+<!-- @idea: block_multiplication | Block matrices and multiplication -->
+<!-- @uses: block_multiplication, matrix_arithmetic -->
+<!-- @introduces: block_multiplication -->
+<section id="block-multiplication-1" class="level2">
+<h2 class="anchored" data-anchor-id="block-multiplication-1"><em>Block Multiplication</em></h2>
+<!--
+
+### Block Matrices
+
+Another type of matrix that occurs frequently enough to be discussed is a block matrix. Actually, we already used the idea of blocks when we described the augmented matrix of the system $A \mathbf{x}=\mathbf{b}$ as the matrix $\tilde{A}=[A \mid \mathbf{b}]$. The blocks of $\tilde{A}$ in partitioned form $[A, \mathbf{b}]$ are $A$ and $\mathbf{b}$. There is no reason we couldn't partition by inserting more vertical lines or horizontal lines as well, and this partitioning leads to the blocks. The main point to bear in mind when using the block notation is that the blocks must be correctly Block Notation sized so that the resulting matrix makes sense. One virtue of the block form that results from partitioning is that for purposes of matrix addition or multiplication, we can treat the blocks rather like scalars, provided the addition or multiplication that results makes sense. We will use this idea from time to time without fanfare. One could go through a formal description of partitioning and proofs; we won't. Rather, we'll show how this idea can be used by example.
+
+
+
+For another (important!) example of block arithmetic, examine Example 2.9 and the discussion following it. There we view a matrix as blocked into its respective columns, and a column vector as blocked into its rows, to obtain
+
+$$
+A \mathbf{x}=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}\right]\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\mathbf{a}_{1} x_{1}+\mathbf{a}_{2} x_{2}+\mathbf{a}_{3} x_{3}
+$$
+
+-->
+</section>
+<section id="difficulty-large-multiplications-are-painful" class="level2">
+<h2 class="anchored" data-anchor-id="difficulty-large-multiplications-are-painful"><em>Difficulty: Large multiplications are painful</em></h2>
+<p>Suppose we need to multiply these matrices…</p>
+<p><span class="math display">\[
+\left[\begin{array}{llll}
+1 &amp; 2 &amp; 0 &amp; 0 \\
+3 &amp; 4 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]\left[\begin{array}{llll}
+0 &amp; 0 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right] .
+\]</span></p>
+<p><strong>pause</strong></p>
+</section>
+<section id="concept-what-is-block-multiplication" class="level2">
+<h2 class="anchored" data-anchor-id="concept-what-is-block-multiplication"><em>Concept: What is Block Multiplication?</em></h2>
+<p>The key idea: <strong>Partition</strong> so the block column-widths of the left matrix match the block row-heights of the right matrix.</p>
+<p>Then you multiply <em>as if each block were an entry</em> (but using matrix multiplication inside – you’ll see what that means in a moment).</p>
+</section>
+<section id="method-block-multiplication" class="level2">
+<h2 class="anchored" data-anchor-id="method-block-multiplication"><em>Method: Block Multiplication</em></h2>
+<section id="steps-to-perform-block-multiplication" class="level3">
+<h3 class="anchored" data-anchor-id="steps-to-perform-block-multiplication"><em>Steps to perform block multiplication</em></h3>
+<ol type="1">
+<li><strong>Partition</strong> so the block column-widths of the left matrix match the block row-heights of the right matrix.</li>
+<li><strong>Multiply block-rows by block-columns</strong> (same pattern as ordinary matrix multiplication).</li>
+</ol>
+<p>. . .</p>
+<p><strong>Formula:</strong> If <span class="math display">\[
+M=\left[\begin{array}{cc}
+A &amp; B \\
+C &amp; D
+\end{array}\right], \qquad
+N=\left[\begin{array}{cc}
+E &amp; F \\
+G &amp; H
+\end{array}\right],
+\]</span> then <span class="math display">\[
+MN=\left[\begin{array}{cc}
+AE+BG &amp; AF+BH \\
+CE+DG &amp; CF+DH
+\end{array}\right].
+\]</span></p>
+</section>
+</section>
+<section id="worked-example-block-multiply-the-matrices-from-before" class="level2">
+<h2 class="anchored" data-anchor-id="worked-example-block-multiply-the-matrices-from-before"><em>Worked example: block-multiply the matrices from before</em></h2>
+<p>We started with the (painful) product</p>
+<p><span class="math display">\[
+\left[\begin{array}{cc|cc}
+1 &amp; 2 &amp; 0 &amp; 0 \\
+3 &amp; 4 &amp; 0 &amp; 0 \\
+\hline
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\left[\begin{array}{cc|cc}
+0 &amp; 0 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 1 \\
+\hline
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}\right].
+\]</span></p>
+<p>The vertical/horizontal lines are the “rectangles” that tell us where the <strong>blocks</strong> are.</p>
+<p>. . .</p>
+<p>We can give these blocks labels:</p>
+<p><span class="math display">\[
+M=
+\left[\begin{array}{c|c}
+A &amp; 0_{2\times 2}\\
+\hline
+0_{1\times 2} &amp; B
+\end{array}\right],
+\qquad
+N=
+\left[\begin{array}{c|c}
+0_{2\times 2} &amp; C\\
+\hline
+0_{2\times 2} &amp; I_2
+\end{array}\right].
+\]</span></p>
+<section id="name-the-blocks" class="level3">
+<h3 class="anchored" data-anchor-id="name-the-blocks"><em>Name the blocks</em></h3>
+<p><span class="math display">\[
+M=
+\left[\begin{array}{c|c}
+A &amp; 0_{2\times 2}\\
+\hline
+0_{1\times 2} &amp; B
+\end{array}\right],
+\qquad
+N=
+\left[\begin{array}{c|c}
+0_{2\times 2} &amp; C\\
+\hline
+0_{2\times 2} &amp; I_2
+\end{array}\right].
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{cc}
+1 &amp; 2 \\
+3 &amp; 4
+\end{array}\right],\quad
+B=\left[\begin{array}{cc}
+1 &amp; 0
+\end{array}\right],\quad
+C=\left[\begin{array}{cc}
+2 &amp; 1 \\
+1 &amp; 1
+\end{array}\right],\quad
+I_2=\left[\begin{array}{cc}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}\right].
+\]</span></p>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><em></em></h2>
+<section id="multiply-block-by-block-like-row-times-column" class="level3">
+<h3 class="anchored" data-anchor-id="multiply-block-by-block-like-row-times-column"><em>Multiply block-by-block (like “row times column”)</em></h3>
+<p><span class="math display">\[
+M=
+\left[\begin{array}{c|c}
+A &amp; 0_{2\times 2}\\
+\hline
+0_{1\times 2} &amp; B
+\end{array}\right],
+\qquad
+N=
+\left[\begin{array}{c|c}
+0_{2\times 2} &amp; C\\
+\hline
+0_{2\times 2} &amp; I_2
+\end{array}\right].
+\]</span></p>
+<p>Each block of (MN) is a block-row times a block-column:</p>
+<p><span class="math display">\[
+MN=
+\left[\begin{array}{c|c}
+A\cdot 0_{2\times 2} + 0_{2\times 2}\cdot 0_{2\times 2}
+&amp;
+A\cdot C + 0_{2\times 2}\cdot I_2
+\\
+\hline
+0_{1\times 2}\cdot 0_{2\times 2} + B\cdot 0_{2\times 2}
+&amp;
+0_{1\times 2}\cdot C + B\cdot I_2
+\end{array}\right].
+\]</span></p>
+<p>. . .</p>
+<p>Now simplify using (0()=0) and (B I_2=B):</p>
+<p><span class="math display">\[
+MN=
+\left[\begin{array}{c|c}
+0_{2\times 2} &amp; AC\\
+\hline
+0_{1\times 2} &amp; B
+\end{array}\right].
+\]</span></p>
+</section>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<p><span class="math display">\[
+MN=
+\left[\begin{array}{c|c}
+0_{2\times 2} &amp; AC\\
+\hline
+0_{1\times 2} &amp; B
+\end{array}\right].
+\]</span></p>
+<p>Compute the only nontrivial block:</p>
+<p><span class="math display">\[
+AC=
+\left[\begin{array}{cc}
+1 &amp; 2\\
+3 &amp; 4
+\end{array}\right]
+\left[\begin{array}{cc}
+2 &amp; 1\\
+1 &amp; 1
+\end{array}\right]
+=
+\left[\begin{array}{cc}
+4 &amp; 3\\
+10 &amp; 7
+\end{array}\right].
+\]</span></p>
+<p>So the full product is</p>
+<p><span class="math display">\[
+MN=
+\left[\begin{array}{cc|cc}
+0 &amp; 0 &amp; 4 &amp; 3\\
+0 &amp; 0 &amp; 10 &amp; 7\\
+\hline
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right].
+\]</span></p>
+<p><strong>Key insight:</strong> In our example, lots of blocks are <strong>zeros</strong> and one block is an <strong>identity</strong>, so most terms vanish or simplify immediately.</p>
+</section>
+<section id="column-vectors-as-blocks" class="level2">
+<h2 class="anchored" data-anchor-id="column-vectors-as-blocks"><em>Column Vectors as Blocks</em></h2>
+<p>The most important example of blocking: view a matrix as blocked into its columns.</p>
+<p><span class="math display">\[
+A \mathbf{x}=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}\right]\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right]=\mathbf{a}_{1} x_{1}+\mathbf{a}_{2} x_{2}+\mathbf{a}_{3} x_{3}
+\]</span></p>
+<p>This shows <span class="math inline">\(A\mathbf{x}\)</span> as a <strong>linear combination of columns</strong> — an important interpretation that connects matrix multiplication to the column space (we’ll see this in Chapter 3, day 8).</p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
+<p>Blocking isn’t just a trick:</p>
+<ul>
+<li><strong>Expose real structure</strong>: When matrices have zeros/identities/block-diagonal (or triangular) form, there are parts that <strong>don’t interact</strong>, so big products/solves break into smaller ones (many terms become (0)).</li>
+<li><strong>Algorithm notation</strong>: many methods are “work on a submatrix, update the rest.” Blocks keep dimensions straight; this shows up in <strong>QR</strong> (and later eigenvalue iterations) as “top-left / bottom-right” reasoning.</li>
+</ul>
+</section>
+<section id="skills-what-you-should-be-able-to-do" class="level2">
+<h2 class="anchored" data-anchor-id="skills-what-you-should-be-able-to-do"><em>Skills: what you should be able to do</em></h2>
+<ul>
+<li>Identify compatible block partitions</li>
+<li>Multiply block-rows by block-columns</li>
+<li>Recognize the ‘columns-as-blocks’ identity: <span class="math inline">\(A\mathbf{x}=\sum x_i\mathbf{a}_i\)</span></li>
+</ul>
+<!-- @introduces: transpose -->
+</section>
+</section>
+<section id="transpose-and-conjugate-transpose" class="level1">
+<h1><em>Transpose and Conjugate Transpose</em></h1>
+<!-- @idea: transpose_and_symmetric | Transpose, conjugate transpose, symmetric/Hermitian -->
+<!-- @uses: matrix_arithmetic, transpose -->
+<section id="concept-why-transpose-matters" class="level2">
+<h2 class="anchored" data-anchor-id="concept-why-transpose-matters"><em>Concept: Why Transpose Matters</em></h2>
+<p>The transpose operation unlocks fundamental tools:</p>
+<ul>
+<li><strong>Inner products</strong>: <span class="math inline">\(\mathbf{u}^T\mathbf{v}\)</span> is the dot product—we’ll see this is fundamental in least squares (Chapter 4, day 9-10)</li>
+<li><strong>Symmetric matrices</strong>: The transpose operation lets us define symmetry in a matrix. Symmetry appears everywhere—quadratic forms (which we’ll see today), and many applications</li>
+</ul>
+</section>
+<section id="transpose-and-conjugate-transpose-1" class="level2">
+<h2 class="anchored" data-anchor-id="transpose-and-conjugate-transpose-1"><em>Transpose and Conjugate Transpose</em></h2>
+<!--
+
+Sometimes we prefer to work with a different form of a matrix that contains the same information as the matrix. Transposes are operations that allow us to do that. The idea is simple: Interchange rows and columns. It turns out that for complex matrices, there is an analogue that is not quite the same thing as transposing, though it yields the same result when applied to real matrices. This analogue is called the conjugate (or Hermitian) transpose. Here are the appropriate definitions.
+
+#### Definition 2.15.
+ Transpose and Conjugate Matrices Let $A=\left[a_{i j}\right]$ be an $m \times n$ matrix with (possibly) complex entries. Then the transpose of $A$ is the $n \times m$ matrix $A^{T}$ obtained by interchanging the rows and columns of $A$, so that the $(i, j)$ th entry of $A^{T}$ is $a_{j i}$. The conjugate of $A$ is the matrix $\bar{A}=\left[\overline{a_{i j}}\right]$. Finally, the conjugate (Hermitian) transpose of $A$ is the matrix $A^{*}=\bar{A}^{T}$.
+
+Notice that in the case of a real matrix (that is, a matrix with real entries) $A$ there is no difference between transpose and conjugate transpose, since in this case $A=\bar{A}$. Consider these examples.
+
+Example 2.33. Compute the transpose and conjugate transpose of the following matrices:
+(a) $\left[\begin{array}{lll}1 & 0 & 2 \\ 0 & 1 & 1\end{array}\right]$,
+(b) $\left[\begin{array}{ll}2 & 1 \\ 0 & 3\end{array}\right]$,
+(c) $\left[\begin{array}{rr}1 & 1+\mathrm{i} \\ 0 & 2 \mathrm{i}\end{array}\right]$.
+
+Solution. For matrix (a) we have
+
+$$
+\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{*}=\left[\begin{array}{lll}
+1 & 0 & 2 \\
+0 & 1 & 1
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+1 & 0 \\
+0 & 1 \\
+2 & 1
+\end{array}\right]
+$$
+
+Notice how the dimensions of a transpose get switched from the original.
+
+For matrix (b) we have
+
+$$
+\left[\begin{array}{ll}
+2 & 1 \\
+0 & 3
+\end{array}\right]^{*}=\left[\begin{array}{ll}
+2 & 1 \\
+0 & 3
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+2 & 0 \\
+1 & 3
+\end{array}\right]
+$$
+
+and for matrix (c) we have
+
+$$
+\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 & 0 \\
+1-\mathrm{i} & -2 \mathrm{i}
+\end{array}\right], \quad\left[\begin{array}{rr}
+1 & 1+\mathrm{i} \\
+0 & 2 \mathrm{i}
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 & 0 \\
+1+\mathrm{i} & 2 \mathrm{i}
+\end{array}\right]
+$$
+
+In this case, transpose and conjugate transpose are not the same.
+
+Even when dealing with vectors alone, the transpose notation is handy. For example, there is a bit of terminology that comes from tensor analysis (a branch of higher linear algebra used in many fields including differential geometry, engineering mechanics, and relativity) that can be expressed very concisely with transposes:
+-->
+<p>. . .</p>
+<section id="definition-transpose-and-conjugate-transpose" class="level3">
+<h3 class="anchored" data-anchor-id="definition-transpose-and-conjugate-transpose"><em>Definition: Transpose and Conjugate Transpose</em></h3>
+<ul>
+<li>Let <span class="math inline">\(A=\left[a_{i j}\right]\)</span> be an <span class="math inline">\(m \times n\)</span> matrix with (possibly) complex entries.</li>
+<li>The <strong>transpose</strong> of <span class="math inline">\(A\)</span> is the <span class="math inline">\(n \times m\)</span> matrix <span class="math inline">\(A^{T}\)</span> obtained by interchanging the rows and columns of <span class="math inline">\(A\)</span></li>
+<li>The <strong>conjugate</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(\bar{A}=\left[\overline{a_{i j}}\right]\)</span></li>
+<li>Finally, the <strong>conjugate (Hermitian) transpose</strong> of <span class="math inline">\(A\)</span> is the matrix <span class="math inline">\(A^{*}=\bar{A}^{T}\)</span>.</li>
+</ul>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Running Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For our system with <span class="math inline">\(A = \begin{bmatrix} 2 &amp; -1 \\ 4 &amp; 4 \end{bmatrix}\)</span>:</p>
+<p><span class="math display">\[A^T = \begin{bmatrix} 2 &amp; 4 \\ -1 &amp; 4 \end{bmatrix}\]</span></p>
+<p>Notice how rows become columns and vice versa.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="example-1" class="level2">
+<h2 class="anchored" data-anchor-id="example-1"><em>Example 1</em></h2>
+<p>Find the transpose and conjugate transpose of:</p>
+<p><span class="math display">\[
+\left[\begin{array}{lll}1 &amp; 0 &amp; 2 \\ 0 &amp; 1 &amp; 1\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p><span class="math display">\[
+\left[\begin{array}{lll}
+1 &amp; 0 &amp; 2 \\
+0 &amp; 1 &amp; 1
+\end{array}\right]^{*}=\left[\begin{array}{lll}
+1 &amp; 0 &amp; 2 \\
+0 &amp; 1 &amp; 1
+\end{array}\right]^{T}=\left[\begin{array}{ll}
+1 &amp; 0 \\
+0 &amp; 1 \\
+2 &amp; 1
+\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>Because the matrix is real, it has no complex entries, so the conjugate transpose is the same as the transpose.</p>
+</section>
+<section id="example-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2"><em>Example 2</em></h2>
+<p>Find the transpose and conjugate transpose of:</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr}1 &amp; 1+\mathrm{i} \\ 0 &amp; 2 \mathrm{i}\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr}
+1 &amp; 1+\mathrm{i} \\
+0 &amp; 2 \mathrm{i}
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 &amp; 0 \\
+1+\mathrm{i} &amp; 2 \mathrm{i}
+\end{array}\right], \quad \left[\begin{array}{rr}
+1 &amp; 1+\mathrm{i} \\
+0 &amp; 2 \mathrm{i}
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 &amp; 0 \\
+1-\mathrm{i} &amp; -2 \mathrm{i}
+\end{array}\right]
+\]</span></p>
+</section>
+<section id="method-transpose-laws" class="level2">
+<h2 class="anchored" data-anchor-id="method-transpose-laws"><em>Method: Transpose Laws</em></h2>
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be matrices of the appropriate sizes so that the following operations make sense, and <span class="math inline">\(c\)</span> a scalar.</p>
+<p>The following laws hold:</p>
+<ul>
+<li><span class="math inline">\((A+B)^{T}=A^{T}+B^{T}\)</span> (distribute over addition)</li>
+<li><span class="math inline">\((A B)^{T}=B^{T} A^{T}\)</span> (reverse order!)</li>
+<li><span class="math inline">\((c A)^{T}=c A^{T}\)</span> (scalar comes out)</li>
+<li><span class="math inline">\(\left(A^{T}\right)^{T}=A\)</span> (involution)</li>
+</ul>
+<p>. . .</p>
+<p><strong>Key warning:</strong> Product order reverses: <span class="math inline">\((AB)^T = B^TA^T\)</span>, not <span class="math inline">\(A^TB^T\)</span>!</p>
+</section>
+<section id="symmetric-and-hermitian-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-and-hermitian-matrices"><em>Symmetric and Hermitian Matrices</em></h2>
+<p>The matrix <span class="math inline">\(A\)</span> is said to be:</p>
+<ul>
+<li><strong>symmetric</strong> if <span class="math inline">\(A^{T}=A\)</span></li>
+<li><strong>Hermitian</strong> if <span class="math inline">\(A^{*}=A\)</span></li>
+</ul>
+</section>
+<section id="examples-of-symmetric-hermitian-and-neither" class="level2">
+<h2 class="anchored" data-anchor-id="examples-of-symmetric-hermitian-and-neither"><em>Examples of Symmetric, Hermitian, and Neither</em></h2>
+<p>Let’s see what these look like in concrete <span class="math inline">\(2 \times 2\)</span> examples.</p>
+<section id="symmetric-real-entries-at-a" class="level3">
+<h3 class="anchored" data-anchor-id="symmetric-real-entries-at-a"><em>1. Symmetric (real entries, <span class="math inline">\(A^T = A\)</span>):</em></h3>
+<p><span class="math display">\[
+A = \begin{bmatrix} 2 &amp; 3 \\ 3 &amp; 5 \end{bmatrix}
+\]</span> Here, <span class="math inline">\(A^T = A\)</span>. Since the entries are real, <span class="math inline">\(A\)</span> is both symmetric and Hermitian.</p>
+</section>
+<section id="hermitian-complex-entries-a-a-but-not-symmetric" class="level3">
+<h3 class="anchored" data-anchor-id="hermitian-complex-entries-a-a-but-not-symmetric"><em>2. Hermitian (complex entries, <span class="math inline">\(A^* = A\)</span>, but not symmetric):</em></h3>
+<p><span class="math display">\[
+B = \begin{bmatrix} 1 &amp; 2+i \\ 2-i &amp; 4 \end{bmatrix}
+\]</span> Here, <span class="math inline">\(B\)</span> is not symmetric because <span class="math inline">\((2+i) \neq (2-i)\)</span>, but it <em>is</em> Hermitian because <span class="math display">\[
+B^* = \overline{B}^T = \begin{bmatrix} 1 &amp; 2-i \\ 2+i &amp; 4 \end{bmatrix}^T = \begin{bmatrix} 1 &amp; 2+i \\ 2-i &amp; 4 \end{bmatrix} = B.
+\]</span></p>
+</section>
+<section id="neither-symmetric-nor-hermitian" class="level3">
+<h3 class="anchored" data-anchor-id="neither-symmetric-nor-hermitian"><em>3. Neither symmetric nor Hermitian:</em></h3>
+<p><span class="math display">\[
+C = \begin{bmatrix} 0 &amp; 1+i \\ 3 &amp; 2 \end{bmatrix}
+\]</span> Here, <span class="math inline">\(C^T = \begin{bmatrix} 0 &amp; 3 \\ 1+i &amp; 2 \end{bmatrix} \neq C\)</span> and <span class="math inline">\(C^* = \begin{bmatrix} 0 &amp; 3 \\ 1-i &amp; 2 \end{bmatrix} \neq C\)</span>, so <span class="math inline">\(C\)</span> is neither symmetric nor Hermitian.</p>
+</section>
+</section>
+<section id="check-symmetric-vs-hermitian" class="level2">
+<h2 class="anchored" data-anchor-id="check-symmetric-vs-hermitian"><em>Check: Symmetric vs Hermitian</em></h2>
+<p>Is this matrix symmetric? Hermitian?</p>
+<p><span class="math inline">\(\left[\begin{array}{rr}1 &amp; 1+\mathrm{i} \\ 1-\mathrm{i} &amp; 2\end{array}\right]\)</span></p>
+<p>. . .</p>
+<p>It’s Hermitian, but not symmetric.</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr}
+1 &amp; 1+\mathrm{i} \\
+1-\mathrm{i} &amp; 2
+\end{array}\right]^{*}=\left[\begin{array}{rr}
+1 &amp; \overline{1+\mathrm{i}} \\
+\overline{1-\mathrm{i}} &amp; 2
+\end{array}\right] = \left[\begin{array}{rr}
+1 &amp; 1-\mathrm{i} \\
+1+\mathrm{i} &amp; 2
+\end{array}\right]
+\]</span></p>
+<p>and then</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr}
+1 &amp; 1-\mathrm{i} \\
+1+\mathrm{i} &amp; 2
+\end{array}\right]^{T}=\left[\begin{array}{rr}
+1 &amp; 1+\mathrm{i} \\
+1-\mathrm{i} &amp; 2
+\end{array}\right]
+\]</span></p>
+</section>
+<section id="skills-what-you-should-be-able-to-do-1" class="level2">
+<h2 class="anchored" data-anchor-id="skills-what-you-should-be-able-to-do-1"><em>Skills: what you should be able to do</em></h2>
+<ul>
+<li>Compute transpose and conjugate transpose</li>
+<li>Apply <span class="math inline">\((AB)^T=B^TA^T\)</span> fluently (watch the order!)</li>
+<li>Recognize symmetric vs Hermitian matrices</li>
+</ul>
+</section>
+</section>
+<section id="inner-and-outer-products" class="level1">
+<h1><em>Inner and outer products</em></h1>
+<!-- @idea: inner_and_outer_products | Inner and outer products -->
+<!-- @uses: matrix_arithmetic, transpose -->
+<!--
+
+#### Definition 2.16.
+ Inner and Outer Products Let $\mathbf{u}$ and $\mathbf{v}$ be column vectors of the same size, say $n \times 1$. Then the inner product of $\mathbf{u}$ and $\mathbf{v}$ is the scalar quantity $\mathbf{u}^{T} \mathbf{v}$, and the outer product of $\mathbf{u}$ and $\mathbf{v}$ is the $n \times n$ matrix $\mathbf{u v}^{T}$.
+
+Example 2.34. Compute the inner and outer products of the vectors
+
+$$
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+$$
+
+Solution. Here we have the inner product
+
+$$
+\mathbf{u}^{T} \mathbf{v}=[2,-1,1]\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]=2 \cdot 3+(-1) 4+1 \cdot 1=3
+$$
+
+while the outer product is
+
+$$
+\mathbf{u v}^{T}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right][3,4,1]=\left[\begin{array}{rrr}
+2 \cdot 3 & 2 \cdot 4 & 2 \cdot 1 \\
+-1 \cdot 3 & -1 \cdot 4 & -1 \cdot 1 \\
+1 \cdot 3 & 1 \cdot 4 & 1 \cdot 1
+\end{array}\right]=\left[\begin{array}{rrr}
+6 & 8 & 2 \\
+-3 & -4 & -1 \\
+3 & 4 & 1
+\end{array}\right]
+$$
+
+Here are a few basic laws relating transposes to other matrix arithmetic that we have learned. These laws remain correct if transpose is replaced by conjugate transpose, with one exception: $(c A)^{*}=\bar{c} A^{*}$.
+-->
+<section id="concept-inner-product" class="level2">
+<h2 class="anchored" data-anchor-id="concept-inner-product"><em>Concept: Inner product</em></h2>
+<div class="definition">
+<ul>
+<li><p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be column vectors of the same size, say <span class="math inline">\(n \times 1\)</span>.</p></li>
+<li><p>Then the <strong>inner product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is the scalar quantity <span class="math inline">\(\mathbf{u}^{T} \mathbf{v}\)</span></p></li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="example">
+<p>Find the inner product of <span class="math display">\[
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{u}^{T} \mathbf{v}=[2,-1,1]\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]=2 \cdot 3+(-1) 4+1 \cdot 1=3
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="concept-outer-product" class="level2">
+<h2 class="anchored" data-anchor-id="concept-outer-product"><em>Concept: Outer product</em></h2>
+<div class="definition">
+<ul>
+<li>The <strong>outer product</strong> of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> is the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{u v}^{T}\)</span>.</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="example">
+<p>Find the outer product of</p>
+<p><span class="math display">\[
+\mathbf{u}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right] \text { and } \mathbf{v}=\left[\begin{array}{l}
+3 \\
+4 \\
+1
+\end{array}\right]
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{u v}^{T}=\left[\begin{array}{r}
+2 \\
+-1 \\
+1
+\end{array}\right][3,4,1]=\left[\begin{array}{rrr}
+2 \cdot 3 &amp; 2 \cdot 4 &amp; 2 \cdot 1 \\
+-1 \cdot 3 &amp; -1 \cdot 4 &amp; -1 \cdot 1 \\
+1 \cdot 3 &amp; 1 \cdot 4 &amp; 1 \cdot 1
+\end{array}\right]=\left[\begin{array}{rrr}
+6 &amp; 8 &amp; 2 \\
+-3 &amp; -4 &amp; -1 \\
+3 &amp; 4 &amp; 1
+\end{array}\right]
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="applications-of-inner-and-outer-products" class="level2">
+<h2 class="anchored" data-anchor-id="applications-of-inner-and-outer-products"><em>Applications of Inner and Outer Products</em></h2>
+<p><strong>Inner product</strong> (<span class="math inline">\(\mathbf{u}^T\mathbf{v}\)</span>): - Dot product: measures similarity/alignment between vectors - Projections: fundamental in least squares (we’ll see in Chapter 4, day 9-10) - PCA: we’ll see Principal Component Analysis in Chapter 5 (day 14)</p>
+<p><strong>Outer product</strong> (<span class="math inline">\(\mathbf{u}\mathbf{v}^T\)</span>): - Rank-1 matrices: building blocks for matrix factorizations - Low-rank approximations: SVD and data compression (we’ll see in Chapter 5, day 14)</p>
+</section>
+<section id="example-inner-products-in-our-running-example" class="level2">
+<h2 class="anchored" data-anchor-id="example-inner-products-in-our-running-example"><em>Example: Inner products in our running example</em></h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Running Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The columns of our matrix <span class="math inline">\(A\)</span> are: <span class="math display">\[\mathbf{a}_1 = \begin{bmatrix} 2 \\ 4 \end{bmatrix}, \quad \mathbf{a}_2 = \begin{bmatrix} -1 \\ 4 \end{bmatrix}\]</span></p>
+<p>Their inner product: <span class="math inline">\(\mathbf{a}_1^T \mathbf{a}_2 = 2(-1) + 4(4) = 14\)</span></p>
+</div>
+</div>
+</section>
+<section id="from-products-to-quadratic-forms" class="level2">
+<h2 class="anchored" data-anchor-id="from-products-to-quadratic-forms"><em>From Products to Quadratic Forms</em></h2>
+<p>Inner and outer products show how matrix multiplication can produce either a scalar (inner) or a matrix (outer).</p>
+<p><strong>Quadratic forms</strong> are a major application: they package many terms into a single scalar expression using transposes.</p>
+</section>
+</section>
+<section id="concept-quadratic-forms" class="level1">
+<h1><em>Concept: Quadratic Forms</em></h1>
+<!-- @idea: quadratic_forms | Quadratic forms -->
+<!-- @uses: transpose -->
+<p>A <strong>quadratic form</strong> is a homogeneous polynomial of degree 2 in <span class="math inline">\(n\)</span> variables. For example,</p>
+<p>. . .</p>
+<p><span class="math display">\[
+Q(x, y, z)=x^{2}+2 y^{2}+z^{2}+2 x y+y z+3 x z .
+\]</span></p>
+<p>. . .</p>
+<p>We can express this in matrix form!</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(x+2 y+3 z)+y(2 y+z)+z^{2} &amp; =\left[\begin{array}{lll}
+x &amp; y &amp; z
+\end{array}\right]\left[\begin{array}{c}
+x+2 y+3 z \\
+2 y+z \\
+z
+\end{array}\right]
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p><span class="math display">\[
+\begin{aligned}
+=\left[\begin{array}{lll}
+x &amp; y &amp; z
+\end{array}\right]\left[\begin{array}{lll}
+1 &amp; 2 &amp; 3 \\
+0 &amp; 2 &amp; 1 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]\left[\begin{array}{c}
+x \\
+y \\
+z
+\end{array}\right]=\mathbf{x}^{T} A \mathbf{x}
+\end{aligned}
+\]</span></p>
+<section id="example-rewrite-as-mathbfxt-a-mathbfx" class="level2">
+<h2 class="anchored" data-anchor-id="example-rewrite-as-mathbfxt-a-mathbfx"><em>Example: Rewrite as <span class="math inline">\(\mathbf{x}^T A \mathbf{x}\)</span></em></h2>
+<section id="physics-example-kinetic-energy" class="level3">
+<h3 class="anchored" data-anchor-id="physics-example-kinetic-energy"><em>Physics example: kinetic energy</em></h3>
+<p>For a particle moving in the plane, the velocity vector is <span class="math inline">\(\mathbf{v}=\left[\begin{array}{c} v_x \\ v_y \end{array}\right]\)</span>. With mass <span class="math inline">\(m\)</span>, the kinetic energy is the quadratic polynomial</p>
+<p><span class="math display">\[
+T=\frac{1}{2}m\left(v_x^2+v_y^2\right).
+\]</span></p>
+<p>. . .</p>
+<p>Write this as a quadratic form using the identity matrix:</p>
+<p><span class="math display">\[
+T = \frac{1}{2}\left(m v_x^2 + m v_y^2\right)
+= \frac{1}{2}
+\left[\begin{array}{cc}
+v_x &amp; v_y
+\end{array}\right]
+\left[\begin{array}{cc}
+m &amp; 0 \\
+0 &amp; m
+\end{array}\right]
+\left[\begin{array}{c}
+v_x \\
+v_y
+\end{array}\right]
+= \frac{1}{2}\,\mathbf{v}^{T}(m I_2)\mathbf{v}.
+\]</span></p>
+</section>
+</section>
+<section id="what-does-the-quadratic-form-buy-us" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-the-quadratic-form-buy-us"><em>What does the quadratic form buy us?</em></h2>
+<ul>
+<li><strong>One formula, any dimension</strong>: <span class="math inline">\(T=\frac{1}{2}\mathbf{v}^T(mI)\mathbf{v}\)</span> works in 2D, 3D, or for longer vectors.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><strong>The matrix encodes the physics</strong>: <span class="math inline">\(mI\)</span> means “same weight for movement in every direction.” More generally, <span class="math inline">\(T=\frac{1}{2}\mathbf{v}^T M \mathbf{v}\)</span> lets <span class="math inline">\(M\)</span> encode different weights/couplings.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><strong>Immediate properties</strong>: if <span class="math inline">\(M\)</span> is symmetric positive definite, then <span class="math inline">\(T\ge 0\)</span> for all <span class="math inline">\(\mathbf{v}\)</span>.</li>
+</ul>
+</section>
+<section id="skills-what-you-should-be-able-to-do-2" class="level2">
+<h2 class="anchored" data-anchor-id="skills-what-you-should-be-able-to-do-2"><em>Skills: what you should be able to do</em></h2>
+<ul>
+<li>Compute <span class="math inline">\(\mathbf{u}^T\mathbf{v}\)</span> and interpret as dot product/similarity</li>
+<li>Compute <span class="math inline">\(\mathbf{u}\mathbf{v}^T\)</span> and recognize it as a rank-1 matrix</li>
+<li>Rewrite a quadratic polynomial as <span class="math inline">\(\mathbf{x}^TA\mathbf{x}\)</span></li>
+</ul>
+</section>
+</section>
+<section id="determinants" class="level1">
+<h1><em>Determinants</em></h1>
+<!-- @idea: determinants_and_invertibility | Determinants, laws, invertibility -->
+<!-- @uses: determinant, inverse_matrix, inverses_and_factorization -->
+<section id="difficulty-invertible-or-not" class="level2">
+<h2 class="anchored" data-anchor-id="difficulty-invertible-or-not"><em>Difficulty: Invertible or not?</em></h2>
+<p>We’ve seen that solving <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span> requires checking if <span class="math inline">\(A\)</span> is invertible.</p>
+<p><strong>Question</strong>: Is there a single number that tells us whether <span class="math inline">\(A\)</span> is invertible?</p>
+<p><strong>Answer</strong>: Yes! The <strong>determinant</strong> of <span class="math inline">\(A\)</span>.</p>
+</section>
+<section id="concept-why-determinants" class="level2">
+<h2 class="anchored" data-anchor-id="concept-why-determinants"><em>Concept: Why Determinants?</em></h2>
+<section id="invertibility" class="level3">
+<h3 class="anchored" data-anchor-id="invertibility"><em>Invertibility</em></h3>
+<ul>
+<li>If <span class="math inline">\(\det A \neq 0\)</span>, then <span class="math inline">\(A\)</span> is invertible</li>
+<li>If <span class="math inline">\(\det A = 0\)</span>, then <span class="math inline">\(A\)</span> is singular (not invertible)</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="why-determinants-matter-beyond-invertibility" class="level3">
+<h3 class="anchored" data-anchor-id="why-determinants-matter-beyond-invertibility"><em>Why determinants matter beyond invertibility</em></h3>
+<ul>
+<li><strong>Eigenvalues</strong>: Product of eigenvalues equals determinant (we’ll see eigenvalues in Chapter 5, day 11)</li>
+<li><strong>Explicit formulas</strong>: For 2×2 matrices, we have simple explicit formulas (inverse and Cramer’s rule) that depend on the determinant</li>
+</ul>
+<p>. . .</p>
+<p><strong>Computational note</strong>: Gaussian elimination is usually better for computation. For larger matrices, explicit formulas exist but are computationally inefficient. The 2×2 case is the exception where explicit formulas are practical.</p>
+<p>. . .</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Running Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For our system with <span class="math inline">\(A = \begin{bmatrix} 2 &amp; -1 \\ 4 &amp; 4 \end{bmatrix}\)</span>:</p>
+<p>We’ll compute <span class="math inline">\(\det A = 12 \neq 0\)</span>, confirming that <span class="math inline">\(A\)</span> is invertible and our system has a unique solution.</p>
+</div>
+</div>
+<!-- @introduces: determinant -->
+</section>
+</section>
+<section id="definition-of-the-determinant" class="level2">
+<h2 class="anchored" data-anchor-id="definition-of-the-determinant"><em>Definition of the determinant</em></h2>
+<p>The <strong>determinant</strong> of a square <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A=\left[a_{i j}\right]\)</span>, <span class="math inline">\(\operatorname{det} A\)</span>, is defined recursively:</p>
+<p>If <span class="math inline">\(n=1\)</span> then <span class="math inline">\(\operatorname{det} A=a_{11}\)</span>;</p>
+<p>. . .</p>
+<p>otherwise,</p>
+<ul>
+<li>suppose we have determinants for all square matrices of size less than <span class="math inline">\(n\)</span></li>
+<li>Define <span class="math inline">\(M_{i j}(A)\)</span> as the determinant of the <span class="math inline">\((n-1) \times(n-1)\)</span> matrix obtained from <span class="math inline">\(A\)</span> by deleting the <span class="math inline">\(i\)</span> th row and <span class="math inline">\(j\)</span> th column of <span class="math inline">\(A\)</span></li>
+</ul>
+<p>. . .</p>
+<p>then</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{det} A &amp; =\sum_{k=1}^{n} a_{k 1}(-1)^{k+1} M_{k 1}(A) \\
+&amp; =a_{11} M_{11}(A)-a_{21} M_{21}(A)+\cdots+(-1)^{n+1} a_{n 1} M_{n 1}(A)
+\end{aligned}
+\]</span></p>
+</section>
+<section id="laws-of-the-determinant" class="level2">
+<h2 class="anchored" data-anchor-id="laws-of-the-determinant"><em>Laws of the determinant</em></h2>
+<p>Determinant of an upper-triangular matrix: <span class="math display">\[
+\begin{aligned}
+\operatorname{det} A &amp; =\left|\begin{array}{cccc}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1 n} \\
+0 &amp; a_{22} &amp; \cdots &amp; a_{2 n} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; a_{n n}
+\end{array}\right|=a_{11}\left|\begin{array}{cccc}
+a_{22} &amp; a_{23} &amp; \cdots &amp; a_{2 n} \\
+0 &amp; a_{33} &amp; \cdots &amp; a_{3 n} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; a_{n n}
+\end{array}\right| \\
+&amp; =\cdots=a_{11} \cdot a_{22} \cdots a_{n n} .
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p>D1: If <span class="math inline">\(A\)</span> is an upper triangular matrix, then the determinant of <span class="math inline">\(A\)</span> is the product of all the diagonal elements of <span class="math inline">\(A\)</span>.</p>
+</section>
+<section id="more-laws-of-determinants" class="level2">
+<h2 class="anchored" data-anchor-id="more-laws-of-determinants"><em>More Laws of Determinants</em></h2>
+<ul>
+<li><p>D2: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by multiplying one row of <span class="math inline">\(A\)</span> by the scalar <span class="math inline">\(c\)</span>, then <span class="math inline">\(\operatorname{det} B=c \cdot \operatorname{det} A\)</span>.</p></li>
+<li><p>D3: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by interchanging two rows of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\operatorname{det} B=\)</span> <span class="math inline">\(-\operatorname{det} A\)</span>.</p></li>
+<li><p>D4: If <span class="math inline">\(B\)</span> is obtained from <span class="math inline">\(A\)</span> by adding a multiple of one row of <span class="math inline">\(A\)</span> to another row of <span class="math inline">\(A\)</span>, then <span class="math inline">\(\operatorname{det} B=\operatorname{det} A\)</span>.</p></li>
+</ul>
+</section>
+<section id="determinant-laws-in-terms-of-elementary-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-laws-in-terms-of-elementary-matrices"><em>Determinant Laws in terms of Elementary Matrices</em></h2>
+<ul>
+<li>D2: <span class="math inline">\(\operatorname{det}\left(E_{i}(c) A\right)=c \cdot \operatorname{det} A\)</span> (remember that for <span class="math inline">\(E_{i}(c)\)</span> to be an elementary matrix, <span class="math inline">\(c \neq 0\)</span> ).</li>
+<li>D3: <span class="math inline">\(\operatorname{det}\left(E_{i j} A\right)=-\operatorname{det} A\)</span>.</li>
+<li>D4: <span class="math inline">\(\operatorname{det}\left(E_{i j}(s) A\right)=\operatorname{det} A\)</span>.</li>
+</ul>
+</section>
+<section id="determinant-of-row-echelon-form" class="level2">
+<h2 class="anchored" data-anchor-id="determinant-of-row-echelon-form"><em>Determinant of Row Echelon Form</em></h2>
+<p>Let R be the reduced row echelon form of A, obtained through multiplication by elementary matrices:</p>
+<p><span class="math display">\[
+R=E_{1} E_{2} \cdots E_{k} A .
+\]</span></p>
+<p>. . .</p>
+<p>Determinant of both sides:</p>
+<p><span class="math display">\[
+\operatorname{det} R=\operatorname{det}\left(E_{1} E_{2} \cdots E_{k} A\right)= \pm(\text { nonzero constant }) \cdot \operatorname{det} A \text {. }
+\]</span></p>
+<p>. . .</p>
+<p>Therefore, <span class="math inline">\(\operatorname{det} A=0\)</span> <strong>precisely</strong> when <span class="math inline">\(\operatorname{det} R=0\)</span>.</p>
+<p>. . .</p>
+<ul>
+<li><span class="math inline">\(R\)</span> is upper triangular, so <span class="math inline">\(\operatorname{det} R\)</span> is the product of the diagonal entries of <span class="math inline">\(R\)</span>.</li>
+<li>If <span class="math inline">\(\operatorname{rank} A&lt;n\)</span>, then there will be <strong>zeros</strong> in some of the diagonal entries, so <span class="math inline">\(\operatorname{det} R=0\)</span>.</li>
+<li>If <span class="math inline">\(\operatorname{rank} A=n\)</span>, the diagonal entries are all 1, so <span class="math inline">\(\operatorname{det} R=1\)</span>.
+<ul>
+<li>A square matrix with rank <span class="math inline">\(n\)</span> is <strong>invertible</strong></li>
+</ul></li>
+</ul>
+<p>. . .</p>
+<p>Therefore,</p>
+<p>D5: The matrix <span class="math inline">\(A\)</span> is invertible if and only if <span class="math inline">\(\operatorname{det} A \neq 0\)</span>.</p>
+</section>
+<section id="two-more-determinant-laws" class="level2">
+<h2 class="anchored" data-anchor-id="two-more-determinant-laws"><em>Two more Determinant Laws</em></h2>
+<p>D6: Given matrices <span class="math inline">\(A, B\)</span> of the same size,</p>
+<p><span class="math display">\[
+\operatorname{det} A B=\operatorname{det} A \operatorname{det} B \text {. }
+\]</span></p>
+<p>. . .</p>
+<p>(but beware, <span class="math inline">\(\operatorname{det} A+\operatorname{det} B \neq \operatorname{det}(A+B)\)</span>)</p>
+<p>D7: For all square matrices <span class="math inline">\(A\)</span>, <span class="math inline">\(\operatorname{det} A^{T}=\operatorname{det} A\)</span></p>
+</section>
+<section id="method-compute-determinant-in-practice" class="level2">
+<h2 class="anchored" data-anchor-id="method-compute-determinant-in-practice"><em>Method: Compute determinant in practice</em></h2>
+<section id="steps-to-compute-the-determinant" class="level3">
+<h3 class="anchored" data-anchor-id="steps-to-compute-the-determinant"><em>Steps to compute the determinant</em></h3>
+<ol type="1">
+<li>Use elementary row operations to get the matrix into upper triangular form</li>
+<li>Keep track of row operations to adjust for sign changes and scalar multiplications</li>
+<li>Multiply the diagonal entries</li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="key-rules" class="level3">
+<h3 class="anchored" data-anchor-id="key-rules"><em>Key rules</em></h3>
+<ul>
+<li>Row swap: multiply by <span class="math inline">\(-1\)</span></li>
+<li>Row scale by <span class="math inline">\(c\)</span>: multiply by <span class="math inline">\(c\)</span></li>
+<li>Row replacement: no change</li>
+</ul>
+</section>
+</section>
+<section id="explicit-formulas-for-inverses-and-solving-linear-systems-with-22-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="explicit-formulas-for-inverses-and-solving-linear-systems-with-22-matrices"><em>Explicit Formulas for inverses and solving linear systems with 2×2 Matrices</em></h2>
+<p><strong>Method (2×2 toolkit):</strong></p>
+<ul>
+<li>To find inverses, use the 2×2 inverse formula: <span class="math inline">\(A^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}\)</span></li>
+<li>To solve linear systems, apply Cramer’s rule for 2×2 systems</li>
+</ul>
+<p><strong>2×2 Inverse Formula</strong>: <span class="math display">\[A^{-1} = \frac{1}{\det A}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix} = \frac{1}{12}\begin{bmatrix} 4 &amp; 1 \\ -4 &amp; 2 \end{bmatrix} = \begin{bmatrix} \frac{1}{3} &amp; \frac{1}{12} \\ -\frac{1}{3} &amp; \frac{1}{6} \end{bmatrix}\]</span></p>
+<p>This is a useful explicit formula for 2×2 matrices! :::</p>
+<p>. . .</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Only 2×2?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For larger matrices, explicit formulas exist (using cofactors and adjoints), but they are computationally inefficient compared to Gaussian elimination. The 2×2 case is the exception where the explicit formula is simple and practical.</p>
+</div>
+</div>
+</section>
+<section id="cramers-rule-22" class="level2">
+<h2 class="anchored" data-anchor-id="cramers-rule-22"><em>Cramer’s Rule (2×2)</em></h2>
+<p>For n×n systems, Cramer’s rule gives us an explicit formula for the solution. But here we will only consider the 2×2 case.</p>
+<p>Let <span class="math inline">\(A\)</span> be an invertible <span class="math inline">\(2 \times 2\)</span> matrix and <span class="math inline">\(\mathbf{b}\)</span> a <span class="math inline">\(2 \times 1\)</span> column vector.</p>
+<p>Denote by <span class="math inline">\(B_{1}\)</span> the matrix obtained from <span class="math inline">\(A\)</span> by replacing the first column of <span class="math inline">\(A\)</span> by <span class="math inline">\(\mathbf{b}\)</span>, and <span class="math inline">\(B_{2}\)</span> the matrix obtained by replacing the second column.</p>
+<p>Then the linear system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has unique solution: <span class="math display">\[
+x_1 = \frac{\det B_1}{\det A}, \quad x_2 = \frac{\det B_2}{\det A}
+\]</span></p>
+</section>
+<section id="example-using-cramers-rule" class="level2">
+<h2 class="anchored" data-anchor-id="example-using-cramers-rule"><em>Example: Using Cramer’s Rule</em></h2>
+<p>Solve the system:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2x_1 - x_2 &amp;= 1 \\
+4x_1 + 4x_2 &amp;= 20
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p>The coefficient matrix and right-hand side are:</p>
+<p><span class="math display">\[
+A = \left[\begin{array}{rr}
+2 &amp; -1 \\
+4 &amp; 4
+\end{array}\right], \quad \mathbf{b} = \left[\begin{array}{r}
+1 \\
+20
+\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>Compute <span class="math inline">\(\det A = 2 \cdot 4 - (-1) \cdot 4 = 8 + 4 = 12\)</span>.</p>
+<p>. . .</p>
+<p>Now apply Cramer’s rule:</p>
+<p><span class="math display">\[
+x_1 = \frac{\det B_1}{\det A} = \frac{\left|\begin{array}{rr}1 &amp; -1 \\ 20 &amp; 4\end{array}\right|}{12} = \frac{4 - (-20)}{12} = \frac{24}{12} = 2
+\]</span></p>
+<p><span class="math display">\[
+x_2 = \frac{\det B_2}{\det A} = \frac{\left|\begin{array}{rr}2 &amp; 1 \\ 4 &amp; 20\end{array}\right|}{12} = \frac{40 - 4}{12} = \frac{36}{12} = 3
+\]</span></p>
+<p>. . .</p>
+<p><strong>Check</strong>: <span class="math inline">\(2(2) - 3 = 1\)</span> ✓ and <span class="math inline">\(4(2) + 4(3) = 20\)</span> ✓</p>
+</section>
+<section id="summary-of-laws-of-determinants" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-laws-of-determinants"><em>Summary of Laws of Determinants</em></h2>
+<p>Let <span class="math inline">\(A, B\)</span> be <span class="math inline">\(n \times n\)</span> matrices.</p>
+<ul>
+<li><p>D1: If <span class="math inline">\(A\)</span> is upper triangular, <span class="math inline">\(\operatorname{det} A\)</span> is the product of all the diagonal elements of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>D2: <span class="math inline">\(\operatorname{det}\left(E_{i}(c) A\right)=c \cdot \operatorname{det} A\)</span>.</p></li>
+<li><p>D3: <span class="math inline">\(\operatorname{det}\left(E_{i j} A\right)=-\operatorname{det} A\)</span>.</p></li>
+<li><p>D4: <span class="math inline">\(\operatorname{det}\left(E_{i j}(s) A\right)=\operatorname{det} A\)</span>.</p></li>
+<li><p>D5: The matrix <span class="math inline">\(A\)</span> is invertible if and only if <span class="math inline">\(\operatorname{det} A \neq 0\)</span>.</p></li>
+<li><p>D6: <span class="math inline">\(\operatorname{det} A B=\operatorname{det} A \operatorname{det} B\)</span>.</p></li>
+<li><p>D7: <span class="math inline">\(\operatorname{det} A^{T}=\operatorname{det} A\)</span>.</p></li>
+</ul>
+<hr>
+</section>
+<section id="skills-what-you-should-be-able-to-do-3" class="level2">
+<h2 class="anchored" data-anchor-id="skills-what-you-should-be-able-to-do-3"><em>Skills: what you should be able to do</em></h2>
+<ul>
+<li>Decide invertibility using <span class="math inline">\(\det A\)</span> (invertible iff <span class="math inline">\(\det A \neq 0\)</span>)</li>
+<li>Compute <span class="math inline">\(\det A\)</span> efficiently via elimination (tracking row swaps/scales)</li>
+<li>Use the 2×2 inverse formula when needed</li>
+<li>Solve a 2×2 system using Cramer’s rule</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

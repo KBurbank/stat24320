@@ -1,0 +1,422 @@
+---
+title: SVD Interlude
+lecture_day: 12
+readings: "5.6"
+publish: true
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      math: katex
+      css: theorem.css
+      code-fold: show
+---
+
+# A Geometric Buildup to the SVD
+
+## From Input/Output Spaces to Orthogonal Directions That Stay Orthogonal
+
+
+
+### Big Idea
+
+A matrix does **not** always represent motion *within* a space.
+
+Often it represents a process that takes in one kind of data and produces another.
+
+Examples:
+
+| Input                 | Output                          |
+| --------------------- | ------------------------------- |
+| 3D position           | 2D screen coordinates           |
+| RGB color (3 numbers) | grayscale brightness (1 number) |
+| 3 forces on an object | net torque (3 → 1)              |
+| 5 features            | a prediction score              |
+
+So a matrix can represent a transformation
+
+$$
+A: \mathbb{R}^n \to \mathbb{R}^m
+$$
+
+The input space and output space may be **different worlds**.
+
+. . .
+
+## A Concrete Example (3 → 2)
+
+Consider
+
+$$
+A =
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix}.
+$$
+
+Then
+
+$$
+A(x,y,z) = (x,y).
+$$
+
+. . .
+
+Geometrically:
+
+- motion in the $x$ direction shows up in the output
+- motion in the $y$ direction shows up in the output
+- motion in the $z$ direction is completely ignored
+
+. . .
+
+So:
+
+* the entire $xy$-plane survives
+* everything in the $z$ direction gets squashed to zero
+
+Already we see:
+
+> Some directions in the input space matter, and some directions don’t.
+
+. . .
+
+## 2. The “Visible Directions”
+
+Test the standard basis vectors:
+
+$$
+Ae_1 = (1,0), \qquad
+Ae_2 = (0,1), \qquad
+Ae_3 = (0,0).
+$$
+
+So:
+
+* motion in the $e_1$ direction is visible
+* motion in the $e_2$ direction is visible
+* motion in the $e_3$ direction is invisible
+
+This gives
+
+$$
+\ker(A) = \mathrm{span}{e_3}.
+$$
+
+So the transformation:
+
+1. **ignores** motion in one direction
+2. does something with the rest
+
+. . .
+
+## 3. Decomposing Any Vector
+
+Every vector $x \in \mathbb{R}^3$ can be written as
+
+$$
+x = (\text{part in the }xy\text{-plane}) + (\text{part in the }z\text{-direction}).
+$$
+
+Apply $A$:
+
+$$
+Ax = A(\text{xy part}) + A(\text{z part}).
+$$
+
+But the second term is always zero, so
+
+$$
+Ax = A(\text{xy part}).
+$$
+
+> Before doing anything interesting, a transformation throws away the part of the input it can’t see.
+
+. . .
+
+## 4. General Fact (No Proof Yet)
+
+For any linear map
+
+$$
+A: \mathbb{R}^n \to \mathbb{R}^m
+$$
+
+there are:
+
+- some directions it kills
+- some directions it responds to
+
+In fact,
+
+$$
+\mathbb{R}^n = 
+(\text{directions it responds to})
+\oplus
+(\text{directions it kills}).
+$$
+
+. . .
+
+## Interlude: More Outputs Than Inputs (2 → 3)
+
+Now consider the opposite situation:
+
+$$
+A: \mathbb{R}^2 \to \mathbb{R}^3.
+$$
+
+Here there are *more outputs than inputs*, so it is impossible for (A) to fill all of (\mathbb{R}^3) — there just aren’t enough input directions to control all three output directions.
+
+So instead of some input directions being killed, we now get:
+
+> the outputs are constrained to lie in a lower-dimensional slice of the output space.
+
+. . .
+
+## Concrete Example
+
+Let
+
+$$
+A =
+\begin{bmatrix}
+1 & 0 \
+0 & 1 \
+0 & 0
+\end{bmatrix}.
+$$
+
+Then
+
+$$
+A(x,y) = (x,y,0).
+$$
+
+Geometrically:
+
+* every input point in (\mathbb{R}^2) gets mapped into (\mathbb{R}^3)
+* but it always lands in the (xy)-plane
+
+So all outputs lie in a 2D subspace of (\mathbb{R}^3).
+
+Notice that in this example, just like the earlier map
+
+$$
+\mathbb{R}^3 \to \mathbb{R}^2,
+$$
+
+we have
+
+$$
+\mathrm{rank}(A) = 2.
+$$
+
+In both cases, the transformation can only act in **two independent directions**.
+
+. . .
+
+## Even Lower Rank (Less Than Both (m) and (n))
+
+It can also happen that the rank is smaller than *both* the input and output dimensions.
+
+For instance, let
+
+$$
+A =
+\begin{bmatrix}
+1 & 1 \\
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+: \mathbb{R}^2 \to \mathbb{R}^3.
+$$
+
+Then
+
+$$
+A(x,y) = (x+y,0,0).
+$$
+
+Now:
+
+* all outputs lie along a **line** in (\mathbb{R}^3)
+* the map only uses **one** independent input direction
+
+So
+
+$$
+\mathrm{rank}(A) = 1.
+$$
+
+Geometrically:
+
+> the transformation responds to motion in only one direction
+> and all outputs are constrained to a one-dimensional slice of the output space.
+
+This will show up later as having only **one nonzero singular value**.
+
+. . .
+
+## Takeaway
+
+The number of independent directions the map can actually do anything with
+is its **rank** — regardless of input or output dimension.
+
+## 5. Focus on the Surviving Subspace
+
+Call the surviving directions
+
+$$
+(\ker A)^\perp.
+$$
+
+These are exactly the directions where motion in the input produces motion in the output.
+
+Let
+
+$$
+v_1,\dots,v_r
+$$
+
+be an orthonormal basis for this subspace (so $r = \mathrm{rank}(A)$).
+
+. . .
+
+## 6. The SVD Motivation
+
+Ask:
+
+> Can we choose input directions $v_1,\dots,v_r$ so that their images
+> [Av_1,\dots,Av_r]
+> are **orthogonal** in the output space?
+
+That would mean the transformation treats these directions **independently**.
+
+Define
+
+$$
+w_j = Av_j.
+$$
+
+We want:
+
+$$
+w_i^T w_j = 0 \quad (i \ne j).
+$$
+
+But
+
+$$
+w_i^T w_j
+= (Av_i)^T(Av_j)
+= v_i^T A^T A v_j.
+$$
+
+So this will happen if we choose the $v_j$ to be eigenvectors of $A^T A$.
+
+Let
+
+$$
+A^T A v_j = \sigma_j^2 v_j.
+$$
+
+Then
+
+$$
+|w_j|^2
+= (Av_j)^T(Av_j)
+= v_j^T A^T A v_j
+= \sigma_j^2.
+$$
+
+So the outputs are orthogonal, with known lengths.
+
+. . .
+
+## 7. Normalize the Outputs
+
+Define
+
+$$
+u_j = \frac{1}{\sigma_j} w_j = \frac{1}{\sigma_j} Av_j.
+$$
+
+Then
+
+* $u_1,\dots,u_r$ are orthonormal
+* and
+
+$$
+Av_j = \sigma_j u_j.
+$$
+
+. . .
+
+## 8. Matrix Form
+
+Let
+
+$$
+V_r = [v_1\ \cdots\ v_r],
+\qquad
+U_r = [u_1\ \cdots\ u_r],
+\qquad
+\Sigma_r = \mathrm{diag}(\sigma_1,\dots,\sigma_r).
+$$
+
+Then the relations $Av_j = \sigma_j u_j$ become
+
+$$
+A V_r = U_r \Sigma_r.
+$$
+
+. . .
+
+## 9. Geometric Interpretation
+
+For any input $x$:
+
+1. express $x$ in the orthonormal directions $v_j$
+2. scale each coordinate by $\sigma_j$
+3. rebuild the result in the orthonormal directions $u_j$
+
+So, in the right orthonormal coordinates in the domain and codomain,
+
+> a linear transformation is just independent scalings.
+
+. . .
+
+## 10. Extending to Full Bases
+
+Extend
+
+* ${v_1,\dots,v_r}$ to an orthonormal basis of $\mathbb{R}^n$
+* ${u_1,\dots,u_r}$ to an orthonormal basis of $\mathbb{R}^m$
+
+Let
+
+$$
+V = [v_1\ \cdots\ v_n],
+\qquad
+U = [u_1\ \cdots\ u_m].
+$$
+
+Then with respect to these orthonormal coordinates,
+
+$$
+U^T A V = \Sigma
+$$
+
+is diagonal, and hence
+
+$$
+A = U \Sigma V^T.
+$$
+
+This is the Singular Value Decomposition.

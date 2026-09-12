@@ -1,0 +1,848 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={SVD Interlude},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{SVD Interlude}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{\texorpdfstring{\emph{A Geometric Buildup to the
+SVD}}{A Geometric Buildup to the SVD}}\label{a-geometric-buildup-to-the-svd}
+
+\subsection{\texorpdfstring{\emph{From Input/Output Spaces to Orthogonal
+Directions That Stay
+Orthogonal}}{From Input/Output Spaces to Orthogonal Directions That Stay Orthogonal}}\label{from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal}
+
+\subsubsection{\texorpdfstring{\emph{Big
+Idea}}{Big Idea}}\label{big-idea}
+
+Often a matrix represents a process that takes in one kind of data and
+produces another.
+
+Examples:
+
+\begin{itemize}
+\tightlist
+\item
+  3D position \(\to\) 2D screen coordinates
+\end{itemize}
+
+. . .
+
+\begin{itemize}
+\tightlist
+\item
+  RGB color (3 numbers) \(\to\) grayscale brightness (1 number)
+\end{itemize}
+
+. . .
+
+\begin{itemize}
+\tightlist
+\item
+  3 forces on an object \(\to\) net torque (3 \(\to\) 1)
+\end{itemize}
+
+. . .
+
+\begin{itemize}
+\tightlist
+\item
+  5 features \(\to\) a prediction score
+\end{itemize}
+
+So a matrix can represent a transformation
+
+\[
+A: \mathbb{R}^n \to \mathbb{R}^m
+\]
+
+The input space and output space may be \textbf{different worlds}.
+
+. . .
+
+\subsection{\texorpdfstring{\emph{A Concrete Example (3 →
+2)}}{A Concrete Example (3 → 2)}}\label{a-concrete-example-3-2}
+
+Consider
+
+\[
+A =
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0
+\end{bmatrix}.
+\]
+
+Then
+
+\[
+A(x,y,z) = (x,y).
+\]
+
+. . .
+
+Geometrically:
+
+\begin{itemize}
+\tightlist
+\item
+  the component of the input in the \(x\) direction shows up in the
+  output
+\item
+  the component of the input in the \(y\) direction shows up in the
+  output
+\item
+  the component of the input in the \(z\) direction is completely
+  ignored
+\end{itemize}
+
+. . .
+
+So:
+
+\begin{itemize}
+\tightlist
+\item
+  the entire \(xy\)-plane survives
+\item
+  everything in the \(z\) direction gets squashed to zero
+\end{itemize}
+
+Already we see:
+
+\begin{quote}
+Some directions in the input space matter, and some directions don't.
+\end{quote}
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Decomposing Any
+Vector}}{Decomposing Any Vector}}\label{decomposing-any-vector}
+
+Every vector \(\mathbf{x} \in \mathbb{R}^3\) can be written as
+
+\[
+\mathbf{x} = (\text{part in the }xy\text{-plane}) + (\text{part in the }z\text{-direction}).
+\]
+
+Apply \(A\):
+
+\[
+A\mathbf{x} = A(\text{xy part}) + A(\text{z part}).
+\]
+
+But the second term is always zero, so
+
+\[
+A\mathbf{x} = A(\text{xy part}).
+\]
+
+\begin{quote}
+Before doing anything interesting, a transformation throws away the part
+of the input it can't see.
+\end{quote}
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Example: Rank
+1}}{Example: Rank 1}}\label{example-rank-1}
+
+Sometimes a transformation effectively responds to only one input
+direction.
+
+For instance, let
+
+\[
+A =
+\begin{bmatrix}
+1 & 1 \\
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+: \mathbb{R}^2 \to \mathbb{R}^3.
+\]
+
+\subsubsection{\texorpdfstring{\emph{What It
+Does}}{What It Does}}\label{what-it-does}
+
+It takes \((x,y)\) and returns
+
+\[
+A(x,y) = (x+y,0,0).
+\]
+
+\subsubsection{\texorpdfstring{\emph{Multiply It
+Out}}{Multiply It Out}}\label{multiply-it-out}
+
+Multiply \(A\) by a vector:
+
+\[
+A
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 1 \\
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+x + y \\
+0 \\
+0
+\end{bmatrix}
+\]
+
+. . .
+
+Notice that the output depends only on the combination
+
+\[
+x+y.
+\]
+
+So the component of the input in the direction
+
+\[
+\begin{bmatrix}1\\1\end{bmatrix}
+\]
+
+affects the output, but the component of the input in the orthogonal
+direction
+
+\[
+\begin{bmatrix}1\\-1\end{bmatrix}
+\]
+
+is completely ignored.
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section}
+
+So even though the input space is 2-dimensional, the transformation
+really only responds to the component of the input in \textbf{one
+direction}.
+
+Now:
+
+\begin{itemize}
+\tightlist
+\item
+  all outputs lie along a \textbf{line} in \(\mathbb{R}^3\)
+\item
+  the map only uses \textbf{one} independent input direction
+\end{itemize}
+
+So
+
+\[
+\mathrm{rank}(A) = 1.
+\]
+
+Geometrically:
+
+\begin{itemize}
+\tightlist
+\item
+  the transformation responds to the component of the input in only one
+  direction
+\item
+  all outputs are constrained to a one-dimensional slice of the output
+  space.
+\end{itemize}
+
+This will show up later as having only \textbf{one nonzero singular
+value}.
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Takeaway}}{Takeaway}}\label{takeaway}
+
+The number of independent directions the map can actually do anything
+with is its \textbf{rank} --- regardless of input or output dimension.
+
+\subsection{\texorpdfstring{\emph{From Rank to
+SVD}}{From Rank to SVD}}\label{from-rank-to-svd}
+
+Rank tells us \emph{how many} directions a linear map can act on. SVD
+tells us \emph{which} directions, and \emph{how strongly}.
+
+\subsection{\texorpdfstring{\emph{The SVD
+Motivation}}{The SVD Motivation}}\label{the-svd-motivation}
+
+Let \(r = \mathrm{rank}(A)\). We'll try to pick orthonormal input
+directions \(\mathbf{v}_1,\dots,\mathbf{v}_r\) that capture everything
+\(A\) can actually do.
+
+Ask:
+
+\begin{quote}
+Can we choose input directions \(\mathbf{v}_1,\dots,\mathbf{v}_r\) so
+that their images \([A\mathbf{v}_1,\dots,A\mathbf{v}_r]\) are
+\textbf{orthogonal} in the output space?
+\end{quote}
+
+That would mean the transformation treats these directions
+\textbf{independently}.
+
+Define
+
+\[
+\mathbf{w}_j = A\mathbf{v}_j.
+\]
+
+We want:
+
+\[
+\mathbf{w}_i^T \mathbf{w}_j = 0 \quad (i \ne j).
+\]
+
+But
+
+\[
+\mathbf{w}_i^T \mathbf{w}_j
+= (A\mathbf{v}_i)^T(A\mathbf{v}_j)
+= \mathbf{v}_i^T A^T A \mathbf{v}_j.
+\]
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-1}
+
+\[
+\mathbf{w}_i^T \mathbf{w}_j
+= (A\mathbf{v}_i)^T(A\mathbf{v}_j)
+= \mathbf{v}_i^T A^T A \mathbf{v}_j.
+\]
+
+The output vectors will be orthogonal if we choose the \(\mathbf{v}_j\)
+to be eigenvectors of \(A^T A\).
+
+Let
+
+\[
+A^T A \mathbf{v}_j = \sigma_j^2 \mathbf{v}_j.
+\]
+
+Then
+
+\[
+\|\mathbf{w}_j\|^2
+= (A\mathbf{v}_j)^T(A\mathbf{v}_j)
+= \mathbf{v}_j^T A^T A \mathbf{v}_j
+= \sigma_j^2.
+\]
+
+So the outputs are orthogonal, with known lengths.
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Normalize the
+Outputs}}{Normalize the Outputs}}\label{normalize-the-outputs}
+
+Define
+
+\[
+\mathbf{u}_j = \frac{1}{\sigma_j} \mathbf{w}_j = \frac{1}{\sigma_j} A\mathbf{v}_j.
+\]
+
+Then
+
+\[
+ \mathbf{u}_1,\dots,\mathbf{u}_r \text{ are orthonormal}
+\]
+
+and
+
+\[
+A\mathbf{v}_j = \sigma_j \mathbf{u}_j.
+\]
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Matrix
+Form}}{Matrix Form}}\label{matrix-form}
+
+Let
+
+\[
+V_r = [\mathbf{v}_1\ \cdots\ \mathbf{v}_r],
+\qquad
+U_r = [\mathbf{u}_1\ \cdots\ \mathbf{u}_r],
+\qquad
+\Sigma_r = \mathrm{diag}(\sigma_1,\dots,\sigma_r).
+\]
+
+Then the relations \(A\mathbf{v}_j = \sigma_j \mathbf{u}_j\) become
+
+\[
+A V_r = U_r \Sigma_r.
+\]
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Geometric
+Interpretation}}{Geometric Interpretation}}\label{geometric-interpretation}
+
+For any input \(\mathbf{x}\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  express \(\mathbf{x}\) in the orthonormal directions \(\mathbf{v}_j\)
+\item
+  scale each coordinate by \(\sigma_j\)
+\item
+  rebuild the result in the orthonormal directions \(\mathbf{u}_j\)
+\end{enumerate}
+
+So, in the right orthonormal coordinates in the input and output spaces,
+
+\begin{quote}
+Multiplication by \(A\) is just independent scalings of the components
+along orthogonal directions in the two spaces.
+\end{quote}
+
+. . .
+
+\subsection{\texorpdfstring{\emph{Extending to Full
+Bases}}{Extending to Full Bases}}\label{extending-to-full-bases}
+
+We've described what happens to the \(r\) independent directions in the
+input space.
+
+. . .
+
+But what if the input space has more than \(r\) dimensions? Or the
+output space?
+
+. . .
+
+The trick is to extend the orthonormal bases to full bases.
+
+\begin{itemize}
+\tightlist
+\item
+  Extend \(\mathbf{v}_1,\dots,\mathbf{v}_r\) to an orthonormal basis of
+  \(\mathbb{R}^n\)
+\item
+  Extend \(\mathbf{u}_1,\dots,\mathbf{u}_r\) to an orthonormal basis of
+  \(\mathbb{R}^m\)
+\end{itemize}
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-2}
+
+Let's start with the case where the input space has more than \(r\)
+dimensions.
+
+. . .
+
+We started with the \(r\) singular vectors
+\(\mathbf{v}_1,\dots,\mathbf{v}_r\). These capture everything \(A\) can
+actually do.
+
+. . .
+
+The rest of the input space is the null space of \(A\), and our
+additional vectors will be a basis for this null space.
+
+. . .
+
+Let's call these additional vectors
+\(\mathbf{v}_{r+1},\dots,\mathbf{v}_n\). We know that
+
+\[
+A\mathbf{v}_{r+1} = \mathbf{0}, \quad \dots, \quad A\mathbf{v}_n = \mathbf{0}.
+\]
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-3}
+
+Similarly, we can extend the singular vectors
+\(\mathbf{u}_1,\dots,\mathbf{u}_r\) to a basis for the output space.
+
+. . .
+
+Let's call these additional vectors
+\(\mathbf{u}_{r+1},\dots,\mathbf{u}_m\). They represent directions that
+cannot be reached by \(A\mathbf{x}\) for any \(\mathbf{x}\).
+
+. . .
+
+This means that the projection of any output \(A\mathbf{x}\) onto any of
+these additional vectors must be zero:
+
+\[
+\mathbf{u}_{r+k}^T A\mathbf{x} = 0 \text{ for all } \mathbf{x}.
+\]
+
+for \(k = 1, \dots, m - r\).
+
+. . .
+
+And the only way this can be true for all \(\mathbf{x}\) is if
+
+\[
+\mathbf{u}_{r+k}^T A = \mathbf{0}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{\emph{The transformation in adapted
+coordinates}}{The transformation in adapted coordinates}}\label{the-transformation-in-adapted-coordinates}
+
+We have built orthonormal bases:
+
+For the \textbf{input space}:
+
+\[
+V = [\mathbf{v}_1\ \cdots\ \mathbf{v}_r\ \mathbf{v}_{r+1}\ \cdots\ \mathbf{v}_n].
+\]
+
+For the \textbf{output space}:
+
+\[
+  U =
+  \begin{bmatrix}
+  \mathbf u_1 & \cdots & \mathbf u_r & \mathbf u_{r+1} & \cdots & \mathbf u_m
+  \end{bmatrix}.
+  \]
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-4}
+
+Split them into blocks:
+
+\[
+V = \begin{bmatrix} V_r & V_0 \end{bmatrix},
+\qquad
+U = \begin{bmatrix} U_r & U_0 \end{bmatrix}.
+\]
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(V_r\): directions where something happens
+\item
+  \(V_0\): null space directions
+\item
+  \(U_r\): directions actually reached
+\item
+  \(U_0\): directions never reached
+\end{itemize}
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-5}
+
+Put \(A\) between the two bases:
+
+Consider the matrix
+
+\[
+U^T A V.
+\]
+
+\[
+\begin{bmatrix}
+U_r^T \\
+U_0^T
+\end{bmatrix}
+A
+\begin{bmatrix}
+V_r & V_0
+\end{bmatrix}=\begin{bmatrix}
+U_r^T A V_r & U_r^T A V_0 \\
+U_0^T A V_r & U_0^T A V_0
+\end{bmatrix}
+\]
+
+\subsection{\texorpdfstring{\emph{}}{}}\label{section-6}
+
+\[
+\begin{bmatrix}
+U_r^T A V_r & U_r^T A V_0 \\
+U_0^T A V_r & U_0^T A V_0
+\end{bmatrix}
+\]
+
+Each block has a geometric meaning.
+
+\subsection{\texorpdfstring{\emph{Top-right block: null space
+dies}}{Top-right block: null space dies}}\label{top-right-block-null-space-dies}
+
+Because \[
+A V_0 = 0,
+\]
+
+we get
+
+\[
+U_r^T A V_0 = 0.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{\emph{Bottom row: unreachable
+outputs}}{Bottom row: unreachable outputs}}\label{bottom-row-unreachable-outputs}
+
+Because \[
+U_0^T A = 0,
+\]
+
+we get
+
+\[
+U_0^T A V_r = 0,
+\qquad
+U_0^T A V_0 = 0.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{\emph{Only one block
+survives}}{Only one block survives}}\label{only-one-block-survives}
+
+So the matrix collapses to
+
+\$\$ U\^{}T A V =======
+
+\begin{bmatrix}
+U_r^T A V_r & 0 \
+0 & 0
+\end{bmatrix}
+
+\textbackslash end\{bmatrix\}. \$\$
+
+Everything outside the rank-\(r\) interaction vanishes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{\emph{What is the remaining
+block?}}{What is the remaining block?}}\label{what-is-the-remaining-block}
+
+By construction,
+
+\[
+A\mathbf v_i = \sigma_i \mathbf u_i,
+\qquad i=1,\dots,r.
+\]
+
+Therefore
+
+\$\$ U\_r\^{}T A V\_r ===========
+
+\begin{bmatrix}
+\sigma_1 & & \
+& \ddots & \
+& & \sigma_r
+\end{bmatrix}
+
+\& \& \sigma\_r \textbackslash end\{bmatrix\}. \$\$
+
+Call this matrix \(\Sigma_r\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{\emph{The final
+form}}{The final form}}\label{the-final-form}
+
+\[
+U^T A V =
+\begin{bmatrix}
+\Sigma_r & 0 \
+0 & 0
+\end{bmatrix}
+= \Sigma.
+\]
+
+Multiplying back gives
+
+\[
+\boxed{A = U \Sigma V^T.}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{\emph{Conceptual
+punchline}}{Conceptual punchline}}\label{conceptual-punchline}
+
+After choosing the right input and output coordinates, the
+transformation does only one thing:
+
+\begin{itemize}
+\tightlist
+\item
+  ignore some input directions,
+\item
+  stretch \(r\) orthogonal directions,
+\item
+  never produce motion in the remaining output directions.
+\end{itemize}
+
+The SVD is simply the matrix form of this geometric statement.
+
+
+
+
+\end{document}

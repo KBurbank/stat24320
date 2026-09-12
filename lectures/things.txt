@@ -1,0 +1,10 @@
+Things to cover:
+
+1. pseudoinverse (in day_12b.qmd) -> this went well
+2. interpretations of svd
+    - finding independent directions in the cloud: covariance.qmd (with the height/weight example) -> need to work on motivation for the covariance, and the distinction between SD/variance/lambda, otherwise good
+    - finding independent patterns of pixels in the columns of an image: just on board, images in day14 -> this hit really well
+    - finding independent patterns of variation in much higher dimension images: end of day14
+3. PCA
+    - pca_bridge.qmd
+    - day_15.qmd

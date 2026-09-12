@@ -1,0 +1,8 @@
+/*-- scss:defaults --*/
+@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+/*-- scss:mixins --*/
+/*-- scss:rules --*/
+.reveal a {
+  line-height: 1.3em;
+}/*# sourceMappingURL=mysky.css.map */

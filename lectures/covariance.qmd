@@ -1,0 +1,171 @@
+Imagine you are *inside* the height–weight dataset and you decide:
+
+> "I’m going to look at people who are 1 standard deviation higher in height."
+
+As you examine individuals in the dataset, they effectively "respond":
+
+* "Yes, I’m taller — in the direction you wanted — but I’m also heavier!"
+* "I’m shorter — opposite your direction — but I’m also lighter!"
+
+So although you intended to move only in one direction (height), the structure of the data causes motion in **two** directions: height *and* weight.
+
+---
+
+### How do all individuals combine their influence?
+
+Each person contributes according to two things:
+
+1. **How far they lie along the direction you chose** (their centered height).
+2. **How much they push motion in another direction** (their centered weight).
+
+For each individual, we multiply
+
+* their height deviation
+* by their weight deviation,
+
+and then sum these products across all individuals (and divide by $n-1$).
+
+What have we computed?
+
+> **The covariance between height and weight.**
+
+---
+
+### The covariance matrix
+
+The covariance is one entry of the covariance matrix
+
+$$
+\Sigma =
+\begin{bmatrix}
+\operatorname{Var}(\text{height}) & \operatorname{Cov}(\text{height},\text{weight}) \
+\operatorname{Cov}(\text{height},\text{weight}) & \operatorname{Var}(\text{weight})
+\end{bmatrix}.
+$$
+
+* The **diagonal entries** measure variation along each variable individually.
+* The **off‑diagonal entries** measure how movement in one variable tends to come bundled with movement in another.
+
+---
+
+### What multiplying by the covariance matrix means
+
+Suppose your intended direction is
+
+$$
+v = \begin{bmatrix}1 \ 0\end{bmatrix},
+$$
+
+meaning: *move one standard unit in the height direction.*
+
+When we compute
+
+$$
+\Sigma v,
+$$
+
+the dataset tells us what motion typically **accompanies** that change.
+
+* The first component becomes $\operatorname{Var}(\text{height})$: how much height actually changes.
+* The second component becomes $\operatorname{Cov}(\text{height},\text{weight})$: how much weight tends to change along with it.
+
+So if $v$ is your **intended** direction, then
+
+> $\Sigma v$ is the direction the data say you *actually* move, once correlations are taken into account.
+
+---
+
+### The key question
+
+Are there directions where this coupling disappears?
+
+In other words:
+
+> Are there directions where moving that way does **not** automatically introduce motion in other directions?
+
+Yes.
+
+These are exactly the vectors satisfying
+
+$$
+\Sigma v = \lambda v,
+$$
+
+the **eigenvectors of the covariance matrix**.
+
+---
+
+### Interpretation
+
+Eigenvectors of the covariance matrix are directions in which the data are **decoupled**.
+
+Movement along such a direction brings along no additional motion — only more of the same direction.
+
+For the height–weight dataset:
+
+* one eigenvector points along the long axis of the data cloud (overall size: taller ↔ heavier),
+* the other points across the cloud (tall–light vs short–heavy contrast).
+
+Moving along either of these directions does not induce motion in any new direction: the data no longer "add" anything extra.
+
+### How far do we travel along an eigendirection?
+
+Suppose (v) is an eigenvector of the covariance matrix:
+
+[
+\Sigma v = \lambda v.
+]
+
+Earlier we interpreted this as saying that motion in direction (v) comes back in the *same direction* — no additional movement is introduced.
+
+But what does the number (\lambda) mean?
+
+The covariance matrix records **squared amounts of variation**.
+The eigenvalue (\lambda) therefore measures the **variance of the data in the direction (v)**.
+
+If we imagine moving along this eigendirection and asking how far the data typically extend in that direction, the natural distance scale is
+
+[
+\sqrt{\lambda}.
+]
+
+So:
+
+* (\lambda) tells us the **variance** along the eigendirection,
+* (\sqrt{\lambda}) tells us the **typical distance (standard deviation)** traveled along that direction.
+
+Geometrically, if the data cloud looks like an ellipse, then:
+
+* eigenvectors of the covariance matrix give the directions of the ellipse’s axes,
+* (\sqrt{\lambda}) gives the length scale of the ellipse along each axis.
+
+Thus moving along an eigendirection does not only remove coupling — it also reveals the natural **distance scale of variation** in the data.
+
+---
+
+## Aha!
+
+We have been studying the covariance matrix ( \Sigma ) and its eigenvectors and eigenvalues.
+
+But how do we actually *compute* the covariance matrix?
+
+If our data matrix (A) is **zero-centered** (each column has mean (0)), then
+
+[
+\Sigma = \frac{1}{n-1} A^T A.
+]
+
+So the matrix whose eigenvectors give the decoupled directions of variation is precisely (A^T A).
+
+Now notice what has happened:
+
+* the eigenvectors of (A^T A) are exactly the directions where movement does not bring along additional motion,
+* the eigenvalues of (A^T A) measure the variance along those directions,
+* the square roots of those eigenvalues give the natural distance scales of variation.
+
+But these are exactly the objects that appear in the **singular value decomposition**:
+
+* right singular vectors = eigenvectors of (A^T A),
+* singular values = square roots of the eigenvalues of (A^T A).
+
+Look at that — by asking how variation couples and then decouples in the data, we have naturally arrived at the singular vectors and singular values.

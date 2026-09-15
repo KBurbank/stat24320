@@ -1,0 +1,16 @@
+format: 
+  course-presentation-revealjs:
+    math: katex
+    keep-ipynb: false
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{graphicx}
+        \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+  ipynb:
+    output-ext: out.ipynb
+ 
+
+
+
+

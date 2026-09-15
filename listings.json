@@ -1,0 +1,40 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/lectures/day_12b.html",
+      "/lectures/day_3.html",
+      "/lectures/day_4.html",
+      "/lectures/day_5.html",
+      "/lectures/day_6.html",
+      "/lectures/day_7.html",
+      "/lectures/day_8.html",
+      "/lectures/day_9.html",
+      "/lectures/day_10.html",
+      "/lectures/day_11a.html",
+      "/lectures/day_11b.html",
+      "/lectures/day_12a.html",
+      "/lectures/day_14.html",
+      "/lectures/day_15.html",
+      "/lectures/day_18a.html",
+      "/lectures/day_1.html",
+      "/lectures/day_2.html",
+      "/lectures/day_18_review.html",
+      "/lectures/svd_interlude.html",
+      "/lectures/simpleDFT.html",
+      "/lectures/ChNone.html",
+      "/notebooks/mcmc_pagerank.html",
+      "/HW/HW1.html",
+      "/HW/HW2.html",
+      "/HW/HW3.html",
+      "/HW/HW4.html",
+      "/HW/HW5.html",
+      "/HW/HW6.html",
+      "/HW/projects_1.html",
+      "/HW/projects_2.html",
+      "/HW/projects_3.html",
+      "/Exams/PracticeFinal.html",
+      "/Exams/AdditionalPracticeExamQuestions.html"
+    ]
+  }
+]

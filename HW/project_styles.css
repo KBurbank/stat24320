@@ -1,0 +1,12 @@
+/* css styles */
+h2 > .header-section-number::before {
+    content: "Project ";
+  }
+
+h1 > .header-section-number::before {
+    content: unset;
+}
+
+h1 > .header-section-number {
+    content: unset;
+}

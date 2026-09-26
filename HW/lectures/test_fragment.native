@@ -1,0 +1,35 @@
+Pandoc
+  Meta
+    { unMeta =
+        fromList
+          [ ( "custom"
+            , MetaMap (fromList [ ( "do_git" , MetaBool False ) ])
+            )
+          , ( "publish-solutions-on" , MetaInlines [ Str "+5d" ] )
+          , ( "quarter-start-date"
+            , MetaInlines [ Str "2026-01-05" ]
+            )
+          , ( "title" , MetaInlines [ Str "Test" ] )
+          ]
+    }
+  [ Header
+      2
+      ( "slide-1" , [] , [ ( "number" , "1" ) ] )
+      [ Str "1" , Space , Emph [ Str "Slide" , Space , Str "1" ] ]
+  , Para [ Str "Some" , Space , Str "text." ]
+  , BulletList
+      [ [ Plain [ Str "item" , Space , Str "1" ] ]
+      , [ Plain [ Str "item" , Space , Str "2" ] ]
+      ]
+  , Para
+      [ Str "More"
+      , Space
+      , Str "text"
+      , Space
+      , Str "after"
+      , Space
+      , Str "the"
+      , Space
+      , Str "list."
+      ]
+  ]

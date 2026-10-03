@@ -1,0 +1,13 @@
+---
+title: Test
+format: course-presentation-revealjs
+---
+
+## Slide 1
+
+Some text.
+
+- item 1
+- item 2
+
+More text after the list.

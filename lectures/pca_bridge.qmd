@@ -1,0 +1,118 @@
+## Bridging from SVD to PCA
+
+In the previous lecture, we used the SVD to understand the *geometry* of a dataset.
+
+We thought about data as a cloud of points and asked:
+
+* which directions mix together,
+* which directions remain pure,
+* and how the covariance matrix reveals the natural coordinate system of the data.
+
+The singular vectors gave us something powerful:
+
+> a set of directions where variation in the data becomes decoupled.
+
+At the time, we treated this as a structural discovery about the dataset itself.
+
+But now let’s look at the **same construction from a different point of view**.
+
+---
+
+## A different question
+
+Instead of asking
+
+> *What directions describe the intrinsic geometry of the data?*
+
+suppose we ask a much more practical question:
+
+> *If I want to look at this high‑dimensional cloud, which direction should I look from?*
+
+In high dimensions we cannot see the cloud directly. The only thing we can do is **project** it onto lower‑dimensional spaces.
+
+Choosing a direction $u$ means:
+
+* project each data point onto that direction,
+* look at the shadow the data casts there.
+
+So now directions are no longer just geometric objects — they become **viewpoints**.
+
+---
+
+## Good and bad viewpoints
+
+Some viewing directions are uninformative:
+
+* all projected points pile together,
+* the structure of the data disappears.
+
+Other directions reveal structure:
+
+* points spread out,
+* patterns become visible.
+
+So a natural goal emerges:
+
+> Choose viewing directions where the projected data spreads out as much as possible.
+
+This idea has a name.
+
+---
+
+## This point of view is called PCA
+
+Principal Component Analysis asks:
+
+> Which viewing direction makes the data appear maximally spread out?
+
+We measure this spread using **variance** of the projected points.
+
+If we project onto a unit direction $u$, the projected coordinates are
+
+$$
+\psi = Xu,
+$$
+
+and the variance of that projection is
+
+$$
+\text{Var}(\psi) = u^T C u,
+$$
+
+where $C$ is the covariance matrix.
+
+So PCA chooses the direction $u$ that maximizes this quantity.
+
+---
+
+## The aha moment
+
+We already solved this problem — just without calling it PCA.
+
+In the SVD lecture, we found directions where variation becomes independent. Those directions were the **eigenvectors of the covariance matrix** (equivalently, the right singular vectors of the centered data matrix).
+
+Now we reinterpret them:
+
+* before: they were intrinsic geometric directions of the data cloud,
+* now: they are the *best viewing directions* for seeing structure.
+
+Nothing new has been invented.
+
+> PCA is simply the viewing interpretation of what SVD already discovered.
+
+---
+
+## Conceptual summary
+
+SVD told us how the data naturally wants to be coordinated.
+
+PCA asks how we should look at the data to understand it.
+
+They are two perspectives on the same object:
+
+* **SVD** — discover the natural axes of variation.
+* **PCA** — view the data along those axes.
+
+So PCA is not a new algorithm added after SVD.
+
+> It is the *same geometry*, seen through the lens of projection and visualization.

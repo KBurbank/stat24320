@@ -1,0 +1,43 @@
+.theorem {
+    background-color: lightgray;
+}
+
+.theorem::before {
+    content: "Theorem:";
+    font-weight: 600;
+}
+
+
+.definition {
+    background-color: rgb(212, 170, 238);
+}
+
+.definition::before {
+    content: "Definition:";
+    font-weight: 600;
+}
+
+
+.example {
+    background-color: rgb(238, 238, 170);
+    padding: 1em;
+}
+
+.example::before {
+    content: "Ex:";
+    font-weight: 600;
+}
+
+.fillin {
+    background-color: rgb(244, 238, 243);
+    padding: 1em;
+    border: solid;
+    height: 2in;
+}
+
+.pause {
+    background-color: rgb(244, 238, 243);
+    padding: 1em;
+    border: solid;
+    height: .1in;
+}

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SVD Interlude – Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-geometric-buildup-to-the-svd" id="toc-a-geometric-buildup-to-the-svd" class="nav-link active" data-scroll-target="#a-geometric-buildup-to-the-svd"><span class="header-section-number">1</span> <em>A Geometric Buildup to the SVD</em></a>
+  <ul class="collapse">
+  <li><a href="#from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal" id="toc-from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal" class="nav-link" data-scroll-target="#from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal"><span class="header-section-number">1.1</span> <em>From Input/Output Spaces to Orthogonal Directions That Stay Orthogonal</em></a>
+  <ul class="collapse">
+  <li><a href="#big-idea" id="toc-big-idea" class="nav-link" data-scroll-target="#big-idea"><span class="header-section-number">1.1.1</span> <em>Big Idea</em></a></li>
+  </ul></li>
+  <li><a href="#a-concrete-example-3-2" id="toc-a-concrete-example-3-2" class="nav-link" data-scroll-target="#a-concrete-example-3-2"><span class="header-section-number">1.2</span> <em>A Concrete Example (3 → 2)</em></a></li>
+  <li><a href="#the-visible-directions" id="toc-the-visible-directions" class="nav-link" data-scroll-target="#the-visible-directions"><span class="header-section-number">1.3</span> <em>2. The “Visible Directions”</em></a></li>
+  <li><a href="#decomposing-any-vector" id="toc-decomposing-any-vector" class="nav-link" data-scroll-target="#decomposing-any-vector"><span class="header-section-number">1.4</span> <em>3. Decomposing Any Vector</em></a></li>
+  <li><a href="#general-fact-no-proof-yet" id="toc-general-fact-no-proof-yet" class="nav-link" data-scroll-target="#general-fact-no-proof-yet"><span class="header-section-number">1.5</span> <em>4. General Fact (No Proof Yet)</em></a></li>
+  <li><a href="#interlude-more-outputs-than-inputs-2-3" id="toc-interlude-more-outputs-than-inputs-2-3" class="nav-link" data-scroll-target="#interlude-more-outputs-than-inputs-2-3"><span class="header-section-number">1.6</span> <em>Interlude: More Outputs Than Inputs (2 → 3)</em></a></li>
+  <li><a href="#concrete-example" id="toc-concrete-example" class="nav-link" data-scroll-target="#concrete-example"><span class="header-section-number">1.7</span> <em>Concrete Example</em></a></li>
+  <li><a href="#even-lower-rank-less-than-both-m-and-n" id="toc-even-lower-rank-less-than-both-m-and-n" class="nav-link" data-scroll-target="#even-lower-rank-less-than-both-m-and-n"><span class="header-section-number">1.8</span> <em>Even Lower Rank (Less Than Both (m) and (n))</em></a></li>
+  <li><a href="#takeaway" id="toc-takeaway" class="nav-link" data-scroll-target="#takeaway"><span class="header-section-number">1.9</span> <em>Takeaway</em></a></li>
+  <li><a href="#focus-on-the-surviving-subspace" id="toc-focus-on-the-surviving-subspace" class="nav-link" data-scroll-target="#focus-on-the-surviving-subspace"><span class="header-section-number">1.10</span> <em>5. Focus on the Surviving Subspace</em></a></li>
+  <li><a href="#the-svd-motivation" id="toc-the-svd-motivation" class="nav-link" data-scroll-target="#the-svd-motivation"><span class="header-section-number">1.11</span> <em>6. The SVD Motivation</em></a></li>
+  <li><a href="#normalize-the-outputs" id="toc-normalize-the-outputs" class="nav-link" data-scroll-target="#normalize-the-outputs"><span class="header-section-number">1.12</span> <em>7. Normalize the Outputs</em></a></li>
+  <li><a href="#matrix-form" id="toc-matrix-form" class="nav-link" data-scroll-target="#matrix-form"><span class="header-section-number">1.13</span> <em>8. Matrix Form</em></a></li>
+  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation"><span class="header-section-number">1.14</span> <em>9. Geometric Interpretation</em></a></li>
+  <li><a href="#extending-to-full-bases" id="toc-extending-to-full-bases" class="nav-link" data-scroll-target="#extending-to-full-bases"><span class="header-section-number">1.15</span> <em>10. Extending to Full Bases</em></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="svd_interlude.html"><i class="bi bi-file-slides"></i>RevealJS (course-presentation)</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">SVD Interlude</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="a-geometric-buildup-to-the-svd" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <em>A Geometric Buildup to the SVD</em></h1>
+<section id="from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="from-inputoutput-spaces-to-orthogonal-directions-that-stay-orthogonal"><span class="header-section-number">1.1</span> <em>From Input/Output Spaces to Orthogonal Directions That Stay Orthogonal</em></h2>
+<section id="big-idea" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="big-idea"><span class="header-section-number">1.1.1</span> <em>Big Idea</em></h3>
+<p>A matrix does <strong>not</strong> always represent motion <em>within</em> a space.</p>
+<p>Often it represents a process that takes in one kind of data and produces another.</p>
+<p>Examples:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3D position</td>
+<td>2D screen coordinates</td>
+</tr>
+<tr class="even">
+<td>RGB color (3 numbers)</td>
+<td>grayscale brightness (1 number)</td>
+</tr>
+<tr class="odd">
+<td>3 forces on an object</td>
+<td>net torque (3 → 1)</td>
+</tr>
+<tr class="even">
+<td>5 features</td>
+<td>a prediction score</td>
+</tr>
+</tbody>
+</table>
+<p>So a matrix can represent a transformation</p>
+<p><span class="math display">\[
+A: \mathbb{R}^n \to \mathbb{R}^m
+\]</span></p>
+<p>The input space and output space may be <strong>different worlds</strong>.</p>
+<p>. . .</p>
+</section>
+</section>
+<section id="a-concrete-example-3-2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="a-concrete-example-3-2"><span class="header-section-number">1.2</span> <em>A Concrete Example (3 → 2)</em></h2>
+<p>Consider</p>
+<p><span class="math display">\[
+A =
+\begin{bmatrix}
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0
+\end{bmatrix}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+A(x,y,z) = (x,y).
+\]</span></p>
+<p>. . .</p>
+<p>Geometrically:</p>
+<ul>
+<li>motion in the <span class="math inline">\(x\)</span> direction shows up in the output</li>
+<li>motion in the <span class="math inline">\(y\)</span> direction shows up in the output</li>
+<li>motion in the <span class="math inline">\(z\)</span> direction is completely ignored</li>
+</ul>
+<p>. . .</p>
+<p>So:</p>
+<ul>
+<li>the entire <span class="math inline">\(xy\)</span>-plane survives</li>
+<li>everything in the <span class="math inline">\(z\)</span> direction gets squashed to zero</li>
+</ul>
+<p>Already we see:</p>
+<blockquote class="blockquote">
+<p>Some directions in the input space matter, and some directions don’t.</p>
+</blockquote>
+<p>. . .</p>
+</section>
+<section id="the-visible-directions" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="the-visible-directions"><span class="header-section-number">1.3</span> <em>2. The “Visible Directions”</em></h2>
+<p>Test the standard basis vectors:</p>
+<p><span class="math display">\[
+Ae_1 = (1,0), \qquad
+Ae_2 = (0,1), \qquad
+Ae_3 = (0,0).
+\]</span></p>
+<p>So:</p>
+<ul>
+<li>motion in the <span class="math inline">\(e_1\)</span> direction is visible</li>
+<li>motion in the <span class="math inline">\(e_2\)</span> direction is visible</li>
+<li>motion in the <span class="math inline">\(e_3\)</span> direction is invisible</li>
+</ul>
+<p>This gives</p>
+<p><span class="math display">\[
+\ker(A) = \mathrm{span}{e_3}.
+\]</span></p>
+<p>So the transformation:</p>
+<ol type="1">
+<li><strong>ignores</strong> motion in one direction</li>
+<li>does something with the rest</li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="decomposing-any-vector" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="decomposing-any-vector"><span class="header-section-number">1.4</span> <em>3. Decomposing Any Vector</em></h2>
+<p>Every vector <span class="math inline">\(x \in \mathbb{R}^3\)</span> can be written as</p>
+<p><span class="math display">\[
+x = (\text{part in the }xy\text{-plane}) + (\text{part in the }z\text{-direction}).
+\]</span></p>
+<p>Apply <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+Ax = A(\text{xy part}) + A(\text{z part}).
+\]</span></p>
+<p>But the second term is always zero, so</p>
+<p><span class="math display">\[
+Ax = A(\text{xy part}).
+\]</span></p>
+<blockquote class="blockquote">
+<p>Before doing anything interesting, a transformation throws away the part of the input it can’t see.</p>
+</blockquote>
+<p>. . .</p>
+</section>
+<section id="general-fact-no-proof-yet" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="general-fact-no-proof-yet"><span class="header-section-number">1.5</span> <em>4. General Fact (No Proof Yet)</em></h2>
+<p>For any linear map</p>
+<p><span class="math display">\[
+A: \mathbb{R}^n \to \mathbb{R}^m
+\]</span></p>
+<p>there are:</p>
+<ul>
+<li>some directions it kills</li>
+<li>some directions it responds to</li>
+</ul>
+<p>In fact,</p>
+<p><span class="math display">\[
+\mathbb{R}^n =
+(\text{directions it responds to})
+\oplus
+(\text{directions it kills}).
+\]</span></p>
+<p>. . .</p>
+</section>
+<section id="interlude-more-outputs-than-inputs-2-3" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="interlude-more-outputs-than-inputs-2-3"><span class="header-section-number">1.6</span> <em>Interlude: More Outputs Than Inputs (2 → 3)</em></h2>
+<p>Now consider the opposite situation:</p>
+<p><span class="math display">\[
+A: \mathbb{R}^2 \to \mathbb{R}^3.
+\]</span></p>
+<p>Here there are <em>more outputs than inputs</em>, so it is impossible for (A) to fill all of (^3) — there just aren’t enough input directions to control all three output directions.</p>
+<p>So instead of some input directions being killed, we now get:</p>
+<blockquote class="blockquote">
+<p>the outputs are constrained to lie in a lower-dimensional slice of the output space.</p>
+</blockquote>
+<p>. . .</p>
+</section>
+<section id="concrete-example" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="concrete-example"><span class="header-section-number">1.7</span> <em>Concrete Example</em></h2>
+<p>Let</p>
+<p><span class="math display">\[
+A =
+\begin{bmatrix}
+1 &amp; 0 \
+0 &amp; 1 \
+0 &amp; 0
+\end{bmatrix}.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+A(x,y) = (x,y,0).
+\]</span></p>
+<p>Geometrically:</p>
+<ul>
+<li>every input point in (^2) gets mapped into (^3)</li>
+<li>but it always lands in the (xy)-plane</li>
+</ul>
+<p>So all outputs lie in a 2D subspace of (^3).</p>
+<p>Notice that in this example, just like the earlier map <span class="math inline">\(\mathbb{R}^3 \to \mathbb{R}^2\)</span>, we have</p>
+<p><span class="math display">\[
+\mathrm{rank}(A) = 2.
+\]</span></p>
+<p>In both cases, the transformation can only act in <strong>two independent directions</strong>.</p>
+<p>. . .</p>
+</section>
+<section id="even-lower-rank-less-than-both-m-and-n" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="even-lower-rank-less-than-both-m-and-n"><span class="header-section-number">1.8</span> <em>Even Lower Rank (Less Than Both (m) and (n))</em></h2>
+<p>It can also happen that the rank is smaller than <em>both</em> the input and output dimensions.</p>
+<p>For instance, let</p>
+<p><span class="math display">\[
+A =
+\begin{bmatrix}
+1 &amp; 1 \\
+0 &amp; 0 \\
+0 &amp; 0
+\end{bmatrix}
+: \mathbb{R}^2 \to \mathbb{R}^3.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+A(x,y) = (x+y,0,0).
+\]</span></p>
+<p>Now:</p>
+<ul>
+<li>all outputs lie along a <strong>line</strong> in (^3)</li>
+<li>the map only uses <strong>one</strong> independent input direction</li>
+</ul>
+<p>So</p>
+<p><span class="math display">\[
+\mathrm{rank}(A) = 1.
+\]</span></p>
+<p>Geometrically:</p>
+<blockquote class="blockquote">
+<p>the transformation responds to motion in only one direction and all outputs are constrained to a one-dimensional slice of the output space.</p>
+</blockquote>
+<p>This will show up later as having only <strong>one nonzero singular value</strong>.</p>
+<p>. . .</p>
+</section>
+<section id="takeaway" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="takeaway"><span class="header-section-number">1.9</span> <em>Takeaway</em></h2>
+<p>The number of independent directions the map can actually do anything with is its <strong>rank</strong> — regardless of input or output dimension.</p>
+</section>
+<section id="focus-on-the-surviving-subspace" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="focus-on-the-surviving-subspace"><span class="header-section-number">1.10</span> <em>5. Focus on the Surviving Subspace</em></h2>
+<p>Call the surviving directions</p>
+<p><span class="math display">\[
+(\ker A)^\perp.
+\]</span></p>
+<p>These are exactly the directions where motion in the input produces motion in the output.</p>
+<p>Let</p>
+<p><span class="math display">\[
+v_1,\dots,v_r
+\]</span></p>
+<p>be an orthonormal basis for this subspace (so <span class="math inline">\(r = \mathrm{rank}(A)\)</span>).</p>
+<p>. . .</p>
+</section>
+<section id="the-svd-motivation" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="the-svd-motivation"><span class="header-section-number">1.11</span> <em>6. The SVD Motivation</em></h2>
+<p>Ask:</p>
+<blockquote class="blockquote">
+<p>Can we choose input directions <span class="math inline">\(v_1,\dots,v_r\)</span> so that their images [Av_1,,Av_r] are <strong>orthogonal</strong> in the output space?</p>
+</blockquote>
+<p>That would mean the transformation treats these directions <strong>independently</strong>.</p>
+<p>Define</p>
+<p><span class="math display">\[
+w_j = Av_j.
+\]</span></p>
+<p>We want:</p>
+<p><span class="math display">\[
+w_i^T w_j = 0 \quad (i \ne j).
+\]</span></p>
+<p>But</p>
+<p><span class="math display">\[
+w_i^T w_j
+= (Av_i)^T(Av_j)
+= v_i^T A^T A v_j.
+\]</span></p>
+<p>So this will happen if we choose the <span class="math inline">\(v_j\)</span> to be eigenvectors of <span class="math inline">\(A^T A\)</span>.</p>
+<p>Let</p>
+<p><span class="math display">\[
+A^T A v_j = \sigma_j^2 v_j.
+\]</span></p>
+<p>Then</p>
+<p><span class="math display">\[
+|w_j|^2
+= (Av_j)^T(Av_j)
+= v_j^T A^T A v_j
+= \sigma_j^2.
+\]</span></p>
+<p>So the outputs are orthogonal, with known lengths.</p>
+<p>. . .</p>
+</section>
+<section id="normalize-the-outputs" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="normalize-the-outputs"><span class="header-section-number">1.12</span> <em>7. Normalize the Outputs</em></h2>
+<p>Define</p>
+<p><span class="math display">\[
+u_j = \frac{1}{\sigma_j} w_j = \frac{1}{\sigma_j} Av_j.
+\]</span></p>
+<p>Then</p>
+<ul>
+<li><span class="math inline">\(u_1,\dots,u_r\)</span> are orthonormal</li>
+<li>and</li>
+</ul>
+<p><span class="math display">\[
+Av_j = \sigma_j u_j.
+\]</span></p>
+<p>. . .</p>
+</section>
+<section id="matrix-form" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="matrix-form"><span class="header-section-number">1.13</span> <em>8. Matrix Form</em></h2>
+<p>Let</p>
+<p><span class="math display">\[
+V_r = [v_1\ \cdots\ v_r],
+\qquad
+U_r = [u_1\ \cdots\ u_r],
+\qquad
+\Sigma_r = \mathrm{diag}(\sigma_1,\dots,\sigma_r).
+\]</span></p>
+<p>Then the relations <span class="math inline">\(Av_j = \sigma_j u_j\)</span> become</p>
+<p><span class="math display">\[
+A V_r = U_r \Sigma_r.
+\]</span></p>
+<p>. . .</p>
+</section>
+<section id="geometric-interpretation" class="level2" data-number="1.14">
+<h2 data-number="1.14" class="anchored" data-anchor-id="geometric-interpretation"><span class="header-section-number">1.14</span> <em>9. Geometric Interpretation</em></h2>
+<p>For any input <span class="math inline">\(x\)</span>:</p>
+<ol type="1">
+<li>express <span class="math inline">\(x\)</span> in the orthonormal directions <span class="math inline">\(v_j\)</span></li>
+<li>scale each coordinate by <span class="math inline">\(\sigma_j\)</span></li>
+<li>rebuild the result in the orthonormal directions <span class="math inline">\(u_j\)</span></li>
+</ol>
+<p>So, in the right orthonormal coordinates in the domain and codomain,</p>
+<blockquote class="blockquote">
+<p>a linear transformation is just independent scalings.</p>
+</blockquote>
+<p>. . .</p>
+</section>
+<section id="extending-to-full-bases" class="level2" data-number="1.15">
+<h2 data-number="1.15" class="anchored" data-anchor-id="extending-to-full-bases"><span class="header-section-number">1.15</span> <em>10. Extending to Full Bases</em></h2>
+<p>Extend</p>
+<ul>
+<li><span class="math inline">\({v_1,\dots,v_r}\)</span> to an orthonormal basis of <span class="math inline">\(\mathbb{R}^n\)</span></li>
+<li><span class="math inline">\({u_1,\dots,u_r}\)</span> to an orthonormal basis of <span class="math inline">\(\mathbb{R}^m\)</span></li>
+</ul>
+<p>Let</p>
+<p><span class="math display">\[
+V = [v_1\ \cdots\ v_n],
+\qquad
+U = [u_1\ \cdots\ u_m].
+\]</span></p>
+<p>Then with respect to these orthonormal coordinates,</p>
+<p><span class="math display">\[
+U^T A V = \Sigma
+\]</span></p>
+<p>is diagonal, and hence</p>
+<p><span class="math display">\[
+A = U \Sigma V^T.
+\]</span></p>
+<p>This is the Singular Value Decomposition.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

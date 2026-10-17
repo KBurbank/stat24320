@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/sub-title-1.0.0/sub_title.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/grid_subtitle.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/subtitle.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/grid-subtitle-1.0.0/footer.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <title>Stat 24320 – Ch4 Lecture 1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="theorem.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/font-awesome.min.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script type="text/javascript">
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  if (typeof require !== 'undefined') {
+  require.undef("plotly");
+  requirejs.config({
+      paths: {
+          'plotly': ['https://cdn.plot.ly/plotly-2.32.0.min']
+      }
+  });
+  require(['plotly'], function(Plotly) {
+      window._Plotly = Plotly;
+  });
+  }
+  </script>
+
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Ch4 Lecture 1</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Outline for today</h2>
+<ul>
+<li class="fragment"><a href="#/geometrical-view-of-column-space" id="/toc-geometrical-view-of-column-space"><em>Geometrical View of Column Space</em></a></li>
+<li class="fragment"><a href="#/planes-hyperplanes-and-projections" id="/toc-planes-hyperplanes-and-projections"><em>Planes, Hyperplanes, and Projections</em></a></li>
+<li class="fragment"><a href="#/least-squares" id="/toc-least-squares"><em>Least Squares</em></a></li>
+</ul>
+</nav>
+</section>
+<section>
+<section id="geometrical-view-of-column-space" class="title-slide slide level1 center">
+<h1><em>Geometrical View of Column Space</em></h1>
+
+</section>
+<section id="why-column-space-matters" class="title-slide slide level2 center">
+<h2><em>Why column space matters</em></h2>
+<ul>
+<li class="fragment"><strong>Consistency of <span class="math inline">A\mathbf{x}=\mathbf{b}</span>:</strong> solvable exactly when <span class="math inline">\mathbf{b} \in \mathcal{C}(A)</span> (the “reachable” set).</li>
+<li class="fragment"><strong>Least squares:</strong> Later today: when <span class="math inline">\mathbf{b} \notin \mathcal{C}(A)</span>, we find the <strong>closest point</strong> in <span class="math inline">\mathcal{C}(A)</span> to <span class="math inline">\mathbf{b}</span> (projection onto the column space).</li>
+<li class="fragment">Seeing <span class="math inline">\mathcal{C}(A)</span> as a line or plane makes this concrete.</li>
+</ul>
+</section>
+
+<section id="example-a-rank-1-matrix" class="title-slide slide level2 center">
+<h2><em>Example: a rank-1 matrix</em></h2>
+<p><span class="math display">
+A = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
+</span></p>
+<p>Columns are <span class="math inline">\mathbf{a}_1 = (1,1,0)</span>, <span class="math inline">\mathbf{a}_2 = 2\mathbf{a}_1</span>, <span class="math inline">\mathbf{a}_3 = \mathbf{0}</span>.</p>
+<div class="fragment">
+<p>The only vectors that we can form by taking linear combinations of the columns of <span class="math inline">A</span> are multiples of <span class="math inline">\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}</span>.</p>
+</div>
+<div class="fragment">
+<p>A <em>basis</em> for the column space is just this single vector: <span class="math inline">\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \right\rbrace</span>.</p>
+</div>
+<div class="fragment">
+<p>Because there is only one vector in the basis, the matrix has rank 1.</p>
+</div>
+</section>
+
+<section id="visualizing-the-column-space-of-our-rank-1-matrix" class="title-slide slide level2 center">
+<h2><em>Visualizing the column space of our rank-1 matrix</em></h2>
+<p>Here are some vectors that are in the column space of <span class="math inline">A</span>:</p>
+<p><span class="math display">
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 2 \\ 2 \\ 0 \end{bmatrix}, \begin{bmatrix} 3 \\ 3 \\ 0 \end{bmatrix}, \begin{bmatrix} 4 \\ 4 \\ 0 \end{bmatrix}, \begin{bmatrix} 5 \\ 5 \\ 0 \end{bmatrix}, \begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix}, \begin{bmatrix} -2 \\ -2 \\ 0 \end{bmatrix}
+</span></p>
+<div class="fragment">
+<p>If we draw these vectors in <span class="math inline">\mathbb{R}^3</span>, we see that they all lie on the same line. <em>This line is the column space of <span class="math inline">A</span></em>.</p>
+<p>(draw it)</p>
+</div>
+</section>
+
+<section id="section" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Remember, the column space tells us which vectors <span class="math inline">\mathbf{b}</span> can be written as <span class="math inline">A\mathbf{x}</span> for some <span class="math inline">\mathbf{x}</span>.</p>
+<div class="fragment">
+<p>So if a vector <span class="math inline">\mathbf{b}</span> is not on this line, we know that there is no solution to <span class="math inline">A\mathbf{x}=\mathbf{b}</span>.</p>
+</div>
+<div class="fragment">
+<p>(draw a b slightly off the line, and one very far off the line)</p>
+</div>
+</section>
+
+<section id="example-a-rank-2-matrix" class="title-slide slide level2 center">
+<h2><em>Example: a rank-2 matrix</em></h2>
+<p><span class="math display">
+A = \begin{bmatrix} 1 &amp; 1 &amp; 2 \\ 1 &amp; 2 &amp; 3 \\ 2 &amp; 1 &amp; 3 \end{bmatrix}
+</span></p>
+<div class="fragment">
+<p>The first two columns are independent, but the third is a linear combination of the first two.</p>
+</div>
+<div class="fragment">
+<p>We can make a basis for the column space by taking the first two columns: <span class="math inline">\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 2 \end{bmatrix}, \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix} \right\rbrace</span>.</p>
+</div>
+</section>
+
+<section id="section-1" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p><span class="math display">
+\mathcal{C}(A) = \mathrm{span}\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 2 \end{bmatrix}, \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix} \right\rbrace
+</span></p>
+<p>Here are some vectors that are in the column space of <span class="math inline">A</span>:</p>
+<p><span class="math display">
+\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix}
+= 1 \cdot \mathbf{a}_1 + 0 \cdot \mathbf{a}_2,
+\qquad
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}
+= 0 \cdot \mathbf{a}_1 + 1 \cdot \mathbf{a}_2,
+</span></p>
+<p><span class="math display">
+\begin{bmatrix}
+2 \\ 3 \\ 3
+\end{bmatrix}
+= 1 \cdot \mathbf{a}_1 + 1 \cdot \mathbf{a}_2,
+\qquad
+\begin{bmatrix}
+3 \\ 3 \\ 6
+\end{bmatrix}
+= 3 \cdot \mathbf{a}_1 + 0 \cdot \mathbf{a}_2
+</span></p>
+</section>
+
+<section id="visualizing-the-column-space-of-our-rank-2-matrix" class="title-slide slide level2 center">
+<h2><em>Visualizing the column space of our rank-2 matrix</em></h2>
+<div id="b1cd1fa4" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<div>                            <div id="07be4e48-cfb4-4cb9-bd35-b09cb69343f8" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("07be4e48-cfb4-4cb9-bd35-b09cb69343f8")) {                    Plotly.newPlot(                        "07be4e48-cfb4-4cb9-bd35-b09cb69343f8",                        [{"line":{"color":"crimson","width":7},"marker":{"color":"crimson","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,1],"z":[0,2],"type":"scatter3d"},{"line":{"color":"darkorange","width":7},"marker":{"color":"darkorange","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,2],"z":[0,1],"type":"scatter3d"},{"line":{"color":"seagreen","width":7},"marker":{"color":"seagreen","size":7},"mode":"lines+markers","showlegend":false,"x":[0,2],"y":[0,3],"z":[0,3],"type":"scatter3d"},{"line":{"color":"royalblue","width":7},"marker":{"color":"royalblue","size":7},"mode":"lines+markers","showlegend":false,"x":[0,3],"y":[0,3],"z":[0,6],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Column space and example vectors","x":0.5},"scene":{"camera":{"eye":{"x":1.4,"y":1.4,"z":1.1}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"margin":{"l":0,"r":0,"b":0,"t":30},"height":420,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('07be4e48-cfb4-4cb9-bd35-b09cb69343f8');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+
+<section id="section-2" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<div id="45f60939" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>                            <div id="e567e0cc-95cf-4ddd-95c8-7c2b7412fdf0" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e567e0cc-95cf-4ddd-95c8-7c2b7412fdf0")) {                    Plotly.newPlot(                        "e567e0cc-95cf-4ddd-95c8-7c2b7412fdf0",                        [{"colorscale":[[0,"lightblue"],[1,"lightblue"]],"name":"Plane","opacity":0.45,"showscale":false,"x":[[-7.5,-7.173913043478261,-6.8478260869565215,-6.521739130434783,-6.195652173913043,-5.869565217391305,-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434785,-0.32608695652173925,0.0],[-7.173913043478261,-6.8478260869565215,-6.521739130434782,-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.32608695652173925,0.0,0.32608695652173925],[-6.8478260869565215,-6.521739130434782,-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.58695652173913,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.32608695652173836,0.0,0.32608695652173925,0.6521739130434785],[-6.521739130434783,-6.195652173913043,-5.869565217391305,-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782609,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.2826086956521743,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217388,0.652173913043478,0.9782608695652173],[-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.652173913043478,0.9782608695652173,1.3043478260869565],[-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.6086956521739126,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.6521739130434789,0.9782608695652173,1.3043478260869565,1.6304347826086958],[-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304348,-1.6304347826086956,-1.3043478260869568,-0.9782608695652175,-0.6521739130434783,-0.326086956521739,2.220446049250313e-16,0.32608695652173947,0.6521739130434787,0.978260869565218,1.3043478260869563,1.6304347826086956,1.9565217391304348],[-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782609,-3.9130434782608696,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652177,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086953,1.9565217391304346,2.282608695652174],[-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.3043478260869565,-0.9782608695652173,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304346,2.282608695652174,2.608695652173913],[-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652173,-0.652173913043478,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.282608695652174,2.608695652173913,2.9347826086956523],[-4.239130434782608,-3.913043478260869,-3.58695652173913,-3.260869565217391,-2.934782608695652,-2.6086956521739126,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.652173913043478,-0.3260869565217388,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521747,2.608695652173913,2.9347826086956523,3.2608695652173916],[-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304348,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.956521739130435,2.2826086956521743,2.6086956521739135,2.934782608695652,3.260869565217391,3.5869565217391304],[-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086956,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.956521739130435,2.2826086956521743,2.6086956521739135,2.9347826086956528,3.260869565217391,3.5869565217391304,3.9130434782608696],[-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.2826086956521743,-1.956521739130435,-1.6304347826086958,-1.3043478260869568,-0.9782608695652177,-0.6521739130434785,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652169,1.304347826086956,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.58695652173913,3.913043478260869,4.239130434782608],[-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652175,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.304347826086956,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.913043478260869,4.239130434782608,4.565217391304348],[-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.6521739130434783,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652173,1.3043478260869565,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782608,4.565217391304348,4.891304347826087],[-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.326086956521739,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.3043478260869565,1.6304347826086958,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304348,4.891304347826087,5.217391304347826],[-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,2.220446049250313e-16,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086958,1.956521739130435,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826087,5.217391304347826,5.543478260869565],[-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.32608695652173947,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.956521739130435,2.2826086956521743,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347826,5.543478260869565,5.869565217391305],[-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.6521739130434787,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521743,2.6086956521739135,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347827,5.543478260869565,5.869565217391305,6.195652173913044],[-0.9782608695652169,-0.6521739130434776,-0.32608695652173836,4.440892098500626e-16,0.3260869565217397,0.6521739130434789,0.978260869565218,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521747,2.6086956521739135,2.9347826086956528,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347827,5.543478260869566,5.869565217391305,6.195652173913044,6.521739130434783],[-0.6521739130434785,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652173,1.3043478260869563,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.934782608695652,3.260869565217391,3.58695652173913,3.913043478260869,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913043,6.521739130434782,6.8478260869565215],[-0.32608695652173925,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086956,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.260869565217391,3.5869565217391304,3.913043478260869,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913044,6.521739130434782,6.8478260869565215,7.173913043478261],[0.0,0.32608695652173925,0.6521739130434785,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.9565217391304348,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.5869565217391304,3.9130434782608696,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913044,6.521739130434783,6.8478260869565215,7.173913043478261,7.5]],"y":[[-11.25,-10.923913043478262,-10.597826086956522,-10.271739130434783,-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.336956521739131,-7.010869565217392,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75],[-10.597826086956522,-10.271739130434781,-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.75,-3.4239130434782608,-3.0978260869565215],[-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695651,-6.358695652173912,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.749999999999999,-3.42391304347826,-3.0978260869565215,-2.7717391304347823,-2.445652173913043],[-9.293478260869566,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782609,-7.663043478260869,-7.336956521739131,-7.010869565217392,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.7065217391304355,-5.380434782608695,-5.054347826086957,-4.728260869565218,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913044,-2.1195652173913047,-1.7934782608695654],[-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.336956521739131,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695654,-1.4673913043478262,-1.141304347826087],[-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695652,-6.358695652173912,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695645,-1.4673913043478253,-1.141304347826087,-0.8152173913043477,-0.4891304347826084],[-7.336956521739131,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.4456521739130435,-2.119565217391304,-1.793478260869565,-1.4673913043478257,-1.1413043478260865,-0.8152173913043472,-0.48913043478260887,-0.16304347826086962,0.16304347826086962],[-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.7065217391304355,-5.380434782608695,-5.054347826086957,-4.728260869565218,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.445652173913044,-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086918,0.4891304347826084,0.8152173913043477],[-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.4456521739130435,-2.119565217391304,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043477,1.141304347826087,1.4673913043478262],[-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.7499999999999996,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.793478260869565,-1.4673913043478257,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043486,1.1413043478260878,1.4673913043478262,1.7934782608695654,2.1195652173913047],[-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.7499999999999996,-3.4239130434782603,-3.097826086956521,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695645,-1.4673913043478253,-1.1413043478260865,-0.8152173913043472,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043486,1.1413043478260878,1.467391304347827,1.7934782608695663,2.1195652173913047,2.445652173913044,2.771739130434783],[-4.076086956521739,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.4456521739130435,-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.48913043478260887,-0.16304347826086962,0.16304347826086918,0.4891304347826084,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.7717391304347823,3.0978260869565215,3.4239130434782608],[-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.4456521739130435,-2.119565217391304,-1.793478260869565,-1.467391304347826,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086962,0.48913043478260887,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.771739130434783,3.0978260869565224,3.4239130434782608,3.75,4.076086956521739],[-2.771739130434783,-2.445652173913044,-2.1195652173913047,-1.7934782608695659,-1.4673913043478266,-1.1413043478260874,-0.8152173913043483,-0.4891304347826093,-0.16304347826087007,0.16304347826086918,0.4891304347826084,0.8152173913043472,1.1413043478260865,1.4673913043478253,1.7934782608695645,2.1195652173913038,2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521738,4.402173913043478,4.728260869565217],[-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.1413043478260874,-0.8152173913043481,-0.48913043478260887,-0.16304347826086985,0.16304347826086918,0.4891304347826084,0.8152173913043477,1.141304347826087,1.4673913043478257,1.793478260869565,2.1195652173913038,2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565217,5.054347826086956,5.380434782608695],[-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.48913043478260887,-0.16304347826086962,0.16304347826086962,0.48913043478260865,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.119565217391304,2.4456521739130435,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608695,5.706521739130435,6.032608695652174],[-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086962,0.48913043478260887,0.8152173913043481,1.1413043478260871,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.7717391304347827,3.097826086956522,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652174,6.358695652173913,6.684782608695652],[-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043481,1.1413043478260874,1.4673913043478266,1.7934782608695656,2.1195652173913047,2.445652173913044,2.771739130434783,3.0978260869565224,3.423913043478261,3.7500000000000004,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695652,7.010869565217392,7.336956521739131],[0.4891304347826093,0.8152173913043486,1.1413043478260878,1.4673913043478266,1.7934782608695659,2.119565217391305,2.445652173913044,2.771739130434783,3.0978260869565224,3.4239130434782616,3.750000000000001,4.07608695652174,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739131,7.66304347826087,7.989130434782609],[1.1413043478260878,1.467391304347827,1.7934782608695663,2.119565217391305,2.4456521739130443,2.7717391304347836,3.0978260869565224,3.4239130434782616,3.750000000000001,4.07608695652174,4.402173913043479,4.728260869565219,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739132,7.663043478260871,7.989130434782609,8.315217391304348,8.641304347826088],[1.7934782608695663,2.1195652173913055,2.445652173913045,2.7717391304347836,3.097826086956523,3.423913043478262,3.750000000000001,4.07608695652174,4.402173913043479,4.728260869565219,5.054347826086958,5.380434782608697,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739132,7.663043478260871,7.98913043478261,8.31521739130435,8.641304347826088,8.967391304347828,9.293478260869566],[2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782603,3.7499999999999996,4.076086956521738,4.402173913043478,4.728260869565217,5.054347826086956,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173912,6.684782608695651,7.010869565217391,7.33695652173913,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869565,9.619565217391305,9.945652173913043],[3.0978260869565215,3.4239130434782608,3.75,4.076086956521738,4.4021739130434785,4.728260869565217,5.054347826086956,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173913,6.684782608695652,7.010869565217391,7.33695652173913,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869566,9.619565217391305,9.945652173913043,10.271739130434781,10.597826086956522],[3.75,4.076086956521739,4.4021739130434785,4.728260869565217,5.054347826086957,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173913,6.684782608695652,7.010869565217392,7.336956521739131,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869566,9.619565217391305,9.945652173913043,10.271739130434783,10.597826086956522,10.923913043478262,11.25]],"z":[[-11.25,-10.597826086956522,-9.945652173913043,-9.293478260869566,-8.641304347826086,-7.989130434782608,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.771739130434783,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913043,3.0978260869565215,3.75],[-10.923913043478262,-10.271739130434781,-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.402173913043478,-3.75,-3.0978260869565215,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.467391304347827,2.1195652173913055,2.7717391304347823,3.4239130434782608,4.076086956521739],[-10.597826086956522,-9.945652173913043,-9.293478260869565,-8.641304347826086,-7.989130434782608,-7.33695652173913,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913045,3.0978260869565215,3.75,4.4021739130434785],[-10.271739130434783,-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.7065217391304355,-5.054347826086957,-4.4021739130434785,-3.7499999999999996,-3.097826086956522,-2.4456521739130435,-1.7934782608695659,-1.1413043478260874,-0.48913043478260887,0.16304347826086962,0.8152173913043481,1.4673913043478266,2.119565217391305,2.7717391304347836,3.4239130434782603,4.076086956521738,4.728260869565217],[-9.945652173913043,-9.293478260869565,-8.641304347826086,-7.989130434782609,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782603,-2.7717391304347827,-2.119565217391304,-1.4673913043478266,-0.8152173913043481,-0.16304347826086962,0.48913043478260887,1.1413043478260874,1.7934782608695659,2.4456521739130443,3.097826086956523,3.7499999999999996,4.4021739130434785,5.054347826086957],[-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173912,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.7499999999999996,-3.097826086956521,-2.4456521739130435,-1.793478260869565,-1.1413043478260874,-0.48913043478260887,0.16304347826086962,0.8152173913043481,1.4673913043478266,2.119565217391305,2.7717391304347836,3.423913043478262,4.076086956521738,4.728260869565217,5.380434782608695],[-9.293478260869565,-8.641304347826086,-7.989130434782608,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565218,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.467391304347826,-0.8152173913043483,-0.16304347826086985,0.48913043478260865,1.1413043478260871,1.7934782608695656,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043478,5.054347826086956,5.706521739130435],[-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217392,-6.358695652173913,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695654,-1.141304347826087,-0.4891304347826093,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782616,4.07608695652174,4.728260869565217,5.380434782608695,6.032608695652174],[-8.641304347826086,-7.989130434782608,-7.33695652173913,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478262,-0.8152173913043477,-0.16304347826087007,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043479,5.054347826086956,5.706521739130435,6.358695652173913],[-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695645,-1.141304347826087,-0.4891304347826084,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782616,4.07608695652174,4.728260869565219,5.380434782608695,6.032608695652174,6.684782608695652],[-7.989130434782608,-7.33695652173913,-6.684782608695651,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478253,-0.8152173913043477,-0.16304347826086918,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043479,5.054347826086958,5.706521739130435,6.358695652173913,7.010869565217392],[-7.663043478260869,-7.010869565217391,-6.358695652173912,-5.7065217391304355,-5.054347826086957,-4.4021739130434785,-3.75,-3.097826086956522,-2.4456521739130435,-1.793478260869565,-1.1413043478260865,-0.48913043478260887,0.16304347826086962,0.8152173913043472,1.4673913043478257,2.119565217391304,2.7717391304347827,3.423913043478261,4.07608695652174,4.728260869565219,5.380434782608697,6.032608695652174,6.684782608695652,7.336956521739131],[-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347827,-2.119565217391304,-1.4673913043478257,-0.8152173913043472,-0.16304347826086962,0.48913043478260887,1.1413043478260865,1.793478260869565,2.4456521739130435,3.097826086956522,3.7500000000000004,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173912,7.010869565217391,7.663043478260869],[-7.010869565217392,-6.358695652173913,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.75,-3.097826086956522,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826086918,0.8152173913043477,1.4673913043478253,2.1195652173913038,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695651,7.33695652173913,7.989130434782608],[-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565218,-4.076086956521739,-3.4239130434782608,-2.7717391304347827,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826084,1.141304347826087,1.7934782608695645,2.445652173913043,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.010869565217391,7.663043478260869,8.315217391304348],[-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.4021739130434785,-3.75,-3.0978260869565215,-2.4456521739130435,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043477,1.4673913043478262,2.1195652173913038,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.33695652173913,7.989130434782608,8.641304347826086],[-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.119565217391304,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.141304347826087,1.7934782608695654,2.445652173913043,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260869,8.315217391304348,8.967391304347826],[-5.706521739130435,-5.054347826086956,-4.402173913043478,-3.75,-3.0978260869565215,-2.445652173913043,-1.793478260869565,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.4673913043478262,2.1195652173913047,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.336956521739132,7.989130434782608,8.641304347826086,9.293478260869566],[-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478257,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695654,2.445652173913044,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260871,8.315217391304348,8.967391304347826,9.619565217391305],[-5.054347826086956,-4.402173913043478,-3.749999999999999,-3.0978260869565215,-2.445652173913043,-1.7934782608695645,-1.1413043478260865,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.467391304347827,2.1195652173913047,2.771739130434783,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.336956521739132,7.98913043478261,8.641304347826086,9.293478260869566,9.945652173913043],[-4.728260869565217,-4.076086956521738,-3.42391304347826,-2.7717391304347823,-2.1195652173913038,-1.4673913043478253,-0.8152173913043472,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913044,3.0978260869565224,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260871,8.31521739130435,8.967391304347826,9.619565217391305,10.271739130434783],[-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.48913043478260887,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.7717391304347823,3.4239130434782608,4.076086956521738,4.728260869565217,5.380434782608695,6.032608695652174,6.684782608695652,7.336956521739131,7.989130434782609,8.641304347826088,9.293478260869565,9.945652173913043,10.597826086956522],[-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086962,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565215,3.75,4.402173913043478,5.054347826086956,5.706521739130435,6.358695652173913,7.010869565217392,7.66304347826087,8.315217391304348,8.967391304347828,9.619565217391305,10.271739130434781,10.923913043478262],[-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826086962,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782608,4.076086956521739,4.728260869565217,5.380434782608695,6.032608695652174,6.684782608695652,7.336956521739131,7.989130434782609,8.641304347826088,9.293478260869566,9.945652173913043,10.597826086956522,11.25]],"type":"surface"},{"line":{"color":"crimson","width":7},"marker":{"color":"crimson","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,1],"z":[0,2],"type":"scatter3d"},{"line":{"color":"darkorange","width":7},"marker":{"color":"darkorange","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,2],"z":[0,1],"type":"scatter3d"},{"line":{"color":"seagreen","width":7},"marker":{"color":"seagreen","size":7},"mode":"lines+markers","showlegend":false,"x":[0,2],"y":[0,3],"z":[0,3],"type":"scatter3d"},{"line":{"color":"royalblue","width":7},"marker":{"color":"royalblue","size":7},"mode":"lines+markers","showlegend":false,"x":[0,3],"y":[0,3],"z":[0,6],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Column space (plane filled) and example vectors","x":0.5},"scene":{"camera":{"eye":{"x":0.9,"y":0.9,"z":0.7}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"margin":{"l":0,"r":0,"b":0,"t":30},"height":420,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('e567e0cc-95cf-4ddd-95c8-7c2b7412fdf0');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+
+<section id="general-form-of-the-column-space-in-mathbbr3" class="title-slide slide level2 center">
+<h2><em>General form of the column space in <span class="math inline">\mathbb{R}^3</span></em></h2>
+<p>In <span class="math inline">\mathbb{R}^3</span>, the dimension of <span class="math inline">\mathcal{C}(A)</span> equals the <strong>rank</strong> <span class="math inline">r</span> of <span class="math inline">A</span>:</p>
+<ul>
+<li class="fragment"><strong>Rank 1:</strong> <span class="math inline">\mathcal{C}(A)</span> is a <strong>line</strong> (all columns are multiples of one vector).</li>
+<li class="fragment"><strong>Rank 2:</strong> <span class="math inline">\mathcal{C}(A)</span> is a <strong>plane</strong> (span of two independent columns).</li>
+<li class="fragment"><strong>Rank 3:</strong> <span class="math inline">\mathcal{C}(A)</span> is <strong>all of <span class="math inline">\mathbb{R}^3</span></strong>.</li>
+</ul>
+</section>
+
+<section id="general-form-of-the-column-space-in-mathbbrn" class="title-slide slide level2 center">
+<h2><em>General form of the column space in <span class="math inline">\mathbb{R}^n</span></em></h2>
+<p>In <span class="math inline">\mathbb{R}^n</span>, the dimension of <span class="math inline">\mathcal{C}(A)</span> equals the <strong>rank</strong> <span class="math inline">r</span> of <span class="math inline">A</span>:</p>
+<ul>
+<li class="fragment"><strong>Rank 1:</strong> <span class="math inline">\mathcal{C}(A)</span> is a <strong>line</strong> (all columns are multiples of one vector).</li>
+<li class="fragment"><strong>Rank 2:</strong> <span class="math inline">\mathcal{C}(A)</span> is a <strong>plane</strong> (span of two independent columns).</li>
+<li class="fragment"><strong>Rank n-1:</strong> <span class="math inline">\mathcal{C}(A)</span> is a <strong>hyperplane</strong> (span of n-1 independent columns in <span class="math inline">\mathbb{R}^n</span>).</li>
+</ul>
+</section>
+
+<section id="input-and-output-spaces" class="title-slide slide level2 center">
+<h2><em>Input and output spaces</em></h2>
+<p>The pictures we have drawn of the column space represent the possible <em>outputs</em> <span class="math inline">\mathbf{b}</span> from the linear system <span class="math inline">A\mathbf{x}=\mathbf{b}</span>.</p>
+<div class="fragment">
+<p>In our example, all potential outputs <span class="math inline">\mathbf{b}</span> live in <span class="math inline">\mathbb{R}^3</span>, but the only ones that are actually reachable are those that are on a line or a plane within <span class="math inline">\mathbb{R}^3</span>. So the column space of <span class="math inline">A</span> is a special subspace of the output space.</p>
+</div>
+<div class="fragment">
+<p>Formally, we call the output space the <strong>codomain</strong> of <span class="math inline">A</span>, and the column space of <span class="math inline">A</span> is a <strong>subspace</strong> of the codomain.</p>
+</div>
+<div class="fragment">
+<p>But there’s another space that’s important: the space of all the possible inputs <span class="math inline">\mathbf{x}</span> that can be fed into <span class="math inline">A</span>. We call this the <strong>domain</strong> of <span class="math inline">A</span>.</p>
+<p>In our examples so far, because the vectors <span class="math inline">\mathbf{x}</span> are all in <span class="math inline">\mathbb{R}^3</span>, the domain is also <span class="math inline">\mathbb{R}^3</span>.</p>
+</div>
+</section>
+
+<section id="domain-and-codomain-for-a-rectangular-matrix" class="title-slide slide level2 center">
+<h2><em>Domain and codomain for a rectangular matrix</em></h2>
+<p>Let’s consider a simple 2x3 matrix:</p>
+<p><span class="math display">
+F = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix}
+</span></p>
+<div class="fragment">
+<p>For the system <span class="math inline">F\mathbf{x}=\mathbf{b}</span>, the possible inputs <span class="math inline">\mathbf{x}</span> are all in <span class="math inline">\mathbb{R}^3</span>, and the possible outputs <span class="math inline">\mathbf{b}</span> are all in <span class="math inline">\mathbb{R}^2</span>.</p>
+</div>
+<div class="fragment">
+<p>For example, if we take <span class="math inline">\mathbf{x} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}</span>, then <span class="math display">
+F\mathbf{x} = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 5 \\ 5 \end{bmatrix} = \mathbf{b}
+</span></p>
+<p>So <span class="math inline">\mathbf{x}=\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}</span> is in the domain of <span class="math inline">F</span>, and <span class="math inline">\mathbf{b}=\begin{bmatrix} 5 \\ 5 \end{bmatrix}</span> is in the codomain of <span class="math inline">F</span>.</p>
+</div>
+</section>
+
+<section id="column-space-and-null-space-are-special-subspaces" class="title-slide slide level2 center">
+<h2><em>Column space and null space are special subspaces</em></h2>
+<p>We know that <span class="math inline">\mathbf{b}=\begin{bmatrix} 5 \\ 5 \end{bmatrix}</span> is in the column space of <span class="math inline">F</span> because we constructed it from multiplying <span class="math inline">F</span> by <span class="math inline">\mathbf{x}</span>.</p>
+<div class="fragment">
+<p>There are other vectors, such as <span class="math inline">\begin{bmatrix} 1 \\ -1 \end{bmatrix}</span>, that are in the codomain of <span class="math inline">F</span> but not in its column space.</p>
+</div>
+<div class="fragment">
+<p>The column space is a <strong>subspace</strong> of the codomain, and it tells us something about the matrix <span class="math inline">F</span>.</p>
+</div>
+</section>
+
+<section id="section-3" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>Is there a similar special subset of the vectors in the <em>domain</em> that tells us something about the matrix <span class="math inline">F</span>? There is!</p>
+<div class="fragment">
+<p>Yes, it’s the <em>null space</em> of <span class="math inline">F</span>. The null space of <span class="math inline">F</span> is the set of all vectors <span class="math inline">\mathbf{x}</span> such that <span class="math inline">F\mathbf{x}=\mathbf{0}</span>.</p>
+</div>
+<div class="fragment">
+<p>For example, the vector <span class="math inline">\begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix}</span> is in the null space of <span class="math inline">F</span> because <span class="math display">
+F\begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \cdot 1 + 2 \cdot (-1) + 0 \cdot 0 \\ 1 \cdot 1 + 2 \cdot (-1) + 0 \cdot 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} = \mathbf{0}
+</span></p>
+</div>
+</section>
+
+<section id="visualizing-the-null-space" class="title-slide slide level2 center">
+<h2><em>Visualizing the null space</em></h2>
+<p>If we know a basis for the null space, we can visualize it in the domain.</p>
+<div class="fragment">
+<p>We haven’t learned how to find these yet, but for our example matrix <span class="math inline">F=\begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix}</span>, I’ll just tell you that the basis for the null space is <span class="math inline">\left\lbrace \begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} \right\rbrace</span>.</p>
+</div>
+<div class="fragment">
+<p>So the null space will form a plane in <span class="math inline">\mathbb{R}^3</span>.</p>
+</div>
+</section>
+
+<section id="visualizing-both-the-column-space-and-the-null-space" class="title-slide slide level2 center">
+<h2><em>Visualizing both the column space and the null space</em></h2>
+<p>But because the null space is a subspace of the <strong>input space</strong> (the domain) and the column space is a subspace of the <strong>output space</strong> (the codomain), we can’t visualize them together in the same picture.</p>
+<p>So we’ll visualize them separately.</p>
+</section>
+
+<section id="section-4" class="title-slide slide level2 center">
+<h2><em></em></h2>
+<p>The column space <span class="math inline">\mathcal{C}(F)</span> is all vectors in <span class="math inline">\mathbb{R}^2</span> that are multiples of <span class="math inline">\begin{bmatrix} 1 \\ 1 \end{bmatrix}</span>.</p>
+<p>The null space <span class="math inline">\mathcal{N}(F)</span> is that spanned by the vectors <span class="math inline">\begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix}</span> and <span class="math inline">\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}</span>.</p>
+<div id="cc4b0216" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><a href="day_9_files/figure-revealjs/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="day_9_files/figure-revealjs/cell-4-output-1.png" width="1005" height="467"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="row-space-and-left-null-space" class="title-slide slide level2 center">
+<h2><em>Row space and left null space</em></h2>
+<p>The row space of a matrix <span class="math inline">A</span> is the subspace of <span class="math inline">\mathbb{R}^m</span> spanned by the rows of <span class="math inline">A</span>. It is also the column space of <span class="math inline">A^T</span>.</p>
+<p>The left null space of a matrix <span class="math inline">A</span> is just the null space of <span class="math inline">A^T</span>.</p>
+</section>
+
+<section id="skills-fundamental-subspaces-pictures" class="title-slide slide level2 center">
+<h2><em>Skills: Fundamental Subspaces (Pictures)</em></h2>
+<ul>
+<li class="fragment">Interpret <span class="math inline">\mathcal{C}(A)</span> geometrically (line, plane, or hyperplane) from the rank of <span class="math inline">A</span>.</li>
+<li class="fragment">Distinguish between the domain (where <span class="math inline">\mathbf{x}</span> lives) and codomain (where <span class="math inline">A\mathbf{x}</span> lives) for a matrix.</li>
+<li class="fragment">Identify the column space as a subspace of the codomain; the null space as a subspace of the domain.</li>
+<li class="fragment">Given a basis for <span class="math inline">\mathcal{N}(A)</span>, describe its shape (line, plane, etc.) in the input space.</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="planes-hyperplanes-and-projections" class="title-slide slide level1 center">
+<h1><em>Planes, Hyperplanes, and Projections</em></h1>
+
+</section>
+<section id="the-plane-through-the-origin" class="title-slide slide level2 center">
+<h2><em>The plane through the origin</em></h2>
+<p>Because the column space is so often a plane, let’s build our intuition about planes.</p>
+<aside class="notes">
+<p>Give out toothpicks and cards and markers. Have students put a dot in the center of the card and say this is the origin. Imagine the card is an infinite plane. Now have them hold one end of their marker at the “origin”; the other end of the marker represents vector coordinates. Can they come up with a simple way of describing which points are on the plane?</p>
+<p>Have them poke a toothpick through the card at the origin. (This toothpick represents the normal vector to the plane.) Now can they see a simple way of describing which points are on the plane?</p>
+<p>Write that the vector describing the toothpick is called <span class="math inline">\vec a</span>, and we’ll assume it is of unit length. The plane is the set of all vectors <span class="math inline">\vec x</span> such that <span class="math inline">\vec a\cdot \vec x = 0</span>. This is the equation of the plane.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>A plane through the origin is the set of all vectors <span class="math inline">\vec x</span> such that <span class="math inline">\vec a \cdot \vec x = 0</span>, where the nonzero vector <span class="math inline">\vec a</span> is a <strong>normal vector</strong> to the plane (we often take <span class="math inline">\vec a</span> of unit length).</p>
+</section>
+
+<section id="finding-the-normal-vector-when-we-know-two-vectors-in-the-plane" class="title-slide slide level2 center">
+<h2><em>Finding the normal vector when we know two vectors in the plane</em></h2>
+<aside class="notes">
+<p>Notice that the normal vector is perpendicular to the plane. It’s also going to be orthogonal to any vector in the plane, and to any two vectors that lie in the plane.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>For <span class="math inline">\mathbb{R}^3</span>, we can find the normal vector by taking the cross product of two vectors in the plane.</p>
+<p>Let <span class="math inline">\mathbf{i}, \mathbf{j}</span>, and <span class="math inline">\mathbf{k}</span> represent the standard basis <span class="math inline">\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}</span>.</p>
+<div class="definition">
+<p><span class="math display">
+\mathbf{u} \times \mathbf{v}=\left(u_{2} v_{3}-u_{3} v_{2}\right) \mathbf{i}+\left(u_{3} v_{1}-u_{1} v_{3}\right) \mathbf{j}+\left(u_{1} v_{2}-u_{2} v_{1}\right) \mathbf{k}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+u_{1} &amp; u_{2} &amp; u_{3} \\
+v_{1} &amp; v_{2} &amp; v_{3}
+\end{array}\right|
+</span></p>
+</div>
+<div class="fragment">
+<p>The cross product is orthogonal to both <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span>: <span class="math inline">\mathbf{u} \cdot (\mathbf{u} \times \mathbf{v})=0</span> and <span class="math inline">\mathbf{v} \cdot (\mathbf{u} \times \mathbf{v})=0</span>.</p>
+</div>
+<div class="fragment">
+<p>We can use the cross product to find the normal vector to the plane by taking the cross product of two vectors in the plane.</p>
+</div>
+</section>
+
+<section id="finding-the-normal-vector-from-the-equation-of-the-plane" class="title-slide slide level2 center">
+<h2><em>Finding the normal vector from the equation of the plane</em></h2>
+<p>If the plane is specified by <span class="math inline">ax + by + cz = d</span>, then a normal vector is <span class="math inline">\vec a = (a, b, c)</span>.</p>
+<div class="fragment">
+<p><strong>Check (optional verification):</strong></p>
+<ol type="1">
+<li class="fragment">Find three points on the plane: e.g.&nbsp;<span class="math inline">(0, 0, d/c)</span>, <span class="math inline">(0, d/b, 0)</span>, <span class="math inline">(d/a, 0, 0)</span> (when <span class="math inline">a,b,c \neq 0</span>).</li>
+<li class="fragment">Form two displacement vectors in the plane, e.g.&nbsp;<span class="math inline">\vec u = (0, d/b, -d/c)</span> and <span class="math inline">\vec v = (d/a, 0, -d/c)</span>.</li>
+</ol>
+</div>
+</section>
+
+<section id="verifying-the-normal-from-axbyczd" class="title-slide slide level2 center">
+<h2><em>Verifying the normal from <span class="math inline">ax+by+cz=d</span></em></h2>
+<p>Take the cross product <span class="math inline">\vec u \times \vec v</span>:</p>
+<p><span class="math display">
+\begin{aligned}
+\vec u \times \vec v
+&amp;= \left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+0 &amp; d/b &amp; -d/c \\
+d/a &amp; 0 &amp; -d/c
+\end{array}\right| \\
+&amp;= -\frac{d^2}{bc} \mathbf{i} + \frac{d^2}{ac} \mathbf{j} - \frac{d^2}{ab} \mathbf{k}
+= -\frac{d^2}{abc} \left( a \mathbf{i} - b \mathbf{j} + c \mathbf{k} \right)
+\end{aligned}
+</span></p>
+<p>This is parallel to <span class="math inline">\vec{a} = (a, b, c)</span>.</p>
+</section>
+
+<section id="distances-from-the-plane" class="title-slide slide level2 center">
+<h2><em>Distances from the plane</em></h2>
+<aside class="notes">
+<p>Have them hold the marker still with its end at the origin, but with the point not on the plane. Can they describe the distance to the plane?</p>
+<p>Notice that it’s the same as the scalar projection of the vector onto the normal vector: projection of <span class="math inline">\vec x</span> onto <span class="math inline">\vec a</span>. That is, the distance is <span class="math inline">|\vec a\cdot \vec x|</span>. (If the normal vector is not of unit length, the distance would have been <span class="math inline">|\vec a\cdot \vec x|/||\vec a||</span>.)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>The distance from a point <span class="math inline">\vec x</span> to the plane <span class="math inline">\vec a \cdot \vec x = 0</span> is the scalar projection of <span class="math inline">\vec x</span> onto the normal:</p>
+<ul>
+<li class="fragment">If <span class="math inline">\vec a</span> is unit length: distance <span class="math inline">= |\vec a \cdot \vec x|</span>.</li>
+<li class="fragment">If not: distance <span class="math inline">= |\vec a \cdot \vec x| / \|\vec a\|</span>.</li>
+</ul>
+</section>
+
+<section id="closest-point-on-the-plane-through-the-origin" class="title-slide slide level2 center">
+<h2><em>Closest point on the plane (through the origin)</em></h2>
+<aside class="notes">
+<p>Now have them figure out the displacement vector that points from <span class="math inline">\vec x</span> to the closest point on the plane.</p>
+<p>It is in the same direction as <span class="math inline">\vec a</span>, and its length is <span class="math inline">|\vec a\cdot \vec x|/ ||\vec a||</span>. This is the projection of <span class="math inline">\vec x</span> onto the normal vector.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>The displacement from <span class="math inline">\vec x</span> to the closest point on the plane has length <span class="math inline">|\vec a \cdot \vec x|/\|\vec a\|</span> and direction along <span class="math inline">\vec a</span>.</p>
+</section>
+
+<section id="projection-onto-the-plane-through-the-origin" class="title-slide slide level2 center">
+<h2><em>Projection onto the plane (through the origin)</em></h2>
+<aside class="notes">
+<p>Now have them find the location of the point on the plane that is closest to <span class="math inline">\vec x</span>.</p>
+<p>It is <span class="math inline">\vec x - \vec a (\vec x \cdot \vec a)/||\vec a||^2</span>.</p>
+<p>This is the projection of <span class="math inline">\vec x</span> onto the plane. We find it by subtracting the projection of <span class="math inline">\vec x</span> onto the normal vector from <span class="math inline">\vec x</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>The closest point on the plane to <span class="math inline">\vec x</span> is <span class="math inline">\vec x - \vec a (\vec x \cdot \vec a)/\|\vec a\|^2</span> — i.e., <span class="math inline">\vec x</span> minus the projection of <span class="math inline">\vec x</span> onto <span class="math inline">\vec a</span>.</p>
+</section>
+
+<section id="a-plane-not-at-the-origin" class="title-slide slide level2 center">
+<h2><em>A plane not at the origin</em></h2>
+<aside class="notes">
+<p>Have them designate the origin as some other point, not on the card.</p>
+<p>Can they come up with a simple way of describing what the displacement was?</p>
+<p>They can describe the displacement of the plane with a scalar multiple of the normal vector. Call this <span class="math inline">q \vec a</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>A plane displaced from the origin can be described by a normal <span class="math inline">\vec a</span> and a scalar <span class="math inline">q</span>: the plane is displaced by <span class="math inline">q \vec a</span> from the origin.</p>
+</section>
+
+<section id="equation-of-the-displaced-plane" class="title-slide slide level2 center">
+<h2><em>Equation of the displaced plane</em></h2>
+<aside class="notes">
+<p>Now how can they describe which points are on the plane?</p>
+<p>The simplest way (for my brain at least) is to imagine taking a point on the plane and subtracting the displacement vector from it. Is the new point where the plane would be if the plane were at the origin?</p>
+<p>So, take <span class="math inline">\vec x</span> and subtract <span class="math inline">\vec a q</span> from it. Would this point fall in a plane at the origin? That is, is <span class="math inline">\vec a\cdot (\vec x - \vec a q) = 0</span>?</p>
+<p>We can simplify this: <span class="math inline">\vec a\cdot \vec x - \vec a\cdot \vec a q = 0</span>. So <span class="math inline">\vec a\cdot \vec x = \vec a\cdot \vec a q</span>. So <span class="math inline">\vec a\cdot \vec x = q</span>.</p>
+<p>This is the equation of the plane.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>Points <span class="math inline">\vec x</span> on the plane satisfy <span class="math inline">\vec a \cdot \vec x = q</span> (with <span class="math inline">\vec a</span> unit length, <span class="math inline">q</span> is the signed distance of the plane from the origin).</p>
+</section>
+
+<section id="hyperplane" class="title-slide slide level2 center">
+<h2><em>Hyperplane</em></h2>
+<div class="definition">
+<p>A <strong>hyperplane</strong> in <span class="math inline">\mathbb{R}^{n}</span> is the set of all <span class="math inline">\mathbf{x} \in \mathbb{R}^{n}</span> such that <span class="math inline">\mathbf{a} \cdot \mathbf{x}=b</span>, where the nonzero vector <span class="math inline">\mathbf{a} \in \mathbb{R}^{n}</span> and scalar <span class="math inline">b</span> are given.</p>
+</div>
+<div class="fragment">
+<div class="theorem">
+<p>Let <span class="math inline">H</span> be the hyperplane in <span class="math inline">\mathbb{R}^{n}</span> defined by <span class="math inline">\mathbf{a} \cdot \mathbf{x}=b</span> and let <span class="math inline">\mathbf{x}_{*} \in H</span>. Then</p>
+<ol type="1">
+<li class="fragment"><p><span class="math inline">\mathbf{a}^{\perp}=\{\mathbf{y} \in \mathbb{R}^{n} \mid \mathbf{a} \cdot \mathbf{y}=0\}</span> is a subspace of <span class="math inline">\mathbb{R}^{n}</span> of dimension <span class="math inline">n-1</span>.</p></li>
+<li class="fragment"><p><span class="math inline">H=\mathbf{x}_{*}+\mathbf{a}^{\perp}=\{\mathbf{x}_{*}+\mathbf{y} \mid \mathbf{y} \in \mathbf{a}^{\perp}\}</span>.</p></li>
+</ol>
+</div>
+</div>
+</section>
+
+<section id="example-plane-through-three-points" class="title-slide slide level2 center">
+<h2><em>Example: plane through three points</em></h2>
+<p>Find an equation that defines the plane containing the three (noncollinear) points <span class="math inline">P, Q</span>, and <span class="math inline">R</span> with coordinates <span class="math inline">(1,0,2)</span>, <span class="math inline">(2,1,0)</span>, and <span class="math inline">(3,1,1)</span>, respectively.</p>
+<div class="fragment">
+<p><span class="math display">
+\begin{aligned}
+\overrightarrow{P Q}&amp;=(2,1,0)-(1,0,2)=(1,1,-2) \\
+\overrightarrow{P R}&amp;=(3,1,1)-(1,0,2)=(2,1,-1)
+\end{aligned}
+</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+\mathbf{u} \times \mathbf{v}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+1 &amp; 1 &amp; -2 \\
+2 &amp; 1 &amp; -1
+\end{array}\right|=\mathbf{i}-3 \mathbf{j}-\mathbf{k}
+</span></p>
+</div>
+<div class="fragment">
+<p>The normal vector is <span class="math inline">\mathbf{a}=(1,-3,-1)</span>.</p>
+</div>
+<div class="fragment">
+<p>The equation of the plane is <span class="math inline">\mathbf{a} \cdot \mathbf{x}=b</span>. Using <span class="math inline">P</span>: <span class="math inline">b=\mathbf{a} \cdot \mathbf{P}=(1,-3,-1) \cdot (1,0,2)=1+0-2=-1</span>.</p>
+</div>
+<div class="fragment">
+<p>So the plane is <span class="math inline">x - 3y - z = -1</span>.</p>
+</div>
+</section>
+
+<section id="projections-to-the-displaced-plane" class="title-slide slide level2 center">
+<h2><em>Projections to the displaced plane</em></h2>
+<aside class="notes">
+<p>Now have them find the displacement vector that points from <span class="math inline">\vec x</span> to the closest point on the plane.</p>
+<p>This will be the same as if we again subtract to get a plane that goes through the origin. So the displaced position is <span class="math inline">\vec x - q \vec a</span>, and its distance from the plane that goes through the origin is <span class="math inline">\vec a\cdot (\vec x - q \vec a)=\vec a\cdot \vec x - q</span>.</p>
+<p>Multiplying by <span class="math inline">\vec a</span> we get <span class="math inline">\vec a (\vec a\cdot \vec x - q)</span>.</p>
+<p>Then, to find the closest point on the plane, we subtract this from <span class="math inline">\vec x</span>: <span class="math inline">\vec x - \vec a (\vec a\cdot \vec x - q)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>The closest point on the hyperplane <span class="math inline">\vec a \cdot \vec x = q</span> to a point <span class="math inline">\vec x</span> is <span class="math inline">\vec x - \vec a (\vec a \cdot \vec x - q)</span> (for unit <span class="math inline">\vec a</span>).</p>
+</section>
+
+<section id="summary-planes-and-projections" class="title-slide slide level2 center">
+<h2><em>Summary: planes and projections</em></h2>
+<ul>
+<li class="fragment">Plane through the origin: <span class="math inline">\vec a \cdot \vec x = 0</span>.</li>
+<li class="fragment">Plane displaced: <span class="math inline">\vec a \cdot \vec x = q</span>.</li>
+<li class="fragment">Scalar projection of <span class="math inline">\vec x</span> onto <span class="math inline">\vec a</span>: <span class="math inline">\vec a \cdot \vec x / \|\vec a\|</span>.</li>
+<li class="fragment">Vector projection of <span class="math inline">\vec x</span> onto <span class="math inline">\vec a</span>: <span class="math inline">\frac{\vec a}{\|\vec a\|} \frac{\vec a \cdot \vec x}{\|\vec a\|}</span>.</li>
+<li class="fragment">Projection of <span class="math inline">\vec x</span> onto the plane <span class="math inline">\vec a \cdot \vec x = q</span>: <span class="math inline">\vec x - \vec a (\vec a \cdot \vec x - q)</span>.</li>
+</ul>
+</section>
+
+<section id="projection-formula-for-vectors" class="title-slide slide level2 center">
+<h2><em>Projection formula for vectors</em></h2>
+<p>Let <span class="math inline">\mathbf{u}</span> and <span class="math inline">\mathbf{v}</span> be vectors, <span class="math inline">\mathbf{v} \neq \mathbf{0}</span>.</p>
+<p><span class="math display">
+\mathbf{p}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v} \quad \text{and} \quad \mathbf{q}=\mathbf{u}-\mathbf{p}
+</span></p>
+<p><a href="images/day_9_fig1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="images/day_9_fig1.jpg"></a></p>
+<div class="fragment">
+<p>Then <span class="math inline">\mathbf{p}</span> is <strong>parallel</strong> to <span class="math inline">\mathbf{v}</span>, <span class="math inline">\mathbf{q}</span> is <strong>orthogonal</strong> to <span class="math inline">\mathbf{v}</span>, and <span class="math inline">\mathbf{u}=\mathbf{p}+\mathbf{q}</span>.</p>
+</div>
+<div class="fragment">
+<p>We write <span class="math inline">\operatorname{proj}_{\mathbf{v}} \mathbf{u}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}</span> and <span class="math inline">\operatorname{orth}_{\mathbf{v}} \mathbf{u}=\mathbf{u}-\operatorname{proj}_{\mathbf{v}} \mathbf{u}</span>.</p>
+</div>
+</section>
+
+<section id="skills-planes-and-projections" class="title-slide slide level2 center">
+<h2><em>Skills: Planes and Projections</em></h2>
+<ul>
+<li class="fragment">Write the equation of a plane (through the origin or displaced) using a normal vector.</li>
+<li class="fragment">Find a normal to a plane from two vectors in the plane (cross product in <span class="math inline">\mathbb{R}^3</span>) or from <span class="math inline">ax+by+cz=d</span>.</li>
+<li class="fragment">Compute distance from a point to a plane and the projection of a point onto a plane.</li>
+<li class="fragment">Use <span class="math inline">\operatorname{proj}_{\mathbf{v}} \mathbf{u}</span> and <span class="math inline">\operatorname{orth}_{\mathbf{v}} \mathbf{u}</span>.</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="least-squares" class="title-slide slide level1 center">
+<h1><em>Least Squares</em></h1>
+
+</section>
+<section id="least-squares-project-mathbfb-onto-mathcalca" class="title-slide slide level2 center">
+<h2><em>Least squares: project <span class="math inline">\mathbf{b}</span> onto <span class="math inline">\mathcal{C}(A)</span></em></h2>
+<p>When <span class="math inline">A\mathbf{x}=\mathbf{b}</span> is inconsistent, <span class="math inline">\mathbf{b}</span> is not in the column space. Least squares finds <span class="math inline">\widehat{\mathbf{x}}</span> so that <span class="math inline">A\widehat{\mathbf{x}}</span> is the <strong>closest point</strong> in <span class="math inline">\mathcal{C}(A)</span> to <span class="math inline">\mathbf{b}</span>—i.e., the projection of <span class="math inline">\mathbf{b}</span> onto the plane <span class="math inline">\mathcal{C}(A)</span>. The residual <span class="math inline">\mathbf{b} - A\widehat{\mathbf{x}}</span> is perpendicular to <span class="math inline">\mathcal{C}(A)</span>.</p>
+<div class="fragment">
+<div id="59948f29" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div>                            <div id="c275ecb4-dacf-41e9-97f3-78d8207f5e68" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("c275ecb4-dacf-41e9-97f3-78d8207f5e68")) {                    Plotly.newPlot(                        "c275ecb4-dacf-41e9-97f3-78d8207f5e68",                        [{"colorscale":[[0,"lightblue"],[1,"lightblue"]],"name":"$\\mathcal{C}(A)$","opacity":0.6,"showscale":false,"x":[[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2]],"y":[[-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2],[-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285],[-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571],[-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857],[-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142],[-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275],[-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149],[0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297],[0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145],[0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857],[0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857],[1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287],[1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2]],"z":[[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]],"type":"surface"},{"marker":{"color":"red","size":10,"symbol":"diamond"},"mode":"markers+text","name":"$\\mathbf{b}$","text":["$\\mathbf{b}$"],"textposition":"top center","x":[0],"y":[0],"z":[1],"type":"scatter3d"},{"marker":{"color":"green","size":10,"symbol":"square"},"mode":"markers+text","name":"$\\widehat{\\mathbf{b}}$","text":["$\\widehat{\\mathbf{b}}$"],"textposition":"bottom center","x":[0],"y":[0],"z":[0],"type":"scatter3d"},{"line":{"color":"purple","dash":"dash","width":6},"mode":"lines","name":"residual","x":[0,0],"y":[0,0],"z":[0,1],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"scene":{"camera":{"eye":{"x":1.3,"y":1.3,"z":1.0}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"title":{"text":"Projection of b onto C(A): residual \u27c2 plane","x":0.5},"margin":{"l":0,"r":0,"b":0,"t":50},"height":420},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('c275ecb4-dacf-41e9-97f3-78d8207f5e68');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="motivation-fitting-a-line-to-data" class="title-slide slide level2 center">
+<h2><em>Motivation: fitting a line to data</em></h2>
+<aside class="notes">
+<p>Draw a scatter plot of some data. Draw a line that seems to fit the data well. Make a separate plot of the residuals vs x. Mention least squares.</p>
+<p>Now draw a line that doesn’t fit the data well. Make a separate plot of the residuals. Notice that now there is a relationship between the residuals and x — their correlation is not zero.</p>
+<p>Idea of least squares: find the line such that the residuals are uncorrelated with x — so that the slope of the residuals vs x is zero. That is, we want the residuals to be orthogonal to the line.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<ul>
+<li class="fragment">We have data <span class="math inline">(x_i, y_i)</span> and want a line <span class="math inline">y \approx mx</span> (or <span class="math inline">y \approx mx + b</span>).</li>
+<li class="fragment">The system <span class="math inline">\mathbf{y} = m \mathbf{x}</span> is usually <strong>inconsistent</strong>.</li>
+<li class="fragment">We choose <span class="math inline">m</span> so that the <strong>residuals</strong> <span class="math inline">\mathbf{y} - m\mathbf{x}</span> are as small as possible in a precise sense.</li>
+</ul>
+</section>
+
+<section id="from-mathbbr2-to-mathbbrn" class="title-slide slide level2 center">
+<h2><em>From <span class="math inline">\mathbb{R}^2</span> to <span class="math inline">\mathbb{R}^n</span></em></h2>
+<aside class="notes">
+<p>Have the students draw a scatter plot of some data in x and y, which are on a straight line. Ask them what this looks like if we plot the data in <span class="math inline">\mathbb{R}^n</span>. What does <span class="math inline">x</span> look like now? What is its relation to <span class="math inline">y</span>?</p>
+<p>We can think of the data <span class="math inline">x</span> as a single point in <span class="math inline">\mathbb{R}^n</span>, and the same for <span class="math inline">y</span>. So if there is a linear relationship between <span class="math inline">x</span> and <span class="math inline">y</span>, then <span class="math inline">\mathbf{y}</span> is a multiple of <span class="math inline">\mathbf{x}</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<ul>
+<li class="fragment">Think of the predictor values as a vector <span class="math inline">\mathbf{x} \in \mathbb{R}^n</span> and the response values as <span class="math inline">\mathbf{y} \in \mathbb{R}^n</span>.</li>
+<li class="fragment">A perfect linear relation means <span class="math inline">\mathbf{y} = m \mathbf{x}</span> for some scalar <span class="math inline">m</span>.</li>
+</ul>
+</section>
+
+<section id="imperfect-data" class="title-slide slide level2 center">
+<h2><em>Imperfect data</em></h2>
+<aside class="notes">
+<p>Now have them realize what happens if the data is not on a straight line.</p>
+<p><span class="math inline">\mathbf{y}</span> is still close to a multiple of <span class="math inline">\mathbf{x}</span>, but not exactly. The difference is the vector of <em>residuals</em>. The squared norm of the residuals is the sum of squared individual residuals.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>When data are not on a line, <span class="math inline">\mathbf{y} - m\mathbf{x} \neq \mathbf{0}</span>. The vector <span class="math inline">\mathbf{y} - m\mathbf{x}</span> is the <strong>residual vector</strong>; we minimize <span class="math inline">\|\mathbf{y} - m\mathbf{x}\|^2</span>.</p>
+</section>
+
+<section id="best-choice-of-m" class="title-slide slide level2 center">
+<h2><em>Best choice of <span class="math inline">m</span></em></h2>
+<aside class="notes">
+<p>For different values of <span class="math inline">m</span>, the residuals will be different. We want the value of <span class="math inline">m</span> that makes the residuals as small as possible. Geometrically, when will this be? When the residuals are orthogonal to <span class="math inline">\mathbf{x}</span>.</p>
+<p>There is a line that contains all possible values for multiples of <span class="math inline">\mathbf{x}</span>. The residuals will always be a sum of a component along this line and a component orthogonal to it. To make the residuals as small as possible, we want the parallel component to be zero — i.e., the residuals orthogonal to <span class="math inline">\mathbf{x}</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>The best <span class="math inline">m</span> minimizes <span class="math inline">\|\mathbf{y} - m\mathbf{x}\|^2</span>. Geometrically, that happens when the residual <span class="math inline">\mathbf{y} - m\mathbf{x}</span> is <strong>orthogonal</strong> to <span class="math inline">\mathbf{x}</span>.</p>
+</section>
+
+<section id="normal-equation-one-predictor" class="title-slide slide level2 center">
+<h2><em>Normal equation: one predictor</em></h2>
+<p><span class="math inline">m \mathbf{x} - \mathbf{y}</span> should be orthogonal to <span class="math inline">\mathbf{x}</span>, so <span class="math inline">\mathbf{x} \cdot (m \mathbf{x} - \mathbf{y}) = 0</span>.</p>
+<p><span class="math display">
+\begin{aligned}
+m \mathbf{x} \cdot \mathbf{x} - \mathbf{x} \cdot \mathbf{y} &amp;= 0 \\
+m \,\mathbf{x} \cdot \mathbf{x} &amp;= \mathbf{x} \cdot \mathbf{y}
+\end{aligned}
+</span></p>
+<div class="fragment">
+<p><strong>Matching to general matrix notation:</strong> In the general problem <span class="math inline">\mathbf{A}\mathbf{x} = \mathbf{b}</span>, the pieces correspond to:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Regression</th>
+<th style="text-align: center;">General</th>
+<th style="text-align: left;">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">predictor <span class="math inline">\mathbf{x}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{A}</span> (known matrix/vector)</td>
+<td style="text-align: left;">the data we observe</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">slope <span class="math inline">m</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{x}</span> (unknown)</td>
+<td style="text-align: left;">the parameter to solve for</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">response <span class="math inline">\mathbf{y}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{b}</span> (known vector)</td>
+<td style="text-align: left;">the target we want to match</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>Now translate the orthogonality condition step by step:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Regression (dot products)</th>
+<th style="text-align: center;">General (matrix notation)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\mathbf{x} \cdot (m\mathbf{x} - \mathbf{y}) = 0</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{A}^T(\mathbf{A}\mathbf{x} - \mathbf{b}) = \mathbf{0}</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">m\,\mathbf{x} \cdot \mathbf{x} = \mathbf{x} \cdot \mathbf{y}</span></td>
+<td style="text-align: center;"><span class="math inline">\mathbf{A}^T \mathbf{A}\,\mathbf{x} = \mathbf{A}^T \mathbf{b}</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="math inline">\mathbf{A}^T</span> comes from “dot with the data”: in the regression version we dot both sides with the predictor <span class="math inline">\mathbf{x}</span>; in matrix notation, that becomes multiplying on the left by <span class="math inline">\mathbf{A}^T</span>.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+\mathbf{A}^T \mathbf{A}\, \mathbf{x} = \mathbf{A}^T \mathbf{b}
+</span></p>
+<p>These are the <strong>normal equations</strong>.</p>
+</div>
+</section>
+
+<section id="single-predictor-scalar-case" class="title-slide slide level2 center">
+<h2><em>Single predictor: scalar case</em></h2>
+<p>When there is one predictor and one response, <span class="math inline">\mathbf{x}</span> (the unknown) is a scalar. Write the predictor vector as <span class="math inline">\mathbf{a}</span> and the response vector as <span class="math inline">\mathbf{b}</span>. Then:</p>
+<p><span class="math display">
+\mathbf{a}^T \mathbf{a}\, x = \mathbf{a}^T \mathbf{b}
+\quad \Rightarrow \quad
+x = \frac{\mathbf{a} \cdot \mathbf{b}}{\mathbf{a} \cdot \mathbf{a}}
+</span></p>
+<p>This is the slope of the least-squares line (through the origin).</p>
+</section>
+
+<section id="example-scale-calibration" class="title-slide slide level2 center">
+<h2><em>Example: scale calibration</em></h2>
+<p>You have a scale that measures in unknown units. You have items of known weight approximately 2, 5, and 7 pounds. You measure the scale output and get <span class="math inline">0.7</span>, <span class="math inline">2.4</span>, and <span class="math inline">3.2</span>. What is the conversion factor from the scale’s units to pounds?</p>
+<div class="fragment">
+<p>Set <span class="math inline">\mathbf{a}= [2,\, 5,\, 7]^T</span> and <span class="math inline">\mathbf{b}= [0.7,\, 2.4,\, 3.2]^T</span>. We want <span class="math inline">x</span> such that <span class="math inline">\mathbf{a} \cdot x = \mathbf{b}</span> (componentwise); the system is inconsistent, so we use least squares.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">
+\mathbf{a}^T \mathbf{a}\, x = \mathbf{a}^T \mathbf{b}
+\quad \Rightarrow \quad
+x = \frac{2(0.7) + 5(2.4) + 7(3.2)}{2^2 + 5^2 + 7^2} \approx 0.459
+</span></p>
+<p>So to convert from scale units to pounds, multiply by <span class="math inline">\approx 0.459</span> (i.e., scale reading <span class="math inline">\times 0.459 \approx</span> pounds).</p>
+</div>
+<div class="fragment">
+<p>(Book may use the opposite convention: conversion from pounds to scale units.)</p>
+</div>
+</section>
+
+<section id="skills-least-squares" class="title-slide slide level2 center">
+<h2><em>Skills: Least Squares</em></h2>
+<ul>
+<li class="fragment">Set up the least-squares problem when <span class="math inline">\mathbf{A}\mathbf{x}=\mathbf{b}</span> is inconsistent: minimize <span class="math inline">\|\mathbf{A}\mathbf{x}-\mathbf{b}\|^2</span>.</li>
+<li class="fragment">Write and use the normal equations <span class="math inline">\mathbf{A}^T \mathbf{A} \mathbf{x} = \mathbf{A}^T \mathbf{b}</span>.</li>
+<li class="fragment">For a single predictor (vector <span class="math inline">\mathbf{a}</span>, response <span class="math inline">\mathbf{b}</span>), compute the best-fit scalar <span class="math inline">x = (\mathbf{a} \cdot \mathbf{b})/(\mathbf{a} \cdot \mathbf{a})</span>.</li>
+</ul>
+
+
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+<div class="reveal-header">
+<div class="header-logo">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+
+</div>
+<div class="sb-title">
+<p> </p>
+</div>
+<div id="reveal-subheader" class="sub-title">
+<p> </p>
+</div>
+</div>
+<div class="reveal-footer">
+<div class="footer-section">
+<p> </p>
+</div>
+</div>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/socket.io.js"></script>
+  <script src="../site_libs/revealjs/plugin/multiplex/multiplex.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/jquery-min.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/jquery.awesome-cursor.min.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-tablet-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'multiplex': {"id":"088c3a9ce7c86f35","secret":"17082113259002008212","url":"https://reveal-multiplex.glitch.me/"},
+'chalkboard': {"buttons":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: true,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealTabletChalkboard, QuartoSupport,
+
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+</body></html>

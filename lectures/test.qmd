@@ -1,0 +1,29 @@
+---
+title: Ch5 Lecture 4
+lecture_day: 14
+readings: ""
+publish: false
+execute: 
+  cache: false
+lightbox: true
+filters:
+    - pyodide
+kernel: jupyter
+format: 
+    course-presentation-revealjs:
+      css: theorem.css
+      code-fold: show
+---
+
+
+# A test
+
+<!-- @idea: test_slide | Test slide -->
+<!-- @uses: linear_system -->
+## A slide
+
+```{python}
+#| results: 'asis'
+import sys
+print(sys.path)
+```

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Practice Final Exam Questions Solutions – Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../site_libs/quarto-contrib/quarto-project/homework/solutions.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">1</span> <em></em></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">2</span> <em></em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">3</span> <em></em></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">4</span> <em></em></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">5</span> <em></em></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">6</span> <em></em></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">7</span> <em></em></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">8</span> <em></em></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><span class="header-section-number">9</span> <em></em></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><span class="header-section-number">10</span> <em></em></a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><span class="header-section-number">11</span> <em></em></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Practice Final Exam Questions Solutions</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="section" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="section"><span class="header-section-number">1</span> <em></em></h2>
+<p>The augmented matrix <span class="math inline">\([A \mid \mathbf{b}]\)</span> for a linear system has been reduced to</p>
+<p><span class="math display">\[
+\left[\begin{array}{cccc|c}
+1 &amp; 0 &amp; 2 &amp; 0 &amp; 3 \\
+0 &amp; 1 &amp; -1 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -2
+\end{array}\right].
+\]</span></p>
+<ol type="a">
+<li><p>Find a basis for the null space of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Write the general solution of <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span> in the form particular solution plus null space.</p></li>
+<li><p>What is the rank of <span class="math inline">\(A\)</span>? Is <span class="math inline">\(\mathbf{b}\)</span> in the column space of <span class="math inline">\(A\)</span>? Briefly justify.</p></li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p>Solve <span class="math inline">\(A\mathbf{x} = \mathbf{0}\)</span>. From the RREF of <span class="math inline">\(A\)</span>, we have <span class="math inline">\(x_1 + 2x_3 = 0\)</span>, <span class="math inline">\(x_2 - x_3 = 0\)</span>, and <span class="math inline">\(x_4 = 0\)</span>. So column 3 is free: set <span class="math inline">\(x_3 = t\)</span>. Then <span class="math inline">\(x_1 = -2t\)</span>, <span class="math inline">\(x_2 = t\)</span>, <span class="math inline">\(x_4 = 0\)</span>. Thus <span class="math inline">\(\mathcal{N}(A) = \operatorname{span}\{ [-2, 1, 1, 0]^T \}\)</span>, and a basis is <span class="math inline">\(\{ [-2, 1, 1, 0]^T \}\)</span>.</p></li>
+<li><p>The general solution is a particular solution plus any vector in <span class="math inline">\(\mathcal{N}(A)\)</span>. To find a particular solution, set the free variable <span class="math inline">\(x_3 = 0\)</span>. From the RREF of <span class="math inline">\([A \mid \mathbf{b}]\)</span>, we get <span class="math inline">\(x_1 = 3\)</span>, <span class="math inline">\(x_2 = 1\)</span>, <span class="math inline">\(x_4 = -2\)</span>. So a particular solution is <span class="math inline">\(\mathbf{x}_p = [3, 1, 0, -2]^T\)</span>. The general solution is <span class="math inline">\(\mathbf{x} = \mathbf{x}_p + t\,\mathbf{n}\)</span> with <span class="math inline">\(\mathbf{n} \in \mathcal{N}(A)\)</span>, i.e.&nbsp;<span class="math inline">\(\mathbf{x} = [3, 1, 0, -2]^T + t[-2, 1, 1, 0]^T\)</span>, <span class="math inline">\(t \in \mathbb{R}\)</span>.</p></li>
+<li><p>The rank of <span class="math inline">\(A\)</span> is the number of pivot columns in the RREF of <span class="math inline">\(A\)</span>. The given RREF has pivots in columns 1, 2, and 4, so rank <span class="math inline">\(= 3\)</span>. Yes, <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span>: the system <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span> is consistent (we have a particular solution), so <span class="math inline">\(\mathbf{b}\)</span> is in the column space of <span class="math inline">\(A\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="section-1" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="section-1"><span class="header-section-number">2</span> <em></em></h2>
+<p>A directed graph has vertices <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span> and edges: <span class="math inline">\(A \to B\)</span>, <span class="math inline">\(A \to C\)</span>, <span class="math inline">\(B \to C\)</span>, <span class="math inline">\(B \to D\)</span>, <span class="math inline">\(C \to D\)</span>. (So there are 5 edges.)</p>
+<ol type="a">
+<li><p>Write the adjacency matrix <span class="math inline">\(A\)</span> and the incidence matrix <span class="math inline">\(B\)</span> (orientation: tail <span class="math inline">\(= +1\)</span>, head <span class="math inline">\(= -1\)</span>). Use vertex order <span class="math inline">\(A, B, C, D\)</span> and number the edges in the order listed above.</p></li>
+<li><p>A loop in the graph is a subset of edges that form a closed path (each vertex has the same number of edges in as out along the loop). Find a basis for the set of loops by finding a basis for the null space of <span class="math inline">\(B\)</span>, and draw the graph with the basis of loops indicated. (It’s fine if the loops are not directed loops, just closed paths.)</p></li>
+</ol>
+<p>For your reference, here is the RREF of <span class="math inline">\(B\)</span>:</p>
+<div id="e206f17b" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p><span class="math inline">\(\displaystyle \left[\begin{matrix}1 &amp; 0 &amp; -1 &amp; 0 &amp; 1\\0 &amp; 1 &amp; 1 &amp; 0 &amp; -1\\0 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{matrix}\right]\)</span></p>
+</div>
+</div>
+<ol start="3" type="a">
+<li>This graph does not contain any directed loops – that is, it is impossible to start at a vertex and follow a sequence of directed edges to return to the same vertex. Show that this property follows from the fact that <span class="math inline">\(A^4=\begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>.</li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li>Order vertices A, B, C, D. Edges: 1=A→B, 2=A→C, 3=B→C, 4=B→D, 5=C→D.</li>
+</ol>
+<p><span class="math inline">\(A = \begin{bmatrix} 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span> (rows/cols = A,B,C,D).</p>
+<p><span class="math inline">\(B = \begin{bmatrix} 1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ -1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; -1 &amp; -1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; -1 &amp; -1 \end{bmatrix}\)</span> (rows = vertices A,B,C,D; columns = edges 1..5).</p>
+<ol start="2" type="a">
+<li><span class="math inline">\(B\)</span> is <span class="math inline">\(4 \times 5\)</span> and its rows sum to zero, so <span class="math inline">\(\operatorname{rank}(B)\le 3\)</span>; in fact <span class="math inline">\(\operatorname{rank}(B)=3\)</span>, hence <span class="math inline">\(\dim\mathcal{N}(B)=5-3=2\)</span>. Solving <span class="math inline">\(B\mathbf{x}=\mathbf{0}\)</span> gives, for example, the basis <span class="math inline">\(\mathbf{v}_1=\begin{bmatrix}1\\-1\\1\\0\\0\end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{v}_2=\begin{bmatrix}0\\0\\1\\-1\\1\end{bmatrix}\)</span>. So a basis for the loop space is <span class="math inline">\(\{\mathbf{v}_1,\mathbf{v}_2\}\)</span>.</li>
+</ol>
+<p>These correspond to the two closed paths <span class="math inline">\(A-B-C-A\)</span> and <span class="math inline">\(B-C-D-B\)</span>. The signs indicate whether an edge is traversed with or against the chosen orientation of that edge.</p>
+<div id="2de476d8" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="PracticeExamQuestions_files/figure-html/cell-3-output-1.png" width="540" height="389" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>The <span class="math inline">\((i,j)\)</span> entry of <span class="math inline">\(A^k\)</span> is the number of paths of length <span class="math inline">\(k\)</span> from vertex <span class="math inline">\(i\)</span> to vertex <span class="math inline">\(j\)</span>.</li>
+</ol>
+<p>If there are any directed cycles in the graph, then we can create a path that goes around the cycle multiple times, continuing indefinitely. Starting from a vertex on the cycle, there exists walks of every length, so at least some element of <span class="math inline">\(A^k\)</span> must be nonzero for all <span class="math inline">\(k\)</span>.</p>
+<p>Therefore, <span class="math inline">\(A^4 = \mathbf{0}\)</span> implies there are no directed cycles in the graph.</p>
+</div>
+</section>
+<section id="section-2" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="section-2"><span class="header-section-number">3</span> <em></em></h2>
+<p>A linear system in unknowns <span class="math inline">\(x_1, x_2, x_3, x_4\)</span> has general solution <span class="math inline">\((4 + x_2 - 3x_4,\, x_2,\, 2 - x_4,\, x_4)\)</span> where <span class="math inline">\(x_2\)</span> and <span class="math inline">\(x_4\)</span> are free. Find a minimal reduced row echelon form (augmented matrix) for this system.</p>
+<div class="solutions">
+<p>From the general solution: <span class="math inline">\(x_1 = 4 + x_2 - 3x_4\)</span>, <span class="math inline">\(x_3 = 2 - x_4\)</span>, so <span class="math inline">\(x_1 - x_2 + 3x_4 = 4\)</span> and <span class="math inline">\(x_3 + x_4 = 2\)</span>. A minimal RREF is</p>
+<p><span class="math display">\[
+R = \left[\begin{array}{cccc|c} 1 &amp; -1 &amp; 0 &amp; 3 &amp; 4 \\ 0 &amp; 0 &amp; 1 &amp; 1 &amp; 2 \end{array}\right].
+\]</span></p>
+</div>
+</section>
+<section id="section-3" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="section-3"><span class="header-section-number">4</span> <em></em></h2>
+<p>Find a least-squares solution to</p>
+<p><span class="math display">\[
+\begin{bmatrix} 1 &amp; 0 \\ 1 &amp; 1 \\ 1 &amp; 2 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \\ 0 \end{bmatrix}.
+\]</span></p>
+<p>Is it a genuine solution? Verify by computing the residual.</p>
+<div class="solutions">
+<p>Normal equations: <span class="math inline">\(A^T A \mathbf{x} = A^T \mathbf{b}\)</span>. <span class="math inline">\(A^T A = \begin{bmatrix} 3 &amp; 3 \\ 3 &amp; 5 \end{bmatrix}\)</span>, <span class="math inline">\(A^T \mathbf{b} = \begin{bmatrix} 3 \\ 1 \end{bmatrix}\)</span>. Then <span class="math inline">\(\mathbf{x} = (A^T A)^{-1} A^T \mathbf{b} = [2, -1]^T\)</span>. We have <span class="math inline">\(A\mathbf{x} = [2, 1, 0]^T = \mathbf{b}\)</span>, so it is a genuine solution (residual <span class="math inline">\(\mathbf{0}\)</span>).</p>
+</div>
+</section>
+<section id="section-4" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="section-4"><span class="header-section-number">5</span> <em></em></h2>
+<p>Show that if <span class="math inline">\(A^T A \mathbf{y} = \mathbf{0}\)</span>, then <span class="math inline">\(A\mathbf{y} = \mathbf{0}\)</span>. (Hint: consider <span class="math inline">\(\|A\mathbf{y}\|^2\)</span>.)</p>
+<div class="solutions">
+<p>We have <span class="math inline">\(\|A\mathbf{y}\|^2 = (A\mathbf{y})^T (A\mathbf{y}) = \mathbf{y}^T A^T A \mathbf{y}\)</span>. If <span class="math inline">\(A^T A \mathbf{y} = \mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{y}^T A^T A \mathbf{y} = \mathbf{y}^T \mathbf{0} = 0\)</span>, so <span class="math inline">\(\|A\mathbf{y}\|^2 = 0\)</span>. Hence <span class="math inline">\(A\mathbf{y} = \mathbf{0}\)</span>.</p>
+</div>
+</section>
+<section id="section-5" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="section-5"><span class="header-section-number">6</span> <em></em></h2>
+<ol type="a">
+<li><p>For <span class="math inline">\(A = \begin{bmatrix} 4 &amp; 2 \\ -1 &amp; 1 \end{bmatrix}\)</span>, find the eigenvalues and eigenvectors, and find <span class="math inline">\(P\)</span>, <span class="math inline">\(D\)</span> such that <span class="math inline">\(A = P D P^{-1}\)</span>.</p></li>
+<li><p>Use (a) to write <span class="math inline">\(A^3\)</span> in the form <span class="math inline">\(P D^3 P^{-1}\)</span> (you may leave <span class="math inline">\(P^{-1}\)</span> unevaluated).</p></li>
+<li><p>What is the spectral radius of <span class="math inline">\(A\)</span>?</p></li>
+<li><p>Using (a), diagonalize the matrix <span class="math inline">\(A^2 - 5A + 6I\)</span>. What is the null space of <span class="math inline">\(A^2 - 5A + 6I\)</span>? (You may use the fact that for a diagonalizable matrix, <span class="math inline">\(p(A) = P\, p(D)\, P^{-1}\)</span> when <span class="math inline">\(p\)</span> is a polynomial.)</p></li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p>Characteristic polynomial: <span class="math inline">\((\lambda-4)(\lambda-1)+2 = \lambda^2 - 5\lambda + 6 = (\lambda-2)(\lambda-3)\)</span>. So <span class="math inline">\(\lambda_1 = 2\)</span>, <span class="math inline">\(\lambda_2 = 3\)</span>. Eigenvectors: for 2, <span class="math inline">\(\mathbf{v}_1 = [1, -1]^T\)</span>; for 3, <span class="math inline">\(\mathbf{v}_2 = [2, -1]^T\)</span>. So <span class="math inline">\(P = \begin{bmatrix} 1 &amp; 2 \\ -1 &amp; -1 \end{bmatrix}\)</span>, <span class="math inline">\(D = \operatorname{diag}(2, 3)\)</span>.</p></li>
+<li><p><span class="math inline">\(A^3 = P D^3 P^{-1} = P \operatorname{diag}(8, 27) P^{-1}\)</span>.</p></li>
+<li><p>Spectral radius <span class="math inline">\(\rho(A) = \max|\lambda| = 3\)</span>.</p></li>
+<li><p>We have <span class="math inline">\(A = P D P^{-1}\)</span>, so <span class="math inline">\(A^2 - 5A + 6I = P(D^2 - 5D + 6I)P^{-1}\)</span>. The eigenvalues of <span class="math inline">\(A\)</span> are 2 and 3, so <span class="math inline">\(D^2 - 5D + 6I = \operatorname{diag}(4-10+6,\, 9-15+6) = \operatorname{diag}(0,0) = 0\)</span>. Hence <span class="math inline">\(A^2 - 5A + 6I = 0\)</span> (the zero matrix). The null space of the zero matrix is all of <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="section-6" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="section-6"><span class="header-section-number">7</span> <em></em></h2>
+<p>A population is modeled with three life stages (e.g.&nbsp;juvenile, subadult, adult). The transition matrix is <span class="math display">\[
+A = \begin{bmatrix} 0 &amp; 0 &amp; 2 \\ 0.5 &amp; 0 &amp; 0 \\ 0 &amp; 0.6 &amp; 0 \end{bmatrix}.
+\]</span></p>
+<ol type="a">
+<li><p>In words, what does this model say about how individuals move between stages and reproduce in a given time step?</p></li>
+<li><p>Starting with a population vector <span class="math inline">\(\mathbf{x}_0 = (0, 20, 50)^T\)</span>, compute the population after one and after two time steps (i.e.&nbsp;<span class="math inline">\(\mathbf{x}_1\)</span> and <span class="math inline">\(\mathbf{x}_2\)</span>).</p></li>
+<li><p>The dominant eigenvalue of <span class="math inline">\(A\)</span> (largest in modulus) is <span class="math inline">\(\lambda_1 \approx 0.84\)</span>. What does that tell you about the long-term behavior of the population?</p></li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p>Adults produce 2 juveniles per time step (and do not survive). Juveniles become subadults with probability 0.5; subadults become adults with probability 0.6. So in one step: births from adults only, then survival/transition juvenile→subadult→adult.</p></li>
+<li><p><span class="math inline">\(\mathbf{x}_1=A\mathbf{x}_0=(100,0,12)^T\)</span>: there are <span class="math inline">\(2\cdot 50=100\)</span> juveniles produced by adults, <span class="math inline">\(0.5\cdot 0=0\)</span> subadults coming from juveniles, and <span class="math inline">\(0.6\cdot 20=12\)</span> adults coming from subadults. Then <span class="math inline">\(\mathbf{x}_2=A\mathbf{x}_1=(0,50,0)^T + (24,0,0)^T = (24,50,0)^T\)</span>.</p></li>
+<li><p><span class="math inline">\(|\lambda_1| &lt; 1\)</span> means the population decays in the long run (no stable nonzero equilibrium); the total population eventually tends to zero. (For this matrix, <span class="math inline">\(\lambda_1 = 0.6^{1/3} \approx 0.84\)</span>.)</p></li>
+</ol>
+</div>
+</section>
+<section id="section-7" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="section-7"><span class="header-section-number">8</span> <em></em></h2>
+<p>Convert the difference equation <span class="math inline">\(y_{k+2} - 2y_{k+1} + y_{k} = 1\)</span> into the form <span class="math inline">\(\mathbf{x}_{k+1} = A \mathbf{x}_k\)</span> for some state vector <span class="math inline">\(\mathbf{x}_k\)</span> and matrix <span class="math inline">\(A\)</span>. Because the right-hand side of the difference equation is nonzero, use a state vector that includes a constant component (e.g.&nbsp;a third entry equal to 1).</p>
+<div class="solutions">
+<p>Solve for <span class="math inline">\(y_{k+2}\)</span>: <span class="math inline">\(y_{k+2} = 2y_{k+1} - y_{k} + 1\)</span>. Define <span class="math inline">\(\mathbf{x}_k = [y_{k}, y_{k+1}, 1]^T\)</span>. Then <span class="math inline">\(\mathbf{x}_{k+1}[1] = x_k[2]\)</span>, <span class="math inline">\(\mathbf{x}_{k+1}[2] = 2x_k[2] - x_k[1] + x_k[3]\)</span>, <span class="math inline">\(\mathbf{x}_{k+1}[3] = x_k[3]\)</span>. So <span class="math inline">\(A = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ -1 &amp; 2 &amp; 1 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>.</p>
+</div>
+</section>
+<section id="section-8" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="section-8"><span class="header-section-number">9</span> <em></em></h2>
+<p>Suppose <span class="math inline">\(A = U \Sigma V^T\)</span> is the SVD of a real <span class="math inline">\(m \times n\)</span> matrix with nonzero singular values <span class="math inline">\(\sigma_1 \ge \cdots \ge \sigma_r &gt; 0\)</span>. Let <span class="math inline">\(\mathbf{u}_i\)</span> and <span class="math inline">\(\mathbf{v}_i\)</span> be the <span class="math inline">\(i\)</span>th columns of <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span>.</p>
+<ol type="a">
+<li><p>What is <span class="math inline">\(A \mathbf{v}_1\)</span> in terms of <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\mathbf{u}_1\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(A^T A \mathbf{v}_1\)</span>?</p></li>
+<li><p>Give a formula for the least-squares solution(s) to <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span> in terms of <span class="math inline">\(U\)</span>, <span class="math inline">\(\Sigma\)</span>, <span class="math inline">\(V\)</span>, and <span class="math inline">\(\mathbf{b}\)</span>.</p></li>
+<li><p>Suppose <span class="math inline">\(r = n\)</span> (full column rank). Describe the solution set of <span class="math inline">\(A\mathbf{x} = \mathbf{0}\)</span>. What does that imply about the least-squares solution to <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span>?</p></li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p><span class="math inline">\(A\mathbf{v}_1 = \sigma_1 \mathbf{u}_1\)</span>.</p></li>
+<li><p><span class="math inline">\(A^T A \mathbf{v}_1 = \sigma_1^2 \mathbf{v}_1\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathbf{x} = V \Sigma^+ U^T \mathbf{b} + \mathbf{n}\)</span> where <span class="math inline">\(\Sigma^+\)</span> has <span class="math inline">\(1/\sigma_i\)</span> on the diagonal for <span class="math inline">\(i=1,\ldots,r\)</span> and <span class="math inline">\(\mathbf{n} \in \mathcal{N}(A)\)</span> (or: <span class="math inline">\(\mathbf{x} = A^+ \mathbf{b} + \mathbf{n}\)</span> with <span class="math inline">\(A^+ = V \Sigma^+ U^T\)</span>).</p></li>
+<li><p>If <span class="math inline">\(r = n\)</span>, the null space of <span class="math inline">\(A\)</span> is <span class="math inline">\(\{\mathbf{0}\}\)</span> (only the zero vector). So the least-squares solution is unique: <span class="math inline">\(\mathbf{x} = A^+ \mathbf{b}\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="section-9" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="section-9"><span class="header-section-number">10</span> <em></em></h2>
+<p>Let <span class="math inline">\(A = \begin{bmatrix} 1 &amp; 2 &amp; 1 \\ 0 &amp; 1 &amp; 1 \\ 1 &amp; 3 &amp; 2 \end{bmatrix}\)</span>.</p>
+<ol type="a">
+<li><p>Find the reduced row echelon form of <span class="math inline">\(A\)</span> and its rank.</p></li>
+<li><p>Find a basis for the column space of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Determine which of the following vectors is in the column space of <span class="math inline">\(A\)</span> and, if so, express it as a linear combination of the columns of <span class="math inline">\(A\)</span>: <span class="math inline">\(\mathbf{b}_1 = [0, 0, 1]^T\)</span>, <span class="math inline">\(\mathbf{b}_2 = [1, 2, 3]^T\)</span>.</p></li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p>RREF: <span class="math inline">\(\begin{bmatrix} 1 &amp; 0 &amp; -1 \\ 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>. Rank = 2.</p></li>
+<li><p>Pivot columns 1 and 2. Basis: <span class="math inline">\(\mathbf{a}_1 = [1, 0, 1]^T\)</span>, <span class="math inline">\(\mathbf{a}_2 = [2, 1, 3]^T\)</span>.</p></li>
+<li><p>Solve <span class="math inline">\(A\mathbf{x} = \mathbf{b}_1\)</span> and <span class="math inline">\(A\mathbf{x} = \mathbf{b}_2\)</span>. The system for <span class="math inline">\(\mathbf{b}_1\)</span> has augmented matrix with last row [0 0 0 | 1], so inconsistent: <span class="math inline">\(\mathbf{b}_1 \notin \mathcal{C}(A)\)</span>. For <span class="math inline">\(\mathbf{b}_2\)</span>, one particular solution is <span class="math inline">\(x_3 = 0\)</span>, <span class="math inline">\(x_2 = 2\)</span>, <span class="math inline">\(x_1 = -3\)</span>, so <span class="math inline">\(\mathbf{b}_2 = -3\mathbf{a}_1 + 2\mathbf{a}_2 \in \mathcal{C}(A)\)</span>.</p></li>
+</ol>
+</div>
+</section>
+<section id="section-10" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="section-10"><span class="header-section-number">11</span> <em></em></h2>
+<p>A <strong>bandpass filter</strong> attenuates both the lowest frequencies (near DC, <span class="math inline">\(k=0\)</span>) and the highest frequencies (near Nyquist, <span class="math inline">\(k = N/2\)</span> when <span class="math inline">\(N\)</span> is even), and passes a band of frequencies in the middle. So the filter’s gain is (or is close to) zero at <span class="math inline">\(k=0\)</span> and at <span class="math inline">\(k=N/2\)</span>, and is nonzero for some <span class="math inline">\(k\)</span> strictly between <span class="math inline">\(0\)</span> and <span class="math inline">\(N/2\)</span>.</p>
+<p>A signal is sampled every <span class="math inline">\(T_s = 1/6\)</span> s (sampling rate 6 Hz) and we take <span class="math inline">\(N = 6\)</span> samples (1 s of data). There are <span class="math inline">\(N = 6\)</span> frequency indices <span class="math inline">\(k = 0, 1, \ldots, 5\)</span>, with corresponding frequencies <span class="math inline">\(f_k\)</span> (in Hz): <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> (Nyquist), <span class="math inline">\(-2\)</span>, <span class="math inline">\(-1\)</span>.</p>
+<ol type="a">
+<li>You would like to design a bandpass filter that passes signals with frequencies between 0.5 Hz and 2.5 Hz. Write down a simple example of the six gains <span class="math inline">\(H[0], \ldots, H[5]\)</span> for such a filter.</li>
+</ol>
+<p>(For the negative frequencies, use the same filter value H[k] as for the corresponding positive frequency.)</p>
+<ol start="2" type="a">
+<li>Suppose your signal is <span class="math inline">\(x[n] = (1, 0, 1, 1, 1, 0)\)</span> with DFT coefficients <span class="math inline">\(X_0, \ldots, X_5\)</span> equal to <span class="math inline">\(4, -1, 1, 2, 1, -1\)</span> respectively. Using the transformation from lecture (below), write down the <span class="math inline">\(n\)</span>-th entry of the filtered signal (that is, <span class="math inline">\(y[n]\)</span>) as a sum of terms involving complex exponentials. You don’t need to do any trigonometric simplifications. <span class="math display">\[
+\mathcal{F}_h(\mathbf{x}) = \frac{1}{N} \sum_{k=0}^{N-1} X_k H(\zeta_k) \mathbf{f}_k,
+\]</span></li>
+</ol>
+<p>where <span class="math inline">\(\zeta_k = 2\pi k/N\)</span> and <span class="math inline">\(H(\zeta_k)\)</span> is the filter gain at frequency index <span class="math inline">\(k\)</span> (the values <span class="math inline">\(H[0], \ldots, H[5]\)</span> from part (a)).</p>
+<ol start="3" type="a">
+<li>The filter can also be specified by its <strong>time-domain</strong> coefficients <span class="math inline">\(h[0], h[1], \ldots, h[N-1]\)</span>, with the usual DFT relation <span class="math inline">\(H[k] = \sum_{n=0}^{N-1} h[n] e^{-i 2\pi k n / N}\)</span>. How would you recover the coefficients <span class="math inline">\(h[n]\)</span> from the gains <span class="math inline">\(H[k]\)</span>? (State the formula or the name of the operation.)</li>
+</ol>
+<div class="solutions">
+<ol type="a">
+<li><p>We need zero gain at 0 Hz (<span class="math inline">\(k=0\)</span>) and at 3 Hz Nyquist (<span class="math inline">\(k=3\)</span>), so <span class="math inline">\(H[0] = 0\)</span> and <span class="math inline">\(H[3] = 0\)</span>. The other frequency indices (<span class="math inline">\(k=1,2\)</span> for 1 Hz and 2 Hz, and <span class="math inline">\(k=4,5\)</span> for <span class="math inline">\(-2\)</span> Hz and <span class="math inline">\(-1\)</span> Hz) should be nonzero. One simple example: <span class="math inline">\(H = [0, 1, 1, 0, 1, 1]\)</span> (zero at 0 Hz and 3 Hz, gain 1 at <span class="math inline">\(\pm 1\)</span> Hz and <span class="math inline">\(\pm 2\)</span> Hz).</p></li>
+<li><p>Using <span class="math inline">\(H[0]=H[3]=0\)</span> and <span class="math inline">\(H[1]=H[2]=H[4]=H[5]=1\)</span> from (a), the filtered output has DFT coefficients <span class="math inline">\(Y_k = X_k H(\zeta_k)\)</span> equal to <span class="math inline">\((0, -1, 1, 0, 1, -1)\)</span>. The <span class="math inline">\(n\)</span>-th entry of the filtered signal is <span class="math inline">\(y[n] = \frac{1}{N}\sum_{k=0}^{N-1} Y_k \, e^{i 2\pi k n/N}\)</span>, so <span class="math display">\[
+y[n] = \frac{1}{6}\left( 0 + (-1)e^{i \pi n/3} + (1)e^{i 2\pi n/3} + 0 + (1)e^{i 4\pi n/3} + (-1)e^{i 5\pi n/3} \right).
+\]</span> (No trigonometric simplification required.)</p></li>
+<li><p>The coefficients are given by the <strong>inverse DFT</strong> of the sequence <span class="math inline">\(H[0], \ldots, H[N-1]\)</span>: <span class="math display">\[
+h[n] = \frac{1}{N} \sum_{k=0}^{N-1} H[k]\, e^{i 2\pi k n / N}, \quad n = 0, \ldots, N-1.
+\]</span> So: apply the inverse DFT to the vector of gains to get the filter coefficients in time.</p></li>
+</ol>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

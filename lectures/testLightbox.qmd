@@ -1,0 +1,21 @@
+---
+title: Testing Lightbox
+lecture_day: 3
+readings: "2.1-2.3"
+execute: 
+  cache: true
+lightbox: true
+filters:
+    - pyodide
+---
+
+OK now.
+
+```{pyodide-python}
+import matplotlib.pyplot as plt
+fig=plt.figure()
+plt.plot([1,2,3,4])
+plt.show()
+print(3+4)
+plt.close(fig)
+```

@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ch4 Lecture 1 – Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.32.0.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#geometrical-view-of-column-space" id="toc-geometrical-view-of-column-space" class="nav-link active" data-scroll-target="#geometrical-view-of-column-space"><em>Geometrical View of Column Space</em></a>
+  <ul class="collapse">
+  <li><a href="#why-column-space-matters" id="toc-why-column-space-matters" class="nav-link" data-scroll-target="#why-column-space-matters"><em>Why column space matters</em></a></li>
+  <li><a href="#example-a-rank-1-matrix" id="toc-example-a-rank-1-matrix" class="nav-link" data-scroll-target="#example-a-rank-1-matrix"><em>Example: a rank-1 matrix</em></a></li>
+  <li><a href="#visualizing-the-column-space-of-our-rank-1-matrix" id="toc-visualizing-the-column-space-of-our-rank-1-matrix" class="nav-link" data-scroll-target="#visualizing-the-column-space-of-our-rank-1-matrix"><em>Visualizing the column space of our rank-1 matrix</em></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><em></em></a></li>
+  <li><a href="#example-a-rank-2-matrix" id="toc-example-a-rank-2-matrix" class="nav-link" data-scroll-target="#example-a-rank-2-matrix"><em>Example: a rank-2 matrix</em></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><em></em></a></li>
+  <li><a href="#visualizing-the-column-space-of-our-rank-2-matrix" id="toc-visualizing-the-column-space-of-our-rank-2-matrix" class="nav-link" data-scroll-target="#visualizing-the-column-space-of-our-rank-2-matrix"><em>Visualizing the column space of our rank-2 matrix</em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><em></em></a></li>
+  <li><a href="#general-form-of-the-column-space-in-mathbbr3" id="toc-general-form-of-the-column-space-in-mathbbr3" class="nav-link" data-scroll-target="#general-form-of-the-column-space-in-mathbbr3"><em>General form of the column space in <span class="math inline">\(\mathbb{R}^3\)</span></em></a></li>
+  <li><a href="#general-form-of-the-column-space-in-mathbbrn" id="toc-general-form-of-the-column-space-in-mathbbrn" class="nav-link" data-scroll-target="#general-form-of-the-column-space-in-mathbbrn"><em>General form of the column space in <span class="math inline">\(\mathbb{R}^n\)</span></em></a></li>
+  <li><a href="#input-and-output-spaces" id="toc-input-and-output-spaces" class="nav-link" data-scroll-target="#input-and-output-spaces"><em>Input and output spaces</em></a></li>
+  <li><a href="#domain-and-codomain-for-a-rectangular-matrix" id="toc-domain-and-codomain-for-a-rectangular-matrix" class="nav-link" data-scroll-target="#domain-and-codomain-for-a-rectangular-matrix"><em>Domain and codomain for a rectangular matrix</em></a></li>
+  <li><a href="#column-space-and-null-space-are-special-subspaces" id="toc-column-space-and-null-space-are-special-subspaces" class="nav-link" data-scroll-target="#column-space-and-null-space-are-special-subspaces"><em>Column space and null space are special subspaces</em></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><em></em></a></li>
+  <li><a href="#visualizing-the-null-space" id="toc-visualizing-the-null-space" class="nav-link" data-scroll-target="#visualizing-the-null-space"><em>Visualizing the null space</em></a></li>
+  <li><a href="#visualizing-both-the-column-space-and-the-null-space" id="toc-visualizing-both-the-column-space-and-the-null-space" class="nav-link" data-scroll-target="#visualizing-both-the-column-space-and-the-null-space"><em>Visualizing both the column space and the null space</em></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><em></em></a></li>
+  <li><a href="#row-space-and-left-null-space" id="toc-row-space-and-left-null-space" class="nav-link" data-scroll-target="#row-space-and-left-null-space"><em>Row space and left null space</em></a></li>
+  <li><a href="#skills-fundamental-subspaces-pictures" id="toc-skills-fundamental-subspaces-pictures" class="nav-link" data-scroll-target="#skills-fundamental-subspaces-pictures"><em>Skills: Fundamental Subspaces (Pictures)</em></a></li>
+  </ul></li>
+  <li><a href="#planes-hyperplanes-and-projections" id="toc-planes-hyperplanes-and-projections" class="nav-link" data-scroll-target="#planes-hyperplanes-and-projections"><em>Planes, Hyperplanes, and Projections</em></a>
+  <ul class="collapse">
+  <li><a href="#the-plane-through-the-origin" id="toc-the-plane-through-the-origin" class="nav-link" data-scroll-target="#the-plane-through-the-origin"><em>The plane through the origin</em></a></li>
+  <li><a href="#finding-the-normal-vector-when-we-know-two-vectors-in-the-plane" id="toc-finding-the-normal-vector-when-we-know-two-vectors-in-the-plane" class="nav-link" data-scroll-target="#finding-the-normal-vector-when-we-know-two-vectors-in-the-plane"><em>Finding the normal vector when we know two vectors in the plane</em></a></li>
+  <li><a href="#finding-the-normal-vector-from-the-equation-of-the-plane" id="toc-finding-the-normal-vector-from-the-equation-of-the-plane" class="nav-link" data-scroll-target="#finding-the-normal-vector-from-the-equation-of-the-plane"><em>Finding the normal vector from the equation of the plane</em></a></li>
+  <li><a href="#verifying-the-normal-from-axbyczd" id="toc-verifying-the-normal-from-axbyczd" class="nav-link" data-scroll-target="#verifying-the-normal-from-axbyczd"><em>Verifying the normal from <span class="math inline">\(ax+by+cz=d\)</span></em></a></li>
+  <li><a href="#distances-from-the-plane" id="toc-distances-from-the-plane" class="nav-link" data-scroll-target="#distances-from-the-plane"><em>Distances from the plane</em></a></li>
+  <li><a href="#closest-point-on-the-plane-through-the-origin" id="toc-closest-point-on-the-plane-through-the-origin" class="nav-link" data-scroll-target="#closest-point-on-the-plane-through-the-origin"><em>Closest point on the plane (through the origin)</em></a></li>
+  <li><a href="#projection-onto-the-plane-through-the-origin" id="toc-projection-onto-the-plane-through-the-origin" class="nav-link" data-scroll-target="#projection-onto-the-plane-through-the-origin"><em>Projection onto the plane (through the origin)</em></a></li>
+  <li><a href="#a-plane-not-at-the-origin" id="toc-a-plane-not-at-the-origin" class="nav-link" data-scroll-target="#a-plane-not-at-the-origin"><em>A plane not at the origin</em></a></li>
+  <li><a href="#equation-of-the-displaced-plane" id="toc-equation-of-the-displaced-plane" class="nav-link" data-scroll-target="#equation-of-the-displaced-plane"><em>Equation of the displaced plane</em></a></li>
+  <li><a href="#hyperplane" id="toc-hyperplane" class="nav-link" data-scroll-target="#hyperplane"><em>Hyperplane</em></a></li>
+  <li><a href="#example-plane-through-three-points" id="toc-example-plane-through-three-points" class="nav-link" data-scroll-target="#example-plane-through-three-points"><em>Example: plane through three points</em></a></li>
+  <li><a href="#projections-to-the-displaced-plane" id="toc-projections-to-the-displaced-plane" class="nav-link" data-scroll-target="#projections-to-the-displaced-plane"><em>Projections to the displaced plane</em></a></li>
+  <li><a href="#summary-planes-and-projections" id="toc-summary-planes-and-projections" class="nav-link" data-scroll-target="#summary-planes-and-projections"><em>Summary: planes and projections</em></a></li>
+  <li><a href="#projection-formula-for-vectors" id="toc-projection-formula-for-vectors" class="nav-link" data-scroll-target="#projection-formula-for-vectors"><em>Projection formula for vectors</em></a></li>
+  <li><a href="#skills-planes-and-projections" id="toc-skills-planes-and-projections" class="nav-link" data-scroll-target="#skills-planes-and-projections"><em>Skills: Planes and Projections</em></a></li>
+  </ul></li>
+  <li><a href="#least-squares" id="toc-least-squares" class="nav-link" data-scroll-target="#least-squares"><em>Least Squares</em></a>
+  <ul class="collapse">
+  <li><a href="#least-squares-project-mathbfb-onto-mathcalca" id="toc-least-squares-project-mathbfb-onto-mathcalca" class="nav-link" data-scroll-target="#least-squares-project-mathbfb-onto-mathcalca"><em>Least squares: project <span class="math inline">\(\mathbf{b}\)</span> onto <span class="math inline">\(\mathcal{C}(A)\)</span></em></a></li>
+  <li><a href="#motivation-fitting-a-line-to-data" id="toc-motivation-fitting-a-line-to-data" class="nav-link" data-scroll-target="#motivation-fitting-a-line-to-data"><em>Motivation: fitting a line to data</em></a></li>
+  <li><a href="#from-mathbbr2-to-mathbbrn" id="toc-from-mathbbr2-to-mathbbrn" class="nav-link" data-scroll-target="#from-mathbbr2-to-mathbbrn"><em>From <span class="math inline">\(\mathbb{R}^2\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span></em></a></li>
+  <li><a href="#imperfect-data" id="toc-imperfect-data" class="nav-link" data-scroll-target="#imperfect-data"><em>Imperfect data</em></a></li>
+  <li><a href="#best-choice-of-m" id="toc-best-choice-of-m" class="nav-link" data-scroll-target="#best-choice-of-m"><em>Best choice of <span class="math inline">\(m\)</span></em></a></li>
+  <li><a href="#normal-equation-one-predictor" id="toc-normal-equation-one-predictor" class="nav-link" data-scroll-target="#normal-equation-one-predictor"><em>Normal equation: one predictor</em></a></li>
+  <li><a href="#single-predictor-scalar-case" id="toc-single-predictor-scalar-case" class="nav-link" data-scroll-target="#single-predictor-scalar-case"><em>Single predictor: scalar case</em></a></li>
+  <li><a href="#example-scale-calibration" id="toc-example-scale-calibration" class="nav-link" data-scroll-target="#example-scale-calibration"><em>Example: scale calibration</em></a></li>
+  <li><a href="#skills-least-squares" id="toc-skills-least-squares" class="nav-link" data-scroll-target="#skills-least-squares"><em>Skills: Least Squares</em></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="day_9.html"><i class="bi bi-file-slides"></i>RevealJS (course-presentation)</a></li><li><a href="day_9.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="day_9.out.ipynb" download="day_9.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ch4 Lecture 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="geometrical-view-of-column-space" class="level1">
+<h1><em>Geometrical View of Column Space</em></h1>
+<!-- @idea: column_space_geometry | Column space as line/plane, rank -->
+<!-- @uses: column_space, fundamental_subspaces -->
+<section id="why-column-space-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-column-space-matters"><em>Why column space matters</em></h2>
+<ul>
+<li><strong>Consistency of <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span>:</strong> solvable exactly when <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span> (the “reachable” set).</li>
+<li><strong>Least squares:</strong> Later today: when <span class="math inline">\(\mathbf{b} \notin \mathcal{C}(A)\)</span>, we find the <strong>closest point</strong> in <span class="math inline">\(\mathcal{C}(A)\)</span> to <span class="math inline">\(\mathbf{b}\)</span> (projection onto the column space).</li>
+<li>Seeing <span class="math inline">\(\mathcal{C}(A)\)</span> as a line or plane makes this concrete.</li>
+</ul>
+</section>
+<section id="example-a-rank-1-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="example-a-rank-1-matrix"><em>Example: a rank-1 matrix</em></h2>
+<p><span class="math display">\[
+A = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}
+\]</span></p>
+<p>Columns are <span class="math inline">\(\mathbf{a}_1 = (1,1,0)\)</span>, <span class="math inline">\(\mathbf{a}_2 = 2\mathbf{a}_1\)</span>, <span class="math inline">\(\mathbf{a}_3 = \mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>The only vectors that we can form by taking linear combinations of the columns of <span class="math inline">\(A\)</span> are multiples of <span class="math inline">\(\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}\)</span>.</p>
+<p>. . .</p>
+<p>A <em>basis</em> for the column space is just this single vector: <span class="math inline">\(\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix} \right\rbrace\)</span>.</p>
+<p>. . .</p>
+<p>Because there is only one vector in the basis, the matrix has rank 1.</p>
+</section>
+<section id="visualizing-the-column-space-of-our-rank-1-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-column-space-of-our-rank-1-matrix"><em>Visualizing the column space of our rank-1 matrix</em></h2>
+<p>Here are some vectors that are in the column space of <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\begin{bmatrix} 1 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 2 \\ 2 \\ 0 \end{bmatrix}, \begin{bmatrix} 3 \\ 3 \\ 0 \end{bmatrix}, \begin{bmatrix} 4 \\ 4 \\ 0 \end{bmatrix}, \begin{bmatrix} 5 \\ 5 \\ 0 \end{bmatrix}, \begin{bmatrix} -1 \\ -1 \\ 0 \end{bmatrix}, \begin{bmatrix} -2 \\ -2 \\ 0 \end{bmatrix}
+\]</span></p>
+<p>. . .</p>
+<p>If we draw these vectors in <span class="math inline">\(\mathbb{R}^3\)</span>, we see that they all lie on the same line. <em>This line is the column space of <span class="math inline">\(A\)</span></em>.</p>
+<p>(draw it)</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><em></em></h2>
+<p>Remember, the column space tells us which vectors <span class="math inline">\(\mathbf{b}\)</span> can be written as <span class="math inline">\(A\mathbf{x}\)</span> for some <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>. . .</p>
+<p>So if a vector <span class="math inline">\(\mathbf{b}\)</span> is not on this line, we know that there is no solution to <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span>.</p>
+<p>. . .</p>
+<p>(draw a b slightly off the line, and one very far off the line)</p>
+</section>
+<section id="example-a-rank-2-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="example-a-rank-2-matrix"><em>Example: a rank-2 matrix</em></h2>
+<p><span class="math display">\[
+A = \begin{bmatrix} 1 &amp; 1 &amp; 2 \\ 1 &amp; 2 &amp; 3 \\ 2 &amp; 1 &amp; 3 \end{bmatrix}
+\]</span></p>
+<p>. . .</p>
+<p>The first two columns are independent, but the third is a linear combination of the first two.</p>
+<p>. . .</p>
+<p>We can make a basis for the column space by taking the first two columns: <span class="math inline">\(\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 2 \end{bmatrix}, \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix} \right\rbrace\)</span>.</p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<p><span class="math display">\[
+\mathcal{C}(A) = \mathrm{span}\left\lbrace \begin{bmatrix} 1 \\ 1 \\ 2 \end{bmatrix}, \begin{bmatrix} 1 \\ 2 \\ 1 \end{bmatrix} \right\rbrace
+\]</span></p>
+<p>Here are some vectors that are in the column space of <span class="math inline">\(A\)</span>:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+1 \\ 1 \\ 2
+\end{bmatrix}
+= 1 \cdot \mathbf{a}_1 + 0 \cdot \mathbf{a}_2,
+\qquad
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}
+= 0 \cdot \mathbf{a}_1 + 1 \cdot \mathbf{a}_2,
+\]</span></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+2 \\ 3 \\ 3
+\end{bmatrix}
+= 1 \cdot \mathbf{a}_1 + 1 \cdot \mathbf{a}_2,
+\qquad
+\begin{bmatrix}
+3 \\ 3 \\ 6
+\end{bmatrix}
+= 3 \cdot \mathbf{a}_1 + 0 \cdot \mathbf{a}_2
+\]</span></p>
+</section>
+<section id="visualizing-the-column-space-of-our-rank-2-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-column-space-of-our-rank-2-matrix"><em>Visualizing the column space of our rank-2 matrix</em></h2>
+<div id="33ec1e94" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Column space basis and example vectors (all in C(A))</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>example_vectors <span class="op">=</span> [</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>]),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>]),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>]),</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>]),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure (plane not shown, only vectors)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors for each vector for contrast</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'crimson'</span>, <span class="st">'darkorange'</span>, <span class="st">'seagreen'</span>, <span class="st">'royalblue'</span>]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v, c <span class="kw">in</span> <span class="bu">zip</span>(example_vectors, colors):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatter3d(</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">0</span>]], y<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">1</span>]], z<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">2</span>]],</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">'lines+markers'</span>,</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>c),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>c),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        showlegend<span class="op">=</span><span class="va">False</span>  <span class="co"># Hide legend</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(text<span class="op">=</span><span class="st">"Column space and example vectors"</span>, x<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    scene<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        xaxis_title<span class="op">=</span><span class="st">"x"</span>,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        yaxis_title<span class="op">=</span><span class="st">"y"</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        zaxis_title<span class="op">=</span><span class="st">"z"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        aspectmode<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        camera<span class="op">=</span><span class="bu">dict</span>(eye<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="fl">1.4</span>, y<span class="op">=</span><span class="fl">1.4</span>, z<span class="op">=</span><span class="fl">1.1</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">30</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">420</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    showlegend<span class="op">=</span><span class="va">False</span>  <span class="co"># Hide legend</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="0cd4669c-c934-451a-a95b-1c8a1f1eee96" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0cd4669c-c934-451a-a95b-1c8a1f1eee96")) {                    Plotly.newPlot(                        "0cd4669c-c934-451a-a95b-1c8a1f1eee96",                        [{"line":{"color":"crimson","width":7},"marker":{"color":"crimson","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,1],"z":[0,2],"type":"scatter3d"},{"line":{"color":"darkorange","width":7},"marker":{"color":"darkorange","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,2],"z":[0,1],"type":"scatter3d"},{"line":{"color":"seagreen","width":7},"marker":{"color":"seagreen","size":7},"mode":"lines+markers","showlegend":false,"x":[0,2],"y":[0,3],"z":[0,3],"type":"scatter3d"},{"line":{"color":"royalblue","width":7},"marker":{"color":"royalblue","size":7},"mode":"lines+markers","showlegend":false,"x":[0,3],"y":[0,3],"z":[0,6],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Column space and example vectors","x":0.5},"scene":{"camera":{"eye":{"x":1.4,"y":1.4,"z":1.1}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"margin":{"l":0,"r":0,"b":0,"t":30},"height":420,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('0cd4669c-c934-451a-a95b-1c8a1f1eee96');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
+<div id="36ebb6b8" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Column space basis and example vectors (all in C(A))</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>a2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>example_vectors <span class="op">=</span> [</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>]),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>]),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>]),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    np.array([<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>]),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the filled plane span{a1, a2} through origin (large extent)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.75</span>, <span class="fl">3.75</span>, <span class="dv">24</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.75</span>, <span class="fl">3.75</span>, <span class="dv">24</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>S, T <span class="op">=</span> np.meshgrid(s, t)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> S <span class="op">*</span> a1[<span class="dv">0</span>] <span class="op">+</span> T <span class="op">*</span> a2[<span class="dv">0</span>]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> S <span class="op">*</span> a1[<span class="dv">1</span>] <span class="op">+</span> T <span class="op">*</span> a2[<span class="dv">1</span>]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> S <span class="op">*</span> a1[<span class="dv">2</span>] <span class="op">+</span> T <span class="op">*</span> a2[<span class="dv">2</span>]</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Surface(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>X, y<span class="op">=</span>Y, z<span class="op">=</span>Z,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    colorscale<span class="op">=</span>[[<span class="dv">0</span>, <span class="st">'lightblue'</span>], [<span class="dv">1</span>, <span class="st">'lightblue'</span>]],</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    opacity<span class="op">=</span><span class="fl">0.45</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    showscale<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Plane"</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors for each vector for contrast</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'crimson'</span>, <span class="st">'darkorange'</span>, <span class="st">'seagreen'</span>, <span class="st">'royalblue'</span>]</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v, c <span class="kw">in</span> <span class="bu">zip</span>(example_vectors, colors):</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    fig.add_trace(go.Scatter3d(</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">0</span>]], y<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">1</span>]], z<span class="op">=</span>[<span class="dv">0</span>, v[<span class="dv">2</span>]],</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">'lines+markers'</span>,</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        line<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>c),</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span>c),</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        showlegend<span class="op">=</span><span class="va">False</span>  <span class="co"># Hide legend</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    ))</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="bu">dict</span>(text<span class="op">=</span><span class="st">"Column space (plane filled) and example vectors"</span>, x<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    scene<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        xaxis_title<span class="op">=</span><span class="st">"x"</span>,</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        yaxis_title<span class="op">=</span><span class="st">"y"</span>,</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        zaxis_title<span class="op">=</span><span class="st">"z"</span>,</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        aspectmode<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>        camera<span class="op">=</span><span class="bu">dict</span>(eye<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="fl">0.9</span>, y<span class="op">=</span><span class="fl">0.9</span>, z<span class="op">=</span><span class="fl">0.7</span>))</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">30</span>),</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">420</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    showlegend<span class="op">=</span><span class="va">False</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="ccd6a9c5-cda9-44b4-bd54-49f28df53d55" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("ccd6a9c5-cda9-44b4-bd54-49f28df53d55")) {                    Plotly.newPlot(                        "ccd6a9c5-cda9-44b4-bd54-49f28df53d55",                        [{"colorscale":[[0,"lightblue"],[1,"lightblue"]],"name":"Plane","opacity":0.45,"showscale":false,"x":[[-7.5,-7.173913043478261,-6.8478260869565215,-6.521739130434783,-6.195652173913043,-5.869565217391305,-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434785,-0.32608695652173925,0.0],[-7.173913043478261,-6.8478260869565215,-6.521739130434782,-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.32608695652173925,0.0,0.32608695652173925],[-6.8478260869565215,-6.521739130434782,-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.58695652173913,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.32608695652173836,0.0,0.32608695652173925,0.6521739130434785],[-6.521739130434783,-6.195652173913043,-5.869565217391305,-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782609,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.2826086956521743,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217388,0.652173913043478,0.9782608695652173],[-6.195652173913043,-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.652173913043478,0.9782608695652173,1.3043478260869565],[-5.869565217391305,-5.5434782608695645,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.6086956521739126,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.6521739130434789,0.9782608695652173,1.3043478260869565,1.6304347826086958],[-5.543478260869565,-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304348,-1.6304347826086956,-1.3043478260869568,-0.9782608695652175,-0.6521739130434783,-0.326086956521739,2.220446049250313e-16,0.32608695652173947,0.6521739130434787,0.978260869565218,1.3043478260869563,1.6304347826086956,1.9565217391304348],[-5.217391304347826,-4.891304347826087,-4.565217391304348,-4.239130434782609,-3.9130434782608696,-3.5869565217391304,-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652177,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086953,1.9565217391304346,2.282608695652174],[-4.891304347826087,-4.565217391304348,-4.239130434782608,-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.3043478260869565,-0.9782608695652173,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304346,2.282608695652174,2.608695652173913],[-4.565217391304348,-4.239130434782608,-3.913043478260869,-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652173,-0.652173913043478,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.282608695652174,2.608695652173913,2.9347826086956523],[-4.239130434782608,-3.913043478260869,-3.58695652173913,-3.260869565217391,-2.934782608695652,-2.6086956521739126,-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.652173913043478,-0.3260869565217388,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521747,2.608695652173913,2.9347826086956523,3.2608695652173916],[-3.9130434782608696,-3.5869565217391304,-3.260869565217391,-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.9565217391304348,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.956521739130435,2.2826086956521743,2.6086956521739135,2.934782608695652,3.260869565217391,3.5869565217391304],[-3.5869565217391304,-3.260869565217391,-2.934782608695652,-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086956,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.956521739130435,2.2826086956521743,2.6086956521739135,2.9347826086956528,3.260869565217391,3.5869565217391304,3.9130434782608696],[-3.2608695652173916,-2.9347826086956523,-2.608695652173913,-2.2826086956521743,-1.956521739130435,-1.6304347826086958,-1.3043478260869568,-0.9782608695652177,-0.6521739130434785,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652169,1.304347826086956,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.58695652173913,3.913043478260869,4.239130434782608],[-2.9347826086956523,-2.608695652173913,-2.282608695652174,-1.956521739130435,-1.6304347826086958,-1.3043478260869565,-0.9782608695652175,-0.6521739130434785,-0.32608695652173925,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.304347826086956,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.913043478260869,4.239130434782608,4.565217391304348],[-2.608695652173913,-2.282608695652174,-1.9565217391304346,-1.6304347826086958,-1.3043478260869565,-0.9782608695652173,-0.6521739130434783,-0.32608695652173925,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652173,1.3043478260869565,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782608,4.565217391304348,4.891304347826087],[-2.282608695652174,-1.9565217391304346,-1.6304347826086953,-1.3043478260869565,-0.9782608695652173,-0.652173913043478,-0.326086956521739,0.0,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.3043478260869565,1.6304347826086958,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304348,4.891304347826087,5.217391304347826],[-1.9565217391304346,-1.6304347826086953,-1.304347826086956,-0.9782608695652173,-0.652173913043478,-0.3260869565217388,2.220446049250313e-16,0.32608695652173925,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086958,1.956521739130435,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826087,5.217391304347826,5.543478260869565],[-1.6304347826086953,-1.304347826086956,-0.9782608695652169,-0.652173913043478,-0.3260869565217388,4.440892098500626e-16,0.32608695652173947,0.6521739130434785,0.9782608695652177,1.304347826086957,1.6304347826086962,1.956521739130435,2.2826086956521743,2.608695652173913,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347826,5.543478260869565,5.869565217391305],[-1.304347826086956,-0.9782608695652169,-0.6521739130434776,-0.3260869565217388,4.440892098500626e-16,0.3260869565217397,0.6521739130434787,0.9782608695652177,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521743,2.6086956521739135,2.9347826086956523,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347827,5.543478260869565,5.869565217391305,6.195652173913044],[-0.9782608695652169,-0.6521739130434776,-0.32608695652173836,4.440892098500626e-16,0.3260869565217397,0.6521739130434789,0.978260869565218,1.304347826086957,1.6304347826086962,1.9565217391304355,2.2826086956521747,2.6086956521739135,2.9347826086956528,3.2608695652173916,3.586956521739131,3.91304347826087,4.239130434782609,4.565217391304349,4.891304347826088,5.217391304347827,5.543478260869566,5.869565217391305,6.195652173913044,6.521739130434783],[-0.6521739130434785,-0.32608695652173925,0.0,0.3260869565217388,0.652173913043478,0.9782608695652173,1.3043478260869563,1.6304347826086953,1.9565217391304346,2.282608695652174,2.608695652173913,2.934782608695652,3.260869565217391,3.58695652173913,3.913043478260869,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913043,6.521739130434782,6.8478260869565215],[-0.32608695652173925,0.0,0.32608695652173925,0.652173913043478,0.9782608695652173,1.3043478260869565,1.6304347826086956,1.9565217391304346,2.282608695652174,2.608695652173913,2.9347826086956523,3.260869565217391,3.5869565217391304,3.913043478260869,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913044,6.521739130434782,6.8478260869565215,7.173913043478261],[0.0,0.32608695652173925,0.6521739130434785,0.9782608695652173,1.3043478260869565,1.6304347826086958,1.9565217391304348,2.282608695652174,2.608695652173913,2.9347826086956523,3.2608695652173916,3.5869565217391304,3.9130434782608696,4.239130434782608,4.565217391304348,4.891304347826087,5.217391304347826,5.543478260869565,5.869565217391305,6.195652173913044,6.521739130434783,6.8478260869565215,7.173913043478261,7.5]],"y":[[-11.25,-10.923913043478262,-10.597826086956522,-10.271739130434783,-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.336956521739131,-7.010869565217392,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75],[-10.597826086956522,-10.271739130434781,-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.75,-3.4239130434782608,-3.0978260869565215],[-9.945652173913043,-9.619565217391305,-9.293478260869565,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695651,-6.358695652173912,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.749999999999999,-3.42391304347826,-3.0978260869565215,-2.7717391304347823,-2.445652173913043],[-9.293478260869566,-8.967391304347826,-8.641304347826086,-8.315217391304348,-7.989130434782609,-7.663043478260869,-7.336956521739131,-7.010869565217392,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.7065217391304355,-5.380434782608695,-5.054347826086957,-4.728260869565218,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913044,-2.1195652173913047,-1.7934782608695654],[-8.641304347826086,-8.315217391304348,-7.989130434782608,-7.663043478260869,-7.336956521739131,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695654,-1.4673913043478262,-1.141304347826087],[-7.989130434782608,-7.663043478260869,-7.33695652173913,-7.010869565217391,-6.684782608695652,-6.358695652173912,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695645,-1.4673913043478253,-1.141304347826087,-0.8152173913043477,-0.4891304347826084],[-7.336956521739131,-7.010869565217391,-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.4456521739130435,-2.119565217391304,-1.793478260869565,-1.4673913043478257,-1.1413043478260865,-0.8152173913043472,-0.48913043478260887,-0.16304347826086962,0.16304347826086962],[-6.684782608695652,-6.358695652173913,-6.032608695652174,-5.7065217391304355,-5.380434782608695,-5.054347826086957,-4.728260869565218,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.445652173913044,-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086918,0.4891304347826084,0.8152173913043477],[-6.032608695652174,-5.706521739130435,-5.380434782608695,-5.054347826086957,-4.728260869565217,-4.4021739130434785,-4.076086956521739,-3.75,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.4456521739130435,-2.119565217391304,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043477,1.141304347826087,1.4673913043478262],[-5.380434782608695,-5.054347826086956,-4.728260869565217,-4.4021739130434785,-4.076086956521738,-3.7499999999999996,-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.793478260869565,-1.4673913043478257,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043486,1.1413043478260878,1.4673913043478262,1.7934782608695654,2.1195652173913047],[-4.728260869565217,-4.402173913043478,-4.076086956521738,-3.7499999999999996,-3.4239130434782603,-3.097826086956521,-2.7717391304347823,-2.445652173913043,-2.1195652173913038,-1.7934782608695645,-1.4673913043478253,-1.1413043478260865,-0.8152173913043472,-0.4891304347826084,-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043486,1.1413043478260878,1.467391304347827,1.7934782608695663,2.1195652173913047,2.445652173913044,2.771739130434783],[-4.076086956521739,-3.75,-3.4239130434782608,-3.097826086956522,-2.7717391304347827,-2.4456521739130435,-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.48913043478260887,-0.16304347826086962,0.16304347826086918,0.4891304347826084,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.7717391304347823,3.0978260869565215,3.4239130434782608],[-3.4239130434782608,-3.0978260869565215,-2.7717391304347823,-2.4456521739130435,-2.119565217391304,-1.793478260869565,-1.467391304347826,-1.141304347826087,-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086962,0.48913043478260887,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.771739130434783,3.0978260869565224,3.4239130434782608,3.75,4.076086956521739],[-2.771739130434783,-2.445652173913044,-2.1195652173913047,-1.7934782608695659,-1.4673913043478266,-1.1413043478260874,-0.8152173913043483,-0.4891304347826093,-0.16304347826087007,0.16304347826086918,0.4891304347826084,0.8152173913043472,1.1413043478260865,1.4673913043478253,1.7934782608695645,2.1195652173913038,2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521738,4.402173913043478,4.728260869565217],[-2.1195652173913047,-1.7934782608695654,-1.4673913043478262,-1.1413043478260874,-0.8152173913043481,-0.48913043478260887,-0.16304347826086985,0.16304347826086918,0.4891304347826084,0.8152173913043477,1.141304347826087,1.4673913043478257,1.793478260869565,2.1195652173913038,2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565217,5.054347826086956,5.380434782608695],[-1.4673913043478262,-1.141304347826087,-0.8152173913043477,-0.48913043478260887,-0.16304347826086962,0.16304347826086962,0.48913043478260865,0.8152173913043477,1.141304347826087,1.4673913043478262,1.7934782608695654,2.119565217391304,2.4456521739130435,2.7717391304347823,3.0978260869565215,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608695,5.706521739130435,6.032608695652174],[-0.8152173913043477,-0.4891304347826084,-0.16304347826086918,0.16304347826086962,0.48913043478260887,0.8152173913043481,1.1413043478260871,1.4673913043478262,1.7934782608695654,2.1195652173913047,2.445652173913044,2.7717391304347827,3.097826086956522,3.4239130434782608,3.75,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652174,6.358695652173913,6.684782608695652],[-0.16304347826086918,0.16304347826087007,0.4891304347826093,0.8152173913043481,1.1413043478260874,1.4673913043478266,1.7934782608695656,2.1195652173913047,2.445652173913044,2.771739130434783,3.0978260869565224,3.423913043478261,3.7500000000000004,4.076086956521739,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695652,7.010869565217392,7.336956521739131],[0.4891304347826093,0.8152173913043486,1.1413043478260878,1.4673913043478266,1.7934782608695659,2.119565217391305,2.445652173913044,2.771739130434783,3.0978260869565224,3.4239130434782616,3.750000000000001,4.07608695652174,4.4021739130434785,4.728260869565218,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739131,7.66304347826087,7.989130434782609],[1.1413043478260878,1.467391304347827,1.7934782608695663,2.119565217391305,2.4456521739130443,2.7717391304347836,3.0978260869565224,3.4239130434782616,3.750000000000001,4.07608695652174,4.402173913043479,4.728260869565219,5.054347826086957,5.380434782608696,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739132,7.663043478260871,7.989130434782609,8.315217391304348,8.641304347826088],[1.7934782608695663,2.1195652173913055,2.445652173913045,2.7717391304347836,3.097826086956523,3.423913043478262,3.750000000000001,4.07608695652174,4.402173913043479,4.728260869565219,5.054347826086958,5.380434782608697,5.7065217391304355,6.032608695652175,6.358695652173914,6.684782608695653,7.0108695652173925,7.336956521739132,7.663043478260871,7.98913043478261,8.31521739130435,8.641304347826088,8.967391304347828,9.293478260869566],[2.445652173913043,2.7717391304347823,3.0978260869565215,3.4239130434782603,3.7499999999999996,4.076086956521738,4.402173913043478,4.728260869565217,5.054347826086956,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173912,6.684782608695651,7.010869565217391,7.33695652173913,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869565,9.619565217391305,9.945652173913043],[3.0978260869565215,3.4239130434782608,3.75,4.076086956521738,4.4021739130434785,4.728260869565217,5.054347826086956,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173913,6.684782608695652,7.010869565217391,7.33695652173913,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869566,9.619565217391305,9.945652173913043,10.271739130434781,10.597826086956522],[3.75,4.076086956521739,4.4021739130434785,4.728260869565217,5.054347826086957,5.380434782608695,5.706521739130435,6.032608695652174,6.358695652173913,6.684782608695652,7.010869565217392,7.336956521739131,7.663043478260869,7.989130434782608,8.315217391304348,8.641304347826086,8.967391304347826,9.293478260869566,9.619565217391305,9.945652173913043,10.271739130434783,10.597826086956522,10.923913043478262,11.25]],"z":[[-11.25,-10.597826086956522,-9.945652173913043,-9.293478260869566,-8.641304347826086,-7.989130434782608,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.771739130434783,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913043,3.0978260869565215,3.75],[-10.923913043478262,-10.271739130434781,-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.402173913043478,-3.75,-3.0978260869565215,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.467391304347827,2.1195652173913055,2.7717391304347823,3.4239130434782608,4.076086956521739],[-10.597826086956522,-9.945652173913043,-9.293478260869565,-8.641304347826086,-7.989130434782608,-7.33695652173913,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913045,3.0978260869565215,3.75,4.4021739130434785],[-10.271739130434783,-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.7065217391304355,-5.054347826086957,-4.4021739130434785,-3.7499999999999996,-3.097826086956522,-2.4456521739130435,-1.7934782608695659,-1.1413043478260874,-0.48913043478260887,0.16304347826086962,0.8152173913043481,1.4673913043478266,2.119565217391305,2.7717391304347836,3.4239130434782603,4.076086956521738,4.728260869565217],[-9.945652173913043,-9.293478260869565,-8.641304347826086,-7.989130434782609,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782603,-2.7717391304347827,-2.119565217391304,-1.4673913043478266,-0.8152173913043481,-0.16304347826086962,0.48913043478260887,1.1413043478260874,1.7934782608695659,2.4456521739130443,3.097826086956523,3.7499999999999996,4.4021739130434785,5.054347826086957],[-9.619565217391305,-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173912,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.7499999999999996,-3.097826086956521,-2.4456521739130435,-1.793478260869565,-1.1413043478260874,-0.48913043478260887,0.16304347826086962,0.8152173913043481,1.4673913043478266,2.119565217391305,2.7717391304347836,3.423913043478262,4.076086956521738,4.728260869565217,5.380434782608695],[-9.293478260869565,-8.641304347826086,-7.989130434782608,-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565218,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.467391304347826,-0.8152173913043483,-0.16304347826086985,0.48913043478260865,1.1413043478260871,1.7934782608695656,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043478,5.054347826086956,5.706521739130435],[-8.967391304347826,-8.315217391304348,-7.663043478260869,-7.010869565217392,-6.358695652173913,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695654,-1.141304347826087,-0.4891304347826093,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782616,4.07608695652174,4.728260869565217,5.380434782608695,6.032608695652174],[-8.641304347826086,-7.989130434782608,-7.33695652173913,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478262,-0.8152173913043477,-0.16304347826087007,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043479,5.054347826086956,5.706521739130435,6.358695652173913],[-8.315217391304348,-7.663043478260869,-7.010869565217391,-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695645,-1.141304347826087,-0.4891304347826084,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782616,4.07608695652174,4.728260869565219,5.380434782608695,6.032608695652174,6.684782608695652],[-7.989130434782608,-7.33695652173913,-6.684782608695651,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478253,-0.8152173913043477,-0.16304347826086918,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565224,3.750000000000001,4.402173913043479,5.054347826086958,5.706521739130435,6.358695652173913,7.010869565217392],[-7.663043478260869,-7.010869565217391,-6.358695652173912,-5.7065217391304355,-5.054347826086957,-4.4021739130434785,-3.75,-3.097826086956522,-2.4456521739130435,-1.793478260869565,-1.1413043478260865,-0.48913043478260887,0.16304347826086962,0.8152173913043472,1.4673913043478257,2.119565217391304,2.7717391304347827,3.423913043478261,4.07608695652174,4.728260869565219,5.380434782608697,6.032608695652174,6.684782608695652,7.336956521739131],[-7.336956521739131,-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347827,-2.119565217391304,-1.4673913043478257,-0.8152173913043472,-0.16304347826086962,0.48913043478260887,1.1413043478260865,1.793478260869565,2.4456521739130435,3.097826086956522,3.7500000000000004,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173912,7.010869565217391,7.663043478260869],[-7.010869565217392,-6.358695652173913,-5.706521739130435,-5.054347826086957,-4.4021739130434785,-3.75,-3.097826086956522,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826086918,0.8152173913043477,1.4673913043478253,2.1195652173913038,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695651,7.33695652173913,7.989130434782608],[-6.684782608695652,-6.032608695652174,-5.380434782608695,-4.728260869565218,-4.076086956521739,-3.4239130434782608,-2.7717391304347827,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826084,1.141304347826087,1.7934782608695645,2.445652173913043,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.010869565217391,7.663043478260869,8.315217391304348],[-6.358695652173913,-5.706521739130435,-5.054347826086956,-4.4021739130434785,-3.75,-3.0978260869565215,-2.4456521739130435,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043477,1.4673913043478262,2.1195652173913038,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.33695652173913,7.989130434782608,8.641304347826086],[-6.032608695652174,-5.380434782608695,-4.728260869565217,-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.119565217391304,-1.4673913043478262,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.141304347826087,1.7934782608695654,2.445652173913043,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260869,8.315217391304348,8.967391304347826],[-5.706521739130435,-5.054347826086956,-4.402173913043478,-3.75,-3.0978260869565215,-2.445652173913043,-1.793478260869565,-1.141304347826087,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.4673913043478262,2.1195652173913047,2.7717391304347823,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.336956521739132,7.989130434782608,8.641304347826086,9.293478260869566],[-5.380434782608695,-4.728260869565217,-4.076086956521738,-3.4239130434782608,-2.7717391304347823,-2.1195652173913038,-1.4673913043478257,-0.8152173913043477,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695654,2.445652173913044,3.0978260869565215,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260871,8.315217391304348,8.967391304347826,9.619565217391305],[-5.054347826086956,-4.402173913043478,-3.749999999999999,-3.0978260869565215,-2.445652173913043,-1.7934782608695645,-1.1413043478260865,-0.4891304347826084,0.16304347826087007,0.8152173913043486,1.467391304347827,2.1195652173913047,2.771739130434783,3.4239130434782608,4.076086956521739,4.728260869565218,5.380434782608696,6.032608695652175,6.684782608695653,7.336956521739132,7.98913043478261,8.641304347826086,9.293478260869566,9.945652173913043],[-4.728260869565217,-4.076086956521738,-3.42391304347826,-2.7717391304347823,-2.1195652173913038,-1.4673913043478253,-0.8152173913043472,-0.16304347826086918,0.4891304347826093,1.1413043478260878,1.7934782608695663,2.445652173913044,3.0978260869565224,3.75,4.4021739130434785,5.054347826086957,5.7065217391304355,6.358695652173914,7.0108695652173925,7.663043478260871,8.31521739130435,8.967391304347826,9.619565217391305,10.271739130434783],[-4.4021739130434785,-3.75,-3.0978260869565215,-2.445652173913044,-1.7934782608695654,-1.141304347826087,-0.48913043478260887,0.16304347826086918,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.7717391304347823,3.4239130434782608,4.076086956521738,4.728260869565217,5.380434782608695,6.032608695652174,6.684782608695652,7.336956521739131,7.989130434782609,8.641304347826088,9.293478260869565,9.945652173913043,10.597826086956522],[-4.076086956521739,-3.4239130434782608,-2.7717391304347823,-2.1195652173913047,-1.4673913043478262,-0.8152173913043477,-0.16304347826086962,0.4891304347826084,1.141304347826087,1.7934782608695654,2.445652173913044,3.0978260869565215,3.75,4.402173913043478,5.054347826086956,5.706521739130435,6.358695652173913,7.010869565217392,7.66304347826087,8.315217391304348,8.967391304347828,9.619565217391305,10.271739130434781,10.923913043478262],[-3.75,-3.0978260869565215,-2.445652173913043,-1.7934782608695654,-1.141304347826087,-0.4891304347826084,0.16304347826086962,0.8152173913043477,1.4673913043478262,2.1195652173913047,2.771739130434783,3.4239130434782608,4.076086956521739,4.728260869565217,5.380434782608695,6.032608695652174,6.684782608695652,7.336956521739131,7.989130434782609,8.641304347826088,9.293478260869566,9.945652173913043,10.597826086956522,11.25]],"type":"surface"},{"line":{"color":"crimson","width":7},"marker":{"color":"crimson","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,1],"z":[0,2],"type":"scatter3d"},{"line":{"color":"darkorange","width":7},"marker":{"color":"darkorange","size":7},"mode":"lines+markers","showlegend":false,"x":[0,1],"y":[0,2],"z":[0,1],"type":"scatter3d"},{"line":{"color":"seagreen","width":7},"marker":{"color":"seagreen","size":7},"mode":"lines+markers","showlegend":false,"x":[0,2],"y":[0,3],"z":[0,3],"type":"scatter3d"},{"line":{"color":"royalblue","width":7},"marker":{"color":"royalblue","size":7},"mode":"lines+markers","showlegend":false,"x":[0,3],"y":[0,3],"z":[0,6],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Column space (plane filled) and example vectors","x":0.5},"scene":{"camera":{"eye":{"x":0.9,"y":0.9,"z":0.7}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"margin":{"l":0,"r":0,"b":0,"t":30},"height":420,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('ccd6a9c5-cda9-44b4-bd54-49f28df53d55');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</section>
+<section id="general-form-of-the-column-space-in-mathbbr3" class="level2">
+<h2 class="anchored" data-anchor-id="general-form-of-the-column-space-in-mathbbr3"><em>General form of the column space in <span class="math inline">\(\mathbb{R}^3\)</span></em></h2>
+<p>In <span class="math inline">\(\mathbb{R}^3\)</span>, the dimension of <span class="math inline">\(\mathcal{C}(A)\)</span> equals the <strong>rank</strong> <span class="math inline">\(r\)</span> of <span class="math inline">\(A\)</span>:</p>
+<ul>
+<li><strong>Rank 1:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is a <strong>line</strong> (all columns are multiples of one vector).</li>
+<li><strong>Rank 2:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is a <strong>plane</strong> (span of two independent columns).</li>
+<li><strong>Rank 3:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is <strong>all of <span class="math inline">\(\mathbb{R}^3\)</span></strong>.</li>
+</ul>
+</section>
+<section id="general-form-of-the-column-space-in-mathbbrn" class="level2">
+<h2 class="anchored" data-anchor-id="general-form-of-the-column-space-in-mathbbrn"><em>General form of the column space in <span class="math inline">\(\mathbb{R}^n\)</span></em></h2>
+<p>In <span class="math inline">\(\mathbb{R}^n\)</span>, the dimension of <span class="math inline">\(\mathcal{C}(A)\)</span> equals the <strong>rank</strong> <span class="math inline">\(r\)</span> of <span class="math inline">\(A\)</span>:</p>
+<ul>
+<li><strong>Rank 1:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is a <strong>line</strong> (all columns are multiples of one vector).</li>
+<li><strong>Rank 2:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is a <strong>plane</strong> (span of two independent columns).</li>
+<li><strong>Rank n-1:</strong> <span class="math inline">\(\mathcal{C}(A)\)</span> is a <strong>hyperplane</strong> (span of n-1 independent columns in <span class="math inline">\(\mathbb{R}^n\)</span>).</li>
+</ul>
+</section>
+<section id="input-and-output-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="input-and-output-spaces"><em>Input and output spaces</em></h2>
+<p>The pictures we have drawn of the column space represent the possible <em>outputs</em> <span class="math inline">\(\mathbf{b}\)</span> from the linear system <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span>.</p>
+<p>. . .</p>
+<p>In our example, all potential outputs <span class="math inline">\(\mathbf{b}\)</span> live in <span class="math inline">\(\mathbb{R}^3\)</span>, but the only ones that are actually reachable are those that are on a line or a plane within <span class="math inline">\(\mathbb{R}^3\)</span>. So the column space of <span class="math inline">\(A\)</span> is a special subspace of the output space.</p>
+<p>. . .</p>
+<p>Formally, we call the output space the <strong>codomain</strong> of <span class="math inline">\(A\)</span>, and the column space of <span class="math inline">\(A\)</span> is a <strong>subspace</strong> of the codomain.</p>
+<p>. . .</p>
+<p>But there’s another space that’s important: the space of all the possible inputs <span class="math inline">\(\mathbf{x}\)</span> that can be fed into <span class="math inline">\(A\)</span>. We call this the <strong>domain</strong> of <span class="math inline">\(A\)</span>.</p>
+<p>In our examples so far, because the vectors <span class="math inline">\(\mathbf{x}\)</span> are all in <span class="math inline">\(\mathbb{R}^3\)</span>, the domain is also <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+</section>
+<section id="domain-and-codomain-for-a-rectangular-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="domain-and-codomain-for-a-rectangular-matrix"><em>Domain and codomain for a rectangular matrix</em></h2>
+<p>Let’s consider a simple 2x3 matrix:</p>
+<p><span class="math display">\[
+F = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix}
+\]</span></p>
+<p>. . .</p>
+<p>For the system <span class="math inline">\(F\mathbf{x}=\mathbf{b}\)</span>, the possible inputs <span class="math inline">\(\mathbf{x}\)</span> are all in <span class="math inline">\(\mathbb{R}^3\)</span>, and the possible outputs <span class="math inline">\(\mathbf{b}\)</span> are all in <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+<p>. . .</p>
+<p>For example, if we take <span class="math inline">\(\mathbf{x} = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}\)</span>, then <span class="math display">\[
+F\mathbf{x} = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} = \begin{bmatrix} 5 \\ 5 \end{bmatrix} = \mathbf{b}
+\]</span></p>
+<p>So <span class="math inline">\(\mathbf{x}=\begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}\)</span> is in the domain of <span class="math inline">\(F\)</span>, and <span class="math inline">\(\mathbf{b}=\begin{bmatrix} 5 \\ 5 \end{bmatrix}\)</span> is in the codomain of <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="column-space-and-null-space-are-special-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="column-space-and-null-space-are-special-subspaces"><em>Column space and null space are special subspaces</em></h2>
+<p>We know that <span class="math inline">\(\mathbf{b}=\begin{bmatrix} 5 \\ 5 \end{bmatrix}\)</span> is in the column space of <span class="math inline">\(F\)</span> because we constructed it from multiplying <span class="math inline">\(F\)</span> by <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>. . .</p>
+<p>There are other vectors, such as <span class="math inline">\(\begin{bmatrix} 1 \\ -1 \end{bmatrix}\)</span>, that are in the codomain of <span class="math inline">\(F\)</span> but not in its column space.</p>
+<p>. . .</p>
+<p>The column space is a <strong>subspace</strong> of the codomain, and it tells us something about the matrix <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
+<p>Is there a similar special subset of the vectors in the <em>domain</em> that tells us something about the matrix <span class="math inline">\(F\)</span>? There is!</p>
+<p>. . .</p>
+<p>Yes, it’s the <em>null space</em> of <span class="math inline">\(F\)</span>. The null space of <span class="math inline">\(F\)</span> is the set of all vectors <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(F\mathbf{x}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>For example, the vector <span class="math inline">\(\begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix}\)</span> is in the null space of <span class="math inline">\(F\)</span> because <span class="math display">\[
+F\begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix} \begin{bmatrix} 1 \\ -1 \\ 0 \end{bmatrix} = \begin{bmatrix} 1 \cdot 1 + 2 \cdot (-1) + 0 \cdot 0 \\ 1 \cdot 1 + 2 \cdot (-1) + 0 \cdot 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \end{bmatrix} = \mathbf{0}
+\]</span></p>
+</section>
+<section id="visualizing-the-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-the-null-space"><em>Visualizing the null space</em></h2>
+<p>If we know a basis for the null space, we can visualize it in the domain.</p>
+<p>. . .</p>
+<p>We haven’t learned how to find these yet, but for our example matrix <span class="math inline">\(F=\begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 1 &amp; 2 &amp; 0 \end{bmatrix}\)</span>, I’ll just tell you that the basis for the null space is <span class="math inline">\(\left\lbrace \begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix}, \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix} \right\rbrace\)</span>.</p>
+<p>. . .</p>
+<p>So the null space will form a plane in <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+</section>
+<section id="visualizing-both-the-column-space-and-the-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-both-the-column-space-and-the-null-space"><em>Visualizing both the column space and the null space</em></h2>
+<p>But because the null space is a subspace of the <strong>input space</strong> (the domain) and the column space is a subspace of the <strong>output space</strong> (the codomain), we can’t visualize them together in the same picture.</p>
+<p>So we’ll visualize them separately.</p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
+<p>The column space <span class="math inline">\(\mathcal{C}(F)\)</span> is all vectors in <span class="math inline">\(\mathbb{R}^2\)</span> that are multiples of <span class="math inline">\(\begin{bmatrix} 1 \\ 1 \end{bmatrix}\)</span>.</p>
+<p>The null space <span class="math inline">\(\mathcal{N}(F)\)</span> is that spanned by the vectors <span class="math inline">\(\begin{bmatrix} -2 \\ 1 \\ 0 \end{bmatrix}\)</span> and <span class="math inline">\(\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}\)</span>.</p>
+<div id="4a0f82d8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># First subplot: column space in 2D (a line in R^2)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Line through origin along [1, 1]</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>line <span class="op">=</span> np.vstack((t, t))  <span class="co"># [t, t] for t in R</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax1.plot(line[<span class="dv">0</span>], line[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'royalblue'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Column space'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>ax1.scatter([<span class="dv">0</span>], [<span class="dv">0</span>], color<span class="op">=</span><span class="st">'black'</span>)  <span class="co"># origin</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"$b_1$"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"$b_2$"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="vs">r"Column space in $\mathbb</span><span class="sc">{R}</span><span class="vs">^2$"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>ax1.grid(<span class="va">True</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax1.legend()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Second subplot: null space in 3D (a plane in R^3)</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D  <span class="co"># noqa: F401</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co"># The null space plane: spanned by [-2, 1, 0] and [0, 0, 1]</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>S, T <span class="op">=</span> np.meshgrid(s, t)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">*</span>S</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> S</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> T</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Plane points: for each (s, t): s * [-2,1,0] + t * [0,0,1]</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>ax2.plot_surface(X, Y, Z, alpha<span class="op">=</span><span class="fl">0.4</span>, color<span class="op">=</span><span class="st">'tomato'</span>, rstride<span class="op">=</span><span class="dv">1</span>, cstride<span class="op">=</span><span class="dv">1</span>, edgecolor<span class="op">=</span><span class="st">'none'</span>)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the two basis vectors of the plane</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>ax2.quiver(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, color<span class="op">=</span><span class="st">'maroon'</span>, length<span class="op">=</span><span class="fl">2.2</span>, normalize<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>ax2.quiver(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, color<span class="op">=</span><span class="st">'darkred'</span>, length<span class="op">=</span><span class="fl">2.2</span>, normalize<span class="op">=</span><span class="va">True</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">"$x_1$"</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"$x_2$"</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>ax2.set_zlabel(<span class="st">"$x_3$"</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">"Null space in $\mathbb</span><span class="sc">{R}</span><span class="st">^3$"</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>ax2.view_init(elev<span class="op">=</span><span class="dv">18</span>, azim<span class="op">=</span><span class="dv">121</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="day_9_files/figure-html/cell-4-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="day_9_files/figure-html/cell-4-output-1.png" width="1005" height="467" class="figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="row-space-and-left-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="row-space-and-left-null-space"><em>Row space and left null space</em></h2>
+<p>The row space of a matrix <span class="math inline">\(A\)</span> is the subspace of <span class="math inline">\(\mathbb{R}^m\)</span> spanned by the rows of <span class="math inline">\(A\)</span>. It is also the column space of <span class="math inline">\(A^T\)</span>.</p>
+<!-- @introduces: left_null_space -->
+<p>The left null space of a matrix <span class="math inline">\(A\)</span> is just the null space of <span class="math inline">\(A^T\)</span>.</p>
+</section>
+<section id="skills-fundamental-subspaces-pictures" class="level2">
+<h2 class="anchored" data-anchor-id="skills-fundamental-subspaces-pictures"><em>Skills: Fundamental Subspaces (Pictures)</em></h2>
+<ul>
+<li>Interpret <span class="math inline">\(\mathcal{C}(A)\)</span> geometrically (line, plane, or hyperplane) from the rank of <span class="math inline">\(A\)</span>.</li>
+<li>Distinguish between the domain (where <span class="math inline">\(\mathbf{x}\)</span> lives) and codomain (where <span class="math inline">\(A\mathbf{x}\)</span> lives) for a matrix.</li>
+<li>Identify the column space as a subspace of the codomain; the null space as a subspace of the domain.</li>
+<li>Given a basis for <span class="math inline">\(\mathcal{N}(A)\)</span>, describe its shape (line, plane, etc.) in the input space.</li>
+</ul>
+</section>
+</section>
+<section id="planes-hyperplanes-and-projections" class="level1">
+<h1><em>Planes, Hyperplanes, and Projections</em></h1>
+<!-- @idea: planes_and_projections | Planes, hyperplanes, projection onto plane -->
+<!-- @uses: column_space, least_squares_and_projection, projection -->
+<section id="the-plane-through-the-origin" class="level2">
+<h2 class="anchored" data-anchor-id="the-plane-through-the-origin"><em>The plane through the origin</em></h2>
+<p>Because the column space is so often a plane, let’s build our intuition about planes.</p>
+<p>A plane through the origin is the set of all vectors <span class="math inline">\(\vec x\)</span> such that <span class="math inline">\(\vec a \cdot \vec x = 0\)</span>, where the nonzero vector <span class="math inline">\(\vec a\)</span> is a <strong>normal vector</strong> to the plane (we often take <span class="math inline">\(\vec a\)</span> of unit length).</p>
+<p>. . .</p>
+</section>
+<section id="finding-the-normal-vector-when-we-know-two-vectors-in-the-plane" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-normal-vector-when-we-know-two-vectors-in-the-plane"><em>Finding the normal vector when we know two vectors in the plane</em></h2>
+<p>For <span class="math inline">\(\mathbb{R}^3\)</span>, we can find the normal vector by taking the cross product of two vectors in the plane.</p>
+<p>Let <span class="math inline">\(\mathbf{i}, \mathbf{j}\)</span>, and <span class="math inline">\(\mathbf{k}\)</span> represent the standard basis <span class="math inline">\(\mathbf{e}_{1}, \mathbf{e}_{2}, \mathbf{e}_{3}\)</span>.</p>
+<div class="definition">
+<p><span class="math display">\[
+\mathbf{u} \times \mathbf{v}=\left(u_{2} v_{3}-u_{3} v_{2}\right) \mathbf{i}+\left(u_{3} v_{1}-u_{1} v_{3}\right) \mathbf{j}+\left(u_{1} v_{2}-u_{2} v_{1}\right) \mathbf{k}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+u_{1} &amp; u_{2} &amp; u_{3} \\
+v_{1} &amp; v_{2} &amp; v_{3}
+\end{array}\right|
+\]</span></p>
+</div>
+<p>. . .</p>
+<p>The cross product is orthogonal to both <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span>: <span class="math inline">\(\mathbf{u} \cdot (\mathbf{u} \times \mathbf{v})=0\)</span> and <span class="math inline">\(\mathbf{v} \cdot (\mathbf{u} \times \mathbf{v})=0\)</span>.</p>
+<p>. . .</p>
+<p>We can use the cross product to find the normal vector to the plane by taking the cross product of two vectors in the plane.</p>
+</section>
+<section id="finding-the-normal-vector-from-the-equation-of-the-plane" class="level2">
+<h2 class="anchored" data-anchor-id="finding-the-normal-vector-from-the-equation-of-the-plane"><em>Finding the normal vector from the equation of the plane</em></h2>
+<p>If the plane is specified by <span class="math inline">\(ax + by + cz = d\)</span>, then a normal vector is <span class="math inline">\(\vec a = (a, b, c)\)</span>.</p>
+<p>. . .</p>
+<p><strong>Check (optional verification):</strong></p>
+<ol type="1">
+<li>Find three points on the plane: e.g.&nbsp;<span class="math inline">\((0, 0, d/c)\)</span>, <span class="math inline">\((0, d/b, 0)\)</span>, <span class="math inline">\((d/a, 0, 0)\)</span> (when <span class="math inline">\(a,b,c \neq 0\)</span>).</li>
+<li>Form two displacement vectors in the plane, e.g.&nbsp;<span class="math inline">\(\vec u = (0, d/b, -d/c)\)</span> and <span class="math inline">\(\vec v = (d/a, 0, -d/c)\)</span>.</li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="verifying-the-normal-from-axbyczd" class="level2">
+<h2 class="anchored" data-anchor-id="verifying-the-normal-from-axbyczd"><em>Verifying the normal from <span class="math inline">\(ax+by+cz=d\)</span></em></h2>
+<p>Take the cross product <span class="math inline">\(\vec u \times \vec v\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\vec u \times \vec v
+&amp;= \left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+0 &amp; d/b &amp; -d/c \\
+d/a &amp; 0 &amp; -d/c
+\end{array}\right| \\
+&amp;= -\frac{d^2}{bc} \mathbf{i} + \frac{d^2}{ac} \mathbf{j} - \frac{d^2}{ab} \mathbf{k}
+= -\frac{d^2}{abc} \left( a \mathbf{i} - b \mathbf{j} + c \mathbf{k} \right)
+\end{aligned}
+\]</span></p>
+<p>This is parallel to <span class="math inline">\(\vec{a} = (a, b, c)\)</span>.</p>
+<p>. . .</p>
+</section>
+<section id="distances-from-the-plane" class="level2">
+<h2 class="anchored" data-anchor-id="distances-from-the-plane"><em>Distances from the plane</em></h2>
+<p>The distance from a point <span class="math inline">\(\vec x\)</span> to the plane <span class="math inline">\(\vec a \cdot \vec x = 0\)</span> is the scalar projection of <span class="math inline">\(\vec x\)</span> onto the normal:</p>
+<ul>
+<li>If <span class="math inline">\(\vec a\)</span> is unit length: distance <span class="math inline">\(= |\vec a \cdot \vec x|\)</span>.</li>
+<li>If not: distance <span class="math inline">\(= |\vec a \cdot \vec x| / \|\vec a\|\)</span>.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="closest-point-on-the-plane-through-the-origin" class="level2">
+<h2 class="anchored" data-anchor-id="closest-point-on-the-plane-through-the-origin"><em>Closest point on the plane (through the origin)</em></h2>
+<p>The displacement from <span class="math inline">\(\vec x\)</span> to the closest point on the plane has length <span class="math inline">\(|\vec a \cdot \vec x|/\|\vec a\|\)</span> and direction along <span class="math inline">\(\vec a\)</span>.</p>
+<p>. . .</p>
+<!-- @introduces: projection -->
+</section>
+<section id="projection-onto-the-plane-through-the-origin" class="level2">
+<h2 class="anchored" data-anchor-id="projection-onto-the-plane-through-the-origin"><em>Projection onto the plane (through the origin)</em></h2>
+<p>The closest point on the plane to <span class="math inline">\(\vec x\)</span> is <span class="math inline">\(\vec x - \vec a (\vec x \cdot \vec a)/\|\vec a\|^2\)</span> — i.e., <span class="math inline">\(\vec x\)</span> minus the projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>.</p>
+</section>
+<section id="a-plane-not-at-the-origin" class="level2">
+<h2 class="anchored" data-anchor-id="a-plane-not-at-the-origin"><em>A plane not at the origin</em></h2>
+<p>A plane displaced from the origin can be described by a normal <span class="math inline">\(\vec a\)</span> and a scalar <span class="math inline">\(q\)</span>: the plane is displaced by <span class="math inline">\(q \vec a\)</span> from the origin.</p>
+<p>. . .</p>
+</section>
+<section id="equation-of-the-displaced-plane" class="level2">
+<h2 class="anchored" data-anchor-id="equation-of-the-displaced-plane"><em>Equation of the displaced plane</em></h2>
+<p>Points <span class="math inline">\(\vec x\)</span> on the plane satisfy <span class="math inline">\(\vec a \cdot \vec x = q\)</span> (with <span class="math inline">\(\vec a\)</span> unit length, <span class="math inline">\(q\)</span> is the signed distance of the plane from the origin).</p>
+<p>. . .</p>
+</section>
+<section id="hyperplane" class="level2">
+<h2 class="anchored" data-anchor-id="hyperplane"><em>Hyperplane</em></h2>
+<div class="definition">
+<p>A <strong>hyperplane</strong> in <span class="math inline">\(\mathbb{R}^{n}\)</span> is the set of all <span class="math inline">\(\mathbf{x} \in \mathbb{R}^{n}\)</span> such that <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span>, where the nonzero vector <span class="math inline">\(\mathbf{a} \in \mathbb{R}^{n}\)</span> and scalar <span class="math inline">\(b\)</span> are given.</p>
+</div>
+<p>. . .</p>
+<div class="theorem">
+<p>Let <span class="math inline">\(H\)</span> be the hyperplane in <span class="math inline">\(\mathbb{R}^{n}\)</span> defined by <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span> and let <span class="math inline">\(\mathbf{x}_{*} \in H\)</span>. Then</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbf{a}^{\perp}=\{\mathbf{y} \in \mathbb{R}^{n} \mid \mathbf{a} \cdot \mathbf{y}=0\}\)</span> is a subspace of <span class="math inline">\(\mathbb{R}^{n}\)</span> of dimension <span class="math inline">\(n-1\)</span>.</p></li>
+<li><p><span class="math inline">\(H=\mathbf{x}_{*}+\mathbf{a}^{\perp}=\{\mathbf{x}_{*}+\mathbf{y} \mid \mathbf{y} \in \mathbf{a}^{\perp}\}\)</span>.</p></li>
+</ol>
+</div>
+<p>. . .</p>
+</section>
+<section id="example-plane-through-three-points" class="level2">
+<h2 class="anchored" data-anchor-id="example-plane-through-three-points"><em>Example: plane through three points</em></h2>
+<p>Find an equation that defines the plane containing the three (noncollinear) points <span class="math inline">\(P, Q\)</span>, and <span class="math inline">\(R\)</span> with coordinates <span class="math inline">\((1,0,2)\)</span>, <span class="math inline">\((2,1,0)\)</span>, and <span class="math inline">\((3,1,1)\)</span>, respectively.</p>
+<p>. . .</p>
+<p><span class="math display">\[
+\begin{aligned}
+\overrightarrow{P Q}&amp;=(2,1,0)-(1,0,2)=(1,1,-2) \\
+\overrightarrow{P R}&amp;=(3,1,1)-(1,0,2)=(2,1,-1)
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p><span class="math display">\[
+\mathbf{u} \times \mathbf{v}=\left|\begin{array}{ccc}
+\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
+1 &amp; 1 &amp; -2 \\
+2 &amp; 1 &amp; -1
+\end{array}\right|=\mathbf{i}-3 \mathbf{j}-\mathbf{k}
+\]</span></p>
+<p>. . .</p>
+<p>The normal vector is <span class="math inline">\(\mathbf{a}=(1,-3,-1)\)</span>.</p>
+<p>. . .</p>
+<p>The equation of the plane is <span class="math inline">\(\mathbf{a} \cdot \mathbf{x}=b\)</span>. Using <span class="math inline">\(P\)</span>: <span class="math inline">\(b=\mathbf{a} \cdot \mathbf{P}=(1,-3,-1) \cdot (1,0,2)=1+0-2=-1\)</span>.</p>
+<p>. . .</p>
+<p>So the plane is <span class="math inline">\(x - 3y - z = -1\)</span>.</p>
+</section>
+<section id="projections-to-the-displaced-plane" class="level2">
+<h2 class="anchored" data-anchor-id="projections-to-the-displaced-plane"><em>Projections to the displaced plane</em></h2>
+<p>The closest point on the hyperplane <span class="math inline">\(\vec a \cdot \vec x = q\)</span> to a point <span class="math inline">\(\vec x\)</span> is <span class="math inline">\(\vec x - \vec a (\vec a \cdot \vec x - q)\)</span> (for unit <span class="math inline">\(\vec a\)</span>).</p>
+<p>. . .</p>
+</section>
+<section id="summary-planes-and-projections" class="level2">
+<h2 class="anchored" data-anchor-id="summary-planes-and-projections"><em>Summary: planes and projections</em></h2>
+<ul>
+<li>Plane through the origin: <span class="math inline">\(\vec a \cdot \vec x = 0\)</span>.</li>
+<li>Plane displaced: <span class="math inline">\(\vec a \cdot \vec x = q\)</span>.</li>
+<li>Scalar projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>: <span class="math inline">\(\vec a \cdot \vec x / \|\vec a\|\)</span>.</li>
+<li>Vector projection of <span class="math inline">\(\vec x\)</span> onto <span class="math inline">\(\vec a\)</span>: <span class="math inline">\(\frac{\vec a}{\|\vec a\|} \frac{\vec a \cdot \vec x}{\|\vec a\|}\)</span>.</li>
+<li>Projection of <span class="math inline">\(\vec x\)</span> onto the plane <span class="math inline">\(\vec a \cdot \vec x = q\)</span>: <span class="math inline">\(\vec x - \vec a (\vec a \cdot \vec x - q)\)</span>.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="projection-formula-for-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="projection-formula-for-vectors"><em>Projection formula for vectors</em></h2>
+<p>Let <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> be vectors, <span class="math inline">\(\mathbf{v} \neq \mathbf{0}\)</span>.</p>
+<p><span class="math display">\[
+\mathbf{p}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v} \quad \text{and} \quad \mathbf{q}=\mathbf{u}-\mathbf{p}
+\]</span></p>
+<p><a href="images/day_9_fig1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/day_9_fig1.jpg" class="img-fluid"></a></p>
+<p>. . .</p>
+<p>Then <span class="math inline">\(\mathbf{p}\)</span> is <strong>parallel</strong> to <span class="math inline">\(\mathbf{v}\)</span>, <span class="math inline">\(\mathbf{q}\)</span> is <strong>orthogonal</strong> to <span class="math inline">\(\mathbf{v}\)</span>, and <span class="math inline">\(\mathbf{u}=\mathbf{p}+\mathbf{q}\)</span>.</p>
+<p>. . .</p>
+<p>We write <span class="math inline">\(\operatorname{proj}_{\mathbf{v}} \mathbf{u}=\frac{\mathbf{v} \cdot \mathbf{u}}{\mathbf{v} \cdot \mathbf{v}} \mathbf{v}\)</span> and <span class="math inline">\(\operatorname{orth}_{\mathbf{v}} \mathbf{u}=\mathbf{u}-\operatorname{proj}_{\mathbf{v}} \mathbf{u}\)</span>.</p>
+<p>. . .</p>
+</section>
+<section id="skills-planes-and-projections" class="level2">
+<h2 class="anchored" data-anchor-id="skills-planes-and-projections"><em>Skills: Planes and Projections</em></h2>
+<ul>
+<li>Write the equation of a plane (through the origin or displaced) using a normal vector.</li>
+<li>Find a normal to a plane from two vectors in the plane (cross product in <span class="math inline">\(\mathbb{R}^3\)</span>) or from <span class="math inline">\(ax+by+cz=d\)</span>.</li>
+<li>Compute distance from a point to a plane and the projection of a point onto a plane.</li>
+<li>Use <span class="math inline">\(\operatorname{proj}_{\mathbf{v}} \mathbf{u}\)</span> and <span class="math inline">\(\operatorname{orth}_{\mathbf{v}} \mathbf{u}\)</span>.</li>
+</ul>
+<p>. . .</p>
+</section>
+</section>
+<section id="least-squares" class="level1">
+<h1><em>Least Squares</em></h1>
+<!-- @idea: least_squares_and_normal_equations | Least squares, project b onto C(A), normal equations -->
+<!-- @uses: least_squares, least_squares_and_projection, normal_equations, projection -->
+<!-- @introduces: least_squares -->
+<section id="least-squares-project-mathbfb-onto-mathcalca" class="level2">
+<h2 class="anchored" data-anchor-id="least-squares-project-mathbfb-onto-mathcalca"><em>Least squares: project <span class="math inline">\(\mathbf{b}\)</span> onto <span class="math inline">\(\mathcal{C}(A)\)</span></em></h2>
+<p>When <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> is inconsistent, <span class="math inline">\(\mathbf{b}\)</span> is not in the column space. Least squares finds <span class="math inline">\(\widehat{\mathbf{x}}\)</span> so that <span class="math inline">\(A\widehat{\mathbf{x}}\)</span> is the <strong>closest point</strong> in <span class="math inline">\(\mathcal{C}(A)\)</span> to <span class="math inline">\(\mathbf{b}\)</span>—i.e., the projection of <span class="math inline">\(\mathbf{b}\)</span> onto the plane <span class="math inline">\(\mathcal{C}(A)\)</span>. The residual <span class="math inline">\(\mathbf{b} - A\widehat{\mathbf{x}}\)</span> is perpendicular to <span class="math inline">\(\mathcal{C}(A)\)</span>.</p>
+<p>. . .</p>
+<div id="16d4ff48" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># C(A) = xy-plane; take b = (0, 0, 1) so projection = (0,0,0), residual = (0,0,1)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="dv">15</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="dv">15</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>S, T <span class="op">=</span> np.meshgrid(s, t)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Surface(x<span class="op">=</span>S, y<span class="op">=</span>T, z<span class="op">=</span>np.zeros_like(S), colorscale<span class="op">=</span>[[<span class="dv">0</span>,<span class="st">'lightblue'</span>],[<span class="dv">1</span>,<span class="st">'lightblue'</span>]], opacity<span class="op">=</span><span class="fl">0.6</span>, showscale<span class="op">=</span><span class="va">False</span>, name<span class="op">=</span><span class="vs">r"$\mathcal</span><span class="sc">{C}</span><span class="vs">(A)$"</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># b</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[<span class="dv">0</span>], y<span class="op">=</span>[<span class="dv">0</span>], z<span class="op">=</span>[<span class="dv">1</span>], mode<span class="op">=</span><span class="st">'markers+text'</span>, text<span class="op">=</span>[<span class="vs">r"$\mathbf</span><span class="sc">{b}</span><span class="vs">$"</span>], textposition<span class="op">=</span><span class="st">'top center'</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                           marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'red'</span>, symbol<span class="op">=</span><span class="st">'diamond'</span>), name<span class="op">=</span><span class="vs">r"$\mathbf</span><span class="sc">{b}</span><span class="vs">$"</span>))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># projection = origin</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[<span class="dv">0</span>], y<span class="op">=</span>[<span class="dv">0</span>], z<span class="op">=</span>[<span class="dv">0</span>], mode<span class="op">=</span><span class="st">'markers+text'</span>, text<span class="op">=</span>[<span class="vs">r"$\widehat{\mathbf</span><span class="sc">{b}</span><span class="vs">}$"</span>], textposition<span class="op">=</span><span class="st">'bottom center'</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                           marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">10</span>, color<span class="op">=</span><span class="st">'green'</span>, symbol<span class="op">=</span><span class="st">'square'</span>), name<span class="op">=</span><span class="vs">r"$\widehat{\mathbf</span><span class="sc">{b}</span><span class="vs">}$"</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># residual from (0,0,0) to (0,0,1)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter3d(x<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>], y<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">0</span>], z<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>], mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'purple'</span>, width<span class="op">=</span><span class="dv">6</span>, dash<span class="op">=</span><span class="st">'dash'</span>), name<span class="op">=</span><span class="st">"residual"</span>))</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>fig.update_layout(scene<span class="op">=</span><span class="bu">dict</span>(xaxis_title<span class="op">=</span><span class="st">"x"</span>, yaxis_title<span class="op">=</span><span class="st">"y"</span>, zaxis_title<span class="op">=</span><span class="st">"z"</span>, aspectmode<span class="op">=</span><span class="st">'data'</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                              camera<span class="op">=</span><span class="bu">dict</span>(eye<span class="op">=</span><span class="bu">dict</span>(x<span class="op">=</span><span class="fl">1.3</span>, y<span class="op">=</span><span class="fl">1.3</span>, z<span class="op">=</span><span class="fl">1.0</span>))),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                  title<span class="op">=</span><span class="bu">dict</span>(text<span class="op">=</span><span class="vs">r"Projection of b onto C(A): residual ⟂ plane"</span>, x<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                  margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">0</span>, r<span class="op">=</span><span class="dv">0</span>, b<span class="op">=</span><span class="dv">0</span>, t<span class="op">=</span><span class="dv">50</span>), template<span class="op">=</span><span class="st">'plotly_white'</span>, height<span class="op">=</span><span class="dv">420</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>                            <div id="a4d9162d-b18a-4cd5-b908-fcaaffa9173d" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("a4d9162d-b18a-4cd5-b908-fcaaffa9173d")) {                    Plotly.newPlot(                        "a4d9162d-b18a-4cd5-b908-fcaaffa9173d",                        [{"colorscale":[[0,"lightblue"],[1,"lightblue"]],"name":"$\\mathcal{C}(A)$","opacity":0.6,"showscale":false,"x":[[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2],[-1.2,-1.0285714285714285,-0.8571428571428571,-0.6857142857142857,-0.5142857142857142,-0.34285714285714275,-0.17142857142857149,0.0,0.17142857142857149,0.34285714285714297,0.5142857142857145,0.6857142857142857,0.857142857142857,1.0285714285714287,1.2]],"y":[[-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2,-1.2],[-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285,-1.0285714285714285],[-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571,-0.8571428571428571],[-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857,-0.6857142857142857],[-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142,-0.5142857142857142],[-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275,-0.34285714285714275],[-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149,-0.17142857142857149],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149,0.17142857142857149],[0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297,0.34285714285714297],[0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145,0.5142857142857145],[0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857,0.6857142857142857],[0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857,0.857142857142857],[1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287,1.0285714285714287],[1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2,1.2]],"z":[[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]],"type":"surface"},{"marker":{"color":"red","size":10,"symbol":"diamond"},"mode":"markers+text","name":"$\\mathbf{b}$","text":["$\\mathbf{b}$"],"textposition":"top center","x":[0],"y":[0],"z":[1],"type":"scatter3d"},{"marker":{"color":"green","size":10,"symbol":"square"},"mode":"markers+text","name":"$\\widehat{\\mathbf{b}}$","text":["$\\widehat{\\mathbf{b}}$"],"textposition":"bottom center","x":[0],"y":[0],"z":[0],"type":"scatter3d"},{"line":{"color":"purple","dash":"dash","width":6},"mode":"lines","name":"residual","x":[0,0],"y":[0,0],"z":[0,1],"type":"scatter3d"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"scene":{"camera":{"eye":{"x":1.3,"y":1.3,"z":1.0}},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"y"}},"zaxis":{"title":{"text":"z"}},"aspectmode":"data"},"title":{"text":"Projection of b onto C(A): residual \u27c2 plane","x":0.5},"margin":{"l":0,"r":0,"b":0,"t":50},"height":420},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('a4d9162d-b18a-4cd5-b908-fcaaffa9173d');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+<p>. . .</p>
+</section>
+<section id="motivation-fitting-a-line-to-data" class="level2">
+<h2 class="anchored" data-anchor-id="motivation-fitting-a-line-to-data"><em>Motivation: fitting a line to data</em></h2>
+<ul>
+<li>We have data <span class="math inline">\((x_i, y_i)\)</span> and want a line <span class="math inline">\(y \approx mx\)</span> (or <span class="math inline">\(y \approx mx + b\)</span>).</li>
+<li>The system <span class="math inline">\(\mathbf{y} = m \mathbf{x}\)</span> is usually <strong>inconsistent</strong>.</li>
+<li>We choose <span class="math inline">\(m\)</span> so that the <strong>residuals</strong> <span class="math inline">\(\mathbf{y} - m\mathbf{x}\)</span> are as small as possible in a precise sense.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="from-mathbbr2-to-mathbbrn" class="level2">
+<h2 class="anchored" data-anchor-id="from-mathbbr2-to-mathbbrn"><em>From <span class="math inline">\(\mathbb{R}^2\)</span> to <span class="math inline">\(\mathbb{R}^n\)</span></em></h2>
+<ul>
+<li>Think of the predictor values as a vector <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span> and the response values as <span class="math inline">\(\mathbf{y} \in \mathbb{R}^n\)</span>.</li>
+<li>A perfect linear relation means <span class="math inline">\(\mathbf{y} = m \mathbf{x}\)</span> for some scalar <span class="math inline">\(m\)</span>.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="imperfect-data" class="level2">
+<h2 class="anchored" data-anchor-id="imperfect-data"><em>Imperfect data</em></h2>
+<p>When data are not on a line, <span class="math inline">\(\mathbf{y} - m\mathbf{x} \neq \mathbf{0}\)</span>. The vector <span class="math inline">\(\mathbf{y} - m\mathbf{x}\)</span> is the <strong>residual vector</strong>; we minimize <span class="math inline">\(\|\mathbf{y} - m\mathbf{x}\|^2\)</span>.</p>
+<p>. . .</p>
+</section>
+<section id="best-choice-of-m" class="level2">
+<h2 class="anchored" data-anchor-id="best-choice-of-m"><em>Best choice of <span class="math inline">\(m\)</span></em></h2>
+<p>The best <span class="math inline">\(m\)</span> minimizes <span class="math inline">\(\|\mathbf{y} - m\mathbf{x}\|^2\)</span>. Geometrically, that happens when the residual <span class="math inline">\(\mathbf{y} - m\mathbf{x}\)</span> is <strong>orthogonal</strong> to <span class="math inline">\(\mathbf{x}\)</span>.</p>
+<p>. . .</p>
+<!-- @introduces: normal_equations -->
+</section>
+<section id="normal-equation-one-predictor" class="level2">
+<h2 class="anchored" data-anchor-id="normal-equation-one-predictor"><em>Normal equation: one predictor</em></h2>
+<p><span class="math inline">\(m \mathbf{x} - \mathbf{y}\)</span> should be orthogonal to <span class="math inline">\(\mathbf{x}\)</span>, so <span class="math inline">\(\mathbf{x} \cdot (m \mathbf{x} - \mathbf{y}) = 0\)</span>.</p>
+<p><span class="math display">\[
+\begin{aligned}
+m \mathbf{x} \cdot \mathbf{x} - \mathbf{x} \cdot \mathbf{y} &amp;= 0 \\
+m \,\mathbf{x} \cdot \mathbf{x} &amp;= \mathbf{x} \cdot \mathbf{y}
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p><strong>Matching to general matrix notation:</strong> In the general problem <span class="math inline">\(\mathbf{A}\mathbf{x} = \mathbf{b}\)</span>, the pieces correspond to:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Regression</th>
+<th style="text-align: center;">General</th>
+<th style="text-align: left;">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">predictor <span class="math inline">\(\mathbf{x}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{A}\)</span> (known matrix/vector)</td>
+<td style="text-align: left;">the data we observe</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">slope <span class="math inline">\(m\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{x}\)</span> (unknown)</td>
+<td style="text-align: left;">the parameter to solve for</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">response <span class="math inline">\(\mathbf{y}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{b}\)</span> (known vector)</td>
+<td style="text-align: left;">the target we want to match</td>
+</tr>
+</tbody>
+</table>
+<p>. . .</p>
+<p>Now translate the orthogonality condition step by step:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Regression (dot products)</th>
+<th style="text-align: center;">General (matrix notation)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\mathbf{x} \cdot (m\mathbf{x} - \mathbf{y}) = 0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{A}^T(\mathbf{A}\mathbf{x} - \mathbf{b}) = \mathbf{0}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(m\,\mathbf{x} \cdot \mathbf{x} = \mathbf{x} \cdot \mathbf{y}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\mathbf{A}^T \mathbf{A}\,\mathbf{x} = \mathbf{A}^T \mathbf{b}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="math inline">\(\mathbf{A}^T\)</span> comes from “dot with the data”: in the regression version we dot both sides with the predictor <span class="math inline">\(\mathbf{x}\)</span>; in matrix notation, that becomes multiplying on the left by <span class="math inline">\(\mathbf{A}^T\)</span>.</p>
+<p>. . .</p>
+<p><span class="math display">\[
+\mathbf{A}^T \mathbf{A}\, \mathbf{x} = \mathbf{A}^T \mathbf{b}
+\]</span></p>
+<p>These are the <strong>normal equations</strong>.</p>
+<p>. . .</p>
+</section>
+<section id="single-predictor-scalar-case" class="level2">
+<h2 class="anchored" data-anchor-id="single-predictor-scalar-case"><em>Single predictor: scalar case</em></h2>
+<p>When there is one predictor and one response, <span class="math inline">\(\mathbf{x}\)</span> (the unknown) is a scalar. Write the predictor vector as <span class="math inline">\(\mathbf{a}\)</span> and the response vector as <span class="math inline">\(\mathbf{b}\)</span>. Then:</p>
+<p><span class="math display">\[
+\mathbf{a}^T \mathbf{a}\, x = \mathbf{a}^T \mathbf{b}
+\quad \Rightarrow \quad
+x = \frac{\mathbf{a} \cdot \mathbf{b}}{\mathbf{a} \cdot \mathbf{a}}
+\]</span></p>
+<p>This is the slope of the least-squares line (through the origin).</p>
+<p>. . .</p>
+</section>
+<section id="example-scale-calibration" class="level2">
+<h2 class="anchored" data-anchor-id="example-scale-calibration"><em>Example: scale calibration</em></h2>
+<p>You have a scale that measures in unknown units. You have items of known weight approximately 2, 5, and 7 pounds. You measure the scale output and get <span class="math inline">\(0.7\)</span>, <span class="math inline">\(2.4\)</span>, and <span class="math inline">\(3.2\)</span>. What is the conversion factor from the scale’s units to pounds?</p>
+<p>. . .</p>
+<p>Set <span class="math inline">\(\mathbf{a}= [2,\, 5,\, 7]^T\)</span> and <span class="math inline">\(\mathbf{b}= [0.7,\, 2.4,\, 3.2]^T\)</span>. We want <span class="math inline">\(x\)</span> such that <span class="math inline">\(\mathbf{a} \cdot x = \mathbf{b}\)</span> (componentwise); the system is inconsistent, so we use least squares.</p>
+<p>. . .</p>
+<p><span class="math display">\[
+\mathbf{a}^T \mathbf{a}\, x = \mathbf{a}^T \mathbf{b}
+\quad \Rightarrow \quad
+x = \frac{2(0.7) + 5(2.4) + 7(3.2)}{2^2 + 5^2 + 7^2} \approx 0.459
+\]</span></p>
+<p>So to convert from scale units to pounds, multiply by <span class="math inline">\(\approx 0.459\)</span> (i.e., scale reading <span class="math inline">\(\times 0.459 \approx\)</span> pounds).</p>
+<p>. . .</p>
+<p>(Book may use the opposite convention: conversion from pounds to scale units.)</p>
+<p>. . .</p>
+</section>
+<section id="skills-least-squares" class="level2">
+<h2 class="anchored" data-anchor-id="skills-least-squares"><em>Skills: Least Squares</em></h2>
+<ul>
+<li>Set up the least-squares problem when <span class="math inline">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> is inconsistent: minimize <span class="math inline">\(\|\mathbf{A}\mathbf{x}-\mathbf{b}\|^2\)</span>.</li>
+<li>Write and use the normal equations <span class="math inline">\(\mathbf{A}^T \mathbf{A} \mathbf{x} = \mathbf{A}^T \mathbf{b}\)</span>.</li>
+<li>For a single predictor (vector <span class="math inline">\(\mathbf{a}\)</span>, response <span class="math inline">\(\mathbf{b}\)</span>), compute the best-fit scalar <span class="math inline">\(x = (\mathbf{a} \cdot \mathbf{b})/(\mathbf{a} \cdot \mathbf{a})\)</span>.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

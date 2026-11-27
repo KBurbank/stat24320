@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ch3 Lecture 1 – Stat 24320</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linear-independence" id="toc-linear-independence" class="nav-link active" data-scroll-target="#linear-independence"><em>Linear Independence</em></a>
+  <ul class="collapse">
+  <li><a href="#linear-independence-1" id="toc-linear-independence-1" class="nav-link" data-scroll-target="#linear-independence-1"><em>Linear Independence</em></a></li>
+  <li><a href="#linear-independence-in-matrix-form" id="toc-linear-independence-in-matrix-form" class="nav-link" data-scroll-target="#linear-independence-in-matrix-form"><em>Linear Independence in matrix form</em></a></li>
+  <li><a href="#the-relationship-between-linear-independence-and-invertibility" id="toc-the-relationship-between-linear-independence-and-invertibility" class="nav-link" data-scroll-target="#the-relationship-between-linear-independence-and-invertibility"><em>The relationship between linear independence and invertibility</em></a></li>
+  <li><a href="#checking-for-linear-independence" id="toc-checking-for-linear-independence" class="nav-link" data-scroll-target="#checking-for-linear-independence"><em>Checking for Linear Independence</em></a></li>
+  <li><a href="#method-checking-for-linear-independence-using-gaussian-elimination" id="toc-method-checking-for-linear-independence-using-gaussian-elimination" class="nav-link" data-scroll-target="#method-checking-for-linear-independence-using-gaussian-elimination"><em>Method: Checking for Linear Independence using Gaussian Elimination</em></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><em></em></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><em></em></a></li>
+  <li><a href="#simplification-when-solving-homogeneous-systems" id="toc-simplification-when-solving-homogeneous-systems" class="nav-link" data-scroll-target="#simplification-when-solving-homogeneous-systems"><em>Simplification when solving homogeneous systems</em></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><em></em></a></li>
+  <li><a href="#steps-to-check-for-linear-independence-using-gaussian-elimination" id="toc-steps-to-check-for-linear-independence-using-gaussian-elimination" class="nav-link" data-scroll-target="#steps-to-check-for-linear-independence-using-gaussian-elimination"><em>Steps to check for linear independence using Gaussian Elimination</em></a></li>
+  <li><a href="#the-relationship-between-linear-independence-and-determinants" id="toc-the-relationship-between-linear-independence-and-determinants" class="nav-link" data-scroll-target="#the-relationship-between-linear-independence-and-determinants"><em>The relationship between linear independence and determinants</em></a></li>
+  <li><a href="#method-checking-for-linear-independence-using-determinants" id="toc-method-checking-for-linear-independence-using-determinants" class="nav-link" data-scroll-target="#method-checking-for-linear-independence-using-determinants"><em>Method: Checking for Linear Independence using Determinants</em></a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><em>Example 2</em></a></li>
+  <li><a href="#comparing-the-methods-using-gaussian-elimination-to-check-for-linear-independence" id="toc-comparing-the-methods-using-gaussian-elimination-to-check-for-linear-independence" class="nav-link" data-scroll-target="#comparing-the-methods-using-gaussian-elimination-to-check-for-linear-independence"><em>Comparing the methods: using Gaussian Elimination to check for linear independence</em></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><em></em></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><em>Summary</em></a></li>
+  <li><a href="#skills-linear-independence" id="toc-skills-linear-independence" class="nav-link" data-scroll-target="#skills-linear-independence"><em>Skills: Linear Independence</em></a></li>
+  </ul></li>
+  <li><a href="#vector-spaces" id="toc-vector-spaces" class="nav-link" data-scroll-target="#vector-spaces"><em>Vector Spaces</em></a>
+  <ul class="collapse">
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><em></em></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><em></em></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><em></em></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><em></em></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"><em></em></a></li>
+  <li><a href="#is-mathbbr2-a-vector-space" id="toc-is-mathbbr2-a-vector-space" class="nav-link" data-scroll-target="#is-mathbbr2-a-vector-space"><em>Is <span class="math inline">\(\mathbb{R}^2\)</span> a vector space?</em></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"><em></em></a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"><em></em></a></li>
+  <li><a href="#skills-vector-spaces" id="toc-skills-vector-spaces" class="nav-link" data-scroll-target="#skills-vector-spaces"><em>Skills: Vector Spaces</em></a></li>
+  </ul></li>
+  <li><a href="#bases-and-spanning-sets" id="toc-bases-and-spanning-sets" class="nav-link" data-scroll-target="#bases-and-spanning-sets"><em>Bases and Spanning Sets</em></a>
+  <ul class="collapse">
+  <li><a href="#definition-spanning-set" id="toc-definition-spanning-set" class="nav-link" data-scroll-target="#definition-spanning-set"><em>Definition: Spanning Set</em></a></li>
+  <li><a href="#example-spanning-set-for-mathbbr2" id="toc-example-spanning-set-for-mathbbr2" class="nav-link" data-scroll-target="#example-spanning-set-for-mathbbr2"><em>Example: Spanning Set for <span class="math inline">\(\mathbb{R}^2\)</span></em></a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"><em></em></a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"><em></em></a></li>
+  <li><a href="#definition-basis" id="toc-definition-basis" class="nav-link" data-scroll-target="#definition-basis"><em>Definition: Basis</em></a></li>
+  <li><a href="#example-a-spanning-set-that-is-not-a-basis" id="toc-example-a-spanning-set-that-is-not-a-basis" class="nav-link" data-scroll-target="#example-a-spanning-set-that-is-not-a-basis"><em>Example: A spanning set that is not a basis</em></a></li>
+  <li><a href="#standard-basis-for-mathbbrn" id="toc-standard-basis-for-mathbbrn" class="nav-link" data-scroll-target="#standard-basis-for-mathbbrn"><em>Standard Basis for <span class="math inline">\(\mathbb{R}^n\)</span></em></a></li>
+  <li><a href="#showing-that-the-standard-basis-is-a-basis-for-the-reals" id="toc-showing-that-the-standard-basis-is-a-basis-for-the-reals" class="nav-link" data-scroll-target="#showing-that-the-standard-basis-is-a-basis-for-the-reals"><em>Showing that the Standard Basis is a Basis for the reals</em></a></li>
+  <li><a href="#invertibility-basis-and-linear-independence" id="toc-invertibility-basis-and-linear-independence" class="nav-link" data-scroll-target="#invertibility-basis-and-linear-independence"><em>Invertibility, Basis, and Linear Independence</em></a></li>
+  <li><a href="#skills-bases-and-spanning-sets" id="toc-skills-bases-and-spanning-sets" class="nav-link" data-scroll-target="#skills-bases-and-spanning-sets"><em>Skills: Bases and Spanning Sets</em></a></li>
+  </ul></li>
+  <li><a href="#column-space-row-space-and-null-space" id="toc-column-space-row-space-and-null-space" class="nav-link" data-scroll-target="#column-space-row-space-and-null-space"><em>Column Space, Row Space, and Null Space</em></a>
+  <ul class="collapse">
+  <li><a href="#definition-subspace" id="toc-definition-subspace" class="nav-link" data-scroll-target="#definition-subspace"><em>Definition: Subspace</em></a></li>
+  <li><a href="#the-fundamental-subspaces-of-a-matrix" id="toc-the-fundamental-subspaces-of-a-matrix" class="nav-link" data-scroll-target="#the-fundamental-subspaces-of-a-matrix"><em>The fundamental subspaces of a matrix</em></a></li>
+  <li><a href="#geometric-picture-next-lecture" id="toc-geometric-picture-next-lecture" class="nav-link" data-scroll-target="#geometric-picture-next-lecture"><em>Geometric picture (next lecture)</em></a></li>
+  <li><a href="#column-and-row-spaces" id="toc-column-and-row-spaces" class="nav-link" data-scroll-target="#column-and-row-spaces"><em>Column and Row Spaces</em></a></li>
+  <li><a href="#null-space" id="toc-null-space" class="nav-link" data-scroll-target="#null-space"><em>Null Space</em></a></li>
+  <li><a href="#kernel-of-an-operator" id="toc-kernel-of-an-operator" class="nav-link" data-scroll-target="#kernel-of-an-operator"><em>Kernel of an Operator</em></a></li>
+  <li><a href="#method-finding-the-null-space" id="toc-method-finding-the-null-space" class="nav-link" data-scroll-target="#method-finding-the-null-space"><em>Method: Finding the null space</em></a></li>
+  <li><a href="#example-finding-the-null-space" id="toc-example-finding-the-null-space" class="nav-link" data-scroll-target="#example-finding-the-null-space"><em>Example: Finding the null space</em></a></li>
+  <li><a href="#example-finding-the-null-space-continued" id="toc-example-finding-the-null-space-continued" class="nav-link" data-scroll-target="#example-finding-the-null-space-continued"><em>Example: Finding the null space (continued)</em></a></li>
+  <li><a href="#using-the-null-space-to-find-a-basis-for-the-column-space" id="toc-using-the-null-space-to-find-a-basis-for-the-column-space" class="nav-link" data-scroll-target="#using-the-null-space-to-find-a-basis-for-the-column-space"><em>Using the null space to find a basis for the column space</em></a></li>
+  <li><a href="#method-column-space-basis-from-null-space" id="toc-method-column-space-basis-from-null-space" class="nav-link" data-scroll-target="#method-column-space-basis-from-null-space"><em>Method: column space basis from null space</em></a></li>
+  <li><a href="#example-basis-for-column-space-from-null-space" id="toc-example-basis-for-column-space-from-null-space" class="nav-link" data-scroll-target="#example-basis-for-column-space-from-null-space"><em>Example: Basis for column space from null space</em></a></li>
+  <li><a href="#example-basis-for-column-space-conclusion" id="toc-example-basis-for-column-space-conclusion" class="nav-link" data-scroll-target="#example-basis-for-column-space-conclusion"><em>Example: Basis for column space (conclusion)</em></a></li>
+  <li><a href="#skills-fundamental-subspaces" id="toc-skills-fundamental-subspaces" class="nav-link" data-scroll-target="#skills-fundamental-subspaces"><em>Skills: Fundamental Subspaces</em></a></li>
+  </ul></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications"><em>Applications</em></a>
+  <ul class="collapse">
+  <li><a href="#markov-chain-steady-state-finding-equilibrium" id="toc-markov-chain-steady-state-finding-equilibrium" class="nav-link" data-scroll-target="#markov-chain-steady-state-finding-equilibrium"><em>Markov chain steady state (finding equilibrium)</em></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"><em></em></a></li>
+  <li><a href="#markov-chain-finding-mathcalni-a" id="toc-markov-chain-finding-mathcalni-a" class="nav-link" data-scroll-target="#markov-chain-finding-mathcalni-a"><em>Markov chain: finding <span class="math inline">\(\mathcal{N}(I-A)\)</span></em></a></li>
+  <li><a href="#markov-chain-normalizing-to-a-probability-vector" id="toc-markov-chain-normalizing-to-a-probability-vector" class="nav-link" data-scroll-target="#markov-chain-normalizing-to-a-probability-vector"><em>Markov chain: normalizing to a probability vector</em></a></li>
+  <li><a href="#consistency-and-column-space-back-to-linear-systems" id="toc-consistency-and-column-space-back-to-linear-systems" class="nav-link" data-scroll-target="#consistency-and-column-space-back-to-linear-systems"><em>Consistency and Column Space: Back to Linear Systems</em></a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"><em></em></a></li>
+  <li><a href="#method-testing-if-a-vector-is-in-a-spanning-set" id="toc-method-testing-if-a-vector-is-in-a-spanning-set" class="nav-link" data-scroll-target="#method-testing-if-a-vector-is-in-a-spanning-set"><em>Method: testing if a vector is in a spanning set</em></a></li>
+  <li><a href="#example-which-vector-is-in-the-span" id="toc-example-which-vector-is-in-the-span" class="nav-link" data-scroll-target="#example-which-vector-is-in-the-span"><em>Example: which vector is in the span?</em></a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"><em></em></a></li>
+  <li><a href="#form-of-general-solution-to-a-linear-system" id="toc-form-of-general-solution-to-a-linear-system" class="nav-link" data-scroll-target="#form-of-general-solution-to-a-linear-system"><em>Form of general solution to a linear system</em></a></li>
+  <li><a href="#form-of-general-solution-geometry" id="toc-form-of-general-solution-geometry" class="nav-link" data-scroll-target="#form-of-general-solution-geometry"><em>Form of general solution: geometry</em></a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><em>Example</em></a></li>
+  <li><a href="#gas-diffusion-in-a-tube-matrices-simplify-physical-systems" id="toc-gas-diffusion-in-a-tube-matrices-simplify-physical-systems" class="nav-link" data-scroll-target="#gas-diffusion-in-a-tube-matrices-simplify-physical-systems"><em>Gas diffusion in a tube: matrices simplify physical systems</em></a></li>
+  <li><a href="#gas-diffusion-inverse-problem" id="toc-gas-diffusion-inverse-problem" class="nav-link" data-scroll-target="#gas-diffusion-inverse-problem"><em>Gas diffusion: inverse problem</em></a></li>
+  <li><a href="#null-space-algorithm" id="toc-null-space-algorithm" class="nav-link" data-scroll-target="#null-space-algorithm"><em>Null Space algorithm</em></a></li>
+  <li><a href="#skills-applications" id="toc-skills-applications" class="nav-link" data-scroll-target="#skills-applications"><em>Skills: Applications</em></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="day_8.html"><i class="bi bi-file-slides"></i>RevealJS (course-presentation)</a></li><li><a href="day_8.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="day_8.out.ipynb" download="day_8.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ch3 Lecture 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="linear-independence" class="level1">
+<h1><em>Linear Independence</em></h1>
+<!-- @idea: linear_independence_and_invertibility | Linear independence and connection to invertibility -->
+<!-- @uses: independence_and_span, inverse_matrix, linear_independence -->
+<p>Why care about linear independence?</p>
+<ul>
+<li>Tells us whether vectors provide “new information” or redundantly describe the same directions.</li>
+<li>Connects to solving systems: linearly independent columns <span class="math inline">\(\Rightarrow\)</span> at most one solution to <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span>.</li>
+</ul>
+<p>. . .</p>
+<!-- @introduces: linear_independence -->
+<section id="linear-independence-1" class="level2">
+<h2 class="anchored" data-anchor-id="linear-independence-1"><em>Linear Independence</em></h2>
+<div class="definition">
+<p>The vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> are <strong>linearly dependent</strong> if there exist scalars <span class="math inline">\(c_{1}, c_{2}, \ldots, c_{n}\)</span>, not all zero, such that</p>
+<p><span class="math display">\[
+c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}=\mathbf{0}
+\]</span></p>
+<p>Otherwise, the vectors are called <strong>linearly independent</strong>.</p>
+</div>
+</section>
+<section id="linear-independence-in-matrix-form" class="level2">
+<h2 class="anchored" data-anchor-id="linear-independence-in-matrix-form"><em>Linear Independence in matrix form</em></h2>
+<p>Let’s see if we can rewrite the condition for linear dependence in matrix form.</p>
+<p><span class="math display">\[
+c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+\cdots+c_{n} \mathbf{v}_{n}=\mathbf{0}
+\]</span></p>
+<p>. . .</p>
+<p>Define:</p>
+<ul>
+<li>matrix <span class="math inline">\(A=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\)</span></li>
+<li>vector <span class="math inline">\(\mathbf{c}=\left(c_{1}, c_{2}, c_{3}\right)\)</span>.</li>
+</ul>
+<p>. . .</p>
+<p>Then:</p>
+<p><span class="math display">\[
+c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}=\left[\mathbf{v}_{1}, \mathbf{v}_{2}, \mathbf{v}_{3}\right]\left[\begin{array}{l}
+c_{1} \\
+c_{2} \\
+c_{3}
+\end{array}\right]=A \mathbf{c}
+\]</span></p>
+<p>. . .</p>
+<p>Therefore, the vectors <span class="math inline">\(\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n\)</span> are <strong>linearly dependent</strong> if there exists a nontrivial (nonzero) solution to <span class="math inline">\([\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n] \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>Alternatively, we can say that the <em>columns</em> of <span class="math inline">\(A\)</span> are linearly dependent if there exists a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+</section>
+<section id="the-relationship-between-linear-independence-and-invertibility" class="level2">
+<h2 class="anchored" data-anchor-id="the-relationship-between-linear-independence-and-invertibility"><em>The relationship between linear independence and invertibility</em></h2>
+<p>The <em>columns</em> of <span class="math inline">\(A\)</span> are <strong>linearly dependent</strong> if there exists a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>Conversely, the <em>columns</em> of <span class="math inline">\(A\)</span> are <strong>linearly independent</strong> if <span class="math inline">\(\mathbf{c}=0\)</span> is the only solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>If the matrix <span class="math inline">\(A\)</span> happens to be square, we can make a connection to invertibility.</p>
+<p>Remember from the Day 5 lecture, one way of stating that a matrix is invertible (non-singular) is if <span class="math inline">\(\mathbf{c}=0\)</span> is the only solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>Therefore, for an <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(A\)</span>, the columns are <strong>linearly independent</strong> if and only if <span class="math inline">\(A\)</span> is invertible (non-singular).</p>
+</section>
+<section id="checking-for-linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="checking-for-linear-independence"><em>Checking for Linear Independence</em></h2>
+<p>Is this set of vectors linearly independent?</p>
+<p><span class="math display">\[
+\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right],\left[\begin{array}{r}1 \\ -1 \\ -2\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>Goal: find some set of scalars <span class="math inline">\(c_{1}, c_{2}, c_{3}\)</span>, not all zero, such that <span class="math inline">\(c_{1} \mathbf{v}_{1}+c_{2} \mathbf{v}_{2}+c_{3} \mathbf{v}_{3}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>How can we do this? We could just guess at some values for <span class="math inline">\(c_1, c_2, c_3\)</span> and see if they work…</p>
+<p>##</p>
+<p>Indeed, we can see that <span class="math inline">\(c_1 = -1, c_2 = 2, c_3 = 1\)</span> works:</p>
+<p><span class="math display">\[
+\begin{gathered}
+-1 \left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right]
++ 2 \left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right]
++ 1 \left[\begin{array}{r}1 \\ -1 \\ -2\end{array}\right] \\
+=
+\left[\begin{array}{l}
+-1 \times 1 + 2 \times 0 + 1 \times 1 \\
+-1 \times 1 + 2 \times 1 + 1 \times (-1) \\
+-1 \times 0 + 2 \times 1 + 1 \times (-2)
+\end{array}\right]
+=
+\left[\begin{array}{l}
+-1 + 0 + 1 \\
+-1 + 2 - 1 \\
+0 + 2 - 2
+\end{array}\right]
+=
+\left[\begin{array}{l}
+0 \\
+0 \\
+0
+\end{array}\right]
+\end{gathered}
+\]</span></p>
+<p>So the vectors are linearly dependent.</p>
+<p>. . .</p>
+<p>How can we do this more systematically?</p>
+</section>
+<section id="method-checking-for-linear-independence-using-gaussian-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="method-checking-for-linear-independence-using-gaussian-elimination"><em>Method: Checking for Linear Independence using Gaussian Elimination</em></h2>
+<p><span class="math display">\[
+v_1 = \left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right], v_2 = \left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right], v_3 = \left[\begin{array}{r}1 \\ -1 \\ -2\end{array}\right]
+\]</span></p>
+<p>To check linear independence using Gaussian Elimination, we first need to construct the matrix <span class="math inline">\(A\)</span> with the vectors as columns:</p>
+<p><span class="math display">\[
+A = \left[\mathbf{v}_1\ \mathbf{v}_2\ \mathbf{v}_3\right]
+= \left[\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; -2
+\end{array}\right]
+\]</span></p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><em></em></h2>
+<p>Now we need to find if there is a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>We can build the augmented matrix and find the reduced row echelon form. Here is the augmented matrix:</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0
+\end{array}\right]
+\]</span></p>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"><em></em></h2>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>Our next step is to find the reduced row echelon form of the augmented matrix.</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; -1 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0
+\end{array}\right] \xrightarrow[E_{21}(-1)]{\longrightarrow}\left[\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0
+\end{array}\right] \xrightarrow[E_{32}(-1)]{\longrightarrow}\left[\begin{array}{rrr|r}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right],
+\]</span></p>
+</section>
+<section id="simplification-when-solving-homogeneous-systems" class="level2">
+<h2 class="anchored" data-anchor-id="simplification-when-solving-homogeneous-systems"><em>Simplification when solving homogeneous systems</em></h2>
+<p>Actually, since the last column was all zeros, nothing happened to it during the row operations.</p>
+<p>(Remember, when the right-hand side is all zeros, we call the system <em>homogeneous</em>.)</p>
+<p>. . .</p>
+<p>It would have been slightly simpler to just leave it off and find the reduced row echelon form of the matrix <span class="math inline">\(A\)</span>:</p>
+<p>. . .</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+1 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; -2
+\end{array}\right] \xrightarrow[E_{21}(-1)]{\longrightarrow}\left[\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; -2 \\
+0 &amp; 1 &amp; -2
+\end{array}\right] \xrightarrow[E_{32}(-1)]{\longrightarrow}\left[\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; -2 \\
+0 &amp; 0 &amp; 0
+\end{array}\right],
+\]</span></p>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"><em></em></h2>
+<p>Either way, we are left with the following system to solve for <span class="math inline">\(\mathbf{c}\)</span>:</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; -2 \\
+0 &amp; 0 &amp; 0
+\end{array}\right]
+\left[\begin{array}{c}
+c_1 \\ c_2 \\ c_3
+\end{array}\right]
+=
+\left[\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>This corresponds to the system of equations:</p>
+<p><span class="math display">\[
+\begin{gathered}
+c_1 + c_3 = 0 \\
+c_2 - 2c_3 = 0 \\
+0 = 0
+\end{gathered}
+\]</span></p>
+<p>. . .</p>
+<p>We see that <span class="math inline">\(c_3\)</span> is free, and then <span class="math inline">\(c_1 = -c_3\)</span> and <span class="math inline">\(c_2 = 2c_3\)</span>.</p>
+<p>. . .</p>
+<p>Setting <span class="math inline">\(c_3 = 1\)</span>, we get <span class="math inline">\(c_1 = -1\)</span> and <span class="math inline">\(c_2 = 2\)</span> – our original guess!</p>
+<p>. . .</p>
+<p>But let’s not forget to circle back to the original question: because we found a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>, the vectors are <strong>linearly dependent</strong>.</p>
+</section>
+<section id="steps-to-check-for-linear-independence-using-gaussian-elimination" class="level2">
+<h2 class="anchored" data-anchor-id="steps-to-check-for-linear-independence-using-gaussian-elimination"><em>Steps to check for linear independence using Gaussian Elimination</em></h2>
+<ol type="1">
+<li>Set up matrix <span class="math inline">\(A\)</span> with the vectors as columns.</li>
+<li>Build the augmented matrix <span class="math inline">\(A | \mathbf{0}\)</span>.</li>
+<li>Find the reduced row echelon form of the augmented matrix.</li>
+<li>Check if there is a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</li>
+</ol>
+<p>. . .</p>
+<p>If there is a nontrivial solution, the vectors are linearly dependent. If there is no nontrivial solution, the vectors are linearly independent.</p>
+</section>
+<section id="the-relationship-between-linear-independence-and-determinants" class="level2">
+<h2 class="anchored" data-anchor-id="the-relationship-between-linear-independence-and-determinants"><em>The relationship between linear independence and determinants</em></h2>
+<p>A few slides back, we saw the columns of a square matrix <span class="math inline">\(A\)</span> are independent if and only if <span class="math inline">\(A\)</span> is invertible.</p>
+<p>. . .</p>
+<p>Last lecture, we also saw that the determinant of a square matrix <span class="math inline">\(A\)</span> is non-zero if and only if <span class="math inline">\(A\)</span> is invertible.</p>
+<p>. . .</p>
+<p>Putting these two together, we see that the columns of a square matrix <span class="math inline">\(A\)</span> are independent if and only if the determinant of <span class="math inline">\(A\)</span> is non-zero.</p>
+</section>
+<section id="method-checking-for-linear-independence-using-determinants" class="level2">
+<h2 class="anchored" data-anchor-id="method-checking-for-linear-independence-using-determinants"><em>Method: Checking for Linear Independence using Determinants</em></h2>
+<p>This leads to our second method for checking for linear independence:</p>
+<ol type="1">
+<li>Set up matrix <span class="math inline">\(A\)</span> with the vectors as columns.</li>
+<li>Calculate the determinant of <span class="math inline">\(A\)</span>.</li>
+<li>Check if the determinant is non-zero.</li>
+</ol>
+<p>. . .</p>
+<p>If the determinant is non-zero, the vectors are linearly independent. If the determinant is zero, the vectors are linearly dependent.</p>
+</section>
+<section id="example-2" class="level2">
+<h2 class="anchored" data-anchor-id="example-2"><em>Example 2</em></h2>
+<p>Are the following vectors linearly independent?</p>
+<p><span class="math inline">\(\left[\begin{array}{l}0 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}1 \\ 1 \\ 0\end{array}\right],\left[\begin{array}{l}0 \\ 1 \\ 1\end{array}\right]\)</span></p>
+<p>. . .</p>
+<p>Set up A = <span class="math inline">\(\left[\begin{array}{lll}0 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1\end{array}\right]\)</span></p>
+<p>. . .</p>
+<p>What is the determinant of <span class="math inline">\(A\)</span>? Let’s work across the top row:</p>
+<p><span class="math display">\[
+\begin{gathered}
+\operatorname{det}\left[\begin{array}{lll}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+= 0 \times \operatorname{det}\left[\begin{array}{ll}
+1 &amp; 1 \\
+0 &amp; 1
+\end{array}\right]
+- 1 \times \operatorname{det}\left[\begin{array}{ll}
+1 &amp; 1 \\
+0 &amp; 1
+\end{array}\right]
++ 0 \times \operatorname{det}\left[\begin{array}{ll}
+1 &amp; 1 \\
+0 &amp; 0
+\end{array}\right] \\
+= -1 \times \operatorname{det}\left[\begin{array}{ll}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}\right]
+= -1
+\end{gathered}
+\]</span></p>
+<p>. . .</p>
+<p>Determinant is non-zero, so <span class="math inline">\(A\)</span> is invertible (non-singular)</p>
+<p>. . .</p>
+<p>So the vectors are linearly <strong>independent</strong>.</p>
+</section>
+<section id="comparing-the-methods-using-gaussian-elimination-to-check-for-linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-the-methods-using-gaussian-elimination-to-check-for-linear-independence"><em>Comparing the methods: using Gaussian Elimination to check for linear independence</em></h2>
+<p>Let’s try our first method with the same example:</p>
+<p><span class="math display">\[
+A = \left[\begin{array}{ccc}
+0 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\]</span></p>
+<p>We want to find if there is a nontrivial solution to <span class="math inline">\(A \mathbf{c}=\mathbf{0}\)</span>.</p>
+<p>. . .</p>
+<p>Doing Gaussian Elimination on <span class="math inline">\(A\)</span>, we get: <span class="math display">\[
+\left[\begin{array}{ccc|c}
+0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\xrightarrow{E_{12}}
+\left[\begin{array}{ccc|c}
+1 &amp; 1 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\xrightarrow{E_{12}(-1)}
+\left[\begin{array}{ccc|c}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\]</span></p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"><em></em></h2>
+<p>Our RREF is: <span class="math display">\[
+\left[\begin{array}{ccc|c}
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>Then we need to solve</p>
+<p><span class="math display">\[
+\left[\begin{array}{ccc}
+1 &amp; 0 &amp; 1 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{array}\right]
+\left[\begin{array}{c}
+c_1 \\ c_2 \\ c_3
+\end{array}\right]
+= \left[\begin{array}{c}
+0 \\ 0 \\ 0
+\end{array}\right]
+\]</span></p>
+<p>This corresponds to the system of equations:</p>
+<p><span class="math display">\[
+\begin{gathered}
+c_1 + c_3 = 0 \\
+c_2 = 0 \\
+c_3 = 0
+\end{gathered}
+\]</span></p>
+<p>. . .</p>
+<p>We see that <span class="math inline">\(c_3\)</span> must be zero, and then <span class="math inline">\(c_1 = -c_3 = 0\)</span> and <span class="math inline">\(c_2 = 0\)</span>.</p>
+<p>. . .</p>
+<p>The only solution is the trivial solution <span class="math inline">\(\mathbf{c}=0\)</span>, so the vectors are linearly independent.</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary"><em>Summary</em></h2>
+<ul>
+<li>The vectors <span class="math inline">\(v_1, v_2, \ldots, v_n\)</span> are linearly independent if and only if the only solution to <span class="math inline">\([\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n] \mathbf{c}=\mathbf{0}\)</span> is <span class="math inline">\(\mathbf{c}=0\)</span>.</li>
+<li>If we define <span class="math inline">\(A=[\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n]\)</span>, the vectors are linearly independent if and only if the only solution to <span class="math inline">\(A \mathbf{c}=0\)</span> is <span class="math inline">\(\mathbf{c}=0\)</span>.</li>
+<li>We can check this by either using Gaussian Elimination or calculating the determinant of <span class="math inline">\(A\)</span>.</li>
+</ul>
+</section>
+<section id="skills-linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="skills-linear-independence"><em>Skills: Linear Independence</em></h2>
+<ul>
+<li>Describe linear independence in terms of solutions to <span class="math inline">\(v_1 c_1 + v_2 c_2 + \ldots + v_n c_n = \mathbf{0}\)</span>.</li>
+<li>Construct a matrix <span class="math inline">\(A\)</span> with the vectors as columns and use Gaussian Elimination or determinants to check for linear independence.</li>
+<li>Interpret linear dependence in terms of solutions to <span class="math inline">\(A\mathbf{c}=\mathbf{0}\)</span>.</li>
+</ul>
+</section>
+</section>
+<section id="vector-spaces" class="level1">
+<h1><em>Vector Spaces</em></h1>
+<!-- @idea: vector_spaces_and_basis | Vector spaces, R^n, axioms -->
+<!-- @uses: basis, fundamental_subspaces, independence_and_span, span, subspace -->
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"><em></em></h2>
+<p>We’ve been working with vectors that look like this:</p>
+<p><span class="math display">\[
+\mathbf{u} = \begin{bmatrix} 3 \\ -1 \end{bmatrix}, \qquad \mathbf{v} = \begin{bmatrix} 2 \\ 0 \\ 5 \end{bmatrix}
+\]</span></p>
+<p>These are examples of vectors in <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<p><span class="math inline">\(\mathbb{R}^2\)</span> is the set of all vectors of the form <span class="math inline">\(\begin{bmatrix} x \\ y \end{bmatrix}\)</span>, where <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are real numbers.</p>
+<p><span class="math inline">\(\mathbb{R}^3\)</span> is the set of all vectors of the form <span class="math inline">\(\begin{bmatrix} x \\ y \\ z \end{bmatrix}\)</span>, where <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> are real numbers.</p>
+<p>But what about this vector?</p>
+<p><span class="math display">\[
+\mathbf{w} = \begin{bmatrix} 1 + 2i \\ 2 - i \\ 3 \end{bmatrix}
+\]</span></p>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5"><em></em></h2>
+<p>The elements of <span class="math inline">\(\mathbf{w}\)</span> are complex numbers, so <span class="math inline">\(\mathbf{w}\)</span> is not in <span class="math inline">\(\mathbb{R}^3\)</span>. Instead, it is in <span class="math inline">\(\mathbb{C}^3\)</span>, the set of all vectors of the form <span class="math inline">\(\begin{bmatrix} x \\ y \\ z \end{bmatrix}\)</span>, where <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> are complex numbers.</p>
+<p><span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(\mathbb{R}^3\)</span>, and <span class="math inline">\(\mathbb{C}^3\)</span> are all examples of <strong>vector spaces</strong>. In this class, we will only be working with <span class="math inline">\(\mathbb{R}^n\)</span> and <span class="math inline">\(\mathbb{C}^n\)</span>, but I want to take a moment to describe what a vector space is in general.</p>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6"><em></em></h2>
+<p>Vector spaces are sets of vectors that we can define however we like, combined with procedures for <strong>vector addition</strong> and <strong>scalar multiplication</strong>.</p>
+<p>These sets and procedures together need to satisfy a few rules, so that we can do the usual mathematical operations that we care about.</p>
+<p><strong>Closure rules:</strong></p>
+<ul>
+<li>The result of adding two vectors in the space should always be another vector in the space.</li>
+<li>The result of multiplying a vector in the space by a scalar should always be another vector in the space.</li>
+</ul>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7"><em></em></h2>
+<p><strong>Rules of addition:</strong></p>
+<ul>
+<li>Vector addition should be associative and commutative.</li>
+<li>There should be an additive identity vector (a “zero” vector)</li>
+<li>Every vector should have an additive inverse (its “negative”)</li>
+</ul>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8"><em></em></h2>
+<p><strong>Rules of scalar multiplication:</strong></p>
+<ul>
+<li>Scalar multiplication should be distributive over vector addition (so <span class="math inline">\(c(\mathbf{u}+\mathbf{v})=c\mathbf{u}+c\mathbf{v}\)</span>)</li>
+<li>There should be a multiplicative identity scalar (a “one”)</li>
+<li>Every nonzero scalar should have a multiplicative inverse (its “reciprocal”)</li>
+</ul>
+<p>. . .</p>
+<p>Put together, these rules are called the <strong>axioms of a vector space</strong>.</p>
+</section>
+<section id="is-mathbbr2-a-vector-space" class="level2">
+<h2 class="anchored" data-anchor-id="is-mathbbr2-a-vector-space"><em>Is <span class="math inline">\(\mathbb{R}^2\)</span> a vector space?</em></h2>
+<p>Let’s check if <span class="math inline">\(\mathbb{R}^2\)</span> is a vector space.</p>
+<p>. . .</p>
+<p><strong>Closure under addition:</strong></p>
+<p>Is the sum of any two vectors in <span class="math inline">\(\mathbb{R}^2\)</span> also a vector in <span class="math inline">\(\mathbb{R}^2\)</span>?</p>
+<p>We define addition in <span class="math inline">\(\mathbb{R}^2\)</span> as elementwise addition:</p>
+<p><span class="math display">\[
+\begin{bmatrix} x_1 \\ y_1 \end{bmatrix} + \begin{bmatrix} x_2 \\ y_2 \end{bmatrix} = \begin{bmatrix} x_1 + x_2 \\ y_1 + y_2 \end{bmatrix}
+\]</span></p>
+<p>If <span class="math inline">\(x_1, x_2, y_1, y_2\)</span> are all real numbers, then <span class="math inline">\(x_1 + x_2\)</span> and <span class="math inline">\(y_1 + y_2\)</span> are also real numbers. Therefore, the sum of any two vectors in <span class="math inline">\(\mathbb{R}^2\)</span> is also a vector in <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+<p>. . .</p>
+<p>Therefore, <span class="math inline">\(\mathbb{R}^2\)</span> is closed under addition.</p>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9"><em></em></h2>
+<p><strong>Closure under scalar multiplication:</strong></p>
+<p>Is the product of any scalar and any vector in <span class="math inline">\(\mathbb{R}^2\)</span> also a vector in <span class="math inline">\(\mathbb{R}^2\)</span>?</p>
+<p>We define scalar multiplication in <span class="math inline">\(\mathbb{R}^2\)</span> as elementwise multiplication by a scalar:</p>
+<p><span class="math display">\[
+c \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} c x \\ c y \end{bmatrix}
+\]</span></p>
+<p>If <span class="math inline">\(c\)</span> is a real number and <span class="math inline">\(x, y\)</span> are real numbers, then <span class="math inline">\(c x\)</span> and <span class="math inline">\(c y\)</span> are also real numbers. Therefore, the product of any scalar and any vector in <span class="math inline">\(\mathbb{R}^2\)</span> is also a vector in <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10"><em></em></h2>
+<p><strong>The other axioms:</strong></p>
+<p>We could go through and check the other axioms, but I’m not going to do that here.</p>
+</section>
+<section id="skills-vector-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="skills-vector-spaces"><em>Skills: Vector Spaces</em></h2>
+<ul>
+<li>Say what a vector space is (set of vectors plus definitions of addition and scalar multiplication, which satisfy the axioms of a vector space).</li>
+<li>Recognize <span class="math inline">\(\mathbb{R}^n\)</span>, <span class="math inline">\(\mathbb{C}^n\)</span> as vector spaces</li>
+</ul>
+</section>
+</section>
+<section id="bases-and-spanning-sets" class="level1">
+<h1><em>Bases and Spanning Sets</em></h1>
+<!-- @idea: spanning_sets_and_standard_basis | Spanning sets, basis, standard basis -->
+<!-- @uses: basis, independence_and_span, span -->
+<!-- @introduces: span -->
+<section id="definition-spanning-set" class="level2">
+<h2 class="anchored" data-anchor-id="definition-spanning-set"><em>Definition: Spanning Set</em></h2>
+<p>When we have a vector space, we can use scalar multiplication and addition to describe one vector in the space as a linear combination of other vectors in the space.</p>
+<p>. . .</p>
+<p>For instance, it might be that <span class="math inline">\(\mathbf{w} = 2\mathbf{u_1} + 3\mathbf{u_2} + 4\mathbf{u_3}\)</span>, where <span class="math inline">\(\mathbf{u_1}, \mathbf{u_2}, \mathbf{u_3}, \mathbf{w}\)</span> are vectors in the space.</p>
+<p>. . .</p>
+<p>It can be useful to have a set of vectors <span class="math inline">\(\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n\}\)</span> that can be used to describe <strong>any</strong> vector in the space in this way!</p>
+<p>. . .</p>
+<p>A set of vectors like this is called a <strong>spanning set</strong> for the vector space.</p>
+<p>. . .</p>
+<p>Formally, a set of vectors <span class="math inline">\(\{\mathbf{u}_1, \mathbf{u}_2, \ldots, \mathbf{u}_n\}\)</span> is a spanning set for the vector space <span class="math inline">\(V\)</span> if for every vector <span class="math inline">\(\mathbf{v} \in V\)</span>, there exist scalars <span class="math inline">\(c_1, c_2, \ldots, c_n\)</span> such that <span class="math inline">\(\mathbf{v} = c_1\mathbf{u}_1 + c_2\mathbf{u}_2 + \ldots + c_n\mathbf{u}_n\)</span>.</p>
+</section>
+<section id="example-spanning-set-for-mathbbr2" class="level2">
+<h2 class="anchored" data-anchor-id="example-spanning-set-for-mathbbr2"><em>Example: Spanning Set for <span class="math inline">\(\mathbb{R}^2\)</span></em></h2>
+<p>Consider the set of vectors <span class="math inline">\(\left\{\mathbf{u_1}=\left[\begin{array}{c} 1 \\ 0 \end{array}\right], \mathbf{u_2}=\left[\begin{array}{c} 0 \\ 1 \end{array}\right]\right\}\)</span>.</p>
+<p>. . .</p>
+<p>This set is a spanning set for <span class="math inline">\(\mathbb{R}^2\)</span> because any vector <span class="math inline">\(\mathbf{v} = \begin{bmatrix} x \\ y \end{bmatrix}\)</span> can be written as <span class="math inline">\(\mathbf{v} = x\mathbf{u}_1 + y\mathbf{u}_2\)</span>.</p>
+<p>. . .</p>
+<p>For instance, the vector <span class="math inline">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span> can be written as <span class="math inline">\(\mathbf{v} = 3\mathbf{u}_1 + 4\mathbf{u}_2\)</span>.</p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11"><em></em></h2>
+<p>But this is not the only spanning set for <span class="math inline">\(\mathbb{R}^2\)</span>!</p>
+<p>This is also a spanning set for <span class="math inline">\(\mathbb{R}^2\)</span>:</p>
+<p><span class="math inline">\(\left\{\mathbf{u_1}=\left[\begin{array}{c} 1 \\  2 \end{array}\right], \mathbf{u_2}=\left[\begin{array}{c} 0 \\  1 \end{array}\right]\right\}\)</span></p>
+<p>. . .</p>
+<p>We can write <span class="math inline">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span> as <span class="math inline">\(\mathbf{v} = 3\mathbf{u}_1 + (-2)\mathbf{u}_2\)</span>.</p>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12"><em></em></h2>
+<p>And here is another spanning set for <span class="math inline">\(\mathbb{R}^2\)</span>:</p>
+<p><span class="math inline">\(\left\{\mathbf{u_1}=\left[\begin{array}{c} 1 \\  0 \end{array}\right], \mathbf{u_2}=\left[\begin{array}{c} 0 \\  1 \end{array}\right],\mathbf{u_3}=\left[\begin{array}{c} 1 \\  1 \end{array}\right]\right\}\)</span></p>
+<p>. . .</p>
+<p>Now we have multiple ways to write <span class="math inline">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}\)</span> as a linear combination of the vectors in the set:</p>
+<p><span class="math inline">\(\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix} = 3\mathbf{u}_1 + 4\mathbf{u}_2\)</span> or <span class="math inline">\(\mathbf{v} = 4\mathbf{u}_1 + (-2)\mathbf{u}_3 + 2\mathbf{u}_2\)</span>.</p>
+<p>. . .</p>
+<p>This isn’t great… we have more vectors than we need in our spanning set!</p>
+<!-- @introduces: basis -->
+</section>
+<section id="definition-basis" class="level2">
+<h2 class="anchored" data-anchor-id="definition-basis"><em>Definition: Basis</em></h2>
+<p>A <strong>basis</strong> for a vector space is a spanning set that doesn’t have any redundant vectors.</p>
+<p>More formally, a <strong>basis</strong> for the vector space <span class="math inline">\(V\)</span> is a <em>spanning</em> set of vectors <span class="math inline">\(\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{n}\)</span> that is a <em>linearly independent</em> set.</p>
+</section>
+<section id="example-a-spanning-set-that-is-not-a-basis" class="level2">
+<h2 class="anchored" data-anchor-id="example-a-spanning-set-that-is-not-a-basis"><em>Example: A spanning set that is not a basis</em></h2>
+<p>Let’s look at our last spanning set from before:</p>
+<p><span class="math display">\[
+\left\{\mathbf{u_1}=\left[\begin{array}{c} 1 \\  0 \end{array}\right], \mathbf{u_2}=\left[\begin{array}{c} 0 \\  1 \end{array}\right],\mathbf{u_3}=\left[\begin{array}{c} 1 \\  1 \end{array}\right]\right\}
+\]</span></p>
+<p>. . .</p>
+<p>We notice that vector <span class="math inline">\(\mathbf{u}_3\)</span> is a linear combination of <span class="math inline">\(\mathbf{u}_1\)</span> and <span class="math inline">\(\mathbf{u}_2\)</span>: <span class="math display">\[
+\mathbf{u}_3 = \mathbf{u}_1 + \mathbf{u}_2
+\]</span></p>
+<p>. . .</p>
+<p>This means that our set <span class="math inline">\(\left\{\mathbf{u_1}, \mathbf{u_2}, \mathbf{u_3}\right\}\)</span> is linearly dependent, and therefore not a basis for <span class="math inline">\(\mathbb{R}^2\)</span>.</p>
+</section>
+<section id="standard-basis-for-mathbbrn" class="level2">
+<h2 class="anchored" data-anchor-id="standard-basis-for-mathbbrn"><em>Standard Basis for <span class="math inline">\(\mathbb{R}^n\)</span></em></h2>
+<p>The <strong>standard basis</strong> for <span class="math inline">\(\mathbb{R}^{n}\)</span> is the set of vectors <span class="math inline">\(\mathbf{e}_{1}, \mathbf{e}_{2}, \ldots, \mathbf{e}_{n}\)</span> given by the columns of the <span class="math inline">\(n \times n\)</span> identity matrix:</p>
+<p><span class="math display">\[
+\mathbf{e}_1 = \begin{bmatrix} 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, \quad \mathbf{e}_2 = \begin{bmatrix} 0 \\ 1 \\ \vdots \\ 0 \end{bmatrix}, \quad \ldots, \quad \mathbf{e}_n = \begin{bmatrix} 0 \\ \vdots \\ 0 \\ 1 \end{bmatrix}
+\]</span></p>
+<p>. . .</p>
+<p>This set is a basis for <span class="math inline">\(\mathbb{R}^n\)</span> because it is a spanning set and is linearly independent.</p>
+</section>
+<section id="showing-that-the-standard-basis-is-a-basis-for-the-reals" class="level2">
+<h2 class="anchored" data-anchor-id="showing-that-the-standard-basis-is-a-basis-for-the-reals"><em>Showing that the Standard Basis is a Basis for the reals</em></h2>
+<ul>
+<li>Let <span class="math inline">\(\mathbf{v}=\left(c_{1}, c_{2}, \ldots, c_{n}\right)\)</span> be any vector from <span class="math inline">\(V\)</span></li>
+<li><span class="math inline">\(c_{1}, c_{2}, \ldots, c_{n}\)</span> are scalars (real or complex)</li>
+</ul>
+<p>. . .</p>
+<p>To show that the standard basis is a basis for <span class="math inline">\(\mathbb{R}^n\)</span>, we need to show that it is a spanning set and is linearly independent.</p>
+<p><strong>Spanning:</strong> We need to show that we can write <span class="math inline">\(\mathbf{v}\)</span> as a linear combination of the standard basis vectors:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{v} &amp; =\left[\begin{array}{c}
+c_{1} \\
+c_{2} \\
+\vdots \\
+c_{n}
+\end{array}\right]=c_{1}\left[\begin{array}{c}
+1 \\
+0 \\
+\vdots \\
+0
+\end{array}\right]+c_{2}\left[\begin{array}{c}
+0 \\
+1 \\
+\vdots \\
+0
+\end{array}\right]+\cdots+c_{n}\left[\begin{array}{c}
+0 \\
+\vdots \\
+0 \\
+1
+\end{array}\right] \\
+&amp; =c_{1} \mathbf{e}_{1}+c_{2} \mathbf{e}_{2}+\cdots+c_{n} \mathbf{e}_{n} .
+\end{aligned}
+\]</span></p>
+<p><strong>Linear Independence:</strong> We need to show that the standard basis vectors are linearly independent. We can do this in either of the ways we’ve learned from today’s lecture!</p>
+</section>
+<section id="invertibility-basis-and-linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="invertibility-basis-and-linear-independence"><em>Invertibility, Basis, and Linear Independence</em></h2>
+<p>An <span class="math inline">\(n \times n\)</span> real matrix <span class="math inline">\(A\)</span> is invertible if and only if its columns are linearly independent</p>
+<p>. . .</p>
+<p>in which case they form a basis of <span class="math inline">\(\mathbb{R}^{n}\)</span></p>
+</section>
+<section id="skills-bases-and-spanning-sets" class="level2">
+<h2 class="anchored" data-anchor-id="skills-bases-and-spanning-sets"><em>Skills: Bases and Spanning Sets</em></h2>
+<p>You should be able to:</p>
+<ul>
+<li>Identify the standard basis for <span class="math inline">\(\mathbb{R}^{n}\)</span>.</li>
+<li>Test if a set of vectors is a basis for a vector space.</li>
+</ul>
+</section>
+</section>
+<section id="column-space-row-space-and-null-space" class="level1">
+<h1><em>Column Space, Row Space, and Null Space</em></h1>
+<!-- @idea: fundamental_subspaces | Column space, row space, null space -->
+<!-- @uses: column_space, fundamental_subspaces, left_null_space, null_space, row_space, subspace -->
+<!-- @introduces: subspace -->
+<section id="definition-subspace" class="level2">
+<h2 class="anchored" data-anchor-id="definition-subspace"><em>Definition: Subspace</em></h2>
+<p>A <strong>subspace</strong> of <span class="math inline">\(\mathbb{R}^n\)</span> is a subset that contains <span class="math inline">\(\mathbf{0}\)</span> and is closed under addition and scalar multiplication. Equivalently: <span class="math inline">\(\mathbf{0} \in W\)</span>, and <span class="math inline">\(\mathbf{u},\mathbf{v} \in W \Rightarrow \mathbf{u}+\mathbf{v} \in W\)</span>, and <span class="math inline">\(\mathbf{u} \in W,\, c \in \mathbb{R} \Rightarrow c\mathbf{u} \in W\)</span>.</p>
+</section>
+<section id="the-fundamental-subspaces-of-a-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="the-fundamental-subspaces-of-a-matrix"><em>The fundamental subspaces of a matrix</em></h2>
+<p>There are four subspaces that are associated with every matrix:</p>
+<ul>
+<li>Null space</li>
+<li>Column space</li>
+<li>Row space</li>
+<li>Left null space (we won’t cover this in this class)</li>
+</ul>
+<p>. . .</p>
+<p>The null, column and row spaces characterize what a matrix “does.”</p>
+<ul>
+<li><strong>Null space</strong> <span class="math inline">\(\mathcal{N}(A)\)</span>: which inputs get mapped to <span class="math inline">\(\mathbf{0}\)</span>.</li>
+<li><strong>Column space</strong> <span class="math inline">\(\mathcal{C}(A)\)</span>: which outputs are reachable as <span class="math inline">\(A\mathbf{x}\)</span>.</li>
+<li><strong>Row space</strong> <span class="math inline">\(\mathcal{R}(A)\)</span>: the span of the rows.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="geometric-picture-next-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-picture-next-lecture"><em>Geometric picture (next lecture)</em></h2>
+<p>We will draw these subspaces in low dimensions so you can see them: <span class="math inline">\(\mathcal{C}(A)\)</span> and <span class="math inline">\(\mathcal{N}(A)\)</span> as a plane and a line in <span class="math inline">\(\mathbb{R}^3\)</span>, and how that connects to solving <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> and to least squares.</p>
+<!-- @introduces: column_space -->
+<!-- @introduces: row_space -->
+</section>
+<section id="column-and-row-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="column-and-row-spaces"><em>Column and Row Spaces</em></h2>
+<div class="definition">
+<p>The <strong>column space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{C}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{m}\)</span> spanned by the columns of <span class="math inline">\(A\)</span>.</p>
+</div>
+<p>. . .</p>
+<div class="definition">
+<p>The <strong>row space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subspace <span class="math inline">\(\mathcal{R}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span> spanned by the transposes of the rows of <span class="math inline">\(A\)</span></p>
+</div>
+<!-- @introduces: null_space -->
+</section>
+<section id="null-space" class="level2">
+<h2 class="anchored" data-anchor-id="null-space"><em>Null Space</em></h2>
+<div class="definition">
+<p>The <strong>null space</strong> of the <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span> is the subset <span class="math inline">\(\mathcal{N}(A)\)</span> of <span class="math inline">\(\mathbb{R}^{n}\)</span></p>
+<p><span class="math display">\[
+\mathcal{N}(A)=\left\{\mathbf{x} \in \mathbb{R}^{n} \mid A \mathbf{x}=\mathbf{0}\right\}
+\]</span></p>
+</div>
+<p>. . .</p>
+<p><span class="math inline">\(\mathcal{N}(A)\)</span> is just the solution set to <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span></p>
+<p>. . .</p>
+<p>For example, if <span class="math inline">\(A\)</span> is invertible, <span class="math inline">\(A \mathbf{x}=\mathbf{0}\)</span> has only the trivial solution <span class="math inline">\(\mathbf{x}=\mathbf{0}\)</span></p>
+<p>. . .</p>
+<p>so <span class="math inline">\(\mathcal{N}(A)\)</span> is just <span class="math inline">\(\left\{\mathbf{0}\right\}\)</span>.</p>
+<p>. . .</p>
+<p><span class="math inline">\(A\)</span> is invertible exactly if <span class="math inline">\(\mathcal{N}(A)=\{\mathbf{0}\}\)</span></p>
+</section>
+<section id="kernel-of-an-operator" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-of-an-operator"><em>Kernel of an Operator</em></h2>
+<p><strong>Why “kernel” as well as “null space”?</strong></p>
+<ul>
+<li><strong>Null space (matrix language):</strong> For a matrix <span class="math inline">\(A\)</span>, the null space is the set of <span class="math inline">\(\mathbf{x}\)</span> with <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>.</li>
+<li><strong>Kernel (map language):</strong> For a linear map <span class="math inline">\(T:V\to W\)</span>, the set of inputs that <span class="math inline">\(T\)</span> sends to the zero vector is called the <strong>kernel</strong> of <span class="math inline">\(T\)</span>.</li>
+<li><strong>Connection:</strong> For the matrix map <span class="math inline">\(T(\mathbf{x})=A\mathbf{x}\)</span>, we have <span class="math inline">\(\operatorname{ker}(T)=\mathcal{N}(A)\)</span>.</li>
+</ul>
+<p>. . .</p>
+<div class="definition">
+<p>The <strong>kernel</strong> of the linear operator <span class="math inline">\(T : V \rightarrow W\)</span> is the subspace of <span class="math inline">\(V\)</span> defined by</p>
+<p><span class="math display">\[
+\operatorname{ker}(T)=\{\mathbf{x} \in V \mid T(\mathbf{x})=\mathbf{0}\}
+\]</span></p>
+<p>i.e., all inputs that <span class="math inline">\(T\)</span> maps to the zero vector in <span class="math inline">\(W\)</span>.</p>
+</div>
+<p>. . .</p>
+<p>For the matrix operator <span class="math inline">\(T(\mathbf{x})=A\mathbf{x}\)</span>, we have <span class="math inline">\(\operatorname{ker}(T)=\mathcal{N}(A)\)</span>. In this course we mainly use “null space”; “kernel” is the same concept when we refer to the map rather than the matrix.</p>
+</section>
+<section id="method-finding-the-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="method-finding-the-null-space"><em>Method: Finding the null space</em></h2>
+<p>To find <span class="math inline">\(\mathcal{N}(A)\)</span> we need all <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>.</p>
+<ol type="1">
+<li>Form the homogeneous system and find the RREF of <span class="math inline">\(A\)</span> (or of <span class="math inline">\([A\mid\mathbf{0}]\)</span>; the extra column stays zero).</li>
+<li>Identify free variables vs bound variables from the pivot columns.</li>
+<li>Write the general solution <span class="math inline">\(\mathbf{x}\)</span> in terms of the free variables.</li>
+<li>Express that general solution as a linear combination of vectors (one vector per free variable). Those vectors span <span class="math inline">\(\mathcal{N}(A)\)</span> and are linearly independent, so they form a <strong>basis</strong> for <span class="math inline">\(\mathcal{N}(A)\)</span>.</li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="example-finding-the-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="example-finding-the-null-space"><em>Example: Finding the null space</em></h2>
+<p>Find the null space of the matrix</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{rrrr}
+1 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; 2 &amp; 1
+\end{array}\right]
+\]</span></p>
+<p>So we want all <span class="math inline">\(\mathbf{x}\)</span> with <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>, i.e.&nbsp;the system <span class="math display">\[
+\begin{aligned}
+x_{1}+x_{2}+x_{3}-x_{4} &amp; =0 \\
+x_{2}+2 x_{3}+x_{4} &amp; =0
+\end{aligned}
+\]</span></p>
+<p>. . .</p>
+<p><strong>Step 1:</strong> Find the RREF of <span class="math inline">\(A\)</span>.</p>
+<p>. . .</p>
+<p><a href="images/day_8_fig1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/day_8_fig1.jpg" class="img-fluid"></a></p>
+<p>. . .</p>
+<p><strong>Step 2:</strong> From RREF, pivots are in columns 1 and 2, so <span class="math inline">\(x_3\)</span> and <span class="math inline">\(x_4\)</span> are free; <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> are bound. Solve for the bound variables in terms of the free ones:</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; x_{1}=x_{3}+2 x_{4} \\
+&amp; x_{2}=-2 x_{3}-x_{4} .
+\end{aligned}
+\]</span></p>
+</section>
+<section id="example-finding-the-null-space-continued" class="level2">
+<h2 class="anchored" data-anchor-id="example-finding-the-null-space-continued"><em>Example: Finding the null space (continued)</em></h2>
+<p>From the previous slide we had <span class="math inline">\(x_1=x_3+2x_4\)</span>, <span class="math inline">\(x_2=-2x_3-x_4\)</span> (free: <span class="math inline">\(x_3\)</span>, <span class="math inline">\(x_4\)</span>).</p>
+<p>. . .</p>
+<p><strong>Step 3:</strong> Write the general solution <span class="math inline">\(\mathbf{x}\)</span> as a linear combination of two vectors (one per free variable):</p>
+<p><span class="math display">\[
+\left[\begin{array}{c}
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right]=\left[\begin{array}{c}
+x_{3}+2 x_{4} \\
+-2 x_{3}-x_{4} \\
+x_{3} \\
+x_{4}
+\end{array}\right]=x_{3}\left[\begin{array}{r}
+1 \\
+-2 \\
+1 \\
+0
+\end{array}\right]+x_{4}\left[\begin{array}{r}
+2 \\
+-1 \\
+0 \\
+1
+\end{array}\right] .
+\]</span></p>
+<p>. . .</p>
+<p><strong>Step 4:</strong> Every solution is a linear combination of those two vectors, and they are linearly independent. So</p>
+<p><span class="math display">\[
+\mathcal{N}(A)=\operatorname{span}\left\{\left[\begin{array}{r}
+1 \\
+-2 \\
+1 \\
+0
+\end{array}\right],\left[\begin{array}{r}
+2 \\
+-1 \\
+0 \\
+1
+\end{array}\right]\right\} \subseteq \mathbb{R}^{4}
+\]</span></p>
+<p>and these two vectors form a <strong>basis</strong> for <span class="math inline">\(\mathcal{N}(A)\)</span>.</p>
+</section>
+<section id="using-the-null-space-to-find-a-basis-for-the-column-space" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-null-space-to-find-a-basis-for-the-column-space"><em>Using the null space to find a basis for the column space</em></h2>
+<p><strong>Why does null space help?</strong></p>
+<ul>
+<li>The columns of <span class="math inline">\(A\)</span> span <span class="math inline">\(\mathcal{C}(A)\)</span>, but they may be linearly dependent (redundant).</li>
+<li>To get a basis, we want to drop columns that are linear combinations of the others.</li>
+<li>The null space tells us those dependencies: every solution <span class="math inline">\(\mathbf{x}\)</span> to <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> gives <span class="math inline">\(x_1\mathbf{a}_1+\cdots+x_n\mathbf{a}_n=\mathbf{0}\)</span>.</li>
+<li>If <span class="math inline">\(x_j\neq 0\)</span>, then <span class="math inline">\(\mathbf{a}_j\)</span> is a combination of the other columns—so we can remove it from a spanning set.</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="method-column-space-basis-from-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="method-column-space-basis-from-null-space"><em>Method: column space basis from null space</em></h2>
+<ol type="1">
+<li>Find the null space (general solution to <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span>).</li>
+<li>From that general solution, plug in simple choices (one free variable <span class="math inline">\(=1\)</span>, rest <span class="math inline">\(=0\)</span>) to get specific relations among the columns.</li>
+<li>Each relation shows one column is redundant.</li>
+<li>The columns that are <em>not</em> redundant (the pivot columns) form a basis for <span class="math inline">\(\mathcal{C}(A)\)</span>.</li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="example-basis-for-column-space-from-null-space" class="level2">
+<h2 class="anchored" data-anchor-id="example-basis-for-column-space-from-null-space"><em>Example: Basis for column space from null space</em></h2>
+<p>Same matrix as before:</p>
+<p><span class="math display">\[
+A=\left[\begin{array}{rrrr}
+1 &amp; 1 &amp; 1 &amp; -1 \\
+0 &amp; 1 &amp; 2 &amp; 1
+\end{array}\right]=\left[\mathbf{a}_{1}, \mathbf{a}_{2}, \mathbf{a}_{3}, \mathbf{a}_{4}\right]
+\]</span></p>
+<p>We already found that the general solution to <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> is <span class="math inline">\(\mathbf{x}=\left(x_{3}+2 x_{4},\,-2 x_{3}-x_{4},\, x_{3},\, x_{4}\right)\)</span>, so any solution satisfies <span class="math inline">\(\mathbf{0}=x_{1} \mathbf{a}_{1}+x_{2} \mathbf{a}_{2}+x_{3} \mathbf{a}_{3}+x_{4} \mathbf{a}_{4}\)</span>.</p>
+<p>. . .</p>
+<p><strong>Get dependency relations:</strong> Set one free variable to 1 and the others to 0.</p>
+<ul>
+<li><p><span class="math inline">\(x_3=1\)</span>, <span class="math inline">\(x_4=0\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(x_1=1\)</span>, <span class="math inline">\(x_2=-2\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mathbf{0}=\mathbf{a}_{1}-2\mathbf{a}_{2}+\mathbf{a}_{3}\)</span>, so <span class="math inline">\(\mathbf{a}_{3}=\mathbf{a}_{1}+2\mathbf{a}_{2}\)</span> (column 3 is redundant).</p></li>
+<li><p><span class="math inline">\(x_3=0\)</span>, <span class="math inline">\(x_4=1\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(x_1=2\)</span>, <span class="math inline">\(x_2=-1\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mathbf{0}=2\mathbf{a}_{1}-\mathbf{a}_{2}+\mathbf{a}_{4}\)</span>, so <span class="math inline">\(\mathbf{a}_{4}=-2\mathbf{a}_{1}+\mathbf{a}_{2}\)</span> (column 4 is redundant).</p></li>
+</ul>
+</section>
+<section id="example-basis-for-column-space-conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="example-basis-for-column-space-conclusion"><em>Example: Basis for column space (conclusion)</em></h2>
+<p>We had <span class="math inline">\(\mathbf{a}_3=\mathbf{a}_1+2\mathbf{a}_2\)</span> and <span class="math inline">\(\mathbf{a}_4=-2\mathbf{a}_1+\mathbf{a}_2\)</span>, so columns 3 and 4 are redundant. Columns 1 and 2 (pivot columns) are linearly independent.</p>
+<p>. . .</p>
+<p>So a basis for <span class="math inline">\(\mathcal{C}(A)\)</span> is <span class="math inline">\(\{\mathbf{a}_1,\mathbf{a}_2\}\)</span>:</p>
+<p><span class="math display">\[
+\mathcal{C}(A)=\operatorname{span}\left\{\mathbf{a}_{1}, \mathbf{a}_{2}\right\}=\operatorname{span}\left\{\left[\begin{array}{l}1 \\ 0\end{array}\right],\left[\begin{array}{l}1 \\ 1\end{array}\right]\right\}
+\]</span></p>
+</section>
+<section id="skills-fundamental-subspaces" class="level2">
+<h2 class="anchored" data-anchor-id="skills-fundamental-subspaces"><em>Skills: Fundamental Subspaces</em></h2>
+<p>You should be able to:</p>
+<ul>
+<li>Find a basis for the null space of a matrix.</li>
+<li>Find a basis for the column space using the pivot-column / null-space method.</li>
+<li>Determine if a matrix is invertible from its null space (<span class="math inline">\(\mathcal{N}(A)=\{\mathbf{0}\}\)</span>).</li>
+</ul>
+</section>
+</section>
+<section id="applications" class="level1">
+<h1><em>Applications</em></h1>
+<p>Applications of null space and column space: finding equilibria, checking consistency, and describing solution sets.</p>
+<p>. . .</p>
+<!-- @idea: applications_markov_and_consistency | Markov steady state, consistency, solution geometry -->
+<!-- @uses: consistent_system, dynamical_and_markov, markov_chain, stationary_vector, transition_matrix -->
+<section id="markov-chain-steady-state-finding-equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="markov-chain-steady-state-finding-equilibrium"><em>Markov chain steady state (finding equilibrium)</em></h2>
+<p><strong>Motivation:</strong></p>
+<ul>
+<li>In a Markov chain, a probability vector <span class="math inline">\(\mathbf{x}^{(k)}\)</span> updates by <span class="math inline">\(\mathbf{x}^{(k+1)}=A\mathbf{x}^{(k)}\)</span> for a fixed transition matrix <span class="math inline">\(A\)</span>.</li>
+<li>A <strong>steady state</strong> (equilibrium) is a vector <span class="math inline">\(\mathbf{x}\)</span> that does not change under the update: <span class="math inline">\(\mathbf{x}=A\mathbf{x}\)</span>.</li>
+<li>We can find it using the <strong>null space</strong> of <span class="math inline">\(I-A\)</span>.</li>
+</ul>
+<p>. . .</p>
+<p><strong>Setup:</strong> Suppose the chain has a stable transition matrix <span class="math inline">\(A=\left[\begin{array}{ll}0.7 &amp; 0.4 \\ 0.3 &amp; 0.6\end{array}\right]\)</span>, so that <span class="math display">\[
+\mathbf{x}^{(k+1)}=A \mathbf{x}^{(k)}.
+\]</span> What is the steady-state vector <span class="math inline">\(\mathbf{x}\)</span>? (The limit as <span class="math inline">\(k \rightarrow \infty\)</span> of <span class="math inline">\(\mathbf{x}^{(k)}\)</span>.)</p>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13"><em></em></h2>
+<p><strong>Key step:</strong> At equilibrium, <span class="math inline">\(\mathbf{x}=A\mathbf{x}\)</span>. Rearranging: <span class="math display">\[
+\mathbf{x}-A\mathbf{x}=\mathbf{0} \quad\Rightarrow\quad (I-A)\mathbf{x}=\mathbf{0}.
+\]</span></p>
+<p>. . .</p>
+<p>So every steady-state vector must lie in <strong><span class="math inline">\(\mathcal{N}(I-A)\)</span></strong>.</p>
+<p>. . .</p>
+<p>There may be more than one vector in <span class="math inline">\(\mathcal{N}(I-A)\)</span>, but not all of them are valid probability distributions.</p>
+<p>. . .</p>
+<p>Our approach: find the null space; then pick the vector that is a valid probability distribution (nonnegative entries, sum 1).</p>
+</section>
+<section id="markov-chain-finding-mathcalni-a" class="level2">
+<h2 class="anchored" data-anchor-id="markov-chain-finding-mathcalni-a"><em>Markov chain: finding <span class="math inline">\(\mathcal{N}(I-A)\)</span></em></h2>
+<p><strong>Step 1:</strong> Compute <span class="math inline">\(I-A\)</span> and row reduce:</p>
+<p><span class="math display">\[
+I-A=\left[\begin{array}{rr}
+0.3 &amp; -0.4 \\
+-0.3 &amp; 0.4
+\end{array}\right] \xrightarrow{\mathrm{RREF}}\left[\begin{array}{rr}
+1 &amp; -4/3 \\
+0 &amp; 0
+\end{array}\right].
+\]</span></p>
+<p>. . .</p>
+<p>Solution set: <span class="math inline">\(x_{1}=(4/3)x_{2}\)</span>. So <span class="math inline">\(\mathcal{N}(I-A)\)</span> is spanned by <span class="math inline">\(\mathbf{v}=(4/3, 1)\)</span> (or equivalently <span class="math inline">\((4,3)\)</span>).</p>
+</section>
+<section id="markov-chain-normalizing-to-a-probability-vector" class="level2">
+<h2 class="anchored" data-anchor-id="markov-chain-normalizing-to-a-probability-vector"><em>Markov chain: normalizing to a probability vector</em></h2>
+<p><span class="math inline">\(\mathcal{N}(I-A)\)</span> is spanned by <span class="math inline">\((4/3, 1)\)</span>. Steady-state vectors must have <strong>nonnegative</strong> entries that <strong>sum to 1</strong>.</p>
+<p>. . .</p>
+<p><strong>Step 2:</strong> The only such multiple with sum 1 is <span class="math display">\[
+\frac{1}{(4/3)+1}(4/3,\,1) = \frac{3}{7}(4/3,\,1) = (4/7,\,3/7) \approx (0.571,\,0.429).
+\]</span> So the unique steady-state (probability) vector is <span class="math inline">\(\mathbf{x}=(4/7,\,3/7)\)</span>.</p>
+</section>
+<section id="consistency-and-column-space-back-to-linear-systems" class="level2">
+<h2 class="anchored" data-anchor-id="consistency-and-column-space-back-to-linear-systems"><em>Consistency and Column Space: Back to Linear Systems</em></h2>
+<p>When is <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> consistent? That is, when does <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> have a solution?</p>
+<p>. . .</p>
+<p>We can find the answer by looking at the column space of <span class="math inline">\(A\)</span>.</p>
+<p>. . .</p>
+<div class="theorem">
+<p>The linear system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> of <span class="math inline">\(m\)</span> equations in <span class="math inline">\(n\)</span> unknowns is consistent <strong>if and only if</strong> <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span>.</p>
+</div>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14"><em></em></h2>
+<p><strong>In other words:</strong></p>
+<ul>
+<li><span class="math inline">\(A\mathbf{x}\)</span> is a linear combination of the columns of <span class="math inline">\(A\)</span> (coefficients = entries of <span class="math inline">\(\mathbf{x}\)</span>).</li>
+<li>So <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> has a solution exactly when <span class="math inline">\(\mathbf{b}\)</span> is such a combination—i.e.&nbsp;<span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span>.</li>
+</ul>
+</section>
+<section id="method-testing-if-a-vector-is-in-a-spanning-set" class="level2">
+<h2 class="anchored" data-anchor-id="method-testing-if-a-vector-is-in-a-spanning-set"><em>Method: testing if a vector is in a spanning set</em></h2>
+<p><strong>Goal:</strong> Decide whether <span class="math inline">\(\mathbf{b} \in \operatorname{span}\{\mathbf{v}_1,\ldots,\mathbf{v}_k\}\)</span>.</p>
+<ol type="1">
+<li><p>Form <span class="math inline">\(A=[\mathbf{v}_1,\ldots,\mathbf{v}_k]\)</span>. Then <span class="math inline">\(\mathbf{b} \in \mathcal{C}(A)\)</span> iff <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> is consistent.</p></li>
+<li><p>Form the augmented matrix <span class="math inline">\([A\mid\mathbf{b}]\)</span> (or <span class="math inline">\([A\mid\mathbf{b}_1\mid\mathbf{b}_2\mid\cdots]\)</span> to test several vectors at once) and row reduce.</p></li>
+<li><p>Decide consistency from the RREF:</p>
+<ul>
+<li><strong>Pivot in an augmented column</strong> <span class="math inline">\(\Rightarrow\)</span> a row <span class="math inline">\([0\;\cdots\;0\mid 1]\)</span> (i.e.&nbsp;<span class="math inline">\(0=1\)</span>) <span class="math inline">\(\Rightarrow\)</span> inconsistent <span class="math inline">\(\Rightarrow\)</span> that vector <span class="math inline">\(\notin \mathcal{C}(A)\)</span>.</li>
+<li><strong>No pivot in that augmented column</strong> <span class="math inline">\(\Rightarrow\)</span> consistent <span class="math inline">\(\Rightarrow\)</span> that vector <span class="math inline">\(\in \mathcal{C}(A)\)</span>.</li>
+</ul></li>
+</ol>
+<p>. . .</p>
+</section>
+<section id="example-which-vector-is-in-the-span" class="level2">
+<h2 class="anchored" data-anchor-id="example-which-vector-is-in-the-span"><em>Example: which vector is in the span?</em></h2>
+<ul>
+<li>Let <span class="math inline">\(V=\operatorname{span}\{\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3\}\)</span> where
+<ul>
+<li><span class="math inline">\(\mathbf{v}_1=(1,1,3,3)\)</span></li>
+<li><span class="math inline">\(\mathbf{v}_2=(0,2,2,4)\)</span></li>
+<li><span class="math inline">\(\mathbf{v}_3=(1,0,2,1)\)</span></li>
+</ul></li>
+<li>Which of the vectors is in <span class="math inline">\(V\)</span>?
+<ul>
+<li><span class="math inline">\(\mathbf{u}=(2,1,5,4)\)</span></li>
+<li><span class="math inline">\(\mathbf{w}=(1,0,0,0)\)</span></li>
+</ul></li>
+</ul>
+<p>. . .</p>
+<p>Form <span class="math inline">\(A=[\mathbf{v}_1,\mathbf{v}_2,\mathbf{v}_3]\)</span> and <span class="math inline">\([A\mid\mathbf{u}\mid\mathbf{w}]\)</span>, then row reduce:</p>
+<p>. . .</p>
+<p><span class="math display">\[
+[A \mid \mathbf{u} \mid \mathbf{w}]=\left[\begin{array}{lllll}
+1 &amp; 0 &amp; 1 &amp; 2 &amp; 1 \\
+1 &amp; 2 &amp; 0 &amp; 1 &amp; 0 \\
+3 &amp; 2 &amp; 2 &amp; 5 &amp; 0 \\
+3 &amp; 4 &amp; 1 &amp; 4 &amp; 0
+\end{array}\right] \quad \Longrightarrow \quad \mathrm{RREF}=\left[\begin{array}{rrrrr}
+1 &amp; 0 &amp; 1 &amp; 2 &amp; 0 \\
+0 &amp; 1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0
+\end{array}\right]
+\]</span></p>
+<p>. . .</p>
+<p>Column 4 = <span class="math inline">\(\mathbf{u}\)</span>, column 5 = <span class="math inline">\(\mathbf{w}\)</span>. No pivot in column 4 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mathbf{u} \in V\)</span>; pivot in column 5 <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\mathbf{w} \notin V\)</span>.</p>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15"><em></em></h2>
+<p><strong>One representation of <span class="math inline">\(\mathbf{u}\)</span>:</strong></p>
+<ul>
+<li>From the general solution to <span class="math inline">\(A\mathbf{x}=\mathbf{u}\)</span> (free variable <span class="math inline">\(c_3\)</span>), we get</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{u}=(2-c_3)\mathbf{v}_1+\frac{1}{2}(c_3-1)\mathbf{v}_2+c_3\mathbf{v}_3.
+\]</span></p>
+<ul>
+<li>Example: if <span class="math inline">\(c_3=0\)</span>, then <span class="math inline">\(\mathbf{u}=2\mathbf{v}_1-\frac{1}{2}\mathbf{v}_2\)</span>.</li>
+</ul>
+</section>
+<section id="form-of-general-solution-to-a-linear-system" class="level2">
+<h2 class="anchored" data-anchor-id="form-of-general-solution-to-a-linear-system"><em>Form of general solution to a linear system</em></h2>
+<p>We know the solution set of <span class="math inline">\(A\mathbf{x}=\mathbf{0}\)</span> is the null space (a subspace through the origin). For <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> with <span class="math inline">\(\mathbf{b}\neq\mathbf{0}\)</span>, the solution set is not a subspace—but once we find one particular solution, the rest of the solutions come from adding null-space vectors.</p>
+<p>. . .</p>
+<div class="theorem">
+<ul>
+<li><p>Suppose the system <span class="math inline">\(A \mathbf{x}=\mathbf{b}\)</span> has a particular solution <span class="math inline">\(\mathbf{x}_{*}\)</span>.</p></li>
+<li><p>Then the general solution <span class="math inline">\(\mathbf{x}\)</span> to this system can be described by the equation</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\mathbf{x}=\mathbf{x}_{*}+\mathbf{z}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{z}\)</span> runs over all elements of <span class="math inline">\(\mathcal{N}(A)\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="form-of-general-solution-geometry" class="level2">
+<h2 class="anchored" data-anchor-id="form-of-general-solution-geometry"><em>Form of general solution: geometry</em></h2>
+<p>So <span class="math inline">\(\mathbf{x}=\mathbf{x}_*+\mathbf{z}\)</span> with <span class="math inline">\(\mathbf{z}\in\mathcal{N}(A)\)</span>.</p>
+<p>. . .</p>
+<p>Solution set is the set of all <strong>translates</strong> of the null space by the particular solution <span class="math inline">\(\mathbf{x}_*\)</span>—a copy of the null space shifted away from the origin.</p>
+<p>. . .</p>
+<p>When the number of free variables is 1 or 2 (in 2D or 3D), the solution set is a <strong>point</strong>, a <strong>line</strong>, or a <strong>plane</strong>—not necessarily through the origin.</p>
+</section>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example"><em>Example</em></h2>
+<p>Describe the solution set of the system <span class="math display">\[
+\begin{array}{r}
+x+2 y=3 \\
+x+y+z=3 .
+\end{array}
+\]</span> (Three unknowns; one free variable.)</p>
+<p>. . .</p>
+<p><a href="images/day_8_fig2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/day_8_fig2.jpg" class="img-fluid"></a></p>
+<p>. . .</p>
+<p><strong>Parametric form:</strong> From <span class="math inline">\(x+2y=3\)</span> we get <span class="math inline">\(x=3-2y\)</span>. Substituting into <span class="math inline">\(x+y+z=3\)</span> gives <span class="math inline">\(z=y\)</span>. So the general solution is <span class="math display">\[
+x=3-2t,\quad y=t,\quad z=t \quad (t \in \mathbb{R}).
+\]</span> The solution set is a <strong>line</strong> in <span class="math inline">\(\mathbb{R}^3\)</span> (one free variable): not through the origin (particular solution <span class="math inline">\((3,0,0)\)</span> when <span class="math inline">\(t=0\)</span>), in the direction of <span class="math inline">\(\mathbf{z}=(-2,1,1) \in \mathcal{N}(A)\)</span>.</p>
+</section>
+<section id="gas-diffusion-in-a-tube-matrices-simplify-physical-systems" class="level2">
+<h2 class="anchored" data-anchor-id="gas-diffusion-in-a-tube-matrices-simplify-physical-systems"><em>Gas diffusion in a tube: matrices simplify physical systems</em></h2>
+<p><strong>Motivation:</strong></p>
+<ul>
+<li>Diffusion (e.g., gas in a tube) spreads concentration from each point to its neighbors.</li>
+<li>After discretizing space and time, the next value at site <span class="math inline">\(i\)</span> depends on the current values at <span class="math inline">\(i-1\)</span>, <span class="math inline">\(i\)</span>, and <span class="math inline">\(i+1\)</span>.</li>
+<li>Stacking all sites into a vector turns the recurrence into a single <strong>matrix update</strong>: <span class="math inline">\(\mathbf{y}_{t+1}=(I+dM)\mathbf{y}_t\)</span>.</li>
+</ul>
+<p>. . .</p>
+<p><strong>Model:</strong> At each site <span class="math inline">\(i\)</span> and time <span class="math inline">\(t\)</span>, <span class="math display">\[
+y_{i,\,t+1}=y_{i,\,t}+d\left(y_{i-1,\,t}-2y_{i,\,t}+y_{i+1,\,t}\right),
+\]</span> with <span class="math inline">\(d=kD/h^2\)</span>. Stack all sites into <span class="math inline">\(\mathbf{y}_t\)</span>; then <span class="math inline">\(\mathbf{y}_{t+1}=(I+dM)\mathbf{y}_t\)</span> for a simple banded matrix <span class="math inline">\(M\)</span>.</p>
+</section>
+<section id="gas-diffusion-inverse-problem" class="level2">
+<h2 class="anchored" data-anchor-id="gas-diffusion-inverse-problem"><em>Gas diffusion: inverse problem</em></h2>
+<p>Forward evolution: <span class="math inline">\(\mathbf{y}_{t+1}=(I+dM)\mathbf{y}_t\)</span>. Given <strong>future</strong> <span class="math inline">\(\mathbf{y}_{t+1}\)</span>, infer <strong>past</strong> <span class="math inline">\(\mathbf{y}_t\)</span>:</p>
+<ul>
+<li><strong>Exact:</strong> <span class="math inline">\(\mathbf{y}_t=(I+dM)^{-1}\mathbf{y}_{t+1}\)</span> (invert the matrix).</li>
+<li><strong>Approximate:</strong> <span class="math inline">\(\mathbf{y}_t\approx \mathbf{y}_{t+1}-dM\mathbf{y}_{t+1}\)</span> (replace <span class="math inline">\(\mathbf{y}_t\)</span> on the right by <span class="math inline">\(\mathbf{y}_{t+1}\)</span> and solve once).</li>
+</ul>
+<p>. . .</p>
+<p><strong>Why the approximation works:</strong></p>
+<ul>
+<li>For small <span class="math inline">\(d\)</span>, Taylor series gives <span class="math inline">\((I+dM)^{-1}=I-dM+O(d^2)\)</span>.</li>
+<li>So <span class="math inline">\(\mathbf{y}_t=(I+dM)^{-1}\mathbf{y}_{t+1}\\approx (I-dM)\mathbf{y}_{t+1}\)</span>, which matches the one-step approximation to first order in <span class="math inline">\(d\)</span>.</li>
+</ul>
+</section>
+<section id="null-space-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="null-space-algorithm"><em>Null Space algorithm</em></h2>
+<p>Given an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(A\)</span>.</p>
+<ol type="1">
+<li><p>Compute the reduced row echelon form <span class="math inline">\(R\)</span> of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Use <span class="math inline">\(R\)</span> to find the general solution to the homogeneous system <span class="math inline">\(A \mathbf{x}=0\)</span>.</p></li>
+<li><p>Write the general solution <span class="math inline">\(\mathbf{x}=\left(x_{1}, x_{2}, \ldots, x_{n}\right)\)</span> to the homogeneous system in the form</p></li>
+</ol>
+<p>. . .</p>
+<p><span class="math display">\[
+\mathbf{x}=x_{i_{1}} \mathbf{w}_{1}+x_{i_{2}} \mathbf{w}_{2}+\cdots+x_{i_{n-r}} \mathbf{w}_{n-r}
+\]</span></p>
+<p>where <span class="math inline">\(x_{i_{1}}, x_{i_{2}}, \ldots, x_{i_{n-r}}\)</span> are the free variables.</p>
+<p>. . .</p>
+<ol start="4" type="1">
+<li>List the vectors <span class="math inline">\(\mathbf{w}_{1}, \mathbf{w}_{2}, \ldots, \mathbf{w}_{n-r}\)</span>. These form a basis of <span class="math inline">\(\mathcal{N}(A)\)</span>.</li>
+</ol>
+</section>
+<section id="skills-applications" class="level2">
+<h2 class="anchored" data-anchor-id="skills-applications"><em>Skills: Applications</em></h2>
+<p>You should be able to:</p>
+<ul>
+<li>Find steady-state vectors of Markov chains using the null space of <span class="math inline">\(I-A\)</span>.</li>
+<li>Determine if <span class="math inline">\(A\mathbf{x}=\mathbf{b}\)</span> is consistent using column space (<span class="math inline">\(\mathbf{b}\in\mathcal{C}(A)\)</span>).</li>
+<li>Describe solution-set geometry (point, line, plane) using null space and particular solutions.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
